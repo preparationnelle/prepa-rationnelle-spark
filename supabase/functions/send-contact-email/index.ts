@@ -1,46 +1,45 @@
-
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { escapeHtml } from "../_shared/auth.ts";
 
-// Initialize Resend with API key
 const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+const INTERNAL_RECIPIENT = "preparationnelle@gmail.com";
+const SUBJECT = "Nouvelle question via le widget de chat";
 
 interface ContactRequest {
   name: string;
   email: string;
   question: string;
-  recipient: string;
-  subject: string;
 }
 
 serve(async (req) => {
-  // Handle CORS preflight requests
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
+  const preflight = handleCorsPreflight(req);
+  if (preflight) return preflight;
 
   try {
-    const { name, email, question, recipient, subject } = await req.json() as ContactRequest;
-    
+    const { name, email, question } = await req.json() as ContactRequest;
+
     if (!name || !email || !question) {
-      throw new Error('Missing required fields');
+      return new Response(
+        JSON.stringify({ error: "Missing required fields" }),
+        {
+          status: 400,
+          headers: { ...corsHeaders(req), "Content-Type": "application/json" },
+        },
+      );
     }
 
-    // Send email using Resend
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: 'Prépa Rationnelle <onboarding@resend.dev>',
-      to: [recipient || 'preparationnelle@gmail.com'],
-      subject: subject || 'Nouvelle question via le widget de chat',
+      to: [INTERNAL_RECIPIENT],
+      subject: SUBJECT,
       html: `
-        <h2>Nouvelle question de ${name}</h2>
-        <p><strong>Email:</strong> ${email}</p>
+        <h2>Nouvelle question de ${escapeHtml(name)}</h2>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
         <p><strong>Question:</strong></p>
-        <p>${question}</p>
+        <p>${escapeHtml(question)}</p>
       `,
       reply_to: email,
     });
@@ -51,17 +50,16 @@ serve(async (req) => {
 
     return new Response(
       JSON.stringify({ success: true, message: 'Email sent successfully' }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { headers: { ...corsHeaders(req), "Content-Type": "application/json" } },
     );
   } catch (error) {
     console.error('Error in send-contact-email function:', error);
-    
     return new Response(
       JSON.stringify({ error: error.message }),
-      { 
-        status: 500, 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
-      }
+      {
+        status: 500,
+        headers: { ...corsHeaders(req), "Content-Type": "application/json" },
+      },
     );
   }
 });

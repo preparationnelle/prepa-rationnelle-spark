@@ -2,12 +2,9 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { requireAuth } from "../_shared/auth.ts";
 const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
-
-const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
 
 interface HookEvaluationRequest {
     hook: string;
@@ -17,9 +14,11 @@ interface HookEvaluationRequest {
 }
 
 serve(async (req) => {
-    if (req.method === 'OPTIONS') {
-        return new Response(null, { headers: corsHeaders });
-    }
+    const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
+
+  const __authResult = await requireAuth(req);
+  if (__authResult.response) return __authResult.response;
 
     try {
         const { hook, subject, context, userId }: HookEvaluationRequest = await req.json();
@@ -139,7 +138,7 @@ Réponds UNIQUEMENT avec le JSON, sans texte avant ou après.`;
         console.log('Hook evaluation completed successfully');
 
         return new Response(JSON.stringify(evaluationResult), {
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
         });
 
     } catch (error) {
@@ -148,7 +147,7 @@ Réponds UNIQUEMENT avec le JSON, sans texte avant ou après.`;
             error: error.message || 'Failed to evaluate hook'
         }), {
             status: 500,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
         });
     }
 });

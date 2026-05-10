@@ -79,7 +79,7 @@ const GouvernanceMondialeChronologiePage = () => {
   const groupedEvents = groupEventsByDecade(events);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 py-8">
         {/* Navigation breadcrumb */}
         <div className="flex items-center gap-2 text-sm text-gray-600 mb-6">
@@ -102,7 +102,7 @@ const GouvernanceMondialeChronologiePage = () => {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <Calendar className="h-8 w-8 text-blue-600" />
+            <Calendar className="h-8 w-8 text-carnet-red" />
             <h1 className="text-4xl font-bold text-gray-900">
               Chronologie de la gouvernance mondiale
             </h1>
@@ -116,15 +116,15 @@ const GouvernanceMondialeChronologiePage = () => {
         {/* Events by decade */}
         {Object.entries(groupedEvents).map(([decade, decadeEvents]) => (
           <div key={decade} className="mb-10">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-300 pb-2">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-carnet-red/40 pb-2">
               {decade}
             </h2>
             <div className="space-y-6">
               {decadeEvents.map((item, index) => (
-                <Card key={index} className="border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow bg-white">
+                <Card key={index} className="border-l-4 border-carnet-red shadow-sm hover:shadow-md transition-shadow bg-white">
                   <CardContent className="p-4">
                     <div className="flex items-start">
-                      <span className="flex-shrink-0 w-24 text-lg font-semibold text-blue-700 mr-4">
+                      <span className="flex-shrink-0 w-24 text-lg font-semibold text-carnet-red mr-4">
                         {item.year}
                       </span>
                       <p className="flex-grow text-gray-700 leading-relaxed">
@@ -142,7 +142,7 @@ const GouvernanceMondialeChronologiePage = () => {
         <div className="mt-12 text-center">
           <Link
             to="/formation/geopolitique/premiere-annee"
-            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+            className="inline-flex items-center gap-2 text-carnet-red hover:text-carnet-red-deep font-medium"
           >
             ← Retour à la première année
           </Link>

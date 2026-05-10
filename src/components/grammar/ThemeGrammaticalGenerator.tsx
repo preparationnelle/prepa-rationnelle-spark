@@ -107,9 +107,9 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 8) return 'text-orange-700';
-    if (score >= 6) return 'text-orange-600';
-    return 'text-blue-500';
+    if (score >= 8) return 'text-pr-orange-dark';
+    if (score >= 6) return 'text-pr-orange';
+    return 'text-pr-gray-mid';
   };
 
   const getCategoryIcon = (category: string) => {

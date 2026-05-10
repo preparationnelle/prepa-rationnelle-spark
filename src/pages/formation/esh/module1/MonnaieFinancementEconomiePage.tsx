@@ -5,7 +5,7 @@ import { DollarSign, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle } from
 
 const MonnaieFinancementEconomiePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -47,14 +47,14 @@ const MonnaieFinancementEconomiePage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <DollarSign className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+                <DollarSign className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   La monnaie et le financement de l'économie
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 1.2 - Module 1</div>
+                <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 1.2 - Module 1</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -67,8 +67,8 @@ const MonnaieFinancementEconomiePage = () => {
             {/* Section 1: Définition et fonctions de la monnaie */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
                 Définition et fonctions de la monnaie
               </h2>
@@ -78,23 +78,23 @@ const MonnaieFinancementEconomiePage = () => {
                   <h3 className="font-semibold text-gray-800 mb-3">Fonctions de la monnaie :</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <div>
-                        <strong className="text-blue-700">Unité de compte</strong>
+                        <strong className="text-carnet-red">Unité de compte</strong>
                         <p className="text-xs text-gray-600">Mesure la valeur des biens et services</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <div>
-                        <strong className="text-blue-700">Intermédiaire d'échange</strong>
+                        <strong className="text-carnet-red">Intermédiaire d'échange</strong>
                         <p className="text-xs text-gray-600">Facilite les transactions</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <div>
-                        <strong className="text-blue-700">Réserve de valeur</strong>
+                        <strong className="text-carnet-red">Réserve de valeur</strong>
                         <p className="text-xs text-gray-600">Permet l'épargne et l'investissement</p>
                       </div>
                     </li>
@@ -105,15 +105,15 @@ const MonnaieFinancementEconomiePage = () => {
                   <h3 className="font-semibold text-gray-800 mb-3">Formes de monnaie :</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Monnaie fiduciaire (billets, pièces)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Monnaie scripturale (comptes bancaires)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Crypto-monnaies (Bitcoin, etc.)</span>
                     </li>
                   </ul>
@@ -124,14 +124,14 @@ const MonnaieFinancementEconomiePage = () => {
             {/* Section 2: Système bancaire et création monétaire */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
                 Système bancaire et création monétaire
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Banque Centrale</h3>
                   <ul className="text-sm space-y-1 text-gray-700">
                     <li>• Émet la monnaie et contrôle la masse monétaire</li>
@@ -141,7 +141,7 @@ const MonnaieFinancementEconomiePage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Banques Commerciales</h3>
                   <ul className="text-sm space-y-1 text-gray-700">
                     <li>• Collectent l'épargne des ménages</li>
@@ -151,7 +151,7 @@ const MonnaieFinancementEconomiePage = () => {
                   </ul>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Multiplicateur de crédit</h3>
                   <p className="text-sm text-gray-600">
                     Mécanisme par lequel les banques commerciales créent de la monnaie en accordant des crédits.
@@ -164,8 +164,8 @@ const MonnaieFinancementEconomiePage = () => {
             {/* Section 3: Financement de l'économie */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
                 Financement de l'économie
               </h2>
@@ -175,15 +175,15 @@ const MonnaieFinancementEconomiePage = () => {
                   <h3 className="font-semibold text-gray-800 mb-3">Financement interne :</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Autofinancement des entreprises (profits retenus)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Épargne des ménages</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Réserves des banques</span>
                     </li>
                   </ul>
@@ -193,15 +193,15 @@ const MonnaieFinancementEconomiePage = () => {
                   <h3 className="font-semibold text-gray-800 mb-3">Financement externe :</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Émission d'actions et d'obligations</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Crédits bancaires</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Dette publique</span>
                     </li>
                   </ul>
@@ -224,7 +224,7 @@ const MonnaieFinancementEconomiePage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module1/courants-pensee-economique">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

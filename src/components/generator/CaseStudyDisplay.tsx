@@ -1,6 +1,4 @@
-
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Copy, Download, FileText } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -45,60 +43,63 @@ export const CaseStudyDisplay = ({ caseStudy, wordCount, language }: CaseStudyDi
   };
 
   return (
-    <Card className="mt-8 overflow-hidden border-0 shadow-xl bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/30">
-      <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-        <div className="flex justify-between items-start">
+    <div className="mt-8 bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+      <div className="h-[3px] w-full bg-pr-orange" />
+      <div className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5 sm:px-8">
+        <div className="flex justify-between items-start flex-wrap gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
-              <FileText className="h-6 w-6" />
+            <div className="p-2 bg-white border border-pr-orange-soft rounded-xl">
+              <FileText className="h-5 w-5 text-pr-orange-dark" />
             </div>
             <div>
-              <CardTitle className="text-2xl font-bold">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                {language === 'fr' ? 'Étude de cas' : 'Case study'}
+              </div>
+              <h3 className="font-dm-serif text-2xl text-pr-black leading-none">
                 {language === 'fr' ? 'Étude de cas générée' : 'Generated case study'}
-              </CardTitle>
-              <div className="text-blue-100 text-sm font-normal mt-1">
+              </h3>
+              <div className="text-pr-gray-mid text-[13px] mt-1 font-dm-sans">
                 {wordCount} {language === 'fr' ? 'mots' : 'words'}
               </div>
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             <Button
               onClick={copyToClipboard}
-              variant="secondary"
+              variant="outline"
               size="sm"
-              className="bg-white/20 text-white hover:bg-white/30 border-white/20"
+              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft"
             >
               <Copy className="h-4 w-4 mr-2" />
               {language === 'fr' ? 'Copier' : 'Copy'}
             </Button>
             <Button
               onClick={handleDownloadTxt}
-              variant="secondary"
+              variant="outline"
               size="sm"
-              className="bg-white/20 text-white hover:bg-white/30 border-white/20"
+              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft"
             >
               <Download className="h-4 w-4 mr-2" />
               TXT
             </Button>
             <Button
               onClick={handleDownloadPdf}
-              variant="secondary"
               size="sm"
-              className="bg-white/20 text-white hover:bg-white/30 border-white/20"
+              className="bg-pr-orange hover:bg-pr-orange-dark text-white"
             >
               <Download className="h-4 w-4 mr-2" />
               PDF
             </Button>
           </div>
         </div>
-      </CardHeader>
-      <CardContent className="p-8">
-        <div className="prose max-w-none">
-          <div className="whitespace-pre-wrap text-gray-800 leading-relaxed">
+      </div>
+      <div className="p-6 sm:p-8">
+        <div className="prose max-w-none font-dm-sans">
+          <div className="whitespace-pre-wrap text-pr-gray-dark leading-relaxed">
             {caseStudy}
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };

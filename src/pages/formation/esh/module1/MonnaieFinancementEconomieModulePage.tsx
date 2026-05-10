@@ -5,7 +5,7 @@ import { DollarSign, Home, ChevronRight, ArrowLeft } from 'lucide-react';
 
 const MonnaieFinancementEconomieModulePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -40,7 +40,7 @@ const MonnaieFinancementEconomieModulePage = () => {
 
           {/* Hero bleu */}
           <div className="mb-8">
-            <div className="rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 text-white p-8 shadow-md">
+            <div className="rounded-2xl bg-gradient-to-r from-carnet-red to-blue-700 text-white p-8 shadow-md">
               <div className="flex items-center justify-center gap-4">
                 <div className="w-16 h-16 bg-white/15 rounded-full flex items-center justify-center ring-1 ring-white/30">
                   <DollarSign className="h-8 w-8 text-white" />
@@ -64,7 +64,7 @@ const MonnaieFinancementEconomieModulePage = () => {
             {/* 1 */}
             <div id="sec1" className="bg-white rounded-xl p-6 shadow-md ring-1 ring-blue-100">
               <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">1</span>
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-carnet-red/10 text-carnet-red-deep text-sm font-semibold">1</span>
                 Définir le financement de l’économie
               </h2>
               <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
@@ -89,7 +89,7 @@ const MonnaieFinancementEconomieModulePage = () => {
             {/* 2 */}
             <div id="sec2" className="bg-white rounded-xl p-6 shadow-md ring-1 ring-blue-100">
               <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">2</span>
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-carnet-red/10 text-carnet-red-deep text-sm font-semibold">2</span>
                 Les acteurs et les intruments du financement de l’économie
               </h2>
               <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
@@ -132,7 +132,7 @@ const MonnaieFinancementEconomieModulePage = () => {
             {/* 3 */}
             <div id="sec3" className="bg-white rounded-xl p-6 shadow-md ring-1 ring-blue-100">
               <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">3</span>
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-carnet-red/10 text-carnet-red-deep text-sm font-semibold">3</span>
                 Les mutations profondes du système financier
               </h2>
               <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
@@ -168,7 +168,7 @@ const MonnaieFinancementEconomieModulePage = () => {
             {/* 4 */}
             <div id="sec4" className="bg-white rounded-xl p-6 shadow-md ring-1 ring-blue-100">
               <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">4</span>
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-carnet-red/10 text-carnet-red-deep text-sm font-semibold">4</span>
                 Crise et régulation des systèmes financiers
               </h2>
               <div className="space-y-4 text-sm text-gray-700 leading-relaxed">

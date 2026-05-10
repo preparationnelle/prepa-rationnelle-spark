@@ -197,11 +197,11 @@ const VocabulaireBildungFlashcardsPage = () => {
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      "Éducation générale": "bg-blue-100 text-blue-800",
+      "Éducation générale": "bg-carnet-red/10 text-carnet-red-deep",
       "Formation": "bg-indigo-100 text-indigo-800",
       "Système éducatif": "bg-sky-100 text-sky-800",
       "Formation professionnelle": "bg-cyan-100 text-cyan-800",
-      "Enseignement supérieur": "bg-blue-100 text-blue-800",
+      "Enseignement supérieur": "bg-carnet-red/10 text-carnet-red-deep",
       "Orientation scolaire": "bg-violet-100 text-violet-800",
       "Système dual": "bg-teal-100 text-teal-800",
       "Recherche": "bg-purple-100 text-purple-800",
@@ -211,10 +211,10 @@ const VocabulaireBildungFlashcardsPage = () => {
       "Excellence académique": "bg-amber-100 text-amber-800",
       "Attractivité internationale": "bg-green-100 text-green-800",
       "Concurrence éducative": "bg-amber-100 text-orange-800",
-      "Formation scolaire": "bg-slate-100 text-slate-800",
+      "Formation scolaire": "bg-carnet-rule/30 text-carnet-ink",
       "Éducation précoce": "bg-pink-100 text-pink-800",
       "Enseignement primaire": "bg-lime-100 text-lime-800",
-      "Enseignement secondaire": "bg-blue-100 text-blue-800",
+      "Enseignement secondaire": "bg-carnet-red/10 text-carnet-red-deep",
       "Diplômes": "bg-yellow-100 text-yellow-800",
       "Apprentissage": "bg-cyan-100 text-cyan-800",
       "Personnel de formation": "bg-rose-100 text-rose-800",
@@ -228,7 +228,7 @@ const VocabulaireBildungFlashcardsPage = () => {
       "Facteurs sociaux": "bg-gray-100 text-gray-800",
       "Évaluations internationales": "bg-amber-100 text-orange-800",
       "Inclusion scolaire": "bg-teal-100 text-teal-800",
-      "Organisation scolaire": "bg-blue-100 text-blue-800",
+      "Organisation scolaire": "bg-carnet-red/10 text-carnet-red-deep",
       "Obligations légales": "bg-red-100 text-red-800",
       "Personnel éducatif": "bg-indigo-100 text-indigo-800",
       "Apprenants": "bg-pink-100 text-pink-800",
@@ -240,9 +240,9 @@ const VocabulaireBildungFlashcardsPage = () => {
       "Réformes éducatives": "bg-rose-100 text-rose-800",
       "Système universitaire européen": "bg-violet-100 text-violet-800",
       "Qualité éducative": "bg-emerald-100 text-emerald-800",
-      "Étudiants universitaires": "bg-blue-100 text-blue-800",
+      "Étudiants universitaires": "bg-carnet-red/10 text-carnet-red-deep",
       "Enseignement universitaire": "bg-indigo-100 text-indigo-800",
-      "Infrastructure universitaire": "bg-slate-100 text-slate-800",
+      "Infrastructure universitaire": "bg-carnet-rule/30 text-carnet-ink",
       "Financement recherche": "bg-green-100 text-green-800",
       "Politique éducative": "bg-amber-100 text-orange-800",
       "Institutions politiques": "bg-red-100 text-red-800",
@@ -257,7 +257,7 @@ const VocabulaireBildungFlashcardsPage = () => {
       "Tendances éducatives": "bg-purple-100 text-purple-800",
       "Défis du marché du travail": "bg-amber-100 text-amber-800",
       "Statistiques étudiantes": "bg-gray-100 text-gray-800",
-      "Étudiants internationaux": "bg-blue-100 text-blue-800",
+      "Étudiants internationaux": "bg-carnet-red/10 text-carnet-red-deep",
       "Programmes d'échange": "bg-violet-100 text-violet-800",
       "Mobilité étudiante": "bg-indigo-100 text-indigo-800",
       "Financement éducatif": "bg-green-100 text-green-800",
@@ -267,23 +267,17 @@ const VocabulaireBildungFlashcardsPage = () => {
       "Éducation spécialisée": "bg-rose-100 text-rose-800",
       "Égalité des genres": "bg-purple-100 text-purple-800",
       "Disciplines scientifiques": "bg-cyan-100 text-cyan-800",
-      "Formation du personnel": "bg-slate-100 text-slate-800"
+      "Formation du personnel": "bg-carnet-rule/30 text-carnet-ink"
     };
     return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF] relative overflow-hidden">
+    <div className="relative">
       {/* Floating elements - Orange and blue bubbles */}
-      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse"></div>
-      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
-      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
 
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/95 backdrop-blur-sm/95 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper/95 backdrop-blur-sm/60 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs font-medium text-gray-600">
             <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
@@ -308,7 +302,7 @@ const VocabulaireBildungFlashcardsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-gradient-to-br from-orange-500 to-blue-500 text-white">
+            <div className="p-3 rounded-lg bg-gradient-to-br from-orange-500 to-pr-orange text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Vocabulaire Éducation et Formation
@@ -319,7 +313,7 @@ const VocabulaireBildungFlashcardsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">{cards.length} mots</Badge>
             <Badge variant="outline">Module 7 - Bildung und Ausbildung</Badge>
-            <Badge className="bg-gradient-to-r from-orange-500 to-blue-500 text-white">Flashcards</Badge>
+            <Badge className="bg-gradient-to-r from-orange-500 to-pr-orange text-white">Flashcards</Badge>
           </div>
         </div>
 
@@ -331,7 +325,7 @@ const VocabulaireBildungFlashcardsPage = () => {
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2.5">
             <div
-              className="bg-gradient-to-r from-orange-500 to-blue-500 h-2.5 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-orange-500 to-pr-orange h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -431,7 +425,6 @@ const VocabulaireBildungFlashcardsPage = () => {
           </Card>
         </div>
 
-        {/* Navigation */}
         <div className="max-w-2xl mx-auto">
           <div className="flex justify-between items-center">
             <Button

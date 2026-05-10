@@ -5,20 +5,20 @@ import { Home, ChevronRight, DollarSign, Globe, Users, Calendar, TrendingUp } fr
 
 const GuerreEconomiquePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center space-x-2 text-sm mb-6">
-          <Link to="/" className="flex items-center text-slate-600 hover:text-slate-800">
+          <Link to="/" className="flex items-center text-carnet-ink-soft hover:text-carnet-ink">
             <Home className="h-4 w-4 mr-1" />
             Accueil
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <Link to="/formation/geopolitique" className="text-slate-600 hover:text-slate-800">
+          <Link to="/formation/geopolitique" className="text-carnet-ink-soft hover:text-carnet-ink">
             Géopolitique
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <Link to="/formation/geopolitique/etudes-de-cas" className="text-slate-600 hover:text-slate-800">
+          <Link to="/formation/geopolitique/etudes-de-cas" className="text-carnet-ink-soft hover:text-carnet-ink">
             Études de cas
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
@@ -64,7 +64,7 @@ const GuerreEconomiquePage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-blue-600" />
+                  <Users className="h-5 w-5 text-carnet-red" />
                   Acteurs principaux
                 </CardTitle>
               </CardHeader>
@@ -152,34 +152,34 @@ const GuerreEconomiquePage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="h-5 w-5 text-blue-600" />
+                  <DollarSign className="h-5 w-5 text-carnet-red" />
                   Thématiques pertinentes
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-carnet-red rounded-full"></div>
                     <span>Économie internationale</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-carnet-red rounded-full"></div>
                     <span>Sécurité</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-carnet-red rounded-full"></div>
                     <span>Commerce</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-carnet-red rounded-full"></div>
                     <span>Diplomatie</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-carnet-red rounded-full"></div>
                     <span>Ressources critiques</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-carnet-red rounded-full"></div>
                     <span>Ingérence cyber</span>
                   </div>
                 </div>

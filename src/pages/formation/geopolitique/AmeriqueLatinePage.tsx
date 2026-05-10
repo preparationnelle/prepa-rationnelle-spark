@@ -7,7 +7,7 @@ import { Home, ChevronRight, BookOpen, Globe, Quote, AlertTriangle, CheckCircle,
 
 const AmeriqueLatinePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40 mb-8">
@@ -129,16 +129,16 @@ const AmeriqueLatinePage = () => {
 
                     {/* A. Le rêve d'une Amérique latine unie */}
                     <div className="space-y-6">
-                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-blue-200 pb-2">
+                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-carnet-red/30 pb-2">
                         A. Le rêve d'une Amérique latine unie : l'idéal de Simon Bolivar
                       </h4>
                       
                       {/* 1. Contexte historique */}
                       <div className="ml-4">
-                        <h5 className="text-lg font-semibold text-blue-800 mb-4">1. Contexte historique</h5>
+                        <h5 className="text-lg font-semibold text-carnet-red-deep mb-4">1. Contexte historique</h5>
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Indépendances précoces (XIXᵉ siècle)</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Indépendances précoces (XIXᵉ siècle)</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li>Figures emblématiques : Simón Bolívar, José de San Martín</li>
                               <li>Libération progressive du joug colonial espagnol et portugais</li>
@@ -146,8 +146,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Rêve bolivarien</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Rêve bolivarien</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li>Unir les États d'Amérique latine en une grande république</li>
                               <li>Projet de Grande Colombie (1819-1831)</li>
@@ -225,9 +225,9 @@ const AmeriqueLatinePage = () => {
 
                       {/* 2. Doctrine Monroe */}
                       <div className="ml-4">
-                        <h5 className="text-lg font-semibold text-blue-800 mb-4">2. Doctrine Monroe (1823)</h5>
-                        <div className="bg-blue-50 p-4 rounded-lg">
-                          <h6 className="font-semibold text-blue-700 mb-2">"L'Amérique aux Américains"</h6>
+                        <h5 className="text-lg font-semibold text-carnet-red-deep mb-4">2. Doctrine Monroe (1823)</h5>
+                        <div className="bg-pr-orange-pale p-4 rounded-lg">
+                          <h6 className="font-semibold text-carnet-red mb-2">"L'Amérique aux Américains"</h6>
                           <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                             <li>Rejet officiel des interventions européennes</li>
                             <li>En réalité : ouverture à l'influence des États-Unis</li>
@@ -484,8 +484,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Reprimarisation depuis les années 2000</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Reprimarisation depuis les années 2000</h6>
                             <p className="text-sm text-gray-700 mb-2">
                               <strong>Concept de José Antonio Ocampo :</strong> "reprimarisation" → retour à une économie fondée sur l'exportation de matières premières.
                             </p>
@@ -563,16 +563,16 @@ const AmeriqueLatinePage = () => {
 
                     {/* B. Ingérences externes et contrôle des infrastructures */}
                     <div className="space-y-6">
-                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-blue-200 pb-2">
+                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-carnet-red/30 pb-2">
                         B. Ingérences externes et contrôle des infrastructures stratégiques
                       </h4>
                       
                       {/* 1. États-Unis et canaux */}
                       <div className="ml-4">
-                        <h5 className="text-lg font-semibold text-blue-800 mb-4">1. Les États-Unis et le contrôle des canaux interocéaniques</h5>
+                        <h5 className="text-lg font-semibold text-carnet-red-deep mb-4">1. Les États-Unis et le contrôle des canaux interocéaniques</h5>
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Canal de Panama (1914)</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Canal de Panama (1914)</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li>Enjeu stratégique clé pour Washington</li>
                               <li>Contrôle américain jusqu'en 1999</li>
@@ -580,8 +580,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Projet de canal au Nicaragua (2013-2017)</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Projet de canal au Nicaragua (2013-2017)</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li>Tentative chinoise pour concurrencer le canal de Panama</li>
                               <li>Projet de canal interocéanique financé par des capitaux chinois</li>
@@ -810,10 +810,10 @@ const AmeriqueLatinePage = () => {
 
                       {/* 2. Alternance des modèles */}
                       <div className="ml-4">
-                        <h5 className="text-lg font-semibold text-blue-800 mb-4">2. Une alternance constante entre différents modèles de développement</h5>
+                        <h5 className="text-lg font-semibold text-carnet-red-deep mb-4">2. Une alternance constante entre différents modèles de développement</h5>
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Évolution chronologique des stratégies</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Évolution chronologique des stratégies</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Avant 1950 :</strong> Stratégie d'extraversion fondée sur les matières premières → exportation brute</li>
                               <li><strong>1950-1980 :</strong> Industrialisation par substitution aux importations (ISI) → produire localement</li>
@@ -969,10 +969,10 @@ const AmeriqueLatinePage = () => {
 
                       {/* 2. Modèle dicté par les cycles */}
                       <div className="ml-4">
-                        <h5 className="text-lg font-semibold text-blue-800 mb-4">2. Un modèle de développement dicté par les cycles économiques mondiaux</h5>
+                        <h5 className="text-lg font-semibold text-carnet-red-deep mb-4">2. Un modèle de développement dicté par les cycles économiques mondiaux</h5>
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Cycles de crise et adaptation</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Cycles de crise et adaptation</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>1930 :</strong> Crise de 1929 → nécessité de produire localement, début de l'ISI</li>
                               <li><strong>1960 :</strong> Relative réussite de l'ISI, mais essoufflement progressif</li>
@@ -1151,8 +1151,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                            <h6 className="font-semibold text-blue-800 mb-2">Ouvrage clé : Georges Couffignal</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg border border-carnet-red/30">
+                            <h6 className="font-semibold text-carnet-red-deep mb-2">Ouvrage clé : Georges Couffignal</h6>
                             <div className="space-y-2">
                               <p className="text-sm text-gray-700">
                                 <strong>L'Amérique latine est bien partie (2011)</strong>
@@ -1256,10 +1256,10 @@ const AmeriqueLatinePage = () => {
 
                       {/* 3. Virage libéral */}
                       <div className="ml-4">
-                        <h5 className="text-lg font-semibold text-blue-800 mb-4">3. Un virage libéral dans les années 2015-2020</h5>
+                        <h5 className="text-lg font-semibold text-carnet-red-deep mb-4">3. Un virage libéral dans les années 2015-2020</h5>
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Retour de gouvernements pro-marché</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Retour de gouvernements pro-marché</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>2015 :</strong> Mauricio Macri (Argentine) - Libéralisation de l'économie</li>
                               <li><strong>2016 :</strong> Michel Temer (Brésil) - Austérité budgétaire</li>
@@ -1268,8 +1268,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Politiques néolibérales</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Politiques néolibérales</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Dérégulation :</strong> Assouplissement des règles du marché du travail</li>
                               <li><strong>Réduction des dépenses sociales :</strong> Coupes dans les programmes sociaux</li>
@@ -1350,8 +1350,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Nouvelles formes d'influence</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Nouvelles formes d'influence</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Soft power :</strong> Influence culturelle et diplomatique</li>
                               <li><strong>Conditionnalités économiques :</strong> FMI, Banque mondiale, accords commerciaux</li>
@@ -1451,10 +1451,10 @@ const AmeriqueLatinePage = () => {
 
                       {/* 2. Faiblesse des institutions */}
                       <div className="ml-4">
-                        <h5 className="text-lg font-semibold text-blue-800 mb-4">2. Faiblesse des institutions et corruption systémique</h5>
+                        <h5 className="text-lg font-semibold text-carnet-red-deep mb-4">2. Faiblesse des institutions et corruption systémique</h5>
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Gouvernements inefficaces et clientélistes</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Gouvernements inefficaces et clientélistes</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Absence de continuité :</strong> Politiques publiques remises en cause à chaque alternance</li>
                               <li><strong>Clientélisme :</strong> Distribution de ressources selon la loyauté politique</li>
@@ -1462,8 +1462,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Corruption massive dans les secteurs publics et privés</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Corruption massive dans les secteurs publics et privés</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Petrobras et Odebrecht (Brésil) :</strong> Détournements de milliards d'euros</li>
                               <li><strong>Scandale des BTP (Argentine) :</strong> Corruption dans les travaux publics</li>
@@ -1788,16 +1788,16 @@ const AmeriqueLatinePage = () => {
 
                     {/* C. Le populisme et la polarisation politique */}
                     <div className="space-y-6">
-                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-blue-200 pb-2">
+                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-carnet-red/30 pb-2">
                         C. Le populisme et la polarisation politique : un facteur d'instabilité récurrent
                       </h4>
                       
                       {/* 1. Alternance permanente */}
                       <div className="ml-4">
-                        <h5 className="text-lg font-semibold text-blue-800 mb-4">1. Une alternance permanente entre populisme de gauche et de droite</h5>
+                        <h5 className="text-lg font-semibold text-carnet-red-deep mb-4">1. Une alternance permanente entre populisme de gauche et de droite</h5>
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Phénomène historique récurrent</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Phénomène historique récurrent</h6>
                             <p className="text-sm text-gray-700 mb-2">
                               Le populisme en Amérique latine est un phénomène historique qui répond aux crises sociales et économiques.
                             </p>
@@ -1808,8 +1808,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Populisme de gauche</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Populisme de gauche</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Dénonciation du néolibéralisme et des élites :</strong> Discours anti-establishment</li>
                               <li><strong>Exemples historiques :</strong> Vargas (Brésil, 1930), Chávez (Venezuela, 1999)</li>
@@ -1817,8 +1817,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Populisme de droite</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Populisme de droite</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Discours sécuritaire et conservateur :</strong> Ordre et tradition</li>
                               <li><strong>Exemple récent :</strong> Bolsonaro (Brésil, 2018)</li>
@@ -1979,16 +1979,16 @@ const AmeriqueLatinePage = () => {
 
                     {/* B. Étude de cas : Rio de Janeiro */}
                     <div className="space-y-6">
-                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-blue-200 pb-2">
+                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-carnet-red/30 pb-2">
                         B. Étude de cas : Les inégalités urbaines à Rio de Janeiro
                       </h4>
                       
                       {/* 1. Ville fragmentée */}
                       <div className="ml-4">
-                        <h5 className="text-lg font-semibold text-blue-800 mb-4">1. Une ville fragmentée entre quartiers riches et favelas</h5>
+                        <h5 className="text-lg font-semibold text-carnet-red-deep mb-4">1. Une ville fragmentée entre quartiers riches et favelas</h5>
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Exclusion socio-spatiale</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Exclusion socio-spatiale</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>20% des habitants</strong> vivent dans des favelas</li>
                               <li><strong>Proximité géographique :</strong> Favelas souvent situées près des quartiers aisés</li>
@@ -1996,8 +1996,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Forte disparité des services publics</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Forte disparité des services publics</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Accès limité à l'eau potable :</strong> Coupures fréquentes dans les favelas</li>
                               <li><strong>Éducation défaillante :</strong> Écoles sous-équipées, décrochage scolaire</li>
@@ -2005,8 +2005,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Violence et narcotrafic</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Violence et narcotrafic</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Domination des gangs :</strong> Contrôle territorial dans certaines zones</li>
                               <li><strong>Corruption des forces de l'ordre :</strong> Police parfois complice</li>
@@ -2208,10 +2208,10 @@ const AmeriqueLatinePage = () => {
 
                       {/* 2. BRICS et émergence inégale */}
                       <div className="ml-4">
-                        <h5 className="text-lg font-semibold text-blue-800 mb-4">2. BRICS et l'émergence inégale des pays d'Amérique latine</h5>
+                        <h5 className="text-lg font-semibold text-carnet-red-deep mb-4">2. BRICS et l'émergence inégale des pays d'Amérique latine</h5>
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Brésil dans les BRICS</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Brésil dans les BRICS</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Seule puissance sud-américaine :</strong> À prétendre à un statut d'émergent global</li>
                               <li><strong>8e économie mondiale :</strong> PIB de 2 000 milliards USD</li>
@@ -2220,8 +2220,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Incapacité des autres pays à suivre</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Incapacité des autres pays à suivre</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Manque de compétitivité :</strong> Secteurs industriels faibles</li>
                               <li><strong>Forte dépendance aux matières premières :</strong> Vulnérabilité aux cycles</li>
@@ -2471,10 +2471,10 @@ const AmeriqueLatinePage = () => {
 
                       {/* 2. Transition écologique */}
                       <div className="ml-4">
-                        <h5 className="text-lg font-semibold text-blue-800 mb-4">2. Vers une transition écologique et énergétique ?</h5>
+                        <h5 className="text-lg font-semibold text-carnet-red-deep mb-4">2. Vers une transition écologique et énergétique ?</h5>
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Développement des énergies renouvelables</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Développement des énergies renouvelables</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Barrages hydroélectriques :</strong> Itaipu (Brésil-Paraguay), Belo Monte (Brésil)</li>
                               <li><strong>Potentiel hydroélectrique :</strong> Brésil 80% électricité d'origine hydraulique</li>
@@ -2483,8 +2483,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Exploitation du potentiel solaire et éolien</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Exploitation du potentiel solaire et éolien</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Croissance du secteur :</strong> Chili, Uruguay et Brésil leaders</li>
                               <li><strong>Chili :</strong> Désert d'Atacama → potentiel solaire exceptionnel</li>
@@ -2493,8 +2493,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Résistances et conflits avec les populations locales</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Résistances et conflits avec les populations locales</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Opposition aux grands projets miniers :</strong> Communautés indigènes vs multinationales</li>
                               <li><strong>Conflits hydroélectriques :</strong> Belo Monte → déplacement populations riveraines</li>
@@ -2577,16 +2577,16 @@ const AmeriqueLatinePage = () => {
 
                     {/* C. Stratégies pour croissance soutenable */}
                     <div className="space-y-6">
-                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-blue-200 pb-2">
+                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-carnet-red/30 pb-2">
                         C. Quelles stratégies pour un modèle de croissance soutenable ?
                       </h4>
                       
                       {/* 1. Diversification économique */}
                       <div className="ml-4">
-                        <h5 className="text-lg font-semibold text-blue-800 mb-4">1. S'appuyer sur une diversification économique durable</h5>
+                        <h5 className="text-lg font-semibold text-carnet-red-deep mb-4">1. S'appuyer sur une diversification économique durable</h5>
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Réduire la dépendance aux matières premières</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Réduire la dépendance aux matières premières</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Développement des industries à valeur ajoutée :</strong> Transformation sur place</li>
                               <li><strong>Secteurs d'avenir :</strong> Biotechnologies, technologies vertes</li>
@@ -2595,8 +2595,8 @@ const AmeriqueLatinePage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Encourager l'économie circulaire et l'innovation</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Encourager l'économie circulaire et l'innovation</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li><strong>Initiatives en bioéconomie :</strong> Valorisation biodiversité amazonienne</li>
                               <li><strong>Recyclage :</strong> Programmes gestion déchets urbains</li>
@@ -2661,14 +2661,14 @@ const AmeriqueLatinePage = () => {
                     </div>
 
                     {/* Conclusion finale de la dissertation */}
-                    <div className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg border-2 border-blue-200">
+                    <div className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg border-2 border-carnet-red/30">
                       <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
                         <CheckCircle className="h-5 w-5 text-gray-600" />
                         Conclusion générale de la dissertation
                       </h4>
                       
                       <div className="space-y-4 text-sm text-gray-700">
-                        <p className="font-semibold text-blue-800">
+                        <p className="font-semibold text-carnet-red-deep">
                           → L'Amérique latine est confrontée à un dilemme entre exploitation des ressources et nécessité d'un modèle économique soutenable.
                         </p>
                         

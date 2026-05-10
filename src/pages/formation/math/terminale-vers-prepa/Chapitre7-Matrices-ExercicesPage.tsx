@@ -107,7 +107,7 @@ const Chapitre7MatricesExercicesPage = () => {
       <SEOHead
         canonical="/formation/math/terminale-vers-prepa/matrices-exercices"
         title="Exercices · Chapitre 7 — Matrices · Terminale → Prépa ECG"
-        description="7 exercices progressifs sur les matrices avec corrigés détaillés : dimensions, addition, multiplication, déterminant, inverse et systèmes 2×2."
+        description="14 exercices progressifs sur les matrices avec corrigés détaillés : dimensions, addition, multiplication, déterminant, inverse et systèmes 2×2."
       />
 
       {/* Fil d'Ariane */}
@@ -134,7 +134,7 @@ const Chapitre7MatricesExercicesPage = () => {
         <header className="mb-14 relative">
           <div className="carnet-eyebrow mb-5">07 · Exercices · Matrices</div>
           <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.022em] text-carnet-ink mb-6">
-            Sept matrices <em className="font-lora italic text-carnet-red">à manipuler</em>.
+            Quatorze matrices <em className="font-lora italic text-carnet-red">à manipuler</em>.
           </h1>
           <p className="font-instrument text-[17px] leading-[1.6] text-carnet-ink-soft max-w-[680px]">
             Dimensions, addition, produit, déterminant, inverse, systèmes 2×2. Du plus simple au plus complet. <span className="carnet-hl font-lora italic">Pose le calcul à la main</span>, puis confronte au corrigé.
@@ -142,10 +142,10 @@ const Chapitre7MatricesExercicesPage = () => {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(78,55,30,0.18)] text-carnet-ink-soft bg-carnet-paper-2">
-              3 Faciles
+              6 Faciles
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(193,68,58,0.3)] text-carnet-red bg-[rgba(193,68,58,0.06)]">
-              2 Moyens
+              6 Moyens
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-carnet-red text-carnet-paper bg-carnet-red">
               2 Difficiles
@@ -456,6 +456,256 @@ const Chapitre7MatricesExercicesPage = () => {
             </>
           }
         />
+
+        {/* Exercice 8 */}
+        <Exercise
+          id="ex8"
+          num={8}
+          title="Matrice identité et propriétés"
+          difficulty="Facile"
+          open={!!open.ex8}
+          onToggle={() => toggle('ex8')}
+          tilt="l"
+          statement={
+            <>
+              <p>Soit <Inline tex={'I_2 = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}'} /> et <Inline tex={'A = \\begin{pmatrix} 2 & 3 \\\\ 1 & -1 \\end{pmatrix}'} />.</p>
+              <p><strong>1.</strong> Calculer <Inline tex={'I_2 A'} /> et <Inline tex={'A I_2'} />.</p>
+              <p><strong>2.</strong> Pour tout scalaire <Inline tex={'\\lambda'} />, calculer <Inline tex={'(\\lambda I_2) A'} />.</p>
+              <p><strong>3.</strong> Montrer que si <Inline tex={'B'} /> est une matrice <Inline tex={'2 \\times 2'} /> telle que <Inline tex={'AB = I_2'} />, alors <Inline tex={'B = A^{-1}'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="Question 1 — produits avec I₂">
+                <p>On vérifie par calcul direct :</p>
+                <Block tex={'I_2 A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} \\begin{pmatrix} 2 & 3 \\\\ 1 & -1 \\end{pmatrix} = \\begin{pmatrix} 1\\cdot2+0\\cdot1 & 1\\cdot3+0\\cdot(-1) \\\\ 0\\cdot2+1\\cdot1 & 0\\cdot3+1\\cdot(-1) \\end{pmatrix} = \\begin{pmatrix} 2 & 3 \\\\ 1 & -1 \\end{pmatrix} = A.'} />
+                <Block tex={'A I_2 = \\begin{pmatrix} 2 & 3 \\\\ 1 & -1 \\end{pmatrix} \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 2\\cdot1+3\\cdot0 & 2\\cdot0+3\\cdot1 \\\\ 1\\cdot1+(-1)\\cdot0 & 1\\cdot0+(-1)\\cdot1 \\end{pmatrix} = \\begin{pmatrix} 2 & 3 \\\\ 1 & -1 \\end{pmatrix} = A.'} />
+                <p>Conclusion : <Inline tex={'I_2 A = A I_2 = A'} />. C'est la propriété fondamentale de la matrice identité.</p>
+              </Step>
+              <Step label="Question 2 — scalaire et identité">
+                <p>On utilise l'associativité et la linéarité du produit matriciel :</p>
+                <Block tex={'(\\lambda I_2) A = \\lambda (I_2 A) = \\lambda A.'} />
+                <p>Multiplier par <Inline tex={'\\lambda I_2'} /> revient donc à multiplier chaque coefficient par <Inline tex={'\\lambda'} />.</p>
+              </Step>
+              <Step label="Question 3 — unicité de l'inverse">
+                <p>On suppose <Inline tex={'AB = I_2'} />. On multiplie à gauche par <Inline tex={'A^{-1}'} /> (qui existe puisque <Inline tex={'\\det(A) = -2 - 3 = -5 \\neq 0'} />) :</p>
+                <Block tex={'A^{-1}(AB) = A^{-1} I_2 \\implies (A^{-1}A)B = A^{-1} \\implies I_2 B = A^{-1} \\implies B = A^{-1}.'} />
+                <p className="text-carnet-ink-mute italic text-[14px]">À retenir : si l'on trouve une matrice <Inline tex={'B'} /> telle que <Inline tex={'AB = I_2'} />, c'est automatiquement l'inverse de <Inline tex={'A'} /> — pas besoin de vérifier <Inline tex={'BA = I_2'} /> séparément en taille 2×2 finie.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 9 */}
+        <Exercise
+          id="ex9"
+          num={9}
+          title="Puissance d'une matrice triangulaire"
+          difficulty="Moyen"
+          open={!!open.ex9}
+          onToggle={() => toggle('ex9')}
+          statement={
+            <>
+              <p>Soit <Inline tex={'T = \\begin{pmatrix} 1 & 2 \\\\ 0 & 3 \\end{pmatrix}'} />.</p>
+              <p><strong>1.</strong> Calculer <Inline tex={'T^2'} /> et <Inline tex={'T^3'} />.</p>
+              <p><strong>2.</strong> Conjecturer la forme de <Inline tex={'T^n'} /> pour <Inline tex={'n \\geq 1'} />.</p>
+              <p><strong>3.</strong> Vérifier la conjecture pour <Inline tex={'n = 4'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="Question 1 — T² et T³">
+                <p>Calcul de <Inline tex={'T^2'} /> :</p>
+                <Block tex={'T^2 = \\begin{pmatrix} 1 & 2 \\\\ 0 & 3 \\end{pmatrix} \\begin{pmatrix} 1 & 2 \\\\ 0 & 3 \\end{pmatrix} = \\begin{pmatrix} 1 & 1\\cdot2+2\\cdot3 \\\\ 0 & 9 \\end{pmatrix} = \\begin{pmatrix} 1 & 8 \\\\ 0 & 9 \\end{pmatrix}.'} />
+                <p>Calcul de <Inline tex={'T^3 = T^2 \\cdot T'} /> :</p>
+                <Block tex={'T^3 = \\begin{pmatrix} 1 & 8 \\\\ 0 & 9 \\end{pmatrix} \\begin{pmatrix} 1 & 2 \\\\ 0 & 3 \\end{pmatrix} = \\begin{pmatrix} 1 & 1\\cdot2+8\\cdot3 \\\\ 0 & 27 \\end{pmatrix} = \\begin{pmatrix} 1 & 26 \\\\ 0 & 27 \\end{pmatrix}.'} />
+              </Step>
+              <Step label="Question 2 — conjecture">
+                <p>On observe le motif : diagonale <Inline tex={'(1,\\; 3^n)'} /> et terme haut droit <Inline tex={'2, 8, 26, \\ldots'} /></p>
+                <p>On remarque : <Inline tex={'2 = 3^1 - 1'} />, <Inline tex={'8 = 3^2 - 1'} />, <Inline tex={'26 = 3^3 - 1'} />. D'où la conjecture :</p>
+                <Block tex={'T^n = \\begin{pmatrix} 1 & 3^n - 1 \\\\ 0 & 3^n \\end{pmatrix}.'} />
+                <p className="text-carnet-ink-mute italic text-[14px]">Cette formule se démontre rigoureusement par récurrence — méthode à connaître en prépa.</p>
+              </Step>
+              <Step label="Question 3 — vérification pour n = 4">
+                <Block tex={'T^4 = T^3 \\cdot T = \\begin{pmatrix} 1 & 26 \\\\ 0 & 27 \\end{pmatrix} \\begin{pmatrix} 1 & 2 \\\\ 0 & 3 \\end{pmatrix} = \\begin{pmatrix} 1 & 2+78 \\\\ 0 & 81 \\end{pmatrix} = \\begin{pmatrix} 1 & 80 \\\\ 0 & 81 \\end{pmatrix}.'} />
+                <p>La formule donne <Inline tex={'3^4 - 1 = 81 - 1 = 80'} /> et <Inline tex={'3^4 = 81'} />. ✓</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 10 */}
+        <Exercise
+          id="ex10"
+          num={10}
+          title="Modèle de transition"
+          difficulty="Moyen"
+          open={!!open.ex10}
+          onToggle={() => toggle('ex10')}
+          tilt="r"
+          statement={
+            <>
+              <p>On modélise la fidélité client avec deux états : Fidèle (F) et Non fidèle (N). Chaque mois :</p>
+              <ul className="list-disc list-inside space-y-1 pl-2">
+                <li>Un client F reste F avec probabilité 0,8 et passe à N avec probabilité 0,2.</li>
+                <li>Un client N passe à F avec probabilité 0,4 et reste N avec probabilité 0,6.</li>
+              </ul>
+              <p>On note <Inline tex={'v_n = \\begin{pmatrix} f_n \\\\ n_n \\end{pmatrix}'} /> l'état au mois <Inline tex={'n'} /> et <Inline tex={'M = \\begin{pmatrix} 0{,}8 & 0{,}4 \\\\ 0{,}2 & 0{,}6 \\end{pmatrix}'} /> la matrice de transition.</p>
+              <p><strong>1.</strong> Vérifier que la somme des colonnes de <Inline tex={'M'} /> vaut 1.</p>
+              <p><strong>2.</strong> Si au mois 0 tous les clients sont fidèles (<Inline tex={'v_0 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}'} />), calculer <Inline tex={'v_1 = M v_0'} /> et <Inline tex={'v_2 = M v_1'} />.</p>
+              <p><strong>3.</strong> Interpréter <Inline tex={'v_2'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="Question 1 — somme des colonnes">
+                <p>Colonne 1 : <Inline tex={'0{,}8 + 0{,}2 = 1'} />. ✓</p>
+                <p>Colonne 2 : <Inline tex={'0{,}4 + 0{,}6 = 1'} />. ✓</p>
+                <p className="text-carnet-ink-mute italic text-[14px]">Cette propriété est caractéristique d'une matrice stochastique : la somme des probabilités de transition depuis chaque état vaut 1.</p>
+              </Step>
+              <Step label="Question 2 — v₁ et v₂">
+                <p>Calcul de <Inline tex={'v_1'} /> :</p>
+                <Block tex={'v_1 = M v_0 = \\begin{pmatrix} 0{,}8 & 0{,}4 \\\\ 0{,}2 & 0{,}6 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} 0{,}8 \\\\ 0{,}2 \\end{pmatrix}.'} />
+                <p>Calcul de <Inline tex={'v_2'} /> :</p>
+                <Block tex={'v_2 = M v_1 = \\begin{pmatrix} 0{,}8 & 0{,}4 \\\\ 0{,}2 & 0{,}6 \\end{pmatrix} \\begin{pmatrix} 0{,}8 \\\\ 0{,}2 \\end{pmatrix} = \\begin{pmatrix} 0{,}8 \\times 0{,}8 + 0{,}4 \\times 0{,}2 \\\\ 0{,}2 \\times 0{,}8 + 0{,}6 \\times 0{,}2 \\end{pmatrix} = \\begin{pmatrix} 0{,}72 \\\\ 0{,}28 \\end{pmatrix}.'} />
+              </Step>
+              <Step label="Question 3 — interprétation">
+                <p>Au mois 2, <strong>72 % des clients sont fidèles</strong> et 28 % ne le sont pas.</p>
+                <p>Bien que tous les clients soient partis fidèles au mois 0, la dynamique de transition fait qu'en deux mois une fraction non négligeable est déjà passée dans l'état Non fidèle.</p>
+                <p className="text-carnet-ink-mute italic text-[14px]">En prépa, on s'intéresse à l'état stationnaire : le vecteur <Inline tex={'\\pi'} /> tel que <Inline tex={'M\\pi = \\pi'} />. Ici on peut vérifier que <Inline tex={'\\pi = \\begin{pmatrix} 2/3 \\\\ 1/3 \\end{pmatrix}'} /> est cet état limite.</p>
+              </Step>
+            </>
+          }
+        />
+
+          {/* Module M4 — Opérations, déterminants & valeurs propres */}
+          <div className="mb-2 mt-10">
+            <span className="inline-block bg-carnet-red text-white text-xs font-bold px-3 py-1 rounded-full tracking-wide uppercase">
+              M4 — Opérations, déterminants &amp; valeurs propres
+            </span>
+          </div>
+
+          <Exercise
+            id="ex11"
+            num={11}
+            title="Addition et combinaison de matrices"
+            difficulty="Facile"
+            open={!!open.ex11}
+            onToggle={() => toggle('ex11')}
+            tilt="l"
+            statement={
+              <>
+                <p>Soient les matrices :</p>
+                <Block tex={'A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}, \\qquad B = \\begin{pmatrix} 2 & -1 \\\\ 0 & 1 \\end{pmatrix}'} />
+                <p>Calculer <Inline tex={'A + B'} /> et <Inline tex={'2A - B'} />.</p>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Calcul de A + B">
+                  <Block tex={'A + B = \\begin{pmatrix} 1+2 & 2+(-1) \\\\ 3+0 & 4+1 \\end{pmatrix} = \\boxed{\\begin{pmatrix} 3 & 1 \\\\ 3 & 5 \\end{pmatrix}}'} />
+                </Step>
+                <Step label="Calcul de 2A − B">
+                  <Block tex={'2A = \\begin{pmatrix} 2 & 4 \\\\ 6 & 8 \\end{pmatrix} \\implies 2A - B = \\begin{pmatrix} 2-2 & 4-(-1) \\\\ 6-0 & 8-1 \\end{pmatrix} = \\boxed{\\begin{pmatrix} 0 & 5 \\\\ 6 & 7 \\end{pmatrix}}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex12"
+            num={12}
+            title="Déterminant et matrice inverse"
+            difficulty="Facile"
+            open={!!open.ex12}
+            onToggle={() => toggle('ex12')}
+            statement={
+              <>
+                <p>Soit <Inline tex={'A = \\begin{pmatrix} 3 & 2 \\\\ 1 & 4 \\end{pmatrix}'} />.</p>
+                <ol className="list-decimal pl-5 space-y-1">
+                  <li>Calculer <Inline tex={'\\det(A)'} />.</li>
+                  <li>En déduire <Inline tex={'A^{-1}'} />.</li>
+                </ol>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Calcul du déterminant">
+                  <Block tex={'\\det(A) = 3 \\times 4 - 2 \\times 1 = 12 - 2 = 10 \\neq 0'} />
+                  <p>Comme <Inline tex={'\\det(A) \\neq 0'} />, la matrice <Inline tex={'A'} /> est inversible.</p>
+                </Step>
+                <Step label="Formule de l'inverse pour une matrice 2×2">
+                  <Block tex={'A^{-1} = \\frac{1}{\\det(A)} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} = \\frac{1}{10} \\begin{pmatrix} 4 & -2 \\\\ -1 & 3 \\end{pmatrix}'} />
+                  <Block tex={'\\boxed{A^{-1} = \\begin{pmatrix} 2/5 & -1/5 \\\\ -1/10 & 3/10 \\end{pmatrix}}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex13"
+            num={13}
+            title="Résolution d'un système 2×2 par substitution"
+            difficulty="Moyen"
+            open={!!open.ex13}
+            onToggle={() => toggle('ex13')}
+            tilt="r"
+            statement={
+              <>
+                <p>Résoudre le système :</p>
+                <Block tex={'\\begin{cases} 2x + 3y = 7 \\\\ x - y = 1 \\end{cases}'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Expression de x en fonction de y">
+                  <p>De la deuxième équation : <Inline tex={'x = 1 + y'} />.</p>
+                </Step>
+                <Step label="Substitution dans la première">
+                  <Block tex={'2(1+y) + 3y = 7 \\implies 2 + 5y = 7 \\implies y = 1'} />
+                </Step>
+                <Step label="Retour à x">
+                  <Block tex={'x = 1 + 1 = 2'} />
+                  <Block tex={'\\boxed{(x, y) = (2,\\, 1)}'} />
+                  <p>Vérification : <Inline tex={'2 \\times 2 + 3 \\times 1 = 7'} /> ✓ et <Inline tex={'2 - 1 = 1'} /> ✓.</p>
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex14"
+            num={14}
+            title="Valeurs propres d'une matrice 2×2"
+            difficulty="Moyen"
+            open={!!open.ex14}
+            onToggle={() => toggle('ex14')}
+            statement={
+              <>
+                <p>Soit <Inline tex={'A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 2 \\end{pmatrix}'} />.</p>
+                <ol className="list-decimal pl-5 space-y-1">
+                  <li>Calculer <Inline tex={'A^2'} />.</li>
+                  <li>Trouver les valeurs propres de <Inline tex={'A'} /> en résolvant <Inline tex={'\\det(A - \\lambda I) = 0'} />.</li>
+                  <li>Pour chaque valeur propre, donner un vecteur propre associé.</li>
+                </ol>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Calcul de A²">
+                  <Block tex={'A^2 = A \\cdot A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 2 \\end{pmatrix}\\begin{pmatrix} 1 & 1 \\\\ 0 & 2 \\end{pmatrix} = \\begin{pmatrix} 1 & 3 \\\\ 0 & 4 \\end{pmatrix}'} />
+                </Step>
+                <Step label="Polynôme caractéristique">
+                  <Block tex={'\\det(A - \\lambda I) = \\begin{vmatrix} 1-\\lambda & 1 \\\\ 0 & 2-\\lambda \\end{vmatrix} = (1-\\lambda)(2-\\lambda) = 0'} />
+                  <Block tex={'\\boxed{\\lambda_1 = 1, \\quad \\lambda_2 = 2}'} />
+                </Step>
+                <Step label="Vecteurs propres">
+                  <p><strong>Pour <Inline tex={'\\lambda_1 = 1'} /> :</strong> <Inline tex={'A - I = \\begin{pmatrix} 0 & 1 \\\\ 0 & 1 \\end{pmatrix}'} />. Système : <Inline tex={'y = 0'} />. Vecteur propre : <Inline tex={'\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}'} />.</p>
+                  <p><strong>Pour <Inline tex={'\\lambda_2 = 2'} /> :</strong> <Inline tex={'A - 2I = \\begin{pmatrix} -1 & 1 \\\\ 0 & 0 \\end{pmatrix}'} />. Système : <Inline tex={'-x + y = 0'} />. Vecteur propre : <Inline tex={'\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}'} />.</p>
+                </Step>
+              </>
+            }
+          />
 
         {/* Bandeau récap */}
         <section className="mt-14 mb-10 relative">

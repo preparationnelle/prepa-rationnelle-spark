@@ -4,7 +4,7 @@ import { Home, ChevronRight, Target, CheckCircle2 } from 'lucide-react';
 
 const ParagrapheEfficacePage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       {/* Breadcrumb */}
       <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-2">
@@ -27,8 +27,8 @@ const ParagrapheEfficacePage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center border border-blue-200">
-              <Target className="h-6 w-6 text-blue-600" />
+            <div className="w-12 h-12 bg-pr-orange-pale rounded-full flex items-center justify-center border border-carnet-red/30">
+              <Target className="h-6 w-6 text-carnet-red" />
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">Comment rédiger efficacement un paragraphe en ESH</h1>
           </div>
@@ -44,7 +44,7 @@ const ParagrapheEfficacePage: React.FC = () => {
             <p className="text-gray-700 mb-3">
               La première phrase annonce l'idée principale. Formulez-la simplement, sans citation ni auteur, et reliez-la clairement au sujet.
             </p>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-900">
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep">
               <div className="font-medium mb-1">Exemple (sujet fictif : « La mondialisation favorise-t-elle la croissance économique ? »)</div>
               <p>
                 La mondialisation constitue un moteur de croissance en permettant une meilleure allocation des ressources et une ouverture des marchés.
@@ -57,7 +57,7 @@ const ParagrapheEfficacePage: React.FC = () => {
             <p className="text-gray-700 mb-3">
               Développez le mécanisme économique ou social qui justifie l'idée. Ensuite seulement, mobilisez un auteur ou une théorie pour renforcer la démonstration.
             </p>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-900">
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep">
               <div className="font-medium mb-1">Exemple</div>
               <p>
                 En ouvrant les frontières, les pays peuvent se spécialiser dans les productions où ils sont les plus efficaces, ce qui accroît la productivité globale. Adam Smith soulignait déjà en 1776 que la division du travail et l’échange international favorisent l’enrichissement mutuel. Ainsi, la mondialisation stimule la croissance en exploitant les avantages comparatifs.
@@ -70,7 +70,7 @@ const ParagrapheEfficacePage: React.FC = () => {
             <p className="text-gray-700 mb-3">
               Concluez avec un exemple précis, une donnée chiffrée ou un fait historique pour crédibiliser l'argument.
             </p>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-900">
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep">
               <div className="font-medium mb-1">Exemple</div>
               <p>
                 La Chine, en s’intégrant progressivement dans le commerce mondial depuis les années 1980, a vu son PIB multiplié par plus de 20 en quatre décennies.

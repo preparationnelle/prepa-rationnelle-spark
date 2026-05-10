@@ -1,12 +1,45 @@
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ChevronRight, Home, Star, BookOpen, Lightbulb, Target, Crown, Eye, EyeOff } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Eye, EyeOff, CheckCircle } from 'lucide-react';
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
+
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-[11px] font-bold text-red-800 uppercase tracking-widest mb-2 mt-4 first:mt-0">
+    {children}
+  </p>
+);
+
+const PointMethodo = ({ children }: { children: React.ReactNode }) => (
+  <div className="mb-3">
+    <SectionLabel>Méthode</SectionLabel>
+    <div className="text-stone-700 text-sm leading-relaxed">{children}</div>
+  </div>
+);
+
+const Astuce = ({ children }: { children: React.ReactNode }) => (
+  <div className="mb-3">
+    <SectionLabel>Astuce</SectionLabel>
+    <div className="text-stone-700 text-sm leading-relaxed">{children}</div>
+  </div>
+);
+
+const ConclusionBox = ({ children }: { children: React.ReactNode }) => (
+  <div className="mt-4">
+    <SectionLabel>Conclusion</SectionLabel>
+    <div className="text-stone-800 leading-relaxed">{children}</div>
+  </div>
+);
+
+const difficultyLabel: Record<string, string> = {
+  'Niveau: Facile': 'FACILE',
+  'Niveau: Intermédiaire': 'MOYEN',
+  'Niveau: Concours': 'DIFFICILE',
+  'Niveau: Concours (Classique)': 'DIFFICILE',
+  'Niveau: Difficile': 'HEC',
+};
 
 const Chapitre5ComplementsVariablesAleatoiresExercicesPage = () => {
-  const [visibleCorrections, setVisibleCorrections] = useState<{[key: string]: boolean}>({});
+  const [visibleCorrections, setVisibleCorrections] = useState<{ [key: string]: boolean }>({});
 
   const toggleCorrection = (exerciseId: string) => {
     setVisibleCorrections(prev => ({
@@ -15,191 +48,122 @@ const Chapitre5ComplementsVariablesAleatoiresExercicesPage = () => {
     }));
   };
 
-  const DifficultyHeader = ({
-    level,
-    title,
-    icon: Icon,
-    stars,
-    color = "orange"
-  }: {
-    level: string;
-    title: string;
-    icon: any;
-    stars: number;
-    color?: string;
-  }) => (
-    <div className={`bg-gradient-to-r from-${color}-50 to-${color}-25 border-l-4 border-${color}-400 p-4 mb-4 rounded-r-lg shadow-sm`}>
-      <div className="flex items-center gap-3">
-        <div className={`p-2 bg-${color}-500 text-white rounded-lg`}>
-          <Icon className="w-5 h-5" />
-        </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-800">{level} : {title}</h2>
-          <div className="flex gap-1 mt-1">
-            {[...Array(stars)].map((_, i) => (
-              <Star key={i} className={`w-3 h-3 fill-${color}-500 text-${color}-500`} />
-            ))}
-            {[...Array(4-stars)].map((_, i) => (
-              <Star key={i} className="w-3 h-3 text-gray-300" />
-            ))}
-          </div>
-        </div>
-      </div>
+  const DifficultyHeader = ({ level }: { level: string }) => (
+    <div className="flex items-center gap-3 mb-4 mt-10">
+      <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest whitespace-nowrap">
+        {level}
+      </span>
+      <div className="flex-1 border-t border-stone-200" />
     </div>
   );
 
-  return (
-    <div className="min-h-screen carnet-paper carnet-cours-skin">
-      {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-blue-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-blue-700 transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <Link to="/formations" className="hover:text-blue-700 transition-colors">
-              Toutes les formations
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-blue-700 transition-colors">
-              Choix parcours Maths
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <Link to="/formation/maths-approfondies-2e-annee" className="hover:text-blue-700 transition-colors">
-              Maths Approfondies - 2ème année
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <span className="text-orange-600 font-medium">Chapitre 5 : Compléments sur les variables aléatoires</span>
+  const ExerciseCard = ({
+    id, title, content, correction, difficulty,
+  }: {
+    id: string; title: string; content: React.ReactNode;
+    correction: React.ReactNode; difficulty: string;
+  }) => {
+    const num = id.split('-')[1]?.padStart(2, '0') ?? id.replace(/[^0-9]/g, '').padStart(2, '0');
+    const badge = difficultyLabel[difficulty] ?? difficulty.replace('Niveau: ', '').toUpperCase();
+    const isOpen = visibleCorrections[id];
+    return (
+      <div className="mb-6 border border-stone-200 rounded-xl bg-white shadow-sm p-6">
+        <div className="flex items-start justify-between gap-4 mb-5">
+          <div className="flex items-baseline gap-3">
+            <span className="text-2xl font-bold italic text-red-800 leading-none">{num}</span>
+            <span className="text-stone-300 font-light text-xl leading-none">—</span>
+            <h3 className="font-medium text-stone-900 text-base leading-snug">
+              {title.replace(/^Exercice \d+ - /, '')}
+            </h3>
           </div>
+          <span className="shrink-0 text-[11px] font-semibold text-red-800 border border-red-200 rounded-full px-3 py-0.5 tracking-wider">
+            {badge}
+          </span>
         </div>
-      </nav>
-
-      <div className="container mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4">Chapitre 5 : Compléments sur les variables aléatoires</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
-            Séries de variables aléatoires, convergence et calculs d'espérance et variance
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 mb-6">
-            <Link to="/formation/maths-complements-variables-aleatoires">
-              <Button variant="outline" className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50">
-                <BookOpen className="mr-2 h-4 w-4" />
-                Cours
-              </Button>
-            </Link>
-            <Link to="/formation/maths-complements-variables-aleatoires-quiz">
-              <Button variant="outline" className="border-2 border-green-600 text-green-600 hover:bg-green-50">
-                <Target className="mr-2 h-4 w-4" />
-                Quiz
-              </Button>
-            </Link>
-          </div>
-        </div>
-
-        {/* Niveau Facile */}
-        <DifficultyHeader
-          level="Niveau 1"
-          title="Séries de variables aléatoires et convergence"
-          icon={Lightbulb}
-          stars={2}
-          color="blue"
-        />
-
-        {/* Exercice 2.1 */}
-        <Card className="mb-6 shadow-md border-0">
-          <div className="bg-blue-50 px-6 py-4 border-b">
-            <div className="flex justify-between items-center">
-              <h3 className="text-lg font-semibold text-blue-800">Exercice 2.1 - Série convergente et variables aléatoires</h3>
-              <Button
-                onClick={() => toggleCorrection('ex2_1')}
-                variant="outline"
-                size="sm"
-                className="border-blue-300 text-blue-700 hover:bg-blue-100"
-              >
-                {visibleCorrections['ex2_1'] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                {visibleCorrections['ex2_1'] ? 'Masquer' : 'Afficher'} la correction
-              </Button>
+        <div className="text-stone-700 leading-relaxed mb-6">{content}</div>
+        <button
+          onClick={() => toggleCorrection(id)}
+          className="flex items-center gap-2 text-sm text-stone-600 border border-stone-300 rounded-full px-4 py-1.5 hover:bg-stone-50 transition-colors"
+        >
+          {isOpen ? (<><EyeOff className="w-4 h-4" /> Masquer la correction</>) : (<><Eye className="w-4 h-4" /> Afficher la correction</>)}
+        </button>
+        {isOpen && (
+          <div className="mt-5 border border-dashed border-stone-300 border-l-[3px] border-l-red-800 rounded-lg p-5 animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="flex items-center gap-2 mb-4">
+              <CheckCircle className="w-4 h-4 text-red-800" />
+              <span className="text-xs font-bold text-red-800 uppercase tracking-widest">Corrigé détaillé</span>
             </div>
+            <div className="text-stone-700 leading-relaxed space-y-2">{correction}</div>
           </div>
-          
-          <div className="p-6">
-            <div className="bg-white rounded-lg border border-gray-200 p-4 mb-4">
-              <LatexRenderer>
-                {`Soit $(u_n)_{n\\geq 1}$ la suite définie, pour $n\\geq 1$, par
-$$u_n=\\frac{1}{n(n+1)}.$$
-
-1. Montrer que $\\displaystyle\\sum_{n\\geq 1}u_n$ converge et que
-$$\\sum_{n=1}^{+\\infty}u_n=1.$$
-
-2. Soit $X$ une variable aléatoire à valeurs dans $\\mathbb{N}^*$ telle que, pour tout $n\\geq 1$,
-$$\\mathbb{P}(X=n)=u_n.$$
-$X$ admet-elle une espérance ? une variance ?
-
-Même questions pour la variable aléatoire $\\sqrt{X}$.`}
-              </LatexRenderer>
-            </div>
-
-            {visibleCorrections['ex2_1'] && (
-              <div className="bg-green-50 rounded-lg border border-green-200 p-4">
-                <h4 className="font-semibold text-green-800 mb-3 flex items-center">
-                  <Target className="h-4 w-4 mr-2" />
-                  Correction détaillée
-                </h4>
-                <LatexRenderer>
-                  {`**1)** On observe la décomposition en différences télescopiques
-$$u_n=\\frac{1}{n}-\\frac{1}{n+1}\\qquad (n\\geq 1).$$
-Ainsi, pour $N\\geq 1$,
-$$\\sum_{k=1}^{N}u_k=\\sum_{k=1}^{N}\\left(\\frac{1}{k}-\\frac{1}{k+1}\\right)
-=1-\\frac{1}{N+1}.$$
-En faisant tendre $N\\to+\\infty$, on obtient
-$$\\sum_{n=1}^{+\\infty}u_n=\\lim_{N\\to\\infty}\\left(1-\\frac{1}{N+1}\\right)=1.$$
-La série $\\sum u_n$ converge donc, et sa somme vaut $1$.
-
-**2) Étude de $X$.**
-Par définition (et comme les termes sont positifs), $X$ admet une espérance si et seulement si
-$$\\sum_{k\\geq 1}k\\,\\mathbb{P}(X=k)=\\sum_{k\\geq 1}\\frac{k}{k(k+1)}=\\sum_{k\\geq 1}\\frac{1}{k+1}$$
-converge. Or $\\frac{1}{k+1}\\sim \\frac{1}{k}$ et la série harmonique diverge ; donc $X$ **n'admet pas** d'espérance.
-
-Pour la variance, il faut l'existence du moment d'ordre $2$ :
-$$\\sum_{k\\geq 1}k^{2}\\,\\mathbb{P}(X=k)=\\sum_{k\\geq 1}\\frac{k^{2}}{k(k+1)}
-=\\sum_{k\\geq 1}\\frac{k}{k+1}$$
-et comme $\\frac{k}{k+1}\\to 1$ quand $k\\to\\infty$, la série diverge. Ainsi $X$ n'admet pas de moment d'ordre $2$, donc **pas de variance**.
-
-**3) Étude de $\\sqrt{X}$.**
-Par le théorème de transfert (formule de l'espérance pour une fonction $g$ de $X$),
-$$\\mathbb{E}[\\sqrt{X}]\\text{ existe } \\Leftrightarrow 
-\\sum_{n\\geq 1}\\sqrt{n}\\,\\mathbb{P}(X=n)=\\sum_{n\\geq 1}\\frac{\\sqrt{n}}{n(n+1)} \\text{ converge.}$$
-Or
-$$\\frac{\\sqrt{n}}{n(n+1)}\\sim\\frac{\\sqrt{n}}{n^{2}}=\\frac{1}{n^{3/2}},$$
-et la série de Riemann de paramètre $p=\\frac{3}{2}>1$ converge ; donc $\\sqrt{X}$ **admet une espérance**.
-
-En revanche, 
-$$\\mathbb{E}[(\\sqrt{X})^{2}]=\\mathbb{E}[X]$$
-n'existe pas (voir ci-dessus) : $\\sqrt{X}$ n'admet donc pas de moment d'ordre $2$, et par conséquent **pas de variance**.`}
-                </LatexRenderer>
-              </div>
-            )}
-          </div>
-        </Card>
-
-        {/* Liens de navigation */}
-        <div className="mt-8 flex justify-center gap-4">
-          <Link to="/formation/maths-approfondies-2e-annee">
-            <Button variant="outline" className="border-2 border-gray-400 text-gray-600 hover:bg-gray-50">
-              ← Retour au cours
-            </Button>
-          </Link>
-          <Link to="/formation/maths-complements-variables-aleatoires-quiz">
-            <Button className="bg-green-600 hover:bg-green-700 text-white">
-              Quiz du chapitre →
-            </Button>
-          </Link>
-        </div>
+        )}
       </div>
-    </div>
+    );
+  };
+
+  return (
+    <MathChapterTemplate
+      chapterNumber={5}
+      chapterTitle="Compléments sur les variables aléatoires"
+      description="Séries de variables aléatoires, convergence et calculs d'espérance et variance."
+      slug="maths-complements-variables-aleatoires"
+      activeSection="exercises"
+      showNavigation={true}
+      previousChapter={{
+        slug: "maths-approfondies-2e-annee",
+        title: "Maths Approfondies 2e année"
+      }}
+      nextChapter={{
+        slug: "maths-variables-aleatoires-densite",
+        title: "Variables aléatoires à densité"
+      }}
+    >
+      <div className="space-y-8">
+
+        <section id="niveau-1">
+          <DifficultyHeader level="Intermédiaire" />
+          <ExerciseCard
+            id="ex-01"
+            title="Série convergente et variables aléatoires"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="(u_n)_{n \ge 1}" /> définie par <LatexRenderer latex="u_n = \dfrac{1}{n(n+1)}" />.</p>
+                <p>1. Montrer que <LatexRenderer latex="\displaystyle\sum_{n \ge 1} u_n" /> converge et que sa somme vaut 1.</p>
+                <p>2. Soit <LatexRenderer latex="X" /> une variable aléatoire à valeurs dans <LatexRenderer latex="\mathbb{N}^*" /> telle que <LatexRenderer latex="P(X = n) = u_n" /> pour tout <LatexRenderer latex="n \ge 1" />. <LatexRenderer latex="X" /> admet-elle une espérance ? une variance ?</p>
+                <p>3. Mêmes questions pour <LatexRenderer latex="\sqrt{X}" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour vérifier qu'une suite définit bien une loi de probabilité, on vérifie la normalisation (somme = 1), souvent par télescopage. L'existence d'une espérance équivaut à la convergence de la série <LatexRenderer latex="\sum k\,P(X=k)" /> ; de même pour la variance avec <LatexRenderer latex="\sum k^2 P(X=k)" />. Le théorème de transfert permet d'étudier les moments de <LatexRenderer latex="g(X)" />.
+                </PointMethodo>
+                <Astuce>
+                  La décomposition télescopique <LatexRenderer latex="u_n = \tfrac{1}{n} - \tfrac{1}{n+1}" /> transforme la somme partielle en une différence qui se simplifie immédiatement.
+                </Astuce>
+                <p><strong>1.</strong> Soit <LatexRenderer latex="u_n = \dfrac{1}{n} - \dfrac{1}{n+1}" /> (décomposition télescopique). D'où :</p>
+                <LatexRenderer latex="\displaystyle \sum_{k=1}^{N} u_k = 1 - \frac{1}{N+1} \xrightarrow[N \to \infty]{} 1." />
+                <p className="mt-2">Ainsi <LatexRenderer latex="\displaystyle\sum_{n \ge 1} u_n = 1" /> et la série converge.</p>
+                <p className="mt-2"><strong>2. Étude de <LatexRenderer latex="X" />.</strong> Soit <LatexRenderer latex="X(\Omega) = \mathbb{N}^*" />. <LatexRenderer latex="X" /> admet une espérance si et seulement si la série <LatexRenderer latex="\sum k\,P(X=k)" /> converge :</p>
+                <LatexRenderer latex="\displaystyle \sum_{k \ge 1} k\,P(X=k) = \sum_{k \ge 1} \frac{k}{k(k+1)} = \sum_{k \ge 1} \frac{1}{k+1}." />
+                <p className="mt-2">Or <LatexRenderer latex="\dfrac{1}{k+1} \sim \dfrac{1}{k}" /> et la série harmonique diverge. Donc <strong><LatexRenderer latex="X" /> n'admet pas d'espérance</strong>.</p>
+                <p className="mt-2">Pour la variance, le moment d'ordre 2 :</p>
+                <LatexRenderer latex="\displaystyle \sum_{k \ge 1} k^2 P(X=k) = \sum_{k \ge 1} \frac{k}{k+1} \to 1 \ne 0," />
+                <p className="mt-1">donc la série diverge. <strong><LatexRenderer latex="X" /> n'admet pas de variance.</strong></p>
+                <p className="mt-2"><strong>3. Étude de <LatexRenderer latex="\sqrt{X}" />.</strong> Par le <strong>théorème de transfert</strong>, <LatexRenderer latex="E(\sqrt{X})" /> existe si et seulement si :</p>
+                <LatexRenderer latex="\displaystyle \sum_{n \ge 1} \sqrt{n}\,P(X=n) = \sum_{n \ge 1} \frac{\sqrt{n}}{n(n+1)} \sim \sum_{n \ge 1} \frac{1}{n^{3/2}}." />
+                <p className="mt-2">La série de Riemann de paramètre <LatexRenderer latex="3/2 > 1" /> converge. Donc <strong><LatexRenderer latex="\sqrt{X}" /> admet une espérance.</strong></p>
+                <p className="mt-2">En revanche, <LatexRenderer latex="E((\sqrt{X})^2) = E(X)" /> n'existe pas (question 2). Donc <strong><LatexRenderer latex="\sqrt{X}" /> n'admet pas de variance.</strong></p>
+                <ConclusionBox>
+                  <LatexRenderer latex="X" /> n'admet ni espérance ni variance. <LatexRenderer latex="\sqrt{X}" /> admet une espérance mais pas de variance.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </section>
+
+      </div>
+    </MathChapterTemplate>
   );
 };
 

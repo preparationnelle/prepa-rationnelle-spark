@@ -5,7 +5,7 @@ import { Home, ChevronRight, Target, BarChart3 } from 'lucide-react';
 
 const InegalitesDeveloppementPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -36,8 +36,8 @@ const InegalitesDeveloppementPage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-              <Target className="h-6 w-6 text-blue-700" />
+            <div className="w-12 h-12 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+              <Target className="h-6 w-6 text-carnet-red" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900">
               Inégalités et stratégies de développement
@@ -70,16 +70,16 @@ const InegalitesDeveloppementPage = () => {
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Les différentes formes d'inégalités</h2>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-gray-50 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Inégalités <span className="text-blue-700">Nord-Sud</span></h3>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Inégalités <span className="text-carnet-red">Nord-Sud</span></h3>
                     <ul className="space-y-2 text-gray-700">
                       <li>• Écart croissant entre pays développés et pays en développement</li>
                       <li>• Concentration de la richesse dans les pays du Nord</li>
-                      <li>• Phénomène de la <span className="text-blue-700">"fuite des cerveaux"</span></li>
+                      <li>• Phénomène de la <span className="text-carnet-red">"fuite des cerveaux"</span></li>
                       <li>• Dépendance technologique et commerciale</li>
                     </ul>
                   </div>
                   <div className="bg-gray-50 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Inégalités <span className="text-blue-700">internes</span></h3>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Inégalités <span className="text-carnet-red">internes</span></h3>
                     <ul className="space-y-2 text-gray-700">
                       <li>• Disparités régionales au sein d'un pays</li>
                       <li>• Concentration urbaine vs rural</li>
@@ -94,22 +94,22 @@ const InegalitesDeveloppementPage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Stratégies de développement</h2>
                 <div className="space-y-6">
-                  <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-blue-300">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Développement <span className="text-blue-700">autocentré</span></h3>
+                  <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-carnet-red/40">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Développement <span className="text-carnet-red">autocentré</span></h3>
                     <p className="text-gray-700">
                       Stratégie privilégiant l'industrialisation par substitution aux importations,
                       le protectionnisme et l'investissement dans les secteurs stratégiques.
                     </p>
                   </div>
-                  <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-blue-300">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Développement <span className="text-blue-700">extroverti</span></h3>
+                  <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-carnet-red/40">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Développement <span className="text-carnet-red">extroverti</span></h3>
                     <p className="text-gray-700">
                       Modèle basé sur les exportations, l'ouverture aux investissements étrangers
                       et l'insertion dans les chaînes de valeur globales.
                     </p>
                   </div>
-                  <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-blue-300">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Développement <span className="text-blue-700">durable</span></h3>
+                  <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-carnet-red/40">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Développement <span className="text-carnet-red">durable</span></h3>
                     <p className="text-gray-700">
                       Approche intégrant les dimensions économique, sociale et environnementale,
                       avec pour objectif le développement humain durable.
@@ -124,8 +124,8 @@ const InegalitesDeveloppementPage = () => {
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold text-gray-800 mb-3">Les nouveaux enjeux du développement</h3>
                   <ul className="space-y-2 text-gray-700">
-                    <li>• <span className="text-blue-700">Changement climatique</span> et transition énergétique</li>
-                    <li>• Révolution <span className="text-blue-700">numérique</span> et transformation digitale</li>
+                    <li>• <span className="text-carnet-red">Changement climatique</span> et transition énergétique</li>
+                    <li>• Révolution <span className="text-carnet-red">numérique</span> et transformation digitale</li>
                     <li>• Pandémies et crises sanitaires globales</li>
                     <li>• Migrations et mobilité internationale</li>
                     <li>• Inégalités croissantes dans un monde globalisé</li>
@@ -137,7 +137,6 @@ const InegalitesDeveloppementPage = () => {
           </div>
         </div>
 
-        {/* Navigation */}
         <div className="flex justify-center gap-4 mt-12">
           <Link to="/formation/esh/premiere-annee">
             <Button variant="outline" className="flex items-center gap-2">

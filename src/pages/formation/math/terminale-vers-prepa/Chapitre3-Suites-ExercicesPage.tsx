@@ -106,7 +106,7 @@ const Chapitre3SuitesExercicesPage = () => {
       <SEOHead
         canonical="/formation/math/terminale-vers-prepa/suites-exercices"
         title="Exercices · Chapitre 3 — Suites · Terminale → Prépa ECG"
-        description="7 exercices progressifs sur les suites : arithmétiques, géométriques, monotonie, convergence et techniques avancées."
+        description="15 exercices progressifs sur les suites : arithmétiques, géométriques, monotonie, convergence et techniques avancées."
       />
 
       {/* Fil d'Ariane */}
@@ -133,7 +133,7 @@ const Chapitre3SuitesExercicesPage = () => {
         <header className="mb-14 relative">
           <div className="carnet-eyebrow mb-5">03 · Exercices · Suites</div>
           <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.022em] text-carnet-ink mb-6">
-            Sept suites <em className="font-lora italic text-carnet-red">à apprivoiser</em>.
+            Quinze suites <em className="font-lora italic text-carnet-red">à apprivoiser</em>.
           </h1>
           <p className="font-instrument text-[17px] leading-[1.6] text-carnet-ink-soft max-w-[680px]">
             Suite arithmétique, géométrique, récurrente, somme télescopique. <span className="carnet-hl font-lora italic">Pose les premiers termes</span>, étudie la monotonie, conclus sur la convergence.
@@ -141,10 +141,10 @@ const Chapitre3SuitesExercicesPage = () => {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(78,55,30,0.18)] text-carnet-ink-soft bg-carnet-paper-2">
-              2 Faciles
+              6 Faciles
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(193,68,58,0.3)] text-carnet-red bg-[rgba(193,68,58,0.06)]">
-              3 Moyens
+              7 Moyens
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-carnet-red text-carnet-paper bg-carnet-red">
               2 Difficiles
@@ -439,6 +439,303 @@ const Chapitre3SuitesExercicesPage = () => {
             </>
           }
         />
+
+        {/* Module 4 */}
+        <div className="flex items-baseline gap-4 mb-6 mt-12">
+          <span className="carnet-hand text-[40px] text-carnet-red leading-none font-semibold">M4</span>
+          <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+          <h2 className="font-lora text-[26px] sm:text-[28px] text-carnet-ink leading-tight">Techniques complémentaires</h2>
+        </div>
+
+        {/* Exercice 8 */}
+        <Exercise
+          id="ex8"
+          num={8}
+          title="Suite arithmético-géométrique"
+          difficulty="Facile"
+          open={!!open.ex8}
+          onToggle={() => toggle('ex8')}
+          tilt="l"
+          statement={
+            <>
+              <p>Soit <Inline tex={'(u_n)'} /> définie par <Inline tex={'u_0 = 1'} /> et <Inline tex={'u_{n+1} = 2u_n + 3'} />.</p>
+              <p><strong>a)</strong> Calculer <Inline tex={'u_1, u_2, u_3'} />.</p>
+              <p><strong>b)</strong> Montrer que la suite <Inline tex={'(v_n)'} /> définie par <Inline tex={'v_n = u_n + 3'} /> est géométrique. Préciser sa raison.</p>
+              <p><strong>c)</strong> En déduire une expression de <Inline tex={'u_n'} /> en fonction de <Inline tex={'n'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="a) Premiers termes">
+                <p><Inline tex={'u_1 = 2 \\times 1 + 3 = 5'} />, <Inline tex={'u_2 = 2 \\times 5 + 3 = 13'} />, <Inline tex={'u_3 = 2 \\times 13 + 3 = 29'} />.</p>
+              </Step>
+              <Step label="b) Suite géométrique (vₙ)">
+                <p>On calcule <Inline tex={'v_{n+1}'} /> :</p>
+                <Block tex={'v_{n+1} = u_{n+1} + 3 = 2u_n + 3 + 3 = 2u_n + 6 = 2(u_n + 3) = 2v_n.'} />
+                <p>Donc <Inline tex={'(v_n)'} /> est géométrique de raison <Inline tex={'q = 2'} />.</p>
+              </Step>
+              <Step label="c) Expression de uₙ">
+                <p>On a <Inline tex={'v_0 = u_0 + 3 = 4'} />, donc <Inline tex={'v_n = 4 \\cdot 2^n'} />. Ainsi :</p>
+                <Block tex={'u_n = v_n - 3 = 4 \\cdot 2^n - 3.'} />
+                <p>Vérification : <Inline tex={'u_0 = 4 - 3 = 1'} /> ✓, <Inline tex={'u_1 = 8 - 3 = 5'} /> ✓.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 9 */}
+        <Exercise
+          id="ex9"
+          num={9}
+          title="Suites alternées — signe et monotonie"
+          difficulty="Facile"
+          open={!!open.ex9}
+          onToggle={() => toggle('ex9')}
+          statement={
+            <>
+              <p>Soit <Inline tex={'(w_n)'} /> définie par <Inline tex={'w_n = (-1)^n \\cdot \\dfrac{1}{n+1}'} />.</p>
+              <p><strong>a)</strong> Calculer les cinq premiers termes <Inline tex={'w_0, w_1, w_2, w_3, w_4'} />.</p>
+              <p><strong>b)</strong> La suite <Inline tex={'(w_n)'} /> est-elle monotone ? Justifier.</p>
+              <p><strong>c)</strong> La suite est-elle bornée ? Donner un encadrement valable pour tout <Inline tex={'n \\geq 0'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="a) Premiers termes">
+                <p><Inline tex={'w_0 = 1'} />, <Inline tex={'w_1 = -\\tfrac{1}{2}'} />, <Inline tex={'w_2 = \\tfrac{1}{3}'} />, <Inline tex={'w_3 = -\\tfrac{1}{4}'} />, <Inline tex={'w_4 = \\tfrac{1}{5}'} />.</p>
+              </Step>
+              <Step label="b) Monotonie">
+                <p>La suite change de signe à chaque rang : <Inline tex={'w_0 = 1 > 0'} /> et <Inline tex={'w_1 = -\\tfrac{1}{2} < 0'} />, donc <Inline tex={'w_1 < w_0'} />, puis <Inline tex={'w_2 > w_1'} />, etc. La suite <em>alterne</em> entre valeurs positives et négatives : elle n'est <strong>pas monotone</strong>.</p>
+              </Step>
+              <Step label="c) Encadrement">
+                <p>Pour tout <Inline tex={'n \\geq 0'} />, on a <Inline tex={'|w_n| = \\tfrac{1}{n+1} \\leq 1'} />, donc :</p>
+                <Block tex={'-\\tfrac{1}{2} \\leq w_n \\leq 1 \\quad \\text{pour tout } n \\geq 0.'} />
+                <p>La borne inférieure <Inline tex={'-\\tfrac{1}{2}'} /> est atteinte en <Inline tex={'n = 1'} />, la borne supérieure <Inline tex={'1'} /> est atteinte en <Inline tex={'n = 0'} />. La suite est donc <strong>bornée</strong>.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 10 */}
+        <Exercise
+          id="ex10"
+          num={10}
+          title="Suite récurrente linéaire d'ordre 2"
+          difficulty="Moyen"
+          open={!!open.ex10}
+          onToggle={() => toggle('ex10')}
+          tilt="r"
+          statement={
+            <>
+              <p>Soit <Inline tex={'(a_n)'} /> définie par <Inline tex={'a_0 = 1'} />, <Inline tex={'a_1 = 3'} /> et <Inline tex={'a_{n+2} = 3a_{n+1} - 2a_n'} />.</p>
+              <p><strong>a)</strong> Calculer <Inline tex={'a_2, a_3, a_4'} />.</p>
+              <p><strong>b)</strong> Conjecturer une formule explicite pour <Inline tex={'a_n'} />.</p>
+              <p><strong>c)</strong> Démontrer par récurrence que <Inline tex={'a_n = 2^{n+1} - 1'} /> pour tout <Inline tex={'n \\geq 0'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="a) Premiers termes">
+                <p><Inline tex={'a_2 = 3 \\times 3 - 2 \\times 1 = 7'} />, <Inline tex={'a_3 = 3 \\times 7 - 2 \\times 3 = 15'} />, <Inline tex={'a_4 = 3 \\times 15 - 2 \\times 7 = 31'} />.</p>
+              </Step>
+              <Step label="b) Conjecture">
+                <p>On observe la suite <Inline tex={'1, 3, 7, 15, 31, \\ldots'} />, soit <Inline tex={'2^1 - 1, 2^2 - 1, 2^3 - 1, 2^4 - 1, 2^5 - 1'} />. On conjecture :</p>
+                <Block tex={'a_n = 2^{n+1} - 1.'} />
+              </Step>
+              <Step label="c) Démonstration par récurrence (double initialisation)">
+                <p><strong>Initialisation :</strong> <Inline tex={'a_0 = 2^1 - 1 = 1'} /> ✓ et <Inline tex={'a_1 = 2^2 - 1 = 3'} /> ✓.</p>
+                <p><strong>Hérédité :</strong> Supposons <Inline tex={'a_n = 2^{n+1} - 1'} /> et <Inline tex={'a_{n+1} = 2^{n+2} - 1'} /> pour un certain <Inline tex={'n \\geq 0'} />. Alors :</p>
+                <Block tex={'3a_{n+1} - 2a_n = 3(2^{n+2} - 1) - 2(2^{n+1} - 1) = 3 \\cdot 2^{n+2} - 3 - 2^{n+2} + 2 = 2 \\cdot 2^{n+2} - 1 = 2^{n+3} - 1 = a_{n+2}.'} />
+                <p>La propriété est héréditaire, donc vraie pour tout <Inline tex={'n \\geq 0'} />.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 11 */}
+        <Exercise
+          id="ex11"
+          num={11}
+          title="Suite encadrée et convergence"
+          difficulty="Moyen"
+          open={!!open.ex11}
+          onToggle={() => toggle('ex11')}
+          statement={
+            <>
+              <p>Soit <Inline tex={'(s_n)'} /> définie par <Inline tex={'s_0 = 1'} /> et <Inline tex={'s_{n+1} = \\dfrac{s_n}{s_n + 2}'} />.</p>
+              <p><strong>a)</strong> Montrer par récurrence que <Inline tex={'0 < s_n \\leq 1'} /> pour tout <Inline tex={'n \\geq 0'} />.</p>
+              <p><strong>b)</strong> Montrer que <Inline tex={'(s_n)'} /> est strictement décroissante.</p>
+              <p><strong>c)</strong> En déduire que <Inline tex={'(s_n)'} /> converge. Déterminer sa limite.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="a) Encadrement (récurrence)">
+                <p><strong>Initialisation :</strong> <Inline tex={'s_0 = 1'} />, donc <Inline tex={'0 < s_0 \\leq 1'} /> ✓.</p>
+                <p><strong>Hérédité :</strong> Supposons <Inline tex={'0 < s_n \\leq 1'} />. Alors :</p>
+                <p>• <Inline tex={'s_{n+1} = \\tfrac{s_n}{s_n + 2} > 0'} /> (numérateur et dénominateur strictement positifs) ;</p>
+                <p>• <Inline tex={'s_{n+1} = \\tfrac{s_n}{s_n + 2} \\leq \\tfrac{1}{0 + 2} = \\tfrac{1}{2} \\leq 1'} />.</p>
+                <p>La propriété est héréditaire, donc vraie pour tout <Inline tex={'n \\geq 0'} />.</p>
+              </Step>
+              <Step label="b) Décroissance">
+                <p>On calcule le signe de <Inline tex={'s_{n+1} - s_n'} /> :</p>
+                <Block tex={'s_{n+1} - s_n = \\frac{s_n}{s_n + 2} - s_n = s_n \\left(\\frac{1}{s_n + 2} - 1\\right) = s_n \\cdot \\frac{-(s_n + 1)}{s_n + 2}.'} />
+                <p>Comme <Inline tex={'s_n > 0'} /> et <Inline tex={'s_n + 1 > 0'} />, on a <Inline tex={'s_{n+1} - s_n < 0'} /> : la suite est <strong>strictement décroissante</strong>.</p>
+              </Step>
+              <Step label="c) Convergence et limite">
+                <p><Inline tex={'(s_n)'} /> est décroissante et minorée par <Inline tex={'0'} />, donc elle converge vers une limite <Inline tex={'\\ell \\geq 0'} />.</p>
+                <p>En passant à la limite dans la relation de récurrence :</p>
+                <Block tex={'\\ell = \\frac{\\ell}{\\ell + 2} \\implies \\ell(\\ell + 2) = \\ell \\implies \\ell^2 + \\ell = 0 \\implies \\ell(\\ell + 1) = 0.'} />
+                <p>Comme <Inline tex={'\\ell \\geq 0'} />, on conclut <Inline tex={'\\ell = 0'} />. La suite converge vers <Inline tex={'0'} />.</p>
+              </Step>
+            </>
+          }
+        />
+
+          {/* Module M5 — Suites explicites & convergence */}
+          <div className="mb-2 mt-10">
+            <span className="inline-block bg-carnet-red text-white text-xs font-bold px-3 py-1 rounded-full tracking-wide uppercase">
+              M5 — Suites explicites &amp; convergence
+            </span>
+          </div>
+
+          <Exercise
+            id="ex12"
+            num={12}
+            title="Suite arithmétique explicite"
+            difficulty="Facile"
+            open={!!open.ex12}
+            onToggle={() => toggle('ex12')}
+            tilt="l"
+            statement={
+              <>
+                <p>Soit la suite définie par <Inline tex={'u_n = 3n + 1'} /> pour tout <Inline tex={'n \\in \\mathbb{N}'} />.</p>
+                <ol className="list-decimal pl-5 space-y-1">
+                  <li>Calculer <Inline tex={'u_0'} />, <Inline tex={'u_1'} />, <Inline tex={'u_5'} />.</li>
+                  <li>Montrer que <Inline tex={'(u_n)'} /> est arithmétique et préciser sa raison.</li>
+                </ol>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Calcul des premiers termes">
+                  <Block tex={'u_0 = 1,\\quad u_1 = 4,\\quad u_5 = 16'} />
+                </Step>
+                <Step label="Caractère arithmétique">
+                  <p>Pour tout <Inline tex={'n \\in \\mathbb{N}'} /> :</p>
+                  <Block tex={'u_{n+1} - u_n = 3(n+1)+1 - (3n+1) = 3'} />
+                  <p>La différence est constante, donc <Inline tex={'(u_n)'} /> est arithmétique de raison <Inline tex={'\\boxed{r = 3}'} />.</p>
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex13"
+            num={13}
+            title="Suite géométrique — terme général et limite"
+            difficulty="Facile"
+            open={!!open.ex13}
+            onToggle={() => toggle('ex13')}
+            statement={
+              <>
+                <p>Soit la suite définie par <Inline tex={'v_n = 5 \\times \\left(\\dfrac{1}{2}\\right)^n'} />.</p>
+                <ol className="list-decimal pl-5 space-y-1">
+                  <li>Calculer <Inline tex={'v_0'} />, <Inline tex={'v_1'} />, <Inline tex={'v_3'} />.</li>
+                  <li>Montrer que <Inline tex={'(v_n)'} /> est géométrique et préciser sa raison.</li>
+                  <li>Donner la limite de <Inline tex={'(v_n)'} />.</li>
+                </ol>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Premiers termes">
+                  <Block tex={'v_0 = 5,\\quad v_1 = \\tfrac{5}{2},\\quad v_3 = \\tfrac{5}{8}'} />
+                </Step>
+                <Step label="Caractère géométrique">
+                  <Block tex={'\\frac{v_{n+1}}{v_n} = \\frac{5 \\cdot (1/2)^{n+1}}{5 \\cdot (1/2)^n} = \\frac{1}{2}'} />
+                  <p>Raison <Inline tex={'q = \\tfrac{1}{2}'} />. Suite géométrique décroissante (tous les termes sont positifs, <Inline tex={'0 < q < 1'} />).</p>
+                </Step>
+                <Step label="Limite">
+                  <p>Comme <Inline tex={'|q| = \\tfrac{1}{2} < 1'} />, on a :</p>
+                  <Block tex={'\\boxed{\\lim_{n \\to +\\infty} v_n = 0}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex14"
+            num={14}
+            title="Suite arithmético-géométrique"
+            difficulty="Moyen"
+            open={!!open.ex14}
+            onToggle={() => toggle('ex14')}
+            tilt="r"
+            statement={
+              <>
+                <p>Soit la suite définie par <Inline tex={'u_0 = 3'} /> et <Inline tex={'u_{n+1} = 3u_n - 4'} />.</p>
+                <ol className="list-decimal pl-5 space-y-1">
+                  <li>Calculer <Inline tex={'u_1'} />, <Inline tex={'u_2'} />.</li>
+                  <li>Poser <Inline tex={'v_n = u_n - 2'} /> et montrer que <Inline tex={'(v_n)'} /> est géométrique.</li>
+                  <li>En déduire la formule explicite de <Inline tex={'u_n'} />.</li>
+                </ol>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Calcul des premiers termes">
+                  <Block tex={'u_1 = 3 \\cdot 3 - 4 = 5, \\quad u_2 = 3 \\cdot 5 - 4 = 11'} />
+                </Step>
+                <Step label="Suite géométrique auxiliaire">
+                  <Block tex={'v_{n+1} = u_{n+1} - 2 = 3u_n - 4 - 2 = 3(u_n - 2) = 3v_n'} />
+                  <p>Donc <Inline tex={'(v_n)'} /> est géométrique de raison 3, de premier terme <Inline tex={'v_0 = u_0 - 2 = 1'} />.</p>
+                  <Block tex={'v_n = 1 \\cdot 3^n = 3^n'} />
+                </Step>
+                <Step label="Formule explicite de u_n">
+                  <Block tex={'\\boxed{u_n = v_n + 2 = 3^n + 2}'} />
+                  <p>Vérification : <Inline tex={'u_1 = 3+2=5'} /> ✓, <Inline tex={'u_2=9+2=11'} /> ✓.</p>
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex15"
+            num={15}
+            title="Monotonie et convergence d'une suite"
+            difficulty="Moyen"
+            open={!!open.ex15}
+            onToggle={() => toggle('ex15')}
+            statement={
+              <>
+                <p>Soit la suite définie pour tout <Inline tex={'n \\in \\mathbb{N}'} /> par :</p>
+                <Block tex={'u_n = \\frac{n+1}{n+2}'} />
+                <ol className="list-decimal pl-5 space-y-1">
+                  <li>Montrer que <Inline tex={'(u_n)'} /> est croissante.</li>
+                  <li>Montrer que <Inline tex={'(u_n)'} /> est majorée par 1.</li>
+                  <li>En déduire sa limite.</li>
+                </ol>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Monotonie">
+                  <Block tex={'u_{n+1} - u_n = \\frac{n+2}{n+3} - \\frac{n+1}{n+2} = \\frac{(n+2)^2 - (n+1)(n+3)}{(n+3)(n+2)}'} />
+                  <Block tex={'= \\frac{n^2+4n+4 - n^2-4n-3}{(n+3)(n+2)} = \\frac{1}{(n+3)(n+2)} > 0'} />
+                  <p>Donc <Inline tex={'(u_n)'} /> est strictement croissante.</p>
+                </Step>
+                <Step label="Majoration">
+                  <Block tex={'u_n = \\frac{n+1}{n+2} = 1 - \\frac{1}{n+2} < 1'} />
+                  <p>La suite est majorée par 1.</p>
+                </Step>
+                <Step label="Convergence">
+                  <p>Croissante et majorée, donc convergente par le théorème de la limite monotone.</p>
+                  <Block tex={'\\boxed{\\lim_{n \\to +\\infty} u_n = 1}'} />
+                </Step>
+              </>
+            }
+          />
 
         {/* Bandeau récap */}
         <section className="mt-14 mb-10 relative">

@@ -5,7 +5,7 @@ import { Shield, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle, AlertTria
 
 const PolitiquesStructurellesPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -47,14 +47,14 @@ const PolitiquesStructurellesPage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <Shield className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+                <Shield className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   Politiques structurelles et interventions de l'État
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 4.4 - Module 4</div>
+                <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 4.4 - Module 4</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -67,14 +67,14 @@ const PolitiquesStructurellesPage = () => {
             {/* Section 1: Les défaillances de marché */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
                 Les défaillances de marché et leur justification
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Définition des défaillances de marché</h3>
                   <p className="text-sm text-gray-600">
                     Situations où le mécanisme de marché ne conduit pas à une allocation optimale des ressources, justifiant l'intervention publique.
@@ -82,56 +82,56 @@ const PolitiquesStructurellesPage = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="border-l-4 border-blue-300 pl-4">
+                  <div className="border-l-4 border-carnet-red/40 pl-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Défaillances de concurrence</h3>
                     <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Monopoles et oligopoles naturels</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Concurrence imparfaite et pouvoir de marché</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Externalités de réseau</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="border-l-4 border-blue-300 pl-4">
+                  <div className="border-l-4 border-carnet-red/40 pl-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Défaillances d'information</h3>
                     <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Asymétrie d'information</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Risque moral et sélection adverse</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Biens d'expérience et de confiance</span>
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Biens publics et externalités</h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Biens publics : non-rivalité et non-exclusion</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Externalités positives (éducation, santé) et négatives (pollution)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Équité et redistribution sociale</span>
                     </li>
                   </ul>
@@ -142,15 +142,15 @@ const PolitiquesStructurellesPage = () => {
             {/* Section 2: Les politiques structurelles */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
                 Les politiques structurelles de régulation
               </h2>
 
               <div className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Politiques de la concurrence</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Autorités de concurrence (DGCCRF, Autorité de la concurrence)</li>
@@ -159,7 +159,7 @@ const PolitiquesStructurellesPage = () => {
                       <li>• Protection des consommateurs</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Politiques sectorielles</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Régulation des secteurs de réseau (énergie, transports)</li>
@@ -170,23 +170,23 @@ const PolitiquesStructurellesPage = () => {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Politiques de l'environnement</h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Taxes et permis d'émission (marché du carbone)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Subventions aux énergies renouvelables</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Réglementation et normes environnementales</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Responsabilité environnementale des entreprises</span>
                     </li>
                   </ul>
@@ -197,15 +197,15 @@ const PolitiquesStructurellesPage = () => {
             {/* Section 3: Interventions face aux défaillances sociales */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
                 Interventions publiques face aux défaillances sociales
               </h2>
 
               <div className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Politiques de l'éducation</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Service public d'éducation gratuit</li>
@@ -214,7 +214,7 @@ const PolitiquesStructurellesPage = () => {
                       <li>• Investissement dans le capital humain</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Politiques de santé</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Assurance maladie universelle</li>
@@ -225,23 +225,23 @@ const PolitiquesStructurellesPage = () => {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Politiques sociales et redistribution</h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Protection sociale : assurance chômage, retraite</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Politiques familiales et aides sociales</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Impôt progressif et redistribution des revenus</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Lutte contre la pauvreté et l'exclusion sociale</span>
                     </li>
                   </ul>
@@ -252,14 +252,14 @@ const PolitiquesStructurellesPage = () => {
             {/* Section 4: Limites et critiques des interventions publiques */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">4</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">4</span>
                 </div>
                 Limites et critiques des interventions publiques
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Risques de dérives étatiques</h3>
                   <p className="text-sm text-gray-600">
                     Les interventions publiques peuvent créer des inefficacités et des effets pervers qui aggravent les problèmes initiaux.
@@ -267,7 +267,7 @@ const PolitiquesStructurellesPage = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Critiques libertariennes</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Atteinte aux libertés individuelles</li>
@@ -276,7 +276,7 @@ const PolitiquesStructurellesPage = () => {
                       <li>• Risque de corruption et de rente</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Critiques keynésiennes</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Interventions insuffisantes</li>
@@ -287,23 +287,23 @@ const PolitiquesStructurellesPage = () => {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Le débat Etat-Marché</h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Approches mixtes : régulation sans propriété publique</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Partenariats public-privé (PPP)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Nouvelles formes de régulation (autorégulation, codes de conduite)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Évaluation des politiques publiques</span>
                     </li>
                   </ul>
@@ -326,7 +326,7 @@ const PolitiquesStructurellesPage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module4/contraintes-politiques">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

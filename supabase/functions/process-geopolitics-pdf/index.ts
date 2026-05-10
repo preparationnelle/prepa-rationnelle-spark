@@ -1,16 +1,16 @@
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0'
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-}
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { requireAuth } from "../_shared/auth.ts";
 
 Deno.serve(async (req) => {
   // Handle CORS preflight requests
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
+  const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
+
+  const __authResult = await requireAuth(req);
+  if (__authResult.response) return __authResult.response;
 
   try {
     const { pdfUrl, userId, language = 'fr' } = await req.json();
@@ -18,7 +18,7 @@ Deno.serve(async (req) => {
     if (!pdfUrl || !userId) {
       return new Response(
         JSON.stringify({ error: 'PDF URL and userId are required' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -26,7 +26,7 @@ Deno.serve(async (req) => {
     if (!openaiApiKey) {
       return new Response(
         JSON.stringify({ error: 'OpenAI API key not configured' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -82,7 +82,7 @@ Deno.serve(async (req) => {
           JSON.stringify({ 
             error: 'Failed to extract text from PDF. Please ensure the URL is publicly accessible or paste the text directly in the URL field.' 
           }),
-          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
     }
@@ -92,7 +92,7 @@ Deno.serve(async (req) => {
         JSON.stringify({ 
           error: 'No text could be extracted from the PDF. Please check the URL or try pasting the text directly.' 
         }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -256,14 +256,14 @@ Sois précis et factuel.`;
         dissertationTopics,
         currentEvents
       }),
-      { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { status: 200, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
     );
 
   } catch (error) {
     console.error('Function error:', error);
     return new Response(
       JSON.stringify({ error: 'Internal server error: ' + error.message }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
     );
   }
 });

@@ -21,7 +21,7 @@ import {
 
 const Module5NarcotráficoSeguridadPage = () => {
   return (
-    <div className="min-h-screen bg-[#F7F6F3] relative overflow-hidden">
+    <div className="relative relative overflow-hidden">
       {/* Floating elements - Bubbles like landing page */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-red-200 rounded-full opacity-10 animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-28 h-28 bg-orange-200 rounded-full opacity-10 animate-pulse-slow"></div>

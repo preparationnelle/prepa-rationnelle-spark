@@ -5,7 +5,7 @@ import { Home, ChevronRight, Users, TrendingUp } from 'lucide-react';
 
 const MobiliteSocialePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -36,8 +36,8 @@ const MobiliteSocialePage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-              <Users className="h-6 w-6 text-blue-700" />
+            <div className="w-12 h-12 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+              <Users className="h-6 w-6 text-carnet-red" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900">
               Mobilité sociale et transformations des structures sociales
@@ -69,18 +69,18 @@ const MobiliteSocialePage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Types de mobilité sociale</h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Mobilité intergénérationnelle</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Comparaison position sociale enfant/parent</li>
                       <li>• Indicateur d'égalité des chances</li>
                       <li>• Influence du capital culturel et économique</li>
                       <li>• Rôle de l'éducation dans la mobilité</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Mobilité intragénérationnelle</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Évolution de carrière d'un individu</li>
                       <li>• Changements professionnels au cours de la vie</li>
                       <li>• Impact des conjonctures économiques</li>
@@ -94,24 +94,24 @@ const MobiliteSocialePage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Facteurs de mobilité sociale</h2>
                 <div className="space-y-4">
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Capital humain et éducatif</h3>
-                    <p className="text-blue-700">
+                    <p className="text-carnet-red">
                       L'éducation constitue le principal facteur de mobilité sociale ascendante.
                       L'accès aux études supérieures et la qualité de la formation déterminent
                       largement les trajectoires professionnelles et sociales.
                     </p>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Capital économique et social</h3>
-                    <p className="text-blue-700">
+                    <p className="text-carnet-red">
                       Le patrimoine familial, les réseaux relationnels et le capital culturel
                       transmis par les parents influencent considérablement les chances de mobilité.
                     </p>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Contexte économique et social</h3>
-                    <p className="text-blue-700">
+                    <p className="text-carnet-red">
                       Les crises économiques, les politiques sociales et l'évolution du marché
                       du travail impactent les possibilités de mobilité sociale.
                     </p>
@@ -123,9 +123,9 @@ const MobiliteSocialePage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Transformations des structures sociales</h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Évolution des classes sociales</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Passage des classes aux catégories socioprofessionnelles</li>
                       <li>• Emergence des classes moyennes</li>
                       <li>• Précarisation et dualisation sociale</li>
@@ -147,9 +147,9 @@ const MobiliteSocialePage = () => {
               {/* Politiques de réduction des inégalités */}
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Politiques de réduction des inégalités</h2>
-                <div className="bg-blue-50 p-6 rounded-lg">
+                <div className="bg-pr-orange-pale p-6 rounded-lg">
                   <h3 className="text-lg font-semibold text-gray-800 mb-3">Mesures de promotion de la mobilité sociale</h3>
-                  <ul className="space-y-2 text-blue-700">
+                  <ul className="space-y-2 text-carnet-red">
                     <li>• Système éducatif et bourses d'études</li>
                     <li>• Politiques fiscales et redistribution</li>
                     <li>• Formation professionnelle et reconversion</li>
@@ -163,7 +163,6 @@ const MobiliteSocialePage = () => {
           </div>
         </div>
 
-        {/* Navigation */}
         <div className="flex justify-center gap-4 mt-12">
           <Link to="/formation/esh/premiere-annee">
             <Button variant="outline" className="flex items-center gap-2">

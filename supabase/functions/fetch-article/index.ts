@@ -1,57 +1,50 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-}
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts"
+import { requireAuth } from "../_shared/auth.ts"
+import { fetchPublicUrl, isUrlPublic } from "../_shared/ssrf.ts"
 
 serve(async (req) => {
-  // Handle CORS preflight requests
-  if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders })
-  }
+  const preflight = handleCorsPreflight(req)
+  if (preflight) return preflight
+
+  const authResult = await requireAuth(req)
+  if (authResult.response) return authResult.response
 
   try {
     const { url } = await req.json()
 
     if (!url) {
       return new Response(
-        JSON.stringify({ 
-          ok: false, 
-          code: 'MISSING_URL', 
-          message: 'URL manquante' 
+        JSON.stringify({
+          ok: false,
+          code: 'MISSING_URL',
+          message: 'URL manquante'
         }),
-        { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 400 
+        {
+          headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
+          status: 400
         }
       )
     }
 
-    // Validation de l'URL
-    let parsedUrl
-    try {
-      parsedUrl = new URL(url)
-      if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
-        throw new Error('Protocole non supporté')
-      }
-    } catch (error) {
+    const ssrfCheck = await isUrlPublic(url)
+    if (!ssrfCheck.ok) {
       return new Response(
-        JSON.stringify({ 
-          ok: false, 
-          code: 'INVALID_URL', 
-          message: 'URL invalide' 
+        JSON.stringify({
+          ok: false,
+          code: 'INVALID_URL',
+          message: 'URL invalide'
         }),
-        { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 400 
+        {
+          headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
+          status: 400
         }
       )
     }
+    const parsedUrl = ssrfCheck.parsed!
 
-    // Téléchargement du contenu HTML
-    const response = await fetch(url, {
+    // Téléchargement du contenu HTML — manual redirect, each hop re-validated.
+    const response = await fetchPublicUrl(url, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
@@ -61,7 +54,6 @@ serve(async (req) => {
         'Connection': 'keep-alive',
         'Upgrade-Insecure-Requests': '1',
       },
-      redirect: 'follow',
     })
 
     // Vérification du statut HTTP
@@ -75,7 +67,7 @@ serve(async (req) => {
             message: 'Article inaccessible (paywall ou contenu indisponible). Essayez un autre lien ou déposez un PDF.' 
           }),
           { 
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
             status: 200 
           }
         )
@@ -88,7 +80,7 @@ serve(async (req) => {
           message: `Erreur HTTP ${statusCode}: ${response.statusText}` 
         }),
         { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
           status: 200 
         }
       )
@@ -105,7 +97,7 @@ serve(async (req) => {
           message: 'Article inaccessible (contenu trop court). Essayez un autre lien ou déposez un PDF.' 
         }),
         { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
           status: 200 
         }
       )
@@ -142,7 +134,7 @@ serve(async (req) => {
           message: 'Article inaccessible (paywall détecté). Essayez un autre lien ou déposez un PDF.' 
         }),
         { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
           status: 200 
         }
       )
@@ -163,7 +155,7 @@ serve(async (req) => {
           message: 'Impossible de parser le contenu HTML' 
         }),
         { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
           status: 200 
         }
       )
@@ -180,7 +172,7 @@ serve(async (req) => {
           message: 'Article inaccessible (contenu insuffisant après extraction). Essayez un autre lien ou déposez un PDF.' 
         }),
         { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
           status: 200 
         }
       )
@@ -234,7 +226,7 @@ serve(async (req) => {
         source: 'url'
       }),
       { 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
         status: 200 
       }
     )
@@ -249,7 +241,7 @@ serve(async (req) => {
         message: 'Erreur lors de la récupération de l\'article. Vérifiez l\'URL ou essayez un PDF.' 
       }),
       { 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
         status: 200 
       }
     )

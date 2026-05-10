@@ -5,7 +5,7 @@ import { Users, Home, ChevronRight, ArrowLeft } from 'lucide-react';
 
 const ActeursFonctionsEconomieModulePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -46,7 +46,7 @@ const ActeursFonctionsEconomieModulePage = () => {
 
           {/* Header */}
           <div className="mb-8">
-            <div className="rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 text-white p-8 shadow-md">
+            <div className="rounded-2xl bg-gradient-to-r from-carnet-red to-blue-700 text-white p-8 shadow-md">
               <div className="flex items-center justify-center gap-4">
                 <div className="w-16 h-16 bg-white/15 rounded-full flex items-center justify-center ring-1 ring-white/30">
                   <Users className="h-8 w-8 text-white" />
@@ -73,10 +73,10 @@ const ActeursFonctionsEconomieModulePage = () => {
             {/* 1 */}
             <div id="sec1" className="bg-white rounded-xl p-6 shadow-md ring-1 ring-blue-100">
               <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">1</span>
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-carnet-red/10 text-carnet-red-deep text-sm font-semibold">1</span>
                 Les acteurs et les grandes fonctions de l’économie
               </h2>
-              <div className="bg-blue-50 border border-blue-100 text-blue-900 rounded-lg p-4 mb-4 text-sm">Comptabilité nationale : représentation synthétique et chiffrée de l’activité économique nationale dans un cadre comptable rigoureux.</div>
+              <div className="bg-pr-orange-pale border border-carnet-red/20 text-carnet-red-deep rounded-lg p-4 mb-4 text-sm">Comptabilité nationale : représentation synthétique et chiffrée de l’activité économique nationale dans un cadre comptable rigoureux.</div>
               <div className="space-y-6 text-sm text-gray-700 leading-relaxed">
                 <div className="space-y-2">
                   <h3 className="font-semibold text-gray-900">1/ Les fondements de l’économie et de la sociologie</h3>
@@ -139,7 +139,7 @@ const ActeursFonctionsEconomieModulePage = () => {
             {/* 2 */}
             <div id="sec2" className="bg-white rounded-xl p-6 shadow-md ring-1 ring-blue-100">
               <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">2</span>
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-carnet-red/10 text-carnet-red-deep text-sm font-semibold">2</span>
                 Les comptes des secteurs institutionnels
               </h2>
               <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
@@ -181,7 +181,7 @@ const ActeursFonctionsEconomieModulePage = () => {
             {/* 3 */}
             <div id="sec3" className="bg-white rounded-xl p-6 shadow-md ring-1 ring-blue-100">
               <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">3</span>
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-carnet-red/10 text-carnet-red-deep text-sm font-semibold">3</span>
                 Les agrégats et les opérations économiques de la nation
               </h2>
               <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
@@ -237,7 +237,7 @@ const ActeursFonctionsEconomieModulePage = () => {
             {/* 4 */}
             <div id="sec4" className="bg-white rounded-xl p-6 shadow-md ring-1 ring-blue-100">
               <h2 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">4</span>
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-carnet-red/10 text-carnet-red-deep text-sm font-semibold">4</span>
                 Le tableau entrées-sorties (TES)
               </h2>
               <p className="text-sm text-gray-700 leading-relaxed">

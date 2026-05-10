@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -12,6 +11,14 @@ import EDHECGeneratorPage from './EDHECGeneratorPage';
 import { Mic, MessageSquare, Target, ExternalLink, HelpCircle, PenTool, Shuffle, CheckCircle, Clock, RotateCcw, Play, Pause, Square, Volume2, ChevronDown, Loader2, VolumeX, Send, Award, AlertCircle, Lightbulb, TrendingUp } from 'lucide-react';
 import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
+
+// Wrapper carte design system PR (réutilisé localement)
+const PrCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
+  <div className={`bg-white rounded-2xl border border-pr-gray-light overflow-hidden ${className}`}>
+    <div className="h-[3px] w-full bg-pr-orange" />
+    {children}
+  </div>
+);
 
 // Composant pour l'entraînement direct aux questions d'entretien
 const QuestionPracticePage = () => {
@@ -72,7 +79,7 @@ const QuestionPracticePage = () => {
         "Montrez votre capacité d'adaptation et d'apprentissage rapide",
         "Évoquez vos projets professionnels cohérents avec l'école"
       ],
-      sampleAnswer: `Je pense que je me distingue des autres candidats par plusieurs aspects clés. 
+      sampleAnswer: `Je pense que je me distingue des autres candidats par plusieurs aspects clés.
 
 Tout d'abord, mon parcours atypique m'a permis de développer une grande capacité d'adaptation et une maturité que beaucoup de candidats issus de classes préparatoires traditionnelles n'ont pas encore acquise. Ayant commencé mes études supérieures dans une filière scientifique avant de me réorienter vers les sciences sociales, j'ai dû faire preuve d'une grande détermination et d'autonomie dans mes apprentissages.
 
@@ -93,15 +100,12 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
     setIsTimerRunning(false);
     setShowTips(false);
     setSelectedTip('');
-    // Reset audio recording
     setAudioUrl(null);
     setAudioChunks([]);
     setRecordingTime(0);
-    // Reset evaluation
     setEvaluation(null);
   };
 
-  // Fonction Text-to-Speech pour lire la question
   const speakQuestion = () => {
     if ('speechSynthesis' in window) {
       if (isSpeaking) {
@@ -127,7 +131,6 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
     }
   };
 
-  // Fonction d'évaluation de la réponse par IA
   const evaluateAnswer = async () => {
     if (!userAnswer.trim()) {
       toast.error('Veuillez d\'abord rédiger une réponse');
@@ -159,7 +162,6 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
     }
   };
 
-  // Fonctions pour l'enregistrement audio
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -175,11 +177,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
         const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
         const url = URL.createObjectURL(audioBlob);
         setAudioUrl(url);
-
-        // Lancer automatiquement la retranscription
         transcribeAudio(audioBlob);
-
-        // Arrêter tous les tracks du stream
         stream.getTracks().forEach(track => track.stop());
       };
 
@@ -201,7 +199,6 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
     }
   };
 
-  // Fonction de retranscription avec Whisper
   const transcribeAudio = async (audioBlob: Blob) => {
     setIsTranscribing(true);
     try {
@@ -222,9 +219,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
       }
 
       const transcribedText = data.text;
-
       setUserAnswer(transcribedText);
-
       toast.success('Retranscription terminée - Texte ajouté au champ de réponse !');
     } catch (error) {
       console.error('Erreur lors de la retranscription:', error);
@@ -240,9 +235,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const toggleTimer = () => {
-    setIsTimerRunning(!isTimerRunning);
-  };
+  const toggleTimer = () => setIsTimerRunning(!isTimerRunning);
 
   const resetTimer = () => {
     setTimeElapsed(0);
@@ -255,7 +248,6 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  // Timer effect
   React.useEffect(() => {
     let interval: NodeJS.Timeout;
     if (isTimerRunning) {
@@ -266,7 +258,6 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
     return () => clearInterval(interval);
   }, [isTimerRunning]);
 
-  // Recording timer effect
   React.useEffect(() => {
     let recordingInterval: NodeJS.Timeout;
     if (isRecording) {
@@ -277,60 +268,64 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
     return () => clearInterval(recordingInterval);
   }, [isRecording]);
 
-  // Générer une question au chargement
   React.useEffect(() => {
     generateRandomQuestion();
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
-      {/* Header */}
-      <Card className="bg-gradient-to-r from-orange-600 to-orange-500 text-white border-0">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-2xl">
-            <PenTool className="h-8 w-8" />
-            Entraînement Direct aux Questions d'Entretien
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-white/90">
-            Une question vous est posée directement. Répondez comme si vous étiez en entretien réel.
-            Utilisez le chronomètre pour simuler les conditions d'entretien.
-          </p>
-        </CardContent>
-      </Card>
-
-      {/* Question Section */}
-      <Card className="border-2 border-orange-200">
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle className="flex items-center gap-2 text-orange-600">
-              <HelpCircle className="h-5 w-5" />
-              Question posée
-            </CardTitle>
-            <Button
-              onClick={generateRandomQuestion}
-              variant="outline"
-              size="sm"
-              className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
-            >
-              <Shuffle className="h-4 w-4 mr-2" />
-              Nouvelle question
-            </Button>
+    <div className="max-w-4xl mx-auto space-y-6 font-dm-sans">
+      {/* En-tête de section */}
+      <PrCard>
+        <div className="px-6 py-5 sm:px-8 sm:py-6 bg-pr-gray-bg border-b border-pr-gray-light">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-xl bg-pr-orange-pale text-pr-orange-dark flex items-center justify-center shrink-0">
+              <PenTool className="h-5 w-5" />
+            </div>
+            <div>
+              <h2 className="font-dm-serif text-xl text-pr-black leading-tight">
+                Entraînement direct aux questions d'entretien
+              </h2>
+              <p className="text-sm text-pr-gray-mid mt-0.5">
+                Une question vous est posée — répondez comme en entretien réel.
+              </p>
+            </div>
           </div>
-        </CardHeader>
-        <CardContent>
-          <div className="p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border-2 border-blue-200">
-            <p className="text-xl font-semibold text-gray-800 text-center mb-4">
-              {currentQuestion || "Cliquez sur 'Nouvelle question' pour commencer"}
+        </div>
+      </PrCard>
+
+      {/* Section question */}
+      <PrCard>
+        <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center gap-2 text-pr-orange-dark">
+            <HelpCircle className="h-5 w-5" />
+            <h3 className="font-dm-serif text-lg text-pr-black">Question posée</h3>
+          </div>
+          <Button
+            onClick={generateRandomQuestion}
+            variant="outline"
+            size="sm"
+            className="border-pr-orange/40 text-pr-orange-dark hover:bg-pr-orange hover:text-white hover:border-pr-orange transition-colors"
+          >
+            <Shuffle className="h-4 w-4 mr-2" />
+            Nouvelle question
+          </Button>
+        </div>
+        <div className="p-6 sm:p-8">
+          <div className="rounded-xl border border-pr-orange/20 bg-pr-orange-pale/40 px-6 py-6 sm:py-8">
+            <p className="font-dm-serif text-xl sm:text-2xl text-pr-black text-center leading-snug">
+              {currentQuestion || "Cliquez sur « Nouvelle question » pour commencer"}
             </p>
             {currentQuestion && (
-              <div className="flex justify-center">
+              <div className="flex justify-center mt-5">
                 <Button
                   onClick={speakQuestion}
                   variant="outline"
                   size="sm"
-                  className={`border-blue-500 ${isSpeaking ? 'bg-blue-500 text-white' : 'text-blue-600 hover:bg-blue-500 hover:text-white'} transition-colors`}
+                  className={`border-pr-orange/40 transition-colors ${
+                    isSpeaking
+                      ? 'bg-pr-orange text-white border-pr-orange'
+                      : 'text-pr-orange-dark hover:bg-pr-orange hover:text-white hover:border-pr-orange'
+                  }`}
                 >
                   {isSpeaking ? (
                     <>
@@ -347,30 +342,27 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
               </div>
             )}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </PrCard>
 
-      {/* Section conseils pour questions spécifiques */}
+      {/* Conseils contextuels */}
       {currentQuestion && questionTips[currentQuestion] && (
-        <div className="space-y-4">
-          {/* Card avec menu déroulant des idées importantes */}
-          <Card className="border-2 border-blue-200 bg-blue-50/50">
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-blue-700 text-lg">
-                <Target className="h-5 w-5" />
-                Idées importantes pour votre réponse
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+        <div className="space-y-6">
+          <PrCard>
+            <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center gap-2 text-pr-orange-dark">
+              <Target className="h-5 w-5" />
+              <h3 className="font-dm-serif text-lg text-pr-black">Idées importantes pour ta réponse</h3>
+            </div>
+            <div className="p-6 sm:p-8">
               <Select value={selectedTip} onValueChange={setSelectedTip}>
-                <SelectTrigger className="w-full border-blue-300 bg-white">
-                  <SelectValue placeholder="Sélectionnez une idée pour vous aider..." />
+                <SelectTrigger className="w-full border-pr-gray-light bg-white text-pr-gray-dark">
+                  <SelectValue placeholder="Sélectionne une idée pour t'aider…" />
                 </SelectTrigger>
                 <SelectContent>
                   {questionTips[currentQuestion].ideas.map((idea, index) => (
                     <SelectItem key={index} value={idea} className="cursor-pointer">
                       <div className="flex items-start gap-2">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 mt-2"></span>
+                        <span className="w-1.5 h-1.5 bg-pr-orange rounded-full flex-shrink-0 mt-2"></span>
                         <span className="text-sm leading-relaxed">{idea}</span>
                       </div>
                     </SelectItem>
@@ -378,127 +370,133 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                 </SelectContent>
               </Select>
               {selectedTip && (
-                <div className="mt-3 p-3 bg-blue-100 border border-blue-200 rounded-lg">
-                  <p className="text-sm text-blue-800 font-medium">💡 Idée sélectionnée :</p>
-                  <p className="text-sm text-blue-700 mt-1">{selectedTip}</p>
+                <div className="mt-4 p-4 bg-pr-orange-pale border border-pr-orange/20 rounded-xl">
+                  <p className="text-xs uppercase tracking-[0.08em] font-semibold text-pr-orange-dark mb-1">
+                    Idée sélectionnée
+                  </p>
+                  <p className="text-sm text-pr-gray-dark leading-relaxed">{selectedTip}</p>
                 </div>
               )}
-            </CardContent>
-          </Card>
+            </div>
+          </PrCard>
 
-          {/* Card avec proposition de corrigé */}
-          <Card className="border-2 border-green-200 bg-green-50/50">
+          <PrCard>
             <Collapsible open={showTips} onOpenChange={setShowTips}>
               <CollapsibleTrigger asChild>
-                <CardHeader className="cursor-pointer hover:bg-green-50/80 transition-colors">
-                  <CardTitle className="flex items-center justify-between text-green-700 text-lg">
-                    <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  className="w-full px-6 py-4 sm:px-8 border-b border-pr-gray-light hover:bg-pr-gray-bg transition-colors text-left"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2 text-pr-orange-dark">
                       <CheckCircle className="h-5 w-5" />
-                      Proposition de corrigé type
+                      <span className="font-dm-serif text-lg text-pr-black">Proposition de corrigé type</span>
                     </div>
-                    <ChevronDown className={`h-4 w-4 transition-transform ${showTips ? 'rotate-180' : ''}`} />
-                  </CardTitle>
-                </CardHeader>
+                    <ChevronDown className={`h-4 w-4 text-pr-gray-mid transition-transform ${showTips ? 'rotate-180' : ''}`} />
+                  </div>
+                </button>
               </CollapsibleTrigger>
               <CollapsibleContent>
-                <CardContent className="pt-0">
-                  <div className="bg-white border border-green-200 rounded-lg p-4">
-                    <p className="text-sm text-gray-600 mb-3 italic">
-                      Cette proposition est un exemple structuré. Adaptez-la à votre profil personnel :
+                <div className="p-6 sm:p-8 space-y-4">
+                  <div className="bg-pr-gray-bg border border-pr-gray-light rounded-xl p-5">
+                    <p className="text-xs text-pr-gray-mid italic mb-3">
+                      Cette proposition est un exemple structuré. Adapte-la à ton profil personnel.
                     </p>
-                    <div className="text-sm text-gray-800 leading-relaxed whitespace-pre-line">
+                    <div className="text-sm text-pr-gray-dark leading-relaxed whitespace-pre-line">
                       {questionTips[currentQuestion].sampleAnswer}
                     </div>
                   </div>
-                  <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                    <p className="text-sm text-amber-800">
-                      <strong>Conseil :</strong> Personnalisez ce corrigé avec vos expériences concrètes. 
-                      Les anecdotes personnelles sont essentielles pour rendre votre réponse mémorable.
+                  <div className="bg-pr-orange-pale border border-pr-orange/20 rounded-xl p-4">
+                    <p className="text-sm text-pr-gray-dark">
+                      <span className="font-semibold text-pr-orange-dark">Conseil :</span> personnalise ce corrigé avec tes expériences concrètes. Les anecdotes personnelles rendent ta réponse mémorable.
                     </p>
                   </div>
-                </CardContent>
+                </div>
               </CollapsibleContent>
             </Collapsible>
-          </Card>
+          </PrCard>
         </div>
       )}
 
-      {/* Timer Section */}
-      <Card className="border-2 border-orange-200">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-orange-600">
-            <Clock className="h-5 w-5" />
-            Chronomètre d'entraînement
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center justify-center gap-6">
+      {/* Section chronomètre + enregistrement */}
+      <PrCard>
+        <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center gap-2 text-pr-orange-dark">
+          <Clock className="h-5 w-5" />
+          <h3 className="font-dm-serif text-lg text-pr-black">Chronomètre d'entraînement</h3>
+        </div>
+        <div className="p-6 sm:p-8">
+          <div className="flex items-center justify-center gap-6 flex-wrap">
             <div className="text-center">
-              <div className="text-4xl font-bold text-orange-600 mb-2">
+              <div className="font-dm-serif text-5xl text-pr-orange tabular-nums leading-none mb-2">
                 {formatTime(timeElapsed)}
               </div>
-              <p className="text-sm text-gray-600">Temps écoulé</p>
+              <p className="text-xs uppercase tracking-[0.08em] text-pr-gray-mid font-semibold">
+                Temps écoulé
+              </p>
             </div>
             <div className="flex gap-2">
               <Button
                 onClick={toggleTimer}
-                variant={isTimerRunning ? "destructive" : "default"}
-                className={isTimerRunning ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"}
+                className={
+                  isTimerRunning
+                    ? 'bg-pr-black hover:bg-pr-gray-dark text-white'
+                    : 'bg-pr-orange hover:bg-pr-orange-dark text-white'
+                }
               >
                 {isTimerRunning ? <Pause className="h-4 w-4 mr-2" /> : <Play className="h-4 w-4 mr-2" />}
-                {isTimerRunning ? "Pause" : "Démarrer"}
+                {isTimerRunning ? 'Pause' : 'Démarrer'}
               </Button>
-              <Button onClick={resetTimer} variant="outline">
+              <Button
+                onClick={resetTimer}
+                variant="outline"
+                className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg"
+              >
                 <RotateCcw className="h-4 w-4 mr-2" />
                 Reset
               </Button>
             </div>
           </div>
 
-          {/* Recording Controls - Modern Design */}
-          <div className="mt-8 pt-6 border-t-2 border-orange-100">
-            <div className="bg-gradient-to-br from-slate-50 to-indigo-50 rounded-2xl p-6 border border-indigo-100 shadow-sm">
-              {/* Recording Header */}
-              <div className="flex items-center justify-between mb-6">
-                <h4 className="text-lg font-bold text-slate-800 flex items-center gap-3">
-                  <div className="p-2 bg-indigo-100 rounded-xl">
-                    <Mic className="h-5 w-5 text-indigo-600" />
+          {/* Bloc enregistrement audio */}
+          <div className="mt-8 pt-6 border-t border-pr-gray-light">
+            <div className="bg-pr-gray-bg rounded-2xl p-6 border border-pr-gray-light">
+              <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
+                <h4 className="text-base font-semibold text-pr-black flex items-center gap-3 font-dm-sans">
+                  <div className="p-2 bg-pr-orange-pale rounded-xl">
+                    <Mic className="h-5 w-5 text-pr-orange-dark" />
                   </div>
                   Enregistrement audio
                 </h4>
                 {isRecording && (
-                  <div className="flex items-center gap-2 bg-red-50 border border-red-200 rounded-full px-4 py-1.5">
-                    <div className="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-semibold text-red-700 tabular-nums">{formatRecordingTime(recordingTime)}</span>
+                  <div className="flex items-center gap-2 bg-white border border-pr-orange/30 rounded-full px-4 py-1.5">
+                    <div className="w-2.5 h-2.5 bg-pr-orange rounded-full animate-pulse"></div>
+                    <span className="text-sm font-semibold text-pr-orange-dark tabular-nums">
+                      {formatRecordingTime(recordingTime)}
+                    </span>
                   </div>
                 )}
               </div>
 
-              {/* Main Recording Area */}
               <div className="flex flex-col items-center gap-6">
-                {/* Record Button - Idle State */}
                 {!isRecording && !audioUrl && (
                   <div className="flex flex-col items-center gap-4">
                     <button
                       onClick={startRecording}
-                      className="group relative w-24 h-24 rounded-full bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-200"
+                      className="group relative w-24 h-24 rounded-full bg-pr-orange hover:bg-pr-orange-dark text-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pr-orange-pale"
                     >
                       <Mic className="h-10 w-10 mx-auto transition-transform group-hover:scale-110" />
-                      <div className="absolute inset-0 rounded-full border-4 border-red-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </button>
-                    <span className="text-sm font-medium text-slate-600">Cliquez pour enregistrer</span>
+                    <span className="text-sm font-medium text-pr-gray-dark">Clique pour enregistrer</span>
                   </div>
                 )}
 
-                {/* Recording Active State */}
                 {isRecording && (
                   <div className="flex flex-col items-center gap-4">
-                    {/* Animated Waveform */}
                     <div className="flex items-center gap-1 h-12">
                       {[...Array(12)].map((_, i) => (
                         <div
                           key={i}
-                          className="w-1.5 bg-red-400 rounded-full animate-pulse"
+                          className="w-1.5 bg-pr-orange rounded-full animate-pulse"
                           style={{
                             height: `${Math.random() * 100}%`,
                             minHeight: '8px',
@@ -511,24 +509,23 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
 
                     <button
                       onClick={stopRecording}
-                      className="group relative w-24 h-24 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 hover:from-slate-800 hover:to-slate-900 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-slate-300"
+                      className="group relative w-24 h-24 rounded-full bg-pr-black hover:bg-pr-gray-dark text-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pr-gray-light"
                     >
                       <Square className="h-8 w-8 mx-auto fill-white" />
-                      <div className="absolute -inset-2 rounded-full border-2 border-red-400 animate-ping opacity-20"></div>
+                      <div className="absolute -inset-2 rounded-full border-2 border-pr-orange animate-ping opacity-30"></div>
                     </button>
-                    <span className="text-sm font-medium text-red-600">Cliquez pour arrêter</span>
+                    <span className="text-sm font-medium text-pr-orange-dark">Clique pour arrêter</span>
                   </div>
                 )}
 
-                {/* Audio Playback State */}
                 {audioUrl && !isRecording && (
-                  <div className="w-full space-y-4">
-                    <div className="bg-white rounded-xl p-4 border border-indigo-100 shadow-sm">
-                      <div className="flex items-center gap-4">
-                        <div className="p-2 bg-indigo-50 rounded-lg flex-shrink-0">
-                          <Volume2 className="h-5 w-5 text-indigo-600" />
+                  <div className="w-full">
+                    <div className="bg-white rounded-xl p-4 border border-pr-gray-light">
+                      <div className="flex items-center gap-4 flex-wrap">
+                        <div className="p-2 bg-pr-orange-pale rounded-lg flex-shrink-0">
+                          <Volume2 className="h-5 w-5 text-pr-orange-dark" />
                         </div>
-                        <audio controls className="flex-1 h-10">
+                        <audio controls className="flex-1 h-10 min-w-[200px]">
                           <source src={audioUrl} type="audio/wav" />
                           Votre navigateur ne supporte pas l'audio.
                         </audio>
@@ -539,7 +536,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                           }}
                           variant="outline"
                           size="sm"
-                          className="border-slate-300 hover:bg-red-50 hover:border-red-300 hover:text-red-600 transition-colors"
+                          className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:border-pr-orange/30 hover:text-pr-orange-dark transition-colors"
                         >
                           <RotateCcw className="h-4 w-4 mr-1" />
                           Refaire
@@ -549,83 +546,79 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                   </div>
                 )}
 
-                {/* Transcription Status */}
                 {isTranscribing && (
-                  <div className="w-full bg-white border border-blue-200 rounded-xl p-4 shadow-sm">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="p-1.5 bg-blue-100 rounded-lg">
-                        <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
+                  <div className="w-full bg-white border border-pr-gray-light rounded-xl p-4">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-1.5 bg-pr-orange-pale rounded-lg">
+                        <Loader2 className="h-4 w-4 animate-spin text-pr-orange-dark" />
                       </div>
                       <div>
-                        <span className="text-sm font-semibold text-blue-800">Retranscription en cours...</span>
-                        <p className="text-xs text-blue-500 mt-0.5">Le texte apparaîtra automatiquement dans le champ ci-dessous</p>
+                        <span className="text-sm font-semibold text-pr-black">Retranscription en cours…</span>
+                        <p className="text-xs text-pr-gray-mid mt-0.5">
+                          Le texte apparaîtra automatiquement dans le champ ci-dessous
+                        </p>
                       </div>
                     </div>
-                    <div className="w-full bg-blue-100 rounded-full h-1.5 overflow-hidden">
-                      <div className="bg-gradient-to-r from-blue-400 to-indigo-500 h-full rounded-full animate-pulse" style={{ width: '60%' }}></div>
+                    <div className="w-full bg-pr-gray-bg rounded-full h-1.5 overflow-hidden">
+                      <div className="bg-pr-orange h-full rounded-full animate-pulse" style={{ width: '60%' }}></div>
                     </div>
                   </div>
                 )}
               </div>
 
-              {/* Helper Text */}
-              <p className="text-xs text-slate-500 mt-4 text-center">
-                Enregistrez votre réponse orale — la retranscription automatique se lance dès l'arrêt
+              <p className="text-xs text-pr-gray-mid mt-4 text-center">
+                Enregistre ta réponse orale — la retranscription automatique se lance dès l'arrêt.
               </p>
             </div>
           </div>
 
-          <div className="mt-4 p-3 bg-orange-50 rounded-lg">
-            <p className="text-sm text-orange-800">
-              <strong>Conseil :</strong> En entretien réel, vous disposez généralement de 2-3 minutes pour répondre.
-              Utilisez ce chronomètre pour vous entraîner à respecter le temps imparti.
+          <div className="mt-6 p-4 bg-pr-orange-pale border border-pr-orange/20 rounded-xl">
+            <p className="text-sm text-pr-gray-dark">
+              <span className="font-semibold text-pr-orange-dark">Conseil :</span> en entretien réel, tu disposes généralement de 2 à 3 minutes pour répondre. Utilise ce chronomètre pour t'entraîner à respecter le temps imparti.
             </p>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </PrCard>
 
-      {/* Answer Section */}
-      <Card className="border-2 border-green-200">
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle className="flex items-center gap-2 text-green-600">
-              <Mic className="h-5 w-5" />
-              Votre réponse
-            </CardTitle>
-            <Button
-              onClick={() => setShowAnswer(!showAnswer)}
-              variant="outline"
-              size="sm"
-              className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white"
-            >
-              {showAnswer ? "Masquer" : "Voir"} réponse
-            </Button>
+      {/* Section réponse */}
+      <PrCard>
+        <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center justify-between flex-wrap gap-3">
+          <div className="flex items-center gap-2 text-pr-orange-dark">
+            <Mic className="h-5 w-5" />
+            <h3 className="font-dm-serif text-lg text-pr-black">Ta réponse</h3>
           </div>
-        </CardHeader>
-        <CardContent>
+          <Button
+            onClick={() => setShowAnswer(!showAnswer)}
+            variant="outline"
+            size="sm"
+            className="border-pr-orange/40 text-pr-orange-dark hover:bg-pr-orange hover:text-white hover:border-pr-orange transition-colors"
+          >
+            {showAnswer ? 'Masquer' : 'Voir'} réponse
+          </Button>
+        </div>
+        <div className="p-6 sm:p-8">
           <Textarea
             value={userAnswer}
             onChange={(e) => setUserAnswer(e.target.value)}
-            placeholder={isTranscribing ? "Retranscription en cours..." : "Tapez votre réponse ici ou enregistrez-vous pour obtenir une retranscription automatique"}
-            className="min-h-[200px] text-base leading-relaxed border-2 border-gray-200 focus:border-green-400"
+            placeholder={isTranscribing ? 'Retranscription en cours…' : 'Tape ta réponse ici ou enregistre-toi pour obtenir une retranscription automatique.'}
+            className="min-h-[200px] text-base leading-relaxed border border-pr-gray-light bg-white text-pr-gray-dark focus-visible:ring-pr-orange focus-visible:border-pr-orange transition-colors"
           />
-          <div className="mt-4 flex items-center justify-between text-sm text-gray-600">
+          <div className="mt-4 flex items-center justify-between text-xs text-pr-gray-mid font-medium">
             <span>{userAnswer.length} caractères</span>
-            <span>~{Math.ceil(userAnswer.length / 150)} minutes de parole estimées</span>
+            <span>~{Math.ceil(userAnswer.length / 150)} min de parole estimées</span>
           </div>
 
-          {/* Bouton de validation */}
           <div className="mt-6 flex justify-center">
             <Button
               onClick={evaluateAnswer}
               disabled={isEvaluating || !userAnswer.trim()}
               size="lg"
-              className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-pr-orange hover:bg-pr-orange-dark text-white shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50"
             >
               {isEvaluating ? (
                 <>
                   <Loader2 className="h-5 w-5 mr-2 animate-spin" />
-                  Évaluation en cours...
+                  Évaluation en cours…
                 </>
               ) : (
                 <>
@@ -635,62 +628,62 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
               )}
             </Button>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </PrCard>
 
-      {/* Evaluation Results Section */}
+      {/* Section évaluation */}
       {evaluation && (
-        <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-purple-700">
-              <Award className="h-6 w-6" />
-              Évaluation de votre réponse
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
+        <PrCard>
+          <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center gap-2 text-pr-orange-dark">
+            <Award className="h-5 w-5" />
+            <h3 className="font-dm-serif text-lg text-pr-black">Évaluation de ta réponse</h3>
+          </div>
+          <div className="p-6 sm:p-8 space-y-6">
             {/* Score */}
-            <div className="flex items-center justify-center p-6 bg-white rounded-xl border-2 border-purple-200 shadow-sm">
+            <div className="flex items-center justify-center p-6 bg-pr-orange-pale rounded-xl border border-pr-orange/20">
               <div className="text-center">
-                <div className="text-6xl font-bold text-purple-600 mb-2">
-                  {evaluation.score}/20
+                <div className="font-dm-serif text-6xl text-pr-orange-dark mb-1 leading-none">
+                  {evaluation.score}<span className="text-3xl text-pr-orange">/20</span>
                 </div>
-                <p className="text-sm text-gray-600">Note globale</p>
+                <p className="text-xs uppercase tracking-[0.08em] text-pr-gray-mid font-semibold mt-2">
+                  Note globale
+                </p>
               </div>
             </div>
 
-            {/* Overall Comment */}
-            <div className="p-4 bg-white rounded-xl border border-purple-100 shadow-sm">
-              <p className="text-gray-800 leading-relaxed">
+            {/* Commentaire général */}
+            <div className="p-5 bg-pr-gray-bg rounded-xl border border-pr-gray-light">
+              <p className="text-pr-gray-dark leading-relaxed">
                 {evaluation.overall}
               </p>
             </div>
 
-            {/* Strengths */}
-            <div className="bg-white rounded-xl p-4 border border-green-100 shadow-sm">
-              <h4 className="font-semibold text-green-700 flex items-center gap-2 mb-3">
-                <CheckCircle className="h-5 w-5" />
+            {/* Points forts */}
+            <div className="bg-white rounded-xl p-5 border border-pr-gray-light">
+              <h4 className="font-semibold text-pr-black flex items-center gap-2 mb-3 font-dm-sans">
+                <CheckCircle className="h-5 w-5 text-pr-orange" />
                 Points forts
               </h4>
               <ul className="space-y-2">
                 {evaluation.strengths.map((strength, index) => (
-                  <li key={index} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="text-green-500 mt-0.5">✓</span>
+                  <li key={index} className="flex items-start gap-2 text-sm text-pr-gray-dark">
+                    <span className="text-pr-orange mt-0.5 font-semibold">✓</span>
                     <span>{strength}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Weaknesses */}
-            <div className="bg-white rounded-xl p-4 border border-orange-100 shadow-sm">
-              <h4 className="font-semibold text-orange-700 flex items-center gap-2 mb-3">
-                <AlertCircle className="h-5 w-5" />
+            {/* Points à améliorer */}
+            <div className="bg-white rounded-xl p-5 border border-pr-gray-light">
+              <h4 className="font-semibold text-pr-black flex items-center gap-2 mb-3 font-dm-sans">
+                <AlertCircle className="h-5 w-5 text-pr-orange-dark" />
                 Points à améliorer
               </h4>
               <ul className="space-y-2">
                 {evaluation.weaknesses.map((weakness, index) => (
-                  <li key={index} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="text-orange-500 mt-0.5">⚠</span>
+                  <li key={index} className="flex items-start gap-2 text-sm text-pr-gray-dark">
+                    <span className="text-pr-orange-dark mt-0.5 font-semibold">!</span>
                     <span>{weakness}</span>
                   </li>
                 ))}
@@ -698,34 +691,33 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
             </div>
 
             {/* Suggestions */}
-            <div className="bg-white rounded-xl p-4 border border-blue-100 shadow-sm">
-              <h4 className="font-semibold text-blue-700 flex items-center gap-2 mb-3">
-                <Lightbulb className="h-5 w-5" />
+            <div className="bg-white rounded-xl p-5 border border-pr-gray-light">
+              <h4 className="font-semibold text-pr-black flex items-center gap-2 mb-3 font-dm-sans">
+                <Lightbulb className="h-5 w-5 text-pr-orange" />
                 Suggestions d'amélioration
               </h4>
               <ul className="space-y-2">
                 {evaluation.suggestions.map((suggestion, index) => (
-                  <li key={index} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="text-blue-500 mt-0.5">💡</span>
+                  <li key={index} className="flex items-start gap-2 text-sm text-pr-gray-dark">
+                    <span className="text-pr-orange mt-0.5">→</span>
                     <span>{suggestion}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Action Button */}
             <div className="flex justify-center pt-2">
               <Button
                 onClick={generateRandomQuestion}
                 variant="outline"
-                className="border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white"
+                className="border-pr-orange/40 text-pr-orange-dark hover:bg-pr-orange hover:text-white hover:border-pr-orange transition-colors"
               >
                 <TrendingUp className="h-4 w-4 mr-2" />
                 Nouvelle question pour progresser
               </Button>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </PrCard>
       )}
 
     </div>
@@ -889,4 +881,4 @@ const UnifiedOralGeneratorPage = () => {
   );
 };
 
-export default UnifiedOralGeneratorPage; 
+export default UnifiedOralGeneratorPage;

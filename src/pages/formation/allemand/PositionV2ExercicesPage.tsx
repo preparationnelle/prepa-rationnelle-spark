@@ -79,7 +79,7 @@ const PositionV2ExercicesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs font-medium text-gray-600">

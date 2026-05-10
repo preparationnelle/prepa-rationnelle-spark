@@ -1,12 +1,9 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { requireAuth } from "../_shared/auth.ts";
 const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
 
 interface EvalRequest {
   term: string;
@@ -16,9 +13,11 @@ interface EvalRequest {
 }
 
 serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
+  const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
+
+  const __authResult = await requireAuth(req);
+  if (__authResult.response) return __authResult.response;
 
   try {
     const { term, userDefinition, referenceDefinition, language = 'fr' }: EvalRequest = await req.json();
@@ -30,7 +29,7 @@ serve(async (req) => {
           feedback: `${language === 'fr' ? 'API indisponible.' : 'API unavailable.'} Votre proposition: "${userDefinition}".\n\n${language === 'fr' ? 'Référence' : 'Reference'}: ${referenceDefinition}`,
           score: null,
         }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+        { headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } },
       );
     }
 
@@ -123,13 +122,13 @@ Reply STRICTLY as JSON with fields: {
     }
 
     return new Response(JSON.stringify(parsed), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
     });
   } catch (error) {
     console.error('evaluate-definition error:', error);
     return new Response(JSON.stringify({ error: error.message || 'Evaluation failed' }), {
       status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
     });
   }
 });

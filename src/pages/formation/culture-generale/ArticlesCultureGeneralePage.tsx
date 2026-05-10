@@ -28,6 +28,66 @@ const articles: ArticleItem[] = [
     description: 'Heidegger, Anders, transhumanisme : promesse d\'augmentation ou perte de soi ?',
     route: '/formation/culture-generale/articles/humanite-face-technique',
   },
+  {
+    number: 4,
+    title: 'L\'humain et l\'animal — où passe la frontière ?',
+    description: 'Descartes, Montaigne, Derrida : tracer ou effacer la ligne qui sépare l\'humain de la bête.',
+    route: '/formation/culture-generale/articles/humain-animal',
+  },
+  {
+    number: 5,
+    title: 'La dignité humaine',
+    description: 'Kant, 1948, Habermas : du concept moral au principe juridique inviolable.',
+    route: '/formation/culture-generale/articles/dignite-humaine',
+  },
+  {
+    number: 6,
+    title: 'L\'altérité et la rencontre de l\'autre',
+    description: 'Lévi-Strauss, Todorov, Levinas : l\'humanité au miroir de l\'étranger.',
+    route: '/formation/culture-generale/articles/alterite-autre',
+  },
+  {
+    number: 7,
+    title: 'La perfectibilité et l\'idée de progrès',
+    description: 'Rousseau, Kant, Condorcet : l\'humain est-il un être en devenir ?',
+    route: '/formation/culture-generale/articles/perfectibilite-progres',
+  },
+  {
+    number: 8,
+    title: 'L\'humanité face à la nature — l\'anthropocène',
+    description: 'Jonas, Descola, Latour : sortir du grand partage moderne nature/culture.',
+    route: '/formation/culture-generale/articles/humanite-nature-anthropocene',
+  },
+  {
+    number: 9,
+    title: 'Le corps humain',
+    description: 'Mauss, Merleau-Ponty, Foucault : objet biologique, sujet vécu, construction sociale.',
+    route: '/formation/culture-generale/articles/corps-humain',
+  },
+  {
+    number: 10,
+    title: 'L\'humain et le langage',
+    description: 'Saussure, Benveniste, Wittgenstein : un être qui parle, ou un être parlé ?',
+    route: '/formation/culture-generale/articles/humain-langage',
+  },
+  {
+    number: 11,
+    title: 'L\'humain face à la mort',
+    description: 'Épicure, Heidegger, Jankélévitch : la mortalité comme épreuve de l\'humanité.',
+    route: '/formation/culture-generale/articles/humain-mort',
+  },
+  {
+    number: 12,
+    title: 'L\'humanisme et ses critiques',
+    description: 'Renaissance, Nietzsche, Foucault : naissance, apogée, déconstruction.',
+    route: '/formation/culture-generale/articles/humanisme-critiques',
+  },
+  {
+    number: 13,
+    title: 'Devenir humain — éducation et culture',
+    description: 'Rousseau, Kant, Arendt : l\'humanité ne se donne pas, elle se transmet.',
+    route: '/formation/culture-generale/articles/devenir-humain-education',
+  },
 ];
 
 const ArticlesCultureGeneralePage: React.FC = () => {

@@ -1,20 +1,18 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { OpenAI } from "https://deno.land/x/openai@v4.20.1/mod.ts";
 
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { requireAuth } from "../_shared/auth.ts";
 const openai = new OpenAI({
     apiKey: Deno.env.get("OPENAI_API_KEY"),
 });
 
 Deno.serve(async (req: Request) => {
-    if (req.method === "OPTIONS") {
-        return new Response(null, {
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "POST, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type, Authorization",
-            },
-        });
-    }
+    const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
+
+  const __authResult = await requireAuth(req);
+  if (__authResult.response) return __authResult.response;
 
     try {
         const { subject, definitions, mode } = await req.json();
@@ -24,7 +22,7 @@ Deno.serve(async (req: Request) => {
                 JSON.stringify({ error: "Subject and definitions array are required" }),
                 {
                     status: 400,
-                    headers: { "Content-Type": "application/json" },
+                    headers: { ...corsHeaders(req), "Content-Type": "application/json" },
                 }
             );
         }
@@ -202,10 +200,7 @@ Réponds au format JSON suivant (TRÈS IMPORTANT: respecte exactement ce format)
         return new Response(
             JSON.stringify(evaluation),
             {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                },
+                headers: { ...corsHeaders(req), "Content-Type": "application/json" },
             }
         );
     } catch (error) {
@@ -217,10 +212,7 @@ Réponds au format JSON suivant (TRÈS IMPORTANT: respecte exactement ce format)
             }),
             {
                 status: 500,
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                },
+                headers: { ...corsHeaders(req), "Content-Type": "application/json" },
             }
         );
     }

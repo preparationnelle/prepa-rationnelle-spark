@@ -5,7 +5,7 @@ import { Home, ChevronRight, BarChart3, Heart } from 'lucide-react';
 
 const TransformationsDemographiquesPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -36,8 +36,8 @@ const TransformationsDemographiquesPage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-              <BarChart3 className="h-6 w-6 text-blue-700" />
+            <div className="w-12 h-12 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+              <BarChart3 className="h-6 w-6 text-carnet-red" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900">
               Transformations démographiques et évolution des modes de vie
@@ -69,21 +69,21 @@ const TransformationsDemographiquesPage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">La transition démographique</h2>
                 <div className="grid md:grid-cols-3 gap-6">
-                  <div className="bg-blue-50 p-6 rounded-lg text-center">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg text-center">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Phase 1</h3>
-                    <p className="text-blue-700 text-sm">
+                    <p className="text-carnet-red text-sm">
                       Haute natalité et mortalité. Société à dominante rurale avec familles nombreuses.
                     </p>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg text-center">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg text-center">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Phase 2</h3>
-                    <p className="text-blue-700 text-sm">
+                    <p className="text-carnet-red text-sm">
                       Baisse de la mortalité, natalité élevée. Croissance démographique rapide et exode rural.
                     </p>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg text-center">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg text-center">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Phase 3</h3>
-                    <p className="text-blue-700 text-sm">
+                    <p className="text-carnet-red text-sm">
                       Baisse de la natalité. Vieillissement de la population et société urbaine.
                     </p>
                   </div>
@@ -94,18 +94,18 @@ const TransformationsDemographiquesPage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Le vieillissement démographique</h2>
                 <div className="space-y-6">
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Causes du vieillissement</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Allongement de l'espérance de vie</li>
                       <li>• Baisse de la fécondité</li>
                       <li>• Baby-boom des années 1945-1975</li>
                       <li>• Amélioration des conditions de vie</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Conséquences socio-économiques</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Pression sur les systèmes de retraite</li>
                       <li>• Réduction de la population active</li>
                       <li>• Augmentation des dépenses de santé</li>
@@ -119,18 +119,18 @@ const TransformationsDemographiquesPage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Évolution des structures familiales</h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Famille traditionnelle</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Familles nombreuses et étendues</li>
                       <li>• Autorité patriarcale</li>
                       <li>• Rôles familiaux définis</li>
                       <li>• Solidarité intergénérationnelle</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Famille contemporaine</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Familles nucléaires réduites</li>
                       <li>• Égalité homme-femme</li>
                       <li>• Diversité des formes familiales</li>
@@ -151,17 +151,17 @@ const TransformationsDemographiquesPage = () => {
                       développement des transports, évolution des rythmes de vie et des pratiques sociales.
                     </p>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Numérisation et nouvelles technologies</h3>
-                    <p className="text-blue-700">
+                    <p className="text-carnet-red">
                       La révolution digitale transforme les relations sociales, le travail,
                       les loisirs et les modes de consommation avec l'essor des réseaux sociaux
                       et du commerce en ligne.
                     </p>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Évolution des valeurs et aspirations</h3>
-                    <p className="text-blue-700">
+                    <p className="text-carnet-red">
                       Changement des priorités individuelles : quête de bien-être, développement personnel,
                       conscience environnementale, diversité culturelle et ouverture internationale.
                     </p>
@@ -188,7 +188,6 @@ const TransformationsDemographiquesPage = () => {
           </div>
         </div>
 
-        {/* Navigation */}
         <div className="flex justify-center gap-4 mt-12">
           <Link to="/formation/esh/premiere-annee">
             <Button variant="outline" className="flex items-center gap-2">

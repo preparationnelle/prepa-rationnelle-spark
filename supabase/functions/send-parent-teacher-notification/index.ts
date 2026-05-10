@@ -1,15 +1,11 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { SmtpClient } from "https://deno.land/x/smtp/mod.ts"
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-}
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
 
 serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders })
-  }
+  const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
 
   try {
     const { type, data } = await req.json()
@@ -111,7 +107,7 @@ Système Prépa Rationnelle
       JSON.stringify({ success: true }),
       { 
         headers: { 
-          ...corsHeaders,
+          ...corsHeaders(req),
           'Content-Type': 'application/json' 
         } 
       }
@@ -123,7 +119,7 @@ Système Prépa Rationnelle
       { 
         status: 500,
         headers: { 
-          ...corsHeaders,
+          ...corsHeaders(req),
           'Content-Type': 'application/json' 
         } 
       }

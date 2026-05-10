@@ -5,7 +5,7 @@ import { Target, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle, TrendingU
 
 const EquilibreMicroPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -47,14 +47,14 @@ const EquilibreMicroPage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <Target className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+                <Target className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   L'équilibre micro-économique du producteur et du consommateur
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 1.6 - Module 1</div>
+                <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 1.6 - Module 1</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -67,14 +67,14 @@ const EquilibreMicroPage = () => {
             {/* Section 1: L'équilibre du consommateur */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
                 L'équilibre du consommateur
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">La fonction d'utilité</h3>
                   <p className="text-sm text-gray-600">
                     Représente la satisfaction que retire un consommateur de la consommation de différents biens.
@@ -82,7 +82,7 @@ const EquilibreMicroPage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">L'utilité marginale</h3>
                   <p className="text-sm text-gray-600">
                     Dérivée partielle de la fonction d'utilité par rapport à un bien.
@@ -91,7 +91,7 @@ const EquilibreMicroPage = () => {
                   </p>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Condition d'équilibre du consommateur</h4>
                   <p className="text-sm text-gray-600">
                     Le consommateur atteint son équilibre quand le rapport des utilités marginales
@@ -109,14 +109,14 @@ const EquilibreMicroPage = () => {
             {/* Section 2: Les courbes d'indifférence */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
                 Les courbes d'indifférence
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Définition</h3>
                   <p className="text-sm text-gray-600">
                     Ensemble des combinaisons de biens qui procurent le même niveau d'utilité au consommateur.
@@ -124,7 +124,7 @@ const EquilibreMicroPage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Propriétés des courbes d'indifférence</h3>
                   <ul className="text-sm text-gray-600 space-y-2">
                     <li>• Décroissantes et convexes (loi des rendements décroissants)</li>
@@ -134,7 +134,7 @@ const EquilibreMicroPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Taux marginal de substitution (TMS)</h4>
                   <p className="text-sm text-gray-600">
                     Quantité de Y que le consommateur est prêt à sacrifier pour obtenir une unité supplémentaire de X,
@@ -152,14 +152,14 @@ const EquilibreMicroPage = () => {
             {/* Section 3: La contrainte budgétaire */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
                 La contrainte budgétaire
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Définition</h3>
                   <p className="text-sm text-gray-600">
                     Ensemble des combinaisons de biens que le consommateur peut acheter avec son revenu.
@@ -167,12 +167,12 @@ const EquilibreMicroPage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Équation de la contrainte budgétaire</h3>
                   <p className="text-sm text-gray-600">
                     Pₓ × X + Pᵧ × Y = R (Revenu du consommateur)
                   </p>
-                  <div className="mt-2 p-3 bg-blue-50 rounded border">
+                  <div className="mt-2 p-3 bg-pr-orange-pale rounded border">
                     <p className="text-xs text-gray-600">
                       • Pente de la contrainte : -Pₓ/Pᵧ (prix relatif)<br/>
                       • Plus le revenu augmente, plus la contrainte s'éloigne de l'origine<br/>
@@ -186,14 +186,14 @@ const EquilibreMicroPage = () => {
             {/* Section 4: L'équilibre du producteur */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">4</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">4</span>
                 </div>
                 L'équilibre du producteur
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">La fonction de production</h3>
                   <p className="text-sm text-gray-600">
                     Relation entre les quantités de facteurs utilisés (inputs) et la quantité produite (output).
@@ -201,7 +201,7 @@ const EquilibreMicroPage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">La productivité marginale</h3>
                   <p className="text-sm text-gray-600">
                     Accroissement de production obtenu en utilisant une unité supplémentaire d'un facteur,
@@ -214,7 +214,7 @@ const EquilibreMicroPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Condition d'équilibre du producteur</h4>
                   <p className="text-sm text-gray-600">
                     Le producteur maximise son profit quand le rapport des productivités marginales
@@ -232,8 +232,8 @@ const EquilibreMicroPage = () => {
             {/* Section 5: Les coûts de production */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">5</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">5</span>
                 </div>
                 Les coûts de production
               </h2>
@@ -244,16 +244,16 @@ const EquilibreMicroPage = () => {
                     <h3 className="font-semibold text-gray-800">Coûts fixes vs coûts variables</h3>
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
-                        <span><strong className="text-blue-700">Coûts fixes (CF)</strong> : indépendants du niveau de production (loyers, assurances)</span>
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-carnet-red">Coûts fixes (CF)</strong> : indépendants du niveau de production (loyers, assurances)</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
-                        <span><strong className="text-blue-700">Coûts variables (CV)</strong> : varient avec la production (matières premières, salaires)</span>
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-carnet-red">Coûts variables (CV)</strong> : varient avec la production (matières premières, salaires)</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
-                        <span><strong className="text-blue-700">Coût total (CT)</strong> = CF + CV</span>
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-carnet-red">Coût total (CT)</strong> = CF + CV</span>
                       </li>
                     </ul>
                   </div>
@@ -262,22 +262,22 @@ const EquilibreMicroPage = () => {
                     <h3 className="font-semibold text-gray-800">Coûts moyens vs coûts marginaux</h3>
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
-                        <span><strong className="text-blue-700">Coût moyen (CM)</strong> = CT / Q</span>
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-carnet-red">Coût moyen (CM)</strong> = CT / Q</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
-                        <span><strong className="text-blue-700">Coût marginal (CMg)</strong> = ΔCT / ΔQ</span>
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
+                        <span><strong className="text-carnet-red">Coût marginal (CMg)</strong> = ΔCT / ΔQ</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
-                        <span>Point de minimum du CM : <strong className="text-blue-700">CMg = CM</strong></span>
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
+                        <span>Point de minimum du CM : <strong className="text-carnet-red">CMg = CM</strong></span>
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Les économies d'échelle</h3>
                   <p className="text-sm text-gray-600">
                     Réduction du coût moyen lorsque la production augmente. Elles expliquent la concentration
@@ -295,14 +295,14 @@ const EquilibreMicroPage = () => {
             {/* Section 6: L'équilibre général */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">6</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">6</span>
                 </div>
                 L'équilibre général
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Le modèle de Léon Walras</h3>
                   <p className="text-sm text-gray-600">
                     Vision d'ensemble de l'économie où tous les marchés sont interconnectés.
@@ -310,17 +310,17 @@ const EquilibreMicroPage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Les conditions d'équilibre général</h3>
                   <ul className="text-sm text-gray-600 space-y-2">
                     <li>• Équilibre sur chaque marché : Offre = Demande pour chaque bien</li>
                     <li>• Équilibre budgétaire : Dépenses = Revenus pour chaque agent</li>
                     <li>• Compatibilité des plans : Les décisions des agents sont cohérentes</li>
-                    <li>• Efficacité <strong className="text-blue-700">Pareto-optimale</strong> : Aucune réallocation ne peut améliorer le bien-être d'un agent sans détériorer celui d'un autre</li>
+                    <li>• Efficacité <strong className="text-carnet-red">Pareto-optimale</strong> : Aucune réallocation ne peut améliorer le bien-être d'un agent sans détériorer celui d'un autre</li>
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Le théorème de l'impossibilité d'Arrow</h4>
                   <p className="text-sm text-gray-600">
                     Il est impossible de trouver un système de vote respectant certaines conditions
@@ -345,7 +345,7 @@ const EquilibreMicroPage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module1/offre-demande">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

@@ -67,7 +67,7 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -101,9 +101,9 @@ const GeopolitiqueDeuxiemeAnneePage = () => {
             <Link key={sujet.id} to={sujet.to} className="block">
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
                 <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-lg group-hover:bg-blue-200 transition-colors">{idx + 1}</div>
+                  <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center text-carnet-red font-bold text-lg group-hover:bg-carnet-red/20 transition-colors">{idx + 1}</div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">{sujet.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-carnet-red transition-colors">{sujet.title}</h3>
                     <p className="text-gray-600 mb-4">{sujet.description}</p>
                     <div className="flex flex-wrap gap-3" onClick={(e) => e.stopPropagation()}>
                       <Link to={sujet.to} className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-3 py-1.5 rounded-md shadow-lg hover:shadow-xl transition-all duration-300 text-sm">

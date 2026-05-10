@@ -5,7 +5,7 @@ import { AlertTriangle, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle, Sc
 
 const ContraintesPolitiquesPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -47,14 +47,14 @@ const ContraintesPolitiquesPage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <AlertTriangle className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+                <AlertTriangle className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   Les contraintes des politiques économiques
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 4.5 - Module 4</div>
+                <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 4.5 - Module 4</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -67,14 +67,14 @@ const ContraintesPolitiquesPage = () => {
             {/* Section 1: Contraintes temporelles */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
                 Les contraintes temporelles (lags)
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Les différents types de délais</h3>
                   <p className="text-sm text-gray-600">
                     Les politiques économiques sont soumises à des délais qui peuvent réduire leur efficacité ou même les rendre contre-productives.
@@ -82,7 +82,7 @@ const ContraintesPolitiquesPage = () => {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-4">
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Inside lag</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Délai de reconnaissance</li>
@@ -91,7 +91,7 @@ const ContraintesPolitiquesPage = () => {
                       <li>• Diagnostic tardif</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Outside lag</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Délai de transmission</li>
@@ -100,7 +100,7 @@ const ContraintesPolitiquesPage = () => {
                       <li>• Impact retardé</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Total lag</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Somme des lags</li>
@@ -116,72 +116,72 @@ const ContraintesPolitiquesPage = () => {
             {/* Section 2: Contraintes institutionnelles et politiques */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
                 Contraintes institutionnelles et politiques
               </h2>
 
               <div className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="border-l-4 border-blue-300 pl-4">
+                  <div className="border-l-4 border-carnet-red/40 pl-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Contraintes européennes</h3>
                     <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Pacte de stabilité et de croissance (PSC)</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Déficit public ≤ 3% du PIB</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Dette publique ≤ 60% du PIB</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Règles du Semestre européen</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="border-l-4 border-blue-300 pl-4">
+                  <div className="border-l-4 border-carnet-red/40 pl-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Indépendance des banques centrales</h3>
                     <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Banque Centrale Européenne (BCE)</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Objectif d'inflation : 2%</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Indépendance vis-à-vis des gouvernements</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Politiques monétaires non coordonnées</span>
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Contraintes démocratiques</h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Cycles électoraux et politiques court-termistes</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Préférences des électeurs pour les mesures populaires</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Conflits entre objectifs économiques et politiques</span>
                     </li>
                   </ul>
@@ -192,15 +192,15 @@ const ContraintesPolitiquesPage = () => {
             {/* Section 3: Contraintes économiques structurelles */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
                 Contraintes économiques structurelles
               </h2>
 
               <div className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Rigidités structurelles</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Marché du travail rigide</li>
@@ -209,7 +209,7 @@ const ContraintesPolitiquesPage = () => {
                       <li>• Coûts de licenciement élevés</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Anticipations des agents</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Anticipations rationnelles</li>
@@ -220,23 +220,23 @@ const ContraintesPolitiquesPage = () => {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Effets d'éviction et contraintes budgétaires</h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Effet d'éviction de l'investissement privé (crowding out)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Contraintes de financement public</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Charge de la dette publique</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Trade-off entre relance et rigueur budgétaire</span>
                     </li>
                   </ul>
@@ -247,14 +247,14 @@ const ContraintesPolitiquesPage = () => {
             {/* Section 4: Le dilemme des politiques économiques */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">4</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">4</span>
                 </div>
                 Le dilemme des politiques économiques
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Politiques discrétionnaires vs règles</h3>
                   <p className="text-sm text-gray-600">
                     Les politiques économiques doivent arbitrer entre flexibilité et crédibilité, entre adaptation aux circonstances et prévisibilité.
@@ -262,68 +262,68 @@ const ContraintesPolitiquesPage = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="border-l-4 border-blue-300 pl-4">
+                  <div className="border-l-4 border-carnet-red/40 pl-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Avantages des règles</h3>
                     <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Discipline et crédibilité</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Stabilité des anticipations</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Réduction de l'incertitude</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Évitement des dérives populistes</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="border-l-4 border-blue-300 pl-4">
+                  <div className="border-l-4 border-carnet-red/40 pl-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Avantages des politiques discrétionnaires</h3>
                     <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Adaptation aux chocs spécifiques</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Réponse rapide aux crises</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Utilisation optimale de l'information disponible</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Flexibilité face à l'incertitude</span>
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Solutions hybrides</h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Règles avec clauses d'escape (Goldilocks rule)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Politiques contracycliques automatiques</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Indépendance des banques centrales</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Coordination internationale des politiques</span>
                     </li>
                   </ul>
@@ -346,7 +346,7 @@ const ContraintesPolitiquesPage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module4/justice-sociale">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

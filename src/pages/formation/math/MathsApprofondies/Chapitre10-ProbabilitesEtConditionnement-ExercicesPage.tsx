@@ -1,9 +1,42 @@
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ChevronDown, ChevronUp, Star, BookOpen, Target, Brain } from 'lucide-react';
+import { Eye, EyeOff, CheckCircle } from 'lucide-react';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
+
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-[11px] font-bold text-red-800 uppercase tracking-widest mb-2 mt-4 first:mt-0">
+    {children}
+  </p>
+);
+
+const PointMethodo = ({ children }: { children: React.ReactNode }) => (
+  <div className="mb-3">
+    <SectionLabel>Méthode</SectionLabel>
+    <div className="text-stone-700 text-sm leading-relaxed">{children}</div>
+  </div>
+);
+
+const Astuce = ({ children }: { children: React.ReactNode }) => (
+  <div className="mb-3">
+    <SectionLabel>Astuce</SectionLabel>
+    <div className="text-stone-700 text-sm leading-relaxed">{children}</div>
+  </div>
+);
+
+const ConclusionBox = ({ children }: { children: React.ReactNode }) => (
+  <div className="mt-4">
+    <SectionLabel>Conclusion</SectionLabel>
+    <div className="text-stone-800 leading-relaxed">{children}</div>
+  </div>
+);
+
+const difficultyLabel: Record<string, string> = {
+  'Niveau: Facile': 'FACILE',
+  'Niveau: Intermédiaire': 'MOYEN',
+  'Niveau: Concours': 'DIFFICILE',
+  'Niveau: Concours (Classique)': 'DIFFICILE',
+  'Niveau: Difficile': 'HEC',
+};
 
 const Chapitre10ProbabilitesEtConditionnementExercicesPage = () => {
   const [visibleCorrections, setVisibleCorrections] = useState<{ [key: string]: boolean }>({});
@@ -15,100 +48,57 @@ const Chapitre10ProbabilitesEtConditionnementExercicesPage = () => {
     }));
   };
 
-  const DifficultyHeader = ({
-    level,
-    title,
-    icon: Icon,
-    stars,
-    color = "slate"
-  }: {
-    level: string;
-    title: string;
-    icon: any;
-    stars: number;
-    color?: string;
-  }) => (
-    <div className="flex items-center gap-4 mb-6 mt-8 pb-4 border-b border-slate-200">
-      <div className={`p-2 bg-slate-50 text-slate-700 rounded-lg border border-slate-200`}>
-        <Icon className="w-5 h-5" />
-      </div>
-      <div>
-        <h2 className="text-xl font-bold text-slate-800">{level} : {title}</h2>
-        <div className="flex gap-1 mt-1">
-          {[...Array(stars)].map((_, i) => (
-            <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-          ))}
-          {[...Array(4 - stars)].map((_, i) => (
-            <Star key={i} className="w-4 h-4 text-slate-200" />
-          ))}
-        </div>
-      </div>
+  const DifficultyHeader = ({ level }: { level: string }) => (
+    <div className="flex items-center gap-3 mb-4 mt-10">
+      <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest whitespace-nowrap">
+        {level}
+      </span>
+      <div className="flex-1 border-t border-stone-200" />
     </div>
   );
 
   const ExerciseCard = ({
-    id,
-    title,
-    content,
-    correction,
-    difficulty
+    id, title, content, correction, difficulty,
   }: {
-    id: string;
-    title: string;
-    content: React.ReactNode;
-    correction: React.ReactNode;
-    difficulty: string;
-  }) => (
-    <Card className="mb-6 border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200 bg-white">
-      <div className="p-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 font-semibold text-sm">
-              {id.replace(/[^0-9]/g, '')}
-            </div>
-            <h3 className="font-semibold text-slate-900 text-lg">{title}</h3>
+    id: string; title: string; content: React.ReactNode;
+    correction: React.ReactNode; difficulty: string;
+  }) => {
+    const num = id.replace(/[^0-9]/g, '').padStart(2, '0');
+    const badge = difficultyLabel[difficulty] ?? difficulty.replace('Niveau: ', '').toUpperCase();
+    const isOpen = visibleCorrections[id];
+    return (
+      <div className="mb-6 border border-stone-200 rounded-xl bg-white shadow-sm p-6">
+        <div className="flex items-start justify-between gap-4 mb-5">
+          <div className="flex items-baseline gap-3">
+            <span className="text-2xl font-bold italic text-red-800 leading-none">{num}</span>
+            <span className="text-stone-300 font-light text-xl leading-none">—</span>
+            <h3 className="font-medium text-stone-900 text-base leading-snug">
+              {title.replace(/^Exercice \d+ - /, '')}
+            </h3>
           </div>
-          <span className="text-xs font-medium text-slate-500 bg-slate-50 px-3 py-1 rounded-full border border-slate-100">
-            {difficulty}
+          <span className="shrink-0 text-[11px] font-semibold text-red-800 border border-red-200 rounded-full px-3 py-0.5 tracking-wider">
+            {badge}
           </span>
         </div>
-
-        <div className="mb-6 text-slate-700 leading-relaxed pl-1">
-          {content}
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <Button
-            onClick={() => toggleCorrection(id)}
-            variant="ghost"
-            size="sm"
-            className="w-fit text-slate-500 hover:text-slate-900 hover:bg-slate-50 self-start -ml-2"
-          >
-            {visibleCorrections[id] ? (
-              <>
-                <ChevronUp className="mr-2 h-4 w-4" />
-                Masquer la correction
-              </>
-            ) : (
-              <>
-                <ChevronDown className="mr-2 h-4 w-4" />
-                Afficher la correction
-              </>
-            )}
-          </Button>
-
-          {visibleCorrections[id] && (
-            <div className="bg-slate-50 border-l-2 border-emerald-500 p-6 rounded-r-lg animate-in fade-in slide-in-from-top-2 duration-300">
-              <h4 className="font-semibold text-emerald-800 mb-3 text-sm uppercase tracking-wider">Solution détaillée</h4>
-              <div className="text-slate-700 leading-relaxed space-y-2">
-                {correction}
-              </div>
+        <div className="text-stone-700 leading-relaxed mb-6">{content}</div>
+        <button
+          onClick={() => toggleCorrection(id)}
+          className="flex items-center gap-2 text-sm text-stone-600 border border-stone-300 rounded-full px-4 py-1.5 hover:bg-stone-50 transition-colors"
+        >
+          {isOpen ? (<><EyeOff className="w-4 h-4" /> Masquer la correction</>) : (<><Eye className="w-4 h-4" /> Afficher la correction</>)}
+        </button>
+        {isOpen && (
+          <div className="mt-5 border border-dashed border-stone-300 border-l-[3px] border-l-red-800 rounded-lg p-5 animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="flex items-center gap-2 mb-4">
+              <CheckCircle className="w-4 h-4 text-red-800" />
+              <span className="text-xs font-bold text-red-800 uppercase tracking-widest">Corrigé détaillé</span>
             </div>
-          )}
-        </div>
+            <div className="text-stone-700 leading-relaxed space-y-2">{correction}</div>
+          </div>
+        )}
       </div>
-    </Card>
-  );
+    );
+  };
 
   return (
     <MathChapterTemplate
@@ -130,140 +120,181 @@ const Chapitre10ProbabilitesEtConditionnementExercicesPage = () => {
     >
       <div className="space-y-8">
 
-        {/* Module 1 */}
         <div>
-          <DifficultyHeader
-            level="Module 1"
-            title="Dénombrement et Conditionnement Base"
-            icon={Target}
-            stars={2}
-          />
+          <DifficultyHeader level="Module 1 — Dénombrement et conditionnement de base" />
 
           <ExerciseCard
             id="ex1"
             title="Urne avec remise et sans remise"
-            difficulty="Moyen"
+            difficulty="Niveau: Intermédiaire"
             content={
-              <div>
-                <p>Urne : 2 jaunes, 7 noires. <LatexRenderer latex="n" /> tirages.</p>
-                <p>1. Avec remise : Probabilités de A="que des jaunes" et <LatexRenderer latex="B_k" />="1ère jaune au k-ième tirage".</p>
-                <p>2. Sans remise : Proba d'avoir 2 jaunes aux 2 premiers tirages.</p>
+              <div className="space-y-2">
+                <p>Une urne contient 2 boules jaunes et 7 boules noires. On effectue <LatexRenderer latex="n" /> tirages.</p>
+                <p>1. Avec remise : calculer <LatexRenderer latex="P(A)" /> où <LatexRenderer latex="A" /> = « tous les tirages sont jaunes », et <LatexRenderer latex="P(B_k)" /> où <LatexRenderer latex="B_k" /> = « la première boule jaune apparaît au tirage <LatexRenderer latex="k" /> ».</p>
+                <p>2. Sans remise (<LatexRenderer latex="n=2" />) : calculer la probabilité d'obtenir 2 boules jaunes aux deux premiers tirages.</p>
               </div>
             }
             correction={
-              <div className="space-y-4">
-                <p>1. <LatexRenderer latex="\mathbb{P}(A) = (2/9)^n" />, <LatexRenderer latex="\mathbb{P}(B_k) = (7/9)^{k-1} \times 2/9" />.</p>
-                <p>2. Sans remise : <LatexRenderer latex="\mathbb{P}(J_1 \cap J_2) = (2/9) \times (1/8) = 1/36" />.</p>
+              <div className="space-y-3">
+                <PointMethodo>
+                  Avec remise, les tirages sont indépendants et la probabilité se multiplie. Sans remise, on utilise la formule des probabilités composées : <LatexRenderer latex="P(A\cap B)=P(A)\cdot P(B|A)" />.
+                </PointMethodo>
+                <p><strong>Avec remise.</strong> Soit <LatexRenderer latex="p_J=2/9" /> la probabilité de tirer jaune à chaque tirage. Les <LatexRenderer latex="n" /> tirages sont indépendants. Donc <LatexRenderer latex="P(A)=(2/9)^n" />.</p>
+                <p>Or l'événement <LatexRenderer latex="B_k" /> correspond à <LatexRenderer latex="k-1" /> tirages noirs puis 1 tirage jaune. D'où, par indépendance :</p>
+                <p><LatexRenderer latex="P(B_k)=\left(\frac{7}{9}\right)^{k-1}\times\frac{2}{9}" />.</p>
+                <Astuce>La loi de <LatexRenderer latex="k" /> (rang du premier succès) est une loi géométrique de paramètre <LatexRenderer latex="p=2/9" />.</Astuce>
+                <p><strong>Sans remise.</strong> Soit <LatexRenderer latex="J_1" /> = « 1re boule jaune » et <LatexRenderer latex="J_2" /> = « 2e boule jaune ». Par la formule des probabilités composées :</p>
+                <p><LatexRenderer latex="P(J_1\cap J_2)=P(J_1)\cdot P(J_2|J_1)=\frac{2}{9}\times\frac{1}{8}=\frac{1}{36}" />.</p>
+                <ConclusionBox>
+                  Avec remise : <LatexRenderer latex="P(A)=(2/9)^n" />, <LatexRenderer latex="P(B_k)=(7/9)^{k-1}\cdot(2/9)" />. Sans remise : <LatexRenderer latex="P(J_1\cap J_2)=1/36" />.
+                </ConclusionBox>
               </div>
             }
           />
 
           <ExerciseCard
             id="ex2"
-            title="Lancer de n dés"
-            difficulty="Moyen"
+            title="Lancer de n dés — au moins un 6"
+            difficulty="Niveau: Intermédiaire"
             content={
-              <div>
-                <p><LatexRenderer latex="n" /> dés. <LatexRenderer latex="A_n" /> : "au moins un 6".</p>
-                <p>Calculer <LatexRenderer latex="\mathbb{P}(A_n)" /> et sa limite.</p>
+              <div className="space-y-2">
+                <p>On lance <LatexRenderer latex="n" /> dés équilibrés. Soit <LatexRenderer latex="A_n" /> l'événement « obtenir au moins un 6 ».</p>
+                <p>Calculer <LatexRenderer latex="P(A_n)" /> et déterminer sa limite quand <LatexRenderer latex="n\to+\infty" />.</p>
               </div>
             }
             correction={
-              <div className="space-y-4">
-                <p><LatexRenderer latex="\mathbb{P}(A_n) = 1 - (5/6)^n" />. Tend vers 1.</p>
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour « au moins un », on passe au complémentaire : <LatexRenderer latex="P(A_n)=1-P(\overline{A_n})" />. L'événement complémentaire est « aucun 6 », ce qui se traite facilement par indépendance.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="\overline{A_n}" /> = « aucun des <LatexRenderer latex="n" /> dés ne donne 6 ». Les lancers sont indépendants, donc :</p>
+                <p><LatexRenderer latex="P(\overline{A_n})=\left(\frac{5}{6}\right)^n" />.</p>
+                <p>Ainsi <LatexRenderer latex="P(A_n)=1-\left(\frac{5}{6}\right)^n" />.</p>
+                <p>Or <LatexRenderer latex="(5/6)^n\to 0" /> quand <LatexRenderer latex="n\to+\infty" />, donc <LatexRenderer latex="P(A_n)\to 1" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="P(A_n)=1-(5/6)^n \;\longrightarrow\; 1" /> quand <LatexRenderer latex="n\to+\infty" />.
+                </ConclusionBox>
               </div>
             }
           />
         </div>
 
-        {/* Module 2 */}
         <div>
-          <DifficultyHeader
-            level="Module 2"
-            title="Formules de Bayes et Probabilités Totales"
-            icon={BookOpen}
-            stars={3}
-          />
+          <DifficultyHeader level="Module 2 — Formules de Bayes et probabilités totales" />
 
           <ExerciseCard
             id="ex3"
-            title="Contrôle qualité (Bayes)"
-            difficulty="Difficile"
+            title="Contrôle qualité — théorème de Bayes"
+            difficulty="Niveau: Concours"
             content={
-              <div>
-                <p>5% défectueux. Test : Bon accepté 0.96, Mauvais refusé 0.98.</p>
-                <p>1. Proba erreur de contrôle.</p>
-                <p>2. <LatexRenderer latex="\mathbb{P}_A(M)" /> : proba qu'un objet accepté soit mauvais.</p>
+              <div className="space-y-2">
+                <p>5 % des pièces produites sont défectueuses. Un test de contrôle accepte une bonne pièce avec proba 0,96, et rejette une mauvaise pièce avec proba 0,98.</p>
+                <p>1. Calculer la probabilité d'erreur de contrôle.</p>
+                <p>2. Calculer <LatexRenderer latex="P(M|A)" /> : probabilité qu'une pièce acceptée soit défectueuse.</p>
               </div>
             }
             correction={
-              <div className="space-y-4">
-                <p>1. <LatexRenderer latex="\mathbb{P}(E) = 0.039" />.</p>
-                <p>2. Bayes : <LatexRenderer latex="\frac{0.05 \times 0.02}{0.05 \times 0.02 + 0.95 \times 0.96} = \frac{1}{913}" />.</p>
+              <div className="space-y-3">
+                <PointMethodo>
+                  On applique la formule des probabilités totales pour calculer les probabilités d'erreur, puis le théorème de Bayes pour inverser le conditionnement.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="M" /> = « pièce mauvaise » (<LatexRenderer latex="P(M)=0{,}05" />) et <LatexRenderer latex="B" /> = « bonne pièce » (<LatexRenderer latex="P(B)=0{,}95" />).</p>
+                <p>Soit <LatexRenderer latex="A" /> = « pièce acceptée ». Par la formule des probabilités totales :</p>
+                <p><LatexRenderer latex="P(A)=P(A|B)\cdot P(B)+P(A|M)\cdot P(M)=0{,}96\times 0{,}95+0{,}02\times 0{,}05" />.</p>
+                <p>D'où <LatexRenderer latex="P(A)=0{,}9120+0{,}0010=0{,}9130" />.</p>
+                <p>L'erreur de contrôle est <LatexRenderer latex="P(E)=P(\text{bonne rejetée})+P(\text{mauvaise acceptée})=0{,}04\times 0{,}95+0{,}02\times 0{,}05=0{,}0390" />.</p>
+                <Astuce>Le théorème de Bayes donne <LatexRenderer latex="P(M|A)=P(A|M)\cdot P(M)/P(A)" />.</Astuce>
+                <p>Ainsi <LatexRenderer latex="P(M|A)=\dfrac{0{,}02\times 0{,}05}{0{,}9130}=\dfrac{0{,}001}{0{,}9130}\approx\dfrac{1}{913}" />.</p>
+                <ConclusionBox>
+                  Probabilité d'erreur : <LatexRenderer latex="\approx 3{,}9\%" />. Probabilité qu'une pièce acceptée soit mauvaise : <LatexRenderer latex="P(M|A)\approx 1/913" />.
+                </ConclusionBox>
               </div>
             }
           />
 
           <ExerciseCard
             id="ex4"
-            title="Suite arithmético-géométrique"
-            difficulty="Difficile"
+            title="Suite arithmético-géométrique — probabilités de tirage"
+            difficulty="Niveau: Concours"
             content={
-              <div>
-                <p>Pièces A (1/2) et B (1/3). Règle de changement de pièce.</p>
-                <p><LatexRenderer latex="a_{n+1}" /> en fonction de <LatexRenderer latex="a_n" />.</p>
+              <div className="space-y-2">
+                <p>On dispose de deux pièces A (P(pile) = 1/2) et B (P(pile) = 1/3). On change de pièce selon une règle déterministe.</p>
+                <p>Soit <LatexRenderer latex="a_n" /> la probabilité d'utiliser la pièce A au rang <LatexRenderer latex="n" />. Exprimer <LatexRenderer latex="a_{n+1}" /> en fonction de <LatexRenderer latex="a_n" />, puis déterminer la limite.</p>
               </div>
             }
             correction={
-              <div className="space-y-4">
-                <p><LatexRenderer latex="a_{n+1} = -1/6 a_n + 2/3" />.</p>
-                <p><LatexRenderer latex="a_n" /> converge vers 4/7.</p>
+              <div className="space-y-3">
+                <PointMethodo>
+                  On applique la formule des probabilités totales sur l'événement « utiliser A au rang <LatexRenderer latex="n+1" /> » en conditionnant par la pièce utilisée au rang <LatexRenderer latex="n" />.
+                </PointMethodo>
+                <p>Soit la règle : on change de pièce si on obtient pile. Conditionnant sur la pièce au rang <LatexRenderer latex="n" /> :</p>
+                <p><LatexRenderer latex="a_{n+1}=P(\text{A au rang }n+1|A_n)\cdot a_n + P(\text{A au rang }n+1|B_n)\cdot(1-a_n)" />.</p>
+                <p>Or on passe de A à B avec proba 1/2 (pile avec A), et de B à A avec proba 1/3 (pile avec B). D'où :</p>
+                <p><LatexRenderer latex="a_{n+1}=\frac{1}{2}\,a_n+\frac{1}{3}(1-a_n)=-\frac{1}{6}\,a_n+\frac{1}{3}" />.</p>
+                <p>C'est une suite arithmético-géométrique. Le point fixe est <LatexRenderer latex="\ell=-\frac{1}{6}\ell+\frac{1}{3}" />, soit <LatexRenderer latex="\ell=\frac{2}{7}" />.</p>
+                <p>Ainsi <LatexRenderer latex="a_n-\frac{2}{7}=\left(-\frac{1}{6}\right)^n\left(a_0-\frac{2}{7}\right)\to 0" />, donc <LatexRenderer latex="a_n\to\frac{2}{7}" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="a_{n+1}=-\tfrac{1}{6}\,a_n+\tfrac{1}{3}" /> et <LatexRenderer latex="a_n\xrightarrow[n\to\infty]{}\dfrac{2}{7}" />.
+                </ConclusionBox>
               </div>
             }
           />
         </div>
 
-        {/* Module 3 */}
         <div>
-          <DifficultyHeader
-            level="Module 3"
-            title="Formule de Poincaré et Indépendance"
-            icon={Brain}
-            stars={4}
-          />
+          <DifficultyHeader level="Module 3 — Formule de Poincaré et indépendance" />
+
           <ExerciseCard
             id="ex5"
-            title="Reconstitution de paires (Poincaré)"
-            difficulty="Difficile"
+            title="Reconstitution de paires — principe des tiroirs"
+            difficulty="Niveau: Concours"
             content={
-              <div>
-                <p>3 paires, tirage de 4 chaussures.</p>
-                <p>Proba d'avoir au moins une paire.</p>
+              <div className="space-y-2">
+                <p>On dispose de 3 paires de chaussures (6 chaussures distinctes). On tire 4 chaussures au hasard sans remise.</p>
+                <p>Calculer la probabilité d'avoir au moins une paire complète.</p>
               </div>
             }
             correction={
-              <div className="space-y-4">
-                <p><LatexRenderer latex="\mathbb{P}(\text{au moins 1 paire}) = 1" /> (Principe des tiroirs ou Poincaré).</p>
-              </div>
-            }
-          />
-          <ExerciseCard
-            id="ex9"
-            title="Indépendance min/max dés"
-            difficulty="Difficile"
-            content={
-              <div>
-                <p>3 dés. <LatexRenderer latex="M_i" /> : max(D1, D2) <LatexRenderer latex="\leq i" />. <LatexRenderer latex="m_i" /> : min(D2, D3) <LatexRenderer latex="\geq i" />.</p>
-                <p>Indépendance ?</p>
-              </div>
-            }
-            correction={
-              <div className="space-y-4">
-                <p>Indépendants ssi <LatexRenderer latex="i \in \{1, 6\}" />.</p>
+              <div className="space-y-3">
+                <PointMethodo>
+                  On passe au complémentaire : calculer d'abord la probabilité de n'avoir aucune paire, puis soustraire de 1.
+                </PointMethodo>
+                <p>L'espace total est <LatexRenderer latex="\binom{6}{4}=15" /> tirages possibles.</p>
+                <p>Pour « aucune paire » : chaque chaussure tirée doit être la seule de sa paire. On choisit 4 paires parmi 3 — impossible (il n'y a que 3 paires et on tire 4 chaussures). Par le principe des tiroirs, avec 4 chaussures tirées parmi 3 paires, au moins deux chaussures appartiennent à la même paire.</p>
+                <p>Ainsi <LatexRenderer latex="P(\text{aucune paire})=0" />, donc :</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="P(\text{au moins une paire})=1" />. C'est une conséquence directe du principe des tiroirs.
+                </ConclusionBox>
               </div>
             }
           />
 
+          <ExerciseCard
+            id="ex9"
+            title="Indépendance min/max dés"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-2">
+                <p>On lance 3 dés équilibrés <LatexRenderer latex="D_1, D_2, D_3" />. On définit <LatexRenderer latex="M_i=\{\max(D_1,D_2)\leq i\}" /> et <LatexRenderer latex="m_i=\{\min(D_2,D_3)\geq i\}" />.</p>
+                <p>Pour quelles valeurs de <LatexRenderer latex="i" /> les événements <LatexRenderer latex="M_i" /> et <LatexRenderer latex="m_i" /> sont-ils indépendants ?</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  On calcule <LatexRenderer latex="P(M_i)" />, <LatexRenderer latex="P(m_i)" /> et <LatexRenderer latex="P(M_i\cap m_i)" /> explicitement, puis on teste l'égalité <LatexRenderer latex="P(M_i\cap m_i)=P(M_i)\cdot P(m_i)" /> pour chaque valeur de <LatexRenderer latex="i\in\{1,\ldots,6\}" />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="P(M_i)=P(\max(D_1,D_2)\leq i)=(i/6)^2" /> et <LatexRenderer latex="P(m_i)=P(\min(D_2,D_3)\geq i)=((7-i)/6)^2" />.</p>
+                <p>Or <LatexRenderer latex="P(M_i\cap m_i)=P(\max(D_1,D_2)\leq i,\,\min(D_2,D_3)\geq i)" />. La contrainte porte sur <LatexRenderer latex="D_2" /> qui doit vérifier <LatexRenderer latex="D_2\leq i" /> et <LatexRenderer latex="D_2\geq i" />, donc <LatexRenderer latex="D_2=i" />.</p>
+                <p>D'où <LatexRenderer latex="P(M_i\cap m_i)=P(D_1\leq i)\cdot P(D_2=i)\cdot P(D_3\geq i)=\tfrac{i}{6}\cdot\tfrac{1}{6}\cdot\tfrac{7-i}{6}=\frac{i(7-i)}{216}" />.</p>
+                <p>L'indépendance requiert <LatexRenderer latex="\frac{i(7-i)}{216}=\frac{i^2}{36}\cdot\frac{(7-i)^2}{36}=\frac{i^2(7-i)^2}{1296}" />.</p>
+                <p>Ainsi <LatexRenderer latex="1296\,i(7-i)=216\,i^2(7-i)^2" />, soit <LatexRenderer latex="6=i(7-i)" />, ce qui donne <LatexRenderer latex="i=1" /> ou <LatexRenderer latex="i=6" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="M_i" /> et <LatexRenderer latex="m_i" /> sont indépendants si et seulement si <LatexRenderer latex="i\in\{1,6\}" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
         </div>
 
       </div>

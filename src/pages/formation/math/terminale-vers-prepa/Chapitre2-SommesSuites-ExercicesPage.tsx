@@ -106,7 +106,7 @@ const Chapitre2SommesSuitesExercicesPage = () => {
       <SEOHead
         canonical="/formation/math/terminale-vers-prepa/sommes-suites-exercices"
         title="Exercices · Chapitre 2 — Sommes & suites · Terminale → Prépa ECG"
-        description="10 exercices progressifs sur les sommes et produits : linéarité, sommes usuelles, changement d'indice, télescopage et techniques de prépa."
+        description="19 exercices progressifs sur les sommes et produits : linéarité, sommes usuelles, changement d'indice, télescopage et techniques de prépa."
       />
 
       {/* Fil d'Ariane */}
@@ -133,7 +133,7 @@ const Chapitre2SommesSuitesExercicesPage = () => {
         <header className="mb-14 relative">
           <div className="carnet-eyebrow mb-5">02 · Exercices · Sommes & suites</div>
           <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.022em] text-carnet-ink mb-6">
-            Dix sommes <em className="font-lora italic text-carnet-red">à manipuler</em>.
+            Dix-neuf sommes <em className="font-lora italic text-carnet-red">à manipuler</em>.
           </h1>
           <p className="font-instrument text-[17px] leading-[1.6] text-carnet-ink-soft max-w-[680px]">
             Linéarité, sommes usuelles, changement d'indice, télescopage, produits. <span className="carnet-hl font-lora italic">Pose la formule avant le calcul</span>, et garde un œil sur les bornes.
@@ -141,10 +141,10 @@ const Chapitre2SommesSuitesExercicesPage = () => {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(78,55,30,0.18)] text-carnet-ink-soft bg-carnet-paper-2">
-              3 Faciles
+              6 Faciles
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(193,68,58,0.3)] text-carnet-red bg-[rgba(193,68,58,0.06)]">
-              3 Moyens
+              9 Moyens
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-carnet-red text-carnet-paper bg-carnet-red">
               4 Difficiles
@@ -509,6 +509,286 @@ const Chapitre2SommesSuitesExercicesPage = () => {
             </>
           }
         />
+
+        {/* Exercice 11 */}
+        <Exercise
+          id="ex11"
+          num={11}
+          title="Somme des entiers impairs"
+          difficulty="Facile"
+          open={!!open.ex11}
+          onToggle={() => toggle('ex11')}
+          tilt="l"
+          statement={
+            <>
+              <p>Calculer :</p>
+              <Block tex={'S_n = \\sum_{k=1}^{n} (2k-1)'} />
+              <p>et reconnaître le résultat comme un carré parfait.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="Linéarité">
+                <Block tex={'S_n = 2\\sum_{k=1}^n k - \\sum_{k=1}^n 1 = 2 \\cdot \\frac{n(n+1)}{2} - n = n(n+1) - n.'} />
+              </Step>
+              <Step label="Conclusion">
+                <p>On simplifie :</p>
+                <Block tex={'S_n = n^2 + n - n = n^2.'} />
+                <p>La somme des <Inline tex={'n'} /> premiers entiers impairs est un carré parfait : <Inline tex={'S_n = n^2'} />.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 12 */}
+        <Exercise
+          id="ex12"
+          num={12}
+          title="Démontrer la formule géométrique"
+          difficulty="Facile"
+          open={!!open.ex12}
+          onToggle={() => toggle('ex12')}
+          statement={
+            <>
+              <p>Soit <Inline tex={'q \\neq 1'} />. Montrer que :</p>
+              <Block tex={'\\sum_{k=0}^{n} q^k = \\frac{1 - q^{n+1}}{1 - q}.'} />
+            </>
+          }
+          correction={
+            <>
+              <Step label="Poser la somme">
+                <p>On pose <Inline tex={'S = \\sum_{k=0}^n q^k = 1 + q + q^2 + \\cdots + q^n'} />.</p>
+              </Step>
+              <Step label="Multiplier par q">
+                <Block tex={'qS = q + q^2 + \\cdots + q^n + q^{n+1} = \\sum_{k=1}^{n+1} q^k.'} />
+              </Step>
+              <Step label="Soustraire S − qS">
+                <Block tex={'S - qS = 1 - q^{n+1},'} />
+                <p>car tous les termes intermédiaires se compensent.</p>
+              </Step>
+              <Step label="Conclusion">
+                <p>Comme <Inline tex={'q \\neq 1'} />, on peut diviser :</p>
+                <Block tex={'S = \\frac{1 - q^{n+1}}{1 - q}.'} />
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 13 */}
+        <Exercise
+          id="ex13"
+          num={13}
+          title="Somme de k(k−1)"
+          difficulty="Moyen"
+          open={!!open.ex13}
+          onToggle={() => toggle('ex13')}
+          tilt="r"
+          statement={
+            <>
+              <p>Pour <Inline tex={'n \\geq 2'} />, calculer en fonction de <Inline tex={'n'} /> :</p>
+              <Block tex={'S_n = \\sum_{k=2}^{n} k(k-1).'} />
+            </>
+          }
+          correction={
+            <>
+              <Step label="Développer le terme général">
+                <p>On écrit <Inline tex={'k(k-1) = k^2 - k'} />, donc :</p>
+                <Block tex={'S_n = \\sum_{k=2}^n k^2 - \\sum_{k=2}^n k.'} />
+              </Step>
+              <Step label="Utiliser les formules usuelles">
+                <Block tex={'S_n = \\left(\\frac{n(n+1)(2n+1)}{6} - 1\\right) - \\left(\\frac{n(n+1)}{2} - 1\\right).'} />
+              </Step>
+              <Step label="Simplifier">
+                <Block tex={'S_n = \\frac{n(n+1)(2n+1) - 3n(n+1)}{6} = \\frac{n(n+1)\\bigl[(2n+1) - 3\\bigr]}{6} = \\frac{n(n+1)(2n-2)}{6}.'} />
+                <Block tex={'S_n = \\frac{n(n+1)(n-1)}{3}.'} />
+              </Step>
+              <Step label="Vérification (n = 2)">
+                <p><Inline tex={'S_2 = 2 \\cdot 1 = 2'} />, et la formule donne <Inline tex={'\\tfrac{2 \\cdot 3 \\cdot 1}{3} = 2'} />. ✓</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 14 */}
+        <Exercise
+          id="ex14"
+          num={14}
+          title="Deux sommes arithmétiques imbriquées"
+          difficulty="Moyen"
+          open={!!open.ex14}
+          onToggle={() => toggle('ex14')}
+          statement={
+            <>
+              <p>Soit <Inline tex={'u_k = 2k - 1'} />. Calculer :</p>
+              <Block tex={'A = \\sum_{k=1}^{20} u_k \\qquad \\text{puis} \\qquad B = \\sum_{k=1}^{20} u_{2k}.'} />
+            </>
+          }
+          correction={
+            <>
+              <Step label="Calcul de A">
+                <Block tex={'A = \\sum_{k=1}^{20}(2k-1) = 2 \\cdot \\frac{20 \\cdot 21}{2} - 20 = 420 - 20 = 400 = 20^2.'} />
+              </Step>
+              <Step label="Exprimer u_{2k}">
+                <p>On substitue <Inline tex={'2k'} /> dans la formule : <Inline tex={'u_{2k} = 2(2k) - 1 = 4k - 1'} />.</p>
+              </Step>
+              <Step label="Calcul de B">
+                <Block tex={'B = \\sum_{k=1}^{20}(4k-1) = 4 \\cdot \\frac{20 \\cdot 21}{2} - 20 = 840 - 20 = 820.'} />
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 15 */}
+        <Exercise
+          id="ex15"
+          num={15}
+          title="Trouver le rang à partir d'un seuil"
+          difficulty="Moyen"
+          open={!!open.ex15}
+          onToggle={() => toggle('ex15')}
+          tilt="l"
+          statement={
+            <>
+              <p>Pour <Inline tex={'n \\geq 0'} />, on pose <Inline tex={'T_n = \\displaystyle\\sum_{k=0}^{n} 3^k'} />.</p>
+              <p><strong>a)</strong> Calculer <Inline tex={'T_n'} /> en fonction de <Inline tex={'n'} />.</p>
+              <p><strong>b)</strong> Déterminer le plus petit entier <Inline tex={'n'} /> tel que <Inline tex={'T_n > 500'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="a) Formule de la somme géométrique">
+                <p>Suite géométrique de raison 3 et de premier terme 1 :</p>
+                <Block tex={'T_n = \\frac{3^{n+1} - 1}{3 - 1} = \\frac{3^{n+1} - 1}{2}.'} />
+              </Step>
+              <Step label="b) Résoudre T_n > 500">
+                <Block tex={'\\frac{3^{n+1} - 1}{2} > 500 \\Longleftrightarrow 3^{n+1} > 1001.'} />
+                <p>On passe au logarithme : <Inline tex={'(n+1)\\ln 3 > \\ln 1001'} />, soit <Inline tex={'n + 1 > \\dfrac{\\ln 1001}{\\ln 3} \\approx 6{,}28'} />.</p>
+                <p>Donc <Inline tex={'n + 1 \\geq 7'} />, i.e. <Inline tex={'n \\geq 6'} />.</p>
+              </Step>
+              <Step label="Vérification">
+                <p><Inline tex={'T_6 = \\tfrac{3^7 - 1}{2} = \\tfrac{2187 - 1}{2} = 1093 > 500'} />. ✓</p>
+                <p><Inline tex={'T_5 = \\tfrac{3^6 - 1}{2} = \\tfrac{729 - 1}{2} = 364 < 500'} />. Donc le plus petit entier est <Inline tex={'n = 6'} />.</p>
+              </Step>
+            </>
+          }
+        />
+
+          {/* Module M4 — Sommes classiques & télescopage */}
+          <div className="mb-2 mt-10">
+            <span className="inline-block bg-carnet-red text-white text-xs font-bold px-3 py-1 rounded-full tracking-wide uppercase">
+              M4 — Sommes classiques &amp; télescopage
+            </span>
+          </div>
+
+          <Exercise
+            id="ex16"
+            num={16}
+            title="Somme des entiers impairs"
+            difficulty="Facile"
+            open={!!open.ex16}
+            onToggle={() => toggle('ex16')}
+            tilt="l"
+            statement={
+              <>
+                <p>Calculer la somme des 10 premiers entiers impairs :</p>
+                <Block tex={'S = \\sum_{k=1}^{10}(2k-1)'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Linéarité de la somme">
+                  <Block tex={'S = 2\\sum_{k=1}^{10}k - \\sum_{k=1}^{10}1 = 2 \\cdot \\frac{10 \\cdot 11}{2} - 10 = 110 - 10'} />
+                </Step>
+                <Step label="Résultat — propriété remarquable">
+                  <p>La somme des <Inline tex={'n'} /> premiers entiers impairs vaut toujours <Inline tex={'n^2'} />.</p>
+                  <Block tex={'\\boxed{S = 100 = 10^2}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex17"
+            num={17}
+            title="Somme arithmétique avec paramètre"
+            difficulty="Moyen"
+            open={!!open.ex17}
+            onToggle={() => toggle('ex17')}
+            statement={
+              <>
+                <p>Calculer, en fonction de <Inline tex={'n \\in \\mathbb{N}'} /> :</p>
+                <Block tex={'S_n = \\sum_{k=0}^{n}(3k+2)'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Décomposition par linéarité">
+                  <Block tex={'S_n = 3\\sum_{k=0}^{n}k + 2\\sum_{k=0}^{n}1 = 3 \\cdot \\frac{n(n+1)}{2} + 2(n+1)'} />
+                </Step>
+                <Step label="Factorisation">
+                  <Block tex={'S_n = (n+1)\\left(\\frac{3n}{2} + 2\\right) = (n+1) \\cdot \\frac{3n+4}{2}'} />
+                  <Block tex={'\\boxed{S_n = \\frac{(n+1)(3n+4)}{2}}'} />
+                  <p>Vérification pour <Inline tex={'n=2'} /> : <Inline tex={'S_2 = 2+5+8 = 15'} /> et <Inline tex={'\\frac{3 \\cdot 14}{2} = 21'} />… vérifier : <Inline tex={'\\frac{3 \\cdot 10}{2}=15'} />. ✓</p>
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex18"
+            num={18}
+            title="Série télescopique"
+            difficulty="Moyen"
+            open={!!open.ex18}
+            onToggle={() => toggle('ex18')}
+            tilt="r"
+            statement={
+              <>
+                <p>Calculer, en fonction de <Inline tex={'n \\geq 1'} /> :</p>
+                <Block tex={'T_n = \\sum_{k=1}^{n}\\frac{1}{k(k+1)}'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Décomposition en éléments simples">
+                  <p>On remarque que :</p>
+                  <Block tex={'\\frac{1}{k(k+1)} = \\frac{1}{k} - \\frac{1}{k+1}'} />
+                </Step>
+                <Step label="Télescopage">
+                  <Block tex={'T_n = \\sum_{k=1}^{n}\\left(\\frac{1}{k} - \\frac{1}{k+1}\\right) = \\frac{1}{1} - \\frac{1}{n+1}'} />
+                  <p>La plupart des termes s'annulent (somme télescopique).</p>
+                  <Block tex={'\\boxed{T_n = \\frac{n}{n+1}}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex19"
+            num={19}
+            title="Somme de k² − k"
+            difficulty="Moyen"
+            open={!!open.ex19}
+            onToggle={() => toggle('ex19')}
+            statement={
+              <>
+                <p>Calculer, en fonction de <Inline tex={'n \\geq 1'} /> :</p>
+                <Block tex={'U_n = \\sum_{k=1}^{n}(k^2 - k)'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Décomposition par linéarité">
+                  <Block tex={'U_n = \\sum_{k=1}^{n}k^2 - \\sum_{k=1}^{n}k = \\frac{n(n+1)(2n+1)}{6} - \\frac{n(n+1)}{2}'} />
+                </Step>
+                <Step label="Factorisation">
+                  <Block tex={'U_n = \\frac{n(n+1)}{6}\\bigl[(2n+1) - 3\\bigr] = \\frac{n(n+1)(2n-2)}{6} = \\frac{n(n+1) \\cdot 2(n-1)}{6}'} />
+                  <Block tex={'\\boxed{U_n = \\frac{n(n-1)(n+1)}{3}}'} />
+                  <p>Vérification pour <Inline tex={'n=3'} /> : <Inline tex={'U_3 = 0+2+6=8'} /> et <Inline tex={'\\frac{3 \\cdot 2 \\cdot 4}{3} = 8'} />. ✓</p>
+                </Step>
+              </>
+            }
+          />
 
         {/* Bandeau récap */}
         <section className="mt-14 mb-10 relative">

@@ -70,7 +70,7 @@ const ChronologiesPage = () => {
 
   const getColorClasses = (color: string) => {
     const colorMap: { [key: string]: { bg: string; text: string; hover: string; badge: string; border: string } } = {
-      blue: { bg: 'bg-blue-50', text: 'text-blue-700', hover: 'hover:bg-blue-100', badge: 'bg-blue-100 text-blue-700', border: 'border-blue-200' },
+      blue: { bg: 'bg-pr-orange-pale', text: 'text-carnet-red', hover: 'hover:bg-carnet-red/10', badge: 'bg-carnet-red/10 text-carnet-red', border: 'border-carnet-red/30' },
       green: { bg: 'bg-green-50', text: 'text-green-700', hover: 'hover:bg-green-100', badge: 'bg-green-100 text-green-700', border: 'border-green-200' },
       purple: { bg: 'bg-purple-50', text: 'text-purple-700', hover: 'hover:bg-purple-100', badge: 'bg-purple-100 text-purple-700', border: 'border-purple-200' },
       orange: { bg: 'bg-orange-50', text: 'text-orange-700', hover: 'hover:bg-orange-100', badge: 'bg-orange-100 text-orange-700', border: 'border-orange-200' },
@@ -81,7 +81,7 @@ const ChronologiesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center space-x-2 text-sm mb-6">

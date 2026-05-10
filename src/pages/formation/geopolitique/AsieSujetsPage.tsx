@@ -251,7 +251,7 @@ const AsieSujetsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -304,7 +304,7 @@ const AsieSujetsPage = () => {
               Navigation rapide
             </h3>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/formation/geopolitique/asie" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors">
+              <Link to="/formation/geopolitique/asie" className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md transition-colors">
                 <BookOpen className="w-4 h-4" />
                 Accéder au cours
               </Link>
@@ -379,13 +379,13 @@ const AsieSujetsPage = () => {
         </Card>
 
         {/* Note méthodologique */}
-        <Card className="mt-8 bg-blue-50 border-blue-200">
+        <Card className="mt-8 bg-pr-orange-pale border-carnet-red/30">
           <CardContent className="p-6">
-            <div className="flex items-center gap-3 text-blue-800 mb-4">
+            <div className="flex items-center gap-3 text-carnet-red-deep mb-4">
               <Lightbulb className="h-5 w-5" />
               <h3 className="font-semibold">Conseils méthodologiques</h3>
             </div>
-            <div className="text-blue-700 space-y-2">
+            <div className="text-carnet-red space-y-2">
               <p>• <strong>Comprendre la multipolarité :</strong> L'Asie est le continent le plus peuplé avec des puissances très diverses.</p>
               <p>• <strong>Maîtriser les cartes :</strong> Frontières terrestres et maritimes, mégalopoles, ressources sont essentiels.</p>
               <p>• <strong>Analyser les rivalités :</strong> Chine/États-Unis, Inde/Pakistan, Corée du Nord/Corée du Sud sont des conflits majeurs.</p>

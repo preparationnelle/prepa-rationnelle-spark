@@ -6,7 +6,7 @@ import { Home, ChevronRight, Droplets, Globe, TrendingUp, AlertTriangle, Fish, F
 
 const EauPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center space-x-2 text-sm mb-6">
@@ -27,7 +27,7 @@ const EauPage = () => {
         </nav>
 
         {/* Header */}
-        <Card className="mb-8 bg-gradient-to-r from-cyan-600 to-blue-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-cyan-600 to-pr-orange text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Droplets className="h-8 w-8" />
@@ -65,7 +65,7 @@ const EauPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Fish className="h-5 w-5 text-blue-600" />
+              <Fish className="h-5 w-5 text-carnet-red" />
               Ressources halieutiques
             </CardTitle>
           </CardHeader>
@@ -77,9 +77,9 @@ const EauPage = () => {
                   dont <strong>55% provient de l'aquaculture</strong> (+5%/an). Cette croissance exponentielle 
                   transforme la géographie maritime mondiale.
                 </p>
-                <div className="bg-blue-50 p-3 rounded-lg">
-                  <h4 className="font-semibold text-blue-800 mb-2">Régions de pêche</h4>
-                  <ul className="text-sm text-blue-700 space-y-1">
+                <div className="bg-pr-orange-pale p-3 rounded-lg">
+                  <h4 className="font-semibold text-carnet-red-deep mb-2">Régions de pêche</h4>
+                  <ul className="text-sm text-carnet-red space-y-1">
                     <li>• Pacifique : 50 millions tonnes</li>
                     <li>• Atlantique : 25 millions tonnes</li>
                     <li>• Chine : 20 millions tonnes (leader)</li>
@@ -119,9 +119,9 @@ const EauPage = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-4">
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-blue-800 mb-2">Répartition mondiale</h4>
-                      <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                    <div className="bg-pr-orange-pale p-4 rounded-lg">
+                      <h4 className="font-semibold text-carnet-red-deep mb-2">Répartition mondiale</h4>
+                      <ul className="list-disc list-inside text-sm text-carnet-red space-y-1">
                         <li><strong>71% Terre eau :</strong> 97% océans, 2,5% douce</li>
                         <li><strong>Plus grand fleuve :</strong> Amazone (débits)</li>
                         <li><strong>Plus grand réservoir :</strong> Lac Baïkal (20% eau douce)</li>
@@ -162,12 +162,12 @@ const EauPage = () => {
                       </div>
                     </div>
 
-                    <div className="border-l-4 border-blue-400 bg-blue-50 p-4 rounded-r-lg">
-                      <h4 className="font-semibold text-blue-800 mb-3">
+                    <div className="border-l-4 border-carnet-red/40 bg-pr-orange-pale p-4 rounded-r-lg">
+                      <h4 className="font-semibold text-carnet-red-deep mb-3">
                         <Droplets className="inline h-4 w-4 mr-2" />
                         Nil : Barrage éthiopien vs Égypte/Soudan
                       </h4>
-                      <div className="text-sm text-blue-700 space-y-2">
+                      <div className="text-sm text-carnet-red space-y-2">
                         <p><strong>GERD :</strong> Grand barrage Renaissance éthiopien</p>
                         <p><strong>Capacité :</strong> 74 milliards m³, électricité 6000 MW</p>
                         <p><strong>Tensions :</strong> Égypte menace intervention militaire</p>

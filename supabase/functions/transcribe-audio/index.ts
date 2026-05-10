@@ -1,16 +1,15 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { requireAuth } from "../_shared/auth.ts";
 Deno.serve(async (req) => {
     // CORS headers
-    const corsHeaders = {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-    };
-
     // Handle CORS preflight requests
-    if (req.method === 'OPTIONS') {
-        return new Response(null, { headers: corsHeaders });
-    }
+    const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
+
+  const __authResult = await requireAuth(req);
+  if (__authResult.response) return __authResult.response;
 
     try {
         // Récupérer la clé API OpenAI depuis les secrets Supabase
@@ -22,7 +21,7 @@ Deno.serve(async (req) => {
                 JSON.stringify({ error: 'Configuration serveur manquante' }),
                 {
                     status: 500,
-                    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+                    headers: { ...corsHeaders(req), 'Content-Type': 'application/json' }
                 }
             );
         }
@@ -37,7 +36,7 @@ Deno.serve(async (req) => {
                 JSON.stringify({ error: 'Aucun fichier audio fourni' }),
                 {
                     status: 400,
-                    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+                    headers: { ...corsHeaders(req), 'Content-Type': 'application/json' }
                 }
             );
         }
@@ -49,7 +48,7 @@ Deno.serve(async (req) => {
                 JSON.stringify({ error: 'Langue non supportée' }),
                 {
                     status: 400,
-                    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+                    headers: { ...corsHeaders(req), 'Content-Type': 'application/json' }
                 }
             );
         }
@@ -82,7 +81,7 @@ Deno.serve(async (req) => {
                 }),
                 {
                     status: response.status,
-                    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+                    headers: { ...corsHeaders(req), 'Content-Type': 'application/json' }
                 }
             );
         }
@@ -97,7 +96,7 @@ Deno.serve(async (req) => {
             JSON.stringify(data),
             {
                 status: 200,
-                headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+                headers: { ...corsHeaders(req), 'Content-Type': 'application/json' }
             }
         );
 
@@ -110,7 +109,7 @@ Deno.serve(async (req) => {
             }),
             {
                 status: 500,
-                headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+                headers: { ...corsHeaders(req), 'Content-Type': 'application/json' }
             }
         );
     }

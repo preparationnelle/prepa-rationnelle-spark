@@ -27,7 +27,7 @@ const semestre1: Semester = {
       id: 1,
       slug: 'elements-de-logique',
       title: 'Éléments de logique',
-      description: 'Concepts fondamentaux et démonstrations rigoureuses',
+      description: 'Propositions, quantificateurs, contraposée et raisonnement par l\'absurde',
       icon: BrainCircuit,
       color: 'bg-blue-600',
       symbol: '∧'
@@ -36,7 +36,7 @@ const semestre1: Semester = {
       id: 2,
       slug: 'ensembles-et-applications',
       title: 'Ensembles et applications',
-      description: 'Concepts fondamentaux et démonstrations rigoureuses',
+      description: 'Injection, surjection, bijection et image directe et réciproque',
       icon: Shapes,
       color: 'bg-blue-600',
       symbol: '∈'
@@ -81,7 +81,7 @@ const semestre1: Semester = {
       id: 7,
       slug: 'integration-sur-un-segment',
       title: 'Intégration sur un segment',
-      description: 'Intégrales de Riemann et méthodes calculation',
+      description: 'Intégrales de Riemann, intégration par parties et changement de variable',
       icon: AreaChart,
       color: 'bg-blue-600',
       symbol: '∫'
@@ -126,7 +126,7 @@ const semestre2: Semester = {
       id: 11,
       slug: 'applications-lineaires-structures-vectorielles',
       title: 'Applications linéaires & structures vectorielles',
-      description: 'Morphismes et propriétés des applications linéaires',
+      description: 'Noyau, image, théorème du rang, isomorphismes et changement de base',
       icon: Move,
       color: 'bg-blue-600',
       symbol: 'L'
@@ -135,7 +135,7 @@ const semestre2: Semester = {
       id: 12,
       slug: 'comparaison-negligeabilite-equivalence',
       title: 'Comparaison — négligeabilité & équivalence',
-      description: 'Relations asymptotiques et développements',
+      description: 'Négligeabilité, équivalence et comparaison asymptotique de suites et fonctions',
       icon: Scale,
       color: 'bg-blue-600',
       symbol: '≈'
@@ -144,7 +144,7 @@ const semestre2: Semester = {
       id: 13,
       slug: 'series-numeriques',
       title: 'Séries numériques',
-      description: 'Convergence et critères des séries',
+      description: 'Séries géométriques, de Riemann, séries télescopiques et convergence absolue',
       icon: InfinityIcon,
       color: 'bg-blue-600',
       symbol: '∞'
@@ -162,7 +162,7 @@ const semestre2: Semester = {
       id: 15,
       slug: 'integrales-impropres-criteres-de-convergence',
       title: 'Intégrales impropres & critères de convergence',
-      description: 'Extension de l\'intégration et convergence',
+      description: 'Convergence par comparaison, équivalents et intégrales de Riemann impropres',
       icon: AreaChart,
       color: 'bg-blue-600',
       symbol: '∫∞'
@@ -171,7 +171,7 @@ const semestre2: Semester = {
       id: 16,
       slug: 'espaces-probabilises-conditionnement',
       title: 'Espaces probabilisés & conditionnement',
-      description: 'Modélisation probabiliste et indépendance',
+      description: 'Tribu, probabilité, formule des probabilités totales et Bayes',
       icon: Dices,
       color: 'bg-blue-600',
       symbol: 'Ω'
@@ -180,7 +180,7 @@ const semestre2: Semester = {
       id: 17,
       slug: 'variables-aleatoires-discretes-lois',
       title: 'Variables aléatoires discrètes & lois',
-      description: 'Lois de probabilité et espérance mathématique',
+      description: 'Lois usuelles (binomiale, Poisson, géométrique), espérance et variance',
       icon: Variable,
       color: 'bg-blue-600',
       symbol: 'X'
@@ -189,7 +189,7 @@ const semestre2: Semester = {
       id: 18,
       slug: 'convergences-theoremes-limites',
       title: 'Convergences & théorèmes limites',
-      description: 'Théorèmes centraux et convergence en loi',
+      description: 'Loi faible des grands nombres, théorème central limite et inégalités de Markov',
       icon: LocateFixed,
       color: 'bg-blue-600',
       symbol: '⇒'

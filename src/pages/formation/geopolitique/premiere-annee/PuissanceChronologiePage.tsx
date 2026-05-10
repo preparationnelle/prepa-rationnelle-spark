@@ -82,7 +82,7 @@ const PuissanceChronologiePage = () => {
   const groupedEvents = groupEventsByDecade(events);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 py-8">
         {/* Navigation breadcrumb */}
         <div className="flex items-center gap-2 text-sm text-gray-600 mb-6">
@@ -105,7 +105,7 @@ const PuissanceChronologiePage = () => {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <Calendar className="h-8 w-8 text-blue-600" />
+            <Calendar className="h-8 w-8 text-carnet-red" />
             <h1 className="text-4xl font-bold text-gray-900">
               Chronologie de la puissance
             </h1>
@@ -145,7 +145,7 @@ const PuissanceChronologiePage = () => {
         <div className="mt-12 text-center">
           <Link
             to="/formation/geopolitique/premiere-annee"
-            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+            className="inline-flex items-center gap-2 text-carnet-red hover:text-carnet-red-deep font-medium"
           >
             ← Retour à la première année
           </Link>

@@ -5,7 +5,7 @@ import { TrendingUp, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle, Activ
 
 const FluctuationsEconomiquesPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -47,14 +47,14 @@ const FluctuationsEconomiquesPage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <Activity className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+                <Activity className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   Fluctuations économiques et politiques de régulation des cycles
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 4.3 - Module 4</div>
+                <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 4.3 - Module 4</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -67,14 +67,14 @@ const FluctuationsEconomiquesPage = () => {
             {/* Section 1: Les cycles économiques */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
                 Les cycles économiques : phases et caractéristiques
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Définition du cycle économique</h3>
                   <p className="text-sm text-gray-600">
                     Alternance régulière de phases d'expansion et de contraction de l'activité économique autour d'une tendance de long terme.
@@ -106,9 +106,9 @@ const FluctuationsEconomiquesPage = () => {
                       <li>• Déflation possible</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-3 text-center">
-                    <h4 className="font-semibold text-blue-800 mb-1">Creux</h4>
-                    <ul className="text-xs text-blue-700 space-y-1">
+                  <div className="bg-pr-orange-pale rounded-lg p-3 text-center">
+                    <h4 className="font-semibold text-carnet-red-deep mb-1">Creux</h4>
+                    <ul className="text-xs text-carnet-red space-y-1">
                       <li>• Minimum Y</li>
                       <li>• Chômage élevé</li>
                       <li>• Stagnation</li>
@@ -121,62 +121,62 @@ const FluctuationsEconomiquesPage = () => {
             {/* Section 2: Les théories des cycles économiques */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
                 Les théories explicatives des cycles économiques
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Théorie keynésienne</h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Cycles dus aux variations de la demande effective</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Rôle des anticipations et de la confiance des agents</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Multiplicateur d'investissement et accélérateur</span>
                     </li>
                   </ul>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Théorie monétariste</h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Cycles dus aux variations de la masse monétaire</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Rôle de la politique monétaire dans la régulation</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Critique des interventions discrétionnaires</span>
                     </li>
                   </ul>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Théorie des cycles réels (RBC)</h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Cycles dus aux chocs technologiques et d'offre</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Réponses optimales des agents économiques</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Marchés efficients et flexibilité des prix</span>
                     </li>
                   </ul>
@@ -187,15 +187,15 @@ const FluctuationsEconomiquesPage = () => {
             {/* Section 3: Les politiques de régulation */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
                 Les politiques de régulation des cycles économiques
               </h2>
 
               <div className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Politique budgétaire</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Stabilisation automatique (impôts progressifs)</li>
@@ -204,7 +204,7 @@ const FluctuationsEconomiquesPage = () => {
                       <li>• Multiplicateur des dépenses publiques</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Politique monétaire</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Ajustement des taux directeurs</li>
@@ -215,19 +215,19 @@ const FluctuationsEconomiquesPage = () => {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Politiques structurelles</h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Flexibilité du marché du travail</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Libéralisation des marchés des biens et services</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Politiques de l'innovation et de la formation</span>
                     </li>
                   </ul>
@@ -238,14 +238,14 @@ const FluctuationsEconomiquesPage = () => {
             {/* Section 4: Limites et contraintes */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">4</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">4</span>
                 </div>
                 Limites et contraintes des politiques de régulation
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Le problème du délai (Inside lag)</h3>
                   <p className="text-sm text-gray-600">
                     Temps nécessaire au diagnostic de la situation économique et à la mise en œuvre des politiques.
@@ -253,7 +253,7 @@ const FluctuationsEconomiquesPage = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Contraintes institutionnelles</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Règles budgétaires européennes</li>
@@ -261,7 +261,7 @@ const FluctuationsEconomiquesPage = () => {
                       <li>• Coordination internationale</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h3 className="font-semibold text-gray-800 mb-2">Contraintes économiques</h3>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Rigidités structurelles</li>
@@ -271,19 +271,19 @@ const FluctuationsEconomiquesPage = () => {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Le dilemme de la politique économique</h3>
                   <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Trade-off entre inflation et chômage (courbe de Phillips)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Choix entre politiques discrétionnaires et règles</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Équilibre entre efficacité et crédibilité</span>
                     </li>
                   </ul>
@@ -306,7 +306,7 @@ const FluctuationsEconomiquesPage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module4/politiques-structurelles">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

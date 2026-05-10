@@ -1,305 +1,173 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Link } from "react-router-dom";
-import { FileText, Home, ChevronRight, BookOpen, MessageSquare, Wand2, Target, CheckCircle } from 'lucide-react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeft, BookOpen, MessageSquare, Wand2, Target } from 'lucide-react';
+import { PRFormationLayout } from '@/components/formation/PRFormationLayout';
+
+type Step = {
+  number: number;
+  title: string;
+  subtitle: string;
+  cards: { Icon: React.ComponentType<{ className?: string }>; title: string; description: string }[];
+};
+
+const steps: Step[] = [
+  {
+    number: 1,
+    title: 'Modules principaux',
+    subtitle: 'Les deux piliers fondamentaux de la formation espagnol',
+    cards: [
+      {
+        Icon: BookOpen,
+        title: 'Grammaire espagnole',
+        description: 'Maîtrise conjugaisons, syntaxe et structures avancées avec 6 fiches détaillées.',
+      },
+      {
+        Icon: MessageSquare,
+        title: 'Civilisation hispanique',
+        description: 'Explore l’Espagne et l’Amérique latine contemporaines pour les épreuves.',
+      },
+    ],
+  },
+  {
+    number: 2,
+    title: 'Outils IA',
+    subtitle: 'Technologies avancées pour accélérer ton apprentissage',
+    cards: [
+      {
+        Icon: MessageSquare,
+        title: 'Générateur de paragraphes',
+        description: 'Crée des paragraphes argumentatifs de 150 mots basés sur articles de presse.',
+      },
+      {
+        Icon: Wand2,
+        title: 'Générateur de thèmes',
+        description: 'Entraîne-toi aux thèmes grammaticaux avec correction automatique.',
+      },
+    ],
+  },
+  {
+    number: 3,
+    title: 'Vocabulaire spécialisé',
+    subtitle: 'Le lexique essentiel pour les épreuves de concours',
+    cards: [
+      {
+        Icon: MessageSquare,
+        title: 'Flashcards interactives',
+        description:
+          '+70 termes et expressions par thématiques : institutions, élections, partis, législation, administration et relations internationales.',
+      },
+    ],
+  },
+  {
+    number: 4,
+    title: 'Méthodes & ressources',
+    subtitle: 'Techniques éprouvées pour réussir tes épreuves',
+    cards: [
+      {
+        Icon: BookOpen,
+        title: 'Méthodes essentielles',
+        description: 'Version espagnole, thème espagnol et expression écrite.',
+      },
+      {
+        Icon: Target,
+        title: 'Préparation concours',
+        description: 'Épreuves écrites, épreuves orales et civilisation hispanique.',
+      },
+    ],
+  },
+];
+
+const parcours = [
+  { title: 'Commence par la grammaire', description: 'Maîtrise les bases avec les 6 fiches détaillées.' },
+  { title: 'Utilise les générateurs IA', description: 'Entraîne-toi avec nos outils de correction automatique.' },
+  { title: 'Explore la civilisation', description: 'Découvre l’actualité hispanique pour tes dissertations.' },
+  { title: 'Perfectionne-toi', description: 'Utilise méthodes et vocabulaire pour tes révisions finales.' },
+];
 
 const FormationEspagnolSommairePage = () => {
-  const [language] = useState<'fr' | 'en'>('fr');
-
-  const generatorTools = [
-    {
-      id: 'paragraph',
-      title: 'Générateur de Paragraphes',
-      description: 'Créez des paragraphes argumentatifs en espagnol basés sur des articles de presse',
-      icon: MessageSquare,
-      component: null
-    },
-    {
-      id: 'grammar',
-      title: 'Générateur de Thèmes',
-      description: 'Entraînez-vous aux thèmes grammaticaux avec correction automatique',
-      icon: Wand2,
-      component: null
-    }
-  ];
-
   return (
-    <div className="min-h-screen relative overflow-hidden" style={{ backgroundColor: '#F7F6F3', color: '#1A1A18', fontFamily: "'DM Sans', sans-serif" }}>
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formations" className="hover:text-foreground transition-colors">
-              Toutes les formations
-            </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/espagnol" className="hover:text-foreground transition-colors">
-              Formation Espagnol ECG
-            </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Sommaire</span>
-          </div>
-        </div>
-      </nav>
-
-      <div className="container mx-auto py-8 px-4 relative z-10">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <div className="inline-block mb-6 px-3 py-1 rounded" style={{ backgroundColor: '#FDF0EC', color: '#C45A35', fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-            Espagnol · Sommaire
-          </div>
-          <h1 className="mb-6" style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 400, color: '#1A1A18', fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: 1.1, letterSpacing: '-0.01em' }}>
-            Sommaire de la Formation
-          </h1>
-          <div className="flex justify-center mb-6">
-            <span style={{ display: 'inline-block', width: '56px', height: '3px', backgroundColor: '#F4845F' }} />
-          </div>
-          <p className="max-w-2xl mx-auto mb-8" style={{ color: '#3A3A38', fontSize: '16px', lineHeight: 1.65 }}>
-            Guide complet pour naviguer dans votre formation espagnol ECG.
-          </p>
-
-          {/* Navigation buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <Link to="/formation/espagnol">
-              <button className="w-full bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg">
-                ← Retour à la formation
-              </button>
-            </Link>
-          </div>
-        </div>
-
-        {/* Section Sommaire - Guide pas à pas */}
-        <section className="py-8 px-4 sm:px-6 relative z-10 bg-gradient-to-br from-orange-50 via-white to-orange-100">
-          <div className="container mx-auto max-w-6xl">
-            <div className="grid gap-6 max-w-5xl mx-auto">
-              {/* Étape 1: Modules principaux */}
-              <Card className="border-2 border-orange-100 shadow-xl">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-white font-bold text-lg">1</span>
-                    </div>
-                    <div>
-                      <CardTitle className="text-2xl font-bold text-gray-800 mb-2">
-                        Modules Principaux
-                      </CardTitle>
-                      <p className="text-gray-600 text-lg leading-relaxed">
-                        Les deux piliers fondamentaux de votre formation espagnol
-                      </p>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                      <div className="flex items-center gap-3 mb-2">
-                        <BookOpen className="h-5 w-5 text-orange-600" />
-                        <h3 className="font-semibold text-orange-800">Grammaire Espagnole</h3>
-                      </div>
-                      <p className="text-orange-700 text-sm">
-                        Maîtrisez conjugaisons, syntaxe et structures avancées avec 6 fiches détaillées
-                      </p>
-                    </div>
-                    <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                      <div className="flex items-center gap-3 mb-2">
-                        <MessageSquare className="h-5 w-5 text-orange-600" />
-                        <h3 className="font-semibold text-orange-800">Civilisation Hispanique</h3>
-                      </div>
-                      <p className="text-orange-700 text-sm">
-                        Explorez l'Espagne et l'Amérique latine contemporaines pour vos épreuves
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Étape 2: Outils IA */}
-              <Card className="border-2 border-orange-100 shadow-xl">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-white font-bold text-lg">2</span>
-                    </div>
-                    <div>
-                      <CardTitle className="text-2xl font-bold text-gray-800 mb-2">
-                        Outils IA Intelligents
-                      </CardTitle>
-                      <p className="text-gray-600 text-lg leading-relaxed">
-                        Technologies avancées pour accélérer votre apprentissage
-                      </p>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                      <div className="flex items-center gap-3 mb-2">
-                        <MessageSquare className="h-5 w-5 text-orange-600" />
-                        <h3 className="font-semibold text-orange-800">Générateur de Paragraphes</h3>
-                      </div>
-                      <p className="text-orange-700 text-sm">
-                        Créez des paragraphes argumentatifs de 150 mots basés sur articles de presse
-                      </p>
-                    </div>
-                    <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                      <div className="flex items-center gap-3 mb-2">
-                        <Wand2 className="h-5 w-5 text-orange-600" />
-                        <h3 className="font-semibold text-orange-800">Générateur de Thèmes</h3>
-                      </div>
-                      <p className="text-orange-700 text-sm">
-                        Entraînez-vous aux thèmes grammaticaux avec correction automatique
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Étape 3: Vocabulaire spécialisé */}
-              <Card className="border-2 border-orange-100 shadow-xl">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-white font-bold text-lg">3</span>
-                    </div>
-                    <div>
-                      <CardTitle className="text-2xl font-bold text-gray-800 mb-2">
-                        Vocabulaire Espagnol
-                      </CardTitle>
-                      <p className="text-gray-600 text-lg leading-relaxed">
-                        Maîtrisez le lexique essentiel pour vos épreuves de concours
-                      </p>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
-                    <div className="flex items-center gap-3 mb-3">
-                      <MessageSquare className="h-6 w-6 text-orange-600" />
-                      <h3 className="font-semibold text-orange-800 text-lg">Flashcards Interactives</h3>
-                    </div>
-                    <p className="text-orange-700 text-base leading-relaxed">
-                      Plus de 70 termes et expressions classés par thématiques : institutions,
-                      élections, partis, législation, administration et relations internationales.
-                      Idéal pour maîtriser le vocabulaire spécifique aux concours ECG.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Étape 4: Ressources méthodologiques */}
-              <Card className="border-2 border-orange-100 shadow-xl">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-white font-bold text-lg">4</span>
-                    </div>
-                    <div>
-                      <CardTitle className="text-2xl font-bold text-gray-800 mb-2">
-                        Méthodes et Ressources
-                      </CardTitle>
-                      <p className="text-gray-600 text-lg leading-relaxed">
-                        Techniques éprouvées pour réussir vos épreuves
-                      </p>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                      <div className="flex items-center gap-3 mb-2">
-                        <BookOpen className="h-5 w-5 text-orange-600" />
-                        <h3 className="font-semibold text-orange-800">Méthodes Essentielles</h3>
-                      </div>
-                      <ul className="text-orange-700 text-sm space-y-1">
-                        <li>• Version espagnole</li>
-                        <li>• Thème espagnol</li>
-                        <li>• Expression écrite</li>
-                      </ul>
-                    </div>
-                    <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                      <div className="flex items-center gap-3 mb-2">
-                        <Target className="h-5 w-5 text-orange-600" />
-                        <h3 className="font-semibold text-orange-800">Préparation Concours</h3>
-                      </div>
-                      <ul className="text-orange-700 text-sm space-y-1">
-                        <li>• Épreuves écrites</li>
-                        <li>• Épreuves orales</li>
-                        <li>• Civilisation hispanique</li>
-                      </ul>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Guide de navigation */}
-              <Card className="border-2 border-orange-100 shadow-xl bg-gradient-to-r from-orange-50 to-orange-100">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center shadow-lg">
-                      <ChevronRight className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <CardTitle className="text-2xl font-bold text-gray-800 mb-2">
-                        Parcours Recommandé
-                      </CardTitle>
-                      <p className="text-gray-600 text-lg leading-relaxed">
-                        Suivez ce guide étape par étape pour optimiser votre apprentissage
-                      </p>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center shadow-md">
-                        <span className="text-white font-bold text-sm">1</span>
-                      </div>
-                      <div>
-                        <p className="text-gray-800 font-medium">Commencez par la Grammaire</p>
-                        <p className="text-gray-600 text-sm">Maîtrisez les bases avec nos 6 fiches détaillées</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center shadow-md">
-                        <span className="text-white font-bold text-sm">2</span>
-                      </div>
-                      <div>
-                        <p className="text-gray-800 font-medium">Utilisez les Générateurs IA</p>
-                        <p className="text-gray-600 text-sm">Entraînez-vous avec nos outils de correction automatique</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center shadow-md">
-                        <span className="text-white font-bold text-sm">3</span>
-                      </div>
-                      <div>
-                        <p className="text-gray-800 font-medium">Explorez la Civilisation</p>
-                        <p className="text-gray-600 text-sm">Découvrez l'actualité hispanique pour vos dissertations</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center shadow-md">
-                        <span className="text-white font-bold text-sm">4</span>
-                      </div>
-                      <div>
-                        <p className="text-gray-800 font-medium">Perfectionnez-vous</p>
-                        <p className="text-gray-600 text-sm">Utilisez méthodes et vocabulaire pour vos révisions finales</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
+    <PRFormationLayout
+      crumbs={[
+        { label: 'Accueil', to: '/' },
+        { label: 'Toutes les formations', to: '/formations' },
+        { label: 'Espagnol', to: '/formation/espagnol' },
+        { label: 'Sommaire' },
+      ]}
+      eyebrow="Espagnol · Sommaire"
+      title="Sommaire"
+      titleAccent="de la formation"
+      subtitle="Guide complet pour naviguer dans la formation Espagnol ECG."
+    >
+      <div className="flex justify-center mb-12">
+        <Link
+          to="/formation/espagnol"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-pr-gray-light bg-white hover:border-pr-orange text-pr-black text-sm font-semibold transition-colors"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Retour à la formation
+        </Link>
       </div>
-    </div>
+
+      <div className="space-y-6 mb-20">
+        {steps.map((step) => (
+          <section
+            key={step.number}
+            className="relative bg-white border border-pr-gray-light rounded-2xl p-7 sm:p-9"
+          >
+            <span className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange rounded-t-2xl" />
+            <div className="flex items-start gap-5 mb-6">
+              <span className="font-dm-serif text-5xl text-pr-orange leading-none">
+                {String(step.number).padStart(2, '0')}
+              </span>
+              <div className="flex-1 pt-1">
+                <h3 className="font-dm-serif text-2xl text-pr-black mb-1 leading-tight">{step.title}</h3>
+                <p className="text-sm text-pr-gray-dark/80">{step.subtitle}</p>
+              </div>
+            </div>
+            <div className={`grid gap-4 ${step.cards.length === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
+              {step.cards.map(({ Icon, title, description }) => (
+                <div
+                  key={title}
+                  className="bg-pr-gray-bg border border-pr-gray-light rounded-xl p-5 flex items-start gap-3"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-pr-orange-pale flex items-center justify-center flex-shrink-0">
+                    <Icon className="h-5 w-5 text-pr-orange-dark" />
+                  </div>
+                  <div>
+                    <h4 className="font-dm-serif text-lg text-pr-black mb-1">{title}</h4>
+                    <p className="text-sm text-pr-gray-dark/80 leading-relaxed">{description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <section className="rounded-2xl border border-pr-gray-light bg-white p-8 sm:p-10">
+        <div className="mb-6">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-2">
+            Parcours recommandé
+          </p>
+          <h2 className="font-dm-serif text-2xl sm:text-3xl text-pr-black">
+            Suis ce guide étape par étape pour optimiser ton apprentissage
+          </h2>
+        </div>
+        <ol className="space-y-4">
+          {parcours.map((p, i) => (
+            <li key={p.title} className="flex items-start gap-4">
+              <span className="w-9 h-9 flex-shrink-0 rounded-full bg-pr-orange-pale text-pr-orange-dark font-dm-serif text-lg flex items-center justify-center">
+                {i + 1}
+              </span>
+              <div>
+                <p className="font-semibold text-pr-black">{p.title}</p>
+                <p className="text-sm text-pr-gray-dark/80">{p.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </PRFormationLayout>
   );
 };
 

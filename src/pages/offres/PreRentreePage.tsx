@@ -32,8 +32,6 @@ const PreRentreePage = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          to: 'preparationnelle@gmail.com',
-          subject: 'Nouvelle inscription par virement - Stage de Pré-entrée',
           userData,
           amount: '199€',
           reference: `PRENTREE-${userData.nom.toUpperCase()}-${userData.email.split('@')[0]}`
@@ -61,11 +59,8 @@ const PreRentreePage = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          productKey: 'stage_pre_rentree',
           userData,
-          amount: 19900, // 199€ en centimes
-          description: 'Stage de Pré-entrée - 18-23 août 2025',
-          successUrl: `${window.location.origin}/offres/pre-rentree?success=true`,
-          cancelUrl: `${window.location.origin}/offres/pre-rentree?canceled=true`,
         }),
       });
 

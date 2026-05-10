@@ -178,20 +178,20 @@ export const ResponseTabs = ({ answer, activeTab, language, onTabChange }: Respo
         </div>
       </TabsContent>
       
-      <TabsContent value="exercise" className="bg-amber-50 p-6 rounded-lg border border-amber-200">
-        <h3 className="font-semibold mb-4 text-amber-700">
-          {language === 'fr' ? 'EXERCICE D\'ENTRAÎNEMENT' : 'TRAINING EXERCISE'}
+      <TabsContent value="exercise" className="bg-pr-orange-pale p-6 rounded-xl border border-pr-orange/20">
+        <h3 className="font-semibold mb-4 text-pr-orange-dark uppercase tracking-[0.06em] font-dm-sans">
+          {language === 'fr' ? "Exercice d'entraînement" : 'Training exercise'}
         </h3>
-        <p className="text-amber-700">{answer.exercise}</p>
+        <p className="text-pr-gray-dark font-dm-sans leading-relaxed">{answer.exercise}</p>
       </TabsContent>
-      
-      <TabsContent value="similarQuestions" className="bg-blue-50 p-6 rounded-lg border border-blue-200">
-        <h3 className="font-semibold mb-4 text-blue-700">
-          {language === 'fr' ? 'QUESTIONS SIMILAIRES À PRÉPARER' : 'SIMILAR QUESTIONS TO PREPARE'}
+
+      <TabsContent value="similarQuestions" className="bg-pr-gray-bg p-6 rounded-xl border border-pr-gray-light">
+        <h3 className="font-semibold mb-4 text-pr-orange-dark uppercase tracking-[0.06em] font-dm-sans">
+          {language === 'fr' ? 'Questions similaires à préparer' : 'Similar questions to prepare'}
         </h3>
         <ul className="list-disc pl-5 space-y-2">
           {answer.similarQuestions.map((question, index) => (
-            <li key={index} className="text-blue-700">
+            <li key={index} className="text-pr-gray-dark font-dm-sans leading-relaxed">
               {question}
             </li>
           ))}

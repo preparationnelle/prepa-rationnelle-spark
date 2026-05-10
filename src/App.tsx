@@ -7,6 +7,7 @@ import { StudyTimeProvider } from './context/StudyTimeContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminProtectedRoute from './components/AdminProtectedRoute';
 import TeacherProtectedRoute from './components/teacher/TeacherProtectedRoute';
 import { WhitelistProtectedRoute } from './components/WhitelistProtectedRoute';
 import { ProgressProvider } from './context/ProgressContext';
@@ -57,6 +58,14 @@ function App() {
                               <Component />
                             </Layout>
                           </TeacherProtectedRoute>
+                        );
+                      } else if (route.adminOnly) {
+                        element = (
+                          <AdminProtectedRoute>
+                            <Layout>
+                              <Component />
+                            </Layout>
+                          </AdminProtectedRoute>
                         );
                       } else if (route.protected) {
                         // Regular protected routes

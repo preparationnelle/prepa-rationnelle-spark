@@ -195,7 +195,7 @@ const ContinentAfricainAuteursPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -280,7 +280,7 @@ const ContinentAfricainAuteursPage = () => {
                                 {ouvrage.theme}
                               </Badge>
                               {ouvrage.important && (
-                                <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-700">
+                                <Badge variant="secondary" className="text-xs bg-carnet-red/10 text-carnet-red">
                                   Essentiel
                                 </Badge>
                               )}
@@ -321,13 +321,13 @@ const ContinentAfricainAuteursPage = () => {
         </Card>
 
         {/* Note méthodologique */}
-        <Card className="mt-8 bg-blue-50 border-blue-200">
+        <Card className="mt-8 bg-pr-orange-pale border-carnet-red/30">
           <CardContent className="p-6">
-            <div className="flex items-center gap-3 text-blue-800 mb-4">
+            <div className="flex items-center gap-3 text-carnet-red-deep mb-4">
               <Lightbulb className="h-5 w-5" />
               <h3 className="font-semibold">Conseils méthodologiques</h3>
             </div>
-            <div className="text-blue-700 space-y-2">
+            <div className="text-carnet-red space-y-2">
               <p>• <strong>Ouvrages essentiels :</strong> Priorisez les ouvrages marqués comme "Essentiel" pour une compréhension approfondie.</p>
               <p>• <strong>Approche chronologique :</strong> Les textes du XXe siècle permettent de comprendre les évolutions depuis la décolonisation.</p>
               <p>• <strong>Regards croisés :</strong> Comparez les analyses occidentales (The Economist, Sylvie Brunel) avec les perspectives africaines.</p>

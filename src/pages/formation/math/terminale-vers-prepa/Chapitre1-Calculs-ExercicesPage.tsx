@@ -106,7 +106,7 @@ const Chapitre1CalculsExercicesPage = () => {
       <SEOHead
         canonical="/formation/math/terminale-vers-prepa/calculs-exercices"
         title="Exercices · Chapitre 1 — Calculs · Terminale → Prépa ECG"
-        description="11 exercices progressifs sur le calcul algébrique : puissances, trinômes, fractions, racines, exponentielle et logarithme."
+        description="21 exercices progressifs sur le calcul algébrique : puissances, trinômes, fractions, racines, valeur absolue, exponentielle et logarithme."
       />
 
       {/* Fil d'Ariane */}
@@ -133,7 +133,7 @@ const Chapitre1CalculsExercicesPage = () => {
         <header className="mb-14 relative">
           <div className="carnet-eyebrow mb-5">01 · Exercices · Calculs</div>
           <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.022em] text-carnet-ink mb-6">
-            Onze calculs <em className="font-lora italic text-carnet-red">à dompter</em>.
+            Vingt et un calculs <em className="font-lora italic text-carnet-red">à dompter</em>.
           </h1>
           <p className="font-instrument text-[17px] leading-[1.6] text-carnet-ink-soft max-w-[680px]">
             Puissances, trinômes, fractions, racines, exponentielle, logarithme. <span className="carnet-hl font-lora italic">Pose chaque calcul</span>, factorise, vérifie les conditions d'existence — automatismes obligatoires avant la prépa.
@@ -141,10 +141,10 @@ const Chapitre1CalculsExercicesPage = () => {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(78,55,30,0.18)] text-carnet-ink-soft bg-carnet-paper-2">
-              3 Faciles
+              6 Faciles
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(193,68,58,0.3)] text-carnet-red bg-[rgba(193,68,58,0.06)]">
-              6 Moyens
+              13 Moyens
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-carnet-red text-carnet-paper bg-carnet-red">
               2 Difficiles
@@ -212,6 +212,34 @@ const Chapitre1CalculsExercicesPage = () => {
               </Step>
               <Step label="Simplifier les exposants">
                 <Block tex={'A = \\frac{2^{17}}{2^2} = 2^{15}.'} />
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 12 */}
+        <Exercise
+          id="ex12"
+          num={12}
+          title="Comparer deux puissances"
+          difficulty="Facile"
+          open={!!open.ex12}
+          onToggle={() => toggle('ex12')}
+          tilt="r"
+          statement={
+            <>
+              <p>Sans calculatrice, déterminer lequel est le plus grand : <Inline tex={'2^{30}'} /> ou <Inline tex={'3^{20}'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="Ramener au même exposant">
+                <p>On réécrit les deux expressions avec l'exposant 10 :</p>
+                <Block tex={'2^{30} = (2^3)^{10} = 8^{10}, \\quad 3^{20} = (3^2)^{10} = 9^{10}.'} />
+              </Step>
+              <Step label="Comparer les bases">
+                <p>Comme <Inline tex={'8 < 9'} /> et <Inline tex={'x \\mapsto x^{10}'} /> est croissante sur <Inline tex={'\\mathbb{R}_+'} /> :</p>
+                <Block tex={'8^{10} < 9^{10}, \\quad \\text{soit} \\quad 2^{30} < 3^{20}.'} />
               </Step>
             </>
           }
@@ -312,6 +340,66 @@ const Chapitre1CalculsExercicesPage = () => {
               </Step>
               <Step label="Conclusion">
                 <Block tex={'S = \\left\\{-\\tfrac{1}{\\sqrt{3}},\\ \\tfrac{1}{\\sqrt{3}}\\right\\}.'} />
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 13 */}
+        <Exercise
+          id="ex13"
+          num={13}
+          title="Factoriser par une racine évidente"
+          difficulty="Moyen"
+          open={!!open.ex13}
+          onToggle={() => toggle('ex13')}
+          tilt="l"
+          statement={
+            <>
+              <p>On pose <Inline tex={'P(x) = 2x^3 - x^2 - 5x - 2'} />.</p>
+              <p>Vérifier que <Inline tex={'x = -1'} /> est racine de <Inline tex={'P'} />, puis factoriser complètement <Inline tex={'P(x)'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="Vérification de la racine">
+                <Block tex={'P(-1) = 2(-1)^3 - (-1)^2 - 5(-1) - 2 = -2 - 1 + 5 - 2 = 0. \\quad \\checkmark'} />
+              </Step>
+              <Step label="Division euclidienne par (x + 1)">
+                <p>On effectue la division de <Inline tex={'P(x)'} /> par <Inline tex={'(x+1)'} /> :</p>
+                <Block tex={'2x^3 - x^2 - 5x - 2 = (x + 1)(2x^2 - 3x - 2).'} />
+              </Step>
+              <Step label="Factorisation du trinôme résiduel">
+                <p><Inline tex={'\\Delta = 9 + 16 = 25'} />, donc <Inline tex={'x = 2'} /> et <Inline tex={'x = -\\tfrac{1}{2}'} />. D'où :</p>
+                <Block tex={'P(x) = (x + 1)(x - 2)(2x + 1).'} />
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 14 */}
+        <Exercise
+          id="ex14"
+          num={14}
+          title="Racine double"
+          difficulty="Facile"
+          open={!!open.ex14}
+          onToggle={() => toggle('ex14')}
+          statement={
+            <>
+              <p>Résoudre <Inline tex={'(E) : 4x^2 - 12x + 9 = 0'} /> et donner la forme factorisée de <Inline tex={'4x^2 - 12x + 9'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="Calcul du discriminant">
+                <Block tex={'\\Delta = (-12)^2 - 4 \\times 4 \\times 9 = 144 - 144 = 0.'} />
+              </Step>
+              <Step label="Racine double">
+                <p>Le discriminant est nul : unique racine <Inline tex={'x_0 = \\dfrac{12}{8} = \\dfrac{3}{2}'} />.</p>
+              </Step>
+              <Step label="Forme factorisée">
+                <Block tex={'4x^2 - 12x + 9 = 4\\left(x - \\tfrac{3}{2}\\right)^{2} = (2x - 3)^2.'} />
               </Step>
             </>
           }
@@ -461,6 +549,39 @@ const Chapitre1CalculsExercicesPage = () => {
           }
         />
 
+        {/* Exercice 15 */}
+        <Exercise
+          id="ex15"
+          num={15}
+          title="Inéquation avec valeur absolue"
+          difficulty="Moyen"
+          open={!!open.ex15}
+          onToggle={() => toggle('ex15')}
+          tilt="l"
+          statement={
+            <>
+              <p>Résoudre <Inline tex={'(I_2) : |2x - 3| \\leq x + 1'} />.</p>
+              <p className="text-carnet-ink-mute italic text-[14px]">Rappel : <Inline tex={'|a| \\leq b \\Leftrightarrow -b \\leq a \\leq b'} /> pour <Inline tex={'b \\geq 0'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="Condition préalable">
+                <p>La borne droite doit être positive : <Inline tex={'x + 1 \\geq 0'} />, donc <Inline tex={'x \\geq -1'} />.</p>
+              </Step>
+              <Step label="Lever la valeur absolue">
+                <Block tex={'|2x - 3| \\leq x + 1 \\Longleftrightarrow -(x+1) \\leq 2x - 3 \\leq x + 1.'} />
+                <p>Inégalité gauche : <Inline tex={'-x - 1 \\leq 2x - 3 \\Leftrightarrow 2 \\leq 3x \\Leftrightarrow x \\geq \\tfrac{2}{3}'} />.</p>
+                <p>Inégalité droite : <Inline tex={'2x - 3 \\leq x + 1 \\Leftrightarrow x \\leq 4'} />.</p>
+              </Step>
+              <Step label="Intersection des conditions">
+                <p>On intersecte <Inline tex={'x \\geq -1'} />, <Inline tex={'x \\geq \\tfrac{2}{3}'} /> et <Inline tex={'x \\leq 4'} /> :</p>
+                <Block tex={'S = \\left[\\tfrac{2}{3},\\; 4\\right].'} />
+              </Step>
+            </>
+          }
+        />
+
         {/* Module 4 */}
         <div className="flex items-baseline gap-4 mb-6 mt-12">
           <span className="carnet-hand text-[40px] text-carnet-red leading-none font-semibold">M4</span>
@@ -563,6 +684,193 @@ const Chapitre1CalculsExercicesPage = () => {
             </>
           }
         />
+
+        {/* Exercice 16 */}
+        <Exercise
+          id="ex16"
+          num={16}
+          title="Équation exponentielle — changement de variable"
+          difficulty="Moyen"
+          open={!!open.ex16}
+          onToggle={() => toggle('ex16')}
+          tilt="r"
+          statement={
+            <>
+              <p>Résoudre <Inline tex={'(E_5) : e^{2x} - 3e^x + 2 = 0'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="Changement de variable">
+                <p>On pose <Inline tex={'X = e^x > 0'} />. Comme <Inline tex={'e^{2x} = (e^x)^2 = X^2'} />, l'équation devient :</p>
+                <Block tex={'X^2 - 3X + 2 = 0, \\quad X > 0.'} />
+              </Step>
+              <Step label="Discriminant et racines">
+                <p><Inline tex={'\\Delta = 9 - 8 = 1'} />, donc <Inline tex={'X_1 = 1'} /> et <Inline tex={'X_2 = 2'} />. Les deux sont strictement positives.</p>
+              </Step>
+              <Step label="Retour à x">
+                <p>• <Inline tex={'e^x = 1 \\Leftrightarrow x = 0'} />.</p>
+                <p>• <Inline tex={'e^x = 2 \\Leftrightarrow x = \\ln 2'} />.</p>
+                <Block tex={'S = \\{0,\\; \\ln 2\\}.'} />
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 17 */}
+        <Exercise
+          id="ex17"
+          num={17}
+          title="Équation logarithmique"
+          difficulty="Moyen"
+          open={!!open.ex17}
+          onToggle={() => toggle('ex17')}
+          tilt="l"
+          statement={
+            <>
+              <p>Résoudre <Inline tex={'(E_6) : \\ln x + \\ln(x + 1) = \\ln 6'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="Conditions d'existence">
+                <p><Inline tex={'x > 0'} /> et <Inline tex={'x + 1 > 0'} />, donc <Inline tex={'x > 0'} />.</p>
+              </Step>
+              <Step label="Propriété du logarithme">
+                <Block tex={'\\ln x + \\ln(x+1) = \\ln\\bigl(x(x+1)\\bigr) = \\ln 6 \\Longleftrightarrow x(x+1) = 6.'} />
+              </Step>
+              <Step label="Équation du second degré">
+                <Block tex={'x^2 + x - 6 = 0 \\Longleftrightarrow (x - 2)(x + 3) = 0.'} />
+                <p>Racines : <Inline tex={'x = 2'} /> ou <Inline tex={'x = -3'} />.</p>
+              </Step>
+              <Step label="Vérification des conditions">
+                <p>• <Inline tex={'x = -3'} /> : ne vérifie pas <Inline tex={'x > 0'} />. Exclu.</p>
+                <p>• <Inline tex={'x = 2 > 0'} /> : convient.</p>
+                <Block tex={'S = \\{2\\}.'} />
+              </Step>
+            </>
+          }
+        />
+
+          {/* Module M5 — Calculs avancés */}
+          <div className="mb-2 mt-10">
+            <span className="inline-block bg-carnet-red text-white text-xs font-bold px-3 py-1 rounded-full tracking-wide uppercase">
+              M5 — Calculs avancés
+            </span>
+          </div>
+
+          <Exercise
+            id="ex18"
+            num={18}
+            title="Développement et simplification"
+            difficulty="Facile"
+            open={!!open.ex18}
+            onToggle={() => toggle('ex18')}
+            tilt="l"
+            statement={
+              <>
+                <p>Développer et réduire l'expression :</p>
+                <Block tex={'E = (x+3)^2 - (x-1)(x+1)'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Développement de chaque terme">
+                  <p>On développe séparément :</p>
+                  <Block tex={'(x+3)^2 = x^2 + 6x + 9'} />
+                  <Block tex={'(x-1)(x+1) = x^2 - 1 \\quad \\text{(identité remarquable)}'} />
+                </Step>
+                <Step label="Calcul final">
+                  <Block tex={'E = x^2 + 6x + 9 - (x^2 - 1) = x^2 + 6x + 9 - x^2 + 1'} />
+                  <Block tex={'\\boxed{E = 6x + 10}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex19"
+            num={19}
+            title="Résoudre une équation du second degré"
+            difficulty="Moyen"
+            open={!!open.ex19}
+            onToggle={() => toggle('ex19')}
+            statement={
+              <>
+                <p>Résoudre l'équation :</p>
+                <Block tex={'x^2 - 5x + 6 = 0'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Calcul du discriminant">
+                  <Block tex={'\\Delta = b^2 - 4ac = 25 - 24 = 1 > 0'} />
+                  <p>Le discriminant est strictement positif, donc deux solutions distinctes.</p>
+                </Step>
+                <Step label="Solutions">
+                  <Block tex={'x_1 = \\frac{5 - 1}{2} = 2 \\qquad x_2 = \\frac{5 + 1}{2} = 3'} />
+                  <p>On peut vérifier par factorisation :</p>
+                  <Block tex={'x^2 - 5x + 6 = (x-2)(x-3)'} />
+                  <Block tex={'\\boxed{\\mathcal{S} = \\{2,\\, 3\\}}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex20"
+            num={20}
+            title="Rationaliser une fraction"
+            difficulty="Moyen"
+            open={!!open.ex20}
+            onToggle={() => toggle('ex20')}
+            tilt="r"
+            statement={
+              <>
+                <p>Simplifier l'expression en éliminant le radical au dénominateur :</p>
+                <Block tex={'A = \\frac{\\sqrt{3}+1}{\\sqrt{3}-1}'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Rationalisation par l'expression conjuguée">
+                  <p>On multiplie numérateur et dénominateur par <Inline tex={'\\sqrt{3}+1'} /> :</p>
+                  <Block tex={'A = \\frac{(\\sqrt{3}+1)^2}{(\\sqrt{3}-1)(\\sqrt{3}+1)} = \\frac{3 + 2\\sqrt{3} + 1}{3 - 1} = \\frac{4 + 2\\sqrt{3}}{2}'} />
+                </Step>
+                <Step label="Résultat">
+                  <Block tex={'\\boxed{A = 2 + \\sqrt{3}}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex21"
+            num={21}
+            title="Équation exponentielle — résolution par logarithme"
+            difficulty="Moyen"
+            open={!!open.ex21}
+            onToggle={() => toggle('ex21')}
+            statement={
+              <>
+                <p>Résoudre l'équation :</p>
+                <Block tex={'2^x = 5'} />
+                <p>Donner la solution sous forme exacte, puis une valeur approchée à <Inline tex={'10^{-2}'} /> près.</p>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Application du logarithme">
+                  <p>On applique le logarithme naturel (bijectif et croissant sur <Inline tex={'\\mathbb{R}_{+}^*'} />) :</p>
+                  <Block tex={'\\ln(2^x) = \\ln 5 \\implies x \\ln 2 = \\ln 5'} />
+                </Step>
+                <Step label="Solution exacte et valeur approchée">
+                  <Block tex={'\\boxed{x = \\frac{\\ln 5}{\\ln 2} \\approx 2{,}32}'} />
+                  <p>Vérification : <Inline tex={'2^{\\ln 5 / \\ln 2} = e^{(\\ln 5 / \\ln 2) \\cdot \\ln 2} = e^{\\ln 5} = 5'} />.</p>
+                </Step>
+              </>
+            }
+          />
 
         {/* Bandeau récap */}
         <section className="mt-14 mb-10 relative">

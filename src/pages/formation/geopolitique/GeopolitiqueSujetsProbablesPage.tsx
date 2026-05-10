@@ -248,7 +248,7 @@ const GeopolitiqueSujetsProbablesPage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -276,7 +276,7 @@ const GeopolitiqueSujetsProbablesPage = () => {
         
         {/* Introduction */}
         <div className="max-w-4xl mx-auto mb-12">
-          <Card className="border-2 border-blue-200 bg-blue-50/50">
+          <Card className="border-2 border-carnet-red/30 bg-pr-orange-pale/50">
             <CardContent className="p-6">
               <div className="prose prose-blue max-w-none">
                 <p className="text-gray-700 mb-4">
@@ -293,7 +293,7 @@ const GeopolitiqueSujetsProbablesPage = () => {
                   Cette liste est le fruit de nos discussions, croisée avec l'actualité stratégique, 
                   les sujets tombés les années précédentes, et les grandes dynamiques du monde contemporain.
                 </p>
-                <p className="text-blue-800 font-semibold">
+                <p className="text-carnet-red-deep font-semibold">
                   Utilisez-la comme un support d'entraînement, comme une checklist : demandez-vous si vous 
                   sauriez traiter ces sujets aujourd'hui. Bonne chance à tous ! 
                 </p>
@@ -364,14 +364,14 @@ const GeopolitiqueSujetsProbablesPage = () => {
                       {theme.sujets.map((sujet, i) => (
                         <div key={i} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 transition-colors">
                           <div className="flex items-center gap-2 flex-1">
-                            <Eye className="h-4 w-4 text-blue-600" />
+                            <Eye className="h-4 w-4 text-carnet-red" />
                             <span className="text-sm font-medium">"{sujet}"</span>
                           </div>
                           <Button
                             onClick={() => handleSubjectClick(sujet)}
                             size="sm"
                             variant="outline"
-                            className="ml-4 hover:bg-blue-50 hover:border-blue-300"
+                            className="ml-4 hover:bg-pr-orange-pale hover:border-carnet-red/40"
                           >
                             Découvrir le sujet
                           </Button>

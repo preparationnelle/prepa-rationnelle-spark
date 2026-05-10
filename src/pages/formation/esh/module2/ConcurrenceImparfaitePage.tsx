@@ -5,7 +5,7 @@ import { Home, ChevronRight, Target, PieChart } from 'lucide-react';
 
 const ConcurrenceImparfaitePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -36,8 +36,8 @@ const ConcurrenceImparfaitePage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-              <Target className="h-6 w-6 text-blue-700" />
+            <div className="w-12 h-12 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+              <Target className="h-6 w-6 text-carnet-red" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900">
               Concurrence imparfaite et stratégies des firmes
@@ -69,23 +69,23 @@ const ConcurrenceImparfaitePage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Formes de concurrence imparfaite</h2>
                 <div className="grid md:grid-cols-3 gap-6">
-                  <div className="bg-blue-50 p-6 rounded-lg text-center">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg text-center">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Monopole</h3>
-                    <p className="text-blue-700 text-sm">
+                    <p className="text-carnet-red text-sm">
                       Un seul offreur sur le marché. Pouvoir de marché important,
                       fixation autonome des prix.
                     </p>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg text-center">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg text-center">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Oligopole</h3>
-                    <p className="text-blue-700 text-sm">
+                    <p className="text-carnet-red text-sm">
                       Quelques offreurs dominants. Interdépendance stratégique
                       entre les concurrents.
                     </p>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg text-center">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg text-center">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Monopole naturel</h3>
-                    <p className="text-blue-700 text-sm">
+                    <p className="text-carnet-red text-sm">
                       Structure de coût favorisant un seul producteur efficace.
                       Réglementation nécessaire.
                     </p>
@@ -97,27 +97,27 @@ const ConcurrenceImparfaitePage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Sources de pouvoir de marché</h2>
                 <div className="space-y-6">
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Avantages en coût</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Économies d'échelle et d'expérience</li>
                       <li>• Accès privilégié aux ressources</li>
                       <li>• Innovation technologique</li>
                       <li>• Efficacité productive supérieure</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Différenciation des produits</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Marques et réputation</li>
                       <li>• Qualité perçue supérieure</li>
                       <li>• Service après-vente</li>
                       <li>• Marketing et publicité</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Barrières à l'entrée</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Investissements importants requis</li>
                       <li>• Protection par brevets</li>
                       <li>• Contrôle des canaux de distribution</li>
@@ -131,9 +131,9 @@ const ConcurrenceImparfaitePage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Stratégies concurrentielles</h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Stratégies de domination par les coûts</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Leadership en coût</li>
                       <li>• Optimisation de la chaîne de valeur</li>
                       <li>• Économies d'échelle</li>
@@ -156,16 +156,16 @@ const ConcurrenceImparfaitePage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Théories des organisations industrielles</h2>
                 <div className="space-y-4">
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Théorie de la concurrence contestable</h3>
-                    <p className="text-blue-700">
+                    <p className="text-carnet-red">
                       Même en situation de monopole, la menace d'entrée de nouveaux concurrents
                       discipline le comportement du monopoleur et maintient des prix proches des coûts.
                     </p>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Théorie des marchés contestables</h3>
-                    <p className="text-blue-700">
+                    <p className="text-carnet-red">
                       L'absence de barrières à l'entrée et à la sortie permet aux marchés
                       d'être efficients même avec peu de concurrents, grâce à la discipline
                       exercée par la menace de la concurrence potentielle.
@@ -193,7 +193,6 @@ const ConcurrenceImparfaitePage = () => {
           </div>
         </div>
 
-        {/* Navigation */}
         <div className="flex justify-center gap-4 mt-12">
           <Link to="/formation/esh/premiere-annee">
             <Button variant="outline" className="flex items-center gap-2">

@@ -93,9 +93,9 @@ const MethodologieDissertationPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF]">
+    <div className="relative">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-[#F8FAFF]/95 backdrop-blur supports-[backdrop-filter]:bg-[#F8FAFF]/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/95 backdrop-blur-sm/95 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper/95 backdrop-blur-sm/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -119,13 +119,13 @@ const MethodologieDissertationPage = () => {
       <div className="container mx-auto py-8 px-4">
         {/* Header de l'article */}
         <div className="max-w-4xl mx-auto">
-          <Card className="border-2 border-blue-500/30 mb-8">
+          <Card className="border-2 border-carnet-red/30 mb-8">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-blue-500 text-white">
+                <div className="p-2 rounded-lg bg-carnet-red text-white">
                   <PenTool className="h-5 w-5" />
                 </div>
-                <Badge className="bg-blue-500">Méthodologie</Badge>
+                <Badge className="bg-carnet-red">Méthodologie</Badge>
                 <span className="text-sm text-muted-foreground">25 min de lecture</span>
               </div>
               <CardTitle className="text-2xl">Comment construire une dissertation</CardTitle>
@@ -142,7 +142,7 @@ const MethodologieDissertationPage = () => {
             <AccordionItem value="pourquoi-methodologie" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-500 text-white">
+                  <div className="p-2 rounded-lg bg-carnet-red text-white">
                     <Target className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -158,23 +158,23 @@ const MethodologieDissertationPage = () => {
                     qui répond à une question géopolitique précise.
                   </p>
                   
-                  <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="bg-pr-orange-pale p-4 rounded-lg">
                     <h4 className="font-semibold mb-3">Elle évalue votre capacité à :</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5" />
                         <span>Cerner le problème que pose le sujet</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5" />
                         <span>Construire une argumentation ordonnée</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5" />
                         <span>Mobiliser des faits exacts et actuels</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5" />
                         <span>Rédiger clairement et sans fautes</span>
                       </li>
                     </ul>

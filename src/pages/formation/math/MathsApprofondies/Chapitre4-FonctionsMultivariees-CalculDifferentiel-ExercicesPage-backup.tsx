@@ -24,9 +24,9 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
     title: string; 
     icon: any; 
   }) => (
-    <div className="bg-gradient-to-r from-blue-100 to-blue-50 border-l-4 border-blue-500 p-6 mb-6 rounded-r-lg shadow-sm">
+    <div className="bg-gradient-to-r from-blue-100 to-blue-50 border-l-4 border-carnet-red p-6 mb-6 rounded-r-lg shadow-sm">
       <div className="flex items-center gap-3">
-        <div className="p-2 bg-blue-500 text-white rounded-lg">
+        <div className="p-2 bg-carnet-red text-white rounded-lg">
           <Icon className="w-6 h-6" />
         </div>
         <div>
@@ -52,10 +52,10 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
     <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
       <div className="p-6">
         <div className="flex items-start gap-3 mb-4">
-          <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">
+          <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">
             {title}
           </div>
-          <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">
+          <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">
             {difficulty}
           </div>
         </div>
@@ -116,10 +116,10 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
         {/* En-tête */}
         <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50 mb-8">
           <div className="p-8">
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-carnet-red to-pr-orange bg-clip-text text-transparent mb-4">
               Exercices - Chapitre 4 : Fonctions multivariées et calcul différentiel
             </h1>
-            <p className="text-slate-600 text-lg">
+            <p className="text-carnet-ink-soft text-lg">
               Fonctions réelles définies sur ℝⁿ, dérivées partielles, gradient, recherche d'extremum.
             </p>
           </div>
@@ -185,7 +185,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                     <LatexRenderer latex="\partial_2 f(x,y) = e^{-x^2+2y}(x + 2xy)" />
                   </div>
                   <p>Ainsi :</p>
-                  <div className="text-center bg-blue-50 p-3 rounded border">
+                  <div className="text-center bg-pr-orange-pale p-3 rounded border">
                     <LatexRenderer latex="\nabla f(x,y) = \big(e^{-x^2+2y}(y - 2x^2y), \ e^{-x^2+2y}(x + 2xy)\big)" />
                   </div>
                 </div>
@@ -219,7 +219,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                     <LatexRenderer latex="\partial_3 g(x,y,z) = xye^z + xe^y + ye^x" />
                   </div>
                   <p>Ainsi :</p>
-                  <div className="text-center bg-blue-50 p-3 rounded border">
+                  <div className="text-center bg-pr-orange-pale p-3 rounded border">
                     <LatexRenderer latex="\nabla g(x,y,z) = \big( ye^z + ze^y, \ xe^z + ze^x, \ xye^z + xe^y + ye^x \big)" />
                   </div>
                 </div>
@@ -247,7 +247,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                     <LatexRenderer latex="= 2x_i e^{-(x_1^2 + \cdots + x_n^2)} \big(1 - (x_1^2 + \cdots + x_n^2)\big)" />
                   </div>
                   <p>Ainsi :</p>
-                  <div className="text-center bg-blue-50 p-3 rounded border">
+                  <div className="text-center bg-pr-orange-pale p-3 rounded border">
                     <LatexRenderer latex="\nabla h(x_1,\ldots,x_n) = 2e^{-(x_1^2 + \cdots + x_n^2)} \big(1 - (x_1^2 + \cdots + x_n^2)\big) (x_1, x_2, \ldots, x_n)" />
                   </div>
                 </div>
@@ -313,7 +313,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Sinon, on a <LatexRenderer latex="\sqrt{x^2+y^2+z^2} \geq \sqrt{x^2} = |x|" />, de sorte que :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="|f(x,y,z)| = \left| \frac{xyz}{\sqrt{x^2+y^2+z^2}} \right| \leq \frac{|x||y||z|}{|x|} = |y||z|" />
                 </div>
                 <p>
@@ -402,7 +402,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Calculons les dérivées partielles :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\forall (x,y) \in \mathbb{R}^2 :" />
                   <LatexRenderer latex="\partial_1 f(x,y) = \frac{\partial f}{\partial x}(x,y) = 2x + 2y + 2" />
                   <LatexRenderer latex="\partial_2 f(x,y) = \frac{\partial f}{\partial y}(x,y) = 2x + 2y + 3" />
@@ -411,7 +411,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Au point <LatexRenderer latex="a = (-1,1)" /> :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="\nabla f(-1,1) = \big(2(-1)+2(1)+2, \; 2(-1)+2(1)+3 \big) = (2,3)" />
                 </div>
               </div>
@@ -445,7 +445,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Calculons d'abord la norme du gradient :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="\|\nabla f(-1,1)\| = \|(2,3)\| = \sqrt{2^2 + 3^2} = \sqrt{4 + 9} = \sqrt{13}" />
                 </div>
                 
@@ -486,8 +486,8 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
               {/* Rappel théorique */}
               <div className="space-y-3">
                 <h5 className="font-semibold text-lg">Rappel théorique</h5>
-                <div className="bg-blue-100 p-4 rounded border border-blue-300">
-                  <p className="font-semibold text-blue-800 mb-2">Formule générale de la dérivée directionnelle :</p>
+                <div className="bg-carnet-red/10 p-4 rounded border border-carnet-red/40">
+                  <p className="font-semibold text-carnet-red-deep mb-2">Formule générale de la dérivée directionnelle :</p>
                   <div className="space-y-2">
                     <p>Pour une fonction <LatexRenderer latex="f" /> de classe <LatexRenderer latex="\mathcal{C}^1" /> et un vecteur unitaire <LatexRenderer latex="\mathbf{u}" /> :</p>
                     <LatexRenderer latex="D_{\mathbf{u}} f(a) = \langle \nabla f(a), \mathbf{u} \rangle = \|\nabla f(a)\| \cos(\theta)" />
@@ -532,7 +532,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Soit <LatexRenderer latex="\lambda \in \mathbb{R}" />. La courbe de niveau <LatexRenderer latex="\lambda" /> de <LatexRenderer latex="f" /> est définie par :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\mathcal{C}_\lambda(f) = \{(x,y) \in \mathbb{R}^2 : f(x,y) = \lambda \}" />
                   <LatexRenderer latex="= \{(x,y) \in \mathbb{R}^2 : (y - 2x^2)^3 + 1 = \lambda \}" />
                 </div>
@@ -563,7 +563,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   La courbe de niveau <LatexRenderer latex="\mathcal{C}_\lambda" /> peut être paramétrée par la fonction :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="g_\lambda : x \mapsto 2x^2 + \sqrt[3]{\lambda - 1}" />
                 </div>
                 
@@ -590,7 +590,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                   La fonction <LatexRenderer latex="f" /> est <LatexRenderer latex="\mathcal{C}^1" /> sur <LatexRenderer latex="\mathbb{R}^2" /> car polynomiale. Calculons ses dérivées partielles :
                 </p>
                 
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial f}{\partial x}(x,y) = \frac{\partial}{\partial x}\big[(y - 2x^2)^3 + 1\big] = 3(y - 2x^2)^2 \cdot (-4x) = -12x(y - 2x^2)^2" />
                   <LatexRenderer latex="\frac{\partial f}{\partial y}(x,y) = \frac{\partial}{\partial y}\big[(y - 2x^2)^3 + 1\big] = 3(y - 2x^2)^2 \cdot 1 = 3(y - 2x^2)^2" />
                 </div>
@@ -598,7 +598,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Donc le gradient en <LatexRenderer latex="(x_0,y_0)" /> est :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="\nabla f(x_0,y_0) = \big(-12x_0(y_0 - 2x_0^2)^2, \; 3(y_0 - 2x_0^2)^2\big)" />
                 </div>
               </div>
@@ -629,8 +629,8 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
               <div className="space-y-3">
                 <h5 className="font-semibold text-lg">Interprétation géométrique</h5>
                 
-                <div className="bg-blue-100 p-4 rounded border border-blue-300">
-                  <p className="font-semibold text-blue-800 mb-2">Théorème fondamental :</p>
+                <div className="bg-carnet-red/10 p-4 rounded border border-carnet-red/40">
+                  <p className="font-semibold text-carnet-red-deep mb-2">Théorème fondamental :</p>
                   <div className="space-y-2 text-sm">
                     <p>Pour une fonction <LatexRenderer latex="f" /> de classe <LatexRenderer latex="\mathcal{C}^1" />, le gradient <LatexRenderer latex="\nabla f(a)" /> en un point <LatexRenderer latex="a" /> est :</p>
                     <ul className="space-y-1 ml-4">
@@ -698,7 +698,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Calculons les dérivées partielles :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial f}{\partial x}(x,y,z) = \frac{\partial}{\partial x}\left(\frac{x^2}{2} + xyz + y - z\right) = x + yz" />
                   <LatexRenderer latex="\frac{\partial f}{\partial y}(x,y,z) = \frac{\partial}{\partial y}\left(\frac{x^2}{2} + xyz + y - z\right) = xz + 1" />
                   <LatexRenderer latex="\frac{\partial f}{\partial z}(x,y,z) = \frac{\partial}{\partial z}\left(\frac{x^2}{2} + xyz + y - z\right) = xy - 1" />
@@ -707,7 +707,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Le gradient de <LatexRenderer latex="f" /> est donc :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="\nabla f(x,y,z) = (x+yz, \; xz+1, \; xy-1)" />
                 </div>
               </div>
@@ -777,7 +777,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Vérifions que <LatexRenderer latex="(1, 1, -1)" /> annule bien le gradient :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\nabla f(1, 1, -1) = (1 + 1 \cdot (-1), \; 1 \cdot (-1) + 1, \; 1 \cdot 1 - 1)" />
                   <LatexRenderer latex="= (1 - 1, \; -1 + 1, \; 1 - 1) = (0, 0, 0)" />
                 </div>
@@ -835,9 +835,9 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
               <div className="space-y-3">
                 <h5 className="font-semibold text-lg">Conclusion</h5>
                 
-                <div className="bg-blue-100 p-4 rounded border border-blue-300">
+                <div className="bg-carnet-red/10 p-4 rounded border border-carnet-red/40">
                   <div className="space-y-2">
-                    <p className="font-semibold text-blue-800">Résultats de l'étude :</p>
+                    <p className="font-semibold text-carnet-red-deep">Résultats de l'étude :</p>
                     <ul className="space-y-1 text-sm list-disc ml-4">
                       <li><strong>Point critique unique :</strong> <LatexRenderer latex="(1, 1, -1)" /></li>
                       <li><strong>Nature :</strong> Point selle (ni maximum ni minimum)</li>
@@ -919,14 +919,14 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                   <strong>Calcul des dérivées partielles :</strong>
                 </p>
                 
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <p><strong>Dérivée par rapport à x :</strong></p>
                   <LatexRenderer latex="\frac{\partial g}{\partial x}(x,y) = \frac{\partial}{\partial x}\big[e^x(x + y^2 + e^x)\big]" />
                   <LatexRenderer latex="= e^x(x + y^2 + e^x) + e^x(1 + e^x)" />
                   <LatexRenderer latex="= e^x(1 + x + y^2 + 2e^x)" />
                 </div>
                 
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <p><strong>Dérivée par rapport à y :</strong></p>
                   <LatexRenderer latex="\frac{\partial g}{\partial y}(x,y) = \frac{\partial}{\partial y}\big[e^x(x + y^2 + e^x)\big]" />
                   <LatexRenderer latex="= e^x \cdot 2y = 2ye^x" />
@@ -1031,7 +1031,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Observation clé :</strong> Pour tout <LatexRenderer latex="y \in \mathbb{R}" /> et tout <LatexRenderer latex="x \in \mathbb{R}" /> :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="g(x,y) = e^x(x + y^2 + e^x)" />
                   <LatexRenderer latex="g(x,0) = e^x(x + e^x)" />
                   <p>Comme <LatexRenderer latex="y^2 \geq 0" />, on a :</p>
@@ -1077,8 +1077,8 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
               <div className="space-y-3">
                 <h5 className="font-semibold text-lg">Synthèse de l'exercice</h5>
                 
-                <div className="bg-blue-100 p-4 rounded border border-blue-300">
-                  <p className="font-semibold text-blue-800 mb-2">Résultats principaux :</p>
+                <div className="bg-carnet-red/10 p-4 rounded border border-carnet-red/40">
+                  <p className="font-semibold text-carnet-red-deep mb-2">Résultats principaux :</p>
                   <ul className="space-y-1 text-sm list-disc ml-4">
                     <li><strong>Régularité :</strong> <LatexRenderer latex="g \in \mathcal{C}^1(\mathbb{R}^2)" /></li>
                     <li><strong>Fonction auxiliaire :</strong> <LatexRenderer latex="f(t) = 1 + t + 2e^t" /> a un unique zéro <LatexRenderer latex="\alpha \in [-2,-1]" /></li>
@@ -1143,12 +1143,12 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Calculons les dérivées partielles :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial f}{\partial x}(x,y) = \frac{\partial}{\partial x}(x^4 + 2x^2 + y^2 - 4xy + 8x - 4y + 5)" />
                   <LatexRenderer latex="= 4x^3 + 4x - 4y + 8" />
                 </div>
                 
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial f}{\partial y}(x,y) = \frac{\partial}{\partial y}(x^4 + 2x^2 + y^2 - 4xy + 8x - 4y + 5)" />
                   <LatexRenderer latex="= 2y - 4x - 4" />
                 </div>
@@ -1207,7 +1207,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Valeurs de f aux points critiques :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="f(-1,0) = (-1)^4 + 2(-1)^2 + 0^2 - 4(-1)(0) + 8(-1) - 4(0) + 5 = 1 + 2 + 0 + 0 - 8 - 0 + 5 = 0" />
                   <LatexRenderer latex="f(0,2) = 0^4 + 2(0)^2 + 2^2 - 4(0)(2) + 8(0) - 4(2) + 5 = 0 + 0 + 4 - 0 + 0 - 8 + 5 = 1" />
                   <LatexRenderer latex="f(1,4) = 1^4 + 2(1)^2 + 4^2 - 4(1)(4) + 8(1) - 4(4) + 5 = 1 + 2 + 16 - 16 + 8 - 16 + 5 = 0" />
@@ -1253,7 +1253,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Analyse du signe :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <p>Comme <LatexRenderer latex="(x^2 - 1)^2 \geq 0" /> pour tout <LatexRenderer latex="x \in \mathbb{R}" />, on a :</p>
                   <LatexRenderer latex="\Delta(x) = -4(x^2 - 1)^2 \leq 0" />
                   <p>avec égalité si et seulement si <LatexRenderer latex="x = \pm 1" />.</p>
@@ -1284,14 +1284,14 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Puisque <LatexRenderer latex="g(x,y) = f(x,y) - f(-1,0) \geq 0" />, on a :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="f(x,y) \geq f(-1,0) = 0 \quad \forall (x,y) \in \mathbb{R}^2" />
                 </div>
                 
                 <p>
                   De même, puisque <LatexRenderer latex="f(1,4) = f(-1,0) = 0" />, on a aussi :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="f(x,y) \geq f(1,4) = 0 \quad \forall (x,y) \in \mathbb{R}^2" />
                 </div>
                 
@@ -1373,7 +1373,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Vérification que x = -1 est solution :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="(-1) + e^{(-1) - \tfrac{1}{(-1)}} = -1 + e^{-1 + 1} = -1 + e^0 = -1 + 1 = 0" />
                 </div>
                 
@@ -1438,12 +1438,12 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Calcul du gradient :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial f}{\partial x}(x,y) = \frac{\partial}{\partial x}(xe^y + ye^x) = e^y + ye^x" />
                   <LatexRenderer latex="\frac{\partial f}{\partial y}(x,y) = \frac{\partial}{\partial y}(xe^y + ye^x) = xe^y + e^x" />
                 </div>
                 
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="\nabla f(x,y) = (e^y + ye^x, \; xe^y + e^x)" />
                 </div>
                 
@@ -1515,7 +1515,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Valeur de f au point critique :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="f(-1,-1) = (-1)e^{-1} + (-1)e^{-1} = -2e^{-1} = -\frac{2}{e}" />
                 </div>
                 
@@ -1555,8 +1555,8 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
               <div className="space-y-3">
                 <h5 className="font-semibold text-lg">Synthèse de l'exercice</h5>
                 
-                <div className="bg-blue-100 p-4 rounded border border-blue-300">
-                  <p className="font-semibold text-blue-800 mb-2">Résultats principaux :</p>
+                <div className="bg-carnet-red/10 p-4 rounded border border-carnet-red/40">
+                  <p className="font-semibold text-carnet-red-deep mb-2">Résultats principaux :</p>
                   <ul className="space-y-1 text-sm list-disc ml-4">
                     <li><strong>Équation transcendante :</strong> <LatexRenderer latex="x + e^{x - 1/x} = 0" /> a pour unique solution <LatexRenderer latex="x = -1" /></li>
                     <li><strong>Point critique unique :</strong> <LatexRenderer latex="(-1,-1)" /> pour <LatexRenderer latex="f(x,y) = xe^y + ye^x" /></li>
@@ -1628,12 +1628,12 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Calculons les dérivées partielles :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial f}{\partial x}(x,y) = \frac{\partial}{\partial x}(\sin x + y^2 - 2y + 1) = \cos x" />
                   <LatexRenderer latex="\frac{\partial f}{\partial y}(x,y) = \frac{\partial}{\partial y}(\sin x + y^2 - 2y + 1) = 2y - 2" />
                 </div>
                 
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="\nabla f(x,y) = (\cos x, \; 2y - 2)" />
                 </div>
               </div>
@@ -1681,7 +1681,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Calculons <LatexRenderer latex="f\left(\frac{\pi}{2} + k\pi, 1\right)" /> :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="f\left(\frac{\pi}{2} + k\pi, 1\right) = \sin\left(\frac{\pi}{2} + k\pi\right) + 1^2 - 2(1) + 1" />
                   <LatexRenderer latex="= \sin\left(\frac{\pi}{2} + k\pi\right) + 0" />
                   <LatexRenderer latex="= \sin\left(\frac{\pi}{2} + k\pi\right)" />
@@ -1722,7 +1722,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Réécrivons <LatexRenderer latex="f" /> sous une forme plus pratique :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="f(x,y) = \sin x + y^2 - 2y + 1 = \sin x + (y-1)^2" />
                 </div>
                 
@@ -1772,8 +1772,8 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
               <div className="space-y-3">
                 <h5 className="font-semibold text-lg">Conclusion</h5>
                 
-                <div className="bg-blue-100 p-4 rounded border border-blue-300">
-                  <p className="font-semibold text-blue-800 mb-2">Résultats de l'étude :</p>
+                <div className="bg-carnet-red/10 p-4 rounded border border-carnet-red/40">
+                  <p className="font-semibold text-carnet-red-deep mb-2">Résultats de l'étude :</p>
                   <ul className="space-y-1 text-sm list-disc ml-4">
                     <li><strong>Régularité :</strong> <LatexRenderer latex="f" /> est <LatexRenderer latex="\mathcal{C}^1" /> sur <LatexRenderer latex="\mathbb{R}^2" /></li>
                     <li><strong>Points critiques :</strong> Infinité dénombrable : <LatexRenderer latex="\left(\frac{\pi}{2} + k\pi, 1\right), k \in \mathbb{Z}" /></li>
@@ -1848,13 +1848,13 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Calculons les dérivées partielles :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial f}{\partial x}(x,y,z) = \frac{\partial}{\partial x}(xyz + xy + yz + zx) = yz + y + z" />
                   <LatexRenderer latex="\frac{\partial f}{\partial y}(x,y,z) = \frac{\partial}{\partial y}(xyz + xy + yz + zx) = xz + x + z" />
                   <LatexRenderer latex="\frac{\partial f}{\partial z}(x,y,z) = \frac{\partial}{\partial z}(xyz + xy + yz + zx) = xy + x + y" />
                 </div>
                 
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="\nabla f(x,y,z) = (yz + y + z, \; xz + x + z, \; xy + x + y)" />
                 </div>
               </div>
@@ -1959,14 +1959,14 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Pour (0,0,0) :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="\nabla f(0,0,0) = (0 \cdot 0 + 0 + 0, \; 0 \cdot 0 + 0 + 0, \; 0 \cdot 0 + 0 + 0) = (0,0,0)" />
                 </div>
                 
                 <p>
                   <strong>Pour (-2,-2,-2) :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\nabla f(-2,-2,-2) = ((-2)(-2) + (-2) + (-2), \; \ldots)" />
                   <LatexRenderer latex="= (4 - 2 - 2, \; 4 - 2 - 2, \; 4 - 2 - 2) = (0,0,0)" />
                 </div>
@@ -2029,8 +2029,8 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
               <div className="space-y-3">
                 <h5 className="font-semibold text-lg">Conclusion</h5>
                 
-                <div className="bg-blue-100 p-4 rounded border border-blue-300">
-                  <p className="font-semibold text-blue-800 mb-2">Résultats de l'étude :</p>
+                <div className="bg-carnet-red/10 p-4 rounded border border-carnet-red/40">
+                  <p className="font-semibold text-carnet-red-deep mb-2">Résultats de l'étude :</p>
                   <ul className="space-y-1 text-sm list-disc ml-4">
                     <li><strong>Points critiques :</strong> <LatexRenderer latex="(0,0,0)" /> et <LatexRenderer latex="(-2,-2,-2)" /></li>
                     <li><strong>Valeurs :</strong> <LatexRenderer latex="f(0,0,0) = 0" /> et <LatexRenderer latex="f(-2,-2,-2) = 4" /></li>
@@ -2110,7 +2110,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Analyse de la fonction :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="f(x,y) = x^4 - 4x^2y^2 + 4y^4" />
                   <p>Reconnaissons une identité remarquable :</p>
                   <LatexRenderer latex="f(x,y) = (x^2)^2 - 2 \cdot x^2 \cdot 2y^2 + (2y^2)^2 = (x^2 - 2y^2)^2" />
@@ -2145,7 +2145,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Complétion du carré :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="g(x,y) = x^2 + xy + y^2" />
                   <LatexRenderer latex="= x^2 + xy + \frac{y^2}{4} + y^2 - \frac{y^2}{4}" />
                   <LatexRenderer latex="= \left(x + \frac{y}{2}\right)^2 + \frac{3y^2}{4}" />
@@ -2178,7 +2178,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Calcul du gradient :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial h}{\partial x} = \frac{1}{z} - y - z + 4x^3" />
                   <LatexRenderer latex="\frac{\partial h}{\partial y} = 2y - x" />
                   <LatexRenderer latex="\frac{\partial h}{\partial z} = -\frac{x}{z^2} + 4z" />
@@ -2203,7 +2203,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Analyse alternative par complétion :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <p>En supposant <LatexRenderer latex="z > 0" /> et en utilisant des techniques de complétion, on peut montrer que :</p>
                   <LatexRenderer latex="h(x,y,z) \geq \text{constante positive}" />
                 </div>
@@ -2222,7 +2222,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Calcul du gradient :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\nabla i(x,y) = (-4x - 2y, \; -2x - 6y)" />
                 </div>
                 
@@ -2257,7 +2257,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Reconnaissance d'une identité remarquable :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="j(x,y,z) = x^2 + y^2 + z^2 - 2xyz" />
                   <p>On peut factoriser cette expression comme :</p>
                   <LatexRenderer latex="j(x,y,z) = (x-yz)^2 + (y-zx)^2 + (z-xy)^2" />
@@ -2307,8 +2307,8 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
               <div className="space-y-3">
                 <h5 className="font-semibold text-lg">Synthèse générale</h5>
                 
-                <div className="bg-blue-100 p-4 rounded border border-blue-300">
-                  <p className="font-semibold text-blue-800 mb-2">Résultats principaux :</p>
+                <div className="bg-carnet-red/10 p-4 rounded border border-carnet-red/40">
+                  <p className="font-semibold text-carnet-red-deep mb-2">Résultats principaux :</p>
                   <ul className="space-y-1 text-sm list-disc ml-4">
                     <li><strong>f :</strong> Minimum global sur <LatexRenderer latex="x = \pm\sqrt{2}y" />, pas de maximum</li>
                     <li><strong>g :</strong> Minimum global unique en <LatexRenderer latex="(0,0)" />, pas de maximum</li>
@@ -2375,7 +2375,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   En utilisant la règle du produit et la dérivation en chaîne :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial f}{\partial x} = \frac{\partial}{\partial x}\left[(x+y+z) e^{-\frac{1}{6}(x^2+y^2+z^2)}\right]" />
                   <LatexRenderer latex="= e^{-\frac{1}{6}(x^2+y^2+z^2)} + (x+y+z) \cdot e^{-\frac{1}{6}(x^2+y^2+z^2)} \cdot \left(-\frac{x}{3}\right)" />
                   <LatexRenderer latex="= e^{-\frac{1}{6}(x^2+y^2+z^2)} \left[1 - \frac{x(x+y+z)}{3}\right]" />
@@ -2384,7 +2384,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   De même :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial f}{\partial y} = e^{-\frac{1}{6}(x^2+y^2+z^2)} \left[1 - \frac{y(x+y+z)}{3}\right]" />
                   <LatexRenderer latex="\frac{\partial f}{\partial z} = e^{-\frac{1}{6}(x^2+y^2+z^2)} \left[1 - \frac{z(x+y+z)}{3}\right]" />
                 </div>
@@ -2439,7 +2439,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Pour les vecteurs <LatexRenderer latex="(x,y,z)" /> et <LatexRenderer latex="(1,1,1)" /> :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="|(x,y,z) \cdot (1,1,1)| \leq \|(x,y,z)\| \cdot \|(1,1,1)\|" />
                   <LatexRenderer latex="|x+y+z| \leq \sqrt{x^2+y^2+z^2} \cdot \sqrt{1^2+1^2+1^2}" />
                   <LatexRenderer latex="|x+y+z| \leq \sqrt{3} \sqrt{x^2+y^2+z^2}" />
@@ -2471,7 +2471,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Posons <LatexRenderer latex="t = x^2+y^2+z^2 \geq 0" />. L'encadrement devient :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="|f(x,y,z)| \leq \sqrt{3t} \cdot e^{-t/6} = g(t)" />
                 </div>
                 
@@ -2510,7 +2510,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Atteinte des extrema :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <p>Pour <LatexRenderer latex="(1,1,1)" /> : <LatexRenderer latex="t = 3" /> et <LatexRenderer latex="x = y = z" /></p>
                   <LatexRenderer latex="f(1,1,1) = (1+1+1) e^{-\frac{1}{6}(1+1+1)} = 3e^{-1/2}" />
                   
@@ -2546,8 +2546,8 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
               <div className="space-y-3">
                 <h5 className="font-semibold text-lg">Conclusion</h5>
                 
-                <div className="bg-blue-100 p-4 rounded border border-blue-300">
-                  <p className="font-semibold text-blue-800 mb-2">Résultats de l'étude :</p>
+                <div className="bg-carnet-red/10 p-4 rounded border border-carnet-red/40">
+                  <p className="font-semibold text-carnet-red-deep mb-2">Résultats de l'étude :</p>
                   <ul className="space-y-1 text-sm list-disc ml-4">
                     <li><strong>Points critiques :</strong> <LatexRenderer latex="(1,1,1)" /> et <LatexRenderer latex="(-1,-1,-1)" /></li>
                     <li><strong>Maximum global :</strong> <LatexRenderer latex="f(1,1,1) = 3e^{-1/2}" /></li>
@@ -2635,18 +2635,18 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                   En utilisant la règle du produit et la dérivation en chaîne :
                 </p>
                 
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial f}{\partial x} = \frac{\partial}{\partial x}\left[(x+z^2)e^{x(y^2+z^2+1)}\right]" />
                   <LatexRenderer latex="= e^{x(y^2+z^2+1)} + (x+z^2) \cdot (y^2+z^2+1) \cdot e^{x(y^2+z^2+1)}" />
                   <LatexRenderer latex="= e^{x(y^2+z^2+1)}\left[1 + (x+z^2)(y^2+z^2+1)\right]" />
                 </div>
                 
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial f}{\partial y} = (x+z^2) \cdot 2xy \cdot e^{x(y^2+z^2+1)}" />
                   <LatexRenderer latex="= 2xy(x+z^2)e^{x(y^2+z^2+1)}" />
                 </div>
                 
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\frac{\partial f}{\partial z} = \frac{\partial}{\partial z}\left[(x+z^2)e^{x(y^2+z^2+1)}\right]" />
                   <LatexRenderer latex="= 2z \cdot e^{x(y^2+z^2+1)} + (x+z^2) \cdot 2zx \cdot e^{x(y^2+z^2+1)}" />
                   <LatexRenderer latex="= e^{x(y^2+z^2+1)} \cdot 2z\left[1 + x(x+z^2)\right]" />
@@ -2727,7 +2727,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Cas 1 : x ≥ 0</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <ul className="space-y-1 text-sm list-disc ml-4">
                     <li><LatexRenderer latex="x \geq 0 \Rightarrow x + z^2 \geq 0" /> (somme de termes positifs)</li>
                     <li><LatexRenderer latex="e^{x(y^2+z^2+1)} > 0" /> (exponentielle toujours positive)</li>
@@ -2775,7 +2775,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Étude de la fonction auxiliaire φ(x) = xe^x :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="\varphi(x) = xe^x" />
                   <LatexRenderer latex="\varphi'(x) = e^x + xe^x = e^x(1+x)" />
                 </div>
@@ -2823,7 +2823,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Vérification de l'atteinte du minimum :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <p>Pour que <LatexRenderer latex="f(x,y,z) = xe^x" /> quand <LatexRenderer latex="x \leq 0" />, il faut :</p>
                   <ul className="space-y-1 text-sm list-disc ml-4">
                     <li><LatexRenderer latex="x + z^2 = x \Rightarrow z^2 = 0 \Rightarrow z = 0" /></li>
@@ -2843,8 +2843,8 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                   </ul>
                 </div>
                 
-                <div className="bg-blue-100 p-4 rounded border border-blue-300">
-                  <p className="font-semibold text-blue-800 mb-2">Techniques remarquables utilisées :</p>
+                <div className="bg-carnet-red/10 p-4 rounded border border-carnet-red/40">
+                  <p className="font-semibold text-carnet-red-deep mb-2">Techniques remarquables utilisées :</p>
                   <ul className="space-y-1 text-sm list-disc ml-4">
                     <li><strong>Analyse par cas :</strong> Distinction selon le signe de <LatexRenderer latex="x" /></li>
                     <li><strong>Encadrements sophistiqués :</strong> Exploitation des inégalités sur les exponentielles</li>
@@ -2895,7 +2895,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Régularité de classe ℂ¹ :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <p>La fonction <LatexRenderer latex="f" /> est une combinaison polynomiale des variables <LatexRenderer latex="x_1, \ldots, x_n" />.</p>
                   <p>Plus précisément :</p>
                   <ul className="space-y-1 text-sm list-disc ml-4">
@@ -2959,7 +2959,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   Soit <LatexRenderer latex="h=(h_1,\ldots,h_n)\in\mathbb{R}^n" />. Nous devons calculer :
                 </p>
-                <div className="bg-blue-50 p-3 rounded border">
+                <div className="bg-pr-orange-pale p-3 rounded border">
                   <LatexRenderer latex="f(a+h) - f(a) = f(a_1+h_1,\ldots,a_n+h_n) - f(a_1,\ldots,a_n)" />
                 </div>
                 
@@ -3006,7 +3006,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Analyse de la nature du point critique :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-3">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-3">
                   <p><strong>Positivité :</strong></p>
                   <ul className="space-y-1 text-sm list-disc ml-4">
                     <li><LatexRenderer latex="\sum_{k=1}^n h_k^2 \geq 0" /> (somme de carrés)</li>
@@ -3037,7 +3037,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
                 <p>
                   <strong>Interprétation de la fonction :</strong>
                 </p>
-                <div className="bg-blue-50 p-3 rounded border space-y-2">
+                <div className="bg-pr-orange-pale p-3 rounded border space-y-2">
                   <LatexRenderer latex="f(x_1,\ldots,x_n) = \sum_{k=1}^n x_k^2 + \left(1-\sum_{k=1}^n x_k\right)^2" />
                   <p>Cette fonction peut s'interpréter comme :</p>
                   <ul className="space-y-1 text-sm list-disc ml-4">
@@ -3078,8 +3078,8 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
               <div className="space-y-3">
                 <h5 className="font-semibold text-lg">Techniques remarquables et conclusion</h5>
                 
-                <div className="bg-blue-100 p-4 rounded border border-blue-300">
-                  <p className="font-semibold text-blue-800 mb-2">Techniques utilisées :</p>
+                <div className="bg-carnet-red/10 p-4 rounded border border-carnet-red/40">
+                  <p className="font-semibold text-carnet-red-deep mb-2">Techniques utilisées :</p>
                   <ul className="space-y-1 text-sm list-disc ml-4">
                     <li><strong>Symétrie du problème :</strong> Exploitation de l'égalité de toutes les dérivées partielles</li>
                     <li><strong>Développement au second ordre :</strong> Calcul direct de <LatexRenderer latex="f(a+h) - f(a)" /></li>

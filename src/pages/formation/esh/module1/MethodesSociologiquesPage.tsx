@@ -5,7 +5,7 @@ import { Target, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle, TrendingU
 
 const MethodesSociologiquesPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -47,14 +47,14 @@ const MethodesSociologiquesPage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <Target className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+                <Target className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   La pluralité des méthodes sociologiques
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 1.10 - Module 1</div>
+                <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 1.10 - Module 1</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -67,15 +67,15 @@ const MethodesSociologiquesPage = () => {
             {/* Section 1: Les principes méthodologiques généraux */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">1</span>
                 </div>
                 Les principes méthodologiques généraux
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-200 pl-4">
-                  <h3 className="font-semibold text-blue-700 mb-2">La scientificité en sociologie</h3>
+                <div className="border-l-4 border-carnet-red/30 pl-4">
+                  <h3 className="font-semibold text-carnet-red mb-2">La scientificité en sociologie</h3>
                   <p className="text-sm text-gray-600">
                     La sociologie aspire à être une science objective, systématique et vérifiable.
                     Elle utilise des méthodes rigoureuses pour étudier les phénomènes sociaux,
@@ -83,8 +83,8 @@ const MethodesSociologiquesPage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-200 pl-4">
-                  <h3 className="font-semibold text-blue-700 mb-2">Le rapport sujet-objet</h3>
+                <div className="border-l-4 border-carnet-red/30 pl-4">
+                  <h3 className="font-semibold text-carnet-red mb-2">Le rapport sujet-objet</h3>
                   <p className="text-sm text-gray-600">
                     Difficulté spécifique aux sciences sociales : le sociologue étudie des sujets
                     qui sont aussi des acteurs sociaux conscients, capables d'interpréter et
@@ -97,8 +97,8 @@ const MethodesSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
-                  <h4 className="font-semibold text-blue-700 mb-2">Les critères de scientificité</h4>
+                <div className="bg-pr-orange-pale rounded-lg p-4">
+                  <h4 className="font-semibold text-carnet-red mb-2">Les critères de scientificité</h4>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• <strong>Objectivité</strong> : neutralité du chercheur, procédures standardisées</li>
                     <li>• <strong>Fiabilité</strong> : reproductibilité des résultats</li>
@@ -113,14 +113,14 @@ const MethodesSociologiquesPage = () => {
             {/* Section 2: Les méthodes quantitatives */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">2</span>
                 </div>
                 Les méthodes quantitatives
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">L'enquête par questionnaire</h3>
                   <p className="text-sm text-gray-600">
                     Méthode standardisée permettant d'interroger un grand nombre de personnes
@@ -134,7 +134,7 @@ const MethodesSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">L'observation systématique</h3>
                   <p className="text-sm text-gray-600">
                     Enregistrement méthodique de comportements observables selon des critères prédéfinis.
@@ -149,7 +149,7 @@ const MethodesSociologiquesPage = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Avantages</h4>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Grande représentativité</li>
@@ -160,7 +160,7 @@ const MethodesSociologiquesPage = () => {
                     </ul>
                   </div>
 
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Limites</h4>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Rigidité des protocoles</li>
@@ -172,7 +172,7 @@ const MethodesSociologiquesPage = () => {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">L'analyse statistique</h3>
                   <p className="text-sm text-gray-600">
                     Traitement mathématique des données pour dégager des régularités,
@@ -191,14 +191,14 @@ const MethodesSociologiquesPage = () => {
             {/* Section 3: Les méthodes qualitatives */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">3</span>
                 </div>
                 Les méthodes qualitatives
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">L'entretien semi-directif</h3>
                   <p className="text-sm text-gray-600">
                     Conversation approfondie guidée par un plan d'entretien flexible.
@@ -212,7 +212,7 @@ const MethodesSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">L'observation participante</h3>
                   <p className="text-sm text-gray-600">
                     Immersion du chercheur dans le milieu étudié pour observer les comportements
@@ -227,7 +227,7 @@ const MethodesSociologiquesPage = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Avantages</h4>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Richesse des données</li>
@@ -238,7 +238,7 @@ const MethodesSociologiquesPage = () => {
                     </ul>
                   </div>
 
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-pr-orange-pale rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Limites</h4>
                     <ul className="text-sm text-gray-600 space-y-1">
                       <li>• Subjectivité de l'interprétation</li>
@@ -250,7 +250,7 @@ const MethodesSociologiquesPage = () => {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">L'analyse de contenu</h3>
                   <p className="text-sm text-gray-600">
                     Étude systématique de documents, discours ou productions culturelles
@@ -269,8 +269,8 @@ const MethodesSociologiquesPage = () => {
             {/* Section 4: Les méthodes mixtes et l'approche comparative */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">4</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">4</span>
                 </div>
                 Les méthodes mixtes et l'approche comparative
               </h2>
@@ -323,14 +323,14 @@ const MethodesSociologiquesPage = () => {
             {/* Section 5: L'éthique de la recherche sociologique */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">5</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">5</span>
                 </div>
                 L'éthique de la recherche sociologique
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Les principes éthiques fondamentaux</h3>
                   <p className="text-sm text-gray-600">
                     La recherche sociologique doit respecter les droits et la dignité des personnes
@@ -345,7 +345,7 @@ const MethodesSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Les dilemmes éthiques</h3>
                   <ul className="text-sm text-gray-600 space-y-2">
                     <li>• Observation clandestine : nécessaire pour étudier certains phénomènes, mais violation de la vie privée</li>
@@ -355,7 +355,7 @@ const MethodesSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Les comités d'éthique</h4>
                   <p className="text-sm text-gray-600">
                     Instances chargées d'évaluer les protocoles de recherche du point de vue éthique
@@ -374,8 +374,8 @@ const MethodesSociologiquesPage = () => {
             {/* Section 6: Choix méthodologiques et stratégies de recherche */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">6</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">6</span>
                 </div>
                 Choix méthodologiques et stratégies de recherche
               </h2>
@@ -459,7 +459,7 @@ const MethodesSociologiquesPage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module2/croissance-economique">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Module suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

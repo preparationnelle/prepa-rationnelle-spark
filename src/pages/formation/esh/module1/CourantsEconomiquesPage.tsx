@@ -5,7 +5,7 @@ import { BookOpen, Home, ChevronRight, ArrowLeft, Users, TrendingUp, DollarSign,
 
 const CourantsEconomiquesPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -47,14 +47,14 @@ const CourantsEconomiquesPage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <Clock className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+                <Clock className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   Les grands courants de la pensée économique depuis le XVIe siècle
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 1.4 - Module 1</div>
+                <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 1.4 - Module 1</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -67,14 +67,14 @@ const CourantsEconomiquesPage = () => {
             {/* Section 1: Le mercantilisme (XVIe-XVIIIe siècles) */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
                 Le mercantilisme (XVIe-XVIIIe siècles)
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Contexte historique</h3>
                   <p className="text-sm text-gray-600">
                     Doctrine économique dominante pendant l'Ancien Régime, liée au développement du commerce international
@@ -82,7 +82,7 @@ const CourantsEconomiquesPage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Idées principales</h3>
                   <ul className="text-sm text-gray-600 space-y-2">
                     <li>• L'or et l'argent sont les véritables richesses d'une nation</li>
@@ -93,7 +93,7 @@ const CourantsEconomiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Penseurs représentatifs</h4>
                   <p className="text-sm text-gray-600">
                     Jean-Baptiste Colbert (France), Thomas Mun (Angleterre), Antonio Serra (Italie)
@@ -105,14 +105,14 @@ const CourantsEconomiquesPage = () => {
             {/* Section 2: Le libéralisme économique (XVIIIe siècle) */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
                 Le libéralisme économique (XVIIIe siècle)
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Adam Smith et la "main invisible"</h3>
                   <p className="text-sm text-gray-600">
                     "Recherches sur la nature et les causes de la richesse des nations" (1776) marque la naissance de l'économie
@@ -120,7 +120,7 @@ const CourantsEconomiquesPage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Principes fondamentaux</h3>
                   <ul className="text-sm text-gray-600 space-y-2">
                     <li>• Division du travail comme source d'efficacité</li>
@@ -136,14 +136,14 @@ const CourantsEconomiquesPage = () => {
             {/* Section 3: L'école classique (XIXe siècle) */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
                 L'école classique (XIXe siècle)
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">David Ricardo et la loi des avantages comparatifs</h3>
                   <p className="text-sm text-gray-600">
                     Théorie expliquant les bénéfices du commerce international même entre pays ayant des niveaux
@@ -151,7 +151,7 @@ const CourantsEconomiquesPage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">John Stuart Mill et l'utilitarisme</h3>
                   <p className="text-sm text-gray-600">
                     Extension des principes libéraux avec une vision plus sociale de l'économie.
@@ -160,11 +160,11 @@ const CourantsEconomiquesPage = () => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-blue-50 rounded-lg p-3">
+                  <div className="bg-pr-orange-pale rounded-lg p-3">
                     <h4 className="font-semibold text-gray-800 text-sm mb-1">Loi de Say</h4>
                     <p className="text-xs text-gray-600">"Toute offre crée sa propre demande"</p>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-3">
+                  <div className="bg-pr-orange-pale rounded-lg p-3">
                     <h4 className="font-semibold text-gray-800 text-sm mb-1">Théorie quantitative de la monnaie</h4>
                     <p className="text-xs text-gray-600">Relation entre masse monétaire et niveau des prix</p>
                   </div>
@@ -175,14 +175,14 @@ const CourantsEconomiquesPage = () => {
             {/* Section 4: Le marginalisme et la révolution néoclassique (fin XIXe siècle) */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">4</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">4</span>
                 </div>
                 Le marginalisme et la révolution néoclassique (fin XIXe siècle)
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Révolution méthodologique</h3>
                   <p className="text-sm text-gray-600">
                     Introduction du calcul différentiel en économie et du concept de marginalité.
@@ -205,7 +205,7 @@ const CourantsEconomiquesPage = () => {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Apports majeurs</h3>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Théorie de la valeur-utilité (subjective)</li>
@@ -220,14 +220,14 @@ const CourantsEconomiquesPage = () => {
             {/* Section 5: Le keynésianisme (XXe siècle) */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">5</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">5</span>
                 </div>
                 Le keynésianisme (XXe siècle)
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">John Maynard Keynes et la Théorie générale (1936)</h3>
                   <p className="text-sm text-gray-600">
                     Réponse à la Grande Dépression de 1929. Critique des idées classiques sur l'autorégulation des marchés
@@ -235,7 +235,7 @@ const CourantsEconomiquesPage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Idées clés</h3>
                   <ul className="text-sm text-gray-600 space-y-2">
                     <li>• Les marchés ne s'autorégulent pas toujours spontanément</li>
@@ -246,7 +246,7 @@ const CourantsEconomiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Héritage du keynésianisme</h4>
                   <p className="text-sm text-gray-600">
                     Influence majeure sur les politiques économiques du XXe siècle : New Deal (USA),
@@ -259,14 +259,14 @@ const CourantsEconomiquesPage = () => {
             {/* Section 6: L'école de Chicago et le monétarisme (XXe siècle) */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">6</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">6</span>
                 </div>
                 L'école de Chicago et le monétarisme (XXe siècle)
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Milton Friedman et la critique du keynésianisme</h3>
                   <p className="text-sm text-gray-600">
                     "La monnaie est la cause principale des variations économiques". Réhabilitation des idées libérales
@@ -274,7 +274,7 @@ const CourantsEconomiquesPage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Théories principales</h3>
                   <ul className="text-sm text-gray-600 space-y-2">
                     <li>• Règle monétaire fixe (croissance régulière de la masse monétaire)</li>
@@ -302,7 +302,7 @@ const CourantsEconomiquesPage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module1/comportement-agents">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

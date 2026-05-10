@@ -5,7 +5,7 @@ import { BookOpen, Home, ChevronRight, ArrowLeft, Users, CheckCircle, TrendingUp
 
 const CourantsSociologiquesPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -47,14 +47,14 @@ const CourantsSociologiquesPage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <BookOpen className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+                <BookOpen className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   Les grands courants de la pensée sociologique depuis le XIXe siècle
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 1.9 - Module 1</div>
+                <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 1.9 - Module 1</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -67,15 +67,15 @@ const CourantsSociologiquesPage = () => {
             {/* Section 1: La sociologie naissante (XIXe siècle) */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">1</span>
                 </div>
                 La sociologie naissante (XIXe siècle)
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-200 pl-4">
-                  <h3 className="font-semibold text-blue-700 mb-2">Contexte historique</h3>
+                <div className="border-l-4 border-carnet-red/30 pl-4">
+                  <h3 className="font-semibold text-carnet-red mb-2">Contexte historique</h3>
                   <p className="text-sm text-gray-600">
                     La sociologie émerge au XIXe siècle dans un contexte de profondes transformations sociales :
                     Révolution industrielle, urbanisation massive, constitution des États-nations,
@@ -83,8 +83,8 @@ const CourantsSociologiquesPage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-200 pl-4">
-                  <h3 className="font-semibold text-blue-700 mb-2">Auguste Comte (1798-1857)</h3>
+                <div className="border-l-4 border-carnet-red/30 pl-4">
+                  <h3 className="font-semibold text-carnet-red mb-2">Auguste Comte (1798-1857)</h3>
                   <p className="text-sm text-gray-600">
                     Père fondateur de la sociologie. Il forge le terme "sociologie" (1838) et propose
                     la loi des trois états : théologique, métaphysique et positif (scientifique).
@@ -97,8 +97,8 @@ const CourantsSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
-                  <h4 className="font-semibold text-blue-700 mb-2">Herbert Spencer (1820-1903)</h4>
+                <div className="bg-pr-orange-pale rounded-lg p-4">
+                  <h4 className="font-semibold text-carnet-red mb-2">Herbert Spencer (1820-1903)</h4>
                   <p className="text-sm text-gray-600">
                     Penseur évolutionniste britannique. Applique la théorie darwinienne à la société.
                     Développe l'idée d'évolution sociale progressive et défend le laissez-faire.
@@ -115,14 +115,14 @@ const CourantsSociologiquesPage = () => {
             {/* Section 2: Le fonctionnalisme (début XXe siècle) */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">2</span>
                 </div>
                 Le fonctionnalisme (début XXe siècle)
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Émile Durkheim (1858-1917)</h3>
                   <p className="text-sm text-gray-600">
                     Figure majeure de la sociologie française. Étudie les faits sociaux comme des réalités
@@ -136,7 +136,7 @@ const CourantsSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Talcott Parsons (1902-1979)</h3>
                   <p className="text-sm text-gray-600">
                     Sociologue américain. Développe une théorie fonctionnaliste systémique.
@@ -150,7 +150,7 @@ const CourantsSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Robert Merton (1910-2003)</h4>
                   <p className="text-sm text-gray-600">
                     Élève de Parsons, critique le fonctionnalisme excessif. Introduit les concepts
@@ -168,8 +168,8 @@ const CourantsSociologiquesPage = () => {
             {/* Section 3: Le conflit social (XIXe-XXe siècles) */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">3</span>
                 </div>
                 Le conflit social (XIXe-XXe siècles)
               </h2>
@@ -216,14 +216,14 @@ const CourantsSociologiquesPage = () => {
             {/* Section 4: L'interactionnisme symbolique (XXe siècle) */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">4</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">4</span>
                 </div>
                 L'interactionnisme symbolique (XXe siècle)
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">George Herbert Mead (1863-1931)</h3>
                   <p className="text-sm text-gray-600">
                     Psychologue et sociologue américain. Fondateur de l'interactionnisme symbolique.
@@ -237,7 +237,7 @@ const CourantsSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Herbert Blumer (1900-1987)</h3>
                   <p className="text-sm text-gray-600">
                     Élève de Mead. Formalise l'interactionnisme symbolique comme approche sociologique.
@@ -251,7 +251,7 @@ const CourantsSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Erving Goffman (1922-1982)</h4>
                   <p className="text-sm text-gray-600">
                     Sociologue canadien. Analyse la vie quotidienne comme un théâtre où les individus
@@ -270,8 +270,8 @@ const CourantsSociologiquesPage = () => {
             {/* Section 5: Le structuralisme fonctionnaliste (milieu XXe siècle) */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">5</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">5</span>
                 </div>
                 Le structuralisme fonctionnaliste (milieu XXe siècle)
               </h2>
@@ -323,8 +323,8 @@ const CourantsSociologiquesPage = () => {
             {/* Section 6: Les théories contemporaines (fin XXe-XXIe siècles) */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">6</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">6</span>
                 </div>
                 Les théories contemporaines (fin XXe-XXIe siècles)
               </h2>
@@ -409,7 +409,7 @@ const CourantsSociologiquesPage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module1/methodes-sociologiques">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

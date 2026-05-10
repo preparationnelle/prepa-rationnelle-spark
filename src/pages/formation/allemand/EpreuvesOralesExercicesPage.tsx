@@ -276,7 +276,7 @@ const EpreuvesOralesExercicesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-8 pb-16 max-w-6xl">
 
         {/* Header */}
@@ -345,7 +345,6 @@ const EpreuvesOralesExercicesPage = () => {
           </div>
         </div>
 
-        {/* Navigation */}
         <div className="text-center">
           <Link
             to="/formation/allemand/epreuves-orales"

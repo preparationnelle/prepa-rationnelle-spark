@@ -1,11 +1,8 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type"
-};
-
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { requireAuth } from "../_shared/auth.ts";
 // Phrases spécialisées allemandes avec détails complets
 const SPECIALIZED_GERMAN_SENTENCES = [
   {
@@ -745,7 +742,12 @@ const SPECIALIZED_SPANISH_SENTENCES = [
 ];
 
 serve(async (req) => {
-  if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
+  const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
+
+  const __authResult = await requireAuth(req);
+  if (__authResult.response) return __authResult.response;
+
   try {
     const { language, history } = await req.json();
     
@@ -789,12 +791,12 @@ serve(async (req) => {
       difficulty_level: sentence.difficulty_level,
       specialized: true
     }), { 
-      headers: { ...corsHeaders, "Content-Type": "application/json" } 
+      headers: { ...corsHeaders(req), "Content-Type": "application/json" } 
     });
   } catch (e) {
     return new Response(JSON.stringify({ error: e.message }), { 
       status: 500, 
-      headers: { ...corsHeaders, "Content-Type": "application/json" } 
+      headers: { ...corsHeaders(req), "Content-Type": "application/json" } 
     });
   }
 });

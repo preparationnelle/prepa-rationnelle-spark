@@ -5,7 +5,7 @@ import { TrendingUp, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle } from
 
 const AnalyseEchangesInternationauxPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -47,14 +47,14 @@ const AnalyseEchangesInternationauxPage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <TrendingUp className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+                <TrendingUp className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   L'analyse économique des échanges internationaux
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 3.2 - Module 3</div>
+                <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 3.2 - Module 3</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -67,29 +67,29 @@ const AnalyseEchangesInternationauxPage = () => {
             {/* Section 1: Théories des échanges internationaux */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
                 Théories des échanges internationaux
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Théorie des avantages absolus (Adam Smith)</h3>
                   <p className="text-sm text-gray-600">Un pays doit se spécialiser dans les biens où il a un avantage absolu de productivité</p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Théorie des avantages comparatifs (David Ricardo)</h3>
                   <p className="text-sm text-gray-600">Échange profitable même si un pays est moins efficace dans tous les secteurs</p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Théorie HOS (Heckscher-Ohlin-Samuelson)</h3>
                   <p className="text-sm text-gray-600">Échanges basés sur la dotation relative en facteurs de production</p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Théories du commerce intra-branche</h3>
                   <p className="text-sm text-gray-600">Échanges de produits similaires entre pays développés (différenciation)</p>
                 </div>
@@ -99,8 +99,8 @@ const AnalyseEchangesInternationauxPage = () => {
             {/* Section 2: Les déterminants des échanges */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
                 Les déterminants des échanges internationaux
               </h2>
@@ -110,19 +110,19 @@ const AnalyseEchangesInternationauxPage = () => {
                   <h3 className="font-semibold text-gray-800">Facteurs économiques :</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Différences de coûts de production</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Dotation en facteurs de production</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Taille et structure du marché</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Niveau technologique et innovation</span>
                     </li>
                   </ul>
@@ -132,19 +132,19 @@ const AnalyseEchangesInternationauxPage = () => {
                   <h3 className="font-semibold text-gray-800">Facteurs institutionnels :</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Politiques commerciales (droits de douane)</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Accords de libre-échange</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Réglementations et normes</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Politiques monétaires et fiscales</span>
                     </li>
                   </ul>
@@ -155,13 +155,13 @@ const AnalyseEchangesInternationauxPage = () => {
             {/* Section 3: Effets des échanges internationaux */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
                 Effets des échanges internationaux
               </h2>
 
-              <div className="bg-blue-50 rounded-lg p-4 mb-4">
+              <div className="bg-pr-orange-pale rounded-lg p-4 mb-4">
                 <h3 className="font-semibold text-gray-800 mb-2">Effets positifs</h3>
                 <p className="text-sm text-gray-600">
                   Gains d'efficacité, spécialisation, diffusion technologique, croissance économique,
@@ -170,19 +170,19 @@ const AnalyseEchangesInternationauxPage = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-blue-50 rounded-lg p-3">
+                <div className="bg-pr-orange-pale rounded-lg p-3">
                   <h4 className="font-semibold text-gray-800 text-sm mb-1">Effets redistributifs</h4>
                   <p className="text-xs text-gray-600">Gains pour les propriétaires des facteurs abondants, pertes pour les autres</p>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-3">
+                <div className="bg-pr-orange-pale rounded-lg p-3">
                   <h4 className="font-semibold text-gray-800 text-sm mb-1">Ajustements structurels</h4>
                   <p className="text-xs text-gray-600">Réallocation des ressources, reconversion professionnelle</p>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-3">
+                <div className="bg-pr-orange-pale rounded-lg p-3">
                   <h4 className="font-semibold text-gray-800 text-sm mb-1">Externalités positives</h4>
                   <p className="text-xs text-gray-600">Apprentissage technologique, économies d'échelle</p>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-3">
+                <div className="bg-pr-orange-pale rounded-lg p-3">
                   <h4 className="font-semibold text-gray-800 text-sm mb-1">Risques de dépendance</h4>
                   <p className="text-xs text-gray-600">Vulnérabilité aux chocs externes, volatilité</p>
                 </div>
@@ -204,7 +204,7 @@ const AnalyseEchangesInternationauxPage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module3/regionalisation-gouvernance">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
@@ -187,15 +186,15 @@ const GeopoliticsUnifiedGeneratorPage = () => {
 
         {!isSubjectValidated ? (
           <div className="max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150">
-            <Card className="border border-pr-gray-light bg-white overflow-hidden shadow-sm">
-              <div className="absolute top-0 left-0 w-full h-[3px] bg-pr-orange"></div>
-              <CardHeader className="pt-8 pb-2 text-center">
-                <CardTitle className="font-dm-serif text-2xl text-pr-black">Définis ton sujet</CardTitle>
+            <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-sm">
+              <div className="h-[3px] w-full bg-pr-orange" />
+              <div className="pt-8 pb-2 text-center px-8">
+                <h2 className="font-dm-serif text-2xl text-pr-black">Définis ton sujet</h2>
                 <p className="text-pr-gray-mid font-dm-sans text-sm mt-1">
                   Pour commencer, choisis ou saisis le sujet de ta dissertation.
                 </p>
-              </CardHeader>
-              <CardContent className="p-8 space-y-6">
+              </div>
+              <div className="p-8 space-y-6">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-pr-gray-mid uppercase tracking-[0.08em] font-dm-sans">
                     Sujet
@@ -244,8 +243,8 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                   <Sparkles className="h-4 w-4 mr-2" />
                   Commencer l'analyse
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
@@ -306,17 +305,17 @@ const GeopoliticsUnifiedGeneratorPage = () => {
 
                 <TabsContent value="geopolitics" className="focus-visible:outline-none focus:outline-none">
                   <div className="transition-all duration-500 animate-in fade-in slide-in-from-bottom-4">
-                    <Card className="border border-pr-gray-light bg-white overflow-hidden shadow-sm">
+                    <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-sm">
                       <div className="h-[3px] w-full bg-pr-orange" />
-                      <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light pb-6 pt-6">
-                        <CardTitle className="flex items-center gap-3 font-dm-serif text-2xl text-pr-black">
+                      <div className="bg-pr-gray-bg border-b border-pr-gray-light pb-6 pt-6 px-6 sm:px-8">
+                        <h3 className="flex items-center gap-3 font-dm-serif text-2xl text-pr-black">
                           <div className="w-10 h-10 bg-pr-orange-pale rounded-xl flex items-center justify-center">
                             <Globe className="h-5 w-5 text-pr-orange-dark" />
                           </div>
-                          Générateur de Contenu
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="p-6 sm:p-8 space-y-6">
+                          Générateur de contenu
+                        </h3>
+                      </div>
+                      <div className="p-6 sm:p-8 space-y-6">
                         <div className="space-y-3">
                           <Label htmlFor="courseContent" className="text-sm font-semibold text-pr-black flex items-center gap-2 font-dm-sans">
                             Contenu de référence
@@ -360,31 +359,31 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                             Exemple
                           </Button>
                         </div>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    </div>
 
                     {generatedContent && (
                       <div className="mt-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                        <Card className="border border-pr-gray-light bg-white overflow-hidden shadow-sm">
+                        <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-sm">
                           <div className="h-[3px] w-full bg-pr-orange" />
-                          <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light pb-5 pt-5">
+                          <div className="bg-pr-gray-bg border-b border-pr-gray-light pb-5 pt-5 px-6 sm:px-8">
                             <div className="flex items-center justify-between">
-                              <CardTitle className="flex items-center gap-3 font-dm-serif text-xl text-pr-black">
+                              <h3 className="flex items-center gap-3 font-dm-serif text-xl text-pr-black">
                                 <FileText className="h-5 w-5 text-pr-orange" />
                                 Résultat généré
-                              </CardTitle>
+                              </h3>
                               <div className="text-xs text-pr-gray-mid font-medium font-dm-sans">
                                 {wordCount > 0 ? `${wordCount} mots` : ''}
                               </div>
                             </div>
-                          </CardHeader>
-                          <CardContent className="p-8 sm:p-10">
+                          </div>
+                          <div className="p-8 sm:p-10">
                             <div
                               className="prose prose-lg max-w-none prose-headings:font-dm-serif prose-headings:text-pr-black prose-p:text-pr-gray-dark prose-li:text-pr-gray-dark prose-a:text-pr-orange-dark"
                               dangerouslySetInnerHTML={{ __html: generatedContent }}
                             />
-                          </CardContent>
-                        </Card>
+                          </div>
+                        </div>
                       </div>
                     )}
                   </div>

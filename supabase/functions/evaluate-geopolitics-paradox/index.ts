@@ -1,40 +1,38 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
-
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { requireAuth } from "../_shared/auth.ts";
 serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
+  const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
+
+  const __authResult = await requireAuth(req);
+  if (__authResult.response) return __authResult.response;
 
   try {
     const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
     if (!OPENAI_API_KEY) {
       return new Response(JSON.stringify({ error: 'Clé API non configurée' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+        { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } });
     }
 
     const { action, subject, userParadox } = await req.json();
 
     if (!action || !['evaluate', 'suggest'].includes(action)) {
       return new Response(JSON.stringify({ error: 'Le champ "action" doit être "evaluate" ou "suggest"' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+        { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } });
     }
 
     if (!subject || !subject.trim()) {
       return new Response(JSON.stringify({ error: 'Le champ "subject" est requis' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+        { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } });
     }
 
     if (action === 'evaluate') {
       if (!userParadox || !userParadox.trim()) {
         return new Response(JSON.stringify({ error: 'Le champ "userParadox" est requis pour l\'évaluation' }),
-          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+          { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } });
       }
 
       const evaluationPrompt = `
@@ -107,7 +105,7 @@ Répondez UNIQUEMENT avec un objet JSON valide au format suivant :
       const evaluation = JSON.parse(content.trim());
 
       return new Response(JSON.stringify({ evaluation }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+        { headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } });
 
     } else {
       // action === 'suggest'
@@ -162,11 +160,11 @@ Répondez UNIQUEMENT avec un objet JSON valide :
       const suggestion = JSON.parse(content.trim());
 
       return new Response(JSON.stringify({ suggestion }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+        { headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } });
     }
 
   } catch (error) {
     return new Response(JSON.stringify({ error: error.message }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+      { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } });
   }
 });

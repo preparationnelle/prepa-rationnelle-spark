@@ -1,14 +1,45 @@
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ChevronRight, Home, BookOpen, Eye, EyeOff, Download } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Eye, EyeOff, CheckCircle } from 'lucide-react';
 import { LatexRenderer } from '@/components/LatexRenderer';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
+
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-[11px] font-bold text-red-800 uppercase tracking-widest mb-2 mt-4 first:mt-0">
+    {children}
+  </p>
+);
+
+const PointMethodo = ({ children }: { children: React.ReactNode }) => (
+  <div className="mb-3">
+    <SectionLabel>Méthode</SectionLabel>
+    <div className="text-stone-700 text-sm leading-relaxed">{children}</div>
+  </div>
+);
+
+const Astuce = ({ children }: { children: React.ReactNode }) => (
+  <div className="mb-3">
+    <SectionLabel>Astuce</SectionLabel>
+    <div className="text-stone-700 text-sm leading-relaxed">{children}</div>
+  </div>
+);
+
+const ConclusionBox = ({ children }: { children: React.ReactNode }) => (
+  <div className="mt-4">
+    <SectionLabel>Conclusion</SectionLabel>
+    <div className="text-stone-800 leading-relaxed">{children}</div>
+  </div>
+);
+
+const difficultyLabel: Record<string, string> = {
+  'Niveau: Facile': 'FACILE',
+  'Niveau: Intermédiaire': 'MOYEN',
+  'Niveau: Concours': 'DIFFICILE',
+  'Niveau: Concours (Classique)': 'DIFFICILE',
+  'Niveau: Difficile': 'HEC',
+};
 
 const Chapitre1ComplementsAlgebreLineaireExercicesPage = () => {
-  const [visibleCorrections, setVisibleCorrections] = useState<{[key: string]: boolean}>({});
+  const [visibleCorrections, setVisibleCorrections] = useState<{ [key: string]: boolean }>({});
 
   const toggleCorrection = (exerciseId: string) => {
     setVisibleCorrections(prev => ({
@@ -17,340 +48,229 @@ const Chapitre1ComplementsAlgebreLineaireExercicesPage = () => {
     }));
   };
 
-  const downloadExercisesPDF = async () => {
-    try {
-      // Créer un élément temporaire avec tout le contenu des exercices (incluant les corrections)
-      const exercisesContent = document.querySelector('.exercises-content');
-      if (!exercisesContent) return;
+  const DifficultyHeader = ({ level }: { level: string }) => (
+    <div className="flex items-center gap-3 mb-4 mt-10">
+      <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest whitespace-nowrap">
+        {level}
+      </span>
+      <div className="flex-1 border-t border-stone-200" />
+    </div>
+  );
 
-      // Créer un clone pour éviter de modifier le DOM original
-      const clone = exercisesContent.cloneNode(true) as HTMLElement;
-
-      // Supprimer les boutons d'affichage/masquage des corrections du clone
-      const correctionButtons = clone.querySelectorAll('[data-correction-button]');
-      correctionButtons.forEach(button => button.remove());
-
-      // Afficher TOUTES les sections de corrections dans le clone (au lieu de les masquer)
-      const corrections = clone.querySelectorAll('[data-correction]');
-      corrections.forEach(correction => {
-        (correction as HTMLElement).style.display = 'block';
-      });
-
-      // Ajouter le clone au body temporairement
-      clone.style.position = 'absolute';
-      clone.style.left = '-9999px';
-      clone.style.width = '800px';
-      clone.style.backgroundColor = 'white';
-      clone.style.padding = '40px';
-      clone.style.fontFamily = 'Arial, sans-serif';
-      document.body.appendChild(clone);
-
-      // Générer le canvas
-      const canvas = await html2canvas(clone, {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#ffffff',
-        width: 800,
-        height: clone.offsetHeight
-      });
-
-      // Supprimer le clone
-      document.body.removeChild(clone);
-
-      // Créer le PDF
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-
-      // Calculer les dimensions pour adapter l'image au PDF
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-      const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
-      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-      const imgX = (pdfWidth - imgWidth * ratio) / 2;
-      const imgY = 30; // Laisser de l'espace en haut pour le titre
-
-      // Ajouter un titre
-      pdf.setFontSize(20);
-      pdf.text('Chapitre 1 : Compléments d\'algèbre linéaire - Exercices & Corrigés', pdfWidth / 2, 20, { align: 'center' });
-
-      // Ajouter l'image
-      pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-
-      // Ajouter le filigrane "PREPA RATIONNELLE" au centre, plus petit
-      pdf.saveGraphicsState();
-      pdf.setTextColor(150, 150, 150); // Gris plus clair et subtil
-      pdf.setFontSize(30); // Taille réduite de 60 à 30
-
-      // Positionnement au centre exact du PDF
-      const centerX = pdfWidth / 2;
-      const centerY = pdfHeight / 2;
-      pdf.text('PREPA RATIONNELLE', centerX, centerY, {
-        align: 'center',
-        angle: 45
-      });
-
-      pdf.restoreGraphicsState();
-
-      // Télécharger le PDF
-      pdf.save('Chapitre1_Complements_Algebre_Lineaure_Exercices_Corriges.pdf');
-
-    } catch (error) {
-      console.error('Erreur lors de la génération du PDF:', error);
-      alert('Une erreur est survenue lors de la génération du PDF.');
-    }
+  const ExerciseCard = ({
+    id, title, content, correction, difficulty,
+  }: {
+    id: string; title: string; content: React.ReactNode;
+    correction: React.ReactNode; difficulty: string;
+  }) => {
+    const num = id.replace(/[^0-9]/g, '').padStart(2, '0');
+    const badge = difficultyLabel[difficulty] ?? difficulty.replace('Niveau: ', '').toUpperCase();
+    const isOpen = visibleCorrections[id];
+    return (
+      <div className="mb-6 border border-stone-200 rounded-xl bg-white shadow-sm p-6">
+        <div className="flex items-start justify-between gap-4 mb-5">
+          <div className="flex items-baseline gap-3">
+            <span className="text-2xl font-bold italic text-red-800 leading-none">{num}</span>
+            <span className="text-stone-300 font-light text-xl leading-none">—</span>
+            <h3 className="font-medium text-stone-900 text-base leading-snug">
+              {title.replace(/^Exercice \d+ - /, '')}
+            </h3>
+          </div>
+          <span className="shrink-0 text-[11px] font-semibold text-red-800 border border-red-200 rounded-full px-3 py-0.5 tracking-wider">
+            {badge}
+          </span>
+        </div>
+        <div className="text-stone-700 leading-relaxed mb-6">{content}</div>
+        <button
+          onClick={() => toggleCorrection(id)}
+          className="flex items-center gap-2 text-sm text-stone-600 border border-stone-300 rounded-full px-4 py-1.5 hover:bg-stone-50 transition-colors"
+        >
+          {isOpen ? (<><EyeOff className="w-4 h-4" /> Masquer la correction</>) : (<><Eye className="w-4 h-4" /> Afficher la correction</>)}
+        </button>
+        {isOpen && (
+          <div className="mt-5 border border-dashed border-stone-300 border-l-[3px] border-l-red-800 rounded-lg p-5 animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="flex items-center gap-2 mb-4">
+              <CheckCircle className="w-4 h-4 text-red-800" />
+              <span className="text-xs font-bold text-red-800 uppercase tracking-widest">Corrigé détaillé</span>
+            </div>
+            <div className="text-stone-700 leading-relaxed space-y-2">{correction}</div>
+          </div>
+        )}
+      </div>
+    );
   };
 
   return (
-    <div className="min-h-screen carnet-paper carnet-cours-skin">
-      {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-blue-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-blue-700 transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <Link to="/formations" className="hover:text-blue-700 transition-colors">
-              Toutes les formations
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-blue-700 transition-colors">
-              Choix parcours Maths
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <Link to="/formation/maths-approfondies-2e-annee" className="hover:text-blue-700 transition-colors">
-              Maths Approfondies - 2ème année
-            </Link>
-            <ChevronRight className="h-3 w-3 text-blue-400 mx-1" />
-            <span className="text-orange-600 font-medium">Chapitre 1 : Compléments d'algèbre linéaire - Exercices</span>
-          </div>
-        </div>
-      </nav>
+    <MathChapterTemplate
+      chapterNumber={1}
+      chapterTitle="Compléments d'algèbre linéaire"
+      description="Endomorphismes, matrices de passage et propriétés de la trace."
+      slug="complements-algebre-lineaire"
+      activeSection="exercises"
+      titleClassName="text-slate-800"
+      showNavigation={true}
+      previousChapter={{
+        slug: "maths-approfondies-2e-annee",
+        title: "Maths Approfondies — 2ème année"
+      }}
+      nextChapter={{
+        slug: "polynomes",
+        title: "Polynômes"
+      }}
+    >
+      <div className="space-y-8">
 
-      <div className="container mx-auto py-8 px-4">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-8">Chapitre 1 : Compléments d'algèbre linéaire - Exercices</h1>
-          <p className="text-lg text-gray-600 mb-8">
-            Endomorphismes, matrices de passage et propriétés de la trace
-          </p>
+        {/* Module 1 */}
+        <div>
+          <DifficultyHeader level="Module 1 — Polynômes de Lagrange et matrice de passage" />
 
-          <div className="flex justify-center gap-6 mb-6">
-            <Link to="/formation/maths-complements-algebre-lineaire">
-              <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md font-medium">
-                <BookOpen className="mr-2 h-4 w-4" />
-                Cours
-              </Button>
-            </Link>
-            <Button
-              onClick={downloadExercisesPDF}
-              variant="outline"
-              className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md font-medium"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Télécharger PDF
-            </Button>
-          </div>
-        </div>
-
-        <div className="exercises-content">
-
-        {/* Exercice 1 - Polynômes de Lagrange et matrice de passage */}
-        <Card className="mb-8 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-blue-200">
-          <div className="p-6">
-            <h3 className="text-xl font-bold mb-4 text-gray-800">Exercice 1 : Polynômes de Lagrange et matrice de passage (HEC 2017)</h3>
-
-            <div className="mb-6">
-              <LatexRenderer latex={"\\text{Soient } n \\geq 1 \\text{ et } x_0, x_1, \\ldots, x_n \\text{ des réels deux à deux distincts.}"} />
-              <LatexRenderer latex={"\\text{On note } \\mathcal{C} \\text{ la base canonique de } \\mathbb{R}_n[X]."} />
-              <br />
-              <LatexRenderer latex={"\\text{Pour } i \\in \\llbracket 0,n \\rrbracket, \\text{ on note}"} />
-              <div className="text-center my-4">
-                <LatexRenderer latex={"L_i = \\prod_{k=0, k \\neq i}^{n} \\frac{X - x_k}{x_i - x_k}."} block />
-              </div>
-              <LatexRenderer latex={"\\text{On admet que } \\mathcal{B} = (L_0, L_1, \\ldots, L_n) \\text{ est une base de } \\mathbb{R}_n[X]."} />
-
-              <ol className="list-decimal list-inside space-y-2 pl-4 mt-4">
-                <li>
-                  <LatexRenderer latex={"\\text{Déterminer } L_i(x_j) \\text{ pour } (i,j) \\in \\llbracket 0,n \\rrbracket^2."} />
-                </li>
-                <li>
-                  <LatexRenderer latex={"\\text{Expliciter la matrice de passage de } \\mathcal{B} \\text{ à } \\mathcal{C}."} />
-                </li>
-              </ol>
-            </div>
-
-            <Button
-              data-correction-button
-              onClick={() => toggleCorrection('1')}
-              variant={visibleCorrections['1'] ? "secondary" : "default"}
-              className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md font-medium"
-            >
-              {visibleCorrections['1'] ? "Masquer la correction" : "Afficher la correction"}
-            </Button>
-
-            {visibleCorrections['1'] && (
-              <div data-correction className="mt-6 border-l-4 border-gray-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-gray-800 mb-2">Corrigé détaillé</h4>
-                <div className="space-y-4">
-                  <div>
-                    <div className="text-gray-700 font-semibold">
-                      <LatexRenderer latex={"\\text{1) Calcul de } L_i(x_j)"} />
-                    </div>
-                    <br />
-                    <LatexRenderer latex={"\\text{Soit } (i,j) \\in (\\llbracket 0,n \\rrbracket)^2."} />
-                    <br />
-                    <div className="text-gray-600 font-semibold">
-                      <LatexRenderer latex={"\\text{Cas 1 : } i = j."} />
-                    </div>
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"L_i(x_i) = \\prod_{k=0, k \\neq i}^{n} \\frac{x_i - x_k}{x_i - x_k} = \\prod_{k=0, k \\neq i}^{n} 1 = 1."} block />
-                    </div>
-                    <div className="text-gray-600 font-semibold">
-                      <LatexRenderer latex={"\\text{Cas 2 : } i \\neq j."} />
-                    </div>
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"L_i(x_j) = \\prod_{k=0, k \\neq i}^{n} \\frac{x_j - x_k}{x_i - x_k} = \\frac{x_j - x_j}{x_i - x_j} \\prod_{\\substack{k=0 \\\\ k \\neq i, k \\neq j}}^{n} \\frac{x_j - x_k}{x_i - x_k} = 0."} block />
-                    </div>
-                    <LatexRenderer latex={"\\text{Donc : } \\forall (i,j) \\in (\\llbracket 0,n \\rrbracket)^2, \\quad L_i(x_j) = \\begin{cases} 1 & \\text{si } i = j, \\\\ 0 & \\text{si } i \\neq j. \\end{cases}"} />
-                  </div>
-
-                  <div>
-                    <div className="text-gray-700 font-semibold">
-                      <LatexRenderer latex={"\\text{2) Matrice de passage}"} />
-                    </div>
-                    <br />
-                    <LatexRenderer latex={"\\text{Soit } P \\in \\mathbb{R}_n[X]. \\text{ Comme } (L_0, \\ldots, L_n) \\text{ est une base de } \\mathbb{R}_n[X],"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"\\exists (a_0, \\ldots, a_n) \\in \\mathbb{R}^{n+1}, \\quad P = \\sum_{i=0}^n a_i L_i."} block />
-                    </div>
-                    <LatexRenderer latex={"\\text{Pour } j \\in \\llbracket 0,n \\rrbracket,"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"P(x_j) = \\sum_{i=0}^n a_i L_i(x_j) = a_j."} block />
-                    </div>
-                    <LatexRenderer latex={"\\text{Ainsi, } \\forall j \\in \\llbracket 0,n \\rrbracket, \\quad a_j = P(x_j)."} />
-                    <br />
-                    <LatexRenderer latex={"\\text{Posons } P = X^k \\text{ avec } k \\in \\llbracket 0,n \\rrbracket. \\text{ Alors :}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"X^k = \\sum_{i=0}^n x_i^k L_i."} block />
-                    </div>
-                    <LatexRenderer latex={"\\text{Ainsi, la matrice de passage de } \\mathcal{B} \\text{ à } \\mathcal{C} \\text{ est :}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"P_{\\mathcal{B},\\mathcal{C}} = \\begin{pmatrix} 1 & x_0 & x_0^2 & \\cdots & x_0^n \\\\ 1 & x_1 & x_1^2 & \\cdots & x_1^n \\\\ \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\ 1 & x_n & x_n^2 & \\cdots & x_n^n \\end{pmatrix}."} />
-                    </div>
-                  </div>
+          <ExerciseCard
+            id="ex1"
+            title="Polynômes de Lagrange et matrice de passage (HEC 2017)"
+            difficulty="Niveau: Concours (Classique)"
+            content={
+              <div className="space-y-3">
+                <p>Soient <LatexRenderer latex="n \geq 1" /> et <LatexRenderer latex="x_0, x_1, \ldots, x_n" /> des réels deux à deux distincts. On note <LatexRenderer latex="\mathcal{C}" /> la base canonique de <LatexRenderer latex="\mathbb{R}_n[X]" />.</p>
+                <p>Pour <LatexRenderer latex="i \in \llbracket 0,n \rrbracket" />, on note :</p>
+                <div className="text-center my-4">
+                  <LatexRenderer latex="L_i = \prod_{\substack{k=0 \\ k \neq i}}^{n} \frac{X - x_k}{x_i - x_k}." />
                 </div>
+                <p>On admet que <LatexRenderer latex="\mathcal{B} = (L_0, L_1, \ldots, L_n)" /> est une base de <LatexRenderer latex="\mathbb{R}_n[X]" />.</p>
+                <ol className="list-decimal list-inside space-y-2 pl-4 mt-4">
+                  <li>Déterminer <LatexRenderer latex="L_i(x_j)" /> pour <LatexRenderer latex="(i,j) \in \llbracket 0,n \rrbracket^2" />.</li>
+                  <li>Expliciter la matrice de passage de <LatexRenderer latex="\mathcal{B}" /> à <LatexRenderer latex="\mathcal{C}" />.</li>
+                </ol>
               </div>
-            )}
-          </div>
-        </Card>
-
-        {/* Exercice 2 - Endomorphisme et matrice représentative */}
-        <Card className="mb-8 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-blue-200">
-          <div className="p-6">
-            <h3 className="text-xl font-bold mb-4 text-gray-800">Exercice 2 : Endomorphisme et matrice représentative (EM Lyon 2018)</h3>
-
-            <div className="mb-6">
-              <LatexRenderer latex={"\\text{Soit } n \\geq 2. \\text{ Soit } \\varphi \\in \\mathcal{L}(\\mathbb{R}_n[X]) \\text{ définie par :}"} />
-              <div className="text-center my-4">
-                <LatexRenderer latex={"\\forall P \\in \\mathbb{R}_n[X], \\quad \\varphi(P) = \\frac{1}{n} X(1 - X) P' + X P."} />
-              </div>
-              <LatexRenderer latex={"\\text{Déterminer sa matrice représentative } A \\text{ dans la base canonique } \\mathcal{C} \\text{ de } \\mathbb{R}_n[X]."} />
-            </div>
-
-            <Button
-              data-correction-button
-              onClick={() => toggleCorrection('2')}
-              variant={visibleCorrections['2'] ? "secondary" : "default"}
-              className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md font-medium"
-            >
-              {visibleCorrections['2'] ? "Masquer la correction" : "Afficher la correction"}
-            </Button>
-
-            {visibleCorrections['2'] && (
-              <div data-correction className="mt-6 border-l-4 border-gray-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-gray-800 mb-2">Corrigé détaillé</h4>
-                <div className="space-y-4">
-                  <LatexRenderer latex={"\\text{Calculons } \\varphi \\text{ sur la base canonique :}"} />
-                  <br />
-                  <LatexRenderer latex={"\\text{Si } P = 1, P' = 0, \\text{ donc}"} />
-                  <div className="text-center my-4">
-                    <LatexRenderer latex={"\\varphi(1) = \\tfrac{1}{n} X(1 - X) \\cdot 0 + X \\cdot 1 = X."} />
-                  </div>
-                  <LatexRenderer latex={"\\text{Si } P = X^n, P' = n X^{n-1}, \\text{ donc}"} />
-                  <div className="text-center my-4">
-                    <LatexRenderer latex={"\\varphi(X^n) = \\tfrac{1}{n} X(1 - X) n X^{n-1} + X \\cdot X^n = X^n."} />
-                  </div>
-                  <LatexRenderer latex={"\\text{Si } P = X^k \\text{ avec } k \\in [\\![1,n-1]\\!],"} />
-                  <div className="text-center my-4">
-                    <LatexRenderer latex={"\\varphi(X^k) = \\tfrac{k}{n} X^k - \\tfrac{k}{n} X^{k+1} + X^{k+1} = \\tfrac{k}{n} X^k + \\tfrac{n-k}{n} X^{k+1}."} />
-                  </div>
-                  <LatexRenderer latex={"\\text{Donc la matrice de } \\varphi \\text{ dans } \\mathcal{C} \\text{ est :}"} />
-                  <div className="text-center my-4">
-                    <LatexRenderer latex={"A = \\begin{pmatrix} 0 & 0 & 0 & \\cdots & 0 \\\\ 1 & \\tfrac{1}{n} & 0 & \\cdots & 0 \\\\ 0 & \\tfrac{n-1}{n} & \\tfrac{2}{n} & \\cdots & 0 \\\\ \\vdots & & \\ddots & \\ddots & \\vdots \\\\ 0 & \\cdots & & \\tfrac{1}{n} & 1 \\end{pmatrix}."} />
-                  </div>
+            }
+            correction={
+              <div className="space-y-4">
+                <PointMethodo>
+                  Pour calculer <LatexRenderer latex="L_i(x_j)" />, distinguer les cas <LatexRenderer latex="i = j" /> et <LatexRenderer latex="i \neq j" /> en exploitant la structure du produit. Pour la matrice de passage, exprimer chaque vecteur de <LatexRenderer latex="\mathcal{B}" /> dans <LatexRenderer latex="\mathcal{C}" /> en utilisant la décomposition d'un polynôme quelconque sur <LatexRenderer latex="\mathcal{B}" />.
+                </PointMethodo>
+                <Astuce>
+                  Le facteur <LatexRenderer latex="\dfrac{x_j - x_j}{x_i - x_j}" /> apparaît dans le produit définissant <LatexRenderer latex="L_i(x_j)" /> dès que <LatexRenderer latex="i \neq j" /> (en prenant <LatexRenderer latex="k = j" /> dans le produit), ce qui annule immédiatement l'expression.
+                </Astuce>
+                <p><strong>Question 1 — Calcul de <LatexRenderer latex="L_i(x_j)" /> :</strong></p>
+                <p>Soit <LatexRenderer latex="(i,j) \in (\llbracket 0,n \rrbracket)^2" />.</p>
+                <p><strong>Cas <LatexRenderer latex="i = j" /> :</strong></p>
+                <div className="text-center my-2">
+                  <LatexRenderer latex="L_i(x_i) = \prod_{\substack{k=0 \\ k \neq i}}^{n} \frac{x_i - x_k}{x_i - x_k} = \prod_{\substack{k=0 \\ k \neq i}}^{n} 1 = 1." />
                 </div>
-              </div>
-            )}
-          </div>
-        </Card>
-
-        {/* Exercice 3 - Propriété de la trace */}
-        <Card className="mb-8 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-gray-100 hover:border-blue-200">
-          <div className="p-6">
-            <h3 className="text-xl font-bold mb-4 text-gray-800">Exercice 3 : Propriété de la trace (EM Lyon 2013)</h3>
-
-            <div className="mb-6">
-              <LatexRenderer latex={"\\text{Montrer que } \\forall (A,B) \\in \\mathcal{M}_n(\\mathbb{R})^2, \\ \\mathrm{Tr}(AB) = \\mathrm{Tr}(BA)."} />
-            </div>
-
-            <Button
-              data-correction-button
-              onClick={() => toggleCorrection('3')}
-              variant={visibleCorrections['3'] ? "secondary" : "default"}
-              className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md font-medium"
-            >
-              {visibleCorrections['3'] ? "Masquer la correction" : "Afficher la correction"}
-            </Button>
-
-            {visibleCorrections['3'] && (
-              <div data-correction className="mt-6 border-l-4 border-gray-400 p-4 rounded-r-lg">
-                <h4 className="font-semibold text-gray-800 mb-2">Corrigé détaillé</h4>
-                <div className="space-y-4">
-                  <LatexRenderer latex={"\\text{Soient } A \\text{ et } B \\text{ deux matrices de } \\mathcal{M}_n(\\mathbb{R})."} />
-                  <LatexRenderer latex={"\\text{On pose } C = AB \\text{ et } D = BA."} />
-                  <br />
-                  <LatexRenderer latex={"\\text{On note :}"} />
-                  <div className="text-center my-4">
-                    <LatexRenderer latex={"A = (a_{i,j})_{1 \\leq i,j \\leq n}, \\quad B = (b_{i,j})_{1 \\leq i,j \\leq n}, \\quad C = (c_{i,j})_{1 \\leq i,j \\leq n}, \\quad D = (d_{i,j})_{1 \\leq i,j \\leq n}."} />
-                  </div>
-                  <LatexRenderer latex={"\\text{Par la formule du produit de matrices :}"} />
-                  <div className="text-center my-4">
-                    <LatexRenderer latex={"c_{i,j} = \\sum_{k=1}^n a_{i,k} b_{k,j}, \\quad d_{i,j} = \\sum_{k=1}^n b_{i,k} a_{k,j}."} block />
-                  </div>
-                  <LatexRenderer latex={"\\text{Donc :}"} />
-                  <div className="text-center my-4">
-                    <LatexRenderer latex={"\\mathrm{Tr}(AB) = \\sum_{i=1}^n c_{i,i} = \\sum_{i=1}^n \\sum_{k=1}^n a_{i,k} b_{k,i}."} block />
-                  </div>
-                  <LatexRenderer latex={"\\text{Or par symétrie :}"} />
-                  <div className="text-center my-4">
-                    <LatexRenderer latex={"\\mathrm{Tr}(BA) = \\sum_{i=1}^n d_{i,i} = \\sum_{i=1}^n \\sum_{k=1}^n b_{i,k} a_{k,i}."} block />
-                  </div>
-                  <LatexRenderer latex={"\\text{En réindexant la dernière somme (en échangeant } i \\text{ et } k\\text{) :}"} />
-                  <div className="text-center my-4">
-                    <LatexRenderer latex={"\\mathrm{Tr}(BA) = \\sum_{k=1}^n \\sum_{i=1}^n b_{k,i} a_{i,k} = \\sum_{i=1}^n \\sum_{k=1}^n a_{i,k} b_{k,i} = \\mathrm{Tr}(AB)."} block />
-                  </div>
-                  <LatexRenderer latex={"\\text{Donc } \\mathrm{Tr}(AB) = \\mathrm{Tr}(BA)."} />
+                <p><strong>Cas <LatexRenderer latex="i \neq j" /> :</strong> Le produit contient le facteur correspondant à <LatexRenderer latex="k = j" /> :</p>
+                <div className="text-center my-2">
+                  <LatexRenderer latex="L_i(x_j) = \frac{x_j - x_j}{x_i - x_j} \cdot \prod_{\substack{k=0 \\ k \neq i,\, k \neq j}}^{n} \frac{x_j - x_k}{x_i - x_k} = 0." />
                 </div>
+                <p>D'où :</p>
+                <div className="text-center my-2">
+                  <LatexRenderer latex="\forall (i,j) \in (\llbracket 0,n \rrbracket)^2,\quad L_i(x_j) = \delta_{ij} = \begin{cases} 1 & \text{si } i = j, \\ 0 & \text{si } i \neq j. \end{cases}" />
+                </div>
+                <p><strong>Question 2 — Matrice de passage de <LatexRenderer latex="\mathcal{B}" /> à <LatexRenderer latex="\mathcal{C}" /> :</strong></p>
+                <p>Soit <LatexRenderer latex="P \in \mathbb{R}_n[X]" />. Comme <LatexRenderer latex="(L_0, \ldots, L_n)" /> est une base de <LatexRenderer latex="\mathbb{R}_n[X]" />, il existe des coefficients uniques tels que <LatexRenderer latex="P = \sum_{i=0}^n a_i L_i" />.</p>
+                <p>Or pour <LatexRenderer latex="j \in \llbracket 0,n \rrbracket" /> :</p>
+                <div className="text-center my-2">
+                  <LatexRenderer latex="P(x_j) = \sum_{i=0}^n a_i L_i(x_j) = a_j." />
+                </div>
+                <p>Ainsi <LatexRenderer latex="a_j = P(x_j)" /> pour tout <LatexRenderer latex="j" />. En posant <LatexRenderer latex="P = X^k" /> avec <LatexRenderer latex="k \in \llbracket 0,n \rrbracket" /> :</p>
+                <div className="text-center my-2">
+                  <LatexRenderer latex="X^k = \sum_{i=0}^n x_i^k L_i." />
+                </div>
+                <p>La colonne <LatexRenderer latex="i" /> de la matrice de passage <LatexRenderer latex="P_{\mathcal{B} \to \mathcal{C}}" /> est le vecteur des coordonnées de <LatexRenderer latex="L_i" /> dans <LatexRenderer latex="\mathcal{C}" />, c'est-à-dire <LatexRenderer latex="(x_i^0, x_i^1, \ldots, x_i^n)^T" />. D'où :</p>
+                <div className="text-center my-2">
+                  <LatexRenderer latex="P_{\mathcal{B},\mathcal{C}} = \begin{pmatrix} 1 & 1 & \cdots & 1 \\ x_0 & x_1 & \cdots & x_n \\ x_0^2 & x_1^2 & \cdots & x_n^2 \\ \vdots & \vdots & \ddots & \vdots \\ x_0^n & x_1^n & \cdots & x_n^n \end{pmatrix}." />
+                </div>
+                <ConclusionBox>
+                  <LatexRenderer latex="L_i(x_j) = \delta_{ij}" />. La matrice de passage de <LatexRenderer latex="\mathcal{B}" /> à <LatexRenderer latex="\mathcal{C}" /> est la matrice de Vandermonde <LatexRenderer latex="(x_j^i)_{0 \leq i,j \leq n}" />.
+                </ConclusionBox>
               </div>
-            )}
-          </div>
-        </Card>
+            }
+          />
         </div>
+
+        {/* Module 2 */}
+        <div>
+          <DifficultyHeader level="Module 2 — Endomorphismes et matrices représentatives" />
+
+          <ExerciseCard
+            id="ex2"
+            title="Endomorphisme de ℝₙ[X] et matrice représentative (EM Lyon 2018)"
+            difficulty="Niveau: Concours"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="n \geq 2" /> et <LatexRenderer latex="\varphi \in \mathcal{L}(\mathbb{R}_n[X])" /> définie par :</p>
+                <div className="text-center my-4">
+                  <LatexRenderer latex="\forall P \in \mathbb{R}_n[X],\quad \varphi(P) = \frac{1}{n} X(1-X)P' + XP." />
+                </div>
+                <p>Déterminer la matrice représentative <LatexRenderer latex="A" /> de <LatexRenderer latex="\varphi" /> dans la base canonique <LatexRenderer latex="\mathcal{C} = (1, X, X^2, \ldots, X^n)" /> de <LatexRenderer latex="\mathbb{R}_n[X]" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-4">
+                <PointMethodo>
+                  Pour déterminer la matrice d'un endomorphisme dans une base, calculer l'image de chaque vecteur de base et exprimer le résultat comme combinaison linéaire des vecteurs de la même base. Les coordonnées obtenues forment les colonnes de la matrice.
+                </PointMethodo>
+                <p><strong>Image de <LatexRenderer latex="P = 1" /> :</strong> <LatexRenderer latex="P' = 0" />, donc <LatexRenderer latex="\varphi(1) = \frac{1}{n} X(1-X) \cdot 0 + X \cdot 1 = X" />.</p>
+                <p><strong>Image de <LatexRenderer latex="P = X^n" /> :</strong> <LatexRenderer latex="P' = nX^{n-1}" />, donc :</p>
+                <div className="text-center my-2">
+                  <LatexRenderer latex="\varphi(X^n) = \frac{1}{n} X(1-X) \cdot nX^{n-1} + X \cdot X^n = X^n(1-X) + X^{n+1} = X^n." />
+                </div>
+                <p><strong>Image de <LatexRenderer latex="P = X^k" /> pour <LatexRenderer latex="k \in \llbracket 1, n-1 \rrbracket" /> :</strong> <LatexRenderer latex="P' = kX^{k-1}" />, donc :</p>
+                <div className="text-center my-2">
+                  <LatexRenderer latex="\varphi(X^k) = \frac{k}{n} X^k(1-X) + X^{k+1} = \frac{k}{n} X^k + \left(1 - \frac{k}{n}\right) X^{k+1} = \frac{k}{n} X^k + \frac{n-k}{n} X^{k+1}." />
+                </div>
+                <p>Ainsi la colonne de <LatexRenderer latex="A" /> correspondant à <LatexRenderer latex="X^k" /> a les coordonnées <LatexRenderer latex="\frac{k}{n}" /> sur <LatexRenderer latex="X^k" /> et <LatexRenderer latex="\frac{n-k}{n}" /> sur <LatexRenderer latex="X^{k+1}" />, zéro ailleurs.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="A = \begin{pmatrix} 0 & 0 & 0 & \cdots & 0 \\ 1 & \tfrac{1}{n} & 0 & \cdots & 0 \\ 0 & \tfrac{n-1}{n} & \tfrac{2}{n} & \cdots & 0 \\ \vdots & & \ddots & \ddots & \vdots \\ 0 & \cdots & 0 & \tfrac{1}{n} & 1 \end{pmatrix}" />, matrice bidiagonale inférieure.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        {/* Module 3 */}
+        <div>
+          <DifficultyHeader level="Module 3 — Propriétés de la trace" />
+
+          <ExerciseCard
+            id="ex3"
+            title="Cyclicité de la trace (EM Lyon 2013)"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div>
+                <p>Montrer que pour toutes matrices <LatexRenderer latex="A, B \in \mathcal{M}_n(\mathbb{R})" />, on a <LatexRenderer latex="\mathrm{Tr}(AB) = \mathrm{Tr}(BA)" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-4">
+                <PointMethodo>
+                  Pour prouver une égalité sur la trace d'un produit, développer les deux membres terme à terme en utilisant la formule du coefficient diagonal d'un produit matriciel, puis réindexer la double somme pour conclure.
+                </PointMethodo>
+                <p>Soient <LatexRenderer latex="A = (a_{i,j})_{1 \leq i,j \leq n}" /> et <LatexRenderer latex="B = (b_{i,j})_{1 \leq i,j \leq n}" /> deux matrices de <LatexRenderer latex="\mathcal{M}_n(\mathbb{R})" />.</p>
+                <p>Soit <LatexRenderer latex="C = AB" /> et <LatexRenderer latex="D = BA" />. La formule du produit matriciel donne :</p>
+                <div className="text-center my-2">
+                  <LatexRenderer latex="c_{i,i} = \sum_{k=1}^n a_{i,k} b_{k,i},\quad d_{i,i} = \sum_{k=1}^n b_{i,k} a_{k,i}." />
+                </div>
+                <p>D'où :</p>
+                <div className="text-center my-2">
+                  <LatexRenderer latex="\mathrm{Tr}(AB) = \sum_{i=1}^n c_{i,i} = \sum_{i=1}^n \sum_{k=1}^n a_{i,k} b_{k,i}." />
+                </div>
+                <p>Or :</p>
+                <div className="text-center my-2">
+                  <LatexRenderer latex="\mathrm{Tr}(BA) = \sum_{i=1}^n d_{i,i} = \sum_{i=1}^n \sum_{k=1}^n b_{i,k} a_{k,i}." />
+                </div>
+                <p>En échangeant les noms des indices <LatexRenderer latex="i" /> et <LatexRenderer latex="k" /> dans la dernière somme :</p>
+                <div className="text-center my-2">
+                  <LatexRenderer latex="\mathrm{Tr}(BA) = \sum_{k=1}^n \sum_{i=1}^n b_{k,i} a_{i,k} = \sum_{i=1}^n \sum_{k=1}^n a_{i,k} b_{k,i} = \mathrm{Tr}(AB)." />
+                </div>
+                <ConclusionBox>
+                  <LatexRenderer latex="\mathrm{Tr}(AB) = \mathrm{Tr}(BA)" /> pour toutes <LatexRenderer latex="A, B \in \mathcal{M}_n(\mathbb{R})" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
       </div>
-    </div>
+    </MathChapterTemplate>
   );
 };
 

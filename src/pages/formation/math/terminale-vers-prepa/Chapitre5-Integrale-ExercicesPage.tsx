@@ -106,7 +106,7 @@ const Chapitre5IntegraleExercicesPage = () => {
       <SEOHead
         canonical="/formation/math/terminale-vers-prepa/integrales-exercices"
         title="Exercices · Chapitre 6 — Intégrale · Terminale → Prépa ECG"
-        description="5 exercices progressifs sur le calcul intégral : primitives usuelles, intégrales paramétrées, exponentielles et changement de variable."
+        description="13 exercices progressifs sur le calcul intégral : primitives usuelles, intégrales paramétrées, exponentielles et changement de variable."
       />
 
       {/* Fil d'Ariane */}
@@ -133,7 +133,7 @@ const Chapitre5IntegraleExercicesPage = () => {
         <header className="mb-14 relative">
           <div className="carnet-eyebrow mb-5">06 · Exercices · Intégrale</div>
           <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.022em] text-carnet-ink mb-6">
-            Cinq intégrales <em className="font-lora italic text-carnet-red">à dompter</em>.
+            Treize intégrales <em className="font-lora italic text-carnet-red">à dompter</em>.
           </h1>
           <p className="font-instrument text-[17px] leading-[1.6] text-carnet-ink-soft max-w-[680px]">
             Reconnaître <Inline tex={"u'/u"} />, manipuler les puissances, dompter une intégrale paramétrée, finir sur un changement de variable. <span className="carnet-hl font-lora italic">Cherche d'abord seul</span>, puis confronte ta rédaction au corrigé.
@@ -141,10 +141,10 @@ const Chapitre5IntegraleExercicesPage = () => {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(78,55,30,0.18)] text-carnet-ink-soft bg-carnet-paper-2">
-              3 Faciles
+              6 Faciles
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(193,68,58,0.3)] text-carnet-red bg-[rgba(193,68,58,0.06)]">
-              1 Moyen
+              6 Moyens
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-carnet-red text-carnet-paper bg-carnet-red">
               1 Difficile
@@ -344,6 +344,270 @@ const Chapitre5IntegraleExercicesPage = () => {
             </>
           }
         />
+
+        {/* Module 4 */}
+        <div className="flex items-baseline gap-4 mb-6 mt-12">
+          <span className="carnet-hand text-[40px] text-carnet-red leading-none font-semibold">M4</span>
+          <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+          <h2 className="font-lora text-[26px] sm:text-[28px] text-carnet-ink leading-tight">Techniques complémentaires</h2>
+        </div>
+
+        {/* Exercice 6 */}
+        <Exercise
+          id="ex6"
+          num={6}
+          title="Intégrale d'une exponentielle composée"
+          difficulty="Facile"
+          open={!!open.ex6}
+          onToggle={() => toggle('ex6')}
+          tilt="l"
+          statement={
+            <>
+              <p>Calculer :</p>
+              <Block tex={'I = \\int_0^2 e^{3x} \\, dx.'} />
+            </>
+          }
+          correction={
+            <>
+              <Step label="Primitive de e^{3x}">
+                <p>La primitive de <Inline tex={'e^{3x}'} /> est <Inline tex={'\\dfrac{e^{3x}}{3}'} />.</p>
+              </Step>
+              <Step label="Calcul">
+                <Block tex={'I = \\left[\\frac{e^{3x}}{3}\\right]_0^2 = \\frac{e^6}{3} - \\frac{1}{3} = \\frac{e^6 - 1}{3}.'} />
+              </Step>
+              <Step label="À retenir">
+                <p>Règle générale : <Inline tex={'\\int e^{ax} \\, dx = \\dfrac{e^{ax}}{a} + C'} /> pour <Inline tex={'a \\neq 0'} />. On divise par le coefficient de <Inline tex={'x'} /> à l'exposant.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 7 */}
+        <Exercise
+          id="ex7"
+          num={7}
+          title="Intégration par parties simple"
+          difficulty="Moyen"
+          open={!!open.ex7}
+          onToggle={() => toggle('ex7')}
+          statement={
+            <>
+              <p>Calculer :</p>
+              <Block tex={'J = \\int_0^1 x e^x \\, dx.'} />
+              <p className="text-carnet-ink-mute italic text-[14px]">Indication : utiliser <Inline tex={'u(x) = x'} /> et <Inline tex={"v'(x) = e^x"} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="Choix de l'IPP">
+                <p>On pose <Inline tex={'u = x'} />, <Inline tex={"u' = 1"} />, <Inline tex={"v' = e^x"} />, <Inline tex={'v = e^x'} />.</p>
+              </Step>
+              <Step label="Application de la formule">
+                <Block tex={'J = \\bigl[x e^x\\bigr]_0^1 - \\int_0^1 e^x \\, dx = e - 0 - \\bigl[e^x\\bigr]_0^1.'} />
+              </Step>
+              <Step label="Conclusion">
+                <Block tex={'J = e - (e - 1) = 1.'} />
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 8 */}
+        <Exercise
+          id="ex8"
+          num={8}
+          title="Aire entre deux courbes"
+          difficulty="Moyen"
+          open={!!open.ex8}
+          onToggle={() => toggle('ex8')}
+          tilt="r"
+          statement={
+            <>
+              <p>On considère <Inline tex={'f(x) = x^2'} /> et <Inline tex={'g(x) = x'} /> sur <Inline tex={'[0, 1]'} />.</p>
+              <ol className="list-decimal list-inside space-y-1 mt-2">
+                <li>Déterminer laquelle des deux courbes est au-dessus de l'autre sur <Inline tex={'[0, 1]'} />.</li>
+                <li>Calculer l'aire de la région délimitée par les deux courbes.</li>
+              </ol>
+            </>
+          }
+          correction={
+            <>
+              <Step label="1. Comparaison des courbes">
+                <p>Sur <Inline tex={'[0,1]'} /> :</p>
+                <Block tex={'g(x) - f(x) = x - x^2 = x(1-x) \\geq 0,'} />
+                <p>donc <Inline tex={'g \\geq f'} /> sur tout l'intervalle.</p>
+              </Step>
+              <Step label="2. Calcul de l'aire">
+                <Block tex={'\\mathcal{A} = \\int_0^1 \\bigl(g(x) - f(x)\\bigr) \\, dx = \\int_0^1 (x - x^2) \\, dx.'} />
+                <Block tex={'\\mathcal{A} = \\left[\\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1 = \\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6} \\text{ unité d\'aire.}'} />
+              </Step>
+              <Step label="À retenir">
+                <p>L'aire entre deux courbes s'obtient en intégrant <Inline tex={'|g - f|'} /> ; toujours vérifier le signe de <Inline tex={'g - f'} /> avant d'intégrer.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 9 */}
+        <Exercise
+          id="ex9"
+          num={9}
+          title="Intégrale d'une valeur absolue"
+          difficulty="Moyen"
+          open={!!open.ex9}
+          onToggle={() => toggle('ex9')}
+          statement={
+            <>
+              <p>Calculer :</p>
+              <Block tex={'K = \\int_{-1}^{2} |x - 1| \\, dx.'} />
+              <p className="text-carnet-ink-mute italic text-[14px]">Indication : lever la valeur absolue en distinguant les cas selon le signe de <Inline tex={'x - 1'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="Lever la valeur absolue">
+                <p>• Sur <Inline tex={'[-1, 1]'} /> : <Inline tex={'x - 1 \\leq 0'} />, donc <Inline tex={'|x - 1| = 1 - x'} />.</p>
+                <p>• Sur <Inline tex={'[1, 2]'} /> : <Inline tex={'x - 1 \\geq 0'} />, donc <Inline tex={'|x - 1| = x - 1'} />.</p>
+              </Step>
+              <Step label="Découpage de l'intégrale">
+                <Block tex={'K = \\int_{-1}^1 (1 - x) \\, dx + \\int_1^2 (x - 1) \\, dx.'} />
+              </Step>
+              <Step label="Calcul de chaque morceau">
+                <Block tex={'\\int_{-1}^1 (1 - x) \\, dx = \\left[x - \\frac{x^2}{2}\\right]_{-1}^1 = \\left(1 - \\frac{1}{2}\\right) - \\left(-1 - \\frac{1}{2}\\right) = \\frac{1}{2} + \\frac{3}{2} = 2.'} />
+                <Block tex={'\\int_1^2 (x - 1) \\, dx = \\left[\\frac{x^2}{2} - x\\right]_1^2 = (2 - 2) - \\left(\\frac{1}{2} - 1\\right) = 0 + \\frac{1}{2} = \\frac{1}{2}.'} />
+              </Step>
+              <Step label="Résultat">
+                <Block tex={'K = 2 + \\frac{1}{2} = \\frac{5}{2}.'} />
+              </Step>
+            </>
+          }
+        />
+
+          {/* Module M5 — Primitives trigonométriques & techniques */}
+          <div className="mb-2 mt-10">
+            <span className="inline-block bg-carnet-red text-white text-xs font-bold px-3 py-1 rounded-full tracking-wide uppercase">
+              M5 — Primitives trig. &amp; techniques
+            </span>
+          </div>
+
+          <Exercise
+            id="ex10"
+            num={10}
+            title="Intégrale de sin sur [0, π]"
+            difficulty="Facile"
+            open={!!open.ex10}
+            onToggle={() => toggle('ex10')}
+            tilt="l"
+            statement={
+              <>
+                <p>Calculer :</p>
+                <Block tex={'I = \\int_0^{\\pi} \\sin x \\, dx'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Primitive de sin">
+                  <p>Une primitive de <Inline tex={'\\sin x'} /> est <Inline tex={'-\\cos x'} />.</p>
+                </Step>
+                <Step label="Calcul">
+                  <Block tex={'I = \\Bigl[-\\cos x\\Bigr]_0^{\\pi} = -\\cos(\\pi) + \\cos(0) = -(-1) + 1'} />
+                  <Block tex={'\\boxed{I = 2}'} />
+                  <p>Interprétation géométrique : aire sous la demi-sinusoïde entre 0 et π.</p>
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex11"
+            num={11}
+            title="Intégrale de 1/x sur [1, e]"
+            difficulty="Facile"
+            open={!!open.ex11}
+            onToggle={() => toggle('ex11')}
+            statement={
+              <>
+                <p>Calculer :</p>
+                <Block tex={'J = \\int_1^e \\frac{1}{x} \\, dx'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Primitive de 1/x">
+                  <p>Sur <Inline tex={'(0, +\\infty)'} />, une primitive de <Inline tex={'\\tfrac{1}{x}'} /> est <Inline tex={'\\ln x'} />.</p>
+                </Step>
+                <Step label="Calcul">
+                  <Block tex={'J = \\Bigl[\\ln x\\Bigr]_1^e = \\ln e - \\ln 1 = 1 - 0'} />
+                  <Block tex={'\\boxed{J = 1}'} />
+                  <p>Ce résultat est fondamental : il exprime que l'aire sous <Inline tex={'1/x'} /> entre 1 et e vaut exactement 1.</p>
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex12"
+            num={12}
+            title="Intégration par parties — x·cos(x)"
+            difficulty="Moyen"
+            open={!!open.ex12}
+            onToggle={() => toggle('ex12')}
+            tilt="r"
+            statement={
+              <>
+                <p>Calculer par intégration par parties :</p>
+                <Block tex={'K = \\int_0^1 x \\cos x \\, dx'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Choix des fonctions">
+                  <p>On pose <Inline tex={'u = x'} />, <Inline tex={"u' = 1"} />, <Inline tex={"v' = \\cos x"} />, <Inline tex={'v = \\sin x'} />.</p>
+                  <p>Formule : <Inline tex={'\\int_a^b u v\' = [uv]_a^b - \\int_a^b u\' v'} />.</p>
+                </Step>
+                <Step label="Application">
+                  <Block tex={'K = \\Bigl[x \\sin x\\Bigr]_0^1 - \\int_0^1 \\sin x \\, dx'} />
+                  <Block tex={'= (1 \\cdot \\sin 1 - 0) - \\Bigl[-\\cos x\\Bigr]_0^1'} />
+                  <Block tex={'= \\sin 1 - (-\\cos 1 + \\cos 0) = \\sin 1 + \\cos 1 - 1'} />
+                </Step>
+                <Step label="Résultat">
+                  <Block tex={'\\boxed{K = \\sin 1 + \\cos 1 - 1 \\approx 0{,}381}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex13"
+            num={13}
+            title="Changement de variable — sin(x)cos(x)"
+            difficulty="Moyen"
+            open={!!open.ex13}
+            onToggle={() => toggle('ex13')}
+            statement={
+              <>
+                <p>Calculer par deux méthodes différentes :</p>
+                <Block tex={'L = \\int_0^{\\pi/2} \\sin x \\cos x \\, dx'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Méthode 1 — Linéarisation">
+                  <p>On utilise <Inline tex={'\\sin x \\cos x = \\tfrac{1}{2}\\sin(2x)'} /> :</p>
+                  <Block tex={'L = \\int_0^{\\pi/2} \\frac{\\sin(2x)}{2} \\, dx = \\left[-\\frac{\\cos(2x)}{4}\\right]_0^{\\pi/2}'} />
+                  <Block tex={'= -\\frac{\\cos \\pi}{4} + \\frac{\\cos 0}{4} = \\frac{1}{4} + \\frac{1}{4}'} />
+                </Step>
+                <Step label="Méthode 2 — Changement de variable u = sin(x)">
+                  <p>On pose <Inline tex={'u = \\sin x'} />, donc <Inline tex={'du = \\cos x \\, dx'} />.</p>
+                  <p>Quand <Inline tex={'x=0'} />, <Inline tex={'u=0'} /> ; quand <Inline tex={'x=\\pi/2'} />, <Inline tex={'u=1'} />.</p>
+                  <Block tex={'L = \\int_0^1 u \\, du = \\left[\\frac{u^2}{2}\\right]_0^1 = \\frac{1}{2}'} />
+                </Step>
+                <Step label="Résultat">
+                  <Block tex={'\\boxed{L = \\frac{1}{2}}'} />
+                </Step>
+              </>
+            }
+          />
 
         {/* Bandeau récap */}
         <section className="mt-14 mb-10 relative">

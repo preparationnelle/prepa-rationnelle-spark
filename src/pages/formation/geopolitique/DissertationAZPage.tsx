@@ -4,7 +4,7 @@ import { Home, ChevronRight } from 'lucide-react';
 
 const DissertationAZPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-gray-500">

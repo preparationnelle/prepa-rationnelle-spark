@@ -623,7 +623,7 @@ const StructureExercicesPage = () => {
   }, [examMode, examStarted]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs font-medium text-gray-600">
@@ -678,7 +678,7 @@ const StructureExercicesPage = () => {
           <Button
             variant={examMode ? "default" : "outline"}
             onClick={() => setExamMode(prev => !prev)}
-            className={examMode ? "bg-blue-600 hover:bg-blue-700 text-white" : "border-blue-600 text-blue-600 hover:bg-blue-50"}
+            className={examMode ? "bg-pr-orange hover:bg-pr-orange-dark text-white" : "border-pr-orange text-pr-orange hover:bg-pr-orange-pale"}
           >
             {examMode ? "Désactiver le Mode Examen" : "Activer le Mode Examen"}
           </Button>
@@ -686,19 +686,19 @@ const StructureExercicesPage = () => {
 
         {/* Exam Timer and Controls */}
         {examMode && (
-          <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+          <Card className="mb-8 border-2 border-carnet-red/30 bg-gradient-to-r from-blue-50 to-indigo-50">
             <CardContent className="py-4">
               {!examStarted ? (
                 <div className="flex items-center justify-center gap-4">
-                  <Button onClick={startExam} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2">
+                  <Button onClick={startExam} className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2">
                     <CheckCircle className="h-4 w-4 mr-2" />Commencer l'examen
                   </Button>
                   <p className="text-sm text-gray-600">⚠️ Le feedback sera désactivé.</p>
                 </div>
               ) : (
                 <div className="flex items-center justify-center gap-4">
-                  <div className="bg-blue-200 rounded-lg px-4 py-2">
-                    <span className="text-blue-900 font-mono text-lg">⏱️ {formatTime(examTime)}</span>
+                  <div className="bg-carnet-red/20 rounded-lg px-4 py-2">
+                    <span className="text-carnet-red-deep font-mono text-lg">⏱️ {formatTime(examTime)}</span>
                   </div>
                   <Button onClick={finishExam} className="bg-green-600 hover:bg-green-700 text-white px-6 py-2">
                     <CheckCircle className="h-4 w-4 mr-2" />Terminer l'examen
@@ -953,7 +953,7 @@ const StructureExercicesPage = () => {
           <div className="flex justify-center gap-4 mt-10">
             <Button
               onClick={calculateScore}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg flex items-center gap-2"
+              className="bg-pr-orange hover:bg-pr-orange-dark text-white px-8 py-3 text-lg flex items-center gap-2"
             >
               <CheckCircle className="h-5 w-5" />
               Terminer et voir le score
@@ -961,7 +961,7 @@ const StructureExercicesPage = () => {
             <Button
               onClick={resetQuiz}
               variant="outline"
-              className="px-8 py-3 text-lg flex items-center gap-2 border-blue-600 text-blue-600 hover:bg-blue-50"
+              className="px-8 py-3 text-lg flex items-center gap-2 border-pr-orange text-pr-orange hover:bg-pr-orange-pale"
             >
               <X className="h-5 w-5" />
               Réinitialiser
@@ -971,23 +971,23 @@ const StructureExercicesPage = () => {
 
         {/* Score affiché */}
         {showScore && score !== null && (
-          <Card className={`mt-10 border-2 ${examMode ? 'border-blue-200 bg-blue-50' : 'border-orange-200 bg-orange-50'}`}>
+          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-orange-pale' : 'border-orange-200 bg-orange-50'}`}>
             <CardHeader className="text-center">
-              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-blue-800' : 'text-orange-800'}`}>
+              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-carnet-red-deep' : 'text-orange-800'}`}>
                 <Award className="h-8 w-8" />
                 {examMode ? 'Résultats de l\'Examen' : 'Votre Score'} : {score}%
               </CardTitle>
             </CardHeader>
             <CardContent className="text-center">
               {examMode && examTime > 0 && (
-                <div className="mb-4 p-3 bg-blue-100 rounded-lg border border-blue-200">
-                  <p className="text-blue-800 font-medium">
+                <div className="mb-4 p-3 bg-carnet-red/10 rounded-lg border border-carnet-red/30">
+                  <p className="text-carnet-red-deep font-medium">
                     ⏱️ Temps total : {formatTime(examTime)}
                   </p>
                 </div>
               )}
               <div className={`text-lg ${
-                examMode ? 'text-blue-700' : 'text-orange-700'
+                examMode ? 'text-carnet-red' : 'text-orange-700'
               }`}>
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
@@ -1001,14 +1001,14 @@ const StructureExercicesPage = () => {
                   </div>
                 ) : (
                   <div className="flex items-center justify-center gap-2">
-                    <Lightbulb className="h-6 w-6 text-blue-500" />
+                    <Lightbulb className="h-6 w-6 text-carnet-red" />
                     {examMode ? 'Examen non validé. Continuez à vous entraîner !' : 'Ne vous découragez pas ! Révisez les règles et réessayez.'}
                   </div>
                 )}
               </div>
               {examMode && (
-                <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                  <p className="text-blue-700 text-sm">
+                <div className="mt-4 p-3 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
+                  <p className="text-carnet-red text-sm">
                     💡 En mode normal, vous pouvez voir les corrections détaillées de chaque exercice.
                   </p>
                 </div>

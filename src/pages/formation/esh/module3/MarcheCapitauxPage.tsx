@@ -5,7 +5,7 @@ import { BarChart3, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle } from 
 
 const MarcheCapitauxPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
           <div className="container mx-auto px-4 py-2">
@@ -44,14 +44,14 @@ const MarcheCapitauxPage = () => {
 
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <BarChart3 className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+                <BarChart3 className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   Constitution et fonctionnement du marché international des capitaux
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 3.6 - Module 3</div>
+                <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 3.6 - Module 3</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -62,26 +62,26 @@ const MarcheCapitauxPage = () => {
           <div className="space-y-8">
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
                 Les acteurs du marché international des capitaux
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Banques internationales</h3>
                   <p className="text-sm text-gray-600">Prêts interbancaires, crédits syndiqués, gestion des risques</p>
                 </div>
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Investisseurs institutionnels</h3>
                   <p className="text-sm text-gray-600">Fonds de pension, compagnies d'assurance, fonds souverains</p>
                 </div>
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Banques centrales</h3>
                   <p className="text-sm text-gray-600">Réserves de change, interventions sur les marchés</p>
                 </div>
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Entreprises multinationales</h3>
                   <p className="text-sm text-gray-600">Émission d'euro-obligations, financements croisés</p>
                 </div>
@@ -90,8 +90,8 @@ const MarcheCapitauxPage = () => {
 
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
                 Les instruments financiers internationaux
               </h2>
@@ -101,15 +101,15 @@ const MarcheCapitauxPage = () => {
                   <h3 className="font-semibold text-gray-800">Marché des changes :</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Spot et forward</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Swaps de devises</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Options sur devises</span>
                     </li>
                   </ul>
@@ -119,15 +119,15 @@ const MarcheCapitauxPage = () => {
                   <h3 className="font-semibold text-gray-800">Marché obligataire :</h3>
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Euro-obligations</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Obligations d'État</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Titres subordonnés</span>
                     </li>
                   </ul>
@@ -138,15 +138,15 @@ const MarcheCapitauxPage = () => {
                 <h3 className="font-semibold text-gray-800 mb-3">Marché actions international :</h3>
                 <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                     <span>American Depositary Receipts (ADR)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                     <span>Global Depositary Receipts (GDR)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                     <span>Cross-listing sur plusieurs places</span>
                   </li>
                 </ul>
@@ -155,13 +155,13 @@ const MarcheCapitauxPage = () => {
 
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
                 Les centres financiers internationaux
               </h2>
 
-              <div className="bg-blue-50 rounded-lg p-4 mb-4">
+              <div className="bg-pr-orange-pale rounded-lg p-4 mb-4">
                 <h3 className="font-semibold text-gray-800 mb-2">Hiérarchie des centres financiers</h3>
                 <p className="text-sm text-gray-600">
                   New York, Londres, Tokyo, Singapour, Hong Kong, Zurich, Shanghai
@@ -169,19 +169,19 @@ const MarcheCapitauxPage = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-blue-50 rounded-lg p-3">
+                <div className="bg-pr-orange-pale rounded-lg p-3">
                   <h4 className="font-semibold text-gray-800 text-sm mb-1">Régulation internationale</h4>
                   <p className="text-xs text-gray-600">Basel III, Solvency II, accords sur les paradis fiscaux</p>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-3">
+                <div className="bg-pr-orange-pale rounded-lg p-3">
                   <h4 className="font-semibold text-gray-800 text-sm mb-1">Innovation financière</h4>
                   <p className="text-xs text-gray-600">Fintech, blockchain, intelligence artificielle</p>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-3">
+                <div className="bg-pr-orange-pale rounded-lg p-3">
                   <h4 className="font-semibold text-gray-800 text-sm mb-1">Gestion des risques</h4>
                   <p className="text-xs text-gray-600">Hedge funds, produits dérivés, titrisation</p>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-3">
+                <div className="bg-pr-orange-pale rounded-lg p-3">
                   <h4 className="font-semibold text-gray-800 text-sm mb-1">Crises financières</h4>
                   <p className="text-xs text-gray-600">Contagion, sauvetages, régulation post-crise</p>
                 </div>
@@ -202,7 +202,7 @@ const MarcheCapitauxPage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module3/construction-europeenne">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

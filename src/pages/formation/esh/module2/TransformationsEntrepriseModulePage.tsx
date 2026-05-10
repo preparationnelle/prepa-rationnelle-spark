@@ -5,7 +5,7 @@ import { Factory, Home, ChevronRight, ArrowLeft } from 'lucide-react';
 
 const TransformationsEntrepriseModulePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -40,7 +40,7 @@ const TransformationsEntrepriseModulePage = () => {
 
           {/* Hero */}
           <div className="mb-8">
-            <div className="rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 text-white p-8 shadow-md">
+            <div className="rounded-2xl bg-gradient-to-r from-carnet-red to-blue-700 text-white p-8 shadow-md">
               <div className="flex items-center justify-center gap-4">
                 <div className="w-16 h-16 bg-white/15 rounded-full flex items-center justify-center ring-1 ring-white/30">
                   <Factory className="h-8 w-8 text-white" />

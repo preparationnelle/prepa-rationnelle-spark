@@ -5,7 +5,7 @@ import { Home, ChevronRight, Users, Briefcase } from 'lucide-react';
 
 const SociologieTravailPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -36,8 +36,8 @@ const SociologieTravailPage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-              <Users className="h-6 w-6 text-blue-700" />
+            <div className="w-12 h-12 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+              <Users className="h-6 w-6 text-carnet-red" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900">
               Éléments de sociologie du travail et des organisations
@@ -70,27 +70,27 @@ const SociologieTravailPage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Grandes théories sociologiques du travail</h2>
                 <div className="space-y-6">
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Karl Marx : L'aliénation au travail</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Séparation du travailleur de son produit</li>
                       <li>• Division du travail et spécialisation</li>
                       <li>• Travail comme marchandise</li>
                       <li>• Critique du capitalisme industriel</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Max Weber : La rationalisation</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Bureaucratie et organisation rationnelle</li>
                       <li>• Division technique et hiérarchique du travail</li>
                       <li>• Autorité légale-rationnelle</li>
                       <li>• Désenchantement du monde</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Durkheim : La division sociale du travail</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Passage de la solidarité mécanique à organique</li>
                       <li>• Spécialisation et interdépendance</li>
                       <li>• Régulation sociale du travail</li>
@@ -104,18 +104,18 @@ const SociologieTravailPage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Les organisations : structures et dynamiques</h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Théories classiques de l'organisation</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Taylorisme et organisation scientifique</li>
                       <li>• Fayol et principes administratifs</li>
                       <li>• Weber et bureaucratie idéale</li>
                       <li>• Spécialisation et hiérarchie</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Approches contemporaines</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Théorie des organisations</li>
                       <li>• Management participatif</li>
                       <li>• Organisations apprenantes</li>
@@ -129,16 +129,16 @@ const SociologieTravailPage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Relations de travail et conflits sociaux</h2>
                 <div className="space-y-4">
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Le mouvement ouvrier et syndical</h3>
-                    <p className="text-blue-700">
+                    <p className="text-carnet-red">
                       Naissance du mouvement ouvrier au XIXe siècle, développement des syndicats,
                       luttes pour les droits sociaux et démocratisation des relations de travail.
                     </p>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Dialogue social et négociation collective</h3>
-                    <p className="text-blue-700">
+                    <p className="text-carnet-red">
                       Institutions représentatives du personnel, comités d'entreprise, négociations
                       salariales et accords collectifs comme formes de régulation sociale.
                     </p>
@@ -157,18 +157,18 @@ const SociologieTravailPage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Transformations contemporaines du travail</h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Précarisation et flexibilisation</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• CDD et contrats temporaires</li>
                       <li>• Travail indépendant et plateformes</li>
                       <li>• Externalisation et sous-traitance</li>
                       <li>• Zones grises du salariat</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Numérisation et nouvelles formes</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Télétravail et nomadisme</li>
                       <li>• Coworking et espaces collaboratifs</li>
                       <li>• Intelligence artificielle au travail</li>
@@ -198,7 +198,6 @@ const SociologieTravailPage = () => {
           </div>
         </div>
 
-        {/* Navigation */}
         <div className="flex justify-center gap-4 mt-12">
           <Link to="/formation/esh/premiere-annee">
             <Button variant="outline" className="flex items-center gap-2">

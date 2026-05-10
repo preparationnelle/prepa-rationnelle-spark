@@ -1,9 +1,42 @@
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ChevronDown, ChevronUp, Star, BookOpen, Lightbulb, Crown } from 'lucide-react';
+import { Eye, EyeOff, CheckCircle } from 'lucide-react';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
+
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-[11px] font-bold text-red-800 uppercase tracking-widest mb-2 mt-4 first:mt-0">
+    {children}
+  </p>
+);
+
+const PointMethodo = ({ children }: { children: React.ReactNode }) => (
+  <div className="mb-3">
+    <SectionLabel>Méthode</SectionLabel>
+    <div className="text-stone-700 text-sm leading-relaxed">{children}</div>
+  </div>
+);
+
+const Astuce = ({ children }: { children: React.ReactNode }) => (
+  <div className="mb-3">
+    <SectionLabel>Astuce</SectionLabel>
+    <div className="text-stone-700 text-sm leading-relaxed">{children}</div>
+  </div>
+);
+
+const ConclusionBox = ({ children }: { children: React.ReactNode }) => (
+  <div className="mt-4">
+    <SectionLabel>Conclusion</SectionLabel>
+    <div className="text-stone-800 leading-relaxed">{children}</div>
+  </div>
+);
+
+const difficultyLabel: Record<string, string> = {
+  'Niveau: Facile': 'FACILE',
+  'Niveau: Intermédiaire': 'MOYEN',
+  'Niveau: Concours': 'DIFFICILE',
+  'Niveau: Concours (Classique)': 'DIFFICILE',
+  'Niveau: Difficile': 'HEC',
+};
 
 const Chapitre8CoupleVariablesAleatoiresExercicesPage = () => {
   const [visibleCorrections, setVisibleCorrections] = useState<{ [key: string]: boolean }>({});
@@ -15,100 +48,57 @@ const Chapitre8CoupleVariablesAleatoiresExercicesPage = () => {
     }));
   };
 
-  const DifficultyHeader = ({
-    level,
-    title,
-    icon: Icon,
-    stars,
-    color = "slate"
-  }: {
-    level: string;
-    title: string;
-    icon: any;
-    stars: number;
-    color?: string;
-  }) => (
-    <div className="flex items-center gap-4 mb-6 mt-8 pb-4 border-b border-slate-200">
-      <div className={`p-2 bg-slate-50 text-slate-700 rounded-lg border border-slate-200`}>
-        <Icon className="w-5 h-5" />
-      </div>
-      <div>
-        <h2 className="text-xl font-bold text-slate-800">{level} : {title}</h2>
-        <div className="flex gap-1 mt-1">
-          {[...Array(stars)].map((_, i) => (
-            <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-          ))}
-          {[...Array(4 - stars)].map((_, i) => (
-            <Star key={i} className="w-4 h-4 text-slate-200" />
-          ))}
-        </div>
-      </div>
+  const DifficultyHeader = ({ level }: { level: string }) => (
+    <div className="flex items-center gap-3 mb-4 mt-10">
+      <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest whitespace-nowrap">
+        {level}
+      </span>
+      <div className="flex-1 border-t border-stone-200" />
     </div>
   );
 
   const ExerciseCard = ({
-    id,
-    title,
-    content,
-    correction,
-    difficulty
+    id, title, content, correction, difficulty,
   }: {
-    id: string;
-    title: string;
-    content: React.ReactNode;
-    correction: React.ReactNode;
-    difficulty: string;
-  }) => (
-    <Card className="mb-6 border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200 bg-white">
-      <div className="p-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 font-semibold text-sm">
-              {id.replace(/[^0-9]/g, '')}
-            </div>
-            <h3 className="font-semibold text-slate-900 text-lg">{title}</h3>
+    id: string; title: string; content: React.ReactNode;
+    correction: React.ReactNode; difficulty: string;
+  }) => {
+    const num = id.split('-')[1].padStart(2, '0');
+    const badge = difficultyLabel[difficulty] ?? difficulty.replace('Niveau: ', '').toUpperCase();
+    const isOpen = visibleCorrections[id];
+    return (
+      <div className="mb-6 border border-stone-200 rounded-xl bg-white shadow-sm p-6">
+        <div className="flex items-start justify-between gap-4 mb-5">
+          <div className="flex items-baseline gap-3">
+            <span className="text-2xl font-bold italic text-red-800 leading-none">{num}</span>
+            <span className="text-stone-300 font-light text-xl leading-none">—</span>
+            <h3 className="font-medium text-stone-900 text-base leading-snug">
+              {title.replace(/^Exercice \d+ - /, '')}
+            </h3>
           </div>
-          <span className="text-xs font-medium text-slate-500 bg-slate-50 px-3 py-1 rounded-full border border-slate-100">
-            {difficulty}
+          <span className="shrink-0 text-[11px] font-semibold text-red-800 border border-red-200 rounded-full px-3 py-0.5 tracking-wider">
+            {badge}
           </span>
         </div>
-
-        <div className="mb-6 text-slate-700 leading-relaxed pl-1">
-          {content}
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <Button
-            onClick={() => toggleCorrection(id)}
-            variant="ghost"
-            size="sm"
-            className="w-fit text-slate-500 hover:text-slate-900 hover:bg-slate-50 self-start -ml-2"
-          >
-            {visibleCorrections[id] ? (
-              <>
-                <ChevronUp className="mr-2 h-4 w-4" />
-                Masquer la correction
-              </>
-            ) : (
-              <>
-                <ChevronDown className="mr-2 h-4 w-4" />
-                Afficher la correction
-              </>
-            )}
-          </Button>
-
-          {visibleCorrections[id] && (
-            <div className="bg-slate-50 border-l-2 border-emerald-500 p-6 rounded-r-lg animate-in fade-in slide-in-from-top-2 duration-300">
-              <h4 className="font-semibold text-emerald-800 mb-3 text-sm uppercase tracking-wider">Solution détaillée</h4>
-              <div className="text-slate-700 leading-relaxed space-y-2">
-                {correction}
-              </div>
+        <div className="text-stone-700 leading-relaxed mb-6">{content}</div>
+        <button
+          onClick={() => toggleCorrection(id)}
+          className="flex items-center gap-2 text-sm text-stone-600 border border-stone-300 rounded-full px-4 py-1.5 hover:bg-stone-50 transition-colors"
+        >
+          {isOpen ? (<><EyeOff className="w-4 h-4" /> Masquer la correction</>) : (<><Eye className="w-4 h-4" /> Afficher la correction</>)}
+        </button>
+        {isOpen && (
+          <div className="mt-5 border border-dashed border-stone-300 border-l-[3px] border-l-red-800 rounded-lg p-5 animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="flex items-center gap-2 mb-4">
+              <CheckCircle className="w-4 h-4 text-red-800" />
+              <span className="text-xs font-bold text-red-800 uppercase tracking-widest">Corrigé détaillé</span>
             </div>
-          )}
-        </div>
+            <div className="text-stone-700 leading-relaxed space-y-2">{correction}</div>
+          </div>
+        )}
       </div>
-    </Card>
-  );
+    );
+  };
 
   return (
     <MathChapterTemplate
@@ -130,137 +120,157 @@ const Chapitre8CoupleVariablesAleatoiresExercicesPage = () => {
     >
       <div className="space-y-8">
 
-        {/* Module 1 */}
         <div>
-          <DifficultyHeader
-            level="Module 1"
-            title="Lois conjointes & Marginales"
-            icon={BookOpen}
-            stars={1}
-          />
+          <DifficultyHeader level="Module 1 — Lois conjointes & Marginales" />
 
           <ExerciseCard
             id="ex1-1"
-            title="Exercice 1.1"
-            difficulty="Fondamental"
+            title="Exercice 1.1 — Loi conjointe tableau"
+            difficulty="Niveau: Facile"
             content={
               <div className="space-y-4">
                 <p>On donne la loi conjointe de <LatexRenderer latex="(X,Y)" /> dans le tableau :</p>
                 <div className="overflow-x-auto my-4">
                   <table className="w-full text-center border-collapse text-sm">
                     <thead>
-                      <tr className="bg-slate-50 border-b border-slate-200">
-                        <th className="p-2 border border-slate-200">X \ Y</th>
-                        <th className="p-2 border border-slate-200">-1</th>
-                        <th className="p-2 border border-slate-200">0</th>
-                        <th className="p-2 border border-slate-200">1</th>
+                      <tr className="bg-stone-50 border-b border-stone-200">
+                        <th className="p-2 border border-stone-200">X \ Y</th>
+                        <th className="p-2 border border-stone-200">-1</th>
+                        <th className="p-2 border border-stone-200">0</th>
+                        <th className="p-2 border border-stone-200">1</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td className="p-2 font-bold border border-slate-200 bg-slate-50">0</td>
-                        <td className="p-2 border border-slate-200">0,12</td>
-                        <td className="p-2 border border-slate-200">0,18</td>
-                        <td className="p-2 border border-slate-200">0,30</td>
+                        <td className="p-2 font-bold border border-stone-200 bg-stone-50">0</td>
+                        <td className="p-2 border border-stone-200">0,12</td>
+                        <td className="p-2 border border-stone-200">0,18</td>
+                        <td className="p-2 border border-stone-200">0,30</td>
                       </tr>
                       <tr>
-                        <td className="p-2 font-bold border border-slate-200 bg-slate-50">1</td>
-                        <td className="p-2 border border-slate-200">0,08</td>
-                        <td className="p-2 border border-slate-200">0,12</td>
-                        <td className="p-2 border border-slate-200">0,20</td>
+                        <td className="p-2 font-bold border border-stone-200 bg-stone-50">1</td>
+                        <td className="p-2 border border-stone-200">0,08</td>
+                        <td className="p-2 border border-stone-200">0,12</td>
+                        <td className="p-2 border border-stone-200">0,20</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                <p>1. Lois marginales ?</p>
-                <p>2. Indépendance ?</p>
-                <p>3. <LatexRenderer latex="E(X+Y)" /> et <LatexRenderer latex="V(X+Y)" />.</p>
+                <p>1. Déterminer les lois marginales de <LatexRenderer latex="X" /> et <LatexRenderer latex="Y" />.</p>
+                <p>2. <LatexRenderer latex="X" /> et <LatexRenderer latex="Y" /> sont-elles indépendantes ?</p>
+                <p>3. Calculer <LatexRenderer latex="E(X+Y)" /> et <LatexRenderer latex="V(X+Y)" />.</p>
               </div>
             }
             correction={
-              <div className="space-y-4">
-                <p>1. <LatexRenderer latex="P(X=0)=0,6, P(X=1)=0,4" />. <LatexRenderer latex="P(Y=-1)=0,2, P(Y=0)=0,3, P(Y=1)=0,5" />.</p>
-                <p>2. <LatexRenderer latex="P(X=0)P(Y=-1) = 0,6 \times 0,2 = 0,12 = P(X=0, Y=-1)" />. Ça marche pour tous les cas. <strong>Indépendance</strong>.</p>
-                <p>3. <LatexRenderer latex="E(X+Y) = E(X)+E(Y)" />. <LatexRenderer latex="V(X+Y) = V(X)+V(Y)" /> (car indép).</p>
-                <p><LatexRenderer latex="E(X)=0,4" />. <LatexRenderer latex="E(Y)=0,3" />. Somme espérance = 0,7.</p>
-                <p><LatexRenderer latex="V(X)=0,24" />. <LatexRenderer latex="V(Y)=0,61" />. Somme variance = 0,85.</p>
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour lire les lois marginales depuis un tableau conjoint, on somme les lignes pour obtenir la loi de <LatexRenderer latex="X" /> et les colonnes pour la loi de <LatexRenderer latex="Y" />. L'indépendance se vérifie en testant <LatexRenderer latex="P(X=x,Y=y)=P(X=x)\cdot P(Y=y)" /> pour toutes les valeurs.
+                </PointMethodo>
+                <p><strong>Lois marginales.</strong> Soit <LatexRenderer latex="X(\Omega)=\{0,1\}" /> et <LatexRenderer latex="Y(\Omega)=\{-1,0,1\}" />.</p>
+                <p>Or, en sommant les lignes : <LatexRenderer latex="P(X=0)=0{,}12+0{,}18+0{,}30=0{,}60" /> et <LatexRenderer latex="P(X=1)=0{,}40" />.</p>
+                <p>D'où, en sommant les colonnes : <LatexRenderer latex="P(Y=-1)=0{,}20,\; P(Y=0)=0{,}30,\; P(Y=1)=0{,}50" />.</p>
+                <p><strong>Indépendance.</strong> Vérifions un cas : <LatexRenderer latex="P(X=0)\cdot P(Y=-1)=0{,}60\times 0{,}20=0{,}12=P(X=0,Y=-1)" />. Le même calcul vaut pour toutes les cases du tableau. Donc <LatexRenderer latex="X" /> et <LatexRenderer latex="Y" /> sont indépendantes.</p>
+                <Astuce>L'indépendance est garantie dès que le tableau conjoint est le produit des marginales colonne par ligne.</Astuce>
+                <p><strong>Espérances et variances.</strong> Ainsi, par linéarité : <LatexRenderer latex="E(X)=0\times 0{,}60+1\times 0{,}40=0{,}40" /> et <LatexRenderer latex="E(Y)=-1\times 0{,}20+0\times 0{,}30+1\times 0{,}50=0{,}30" />.</p>
+                <p>Donc <LatexRenderer latex="E(X+Y)=E(X)+E(Y)=0{,}70" />.</p>
+                <p>Or <LatexRenderer latex="V(X)=E(X^2)-E(X)^2=0{,}40-0{,}16=0{,}24" /> et <LatexRenderer latex="V(Y)=E(Y^2)-E(Y)^2=0{,}70-0{,}09=0{,}61" />.</p>
+                <p>L'indépendance implique <LatexRenderer latex="\text{Cov}(X,Y)=0" />, donc <LatexRenderer latex="V(X+Y)=V(X)+V(Y)=0{,}85" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="E(X+Y)=0{,}70" /> et <LatexRenderer latex="V(X+Y)=0{,}85" />.
+                </ConclusionBox>
               </div>
             }
           />
 
           <ExerciseCard
             id="ex1-2"
-            title="Exercice 1.2"
-            difficulty="Fondamental"
+            title="Exercice 1.2 — Loi de la somme"
+            difficulty="Niveau: Facile"
             content={
               <div className="space-y-4">
-                <p><LatexRenderer latex="X \sim \mathcal{U}(\{1,2,3,4\}), Y \sim \mathcal{U}(\{1,2\})" /> indépendantes.</p>
-                <p>Loi de <LatexRenderer latex="S=X+Y" /> et <LatexRenderer latex="P(S \geq 4)" />.</p>
+                <p>Soit <LatexRenderer latex="X \sim \mathcal{U}(\{1,2,3,4\})" /> et <LatexRenderer latex="Y \sim \mathcal{U}(\{1,2\})" /> indépendantes.</p>
+                <p>1. Déterminer la loi de <LatexRenderer latex="S=X+Y" />.</p>
+                <p>2. Calculer <LatexRenderer latex="P(S \geq 4)" />.</p>
               </div>
             }
             correction={
-              <div className="space-y-4">
-                <p>Somme des probas : <LatexRenderer latex="P(S=k) = \sum P(X=x)P(Y=k-x)" />.</p>
-                <p>Support de S : <LatexRenderer latex="\{2, \dots, 6\}" />.</p>
-                <p><LatexRenderer latex="P(S=2)=1/8, P(S=3)=2/8, P(S=4)=2/8, P(S=5)=2/8, P(S=6)=1/8" />.</p>
-                <p><LatexRenderer latex="P(S \geq 4) = 5/8" />.</p>
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour la loi d'une somme de variables indépendantes à valeurs entières, on utilise la formule de convolution discrète : <LatexRenderer latex="P(S=k)=\sum_x P(X=x)P(Y=k-x)" />, la somme portant sur les valeurs de <LatexRenderer latex="X" /> pour lesquelles <LatexRenderer latex="k-x\in Y(\Omega)" />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="S(\Omega)=\{2,3,4,5,6\}" />. Or chaque valeur de <LatexRenderer latex="X" /> a probabilité <LatexRenderer latex="1/4" /> et chaque valeur de <LatexRenderer latex="Y" /> a probabilité <LatexRenderer latex="1/2" />.</p>
+                <p>D'où, par convolution :</p>
+                <p><LatexRenderer latex="P(S=2)=P(X=1)P(Y=1)=\tfrac{1}{4}\cdot\tfrac{1}{2}=\tfrac{1}{8}" /></p>
+                <p><LatexRenderer latex="P(S=3)=P(X=1)P(Y=2)+P(X=2)P(Y=1)=\tfrac{2}{8}" /></p>
+                <p><LatexRenderer latex="P(S=4)=P(X=2)P(Y=2)+P(X=3)P(Y=1)=\tfrac{2}{8}" /></p>
+                <p><LatexRenderer latex="P(S=5)=P(X=3)P(Y=2)+P(X=4)P(Y=1)=\tfrac{2}{8}" /></p>
+                <p><LatexRenderer latex="P(S=6)=P(X=4)P(Y=2)=\tfrac{1}{8}" /></p>
+                <p>Ainsi <LatexRenderer latex="P(S\geq 4)=P(S=4)+P(S=5)+P(S=6)=\tfrac{5}{8}" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="P(S \geq 4) = \dfrac{5}{8}" />.
+                </ConclusionBox>
               </div>
             }
           />
         </div>
 
-        {/* Module 2 */}
         <div>
-          <DifficultyHeader
-            level="Module 2"
-            title="Sommes et Différences"
-            icon={Lightbulb}
-            stars={2}
-          />
+          <DifficultyHeader level="Module 2 — Sommes et indépendance" />
 
           <ExerciseCard
             id="ex2-1"
-            title="Exercice 2.1"
-            difficulty="Moyen"
+            title="Exercice 2.1 — Dés : S et D indépendantes ?"
+            difficulty="Niveau: Intermédiaire"
             content={
-              <div>
-                <p>Deux dés <LatexRenderer latex="X,Y" />. <LatexRenderer latex="S=X+Y, D=|X-Y|" />.</p>
-                <p>S et D sont-elles indépendantes ?</p>
+              <div className="space-y-2">
+                <p>On lance deux dés équilibrés <LatexRenderer latex="X" /> et <LatexRenderer latex="Y" />. On pose <LatexRenderer latex="S=X+Y" /> et <LatexRenderer latex="D=|X-Y|" />.</p>
+                <p>Les variables <LatexRenderer latex="S" /> et <LatexRenderer latex="D" /> sont-elles indépendantes ?</p>
               </div>
             }
             correction={
-              <div className="space-y-4">
-                <p>Non. Si <LatexRenderer latex="S=12" /> (donc 6+6), alors <LatexRenderer latex="D=0" />.</p>
-                <p><LatexRenderer latex="P(S=12, D=1) = 0" /> mais <LatexRenderer latex="P(S=12)P(D=1) \neq 0" />.</p>
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour réfuter l'indépendance, il suffit de trouver un couple de valeurs <LatexRenderer latex="(s,d)" /> tel que <LatexRenderer latex="P(S=s,D=d)\neq P(S=s)\cdot P(D=d)" />.
+                </PointMethodo>
+                <p>Soit l'événement <LatexRenderer latex="\{S=12\}" /> : il ne se réalise que si <LatexRenderer latex="X=Y=6" />, ce qui force <LatexRenderer latex="D=0" />.</p>
+                <p>Or <LatexRenderer latex="P(S=12)=\tfrac{1}{36}" /> et <LatexRenderer latex="P(D=1)=\tfrac{10}{36}" /> (10 couples avec <LatexRenderer latex="|X-Y|=1" />).</p>
+                <p>D'où <LatexRenderer latex="P(S=12,D=1)=0" /> car <LatexRenderer latex="S=12\Rightarrow D=0\neq 1" />.</p>
+                <p>Ainsi <LatexRenderer latex="P(S=12,D=1)=0\neq \tfrac{1}{36}\times\tfrac{10}{36}=\tfrac{10}{1296}" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="S" /> et <LatexRenderer latex="D" /> ne sont <strong>pas indépendantes</strong>.
+                </ConclusionBox>
               </div>
             }
           />
         </div>
 
-        {/* Module 3 */}
         <div>
-          <DifficultyHeader
-            level="Module 3"
-            title="Synthèse"
-            icon={Crown}
-            stars={3}
-          />
+          <DifficultyHeader level="Module 3 — Approximations et lois de sommes" />
 
           <ExerciseCard
             id="ex3-1"
-            title="Exercice 3.1"
-            difficulty="Avancé"
+            title="Exercice 3.1 — Contrôle qualité : loi de somme et approximation"
+            difficulty="Niveau: Concours"
             content={
-              <div>
-                <p>Contrôle qualité. <LatexRenderer latex="S" /> = défauts dans lot de 20 (<LatexRenderer latex="p=0.05" />).</p>
-                <p>Approximation de <LatexRenderer latex="S" /> ? <LatexRenderer latex="T" /> sur 100 lots ?</p>
+              <div className="space-y-2">
+                <p>Soit <LatexRenderer latex="S" /> le nombre de défauts dans un lot de 20 pièces, chaque pièce étant défectueuse avec probabilité <LatexRenderer latex="p=0{,}05" />, indépendamment.</p>
+                <p>1. Quelle est la loi exacte de <LatexRenderer latex="S" /> ? Proposer une approximation.</p>
+                <p>2. Soit <LatexRenderer latex="T" /> le nombre total de défauts sur 100 lots indépendants. Donner la loi de <LatexRenderer latex="T" /> et une approximation.</p>
               </div>
             }
             correction={
-              <div className="space-y-4">
-                <p>1. <LatexRenderer latex="S \sim \mathcal{B}(20, 0.05)" />. Approx Poisson <LatexRenderer latex="\mathcal{P}(1)" />.</p>
-                <p>2. <LatexRenderer latex="T \sim \mathcal{B}(2000, 0.05)" /> ou somme de 100 Poissons. <LatexRenderer latex="T \approx \mathcal{P}(100)" />.</p>
-                <p>Approx Normale sur T : <LatexRenderer latex="\mathcal{N}(100, 100)" />.</p>
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour approcher une loi binomiale, on choisit l'approximation selon les paramètres : Poisson si <LatexRenderer latex="n" /> grand et <LatexRenderer latex="p" /> petit (<LatexRenderer latex="np" /> modéré), Normale si <LatexRenderer latex="np" /> et <LatexRenderer latex="n(1-p)" /> grands.
+                </PointMethodo>
+                <p><strong>Loi de S.</strong> Soit <LatexRenderer latex="S(\Omega)=\{0,1,\ldots,20\}" />. Les 20 pièces sont indépendantes, chacune défectueuse avec proba <LatexRenderer latex="p=0{,}05" />. Donc <LatexRenderer latex="S\sim\mathcal{B}(20,\,0{,}05)" />.</p>
+                <p>Or <LatexRenderer latex="np=1" /> est petit et <LatexRenderer latex="n=20\geq 30" />, donc on approche par <LatexRenderer latex="S\approx\mathcal{P}(1)" />.</p>
+                <Astuce>La règle d'approximation Poisson s'applique quand <LatexRenderer latex="n\geq 30" />, <LatexRenderer latex="p\leq 0{,}1" /> et <LatexRenderer latex="np\leq 10" />.</Astuce>
+                <p><strong>Loi de T.</strong> Les 100 lots sont indépendants, chaque lot contribue <LatexRenderer latex="S_i\sim\mathcal{B}(20,0{,}05)" />. Donc <LatexRenderer latex="T=S_1+\cdots+S_{100}\sim\mathcal{B}(2000,\,0{,}05)" />.</p>
+                <p>D'où <LatexRenderer latex="E(T)=100,\;V(T)=95" />. Puisque <LatexRenderer latex="np=100\gg 10" />, on applique le TCL : <LatexRenderer latex="T\approx\mathcal{N}(100,\,95)" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="S\sim\mathcal{B}(20,0{,}05)\approx\mathcal{P}(1)" /> et <LatexRenderer latex="T\sim\mathcal{B}(2000,0{,}05)\approx\mathcal{N}(100,95)" />.
+                </ConclusionBox>
               </div>
             }
           />

@@ -107,7 +107,7 @@ const Chapitre9RecurrenceExercicesPage = () => {
       <SEOHead
         canonical="/formation/math/terminale-vers-prepa/recurrence-exercices"
         title="Exercices · Chapitre 9 — Récurrence · Terminale → Prépa ECG"
-        description="6 exercices progressifs sur le raisonnement par récurrence avec corrigés détaillés : sommes, inégalités, divisibilité, suites récurrentes."
+        description="14 exercices progressifs sur le raisonnement par récurrence avec corrigés détaillés : sommes, inégalités, divisibilité, suites récurrentes."
       />
 
       {/* Fil d'Ariane */}
@@ -134,7 +134,7 @@ const Chapitre9RecurrenceExercicesPage = () => {
         <header className="mb-14 relative">
           <div className="carnet-eyebrow mb-5">09 · Exercices · Récurrence</div>
           <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.022em] text-carnet-ink mb-6">
-            Six récurrences <em className="font-lora italic text-carnet-red">à dérouler</em>.
+            Quatorze récurrences <em className="font-lora italic text-carnet-red">à dérouler</em>.
           </h1>
           <p className="font-instrument text-[17px] leading-[1.6] text-carnet-ink-soft max-w-[680px]">
             Égalités, inégalités, divisibilité, suite récurrente. Du plus simple au plus tordu. <span className="carnet-hl font-lora italic">Tente d'abord seul</span>, puis confronte ta rédaction au corrigé.
@@ -142,10 +142,10 @@ const Chapitre9RecurrenceExercicesPage = () => {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(78,55,30,0.18)] text-carnet-ink-soft bg-carnet-paper-2">
-              2 Faciles
+              6 Faciles
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(193,68,58,0.3)] text-carnet-red bg-[rgba(193,68,58,0.06)]">
-              2 Moyens
+              6 Moyens
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-carnet-red text-carnet-paper bg-carnet-red">
               2 Difficiles
@@ -392,6 +392,300 @@ const Chapitre9RecurrenceExercicesPage = () => {
             </>
           }
         />
+
+        {/* Module 4 */}
+        <div className="flex items-baseline gap-4 mb-6 mt-12">
+          <span className="carnet-hand text-[40px] text-carnet-red leading-none font-semibold">M4</span>
+          <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+          <h2 className="font-lora text-[26px] sm:text-[28px] text-carnet-ink leading-tight">Nouvelles récurrences — consolidation</h2>
+        </div>
+
+        {/* Exercice 7 */}
+        <Exercise
+          id="ex7"
+          num={7}
+          title="Somme géométrique par récurrence"
+          difficulty="Facile"
+          open={!!open.ex7}
+          onToggle={() => toggle('ex7')}
+          tilt="l"
+          statement={
+            <>
+              <p>Soit <Inline tex={'q \\neq 1'} />. Démontrer par récurrence que pour tout <Inline tex={'n \\geq 0'} /> :</p>
+              <Block tex={'\\sum_{k=0}^{n} q^k = \\frac{1 - q^{n+1}}{1 - q}.'} />
+            </>
+          }
+          correction={
+            <>
+              <p>Posons, pour <Inline tex={'n \\geq 0'} />, <Inline tex={'P(n) : \\sum_{k=0}^{n} q^k = \\dfrac{1 - q^{n+1}}{1 - q}'} />.</p>
+              <Step label="Initialisation">
+                <p>Pour <Inline tex={'n = 0'} /> : à gauche <Inline tex={'\\sum_{k=0}^{0} q^k = q^0 = 1'} /> ; à droite <Inline tex={'\\dfrac{1 - q}{1 - q} = 1'} /> (car <Inline tex={'q \\neq 1'} />). Donc <Inline tex={'P(0)'} /> est vraie.</p>
+              </Step>
+              <Step label="Hérédité">
+                <p>Soit <Inline tex={'n \\geq 0'} /> ; supposons <Inline tex={'P(n)'} /> vraie (HR). Alors :</p>
+                <Block tex={'\\sum_{k=0}^{n+1} q^k = \\sum_{k=0}^{n} q^k + q^{n+1} \\stackrel{HR}{=} \\frac{1 - q^{n+1}}{1 - q} + q^{n+1}.'} />
+                <p>On met au même dénominateur :</p>
+                <Block tex={'= \\frac{1 - q^{n+1} + q^{n+1}(1 - q)}{1 - q} = \\frac{1 - q^{n+1} + q^{n+1} - q^{n+2}}{1 - q} = \\frac{1 - q^{n+2}}{1 - q},'} />
+                <p>c'est-à-dire <Inline tex={'P(n+1)'} />.</p>
+              </Step>
+              <Step label="Conclusion">
+                <p>Par récurrence, pour tout <Inline tex={'n \\geq 0'} />, <Inline tex={'\\displaystyle\\sum_{k=0}^{n} q^k = \\dfrac{1 - q^{n+1}}{1 - q}'} />.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 8 */}
+        <Exercise
+          id="ex8"
+          num={8}
+          title="Divisibilité par 6"
+          difficulty="Facile"
+          open={!!open.ex8}
+          onToggle={() => toggle('ex8')}
+          statement={
+            <>
+              <p>Démontrer par récurrence que pour tout <Inline tex={'n \\geq 1'} />, <Inline tex={'n^3 - n'} /> est divisible par <Inline tex={'6'} />.</p>
+              <p className="text-carnet-ink-mute italic text-[14px]">Indication : remarquer que <Inline tex={'n^3 - n = n(n-1)(n+1)'} /> est le produit de trois entiers consécutifs.</p>
+            </>
+          }
+          correction={
+            <>
+              <p>Posons, pour <Inline tex={'n \\geq 1'} />, <Inline tex={'P(n) : 6 \\mid n^3 - n'} />.</p>
+              <Step label="Initialisation">
+                <p>Pour <Inline tex={'n = 1'} /> : <Inline tex={'1^3 - 1 = 0 = 6 \\times 0'} />. Donc <Inline tex={'P(1)'} /> est vraie.</p>
+              </Step>
+              <Step label="Hérédité">
+                <p>Soit <Inline tex={'n \\geq 1'} /> ; supposons <Inline tex={'6 \\mid n^3 - n'} /> (HR). Alors :</p>
+                <Block tex={'(n+1)^3 - (n+1) = n^3 + 3n^2 + 3n + 1 - n - 1 = (n^3 - n) + 3n^2 + 3n = (n^3 - n) + 3n(n+1).'} />
+                <p>Par HR, <Inline tex={'6 \\mid n^3 - n'} />. De plus, parmi deux entiers consécutifs <Inline tex={'n'} /> et <Inline tex={'n+1'} />, l'un est pair, donc <Inline tex={'2 \\mid n(n+1)'} />, d'où <Inline tex={'6 \\mid 3n(n+1)'} />. On conclut :</p>
+                <Block tex={'6 \\mid (n^3 - n) + 3n(n+1),'} />
+                <p>ce qui est bien <Inline tex={'P(n+1)'} />.</p>
+              </Step>
+              <Step label="Conclusion">
+                <p>Par récurrence, pour tout <Inline tex={'n \\geq 1'} />, <Inline tex={'6 \\mid n^3 - n'} />.</p>
+                <p className="text-carnet-ink-mute italic text-[14px]">Remarque : on peut aussi conclure directement — parmi trois entiers consécutifs, l'un est multiple de 2 et l'un est multiple de 3, donc leur produit est multiple de 6.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 9 */}
+        <Exercise
+          id="ex9"
+          num={9}
+          title="Inégalité avec factorielle"
+          difficulty="Moyen"
+          open={!!open.ex9}
+          onToggle={() => toggle('ex9')}
+          tilt="r"
+          statement={
+            <>
+              <p>Démontrer par récurrence que pour tout <Inline tex={'n \\geq 1'} /> :</p>
+              <Block tex={'n! \\geq 2^{n-1}.'} />
+            </>
+          }
+          correction={
+            <>
+              <p>Posons, pour <Inline tex={'n \\geq 1'} />, <Inline tex={'P(n) : n! \\geq 2^{n-1}'} />.</p>
+              <Step label="Initialisation">
+                <p>Pour <Inline tex={'n = 1'} /> : <Inline tex={'1! = 1'} /> et <Inline tex={'2^{0} = 1'} />. Donc <Inline tex={'1! \\geq 2^0'} /> ; <Inline tex={'P(1)'} /> est vraie.</p>
+              </Step>
+              <Step label="Hérédité">
+                <p>Soit <Inline tex={'n \\geq 1'} /> ; supposons <Inline tex={'n! \\geq 2^{n-1}'} /> (HR). Alors :</p>
+                <Block tex={'(n+1)! = (n+1) \\cdot n! \\stackrel{HR}{\\geq} (n+1) \\cdot 2^{n-1}.'} />
+                <p>Or, pour tout <Inline tex={'n \\geq 1'} />, on a <Inline tex={'n + 1 \\geq 2'} />, donc :</p>
+                <Block tex={'(n+1) \\cdot 2^{n-1} \\geq 2 \\cdot 2^{n-1} = 2^n.'} />
+                <p>Par transitivité, <Inline tex={'(n+1)! \\geq 2^n'} />, c'est-à-dire <Inline tex={'P(n+1)'} />.</p>
+              </Step>
+              <Step label="Conclusion">
+                <p>Par récurrence, pour tout <Inline tex={'n \\geq 1'} />, <Inline tex={'n! \\geq 2^{n-1}'} />.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 10 */}
+        <Exercise
+          id="ex10"
+          num={10}
+          title="Suite récurrente — encadrement double"
+          difficulty="Moyen"
+          open={!!open.ex10}
+          onToggle={() => toggle('ex10')}
+          statement={
+            <>
+              <p>Soit <Inline tex={'(t_n)_{n \\geq 0}'} /> la suite définie par <Inline tex={'t_0 = 3'} /> et <Inline tex={'t_{n+1} = \\dfrac{t_n}{2} + 1'} /> pour tout <Inline tex={'n \\geq 0'} />.</p>
+              <ol className="list-decimal list-inside space-y-1 mt-2">
+                <li>Calculer <Inline tex={'t_1, t_2, t_3'} />.</li>
+                <li>Démontrer par récurrence que pour tout <Inline tex={'n \\geq 0'} />, <Inline tex={'1 < t_n \\leq 3'} />.</li>
+                <li>Étudier la monotonie de la suite.</li>
+                <li>Conclure sur la convergence et déterminer la limite.</li>
+              </ol>
+            </>
+          }
+          correction={
+            <>
+              <Step label="1. Calcul des premiers termes">
+                <Block tex={'t_0 = 3, \\quad t_1 = \\frac{3}{2} + 1 = \\frac{5}{2}, \\quad t_2 = \\frac{5}{4} + 1 = \\frac{9}{4}, \\quad t_3 = \\frac{9}{8} + 1 = \\frac{17}{8}.'} />
+                <p>La suite semble décroître vers 2.</p>
+              </Step>
+              <Step label="2. Encadrement par récurrence">
+                <p>Posons, pour <Inline tex={'n \\geq 0'} />, <Inline tex={'P(n) : 1 < t_n \\leq 3'} />.</p>
+                <p><em>Initialisation.</em> <Inline tex={'t_0 = 3'} />, donc <Inline tex={'1 < 3 \\leq 3'} />. <Inline tex={'P(0)'} /> est vraie.</p>
+                <p><em>Hérédité.</em> Supposons <Inline tex={'1 < t_n \\leq 3'} />. Alors :</p>
+                <Block tex={'t_{n+1} = \\frac{t_n}{2} + 1 > \\frac{1}{2} + 1 = \\frac{3}{2} > 1.'} />
+                <Block tex={'t_{n+1} = \\frac{t_n}{2} + 1 \\leq \\frac{3}{2} + 1 = \\frac{5}{2} \\leq 3.'} />
+                <p>Donc <Inline tex={'1 < t_{n+1} \\leq 3'} />, c'est-à-dire <Inline tex={'P(n+1)'} />.</p>
+                <p>Par récurrence, pour tout <Inline tex={'n \\geq 0'} />, <Inline tex={'1 < t_n \\leq 3'} />.</p>
+              </Step>
+              <Step label="3. Monotonie">
+                <Block tex={'t_{n+1} - t_n = \\frac{t_n}{2} + 1 - t_n = 1 - \\frac{t_n}{2}.'} />
+                <p>D'après la question 2, <Inline tex={'t_n > 1 > 0'} />, et comme <Inline tex={'t_n \\leq 3'} />, on a <Inline tex={'t_n > 2'} /> pour <Inline tex={'n = 0'} /> et la suite décroît. Plus précisément : pour <Inline tex={'t_n > 2'} />, <Inline tex={'t_{n+1} - t_n < 0'} /> (décroissante) ; on peut vérifier que <Inline tex={'t_n > 2'} /> pour tout <Inline tex={'n'} /> et que la suite est strictement décroissante.</p>
+              </Step>
+              <Step label="4. Convergence et limite">
+                <p>La suite est décroissante et minorée par 1, donc elle converge. Notons <Inline tex={'\\ell'} /> sa limite. Par passage à la limite dans la relation de récurrence :</p>
+                <Block tex={'\\ell = \\frac{\\ell}{2} + 1 \\implies \\frac{\\ell}{2} = 1 \\implies \\ell = 2.'} />
+                <p>La suite <Inline tex={'(t_n)'} /> converge vers <Inline tex={'2'} />.</p>
+              </Step>
+            </>
+          }
+        />
+
+          {/* Module M5 — Récurrences classiques */}
+          <div className="mb-2 mt-10">
+            <span className="inline-block bg-carnet-red text-white text-xs font-bold px-3 py-1 rounded-full tracking-wide uppercase">
+              M5 — Récurrences classiques
+            </span>
+          </div>
+
+          <Exercise
+            id="ex11"
+            num={11}
+            title="Parité de n(n+1)"
+            difficulty="Facile"
+            open={!!open.ex11}
+            onToggle={() => toggle('ex11')}
+            tilt="l"
+            statement={
+              <>
+                <p>Montrer par récurrence que pour tout <Inline tex={'n \\in \\mathbb{N}'} />, le produit <Inline tex={'n(n+1)'} /> est pair.</p>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Initialisation (n = 0)">
+                  <Block tex={'0 \\times 1 = 0 = 2 \\times 0 \\quad \\text{(pair)}'} />
+                  <p>La propriété est vraie au rang 0.</p>
+                </Step>
+                <Step label="Hérédité">
+                  <p>Supposons que <Inline tex={'n(n+1)'} /> est pair pour un certain <Inline tex={'n \\in \\mathbb{N}'} />. On a :</p>
+                  <Block tex={'(n+1)(n+2) = n(n+1) + 2(n+1)'} />
+                  <p>Par hypothèse de récurrence, <Inline tex={'n(n+1)'} /> est pair. Or <Inline tex={'2(n+1)'} /> est pair. Somme de deux nombres pairs → pair.</p>
+                </Step>
+                <Step label="Conclusion">
+                  <Block tex={'\\boxed{\\forall n \\in \\mathbb{N},\\quad n(n+1) \\text{ est pair}}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex12"
+            num={12}
+            title="Divisibilité de 4ⁿ − 1 par 3"
+            difficulty="Facile"
+            open={!!open.ex12}
+            onToggle={() => toggle('ex12')}
+            statement={
+              <>
+                <p>Montrer par récurrence que pour tout <Inline tex={'n \\in \\mathbb{N}'} />, <Inline tex={'3 \\mid 4^n - 1'} />.</p>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Initialisation (n = 0)">
+                  <Block tex={'4^0 - 1 = 0 = 3 \\times 0 \\quad \\text{(divisible par 3)}'} />
+                </Step>
+                <Step label="Hérédité">
+                  <p>Supposons <Inline tex={'3 \\mid 4^n - 1'} />. On écrit :</p>
+                  <Block tex={'4^{n+1} - 1 = 4 \\cdot 4^n - 1 = 4(4^n - 1) + 3'} />
+                  <p>Par HR, <Inline tex={'3 \\mid 4(4^n-1)'} />. Et <Inline tex={'3 \\mid 3'} />. Donc <Inline tex={'3 \\mid 4^{n+1}-1'} />.</p>
+                </Step>
+                <Step label="Conclusion">
+                  <Block tex={'\\boxed{\\forall n \\in \\mathbb{N},\\quad 3 \\mid 4^n - 1}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex13"
+            num={13}
+            title="Inégalité 2ⁿ ≥ n + 1"
+            difficulty="Moyen"
+            open={!!open.ex13}
+            onToggle={() => toggle('ex13')}
+            tilt="r"
+            statement={
+              <>
+                <p>Montrer par récurrence que pour tout <Inline tex={'n \\in \\mathbb{N}'} /> :</p>
+                <Block tex={'2^n \\geq n + 1'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Initialisation (n = 0)">
+                  <Block tex={'2^0 = 1 \\geq 0 + 1 = 1 \\quad \\checkmark'} />
+                </Step>
+                <Step label="Hérédité">
+                  <p>Supposons <Inline tex={'2^n \\geq n+1'} /> pour un certain <Inline tex={'n \\in \\mathbb{N}'} />.</p>
+                  <Block tex={'2^{n+1} = 2 \\cdot 2^n \\geq 2(n+1) = 2n + 2'} />
+                  <p>Il reste à vérifier que <Inline tex={'2n+2 \\geq n+2'} />, i.e. <Inline tex={'n \\geq 0'} /> — vrai par hypothèse.</p>
+                  <Block tex={'\\text{Donc } 2^{n+1} \\geq n + 2 = (n+1)+1 \\quad \\checkmark'} />
+                </Step>
+                <Step label="Conclusion">
+                  <Block tex={'\\boxed{\\forall n \\in \\mathbb{N},\\quad 2^n \\geq n+1}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex14"
+            num={14}
+            title="Suite récurrente — conjecture et démonstration"
+            difficulty="Moyen"
+            open={!!open.ex14}
+            onToggle={() => toggle('ex14')}
+            statement={
+              <>
+                <p>Soit la suite définie par <Inline tex={'u_0 = 1'} /> et <Inline tex={'u_{n+1} = 2u_n + 1'} />.</p>
+                <ol className="list-decimal pl-5 space-y-1">
+                  <li>Calculer <Inline tex={'u_1'} />, <Inline tex={'u_2'} />, <Inline tex={'u_3'} />.</li>
+                  <li>Conjecturer une formule explicite pour <Inline tex={'u_n'} />.</li>
+                  <li>Démontrer cette formule par récurrence.</li>
+                </ol>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Calcul des premiers termes">
+                  <Block tex={'u_1 = 2 \\times 1 + 1 = 3, \\quad u_2 = 7, \\quad u_3 = 15'} />
+                  <p>On remarque : <Inline tex={'1 = 2^1-1'} />, <Inline tex={'3 = 2^2-1'} />, <Inline tex={'7 = 2^3-1'} />, <Inline tex={'15 = 2^4-1'} />.</p>
+                </Step>
+                <Step label="Conjecture">
+                  <Block tex={'\\text{Conjecture : } u_n = 2^{n+1} - 1'} />
+                </Step>
+                <Step label="Démonstration par récurrence">
+                  <p><strong>Init :</strong> <Inline tex={'u_0 = 1 = 2^1 - 1'} /> ✓</p>
+                  <p><strong>Héré :</strong> Supposons <Inline tex={'u_n = 2^{n+1}-1'} />. Alors :</p>
+                  <Block tex={'u_{n+1} = 2u_n + 1 = 2(2^{n+1}-1)+1 = 2^{n+2} - 2 + 1 = 2^{n+2}-1 = 2^{(n+1)+1}-1'} />
+                  <Block tex={'\\boxed{\\forall n \\in \\mathbb{N},\\quad u_n = 2^{n+1}-1}'} />
+                </Step>
+              </>
+            }
+          />
 
         {/* Bandeau récap */}
         <section className="mt-14 mb-10 relative">

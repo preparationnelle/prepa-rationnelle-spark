@@ -5,7 +5,7 @@ import { ChevronRight, Home, Globe, AlertTriangle, Lightbulb, Shield, Users, Boo
 
 const UnionEuropeennePageSimple = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -1388,7 +1388,7 @@ const UnionEuropeennePageSimple = () => {
         {/* Navigation vers ressources */}
         <div className="grid md:grid-cols-4 gap-6 mb-12">
           <Link to="/formation/geopolitique/chronologie-europe">
-            <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-blue-300">
+            <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-carnet-red/40">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Globe className="h-6 w-6 text-gray-600" />

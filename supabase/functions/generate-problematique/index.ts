@@ -1,29 +1,27 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
-
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { requireAuth } from "../_shared/auth.ts";
 serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
+  const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
+
+  const __authResult = await requireAuth(req);
+  if (__authResult.response) return __authResult.response;
 
   try {
     const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
     if (!OPENAI_API_KEY) {
       return new Response(JSON.stringify({ error: 'Clé API non configurée' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+        { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } });
     }
 
     const { subject, mode } = await req.json();
 
     if (!subject || !subject.trim()) {
       return new Response(JSON.stringify({ error: 'Le champ "subject" est requis' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+        { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } });
     }
 
     const isGeopolitics = mode === 'geopolitics';
@@ -120,10 +118,10 @@ Réponds UNIQUEMENT avec la problématique formulée, sans explications supplém
     }
 
     return new Response(JSON.stringify({ problematique }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+      { headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } });
 
   } catch (error) {
     return new Response(JSON.stringify({ error: error.message }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+      { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } });
   }
 });

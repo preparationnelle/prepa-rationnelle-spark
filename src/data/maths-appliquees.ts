@@ -17,7 +17,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: BrainCircuit,
         color: 'bg-blue-600',
         symbol: '∧',
-        description: 'Concepts fondamentaux et démonstrations rigoureuses'
+        description: 'Propositions, quantificateurs, contraposée et raisonnement par l\'absurde'
       },
       {
         id: 2,
@@ -26,7 +26,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Shapes,
         color: 'bg-blue-600',
         symbol: '∈',
-        description: 'Concepts fondamentaux et démonstrations rigoureuses'
+        description: 'Injection, surjection, bijection et image directe et réciproque'
       },
       {
         id: 3,
@@ -35,7 +35,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Sigma,
         color: 'bg-blue-600',
         symbol: '∑',
-        description: 'Concepts fondamentaux et démonstrations rigoureuses'
+        description: 'Sommes télescopiques, formule du binôme et relations de Pascal'
       },
       {
         id: 4,
@@ -44,7 +44,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: TrendingUp,
         color: 'bg-blue-600',
         symbol: '→',
-        description: 'Concepts fondamentaux et démonstrations rigoureuses'
+        description: 'Convergence, monotonie, suites adjacentes et théorèmes de comparaison'
       },
       {
         id: 5,
@@ -53,7 +53,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: FunctionSquare,
         color: 'bg-blue-600',
         symbol: 'f',
-        description: 'Concepts fondamentaux et démonstrations rigoureuses'
+        description: 'Continuité, limites et théorème des valeurs intermédiaires'
       },
       {
         id: 6,
@@ -62,7 +62,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Spline,
         color: 'bg-blue-600',
         symbol: '∂',
-        description: 'Concepts fondamentaux et démonstrations rigoureuses'
+        description: 'Dérivées usuelles, théorème de Rolle et accroissements finis'
       },
       {
         id: 7,
@@ -71,7 +71,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: AreaChart,
         color: 'bg-blue-600',
         symbol: '∫',
-        description: 'Concepts fondamentaux et démonstrations rigoureuses'
+        description: 'Intégrales de Riemann, intégration par parties et changement de variable'
       },
       {
         id: 8,
@@ -80,7 +80,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Cuboid,
         color: 'bg-blue-600',
         symbol: 'P',
-        description: 'Concepts fondamentaux et démonstrations rigoureuses'
+        description: 'Degré, racines, factorisation et division euclidienne'
       },
       {
         id: 9,
@@ -89,7 +89,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Grid,
         color: 'bg-blue-600',
         symbol: 'M',
-        description: 'Concepts fondamentaux et démonstrations rigoureuses'
+        description: 'Opérations matricielles, pivot de Gauss et bases'
       },
       {
         id: 10,
@@ -98,7 +98,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Dices,
         color: 'bg-blue-600',
         symbol: 'P',
-        description: 'Concepts fondamentaux et démonstrations rigoureuses'
+        description: 'Probabilités conditionnelles, formule de Bayes et indépendance'
       }
     ]
   },
@@ -113,7 +113,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Move,
         color: 'bg-blue-600',
         symbol: 'L',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'Noyau, image, théorème du rang et isomorphismes'
       },
       {
         id: 12,
@@ -122,7 +122,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Scale,
         color: 'bg-blue-600',
         symbol: '≈',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'Relations asymptotiques et comparaison de suites et de fonctions'
       },
       {
         id: 13,
@@ -131,7 +131,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: InfinityIcon,
         color: 'bg-blue-600',
         symbol: '∞',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'Séries géométriques, de Riemann, séries télescopiques et convergence absolue'
       },
       {
         id: 14,
@@ -140,7 +140,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: UnfoldVertical,
         color: 'bg-blue-600',
         symbol: 'T',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'DL usuels, Taylor-Young et applications aux limites et équivalents'
       },
       {
         id: 15,
@@ -149,7 +149,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: AreaChart,
         color: 'bg-blue-600',
         symbol: '∫∞',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'Convergence par comparaison, équivalents et intégrales de référence'
       },
       {
         id: 16,
@@ -158,7 +158,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Dices,
         color: 'bg-blue-600',
         symbol: 'Ω',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'Tribu, probabilité, formule des probabilités totales et Bayes'
       },
       {
         id: 17,
@@ -167,7 +167,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Variable,
         color: 'bg-blue-600',
         symbol: 'X',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'Lois usuelles (binomiale, Poisson, géométrique), espérance et variance'
       },
       {
         id: 18,
@@ -176,7 +176,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: LocateFixed,
         color: 'bg-blue-600',
         symbol: '⇒',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'Loi faible des grands nombres et théorème central limite'
       },
       {
         id: 19,
@@ -185,7 +185,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: FunctionSquare,
         color: 'bg-blue-600',
         symbol: 'dx',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'Équations linéaires d\'ordre 1 et 2 et variation de la constante'
       },
       {
         id: 21,
@@ -194,7 +194,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Move,
         color: 'bg-blue-600',
         symbol: '→',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'Matrices de transition, états récurrents et distribution stationnaire'
       },
       {
         id: 22,
@@ -203,7 +203,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Grid,
         color: 'bg-blue-600',
         symbol: 'G',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'Graphes orientés, connexité, chemins et algorithmes classiques'
       },
       {
         id: 23,
@@ -212,7 +212,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Cuboid,
         color: 'bg-blue-600',
         symbol: 'μ',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'Moyenne, variance, médiane, covariance et régression linéaire'
       },
       {
         id: 20,
@@ -221,7 +221,7 @@ export const mathsAppliqueesData: MathsAppliqueesData = {
         icon: Code,
         color: 'bg-blue-600',
         symbol: 'Py',
-        description: 'Théorie approfondie et applications pratiques'
+        description: 'Programmation scientifique avec numpy, scipy et matplotlib'
       }
     ]
   }

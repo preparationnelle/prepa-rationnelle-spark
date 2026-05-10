@@ -20,7 +20,7 @@ const LI = ({ children }: { children: React.ReactNode }) => (
 
 const SyntheseQuestion1Page = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-gray-500">
@@ -41,8 +41,8 @@ const SyntheseQuestion1Page = () => {
       <div className="container mx-auto px-4 pt-12 pb-16">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center border border-blue-200">
-              <FileText className="h-6 w-6 text-blue-600" />
+            <div className="w-12 h-12 bg-pr-orange-pale rounded-full flex items-center justify-center border border-carnet-red/30">
+              <FileText className="h-6 w-6 text-carnet-red" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Partie synthèse (question 1)</h1>
           </div>
@@ -113,7 +113,7 @@ const SyntheseQuestion1Page = () => {
 
           <H2>Exemple d’application</H2>
           <P>
-            <strong>Why could tech giants have to alter their business models?</strong> – d’après l’article de Renaud Foucart (<a className="text-blue-600 underline" href="https://urlz.fr/iLRv" target="_blank" rel="noreferrer">lien</a>)
+            <strong>Why could tech giants have to alter their business models?</strong> – d’après l’article de Renaud Foucart (<a className="text-carnet-red underline" href="https://urlz.fr/iLRv" target="_blank" rel="noreferrer">lien</a>)
           </P>
           <P className="italic text-gray-700">Essay (≈500 words)</P>
           <div className="prose prose-neutral max-w-none text-[15.5px] leading-7">

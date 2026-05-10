@@ -341,7 +341,7 @@ const ReussirSyntheseExercicesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-8 pb-16 max-w-6xl">
 
         {/* Header */}
@@ -414,7 +414,6 @@ const ReussirSyntheseExercicesPage = () => {
           </div>
         </div>
 
-        {/* Navigation */}
         <div className="mt-12 pt-8 border-t border-gray-200">
           <div className="flex justify-between items-center">
             <Link

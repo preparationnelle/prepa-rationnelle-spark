@@ -1,13 +1,29 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { SmtpClient } from "https://deno.land/x/smtp/mod.ts"
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts"
+import { escapeHtml } from "../_shared/auth.ts"
+
+// Internal notification recipient — hardcoded server-side so this endpoint
+// can never be used as an open mailer.
+const INTERNAL_RECIPIENT = "preparationnelle@gmail.com"
+const SUBJECT = "Nouvelle inscription par virement - Stage de Pré-entrée"
 
 serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders })
-  }
+  const preflight = handleCorsPreflight(req)
+  if (preflight) return preflight
 
   try {
-    const { to, subject, userData, amount, reference } = await req.json()
+    const { userData, amount, reference } = await req.json()
+
+    if (!userData?.email || !userData?.prenom || !userData?.nom) {
+      return new Response(
+        JSON.stringify({ error: "userData.email, prenom, nom requis" }),
+        {
+          status: 400,
+          headers: { ...corsHeaders(req), "Content-Type": "application/json" },
+        },
+      )
+    }
 
     const client = new SmtpClient()
 
@@ -23,19 +39,19 @@ Bonjour,
 
 Une nouvelle inscription au Stage de Pré-entrée a été effectuée avec demande de paiement par virement.
 
-**Informations du candidat :**
-- Prénom : ${userData.prenom}
-- Nom : ${userData.nom}
-- Email : ${userData.email}
-- Téléphone : ${userData.telephone}
+Informations du candidat :
+- Prénom : ${escapeHtml(userData.prenom)}
+- Nom : ${escapeHtml(userData.nom)}
+- Email : ${escapeHtml(userData.email)}
+- Téléphone : ${escapeHtml(userData.telephone)}
 
-**Détails de la commande :**
+Détails de la commande :
 - Stage : Stage de Pré-entrée (18-23 août 2025)
-- Montant : ${amount}
-- Référence : ${reference}
+- Montant : ${escapeHtml(amount)}
+- Référence : ${escapeHtml(reference)}
 
-**Action requise :**
-Veuillez envoyer le RIB par email à ${userData.email} avec les instructions de paiement.
+Action requise :
+Veuillez envoyer le RIB par email à ${escapeHtml(userData.email)} avec les instructions de paiement.
 
 Cordialement,
 Système d'inscription Prépa Rationnelle
@@ -43,8 +59,8 @@ Système d'inscription Prépa Rationnelle
 
     await client.send({
       from: "preparationnelle@gmail.com",
-      to: to,
-      subject: subject,
+      to: INTERNAL_RECIPIENT,
+      subject: SUBJECT,
       content: emailContent,
     })
 
@@ -52,29 +68,18 @@ Système d'inscription Prépa Rationnelle
 
     return new Response(
       JSON.stringify({ success: true }),
-      { 
-        headers: { 
-          ...corsHeaders,
-          'Content-Type': 'application/json' 
-        } 
-      }
+      {
+        headers: { ...corsHeaders(req), "Content-Type": "application/json" },
+      },
     )
   } catch (error) {
     console.error('Erreur envoi email notification:', error)
     return new Response(
       JSON.stringify({ error: 'Erreur lors de l\'envoi de la notification' }),
-      { 
+      {
         status: 500,
-        headers: { 
-          ...corsHeaders,
-          'Content-Type': 'application/json' 
-        } 
-      }
+        headers: { ...corsHeaders(req), "Content-Type": "application/json" },
+      },
     )
   }
 })
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-} 

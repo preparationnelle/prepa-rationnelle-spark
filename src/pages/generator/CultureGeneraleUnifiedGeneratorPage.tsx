@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -128,15 +127,15 @@ const CultureGeneraleUnifiedGeneratorPage = () => {
         {/* Sélection du sujet */}
         {!isSubjectValidated ? (
           <div className="max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150">
-            <Card className="border border-pr-gray-light bg-white overflow-hidden shadow-sm">
-              <div className="absolute top-0 left-0 w-full h-[3px] bg-pr-orange"></div>
-              <CardHeader className="pt-8 pb-2 text-center">
-                <CardTitle className="font-dm-serif text-2xl text-pr-black">Définis ton sujet</CardTitle>
+            <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-sm">
+              <div className="h-[3px] w-full bg-pr-orange" />
+              <div className="pt-8 pb-2 text-center px-8">
+                <h2 className="font-dm-serif text-2xl text-pr-black">Définis ton sujet</h2>
                 <p className="text-pr-gray-mid font-dm-sans text-sm mt-1">
                   Pour commencer, choisis ou saisis le sujet de ta dissertation.
                 </p>
-              </CardHeader>
-              <CardContent className="p-8 space-y-6">
+              </div>
+              <div className="p-8 space-y-6">
                 {/* Année */}
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-pr-gray-mid uppercase tracking-[0.08em] font-dm-sans">
@@ -219,8 +218,8 @@ const CultureGeneraleUnifiedGeneratorPage = () => {
                   <Sparkles className="h-4 w-4 mr-2" />
                   Commencer l'analyse
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">

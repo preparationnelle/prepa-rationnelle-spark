@@ -119,7 +119,7 @@ const AsieAuteursPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -172,7 +172,7 @@ const AsieAuteursPage = () => {
               Navigation rapide
             </h3>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/formation/geopolitique/asie" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors">
+              <Link to="/formation/geopolitique/asie" className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md transition-colors">
                 <BookOpen className="w-4 h-4" />
                 Accéder au cours
               </Link>
@@ -232,7 +232,7 @@ const AsieAuteursPage = () => {
                                   {ouvrage.theme}
                                 </Badge>
                                 {ouvrage.important && (
-                                  <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-700">
+                                  <Badge variant="secondary" className="text-xs bg-carnet-red/10 text-carnet-red">
                                     Essentiel
                                   </Badge>
                                 )}
@@ -296,13 +296,13 @@ const AsieAuteursPage = () => {
         </Dialog>
 
         {/* Note méthodologique */}
-        <Card className="mt-8 bg-blue-50 border-blue-200">
+        <Card className="mt-8 bg-pr-orange-pale border-carnet-red/30">
           <CardContent className="p-6">
-            <div className="flex items-center gap-3 text-blue-800 mb-4">
+            <div className="flex items-center gap-3 text-carnet-red-deep mb-4">
               <Lightbulb className="h-5 w-5" />
               <h3 className="font-semibold">Conseils méthodologiques</h3>
             </div>
-            <div className="text-blue-700 space-y-2">
+            <div className="text-carnet-red space-y-2">
               <p>• <strong>Regards croisés :</strong> Comparez les analyses occidentales, chinoises et indiennes sur l'Asie.</p>
               <p>• <strong>Approche historique :</strong> Privilégiez les ouvrages sur les empires asiatiques et les décolonisations.</p>
               <p>• <strong>Actualité :</strong> Les ouvrages récents permettent d'analyser la rivalité sino-américaine et l'essor indien.</p>

@@ -124,7 +124,7 @@ const AsieChronologiePage = () => {
   const groupedEvents = groupEventsByDecade(events);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 py-8">
         
         {/* En-tête */}
@@ -148,7 +148,7 @@ const AsieChronologiePage = () => {
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">
-              <Badge variant="outline" className="bg-blue-100 text-blue-800 border-blue-300">Politique</Badge>
+              <Badge variant="outline" className="bg-carnet-red/10 text-carnet-red-deep border-carnet-red/40">Politique</Badge>
               <Badge variant="outline" className="bg-green-100 text-green-800 border-green-300">Économique</Badge>
               <Badge variant="outline" className="bg-red-100 text-red-800 border-red-300">Conflit</Badge>
               <Badge variant="outline" className="bg-purple-100 text-purple-800 border-purple-300">Culturel</Badge>

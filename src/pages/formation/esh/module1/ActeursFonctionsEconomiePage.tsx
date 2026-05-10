@@ -5,7 +5,7 @@ import { Users, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle } from 'luc
 
 const ActeursFonctionsEconomiePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -193,7 +193,7 @@ const ActeursFonctionsEconomiePage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module1/monnaie-financement">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

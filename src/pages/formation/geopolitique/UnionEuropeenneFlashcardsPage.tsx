@@ -162,7 +162,7 @@ const UnionEuropeenneFlashcardsPage = () => {
   const currentCard = flashcards[currentCardIndex];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -208,7 +208,7 @@ const UnionEuropeenneFlashcardsPage = () => {
         <div className="max-w-4xl mx-auto mb-6 flex flex-wrap justify-center gap-4">
           <button
             onClick={resetCards}
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors"
+            className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md transition-colors"
           >
             <RotateCcw className="w-4 h-4" />
             Recommencer
@@ -229,7 +229,7 @@ const UnionEuropeenneFlashcardsPage = () => {
             {flashcards.map((card, index) => (
               <div key={card.id} className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-sm flex-shrink-0">
+                  <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center text-carnet-red font-bold text-sm flex-shrink-0">
                     {index + 1}
                   </div>
                   <div className="flex-1">
@@ -251,7 +251,7 @@ const UnionEuropeenneFlashcardsPage = () => {
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div
-                  className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                  className="bg-carnet-red h-2 rounded-full transition-all duration-300"
                   style={{ width: `${((currentCardIndex + 1) / flashcards.length) * 100}%` }}
                 ></div>
               </div>
@@ -268,7 +268,7 @@ const UnionEuropeenneFlashcardsPage = () => {
                       </h2>
                       <button
                         onClick={toggleAnswer}
-                        className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors"
+                        className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-3 rounded-lg transition-colors"
                       >
                         <Eye className="w-5 h-5" />
                         Voir la réponse
@@ -297,7 +297,6 @@ const UnionEuropeenneFlashcardsPage = () => {
               </div>
             </div>
 
-            {/* Navigation */}
             <div className="flex justify-between items-center mt-8">
               <button
                 onClick={handlePrevious}
@@ -318,7 +317,7 @@ const UnionEuropeenneFlashcardsPage = () => {
                       setShowAnswer(false);
                     }}
                     className={`w-3 h-3 rounded-full transition-colors ${
-                      index === currentCardIndex ? 'bg-blue-600' : 'bg-gray-300 hover:bg-gray-400'
+                      index === currentCardIndex ? 'bg-carnet-red' : 'bg-gray-300 hover:bg-gray-400'
                     }`}
                     title={`Aller à la carte ${index + 1}`}
                   />
@@ -328,7 +327,7 @@ const UnionEuropeenneFlashcardsPage = () => {
               <button
                 onClick={handleNext}
                 disabled={currentCardIndex === flashcards.length - 1}
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed text-white px-4 py-2 rounded-md transition-colors"
+                className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark disabled:bg-carnet-red disabled:cursor-not-allowed text-white px-4 py-2 rounded-md transition-colors"
               >
                 <span className="hidden sm:inline">Carte suivante</span>
                 <span className="sm:hidden">Suivante</span>

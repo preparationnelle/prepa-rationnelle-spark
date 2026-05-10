@@ -106,7 +106,7 @@ const Chapitre6LimitesExercicesPage = () => {
       <SEOHead
         canonical="/formation/math/terminale-vers-prepa/limites-exercices"
         title="Exercices · Chapitre 7 — Limites · Terminale → Prépa ECG"
-        description="9 exercices progressifs sur les limites de fonctions : limites usuelles, formes indéterminées, conjugué, exponentielle/logarithme et croissances comparées."
+        description="17 exercices progressifs sur les limites de fonctions : limites usuelles, formes indéterminées, conjugué, exponentielle/logarithme et croissances comparées."
       />
 
       {/* Fil d'Ariane */}
@@ -133,7 +133,7 @@ const Chapitre6LimitesExercicesPage = () => {
         <header className="mb-14 relative">
           <div className="carnet-eyebrow mb-5">07 · Exercices · Limites</div>
           <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.022em] text-carnet-ink mb-6">
-            Neuf limites <em className="font-lora italic text-carnet-red">à débloquer</em>.
+            Dix-sept limites <em className="font-lora italic text-carnet-red">à débloquer</em>.
           </h1>
           <p className="font-instrument text-[17px] leading-[1.6] text-carnet-ink-soft max-w-[680px]">
             Substitution directe, formes indéterminées, conjugué, exponentielles, croissances comparées. <span className="carnet-hl font-lora italic">Identifie la FI</span> avant de te lancer dans le calcul.
@@ -141,10 +141,10 @@ const Chapitre6LimitesExercicesPage = () => {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(78,55,30,0.18)] text-carnet-ink-soft bg-carnet-paper-2">
-              2 Faciles
+              4 Faciles
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(193,68,58,0.3)] text-carnet-red bg-[rgba(193,68,58,0.06)]">
-              5 Moyens
+              11 Moyens
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-carnet-red text-carnet-paper bg-carnet-red">
               2 Difficiles
@@ -470,6 +470,264 @@ const Chapitre6LimitesExercicesPage = () => {
             </>
           }
         />
+
+        {/* Module 5 */}
+        <div className="flex items-baseline gap-4 mb-6 mt-12">
+          <span className="carnet-hand text-[40px] text-carnet-red leading-none font-semibold">M5</span>
+          <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+          <h2 className="font-lora text-[26px] sm:text-[28px] text-carnet-ink leading-tight">Formes classiques & suites</h2>
+        </div>
+
+        {/* Exercice 10 */}
+        <Exercise
+          id="ex10"
+          num={10}
+          title="Limites directes : sin, quotients et bornes"
+          difficulty="Facile"
+          open={!!open.ex10}
+          onToggle={() => toggle('ex10')}
+          tilt="l"
+          statement={
+            <>
+              <p>Calculer les limites suivantes en justifiant la méthode :</p>
+              <p>a) <Inline tex={'\\lim_{x \\to 0} \\dfrac{\\sin(5x)}{x}'} /></p>
+              <p>b) <Inline tex={'\\lim_{x \\to +\\infty} \\dfrac{x^3 - 2x + 1}{2x^3 + x^2 - 3}'} /></p>
+              <p>c) <Inline tex={'\\lim_{x \\to 3^+} \\dfrac{1}{x - 3}'} /></p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="a) Limite de référence sin(u)/u">
+                <Block tex={'\\frac{\\sin(5x)}{x} = 5 \\cdot \\frac{\\sin(5x)}{5x} \\xrightarrow[x \\to 0]{} 5 \\cdot 1 = 5.'} />
+              </Step>
+              <Step label="b) FI ∞/∞ — terme dominant x³">
+                <p>On divise numérateur et dénominateur par <Inline tex={'x^3'} /> :</p>
+                <Block tex={'\\frac{x^3 - 2x + 1}{2x^3 + x^2 - 3} = \\frac{1 - 2/x^2 + 1/x^3}{2 + 1/x - 3/x^3} \\xrightarrow[x \\to +\\infty]{} \\frac{1}{2}.'} />
+              </Step>
+              <Step label="c) Limite à droite en 3">
+                <p>Quand <Inline tex={'x \\to 3^+'} />, on a <Inline tex={'x - 3 \\to 0^+'} />, donc <Inline tex={'\\dfrac{1}{x-3} \\to +\\infty'} />.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 11 */}
+        <Exercise
+          id="ex11"
+          num={11}
+          title="Forme ∞ − ∞ avec racines carrées"
+          difficulty="Moyen"
+          open={!!open.ex11}
+          onToggle={() => toggle('ex11')}
+          statement={
+            <>
+              <p>Calculer :</p>
+              <p>a) <Inline tex={'\\lim_{x \\to +\\infty} \\bigl(\\sqrt{x^2 + 3x} - x\\bigr)'} /></p>
+              <p>b) <Inline tex={'\\lim_{x \\to +\\infty} \\bigl(\\sqrt{x+1} - \\sqrt{x-1}\\bigr)'} /></p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="a) Expression conjuguée">
+                <Block tex={'\\sqrt{x^2+3x} - x = \\frac{(x^2+3x) - x^2}{\\sqrt{x^2+3x}+x} = \\frac{3x}{\\sqrt{x^2+3x}+x}.'} />
+                <p>On divise haut et bas par <Inline tex={'x > 0'} /> :</p>
+                <Block tex={'= \\frac{3}{\\sqrt{1 + 3/x} + 1} \\xrightarrow[x \\to +\\infty]{} \\frac{3}{\\sqrt{1} + 1} = \\frac{3}{2}.'} />
+              </Step>
+              <Step label="b) Expression conjuguée">
+                <Block tex={'\\sqrt{x+1} - \\sqrt{x-1} = \\frac{(x+1) - (x-1)}{\\sqrt{x+1} + \\sqrt{x-1}} = \\frac{2}{\\sqrt{x+1} + \\sqrt{x-1}} \\xrightarrow[x \\to +\\infty]{} 0.'} />
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 12 */}
+        <Exercise
+          id="ex12"
+          num={12}
+          title="Limite de suite"
+          difficulty="Moyen"
+          open={!!open.ex12}
+          onToggle={() => toggle('ex12')}
+          tilt="r"
+          statement={
+            <>
+              <p>Déterminer la limite de la suite <Inline tex={'(u_n)'} /> définie par :</p>
+              <p>a) <Inline tex={'u_n = \\dfrac{3n^2 - 2n + 1}{n^2 + 5}'} /></p>
+              <p>b) <Inline tex={'u_n = \\sqrt{n+1} - \\sqrt{n}'} /></p>
+              <p>c) <Inline tex={'u_n = n\\!\\left(\\sqrt{1 + \\dfrac{1}{n}} - 1\\right)'} /></p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="a) Terme dominant n²">
+                <Block tex={'u_n = \\frac{3n^2 - 2n + 1}{n^2 + 5} = \\frac{3 - 2/n + 1/n^2}{1 + 5/n^2} \\xrightarrow[n \\to +\\infty]{} 3.'} />
+              </Step>
+              <Step label="b) Expression conjuguée">
+                <Block tex={'\\sqrt{n+1} - \\sqrt{n} = \\frac{(n+1) - n}{\\sqrt{n+1} + \\sqrt{n}} = \\frac{1}{\\sqrt{n+1} + \\sqrt{n}} \\xrightarrow[n \\to +\\infty]{} 0.'} />
+              </Step>
+              <Step label="c) Taux d'accroissement de √">
+                <p>Pose <Inline tex={'h = 1/n \\to 0'} /> :</p>
+                <Block tex={'u_n = n\\bigl(\\sqrt{1 + 1/n} - 1\\bigr) = \\frac{\\sqrt{1+h} - 1}{h} \\xrightarrow[h \\to 0]{} \\frac{1}{2}.'} />
+                <p className="text-carnet-ink-mute italic text-[14px]">C'est le taux d'accroissement de <Inline tex={'x \\mapsto \\sqrt{x}'} /> en <Inline tex={'x = 1'} />.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 13 */}
+        <Exercise
+          id="ex13"
+          num={13}
+          title="Asymptote oblique et comportement en 1"
+          difficulty="Moyen"
+          open={!!open.ex13}
+          onToggle={() => toggle('ex13')}
+          statement={
+            <>
+              <p>Soit <Inline tex={'f(x) = \\dfrac{2x^2 + x - 1}{x - 1}'} />.</p>
+              <p>1. Simplifier <Inline tex={'f(x)'} /> pour <Inline tex={'x \\neq 1'} />.</p>
+              <p>2. La droite <Inline tex={'y = 2x + 3'} /> est-elle une asymptote oblique ? Justifier.</p>
+              <p>3. Calculer <Inline tex={'\\lim_{x \\to 1^+} f(x)'} /> et <Inline tex={'\\lim_{x \\to 1^-} f(x)'} />.</p>
+            </>
+          }
+          correction={
+            <>
+              <Step label="1. Division euclidienne">
+                <p>On factorise le numérateur : <Inline tex={'2x^2 + x - 1 = (x-1)(2x+3)'} />.</p>
+                <p>D'où pour tout <Inline tex={'x \\neq 1'} /> :</p>
+                <Block tex={'f(x) = \\frac{(x-1)(2x+3)}{x-1} = 2x + 3.'} />
+              </Step>
+              <Step label="2. Nature de la droite y = 2x + 3">
+                <p>Puisque <Inline tex={'f(x) = 2x + 3'} /> exactement (sans reste), la courbe de <Inline tex={'f'} /> <em>coïncide</em> avec la droite <Inline tex={'y = 2x + 3'} /> (sauf au point <Inline tex={'x = 1'} /> où <Inline tex={'f'} /> n'est pas définie). Ce n'est donc pas une asymptote au sens strict, mais la droite elle-même.</p>
+              </Step>
+              <Step label="3. Limites en 1">
+                <p>Pour tout <Inline tex={'x \\neq 1'} />, <Inline tex={'f(x) = 2x + 3'} /> est un polynôme, donc :</p>
+                <Block tex={'\\lim_{x \\to 1^+} f(x) = \\lim_{x \\to 1^-} f(x) = 2 \\times 1 + 3 = 5.'} />
+                <p>La fonction <Inline tex={'f'} /> admet une limite égale à 5 en <Inline tex={'x = 1'} />, mais n'y est pas définie (c'est un point isolé de discontinuité prolongeable).</p>
+              </Step>
+            </>
+          }
+        />
+
+          {/* Module M6 — Limites remarquables */}
+          <div className="mb-2 mt-10">
+            <span className="inline-block bg-carnet-red text-white text-xs font-bold px-3 py-1 rounded-full tracking-wide uppercase">
+              M6 — Limites remarquables
+            </span>
+          </div>
+
+          <Exercise
+            id="ex14"
+            num={14}
+            title="Limite d'une fraction rationnelle en +∞"
+            difficulty="Facile"
+            open={!!open.ex14}
+            onToggle={() => toggle('ex14')}
+            tilt="l"
+            statement={
+              <>
+                <p>Calculer :</p>
+                <Block tex={'\\lim_{x \\to +\\infty} \\frac{3x^2 - 5}{x^2 + 1}'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Factorisation par le terme dominant">
+                  <p>On factorise <Inline tex={'x^2'} /> au numérateur et au dénominateur :</p>
+                  <Block tex={'\\frac{3x^2 - 5}{x^2 + 1} = \\frac{x^2(3 - 5/x^2)}{x^2(1 + 1/x^2)} = \\frac{3 - 5/x^2}{1 + 1/x^2}'} />
+                </Step>
+                <Step label="Limite">
+                  <p>Quand <Inline tex={'x \\to +\\infty'} />, <Inline tex={'5/x^2 \\to 0'} /> et <Inline tex={'1/x^2 \\to 0'} />. Donc :</p>
+                  <Block tex={'\\boxed{\\lim_{x \\to +\\infty} \\frac{3x^2-5}{x^2+1} = \\frac{3}{1} = 3}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex15"
+            num={15}
+            title="Limite fondamentale de (e^x − 1)/x en 0"
+            difficulty="Moyen"
+            open={!!open.ex15}
+            onToggle={() => toggle('ex15')}
+            statement={
+              <>
+                <p>Calculer :</p>
+                <Block tex={'\\lim_{x \\to 0} \\frac{e^x - 1}{x}'} />
+                <p>Interpréter le résultat.</p>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Interprétation comme taux d'accroissement">
+                  <p>On reconnaît le taux d'accroissement de <Inline tex={'x \\mapsto e^x'} /> en <Inline tex={'a = 0'} /> :</p>
+                  <Block tex={'\\lim_{x \\to 0} \\frac{e^x - e^0}{x - 0} = \\left(e^x\\right)\'_{x=0} = e^0 = 1'} />
+                </Step>
+                <Step label="Vérification par développement limité">
+                  <p>Au voisinage de 0 : <Inline tex={'e^x = 1 + x + o(x)'} />, donc <Inline tex={'e^x - 1 = x + o(x)'} />.</p>
+                  <Block tex={'\\frac{e^x - 1}{x} = \\frac{x + o(x)}{x} = 1 + o(1) \\to 1'} />
+                  <Block tex={'\\boxed{\\lim_{x \\to 0} \\frac{e^x - 1}{x} = 1}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex16"
+            num={16}
+            title="Limite de x(e^{1/x} − 1) en +∞"
+            difficulty="Moyen"
+            open={!!open.ex16}
+            onToggle={() => toggle('ex16')}
+            tilt="r"
+            statement={
+              <>
+                <p>Calculer :</p>
+                <Block tex={'\\lim_{x \\to +\\infty} x\\left(e^{1/x} - 1\\right)'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Changement de variable">
+                  <p>On pose <Inline tex={'t = \\tfrac{1}{x}'} />. Quand <Inline tex={'x \\to +\\infty'} />, <Inline tex={'t \\to 0^+'} />.</p>
+                  <Block tex={'x\\left(e^{1/x} - 1\\right) = \\frac{e^t - 1}{t}'} />
+                </Step>
+                <Step label="Application de la limite fondamentale">
+                  <Block tex={'\\lim_{t \\to 0^+} \\frac{e^t - 1}{t} = 1'} />
+                  <Block tex={'\\boxed{\\lim_{x \\to +\\infty} x\\left(e^{1/x} - 1\\right) = 1}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex17"
+            num={17}
+            title="Limite de x·ln(x) en 0⁺"
+            difficulty="Moyen"
+            open={!!open.ex17}
+            onToggle={() => toggle('ex17')}
+            statement={
+              <>
+                <p>Calculer :</p>
+                <Block tex={'\\lim_{x \\to 0^+} x \\ln x'} />
+              </>
+            }
+            correction={
+              <>
+                <Step label="Changement de variable">
+                  <p>On pose <Inline tex={'t = -\\ln x'} />. Quand <Inline tex={'x \\to 0^+'} />, <Inline tex={'t \\to +\\infty'} />. On a <Inline tex={'x = e^{-t}'} />.</p>
+                  <Block tex={'x \\ln x = e^{-t} \\cdot (-t) = -t e^{-t}'} />
+                </Step>
+                <Step label="Croissances comparées">
+                  <p>Par croissances comparées, <Inline tex={'t e^{-t} \\to 0'} /> quand <Inline tex={'t \\to +\\infty'} /> (l'exponentielle l'emporte sur le polynôme).</p>
+                  <Block tex={'\\boxed{\\lim_{x \\to 0^+} x \\ln x = 0}'} />
+                  <p>Remarque : bien que <Inline tex={'\\ln x \\to -\\infty'} />, le terme <Inline tex={'x \\to 0'} /> "écrase" le logarithme.</p>
+                </Step>
+              </>
+            }
+          />
 
         {/* Bandeau récap */}
         <section className="mt-14 mb-10 relative">

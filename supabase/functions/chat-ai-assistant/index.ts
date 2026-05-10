@@ -2,17 +2,15 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
-
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { requireAuth } from "../_shared/auth.ts";
 serve(async (req) => {
   // Handle CORS preflight requests
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
+  const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
+
+  const __authResult = await requireAuth(req);
+  if (__authResult.response) return __authResult.response;
 
   try {
     const { messages } = await req.json();
@@ -23,7 +21,7 @@ serve(async (req) => {
       console.error("Missing OPENAI_API_KEY, please define it in Supabase secrets.");
       return new Response(
         JSON.stringify({ error: "Le serveur n'est pas configuré. Merci d'ajouter la clé OPENAI_API_KEY dans les secrets Supabase." }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -152,7 +150,7 @@ serve(async (req) => {
           }),
           {
             status: response.status,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            headers: { ...corsHeaders(req), 'Content-Type': 'application/json' }
           }
         );
       }
@@ -166,7 +164,7 @@ serve(async (req) => {
           JSON.stringify({ error: "Aucune réponse générée par l'IA" }),
           {
             status: 500,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            headers: { ...corsHeaders(req), 'Content-Type': 'application/json' }
           }
         );
       }
@@ -177,7 +175,7 @@ serve(async (req) => {
         JSON.stringify({ text }),
         {
           headers: {
-            ...corsHeaders,
+            ...corsHeaders(req),
             'Content-Type': 'application/json',
           }
         }
@@ -187,7 +185,7 @@ serve(async (req) => {
       if (error.name === 'AbortError') {
         return new Response(
           JSON.stringify({ error: 'Timeout de la requête' }),
-          { status: 408, headers: corsHeaders }
+          { status: 408, headers: corsHeaders(req) }
         );
       }
       throw error;
@@ -202,7 +200,7 @@ serve(async (req) => {
       {
         status: 500,
         headers: {
-          ...corsHeaders,
+          ...corsHeaders(req),
           'Content-Type': 'application/json',
         }
       }

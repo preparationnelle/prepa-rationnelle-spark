@@ -355,6 +355,16 @@ const PlanJugerPage = lazy(() => import('../pages/formation/culture-generale/art
 const DefinirHumanitePage = lazy(() => import('../pages/formation/culture-generale/articles/DefinirHumanitePage'));
 const InhumainCoeurHumainPage = lazy(() => import('../pages/formation/culture-generale/articles/InhumainCoeurHumainPage'));
 const HumaniteFaceTechniquePage = lazy(() => import('../pages/formation/culture-generale/articles/HumaniteFaceTechniquePage'));
+const HumainAnimalPage = lazy(() => import('../pages/formation/culture-generale/articles/HumainAnimalPage'));
+const DigniteHumainePage = lazy(() => import('../pages/formation/culture-generale/articles/DigniteHumainePage'));
+const AlteriteAutrePage = lazy(() => import('../pages/formation/culture-generale/articles/AlteriteAutrePage'));
+const PerfectibiliteProgresPage = lazy(() => import('../pages/formation/culture-generale/articles/PerfectibiliteProgresPage'));
+const HumaniteNatureAnthropocenePage = lazy(() => import('../pages/formation/culture-generale/articles/HumaniteNatureAnthropocenePage'));
+const CorpsHumainPage = lazy(() => import('../pages/formation/culture-generale/articles/CorpsHumainPage'));
+const HumainLangagePage = lazy(() => import('../pages/formation/culture-generale/articles/HumainLangagePage'));
+const HumainMortPage = lazy(() => import('../pages/formation/culture-generale/articles/HumainMortPage'));
+const HumanismeCritiquesPage = lazy(() => import('../pages/formation/culture-generale/articles/HumanismeCritiquesPage'));
+const DevenirHumainEducationPage = lazy(() => import('../pages/formation/culture-generale/articles/DevenirHumainEducationPage'));
 const MethodesCultureGeneralePage = lazy(() => import('../pages/formation/culture-generale/MethodesCultureGeneralePage'));
 const ProgrammeCultureGeneralePage = lazy(() => import('../pages/formation/culture-generale/ProgrammeCultureGeneralePage'));
 const TroisMethodesDissertationPage = lazy(() => import('../pages/formation/culture-generale/methodes/TroisMethodesDissertationPage'));
@@ -1214,6 +1224,16 @@ export const routes: RouteConfig[] = [
   { path: '/formation/culture-generale/articles/definir-humanite', component: DefinirHumanitePage, title: 'CG — Définir l\'humanité' },
   { path: '/formation/culture-generale/articles/inhumain-coeur-humain', component: InhumainCoeurHumainPage, title: 'CG — L\'inhumain au cœur de l\'humain' },
   { path: '/formation/culture-generale/articles/humanite-face-technique', component: HumaniteFaceTechniquePage, title: 'CG — L\'humanité face à la technique' },
+  { path: '/formation/culture-generale/articles/humain-animal', component: HumainAnimalPage, title: 'CG — L\'humain et l\'animal' },
+  { path: '/formation/culture-generale/articles/dignite-humaine', component: DigniteHumainePage, title: 'CG — La dignité humaine' },
+  { path: '/formation/culture-generale/articles/alterite-autre', component: AlteriteAutrePage, title: 'CG — L\'altérité et la rencontre de l\'autre' },
+  { path: '/formation/culture-generale/articles/perfectibilite-progres', component: PerfectibiliteProgresPage, title: 'CG — La perfectibilité et le progrès' },
+  { path: '/formation/culture-generale/articles/humanite-nature-anthropocene', component: HumaniteNatureAnthropocenePage, title: 'CG — L\'humanité face à la nature (anthropocène)' },
+  { path: '/formation/culture-generale/articles/corps-humain', component: CorpsHumainPage, title: 'CG — Le corps humain' },
+  { path: '/formation/culture-generale/articles/humain-langage', component: HumainLangagePage, title: 'CG — L\'humain et le langage' },
+  { path: '/formation/culture-generale/articles/humain-mort', component: HumainMortPage, title: 'CG — L\'humain face à la mort' },
+  { path: '/formation/culture-generale/articles/humanisme-critiques', component: HumanismeCritiquesPage, title: 'CG — L\'humanisme et ses critiques' },
+  { path: '/formation/culture-generale/articles/devenir-humain-education', component: DevenirHumainEducationPage, title: 'CG — Devenir humain (éducation, culture)' },
   { path: '/formation/culture-generale/methodes', component: MethodesCultureGeneralePage, title: 'CG — Méthodes' },
   { path: '/formation/culture-generale/methodes/trois-approches-dissertation', component: TroisMethodesDissertationPage, title: 'CG — 3 Méthodes de Dissertation' },
   { path: '/formation/culture-generale/methodes/paragraphes-juger', component: MethodesParagraphesJugerPage, title: 'CG — Paragraphes (Humanité)' },
@@ -1851,7 +1871,7 @@ export const routes: RouteConfig[] = [
     protected: false
   },
   {
-    path: '/formation/math/terminale-vers-prepa/integrale-exercices',
+    path: '/formation/math/terminale-vers-prepa/integrales-exercices',
     component: lazy(() => import('../pages/formation/math/terminale-vers-prepa/Chapitre5-Integrale-ExercicesPage')),
     title: 'Exercices - Chapitre 5 : Intégrale',
     protected: false

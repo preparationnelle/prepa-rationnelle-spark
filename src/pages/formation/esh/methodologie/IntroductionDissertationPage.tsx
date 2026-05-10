@@ -18,7 +18,7 @@ const Tip: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 
 const IntroductionDissertationPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       {/* Breadcrumb */}
       <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-2">
@@ -41,8 +41,8 @@ const IntroductionDissertationPage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center border border-blue-200">
-              <BookOpenCheck className="h-6 w-6 text-blue-600" />
+            <div className="w-12 h-12 bg-pr-orange-pale rounded-full flex items-center justify-center border border-carnet-red/30">
+              <BookOpenCheck className="h-6 w-6 text-carnet-red" />
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">Réussir l’introduction d’une dissertation en économie</h1>
           </div>
@@ -63,7 +63,7 @@ const IntroductionDissertationPage: React.FC = () => {
               <li><strong>Identifier les ambiguïtés</strong> de termes polysémiques (ex: « prix », « concentration »…).</li>
               <li><strong>Préciser le cadre</strong> temporel, spatial et les acteurs concernés, avec justification.</li>
             </ul>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-900 mt-3">
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep mt-3">
               <div className="font-medium mb-1">Exemple – Sujet: « La concurrence doit-elle être stimulée ? »</div>
               <p>On étudie la concurrence entre entreprises (champ pertinent pour l’action publique) et l’on situe l’analyse de la fin du XIXe siècle à aujourd’hui.</p>
             </div>
@@ -71,7 +71,7 @@ const IntroductionDissertationPage: React.FC = () => {
 
           <Section title="3. L’analyse du sujet et les questions clés">
             <p>Formule 2 à 3 questions directrices issues de ton analyse. Elles guident le devoir et ouvrent sur les parties.</p>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-900 mt-3">
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep mt-3">
               <p>La concurrence est-elle toujours bénéfique ? Dans quelles conditions peut-elle être nocive ? Quel rôle doit jouer l’État pour en stimuler ou en limiter les effets ?</p>
             </div>
             <Tip>Utilise des connecteurs logiques clairs: « or », « cependant », « dès lors », etc.</Tip>
@@ -88,7 +88,7 @@ const IntroductionDissertationPage: React.FC = () => {
 
           <Section title="5. La problématique">
             <p>Colonne vertébrale de la dissertation, concise (1–2 lignes), assez large pour nourrir trois parties.</p>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-900 mt-3">
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep mt-3">
               <div className="font-medium mb-1">Exemple</div>
               <p>Dans quelle mesure la stimulation de la concurrence contribue-t-elle à la croissance et au bien-être collectif, et quelles limites peut-elle rencontrer ?</p>
             </div>
@@ -105,7 +105,7 @@ const IntroductionDissertationPage: React.FC = () => {
           </Section>
 
           <section className="bg-white rounded-xl shadow-sm border p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2"><Quote className="h-5 w-5 text-blue-600" />Modèle ultra-synthétique</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2"><Quote className="h-5 w-5 text-carnet-red" />Modèle ultra-synthétique</h3>
             <ol className="list-decimal pl-6 text-gray-700 space-y-1">
               <li>Accroche pertinente et factuelle</li>
               <li>Définition précise des termes + cadrage</li>

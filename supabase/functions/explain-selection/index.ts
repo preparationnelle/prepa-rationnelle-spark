@@ -1,12 +1,8 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
-
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { requireAuth } from "../_shared/auth.ts";
 const SUBJECT_PROMPTS: Record<string, { name: string; systemPrompt: string }> = {
     maths: {
         name: "Assistant Maths",
@@ -95,9 +91,11 @@ Tu expliques les concepts de manière claire et pédagogique.
 };
 
 serve(async (req) => {
-    if (req.method === 'OPTIONS') {
-        return new Response(null, { headers: corsHeaders });
-    }
+    const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
+
+  const __authResult = await requireAuth(req);
+  if (__authResult.response) return __authResult.response;
 
     try {
         const { selectedText, subject, pageContext, followUpQuestion } = await req.json();
@@ -106,7 +104,7 @@ serve(async (req) => {
         if (!openAIApiKey) {
             return new Response(
                 JSON.stringify({ error: "Clé API non configurée" }),
-                { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+                { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
             );
         }
 
@@ -160,7 +158,7 @@ Explique ce passage de manière claire, pédagogique et approfondie. Si c'est un
                 const errorData = await response.json().catch(() => ({ error: { message: 'Unknown error' } }));
                 return new Response(
                     JSON.stringify({ error: `Erreur IA: ${errorData.error?.message || 'Erreur de connexion'}` }),
-                    { status: response.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+                    { status: response.status, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
                 );
             }
 
@@ -170,20 +168,20 @@ Explique ce passage de manière claire, pédagogique et approfondie. Si c'est un
             if (!text) {
                 return new Response(
                     JSON.stringify({ error: "Aucune réponse générée" }),
-                    { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+                    { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
                 );
             }
 
             return new Response(
                 JSON.stringify({ text, assistantName: subjectConfig.name }),
-                { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+                { headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
             );
         } catch (error) {
             clearTimeout(timeoutId);
             if (error.name === 'AbortError') {
                 return new Response(
                     JSON.stringify({ error: 'Timeout de la requête' }),
-                    { status: 408, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+                    { status: 408, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
                 );
             }
             throw error;
@@ -191,7 +189,7 @@ Explique ce passage de manière claire, pédagogique et approfondie. Si c'est un
     } catch (error) {
         return new Response(
             JSON.stringify({ error: `Erreur serveur: ${error.message || 'Erreur inconnue'}` }),
-            { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+            { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
     }
 });

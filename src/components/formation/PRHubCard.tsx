@@ -9,11 +9,13 @@ type PRHubCardProps = {
   title: string;
   description: string;
   bullets?: string[];
+  cta?: string;
 };
 
 /**
- * Big hub card — used on the 4-module landing (vocab/grammar/civ/methodo).
- * Charter: white card, 0.5px gray border, orange accent line on hover, generous padding.
+ * Hub card — used on formation landing pages.
+ * Carnet design: white card, gray border, orange accent on hover.
+ * Supports number + icon together (number top-left, icon below).
  */
 export const PRHubCard: React.FC<PRHubCardProps> = ({
   to,
@@ -22,34 +24,32 @@ export const PRHubCard: React.FC<PRHubCardProps> = ({
   title,
   description,
   bullets,
+  cta = 'Découvrir',
 }) => {
   return (
     <Link
       to={to}
-      className="group relative block bg-white border border-pr-gray-light rounded-2xl p-8 transition-all duration-300 hover:border-pr-orange hover:shadow-[0_8px_30px_rgba(244,132,95,0.12)] flex flex-col"
+      className="group relative block bg-white border border-pr-gray-light rounded-2xl p-7 transition-all duration-300 hover:border-pr-orange hover:shadow-[0_8px_30px_rgba(244,132,95,0.12)] hover:-translate-y-1 flex flex-col h-full overflow-hidden"
     >
-      {/* Trait orange signature en haut, visible au hover */}
-      <span className="absolute top-0 left-8 right-8 h-[2px] bg-pr-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <span className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-      {/* Numéro décoratif OU icône */}
-      <div className="flex items-center justify-between mb-6">
-        {number !== undefined ? (
-          <span className="font-dm-serif text-5xl text-pr-orange leading-none">{number}</span>
-        ) : Icon ? (
-          <div className="w-12 h-12 rounded-xl bg-pr-orange-pale flex items-center justify-center">
-            <Icon className="h-6 w-6 text-pr-orange-dark" />
-          </div>
-        ) : (
-          <span />
-        )}
-        <ArrowRight className="h-4 w-4 text-pr-gray-mid opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-      </div>
+      {number !== undefined && (
+        <span className="font-dm-serif text-pr-orange text-3xl leading-none mb-3">
+          {typeof number === 'number' ? String(number).padStart(2, '0') : number}
+        </span>
+      )}
 
-      <h3 className="font-dm-serif text-2xl text-pr-black mb-3 leading-tight">{title}</h3>
-      <p className="text-sm text-pr-gray-dark/80 leading-relaxed mb-5">{description}</p>
+      {Icon && (
+        <div className="w-12 h-12 rounded-xl bg-pr-orange-pale flex items-center justify-center mb-5 group-hover:bg-pr-orange-soft/40 transition-colors">
+          <Icon className="h-6 w-6 text-pr-orange-dark" />
+        </div>
+      )}
+
+      <h3 className="font-dm-serif text-2xl text-pr-black mb-2 leading-tight">{title}</h3>
+      <p className="text-sm text-pr-gray-dark/80 leading-relaxed">{description}</p>
 
       {bullets && bullets.length > 0 && (
-        <ul className="mt-auto space-y-2 pt-4 border-t border-pr-gray-light/70">
+        <ul className="mt-4 space-y-2 pt-4 border-t border-pr-gray-light/70">
           {bullets.map((b, i) => (
             <li key={i} className="flex items-start gap-2 text-xs text-pr-gray-mid">
               <span className="text-pr-orange mt-[2px]">→</span>
@@ -58,6 +58,11 @@ export const PRHubCard: React.FC<PRHubCardProps> = ({
           ))}
         </ul>
       )}
+
+      <span className="mt-auto pt-5 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.12em] text-pr-orange-dark">
+        {cta}
+        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+      </span>
     </Link>
   );
 };

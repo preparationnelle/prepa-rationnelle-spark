@@ -2,12 +2,8 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
-
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { requireAuth } from "../_shared/auth.ts";
 type Langue = 'en' | 'de' | 'es';
 
 interface RequestBody {
@@ -97,9 +93,11 @@ Evalue cette reponse selon les 4 criteres et fournis ton commentaire.`;
 }
 
 serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
+  const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
+
+  const __authResult = await requireAuth(req);
+  if (__authResult.response) return __authResult.response;
 
   try {
     const body: RequestBody = await req.json();
@@ -109,21 +107,21 @@ serve(async (req) => {
     if (!question_texte || !reponse_transcription || !langue) {
       return new Response(
         JSON.stringify({ error: "Champs requis manquants : question_texte, reponse_transcription, langue" }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
     if (!['en', 'de', 'es'].includes(langue)) {
       return new Response(
         JSON.stringify({ error: "Langue invalide. Valeurs acceptees : 'en', 'de', 'es'" }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
     if (reponse_transcription.trim().length < 10) {
       return new Response(
         JSON.stringify({ error: "La transcription est trop courte pour etre evaluee (minimum 10 caracteres)" }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -132,7 +130,7 @@ serve(async (req) => {
       console.error("Missing OPENAI_API_KEY");
       return new Response(
         JSON.stringify({ error: "Configuration serveur manquante : OPENAI_API_KEY" }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -171,7 +169,7 @@ serve(async (req) => {
         console.error("OpenAI API error:", errorData);
         return new Response(
           JSON.stringify({ error: `Erreur OpenAI: ${errorData.error?.message || 'Erreur inconnue'}` }),
-          { status: response.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: response.status, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
 
@@ -182,7 +180,7 @@ serve(async (req) => {
         console.error("No content from OpenAI:", data);
         return new Response(
           JSON.stringify({ error: "Aucune reponse generee par l'IA" }),
-          { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
 
@@ -193,7 +191,7 @@ serve(async (req) => {
         console.error("Failed to parse OpenAI response as JSON:", content);
         return new Response(
           JSON.stringify({ error: "Reponse IA invalide (format JSON attendu)" }),
-          { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
 
@@ -216,14 +214,14 @@ serve(async (req) => {
 
       return new Response(
         JSON.stringify(result),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     } catch (error) {
       clearTimeout(timeoutId);
       if (error.name === 'AbortError') {
         return new Response(
           JSON.stringify({ error: "Timeout de la requete (45s)" }),
-          { status: 408, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 408, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
       throw error;
@@ -232,7 +230,7 @@ serve(async (req) => {
     console.error('Error in evaluate-colle-response:', error);
     return new Response(
       JSON.stringify({ error: `Erreur serveur: ${error.message || 'Erreur inconnue'}` }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
     );
   }
 });

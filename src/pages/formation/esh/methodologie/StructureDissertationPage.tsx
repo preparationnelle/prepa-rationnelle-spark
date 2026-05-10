@@ -11,7 +11,7 @@ const Block: React.FC<{ title: string; children: React.ReactNode }> = ({ title, 
 
 const StructureDissertationPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       {/* Breadcrumb */}
       <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-2">
@@ -34,8 +34,8 @@ const StructureDissertationPage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center border border-blue-200">
-              <Layers3 className="h-6 w-6 text-blue-600" />
+            <div className="w-12 h-12 bg-pr-orange-pale rounded-full flex items-center justify-center border border-carnet-red/30">
+              <Layers3 className="h-6 w-6 text-carnet-red" />
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">La structure d’une dissertation d’économie : du plan à la conclusion</h1>
           </div>
@@ -69,7 +69,7 @@ const StructureDissertationPage: React.FC = () => {
               <li>Reformuler l’idée annoncée dans le plan et la développer en 4–5 lignes minimum.</li>
               <li>Mobiliser un mécanisme ou un auteur avec référence complète et explication.</li>
               <li>Ajouter un fait précis: chiffre, date, événement historique.</li>
-              <li className="flex items-start gap-2"><ArrowRight className="h-4 w-4 mt-1 text-blue-600" />Transition: mini-bilan (1–2 lignes) ouvrant logiquement vers la II.</li>
+              <li className="flex items-start gap-2"><ArrowRight className="h-4 w-4 mt-1 text-carnet-red" />Transition: mini-bilan (1–2 lignes) ouvrant logiquement vers la II.</li>
             </ul>
           </Block>
 

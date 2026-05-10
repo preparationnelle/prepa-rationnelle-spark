@@ -664,10 +664,10 @@ const ContinentAfricainChronologiePage = () => {
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'colonial': return 'bg-slate-100 text-slate-800';
+      case 'colonial': return 'bg-carnet-rule/30 text-carnet-ink';
       case 'conflit': return 'bg-red-100 text-red-800';
       case 'independence': return 'bg-green-100 text-green-800';
-      case 'cooperation': return 'bg-blue-100 text-blue-800';
+      case 'cooperation': return 'bg-carnet-red/10 text-carnet-red-deep';
       case 'economique': return 'bg-purple-100 text-purple-800';
       case 'politique': return 'bg-orange-100 text-orange-800';
       case 'intervention': return 'bg-yellow-100 text-yellow-800';
@@ -680,7 +680,7 @@ const ContinentAfricainChronologiePage = () => {
 
   const getImportanceStyle = (importance: string) => {
     switch (importance) {
-      case 'major': return 'border-l-4 border-blue-500 bg-blue-50';
+      case 'major': return 'border-l-4 border-carnet-red bg-pr-orange-pale';
       case 'medium': return 'border-l-4 border-gray-300 bg-gray-50';
       default: return 'border-l-4 border-gray-200 bg-white';
     }
@@ -703,13 +703,13 @@ const ContinentAfricainChronologiePage = () => {
   const groupedEvents = groupEventsByDecade();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 py-8">
         
         {/* En-tête */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <Calendar className="h-8 w-8 text-blue-600" />
+            <Calendar className="h-8 w-8 text-carnet-red" />
             <h1 className="text-4xl font-bold text-gray-900">
               Chronologie du Continent Africain
             </h1>
@@ -727,7 +727,7 @@ const ContinentAfricainChronologiePage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-              <Badge className="bg-slate-100 text-slate-800 flex items-center gap-2">
+              <Badge className="bg-carnet-rule/30 text-carnet-ink flex items-center gap-2">
                 <MapPin className="h-3 w-3" />
                 Colonial
               </Badge>
@@ -739,7 +739,7 @@ const ContinentAfricainChronologiePage = () => {
                 <Users className="h-3 w-3" />
                 Indépendances
               </Badge>
-              <Badge className="bg-blue-100 text-blue-800 flex items-center gap-2">
+              <Badge className="bg-carnet-red/10 text-carnet-red-deep flex items-center gap-2">
                 <Handshake className="h-3 w-3" />
                 Coopération
               </Badge>
@@ -756,7 +756,7 @@ const ContinentAfricainChronologiePage = () => {
           {Object.entries(groupedEvents).sort().map(([decade, decadeEvents]) => (
             <Card key={decade} className="border-2 border-gray-200">
               <CardHeader className="bg-gradient-to-r from-blue-50 to-slate-50">
-                <CardTitle className="text-2xl text-blue-900">
+                <CardTitle className="text-2xl text-carnet-red-deep">
                   {decade.replace('-', ' - ')}
                 </CardTitle>
               </CardHeader>
@@ -780,7 +780,7 @@ const ContinentAfricainChronologiePage = () => {
                               </div>
                             </Badge>
                             {event.importance === 'major' && (
-                              <Badge className="bg-blue-600 text-white">
+                              <Badge className="bg-carnet-red text-white">
                                 Événement majeur
                               </Badge>
                             )}
@@ -808,8 +808,8 @@ const ContinentAfricainChronologiePage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="p-4 bg-blue-50 rounded-lg">
-                <div className="text-2xl font-bold text-blue-600">{events.length}</div>
+              <div className="p-4 bg-pr-orange-pale rounded-lg">
+                <div className="text-2xl font-bold text-carnet-red">{events.length}</div>
                 <div className="text-sm text-gray-600">Événements</div>
               </div>
               <div className="p-4 bg-green-50 rounded-lg">

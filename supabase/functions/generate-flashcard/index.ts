@@ -1,10 +1,8 @@
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0'
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-}
+import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
+import { requireAuth } from "../_shared/auth.ts";
 
 interface UniversalFlashcardData {
   front: string;
@@ -24,9 +22,11 @@ interface LegacyFlashcardData {
 
 Deno.serve(async (req) => {
   // Handle CORS preflight requests
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
-  }
+  const __preflight = handleCorsPreflight(req);
+  if (__preflight) return __preflight;
+
+  const __authResult = await requireAuth(req);
+  if (__authResult.response) return __authResult.response;
 
   try {
     const body = await req.json();
@@ -35,7 +35,7 @@ Deno.serve(async (req) => {
     if (!userId) {
       return new Response(
         JSON.stringify({ error: 'userId is required' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -55,7 +55,7 @@ Deno.serve(async (req) => {
       if (!front || !back) {
         return new Response(
           JSON.stringify({ error: 'Front and back are required for manual mode' }),
-          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
 
@@ -78,14 +78,14 @@ Deno.serve(async (req) => {
       if (!topic) {
         return new Response(
           JSON.stringify({ error: 'Topic is required for AI mode' }),
-          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
 
       if (!openaiApiKey) {
         return new Response(
           JSON.stringify({ error: 'OpenAI API key not configured' }),
-          { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
 
@@ -126,7 +126,7 @@ Sujet: ${topic}`;
         console.error('OpenAI API error:', await openaiResponse.text());
         return new Response(
           JSON.stringify({ error: 'Failed to generate flashcard' }),
-          { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
 
@@ -148,7 +148,7 @@ Sujet: ${topic}`;
         console.error('Failed to parse OpenAI response:', error);
         return new Response(
           JSON.stringify({ error: 'Invalid response format from AI' }),
-          { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
     }
@@ -161,14 +161,14 @@ Sujet: ${topic}`;
       if (!word) {
         return new Response(
           JSON.stringify({ error: 'Word is required for legacy mode' }),
-          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
 
       if (!openaiApiKey) {
         return new Response(
           JSON.stringify({ error: 'OpenAI API key not configured' }),
-          { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
 
@@ -209,7 +209,7 @@ Word: ${word}`;
       if (!openaiResponse.ok) {
         return new Response(
           JSON.stringify({ error: 'Failed to generate flashcard' }),
-          { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
 
@@ -239,7 +239,7 @@ Word: ${word}`;
         console.error('Database error:', error);
         return new Response(
           JSON.stringify({ error: 'Failed to save flashcard' }),
-          { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+          { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
         );
       }
 
@@ -249,13 +249,13 @@ Word: ${word}`;
           flashcard: data,
           generated: legacyData,
         }),
-        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 200, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
     else {
       return new Response(
         JSON.stringify({ error: 'Invalid mode. Use "manual", "ai", or "legacy"' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 400, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -283,7 +283,7 @@ Word: ${word}`;
       console.error('Database error:', error);
       return new Response(
         JSON.stringify({ error: 'Failed to save flashcard' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
       );
     }
 
@@ -295,14 +295,14 @@ Word: ${word}`;
         flashcard: data,
         generated: flashcardData,
       }),
-      { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { status: 200, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
     );
 
   } catch (error) {
     console.error('Function error:', error);
     return new Response(
       JSON.stringify({ error: 'Internal server error' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      { status: 500, headers: { ...corsHeaders(req), 'Content-Type': 'application/json' } }
     );
   }
 });

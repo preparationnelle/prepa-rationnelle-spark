@@ -38,7 +38,7 @@ const SyntaxePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F6F3] font-dm-sans text-pr-black">
+    <div className="relative font-dm-sans text-pr-black">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">

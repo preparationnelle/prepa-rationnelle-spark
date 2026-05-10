@@ -5,7 +5,7 @@ import { Home, ChevronRight, TrendingUp, DollarSign } from 'lucide-react';
 
 const TransformationsEconomiquesFinancieresPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -36,8 +36,8 @@ const TransformationsEconomiquesFinancieresPage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-              <TrendingUp className="h-6 w-6 text-blue-700" />
+            <div className="w-12 h-12 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+              <TrendingUp className="h-6 w-6 text-carnet-red" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900">
               Transformations des structures économiques et financières
@@ -69,25 +69,25 @@ const TransformationsEconomiquesFinancieresPage = () => {
               <section>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Grandes phases de transformation</h2>
                 <div className="space-y-6">
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">XIXe siècle : Révolution industrielle</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Passage de l'économie agricole à l'économie industrielle</li>
                       <li>• Développement du capitalisme et de l'entreprise</li>
                       <li>• Urbanisation massive et exode rural</li>
                       <li>• Naissance du salariat et du mouvement ouvrier</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">XXe siècle : Économie de services</h3>
-                    <ul className="space-y-2 text-blue-700">
+                    <ul className="space-y-2 text-carnet-red">
                       <li>• Tertiairisation de l'économie</li>
                       <li>• Développement de l'État-providence</li>
                       <li>• Internationalisation des échanges</li>
                       <li>• Croissance des services financiers</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-300">
+                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">XXIe siècle : Économie numérique</h3>
                     <ul className="space-y-2 text-purple-700">
                       <li>• Révolution digitale et transformation numérique</li>
@@ -143,7 +143,6 @@ const TransformationsEconomiquesFinancieresPage = () => {
           </div>
         </div>
 
-        {/* Navigation */}
         <div className="flex justify-center gap-4 mt-12">
           <Link to="/formation/esh/premiere-annee">
             <Button variant="outline" className="flex items-center gap-2">

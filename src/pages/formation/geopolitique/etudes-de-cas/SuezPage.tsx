@@ -5,20 +5,20 @@ import { Home, ChevronRight, Ship, Globe, Users, Calendar, TrendingUp, DollarSig
 
 const SuezPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center space-x-2 text-sm mb-6">
-          <Link to="/" className="flex items-center text-slate-600 hover:text-slate-800">
+          <Link to="/" className="flex items-center text-carnet-ink-soft hover:text-carnet-ink">
             <Home className="h-4 w-4 mr-1" />
             Accueil
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <Link to="/formation/geopolitique" className="text-slate-600 hover:text-slate-800">
+          <Link to="/formation/geopolitique" className="text-carnet-ink-soft hover:text-carnet-ink">
             Géopolitique
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <Link to="/formation/geopolitique/etudes-de-cas" className="text-slate-600 hover:text-slate-800">
+          <Link to="/formation/geopolitique/etudes-de-cas" className="text-carnet-ink-soft hover:text-carnet-ink">
             Études de cas
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
@@ -28,7 +28,7 @@ const SuezPage = () => {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <Ship className="h-8 w-8 text-blue-600" />
+            <Ship className="h-8 w-8 text-carnet-red" />
             <h1 className="text-4xl font-bold text-gray-900">
               Canal de Suez
             </h1>
@@ -46,7 +46,7 @@ const SuezPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Globe className="h-5 w-5 text-blue-600" />
+                  <Globe className="h-5 w-5 text-carnet-red" />
                   Présentation géopolitique
                 </CardTitle>
               </CardHeader>
@@ -64,7 +64,7 @@ const SuezPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-blue-600" />
+                  <Users className="h-5 w-5 text-carnet-red" />
                   Acteurs clés
                 </CardTitle>
               </CardHeader>
@@ -134,22 +134,22 @@ const SuezPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-blue-600" />
+                  <TrendingUp className="h-5 w-5 text-carnet-red" />
                   Chiffres clés
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  <div className="text-center p-3 bg-blue-50 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600">12%</div>
+                  <div className="text-center p-3 bg-pr-orange-pale rounded-lg">
+                    <div className="text-2xl font-bold text-carnet-red">12%</div>
                     <div className="text-sm text-gray-600">Commerce mondial</div>
                   </div>
-                  <div className="text-center p-3 bg-blue-50 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600">50 000</div>
+                  <div className="text-center p-3 bg-pr-orange-pale rounded-lg">
+                    <div className="text-2xl font-bold text-carnet-red">50 000</div>
                     <div className="text-sm text-gray-600">Navires par an</div>
                   </div>
-                  <div className="text-center p-3 bg-blue-50 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600">9M$</div>
+                  <div className="text-center p-3 bg-pr-orange-pale rounded-lg">
+                    <div className="text-2xl font-bold text-carnet-red">9M$</div>
                     <div className="text-sm text-gray-600">Pertes/jour (Ever Given)</div>
                   </div>
                 </div>
@@ -160,34 +160,34 @@ const SuezPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Ship className="h-5 w-5 text-blue-600" />
+                  <Ship className="h-5 w-5 text-carnet-red" />
                   Thématiques pertinentes
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-carnet-red rounded-full"></div>
                     <span>Commerce international</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-carnet-red rounded-full"></div>
                     <span>Histoire coloniale</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-carnet-red rounded-full"></div>
                     <span>Sécurité maritime</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-carnet-red rounded-full"></div>
                     <span>Économie globale</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-carnet-red rounded-full"></div>
                     <span>Conflits militaires</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-carnet-red rounded-full"></div>
                     <span>Diplomatie régionale</span>
                   </div>
                 </div>

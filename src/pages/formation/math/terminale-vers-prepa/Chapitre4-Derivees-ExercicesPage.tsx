@@ -106,7 +106,7 @@ const Chapitre4DeriveesExercicesPage = () => {
       <SEOHead
         canonical="/formation/math/terminale-vers-prepa/derivees-exercices"
         title="Exercices · Chapitre 5 — Dérivées · Terminale → Prépa ECG"
-        description="6 exercices progressifs sur les dérivées avec corrigés détaillés : produits, quotients, composées, tangentes et étude de variations."
+        description="14 exercices progressifs sur les dérivées avec corrigés détaillés : produits, quotients, composées, tangentes et étude de variations."
       />
 
       {/* Fil d'Ariane */}
@@ -133,7 +133,7 @@ const Chapitre4DeriveesExercicesPage = () => {
         <header className="mb-14 relative">
           <div className="carnet-eyebrow mb-5">05 · Exercices · Dérivées</div>
           <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] tracking-[-0.022em] text-carnet-ink mb-6">
-            Six dérivées <em className="font-lora italic text-carnet-red">à automatiser</em>.
+            Quatorze dérivées <em className="font-lora italic text-carnet-red">à automatiser</em>.
           </h1>
           <p className="font-instrument text-[17px] leading-[1.6] text-carnet-ink-soft max-w-[680px]">
             Polynômes, quotients, composées, tangentes, variations. Du calcul brut à l'étude complète. <span className="carnet-hl font-lora italic">Cherche d'abord seul</span>, puis confronte ta rédaction au corrigé.
@@ -141,10 +141,10 @@ const Chapitre4DeriveesExercicesPage = () => {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(78,55,30,0.18)] text-carnet-ink-soft bg-carnet-paper-2">
-              2 Faciles
+              6 Faciles
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-[rgba(193,68,58,0.3)] text-carnet-red bg-[rgba(193,68,58,0.06)]">
-              2 Moyens
+              6 Moyens
             </span>
             <span className="font-instrument text-[12px] uppercase tracking-[0.14em] font-semibold px-3 py-1.5 rounded-full border border-carnet-red text-carnet-paper bg-carnet-red">
               2 Difficiles
@@ -420,6 +420,310 @@ const Chapitre4DeriveesExercicesPage = () => {
             </>
           }
         />
+
+        {/* Module 4 */}
+        <div className="flex items-baseline gap-4 mb-6 mt-12">
+          <span className="carnet-hand text-[40px] text-carnet-red leading-none font-semibold">M4</span>
+          <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+          <h2 className="font-lora text-[26px] sm:text-[28px] text-carnet-ink leading-tight">Exercices supplémentaires — automatismes & inégalités</h2>
+        </div>
+
+        {/* Exercice 7 */}
+        <Exercise
+          id="ex7"
+          num={7}
+          title="Dériver trois fonctions rapides"
+          difficulty="Facile"
+          open={!!open.ex7}
+          onToggle={() => toggle('ex7')}
+          tilt="l"
+          statement={
+            <>
+              <p>Calculer la dérivée des fonctions suivantes sur leur domaine de dérivabilité.</p>
+              <ol className="list-decimal pl-6 space-y-1.5">
+                <li><Inline tex={'f(x) = 4x^3 - 3x + 7'} /></li>
+                <li><Inline tex={'g(x) = \\sqrt{x}(x + 1)'} /> sur <Inline tex={'\\mathbb{R}_+^*'} /></li>
+                <li><Inline tex={'h(x) = \\dfrac{1}{x^2}'} /> sur <Inline tex={'\\mathbb{R}^*'} /></li>
+              </ol>
+            </>
+          }
+          correction={
+            <>
+              <Step label="1. Polynôme — dérivée terme à terme">
+                <Block tex={"f'(x) = 12x^2 - 3."} />
+              </Step>
+              <Step label="2. Produit racine × polynôme — réécrire d'abord">
+                <p>On réécrit <Inline tex={'g(x) = x^{3/2} + x^{1/2}'} />, puis on dérive :</p>
+                <Block tex={"g'(x) = \\frac{3}{2}x^{1/2} + \\frac{1}{2}x^{-1/2} = \\frac{3}{2}\\sqrt{x} + \\frac{1}{2\\sqrt{x}} = \\frac{3x + 1}{2\\sqrt{x}}."} />
+                <p className="text-carnet-ink-mute italic text-[14px]">Astuce : réécrire <Inline tex={'\\sqrt{x} = x^{1/2}'} /> avant de dériver évite d'appliquer la règle du produit.</p>
+              </Step>
+              <Step label="3. Puissance négative">
+                <p>On réécrit <Inline tex={'h(x) = x^{-2}'} />, puis :</p>
+                <Block tex={"h'(x) = -2x^{-3} = -\\frac{2}{x^3}."} />
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 8 */}
+        <Exercise
+          id="ex8"
+          num={8}
+          title="Équation de la tangente en un point"
+          difficulty="Facile"
+          open={!!open.ex8}
+          onToggle={() => toggle('ex8')}
+          statement={
+            <>
+              <p>Soit <Inline tex={'f(x) = x^2 \\ln(x)'} /> définie sur <Inline tex={'\\mathbb{R}_+^*'} />.</p>
+              <ol className="list-decimal pl-6 space-y-1.5">
+                <li>Calculer <Inline tex={"f'(x)"} />.</li>
+                <li>Déterminer l'équation de la tangente à <Inline tex={'\\mathcal{C}_f'} /> en <Inline tex={'x = 1'} />.</li>
+              </ol>
+            </>
+          }
+          correction={
+            <>
+              <Step label="1. Dérivée — règle du produit">
+                <p>Posons <Inline tex={'u(x) = x^2'} /> (donc <Inline tex={"u'(x) = 2x"} />) et <Inline tex={'v(x) = \\ln x'} /> (donc <Inline tex={"v'(x) = 1/x"} />) :</p>
+                <Block tex={"f'(x) = 2x \\ln x + x^2 \\cdot \\frac{1}{x} = 2x \\ln x + x = x(2\\ln x + 1)."} />
+              </Step>
+              <Step label="2. Tangente en x = 1">
+                <p>On calcule les deux quantités utiles :</p>
+                <Block tex={"f(1) = 1^2 \\cdot \\ln 1 = 0, \\qquad f'(1) = 1 \\cdot (2 \\cdot 0 + 1) = 1."} />
+                <p>L'équation de la tangente est <Inline tex={"y = f'(1)(x - 1) + f(1)"} />, soit :</p>
+                <Block tex={"y = 1 \\cdot (x - 1) + 0 = x - 1."} />
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 9 */}
+        <Exercise
+          id="ex9"
+          num={9}
+          title="Étude locale d'une fonction avec ln"
+          difficulty="Moyen"
+          open={!!open.ex9}
+          onToggle={() => toggle('ex9')}
+          tilt="r"
+          statement={
+            <>
+              <p>Soit <Inline tex={'f(x) = x - \\ln(x+1)'} /> définie sur <Inline tex={']-1, +\\infty['} />.</p>
+              <ol className="list-decimal pl-6 space-y-1.5">
+                <li>Calculer <Inline tex={"f'(x)"} />.</li>
+                <li>En déduire la monotonie de <Inline tex={'f'} />.</li>
+                <li>Montrer que pour tout <Inline tex={'x > -1'} />, <Inline tex={'\\ln(1+x) \\leq x'} />.</li>
+              </ol>
+            </>
+          }
+          correction={
+            <>
+              <Step label="1. Calcul de la dérivée">
+                <Block tex={"f'(x) = 1 - \\frac{1}{x+1} = \\frac{x+1-1}{x+1} = \\frac{x}{x+1}."} />
+              </Step>
+              <Step label="2. Monotonie — signe de f'(x)">
+                <p>Sur <Inline tex={']-1, +\\infty['} />, <Inline tex={'x + 1 > 0'} />, donc le signe de <Inline tex={"f'(x)"} /> est celui de <Inline tex={'x'} />.</p>
+                <ul className="list-disc pl-6 space-y-0.5">
+                  <li>Sur <Inline tex={']-1, 0['} /> : <Inline tex={"f'(x) < 0"} />, <Inline tex={'f'} /> est décroissante.</li>
+                  <li>En <Inline tex={'x = 0'} /> : <Inline tex={"f'(0) = 0"} /> — minimum.</li>
+                  <li>Sur <Inline tex={'(0, +\\infty)'} /> : <Inline tex={"f'(x) > 0"} />, <Inline tex={'f'} /> est croissante.</li>
+                </ul>
+              </Step>
+              <Step label="3. Inégalité ln(1+x) ≤ x">
+                <p>On a <Inline tex={'f(0) = 0 - \\ln 1 = 0'} />. Comme <Inline tex={'f'} /> admet un minimum global en <Inline tex={'x = 0'} />, pour tout <Inline tex={'x > -1'} /> :</p>
+                <Block tex={"f(x) \\geq f(0) = 0 \\iff x - \\ln(1+x) \\geq 0 \\iff \\ln(1+x) \\leq x."} />
+                <p>Avec égalité ssi <Inline tex={'x = 0'} />.</p>
+              </Step>
+            </>
+          }
+        />
+
+        {/* Exercice 10 */}
+        <Exercise
+          id="ex10"
+          num={10}
+          title="Dériver avec soin une fraction complexe"
+          difficulty="Moyen"
+          open={!!open.ex10}
+          onToggle={() => toggle('ex10')}
+          statement={
+            <>
+              <p>Soit <Inline tex={'f(x) = \\dfrac{e^x - 1}{e^x + 1}'} /> définie sur <Inline tex={'\\mathbb{R}'} />.</p>
+              <ol className="list-decimal pl-6 space-y-1.5">
+                <li>Calculer <Inline tex={"f'(x)"} /> et simplifier.</li>
+                <li>Montrer que <Inline tex={'f'} /> est strictement croissante sur <Inline tex={'\\mathbb{R}'} />.</li>
+                <li>Déterminer <Inline tex={'\\displaystyle\\lim_{x \\to +\\infty} f(x)'} /> et <Inline tex={'\\displaystyle\\lim_{x \\to -\\infty} f(x)'} />.</li>
+              </ol>
+            </>
+          }
+          correction={
+            <>
+              <Step label="1. Dérivée — règle du quotient">
+                <p>Posons <Inline tex={'u(x) = e^x - 1'} />, <Inline tex={"u'(x) = e^x"} />, <Inline tex={'v(x) = e^x + 1'} />, <Inline tex={"v'(x) = e^x"} /> :</p>
+                <Block tex={"f'(x) = \\frac{e^x(e^x + 1) - (e^x - 1)e^x}{(e^x + 1)^2} = \\frac{e^x\\bigl[(e^x + 1) - (e^x - 1)\\bigr]}{(e^x + 1)^2} = \\frac{2e^x}{(e^x + 1)^2}."} />
+              </Step>
+              <Step label="2. Stricte croissance">
+                <p>Pour tout <Inline tex={'x \\in \\mathbb{R}'} /> : <Inline tex={'2e^x > 0'} /> et <Inline tex={'(e^x + 1)^2 > 0'} />, donc <Inline tex={"f'(x) > 0"} /> partout. La fonction est donc strictement croissante sur <Inline tex={'\\mathbb{R}'} />.</p>
+              </Step>
+              <Step label="3. Limites aux bornes">
+                <p>En <Inline tex={'+\\infty'} /> : on divise numérateur et dénominateur par <Inline tex={'e^x'} /> :</p>
+                <Block tex={"f(x) = \\frac{1 - e^{-x}}{1 + e^{-x}} \\xrightarrow[x \\to +\\infty]{} \\frac{1 - 0}{1 + 0} = 1."} />
+                <p>En <Inline tex={'-\\infty'} /> : <Inline tex={'e^x \\to 0'} />, donc :</p>
+                <Block tex={"f(x) = \\frac{e^x - 1}{e^x + 1} \\xrightarrow[x \\to -\\infty]{} \\frac{0 - 1}{0 + 1} = -1."} />
+                <p className="text-carnet-ink-mute italic text-[14px]">La fonction <Inline tex={'f'} /> est la tangente hyperbolique <Inline tex={'\\tanh'} /> — à connaître en ECG.</p>
+              </Step>
+            </>
+          }
+        />
+
+          {/* Module M5 — Dérivées avancées & extremums */}
+          <div className="mb-2 mt-10">
+            <span className="inline-block bg-carnet-red text-white text-xs font-bold px-3 py-1 rounded-full tracking-wide uppercase">
+              M5 — Dérivées avancées &amp; extremums
+            </span>
+          </div>
+
+          <Exercise
+            id="ex11"
+            num={11}
+            title="Dérivée de sin + cos — extremums sur [0, 2π]"
+            difficulty="Facile"
+            open={!!open.ex11}
+            onToggle={() => toggle('ex11')}
+            tilt="l"
+            statement={
+              <>
+                <p>Soit <Inline tex={'h(x) = \\sin x + \\cos x'} /> définie sur <Inline tex={'[0,\\, 2\\pi]'} />.</p>
+                <ol className="list-decimal pl-5 space-y-1">
+                  <li>Calculer <Inline tex={"h'(x)"} />.</li>
+                  <li>Résoudre <Inline tex={"h'(x) = 0"} /> sur <Inline tex={'[0,\\, 2\\pi]'} />.</li>
+                  <li>Donner le maximum et le minimum de <Inline tex={'h'} />.</li>
+                </ol>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Dérivée">
+                  <Block tex={"h'(x) = \\cos x - \\sin x"} />
+                </Step>
+                <Step label="Résolution de h′(x) = 0">
+                  <Block tex={"h'(x) = 0 \\iff \\cos x = \\sin x \\iff \\tan x = 1 \\iff x = \\frac{\\pi}{4} + k\\pi"} />
+                  <p>Sur <Inline tex={'[0,\\,2\\pi]'} /> : <Inline tex={'x = \\tfrac{\\pi}{4}'} /> et <Inline tex={'x = \\tfrac{5\\pi}{4}'} />.</p>
+                </Step>
+                <Step label="Extremums">
+                  <Block tex={'h\\!\\left(\\tfrac{\\pi}{4}\\right) = \\tfrac{\\sqrt{2}}{2} + \\tfrac{\\sqrt{2}}{2} = \\sqrt{2} \\quad \\text{(maximum)}'} />
+                  <Block tex={'h\\!\\left(\\tfrac{5\\pi}{4}\\right) = -\\tfrac{\\sqrt{2}}{2} - \\tfrac{\\sqrt{2}}{2} = -\\sqrt{2} \\quad \\text{(minimum)}'} />
+                  <Block tex={'\\boxed{\\max = \\sqrt{2} \\text{ en } x = \\tfrac{\\pi}{4},\\quad \\min = -\\sqrt{2} \\text{ en } x = \\tfrac{5\\pi}{4}}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex12"
+            num={12}
+            title="Dérivée et sens de variation de 1/(x²+1)"
+            difficulty="Facile"
+            open={!!open.ex12}
+            onToggle={() => toggle('ex12')}
+            statement={
+              <>
+                <p>Soit <Inline tex={'f(x) = \\dfrac{1}{x^2+1}'} /> définie sur <Inline tex={'\\mathbb{R}'} />.</p>
+                <ol className="list-decimal pl-5 space-y-1">
+                  <li>Calculer <Inline tex={"f'(x)"} />.</li>
+                  <li>Étudier le signe de <Inline tex={"f'(x)"} /> et en déduire les variations de <Inline tex={'f'} />.</li>
+                  <li>Donner le maximum de <Inline tex={'f'} />.</li>
+                </ol>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Dérivée (règle du quotient)">
+                  <Block tex={"f'(x) = \\frac{0 \\cdot (x^2+1) - 1 \\cdot 2x}{(x^2+1)^2} = \\frac{-2x}{(x^2+1)^2}"} />
+                </Step>
+                <Step label="Signe de f′">
+                  <p>Le dénominateur <Inline tex={'(x^2+1)^2'} /> est toujours strictement positif.</p>
+                  <Block tex={"f'(x) > 0 \\iff -2x > 0 \\iff x < 0"} />
+                  <p>Donc <Inline tex={'f'} /> est croissante sur <Inline tex={'(-\\infty, 0)'} /> et décroissante sur <Inline tex={'(0, +\\infty)'} />.</p>
+                </Step>
+                <Step label="Maximum">
+                  <Block tex={'\\boxed{f(0) = 1 \\text{ (maximum global)}}'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex13"
+            num={13}
+            title="Étude de x·e^{−x} — maximum et limites"
+            difficulty="Moyen"
+            open={!!open.ex13}
+            onToggle={() => toggle('ex13')}
+            tilt="r"
+            statement={
+              <>
+                <p>Soit <Inline tex={'g(x) = x e^{-x}'} /> définie sur <Inline tex={'\\mathbb{R}'} />.</p>
+                <ol className="list-decimal pl-5 space-y-1">
+                  <li>Calculer <Inline tex={"g'(x)"} /> (règle du produit).</li>
+                  <li>Dresser le tableau de variations complet.</li>
+                  <li>Calculer <Inline tex={'\\displaystyle\\lim_{x \\to +\\infty} g(x)'} /> et <Inline tex={'\\displaystyle\\lim_{x \\to -\\infty} g(x)'} />.</li>
+                </ol>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Dérivée">
+                  <Block tex={"g'(x) = 1 \\cdot e^{-x} + x \\cdot (-e^{-x}) = e^{-x}(1 - x)"} />
+                  <p>Comme <Inline tex={'e^{-x} > 0'} /> pour tout <Inline tex={'x'} />, le signe de <Inline tex={"g'"} /> est celui de <Inline tex={'1-x'} />.</p>
+                </Step>
+                <Step label="Tableau de variations">
+                  <Block tex={"g'(x) > 0 \\iff x < 1 \\qquad g'(x) < 0 \\iff x > 1"} />
+                  <p><Inline tex={'g'} /> est croissante sur <Inline tex={'(-\\infty, 1)'} /> et décroissante sur <Inline tex={'(1, +\\infty)'} />.</p>
+                  <Block tex={'\\text{Maximum en } x=1 : \\quad \\boxed{g(1) = e^{-1} = \\tfrac{1}{e}}'} />
+                </Step>
+                <Step label="Limites">
+                  <Block tex={'\\lim_{x \\to +\\infty} x e^{-x} = 0 \\quad (\\text{croissances comparées})'} />
+                  <Block tex={'\\lim_{x \\to -\\infty} x e^{-x} = -\\infty \\quad (x \\to -\\infty,\\; e^{-x} \\to +\\infty)'} />
+                </Step>
+              </>
+            }
+          />
+
+          <Exercise
+            id="ex14"
+            num={14}
+            title="Minimum de x + 4/x sur (0, +∞)"
+            difficulty="Moyen"
+            open={!!open.ex14}
+            onToggle={() => toggle('ex14')}
+            statement={
+              <>
+                <p>Soit <Inline tex={'h(x) = x + \\dfrac{4}{x}'} /> définie sur <Inline tex={'(0,\\, +\\infty)'} />.</p>
+                <ol className="list-decimal pl-5 space-y-1">
+                  <li>Calculer <Inline tex={"h'(x)"} />.</li>
+                  <li>Trouver le minimum de <Inline tex={'h'} /> sur <Inline tex={'(0,\\, +\\infty)'} />.</li>
+                </ol>
+              </>
+            }
+            correction={
+              <>
+                <Step label="Dérivée">
+                  <Block tex={"h'(x) = 1 - \\frac{4}{x^2} = \\frac{x^2 - 4}{x^2}"} />
+                </Step>
+                <Step label="Annulation et signe">
+                  <Block tex={"h'(x) = 0 \\iff x^2 = 4 \\iff x = 2 \\quad (x > 0)"} />
+                  <Block tex={"h'(x) < 0 \\text{ sur } (0,\\, 2) \\quad \\text{et} \\quad h'(x) > 0 \\text{ sur } (2,\\, +\\infty)"} />
+                  <p>Donc <Inline tex={'h'} /> est décroissante puis croissante : minimum en <Inline tex={'x=2'} />.</p>
+                </Step>
+                <Step label="Valeur minimale">
+                  <Block tex={'\\boxed{h(2) = 2 + \\frac{4}{2} = 4}'} />
+                  <p>Remarque : ceci illustre l'inégalité arithmético-géométrique <Inline tex={'x + 4/x \\geq 2\\sqrt{4} = 4'} />.</p>
+                </Step>
+              </>
+            }
+          />
 
         {/* Bandeau récap */}
         <section className="mt-14 mb-10 relative">

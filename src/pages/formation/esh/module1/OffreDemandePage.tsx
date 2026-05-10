@@ -5,7 +5,7 @@ import { PieChart, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle, Trendin
 
 const OffreDemandePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -47,14 +47,14 @@ const OffreDemandePage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <PieChart className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+                <PieChart className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   L&apos;offre, la demande et l&apos;équilibre du marché en concurrence parfaite
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 1.7 - Module 1</div>
+                <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 1.7 - Module 1</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -67,14 +67,14 @@ const OffreDemandePage = () => {
             {/* Section 1: La demande du marché */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
                 La demande du marché
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Agrégation des demandes individuelles</h3>
                   <p className="text-sm text-gray-600">
                     La courbe de demande du marché s'obtient en sommant horizontalement les demandes individuelles
@@ -82,13 +82,13 @@ const OffreDemandePage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Loi de la demande</h3>
                   <p className="text-sm text-gray-600">
                     La demande est une fonction décroissante du prix : plus le prix est élevé,
                     moins les consommateurs sont prêts à acheter le bien.
                   </p>
-                  <div className="mt-2 p-3 bg-blue-50 rounded border">
+                  <div className="mt-2 p-3 bg-pr-orange-pale rounded border">
                     <p className="text-xs text-gray-600">
                       <strong>Facteurs influençant la demande :</strong><br/>
                       • Prix du bien (effet prix)<br/>
@@ -100,7 +100,7 @@ const OffreDemandePage = () => {
                   </div>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Elasticité-prix de la demande</h4>
                   <p className="text-sm text-gray-600">
                     Mesure la sensibilité de la demande aux variations de prix.
@@ -122,14 +122,14 @@ const OffreDemandePage = () => {
             {/* Section 2: L'offre du marché */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
                 L'offre du marché
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Agrégation des offres individuelles</h3>
                   <p className="text-sm text-gray-600">
                     La courbe d'offre du marché s'obtient en sommant horizontalement les offres individuelles
@@ -137,13 +137,13 @@ const OffreDemandePage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Loi de l'offre</h3>
                   <p className="text-sm text-gray-600">
                     L'offre est une fonction croissante du prix : plus le prix est élevé,
                     plus les producteurs sont incités à produire et à vendre.
                   </p>
-                  <div className="mt-2 p-3 bg-blue-50 rounded border">
+                  <div className="mt-2 p-3 bg-pr-orange-pale rounded border">
                     <p className="text-xs text-gray-600">
                       <strong>Facteurs influençant l'offre :</strong><br/>
                       • Prix du bien (effet prix direct)<br/>
@@ -155,7 +155,7 @@ const OffreDemandePage = () => {
                   </div>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Elasticité-prix de l'offre</h4>
                   <p className="text-sm text-gray-600">
                     Mesure la sensibilité de l'offre aux variations de prix.
@@ -177,8 +177,8 @@ const OffreDemandePage = () => {
             {/* Section 3: L'équilibre du marché */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center">
-                  <span className="text-blue-800 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
                 L'équilibre du marché
               </h2>
@@ -228,8 +228,8 @@ const OffreDemandePage = () => {
             {/* Section 4: Les variations de l'équilibre */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">4</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">4</span>
                 </div>
                 Les variations de l'équilibre
               </h2>
@@ -273,7 +273,7 @@ const OffreDemandePage = () => {
                   </div>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Chocs simultanés sur l'offre et la demande</h4>
                   <p className="text-sm text-gray-600">
                     Quand offre et demande varient simultanément, l'effet sur le prix et la quantité
@@ -296,8 +296,8 @@ const OffreDemandePage = () => {
             {/* Section 5: L'efficience du marché concurrentiel */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">5</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">5</span>
                 </div>
                 L'efficience du marché concurrentiel
               </h2>
@@ -340,8 +340,8 @@ const OffreDemandePage = () => {
             {/* Section 6: Les interventions sur le marché */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">6</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">6</span>
                 </div>
                 Les interventions sur le marché
               </h2>
@@ -414,7 +414,7 @@ const OffreDemandePage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module1/defaillances-marche">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

@@ -5,7 +5,7 @@ import { DollarSign, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle, Trend
 
 const DefaillancesMarchePage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       <div className="container mx-auto px-4 pt-16 pb-8">
         {/* Sticky Breadcrumb */}
         <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
@@ -47,14 +47,14 @@ const DefaillancesMarchePage = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center border border-blue-300">
-                <DollarSign className="h-8 w-8 text-blue-700" />
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
+                <DollarSign className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   Les défaillances de marché
                 </h1>
-                <div className="text-sm text-blue-700 font-medium mt-1">Chapitre 1.8 - Module 1</div>
+                <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 1.8 - Module 1</div>
               </div>
             </div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -67,14 +67,14 @@ const DefaillancesMarchePage = () => {
             {/* Section 1: Définition des défaillances de marché */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">1</span>
                 </div>
                 Définition des défaillances de marché
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Qu'est-ce qu'une défaillance de marché ?</h3>
                   <p className="text-sm text-gray-600">
                     Situation où le mécanisme de marché ne conduit pas à une allocation optimale des ressources.
@@ -83,7 +83,7 @@ const DefaillancesMarchePage = () => {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Hypothèses de la concurrence parfaite</h3>
                   <p className="text-sm text-gray-600">
                     Pour que le marché fonctionne de manière optimale, plusieurs conditions doivent être réunies :
@@ -97,7 +97,7 @@ const DefaillancesMarchePage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Conséquences des défaillances</h4>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Inefficacité allocative : ressources mal distribuées</li>
@@ -112,8 +112,8 @@ const DefaillancesMarchePage = () => {
             {/* Section 2: Les externalités */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">2</span>
                 </div>
                 Les externalités
               </h2>
@@ -155,19 +155,19 @@ const DefaillancesMarchePage = () => {
                     <h3 className="font-semibold text-green-700">Externalités positives</h3>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span><strong>Éducation</strong> : bénéfices pour la société entière</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span><strong>Recherche fondamentale</strong> : avancées technologiques</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span><strong>Vaccination</strong> : protection collective (effet troupeau)</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span><strong>Jardinage</strong> : embellissement du quartier</span>
                       </li>
                     </ul>
@@ -190,8 +190,8 @@ const DefaillancesMarchePage = () => {
             {/* Section 3: Les biens publics */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">3</span>
                 </div>
                 Les biens publics
               </h2>
@@ -257,14 +257,14 @@ const DefaillancesMarchePage = () => {
             {/* Section 4: Les asymétries d'information */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">4</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">4</span>
                 </div>
                 Les asymétries d'information
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-blue-300 pl-4">
+                <div className="border-l-4 border-carnet-red/40 pl-4">
                   <h3 className="font-semibold text-gray-800 mb-2">Définition</h3>
                   <p className="text-sm text-gray-600">
                     Situation où une partie possède plus d'informations que l'autre dans une transaction.
@@ -277,15 +277,15 @@ const DefaillancesMarchePage = () => {
                     <h3 className="font-semibold text-gray-800">L'aléa moral (moral hazard)</h3>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Une partie prend des risques excessifs après la transaction</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span><strong>Exemple</strong> : assuré qui prend moins de précautions</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span><strong>Exemple</strong> : emprunteur qui investit dans projets risqués</span>
                       </li>
                     </ul>
@@ -295,22 +295,22 @@ const DefaillancesMarchePage = () => {
                     <h3 className="font-semibold text-gray-800">La sélection adverse (adverse selection)</h3>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Les agents de mauvaise qualité chassent les bons</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span><strong>Exemple</strong> : marché des voitures d'occasion (Akerlof)</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span><strong>Exemple</strong> : assurance santé (anti-sélection)</span>
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-pr-orange-pale rounded-lg p-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Solutions aux asymétries d'information</h4>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• <strong>Signaling</strong> : l'agent informé envoie un signal (diplôme, garantie)</li>
@@ -326,8 +326,8 @@ const DefaillancesMarchePage = () => {
             {/* Section 5: Le pouvoir de marché */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">5</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">5</span>
                 </div>
                 Le pouvoir de marché
               </h2>
@@ -397,8 +397,8 @@ const DefaillancesMarchePage = () => {
             {/* Section 6: Les biens méritoires */}
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">6</span>
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+                  <span className="text-carnet-red font-bold text-sm">6</span>
                 </div>
                 Les biens méritoires
               </h2>
@@ -483,7 +483,7 @@ const DefaillancesMarchePage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module1/courants-sociologiques">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

@@ -1,17 +1,45 @@
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ChevronRight, Home, Star, BookOpen, Lightbulb, Target, Crown, Eye, EyeOff, Brain, Download } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Eye, EyeOff, CheckCircle } from 'lucide-react';
 import { LatexRenderer } from '@/components/LatexRenderer';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-import { toast } from '@/hooks/use-toast';
+import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-[11px] font-bold text-red-800 uppercase tracking-widest mb-2 mt-4 first:mt-0">
+    {children}
+  </p>
+);
+
+const PointMethodo = ({ children }: { children: React.ReactNode }) => (
+  <div className="mb-3">
+    <SectionLabel>Méthode</SectionLabel>
+    <div className="text-stone-700 text-sm leading-relaxed">{children}</div>
+  </div>
+);
+
+const Astuce = ({ children }: { children: React.ReactNode }) => (
+  <div className="mb-3">
+    <SectionLabel>Astuce</SectionLabel>
+    <div className="text-stone-700 text-sm leading-relaxed">{children}</div>
+  </div>
+);
+
+const ConclusionBox = ({ children }: { children: React.ReactNode }) => (
+  <div className="mt-4">
+    <SectionLabel>Conclusion</SectionLabel>
+    <div className="text-stone-800 leading-relaxed">{children}</div>
+  </div>
+);
+
+const difficultyLabel: Record<string, string> = {
+  'Niveau: Facile': 'FACILE',
+  'Niveau: Intermédiaire': 'MOYEN',
+  'Niveau: Concours': 'DIFFICILE',
+  'Niveau: Concours (Classique)': 'DIFFICILE',
+  'Niveau: Difficile': 'HEC',
+};
 
 const Chapitre6VariablesAleatoiresDensiteExercicesPage = () => {
-  const [visibleCorrections, setVisibleCorrections] = useState<{[key: string]: boolean}>({});
-  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+  const [visibleCorrections, setVisibleCorrections] = useState<{ [key: string]: boolean }>({});
 
   const toggleCorrection = (exerciseId: string) => {
     setVisibleCorrections(prev => ({
@@ -20,1978 +48,593 @@ const Chapitre6VariablesAleatoiresDensiteExercicesPage = () => {
     }));
   };
 
-  const generatePDF = async () => {
-    setIsGeneratingPDF(true);
-    
-    try {
-      // Afficher toutes les corrections temporairement
-      const originalState = { ...visibleCorrections };
-      const allVisible: {[key: string]: boolean} = {};
-      for (let i = 1; i <= 17; i++) {
-        allVisible[i.toString()] = true;
-      }
-      setVisibleCorrections(allVisible);
-
-      // Attendre que le DOM se mette à jour
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      toast({
-        title: "Génération du PDF en cours...",
-        description: "Veuillez patienter, cela peut prendre quelques secondes.",
-      });
-
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
-      const margin = 10;
-      const contentWidth = pageWidth - (2 * margin);
-
-      // Ajouter le titre
-      pdf.setFontSize(18);
-      pdf.setFont('helvetica', 'bold');
-      pdf.text('Variables aléatoires à densité - Exercices', pageWidth / 2, 15, { align: 'center' });
-      pdf.setFontSize(12);
-      pdf.setFont('helvetica', 'normal');
-      pdf.text('Chapitre 6 - Maths Approfondies 2ème année', pageWidth / 2, 22, { align: 'center' });
-
-      // Sélectionner tous les exercices
-      const exercises = document.querySelectorAll('.space-y-8 > .mb-6');
-      let yPosition = 30;
-
-      for (let i = 0; i < exercises.length; i++) {
-        const exercise = exercises[i] as HTMLElement;
-        
-        try {
-          const canvas = await html2canvas(exercise, {
-            scale: 2,
-            useCORS: true,
-            logging: false,
-            backgroundColor: '#ffffff'
-          });
-
-          const imgData = canvas.toDataURL('image/png');
-          const imgWidth = contentWidth;
-          const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-          // Vérifier si on a besoin d'une nouvelle page
-          if (yPosition + imgHeight > pageHeight - margin) {
-            pdf.addPage();
-            yPosition = margin;
-          }
-
-          pdf.addImage(imgData, 'PNG', margin, yPosition, imgWidth, imgHeight);
-          yPosition += imgHeight + 5;
-
-          // Ajouter une nouvelle page pour le prochain exercice si nécessaire
-          if (i < exercises.length - 1 && yPosition > pageHeight - 50) {
-            pdf.addPage();
-            yPosition = margin;
-          }
-        } catch (error) {
-          console.error(`Erreur lors du traitement de l'exercice ${i + 1}:`, error);
-        }
-      }
-
-      // Sauvegarder le PDF
-      pdf.save('Variables-Aleatoires-Densite-Exercices.pdf');
-
-      toast({
-        title: "PDF généré avec succès !",
-        description: "Le fichier a été téléchargé.",
-      });
-
-      // Restaurer l'état original des corrections
-      setVisibleCorrections(originalState);
-    } catch (error) {
-      console.error('Erreur lors de la génération du PDF:', error);
-      toast({
-        title: "Erreur",
-        description: "Une erreur s'est produite lors de la génération du PDF.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsGeneratingPDF(false);
-    }
-  };
-
-  const DifficultyHeader = ({
-    level,
-    title,
-    icon: Icon,
-    stars,
-    color = "orange"
-  }: {
-    level: string;
-    title: string;
-    icon: any;
-    stars: number;
-    color?: string;
-  }) => (
-    <div className={`bg-gradient-to-r from-${color}-50 to-${color}-25 border-l-4 border-${color}-400 p-4 mb-4 rounded-r-lg shadow-sm`}>
-      <div className="flex items-center gap-3">
-        <div className={`p-2 bg-${color}-500 text-white rounded-lg`}>
-          <Icon className="w-5 h-5" />
-        </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-800">{level} : {title}</h2>
-          <div className="flex gap-1 mt-1">
-            {[...Array(stars)].map((_, i) => (
-              <Star key={i} className={`w-3 h-3 fill-${color}-500 text-${color}-500`} />
-            ))}
-            {[...Array(4-stars)].map((_, i) => (
-              <Star key={i} className="w-3 h-3 text-gray-300" />
-            ))}
-          </div>
-        </div>
-      </div>
+  const DifficultyHeader = ({ level }: { level: string }) => (
+    <div className="flex items-center gap-3 mb-4 mt-10">
+      <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest whitespace-nowrap">
+        {level}
+      </span>
+      <div className="flex-1 border-t border-stone-200" />
     </div>
   );
 
-  return (
-    <div className="min-h-screen carnet-paper carnet-cours-skin">
-      {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-orange-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-orange-700 transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-orange-400/50 mx-1" />
-            <Link to="/formations" className="hover:text-orange-700 transition-colors">
-              Toutes les formations
-            </Link>
-            <ChevronRight className="h-3 w-3 text-orange-400/50 mx-1" />
-            <Link to="/formation/maths-choix" className="hover:text-orange-700 transition-colors">
-              Choix option Maths
-            </Link>
-            <ChevronRight className="h-3 w-3 text-orange-400/50 mx-1" />
-            <Link to="/formation/maths-approfondies-2e-annee" className="hover:text-orange-700 transition-colors">
-              Maths Approfondies - 2ème année
-            </Link>
-            <ChevronRight className="h-3 w-3 text-orange-400/50 mx-1" />
-            <Link to="/formation/maths-variables-aleatoires-densite" className="hover:text-orange-700 transition-colors">
-              Chapitre 6 - Variables aléatoires à densité
-            </Link>
-            <ChevronRight className="h-3 w-3 text-orange-400/50 mx-1" />
-            <span className="text-orange-600 font-bold">Exercices</span>
+  const ExerciseCard = ({
+    id, title, content, correction, difficulty,
+  }: {
+    id: string; title: string; content: React.ReactNode;
+    correction: React.ReactNode; difficulty: string;
+  }) => {
+    const num = id.split('-')[1]?.padStart(2, '0') ?? id.replace(/[^0-9]/g, '').padStart(2, '0');
+    const badge = difficultyLabel[difficulty] ?? difficulty.replace('Niveau: ', '').toUpperCase();
+    const isOpen = visibleCorrections[id];
+    return (
+      <div className="mb-6 border border-stone-200 rounded-xl bg-white shadow-sm p-6">
+        <div className="flex items-start justify-between gap-4 mb-5">
+          <div className="flex items-baseline gap-3">
+            <span className="text-2xl font-bold italic text-red-800 leading-none">{num}</span>
+            <span className="text-stone-300 font-light text-xl leading-none">—</span>
+            <h3 className="font-medium text-stone-900 text-base leading-snug">
+              {title.replace(/^Exercice \d+ - /, '')}
+            </h3>
           </div>
+          <span className="shrink-0 text-[11px] font-semibold text-red-800 border border-red-200 rounded-full px-3 py-0.5 tracking-wider">
+            {badge}
+          </span>
         </div>
-      </nav>
-
-      <div className="container mx-auto px-4 py-8">
-        {/* En-tête */}
-        <Card className="border-0 shadow-lg bg-gradient-to-br from-orange-50 to-amber-50 mb-8">
-          <div className="p-8">
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-4">
-              Exercices - Chapitre 6 : Variables aléatoires à densité
-            </h1>
-            <p className="text-slate-600 text-lg mb-4">
-              Exercices progressifs pour maîtriser les densités de probabilité, fonctions de répartition et transformations de variables
-            </p>
-            <div className="flex justify-center mb-4">
-              <Button 
-                onClick={generatePDF}
-                disabled={isGeneratingPDF}
-                className="bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white px-6 py-2 transition-all shadow-md hover:shadow-lg"
-              >
-                <Download className="mr-2 h-4 w-4" />
-                {isGeneratingPDF ? 'Génération en cours...' : 'Télécharger la fiche complète (PDF)'}
-              </Button>
+        <div className="text-stone-700 leading-relaxed mb-6">{content}</div>
+        <button
+          onClick={() => toggleCorrection(id)}
+          className="flex items-center gap-2 text-sm text-stone-600 border border-stone-300 rounded-full px-4 py-1.5 hover:bg-stone-50 transition-colors"
+        >
+          {isOpen ? (<><EyeOff className="w-4 h-4" /> Masquer la correction</>) : (<><Eye className="w-4 h-4" /> Afficher la correction</>)}
+        </button>
+        {isOpen && (
+          <div className="mt-5 border border-dashed border-stone-300 border-l-[3px] border-l-red-800 rounded-lg p-5 animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="flex items-center gap-2 mb-4">
+              <CheckCircle className="w-4 h-4 text-red-800" />
+              <span className="text-xs font-bold text-red-800 uppercase tracking-widest">Corrigé détaillé</span>
             </div>
-            <div className="flex justify-center gap-4 mt-4">
-              <Link to="/formation/maths-variables-aleatoires-densite">
-                <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition-colors">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Cours
-                </Button>
-              </Link>
-              <Link to="/formation/maths-variables-aleatoires-densite-flashcards">
-                <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition-colors">
-                  <Brain className="mr-2 h-4 w-4" />
-                  Flashcards
-                </Button>
-              </Link>
-              <Link to="/formation/maths-variables-aleatoires-densite-quiz">
-                <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition-colors">
-                  <Target className="mr-2 h-4 w-4" />
-                  Quiz
-                </Button>
-              </Link>
-            </div>
+            <div className="text-stone-700 leading-relaxed space-y-2">{correction}</div>
           </div>
-        </Card>
-
-        {/* Exercices */}
-        <div className="space-y-8">
-          {/* Exercice 1 - Loi de -ln(U) */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 1"
-                title="Loi de -ln(U) (HEC 2010)"
-                icon={Target}
-                stars={2}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{On considère une variable aléatoire } U \\text{ suivant la loi uniforme sur } ]0,1]\\text{, notée } U \\sim \\mathcal{U}(0,1]\\text{.}"} />
-                    <LatexRenderer latex={"\\text{Déterminer la loi de la variable aléatoire } -\\ln(U)\\text{.}"} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('1')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['1'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['1'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      <LatexRenderer latex={"\\text{Notons } F_U \\text{ et } F_{-\\ln(U)} \\text{ les fonctions de répartition de } U \\text{ et de } -\\ln(U)\\text{. On rappelle que } U\\sim\\mathcal{U}(0,1]\\text{, donc pour tout } z\\in[0,1]\\text{, } F_U(z)=z\\text{, et } P(U\\le z)=z\\text{.}"} />
-                      
-                      <LatexRenderer latex={"\\text{Pour } x<0\\text{, on a immédiatement } F_{-\\ln(U)}(x)=P(-\\ln U\\le x)=0 \\text{ car } -\\ln(U)\\ge 0 \\text{ p.s.}"} />
-                      
-                      <LatexRenderer latex={"\\text{Pour } x\\ge 0\\text{,}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"F_{-\\ln(U)}(x) = P\\!\\left(-\\ln(U)\\le x\\right) = P\\!\\left(\\ln(U)\\ge -x\\right) = P\\!\\left(U\\ge e^{-x}\\right)"} />
-                      </div>
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"= 1 - P\\!\\left(U\\le e^{-x}\\right) = 1 - F_U\\!\\left(e^{-x}\\right) = 1 - e^{-x},"} />
-                      </div>
-                      <LatexRenderer latex={"\\text{puisque } e^{-x}\\in[0,1] \\text{ pour } x\\ge 0\\text{.}"} />
-                      
-                      <LatexRenderer latex={"\\text{Ainsi,}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"F_{-\\ln(U)}(x)= \\begin{cases} 0, & \\text{si } x<0,\\\\ 1-e^{-x}, & \\text{si } x\\ge 0. \\end{cases}"} />
-                      </div>
-                      <LatexRenderer latex={"\\text{Cette fonction de répartition est celle d'une loi exponentielle de paramètre } 1\\text{.}"} />
-                      
-                      <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                        <LatexRenderer latex={"\\textbf{Conclusion :} \\boxed{\\ -\\ln(U)\\ \\sim \\ \\mathrm{Exp}(1)\\ } \\text{ (densité } f(x)=\\mathbf{1}_{x\\ge 0}\\, e^{-x}\\text{).}"} />
-                      </div>
-                      
-                      <LatexRenderer latex={"\\textit{Remarque pédagogique.} \\text{ De façon générale, si } U\\sim\\mathcal{U}(0,1) \\text{ et } \\lambda>0\\text{, alors } -\\tfrac{1}{\\lambda}\\ln(U)\\sim\\mathrm{Exp}(\\lambda)\\text{.}"} />
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 2 - Densité de probabilité */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 2"
-                title="Densité de probabilité (HEC 2015)"
-                icon={Target}
-                stars={3}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\textbf{1)} \\text{ Déterminer } (c,d)\\in\\mathbb{R}^2 \\text{ tel que :}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"\\forall x \\ge 0,\\quad \\frac{1}{(x+1)(x+2)} \\;=\\; \\frac{c}{x+1} + \\frac{d}{x+2}."} />
-                    </div>
-                    <LatexRenderer latex={"\\textbf{2)} \\text{ Soit } f:\\mathbb{R}\\to\\mathbb{R} \\text{ définie par :}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"f(x)= \\begin{cases} \\dfrac{1}{(x+1)(x+2)\\ln 2}, & x\\ge 0,\\\\ 0, & x<0. \\end{cases}"} />
-                    </div>
-                    <LatexRenderer latex={"\\text{Montrer que } f \\text{ est une densité de probabilité.}"} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('2')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['2'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['2'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      
-                      <div>
-                        <LatexRenderer latex={"\\textbf{1) Décomposition en éléments simples.}"} />
-                        <LatexRenderer latex={"\\text{On cherche } c,d\\in\\mathbb{R} \\text{ tels que :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\frac{1}{(x+1)(x+2)} = \\frac{c}{x+1} + \\frac{d}{x+2}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{En réduisant au même dénominateur :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\frac{c}{x+1} + \\frac{d}{x+2} = \\frac{c(x+2)+d(x+1)}{(x+1)(x+2)} = \\frac{(c+d)x+(2c+d)}{(x+1)(x+2)}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{On doit avoir :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"(c+d)=0, \\qquad 2c+d=1."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Ainsi } d=-c \\text{ et } 2c-c=1 \\implies c=1,\\, d=-1\\text{.}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\text{Donc : } \\frac{1}{(x+1)(x+2)} = \\frac{1}{x+1} - \\frac{1}{x+2}."} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2) Vérification que } f \\text{ est une densité.}"} />
-                        <ul className="list-disc list-inside space-y-2 ml-4">
-                          <li><LatexRenderer latex={"\\text{Pour } x<0\\text{, } f(x)=0\\text{, donc } f(x)\\ge 0\\text{.}"} /></li>
-                          <li><LatexRenderer latex={"\\text{Pour } x\\ge 0\\text{, le dénominateur } (x+1)(x+2)\\ln(2)>0\\text{, donc } f(x)\\ge 0\\text{.}"} /></li>
-                          <li><LatexRenderer latex={"\\text{La fonction } f \\text{ est mesurable et positive, il reste à vérifier que } \\int_{\\mathbb{R}} f(x)\\,dx=1\\text{.}"} /></li>
-                        </ul>
-                        
-                        <LatexRenderer latex={"\\text{Soit } A>0\\text{. On calcule :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_0^A f(x)\\,dx = \\frac{1}{\\ln(2)} \\int_0^A \\frac{1}{(x+1)(x+2)}\\,dx"} />
-                        </div>
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"= \\frac{1}{\\ln(2)} \\int_0^A \\left(\\frac{1}{x+1}-\\frac{1}{x+2}\\right) dx"} />
-                        </div>
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"= \\frac{1}{\\ln(2)} \\Big[\\ln(x+1)-\\ln(x+2)\\Big]_0^A"} />
-                        </div>
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"= \\frac{1}{\\ln(2)} \\Big( \\ln\\!\\left(\\tfrac{A+1}{A+2}\\right) - \\ln\\!\\left(\\tfrac{1}{2}\\right) \\Big)."} />
-                        </div>
-                        
-                        <LatexRenderer latex={"\\text{Quand } A\\to+\\infty\\text{, on a } \\ln\\!\\left(\\tfrac{A+1}{A+2}\\right)\\to 0\\text{. Donc :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_0^{+\\infty} f(x)\\,dx = \\frac{1}{\\ln(2)} \\Big(0 - \\ln\\!\\left(\\tfrac{1}{2}\\right)\\Big) = \\frac{1}{\\ln(2)} \\cdot \\ln(2) = 1."} />
-                        </div>
-                        
-                        <LatexRenderer latex={"\\textbf{Conclusion :} f \\text{ est bien une densité de probabilité.}"} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 3 - Transformation uniforme vers exponentielle */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 3"
-                title="Transformation uniforme vers exponentielle"
-                icon={Target}
-                stars={2}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soit } U \\text{ une variable aléatoire suivant la loi uniforme sur } [0,1[\\text{, et soit } \\lambda>0\\text{. On pose}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"X = -\\frac{1}{\\lambda}\\ln(1-U)."} />
-                    </div>
-                    <LatexRenderer latex={"\\text{Déterminer la loi de } X\\text{.}"} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('3')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['3'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['3'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      <LatexRenderer latex={"\\text{Puisque } U \\text{ prend ses valeurs dans } [0,1[\\text{, on a } X\\in\\mathbb{R}_+\\text{. Donc pour } x<0\\text{, la fonction de répartition vaut } F_X(x)=0\\text{.}"} />
-                      
-                      <LatexRenderer latex={"\\text{Pour } x\\ge 0\\text{, on calcule :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"F_X(x) = P\\!\\left(-\\tfrac{1}{\\lambda}\\ln(1-U)\\le x\\right) = P\\!\\left(\\ln(1-U)\\ge -\\lambda x\\right)"} />
-                      </div>
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"= P\\!\\left(1-U \\ge e^{-\\lambda x}\\right) = P\\!\\left(U \\le 1-e^{-\\lambda x}\\right)."} />
-                      </div>
-                      
-                      <LatexRenderer latex={"\\text{Or la fonction de répartition de } U \\text{ est}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"F_U(u) = \\begin{cases} 0, & u<0,\\\\ u, & 0\\le u\\le 1,\\\\ 1, & u>1. \\end{cases}"} />
-                      </div>
-                      
-                      <LatexRenderer latex={"\\text{Ainsi, pour } x\\ge 0 \\text{ :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"F_X(x) = F_U(1-e^{-\\lambda x}) = 1-e^{-\\lambda x}."} />
-                      </div>
-                      
-                      <LatexRenderer latex={"\\text{On obtient donc :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"F_X(x)= \\begin{cases} 0, & x<0,\\\\ 1-e^{-\\lambda x}, & x\\ge 0. \\end{cases}"} />
-                      </div>
-                      
-                      <LatexRenderer latex={"\\text{Ceci correspond exactement à la fonction de répartition d'une loi exponentielle de paramètre } \\lambda\\text{.}"} />
-                      
-                      <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                        <LatexRenderer latex={"\\textbf{Conclusion :} \\boxed{\\,X \\sim \\mathcal{E}(\\lambda)\\,}."} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 4 - Densité avec logarithme */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 4"
-                title="Densité avec logarithme (ECRICOME 2015)"
-                icon={Lightbulb}
-                stars={3}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\textbf{1)} \\text{ Déterminer un réel } a \\text{ tel que la fonction } f \\text{ définie par}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"f(x) = \\begin{cases} 0, & x<2, \\\\ \\dfrac{a}{x(\\ln x)^2}, & x\\ge 2, \\end{cases}"} />
-                    </div>
-                    <LatexRenderer latex={"\\text{soit une densité.}"} />
-                    
-                    <LatexRenderer latex={"\\textbf{2)} \\text{ Déterminer la fonction de répartition } F \\text{ de } X\\text{.}"} />
-                    
-                    <LatexRenderer latex={"\\textbf{3)} \\text{ La variable aléatoire } X \\text{ admet-elle une espérance ?}"} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('4')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['4'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['4'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      
-                      <div>
-                        <LatexRenderer latex={"\\textbf{1) Recherche de } a\\text{.}"} />
-                        <LatexRenderer latex={"\\text{Pour que } f \\text{ soit une densité, il faut que } f(x)\\ge 0 \\text{ et que}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_{-\\infty}^{+\\infty} f(x)\\,dx = 1."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Comme } f(x)=0 \\text{ pour } x<2\\text{, on a}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_{-\\infty}^{+\\infty} f(x)\\,dx = \\int_2^{+\\infty} \\frac{a}{x(\\ln x)^2}\\,dx."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{On pose } t=\\ln x\\text{, donc } dt=\\tfrac{dx}{x}\\text{, et lorsque } x\\ge 2\\text{, } t\\ge \\ln 2\\text{. On obtient :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_2^{+\\infty} \\frac{a}{x(\\ln x)^2}\\,dx = a \\int_{\\ln 2}^{+\\infty} \\frac{1}{t^2}\\,dt = a\\Big[-\\frac{1}{t}\\Big]_{\\ln 2}^{+\\infty} = \\frac{a}{\\ln 2}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{On impose que cette intégrale soit égale à } 1\\text{, d'où}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"a = \\ln 2."} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2) Fonction de répartition } F\\text{.}"} />
-                        <LatexRenderer latex={"\\text{Pour } x<2\\text{, } f(x)=0\\text{, donc } F(x)=0\\text{.}"} />
-                        <LatexRenderer latex={"\\text{Pour } x\\ge 2\\text{,}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F(x) = \\int_2^x f(t)\\,dt = \\int_2^x \\frac{\\ln 2}{t(\\ln t)^2}\\,dt."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Par le même changement de variable } t\\mapsto \\ln t\\text{, on obtient :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F(x) = \\ln 2 \\int_{\\ln 2}^{\\ln x} \\frac{1}{u^2}\\,du = \\ln 2 \\left[-\\frac{1}{u}\\right]_{\\ln 2}^{\\ln x}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Ainsi :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F(x) = \\ln 2\\left(\\frac{1}{\\ln 2}-\\frac{1}{\\ln x}\\right) = 1-\\frac{\\ln 2}{\\ln x},\\quad x\\ge 2."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Finalement :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F(x) = \\begin{cases} 0, & x<2, \\\\ 1-\\dfrac{\\ln 2}{\\ln x}, & x\\ge 2. \\end{cases}"} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{3) Existence de l'espérance.}"} />
-                        <LatexRenderer latex={"\\text{L'espérance existe si et seulement si}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_2^{+\\infty} x f(x)\\,dx = \\int_2^{+\\infty} \\frac{\\ln 2}{(\\ln x)^2}\\,dx <+\\infty."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{On pose } t=\\ln x \\text{ : } dx = e^t dt\\text{, donc}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_2^{+\\infty} \\frac{\\ln 2}{(\\ln x)^2}\\,dx = \\ln 2 \\int_{\\ln 2}^{+\\infty} \\frac{e^t}{t^2}\\,dt."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Or, pour } t\\to+\\infty\\text{, on a } \\tfrac{e^t}{t^2}\\sim \\tfrac{e^t}{t^2}\\to +\\infty\\text{, donc l'intégrale diverge.}"} />
-                        <LatexRenderer latex={"\\text{Ainsi, l'espérance n'existe pas.}"} />
-                      </div>
-
-                      <div className="bg-orange-100 p-3 rounded-lg">
-                        <LatexRenderer latex={"\\textbf{Conclusion :}"} />
-                        <ul className="list-disc list-inside space-y-1 ml-4">
-                          <li><LatexRenderer latex={"a=\\ln 2"} /></li>
-                          <li><LatexRenderer latex={"F(x)=0 \\text{ si } x<2\\text{, et } F(x)=1-\\tfrac{\\ln 2}{\\ln x} \\text{ si } x\\ge 2"} /></li>
-                          <li><LatexRenderer latex={"\\text{la variable } X \\text{ n'admet pas d'espérance.}"} /></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 5 - Transformation Y = X² */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 5"
-                title="Transformation Y = X²"
-                icon={Target}
-                stars={3}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soit } X \\text{ une variable aléatoire suivant la loi uniforme } \\mathcal{U}([-1,1])\\text{.}"} />
-                    <LatexRenderer latex={"\\text{Montrer que } Y=X^2 \\text{ est une variable à densité et en déterminer une densité.}"} />
-                    <LatexRenderer latex={"\\text{Mêmes questions si } X\\sim \\mathcal{E}(\\lambda)\\text{.}"} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('5')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['5'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['5'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-6">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      
-                      <div>
-                        <LatexRenderer latex={"\\textbf{1) Cas } X \\sim \\mathcal{U}([-1,1])\\text{.}"} />
-                        <LatexRenderer latex={"\\text{Soit } Y=X^2\\text{. Comme } X\\in[-1,1]\\text{, on a } Y\\in[0,1]\\text{. Pour } y<0\\text{, } F_Y(y)=0\\text{, et pour } y\\ge 1\\text{, } F_Y(y)=1\\text{.}"} />
-                        
-                        <LatexRenderer latex={"\\text{Pour } 0\\le y \\le 1 \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_Y(y) = P(Y \\le y) = P(X^2 \\le y) = P(-\\sqrt{y} \\le X \\le \\sqrt{y})."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Comme } X\\sim \\mathcal{U}([-1,1])\\text{, on obtient :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_Y(y) = \\frac{2\\sqrt{y}}{2} = \\sqrt{y}."} />
-                        </div>
-                        
-                        <LatexRenderer latex={"\\text{Ainsi,}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_Y(y)= \\begin{cases} 0, & y<0,\\\\ \\sqrt{y}, & 0\\le y\\le 1,\\\\ 1, & y>1. \\end{cases}"} />
-                        </div>
-                        
-                        <LatexRenderer latex={"\\text{Cette fonction est continue sur } \\mathbb{R}\\text{, strictement croissante sur } [0,1]\\text{, donc } Y \\text{ admet une densité } f_Y\\text{. On calcule la dérivée sur } ]0,1[ \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"f_Y(y)=F_Y'(y)=\\frac{1}{2\\sqrt{y}},\\quad 0<y<1."} />
-                        </div>
-                        
-                        <LatexRenderer latex={"\\text{Donc une densité de } Y \\text{ est :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"f_Y(y)= \\begin{cases} \\dfrac{1}{2\\sqrt{y}}, & 0<y<1,\\\\ 0, & \\text{sinon}. \\end{cases}"} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2) Cas } X \\sim \\mathcal{E}(\\lambda)\\text{.}"} />
-                        <LatexRenderer latex={"\\text{On définit } Y=X^2\\text{. Comme } X\\ge 0\\text{, on a } Y\\ge 0\\text{.}"} />
-                        
-                        <LatexRenderer latex={"\\text{Pour } y<0\\text{, } F_Y(y)=0\\text{. Pour } y\\ge 0 \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_Y(y) = P(Y \\le y) = P(X^2 \\le y) = P(X \\le \\sqrt{y})."} />
-                        </div>
-                        
-                        <LatexRenderer latex={"\\text{Or, si } X\\sim \\mathcal{E}(\\lambda)\\text{, sa fonction de répartition est}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_X(x) = 1-e^{-\\lambda x},\\quad x\\ge 0."} />
-                        </div>
-                        
-                        <LatexRenderer latex={"\\text{Donc :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_Y(y) = F_X(\\sqrt{y}) = 1-e^{-\\lambda \\sqrt{y}}, \\quad y\\ge 0."} />
-                        </div>
-                        
-                        <LatexRenderer latex={"\\text{Ainsi :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_Y(y)= \\begin{cases} 0, & y<0,\\\\ 1-e^{-\\lambda \\sqrt{y}}, & y\\ge 0. \\end{cases}"} />
-                        </div>
-                        
-                        <LatexRenderer latex={"\\text{La densité de } Y \\text{ s'obtient par dérivation pour } y>0 \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"f_Y(y) = \\frac{d}{dy}F_Y(y) = \\frac{d}{dy}\\Big(1-e^{-\\lambda \\sqrt{y}}\\Big) = \\frac{\\lambda}{2\\sqrt{y}} e^{-\\lambda \\sqrt{y}}."} />
-                        </div>
-                        
-                        <LatexRenderer latex={"\\text{Donc une densité de } Y \\text{ est :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"f_Y(y)= \\begin{cases} \\dfrac{\\lambda}{2\\sqrt{y}} e^{-\\lambda \\sqrt{y}}, & y>0,\\\\ 0, & y\\le 0. \\end{cases}"} />
-                        </div>
-                      </div>
-
-                      <div className="bg-orange-100 p-3 rounded-lg">
-                        <LatexRenderer latex={"\\textbf{Conclusion :}"} />
-                        <ul className="list-disc list-inside space-y-1 ml-4">
-                          <li><LatexRenderer latex={"\\text{Si } X\\sim \\mathcal{U}([-1,1])\\text{, alors } Y=X^2 \\text{ suit une loi de densité } f_Y(y)=\\dfrac{1}{2\\sqrt{y}}\\mathbf{1}_{0<y<1}\\text{.}"} /></li>
-                          <li><LatexRenderer latex={"\\text{Si } X\\sim \\mathcal{E}(\\lambda)\\text{, alors } Y=X^2 \\text{ suit une loi de densité } f_Y(y)=\\dfrac{\\lambda}{2\\sqrt{y}}e^{-\\lambda \\sqrt{y}}\\mathbf{1}_{y>0}\\text{.}"} /></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 6 - Moments de la loi exponentielle */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 6"
-                title="Moments de la loi exponentielle"
-                icon={Target}
-                stars={2}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soit } X \\text{ une variable aléatoire qui suit la loi exponentielle de paramètre } \\lambda\\text{.}"} />
-                    <LatexRenderer latex={"\\text{Montrer que } X \\text{ admet des moments de tout ordre et les calculer.}"} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('6')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['6'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['6'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      <LatexRenderer latex={"\\text{Soit } k \\in \\mathbb{N}^*\\text{. Par définition, } X \\text{ admet un moment d'ordre } k \\text{ si}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"\\mathbb{E}(X^k) = \\int_0^{+\\infty} x^k \\, \\lambda e^{-\\lambda x}\\, dx"} />
-                      </div>
-                      <LatexRenderer latex={"\\text{existe et est fini.}"} />
-                      
-                      <LatexRenderer latex={"\\text{On pose le changement de variable } t=\\lambda x\\text{, donc } x=\\tfrac{t}{\\lambda} \\text{ et } dx=\\tfrac{dt}{\\lambda}\\text{. L'intégrale devient :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"\\mathbb{E}(X^k) = \\int_0^{+\\infty} \\left(\\frac{t}{\\lambda}\\right)^k \\lambda e^{-t}\\,\\frac{dt}{\\lambda} = \\frac{1}{\\lambda^k} \\int_0^{+\\infty} t^k e^{-t}\\,dt."} />
-                      </div>
-                      
-                      <LatexRenderer latex={"\\text{Or, l'intégrale}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"\\int_0^{+\\infty} t^k e^{-t}\\,dt"} />
-                      </div>
-                      <LatexRenderer latex={"\\text{est la définition de la fonction Gamma en } k+1\\text{, soit } \\Gamma(k+1)=k!\\text{.}"} />
-                      
-                      <LatexRenderer latex={"\\text{On obtient donc :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"\\mathbb{E}(X^k) = \\frac{1}{\\lambda^k}\\, \\Gamma(k+1) = \\frac{k!}{\\lambda^k}."} />
-                      </div>
-                      
-                      <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                        <LatexRenderer latex={"\\textbf{Conclusion :} X \\text{ admet des moments de tout ordre, et pour tout } k\\in\\mathbb{N}^* \\text{ :}"} />
-                        <div className="mt-2">
-                          <LatexRenderer latex={"\\mathbb{E}(X^k) = \\frac{k!}{\\lambda^k}."} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 7 - Loi logistique */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 7"
-                title="Loi logistique"
-                icon={Lightbulb}
-                stars={4}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soit } F \\text{ la fonction définie sur } \\mathbb{R} \\text{ par}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"F(x)=\\frac{1}{1+e^{-x}}."} />
-                    </div>
-                    <ol className="list-decimal list-inside space-y-2 pl-4 text-gray-800">
-                      <li>Montrer que F est la fonction de répartition d'une variable à densité X. Déterminer une densité de X.</li>
-                      <li>
-                        <div className="space-y-2">
-                          <span>Soient X et Y deux variables aléatoires indépendantes possédant F comme fonction de répartition. On pose Z=max(X,Y).</span>
-                          <ol className="list-[lower-alpha] list-inside space-y-1 pl-4">
-                            <li>Montrer que Z est une variable à densité.</li>
-                            <li>Déterminer une densité de Z.</li>
-                          </ol>
-                        </div>
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('7')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['7'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['7'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-6">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      
-                      <div>
-                        <LatexRenderer latex={"\\textbf{1) Vérification que } F \\text{ est une fonction de répartition.}"} />
-                        <LatexRenderer latex={"\\text{La fonction } F \\text{ est } \\mathcal{C}^1 \\text{ sur } \\mathbb{R}\\text{, strictement croissante. On a :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\lim_{x\\to -\\infty} F(x)=0, \\qquad \\lim_{x\\to +\\infty} F(x)=1."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Donc } F \\text{ est bien une fonction de répartition.}"} />
-                        
-                        <LatexRenderer latex={"\\text{Puisque } F \\text{ est de classe } \\mathcal{C}^1\\text{, } X \\text{ admet une densité donnée par } f(x)=F'(x) \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"f(x)=F'(x)=\\frac{e^{-x}}{(1+e^{-x})^2},\\qquad x\\in\\mathbb{R}."} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2.a) Fonction de répartition de } Z=\\max(X,Y)\\text{.}"} />
-                        <LatexRenderer latex={"\\text{Pour tout } x\\in\\mathbb{R} \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\{Z\\le x\\} = \\{X\\le x, Y\\le x\\}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Comme } X \\text{ et } Y \\text{ sont indépendantes :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_Z(x)=P(Z\\le x)=P(X\\le x)P(Y\\le x)=F(x)^2."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Ainsi :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_Z(x)=\\left(\\frac{1}{1+e^{-x}}\\right)^2."} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2.b) Densité de } Z\\text{.}"} />
-                        <LatexRenderer latex={"\\text{Puisque } F_Z \\text{ est } \\mathcal{C}^1\\text{, la densité de } Z \\text{ est la dérivée de } F_Z \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"f_Z(x)=F_Z'(x)=2F(x)F'(x)."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Or :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F(x)=\\frac{1}{1+e^{-x}}, \\quad F'(x)=\\frac{e^{-x}}{(1+e^{-x})^2}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Donc :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"f_Z(x)=\\frac{2e^{-x}}{(1+e^{-x})^3}."} />
-                        </div>
-                      </div>
-
-                      <div className="bg-orange-100 p-3 rounded-lg">
-                        <LatexRenderer latex={"\\textbf{Conclusion :}"} />
-                        <ul className="list-disc list-inside space-y-1 ml-4">
-                          <li><LatexRenderer latex={"X \\text{ suit la loi logistique de densité } f(x)=\\dfrac{e^{-x}}{(1+e^{-x})^2}\\text{.}"} /></li>
-                          <li><LatexRenderer latex={"Z=\\max(X,Y) \\text{ est une variable à densité, avec densité } f_Z(x)=\\dfrac{2e^{-x}}{(1+e^{-x})^3}\\text{.}"} /></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 8 - Loi de Pareto */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 8"
-                title="Loi de Pareto"
-                icon={Crown}
-                stars={4}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soit } a>0 \\text{ et}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"f_a(t)= \\begin{cases} a\\,t^{-a-1}, & t\\in[1,+\\infty[,\\\\ 0, & \\text{sinon}. \\end{cases}"} />
-                    </div>
-                    <ol className="list-decimal list-inside space-y-2 pl-4 text-gray-800">
-                      <li>Montrer que f_a est une densité.</li>
-                      <li>
-                        <div className="space-y-2">
-                          <span>Soit X une v.a. admettant f_a pour densité.</span>
-                          <ol className="list-[lower-alpha] list-inside space-y-1 pl-4">
-                            <li>Déterminer la fonction de répartition F_X.</li>
-                            <li>X possède-t-elle une espérance ? Si oui, la calculer. Même question pour la variance.</li>
-                            <li>On pose Y=ln X. Déterminer la fonction de répartition de Y, puis reconnaître la loi de Y.</li>
-                          </ol>
-                        </div>
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('8')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['8'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['8'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-6">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      
-                      <div>
-                        <LatexRenderer latex={"\\textbf{1) } f_a \\text{ est une densité.}"} />
-                        <LatexRenderer latex={"f_a\\ge 0 \\text{ et, pour } a>0\\text{,}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_{-\\infty}^{+\\infty} f_a(t)\\,dt=\\int_1^{+\\infty} a\\,t^{-a-1}dt = a\\Big[\\tfrac{-1}{a}t^{-a}\\Big]_1^{+\\infty}=1."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Donc } f_a \\text{ est une densité.}"} />
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2.a) Fonction de répartition de } X\\text{.}"} />
-                        <LatexRenderer latex={"\\text{Pour } x<1\\text{, } F_X(x)=0\\text{. Pour } x\\ge 1\\text{,}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_X(x)=\\int_1^x a\\,t^{-a-1}dt = 1-x^{-a}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Ainsi}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_X(x)= \\begin{cases} 0, & x<1,\\\\ 1-x^{-a}, & x\\ge 1. \\end{cases}"} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2.b) Moments.}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\mathbb{E}[X]=\\int_1^{+\\infty} x\\,a\\,x^{-a-1}dx = a\\int_1^{+\\infty} x^{-a}\\,dx \\begin{cases} =\\dfrac{a}{a-1}, & \\text{si } a>1,\\\\ =+\\infty, & \\text{si } a\\le 1. \\end{cases}"} />
-                        </div>
-                        <LatexRenderer latex={"\\text{De même,}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\mathbb{E}[X^2]=\\int_1^{+\\infty} x^2 a x^{-a-1}dx = a\\int_1^{+\\infty} x^{1-a}dx \\begin{cases} =\\dfrac{a}{a-2}, & \\text{si } a>2,\\\\ =+\\infty, & \\text{si } a\\le 2. \\end{cases}"} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Donc, pour } a>2\\text{,}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\mathrm{Var}(X)=\\mathbb{E}[X^2]-\\mathbb{E}[X]^2 =\\frac{a}{a-2}-\\Big(\\frac{a}{a-1}\\Big)^2 =\\frac{a}{(a-1)^2(a-2)}."} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2.c) Loi de } Y=\\ln X\\text{.}"} />
-                        <LatexRenderer latex={"\\text{Pour } y\\in\\mathbb{R}\\text{,}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_Y(y)=P(\\ln X\\le y)=P(X\\le e^{y})=F_X(e^{y}) = \\begin{cases} 0, & y\\le 0,\\\\ 1-e^{-ay}, & y>0. \\end{cases}"} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Ainsi } Y \\text{ a pour densité } f_Y(y)=a\\,e^{-ay}\\,\\mathbf{1}_{y>0}\\text{, i.e. } Y\\sim \\mathcal{E}(a)\\text{.}"} />
-                      </div>
-
-                      <div className="bg-orange-100 p-3 rounded-lg">
-                        <LatexRenderer latex={"\\textbf{Conclusion (résultats-clés).}"} />
-                        <ul className="list-disc list-inside space-y-1 ml-4">
-                          <li><LatexRenderer latex={"f_a \\text{ est une densité sur } [1,\\infty) \\text{ pour tout } a>0\\text{.}"} /></li>
-                          <li><LatexRenderer latex={"F_X(x)=0 \\text{ si } x<1\\text{, et } F_X(x)=1-x^{-a} \\text{ si } x\\ge 1\\text{.}"} /></li>
-                          <li><LatexRenderer latex={"\\mathbb{E}[X]=\\dfrac{a}{a-1} \\text{ si } a>1 \\text{ (sinon } \\infty\\text{) ; } \\mathrm{Var}(X)=\\dfrac{a}{(a-1)^2(a-2)} \\text{ si } a>2 \\text{ (sinon } \\infty\\text{).}"} /></li>
-                          <li><LatexRenderer latex={"Y=\\ln X \\sim \\mathcal{E}(a)\\text{.}"} /></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 9 - Partie entière */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 9"
-                title="Partie entière d'une variable uniforme"
-                icon={Target}
-                stars={2}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soit } n\\in\\mathbb{N}^* \\text{ et soit } X \\text{ une variable aléatoire qui suit la loi uniforme sur } [0,n]\\text{.}"} />
-                    <LatexRenderer latex={"\\text{Déterminer la loi de } \\lfloor X \\rfloor \\text{ (partie entière de } X\\text{).}"} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('9')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['9'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['9'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      <LatexRenderer latex={"\\text{La variable } \\lfloor X \\rfloor \\text{ ne prend que des valeurs entières comprises entre } 0 \\text{ et } n\\text{.}"} />
-                      
-                      <LatexRenderer latex={"\\text{De plus,}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"P(\\lfloor X \\rfloor = n) = P(n \\le X < n+1) = P(X=n)=0,"} />
-                      </div>
-                      <LatexRenderer latex={"\\text{car } X \\text{ est continue.}"} />
-                      
-                      <LatexRenderer latex={"\\text{Pour } k\\in\\{0,1,\\dots,n-1\\} \\text{ :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"P(\\lfloor X \\rfloor = k) = P(k \\le X < k+1)."} />
-                      </div>
-                      
-                      <LatexRenderer latex={"\\text{Or } X\\sim \\mathcal{U}([0,n])\\text{, donc pour tout intervalle } I\\subset [0,n]\\text{,}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"P(X\\in I)=\\frac{|I|}{n}."} />
-                      </div>
-                      <LatexRenderer latex={"\\text{Ainsi :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"P(\\lfloor X \\rfloor = k) = \\frac{(k+1)-k}{n}=\\frac{1}{n}."} />
-                      </div>
-                      
-                      <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                        <LatexRenderer latex={"\\textbf{Conclusion :} \\lfloor X \\rfloor \\text{ suit la loi uniforme discrète sur } \\{0,1,\\dots,n-1\\}\\text{, notée}"} />
-                        <div className="mt-2">
-                          <LatexRenderer latex={"\\lfloor X \\rfloor \\sim \\mathcal{U}(\\{0,\\dots,n-1\\})."} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 10 - Minimum de deux lois exponentielles */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 10"
-                title="Minimum de deux lois exponentielles"
-                icon={Target}
-                stars={3}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soient } X \\text{ et } Y \\text{ deux variables aléatoires indépendantes telles que}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"X \\sim \\mathcal{E}(\\lambda), \\qquad Y \\sim \\mathcal{E}(\\mu)."} />
-                    </div>
-                    <LatexRenderer latex={"\\text{Déterminer la loi de } Z=\\min(X,Y)\\text{.}"} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('10')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['10'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['10'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      <LatexRenderer latex={"\\text{Pour } x\\in\\mathbb{R} \\text{ :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"F_Z(x)=P(Z\\le x)=1-P(Z>x)=1-P(X>x \\;\\cap\\; Y>x)."} />
-                      </div>
-
-                      <LatexRenderer latex={"\\text{Comme } X \\text{ et } Y \\text{ sont indépendantes :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"F_Z(x)=1-P(X>x)P(Y>x)."} />
-                      </div>
-
-                      <LatexRenderer latex={"\\text{Or, pour } x\\ge 0 \\text{ :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"P(X>x)=e^{-\\lambda x},\\qquad P(Y>x)=e^{-\\mu x}."} />
-                      </div>
-                      <LatexRenderer latex={"\\text{Donc :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"F_Z(x)=1-e^{-\\lambda x}e^{-\\mu x}=1-e^{-(\\lambda+\\mu)x},\\qquad x\\ge 0."} />
-                      </div>
-
-                      <LatexRenderer latex={"\\text{Pour } x<0\\text{, } F_Z(x)=0\\text{. Ainsi :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"F_Z(x)= \\begin{cases} 0, & x<0,\\\\ 1-e^{-(\\lambda+\\mu)x}, & x\\ge 0. \\end{cases}"} />
-                      </div>
-
-                      <LatexRenderer latex={"\\text{Il s'agit exactement de la fonction de répartition d'une loi exponentielle de paramètre } \\lambda+\\mu\\text{.}"} />
-
-                      <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                        <LatexRenderer latex={"\\textbf{Conclusion :}"} />
-                        <div className="mt-2">
-                          <LatexRenderer latex={"Z=\\min(X,Y)\\;\\sim\\;\\mathcal{E}(\\lambda+\\mu)."} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 11 - Densité et espérance nulle */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 11"
-                title="Densité de probabilité et espérance nulle"
-                icon={Target}
-                stars={3}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soit la fonction } f \\text{ définie pour tout } t \\in \\mathbb{R} \\text{ par :}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"f(t) = \\frac{2}{\\pi \\left(e^t + e^{-t}\\right)}."} />
-                    </div>
-                    <ol className="list-decimal list-inside space-y-2 pl-4 text-gray-800">
-                      <li>Montrer que f est une <strong>densité de probabilité</strong>. On note X une variable aléatoire admettant f pour densité.</li>
-                      <li>Montrer que X admet une <strong>espérance nulle</strong>.</li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('11')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['11'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['11'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{1. Vérification que } f \\text{ est une densité de probabilité.}"} />
-                        <LatexRenderer latex={"\\text{Il est clair que } f \\text{ est positive et continue sur } \\mathbb{R}\\text{. Il reste à montrer que}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"I = \\int_{-\\infty}^{+\\infty} \\frac{2}{\\pi \\left(e^t + e^{-t}\\right)} \\, dt = 1."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{On pose le changement de variable } u = e^t\\text{, d'où } du = e^t dt \\text{ et } dt = \\frac{du}{u}\\text{. Lorsque } t \\text{ varie de } -\\infty \\text{ à } +\\infty\\text{, } u \\text{ varie de } 0 \\text{ à } +\\infty\\text{. Alors :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"I = \\frac{2}{\\pi} \\int_0^{+\\infty} \\frac{du}{1 + u^2}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{L'intégrale est de nature arctangente :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_0^{+\\infty} \\frac{du}{1 + u^2} = \\left[\\arctan(u)\\right]_0^{+\\infty} = \\frac{\\pi}{2}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Ainsi :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"I = \\frac{2}{\\pi} \\times \\frac{\\pi}{2} = 1."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Donc la fonction } f \\text{ est bien une densité de probabilité.}"} />
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2. Calcul de l'espérance de } X\\text{.}"} />
-                        <LatexRenderer latex={"\\text{L'espérance de } X \\text{ est donnée par :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"E(X) = \\int_{-\\infty}^{+\\infty} t f(t) \\, dt = \\int_{-\\infty}^{+\\infty} \\frac{2t}{\\pi (e^t + e^{-t})} \\, dt."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{La fonction } t \\mapsto \\dfrac{2t}{\\pi (e^t + e^{-t})} \\text{ est continue sur } \\mathbb{R}, \\text{ et impaire car :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"f(-t) = \\frac{2(-t)}{\\pi (e^{-t} + e^{t})} = -\\frac{2t}{\\pi (e^{t} + e^{-t})} = -f(t)."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Ainsi, l'intégrale est de la forme :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_{-\\infty}^{+\\infty} g(t) \\, dt \\quad \\text{avec } g \\text{ impaire},"} />
-                        </div>
-                        <LatexRenderer latex={"\\text{donc, si elle converge, sa valeur est nulle :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"E(X) = 0."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Pour vérifier la convergence, on remarque que pour } t \\to +\\infty\\text{,}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\frac{2t}{\\pi (e^t + e^{-t})} \\sim \\frac{2t}{\\pi e^t}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{L'intégrale}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_0^{+\\infty} \\frac{t}{e^t} \\, dt"} />
-                        </div>
-                        <LatexRenderer latex={"\\text{est convergente (c'est } \\Gamma(2) = 1! = 1\\text{), donc par critère de comparaison, l'intégrale définissant } E(X) \\text{ converge.}"} />
-
-                        <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                          <LatexRenderer latex={"\\textbf{Conclusion :} \\boxed{E(X) = 0.}"} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 12 - Densité logarithmique et transformations */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 12"
-                title="Densité logarithmique et transformations"
-                icon={Lightbulb}
-                stars={4}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soit la fonction } f \\text{ définie par :}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"f(x) = \\begin{cases} \\dfrac{1}{\\ln 2}\\,\\dfrac{1}{1+x}, & \\text{si } x \\in [0,1],\\\\ 0, & \\text{sinon.} \\end{cases}"} />
-                    </div>
-                    <ol className="list-decimal list-inside space-y-2 pl-4 text-gray-800">
-                      <li>Montrer que f est une densité d'une variable aléatoire X et déterminer sa fonction de répartition F_X.</li>
-                      <li>On pose Y = 1/X et Z = ⌊Y⌋. Trouver les lois de Y et de Z, et déterminer si ces variables admettent une espérance.</li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('12')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['12'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['12'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      
-                      <div>
-                        <LatexRenderer latex={"\\textbf{1. Vérification que } f \\text{ est une densité}"} />
-                        <LatexRenderer latex={"f(x) \\ge 0 \\text{ sur } \\mathbb{R} \\text{ et nulle en dehors de } [0,1]\\text{.}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_{-\\infty}^{+\\infty} f(x)\\, dx = \\frac{1}{\\ln 2} \\int_0^1 \\frac{1}{1+x}\\, dx = \\frac{1}{\\ln 2} [\\ln(1+x)]_0^1 = \\frac{\\ln 2}{\\ln 2} = 1."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Ainsi, } f \\text{ est bien une densité de probabilité.}"} />
-                        
-                        <LatexRenderer latex={"\\textbf{Fonction de répartition :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_X(x) = \\begin{cases} 0, & \\text{si } x < 0,\\\\ \\dfrac{\\ln(1+x)}{\\ln 2}, & \\text{si } 0 \\le x \\le 1,\\\\ 1, & \\text{si } x > 1. \\end{cases}"} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2. Loi de } Y = \\dfrac{1}{X}"} />
-                        <LatexRenderer latex={"X(\\Omega) = [0,1] \\text{ donc } Y(\\Omega) = [1, +\\infty[\\text{. Pour } x > 1 \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_Y(x) = P(Y \\le x) = P\\!\\left(X \\ge \\frac{1}{x}\\right) = 1 - F_X\\!\\left(\\frac{1}{x}\\right) = 1 - \\frac{\\ln\\left(1 + \\frac{1}{x}\\right)}{\\ln 2}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{En dérivant :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"f_Y(x) = \\begin{cases} \\dfrac{1}{\\ln 2}\\,\\dfrac{1}{x(1+x)}, & \\text{si } x > 1,\\\\ 0, & \\text{si } x \\le 1. \\end{cases}"} />
-                        </div>
-                        
-                        <LatexRenderer latex={"\\textbf{Espérance de } Y \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"E(Y) = \\frac{1}{\\ln 2} \\int_1^{+\\infty} \\frac{1}{1+x}\\, dx = +\\infty."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Donc } Y \\textbf{ n'admet pas d'espérance}\\text{.}"} />
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{3. Loi de } Z = \\lfloor Y \\rfloor"} />
-                        <LatexRenderer latex={"Z(\\Omega) = \\mathbb{N}^*\\text{. Pour tout entier } k \\ge 1 \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"P(Z = k) = \\frac{1}{\\ln 2}\\, \\ln\\!\\left(\\frac{(k+1)^2}{k(k+2)}\\right)."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Pour } k \\text{ grand, } k \\ln\\!\\left(\\frac{(k+1)^2}{k(k+2)}\\right) \\sim \\frac{1}{k}\\text{, donc la série diverge.}"} />
-                        <LatexRenderer latex={"\\text{Ainsi, } \\textbf{Z n'admet pas d'espérance}\\text{.}"} />
-                      </div>
-
-                      <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                        <LatexRenderer latex={"\\textbf{Conclusion :} E(Y) \\text{ et } E(Z) \\text{ n'existent pas.}"} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 13 - Loi logistique */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 13"
-                title="Loi logistique et supremum"
-                icon={Crown}
-                stars={4}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\textbf{1.} \\text{ Montrer que la fonction } F \\text{ définie sur } \\mathbb{R} \\text{ par}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"F(x) = \\frac{1}{1 + e^{-x}}"} />
-                    </div>
-                    <LatexRenderer latex={"\\text{vérifie les propriétés d'une fonction de répartition.}"} />
-                    <LatexRenderer latex={"\\textbf{2.} \\text{ Déterminer la loi du supremum de deux variables indépendantes de même fonction de répartition } F\\text{. Généraliser à } n \\text{ variables.}"} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('13')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['13'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['13'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      
-                      <div>
-                        <LatexRenderer latex={"\\textbf{1.} \\text{ La fonction } F \\text{ est de classe } \\mathcal{C}^1 \\text{ sur } \\mathbb{R}\\text{.}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F'(x) = \\frac{e^{-x}}{(1 + e^{-x})^2} > 0"} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Ainsi, } F \\text{ est strictement croissante sur } \\mathbb{R}\\text{.}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\lim_{x \\to -\\infty} F(x) = 0, \\quad \\lim_{x \\to +\\infty} F(x) = 1."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Donc } F \\text{ vérifie les propriétés d'une fonction de répartition (loi logistique).}"} />
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2.} \\text{ Soit } Z = \\sup(X, Y) \\text{ où } X \\text{ et } Y \\text{ sont indépendantes.}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"P(Z \\leq x) = P(X \\leq x, Y \\leq x) = P(X \\leq x)P(Y \\leq x) = F(x)^2."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Ainsi :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_Z(x) = \\frac{1}{(1 + e^{-x})^2}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{La densité est :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"f_Z(x) = \\frac{2 e^{-x}}{(1 + e^{-x})^3}."} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{Généralisation à } n \\text{ variables :}"} />
-                        <LatexRenderer latex={"\\text{Pour } Z_n = \\sup(X_1, \\dots, X_n) \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_{Z_n}(x) = F(x)^n = \\frac{1}{(1 + e^{-x})^n}."} />
-                        </div>
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"f_{Z_n}(x) = \\frac{n e^{-x}}{(1 + e^{-x})^{n+1}}."} />
-                        </div>
-                      </div>
-
-                      <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                        <LatexRenderer latex={"\\boxed{f_{Z_n}(x) = \\dfrac{n e^{-x}}{(1 + e^{-x})^{n+1}}, \\quad F_{Z_n}(x) = \\dfrac{1}{(1 + e^{-x})^n}.}"} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 14 - Loi à support [1, +∞[ */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 14"
-                title="Loi à support [1, +∞["
-                icon={Crown}
-                stars={4}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soit } a \\text{ un réel strictement positif. On définit la fonction } f \\text{ par :}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"f(t) = \\begin{cases} \\dfrac{a}{t^{a+1}}, & \\text{si } t \\geq 1,\\\\ 0, & \\text{si } t < 1. \\end{cases}"} />
-                    </div>
-                    <ol className="list-[lower-alpha] list-inside space-y-2 pl-4 text-gray-800">
-                      <li>Montrer que f est une densité de probabilité d'une variable aléatoire X.</li>
-                      <li>Déterminer la fonction de répartition de X.</li>
-                      <li>Pour quelles valeurs de a la variable X admet-elle une espérance ? La calculer quand elle existe.</li>
-                    </ol>
-                    <LatexRenderer latex={"\\textbf{(2)} \\text{ Soient } X_1, \\dots, X_n \\text{ des variables indépendantes de même densité } f\\text{. On pose } T_n = \\inf(X_1, \\dots, X_n)\\text{. Déterminer la loi de } T_n\\text{.}"} />
-                    <LatexRenderer latex={"\\textbf{(3)} \\text{ On pose } Z = \\ln X\\text{. Déterminer la loi de } Z\\text{, son espérance et sa variance.}"} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('14')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['14'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['14'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      
-                      <div>
-                        <LatexRenderer latex={"\\textbf{(a)} f(t) \\geq 0 \\text{ et } f \\text{ est continue sur } \\mathbb{R} \\setminus \\{1\\}\\text{.}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_1^{+\\infty} \\frac{a}{t^{a+1}} \\, dt = \\lim_{A \\to +\\infty} \\left[-\\frac{1}{t^a}\\right]_1^A = 1."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Ainsi, } f \\text{ est bien une densité.}"} />
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{(b)} \\text{ Fonction de répartition :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F(x) = \\begin{cases} 0, & \\text{si } x < 1,\\\\ 1 - \\dfrac{1}{x^a}, & \\text{si } x \\geq 1. \\end{cases}"} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{(c)} \\text{ Espérance :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"E(X) = \\int_1^{+\\infty} \\frac{a}{t^a} \\, dt = \\begin{cases} \\dfrac{a}{a - 1}, & \\text{si } a > 1,\\\\ \\text{diverge}, & \\text{si } a \\leq 1. \\end{cases}"} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{(2)} \\text{ Loi du minimum } T_n \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_{T_n}(x) = \\begin{cases} 0, & \\text{si } x < 1,\\\\ 1 - \\dfrac{1}{x^{a n}}, & \\text{si } x \\geq 1. \\end{cases}"} />
-                        </div>
-                        <LatexRenderer latex={"\\text{La densité est :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"f_{T_n}(x) = \\begin{cases} \\dfrac{a n}{x^{a n + 1}}, & \\text{si } x \\geq 1,\\\\ 0, & \\text{si } x < 1. \\end{cases}"} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{(3)} \\text{ Transformation } Z = \\ln X \\text{ :}"} />
-                        <LatexRenderer latex={"\\text{Comme } X \\geq 1\\text{, on a } Z \\in [0, +\\infty[\\text{. Pour } x \\geq 0 \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"F_Z(x) = P(\\ln X \\leq x) = P(X \\leq e^x) = 1 - e^{-a x}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{On reconnaît une loi exponentielle de paramètre } a\\text{. Ainsi :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"Z \\sim \\text{Exp}(a), \\quad E(Z) = \\frac{1}{a}, \\quad V(Z) = \\frac{1}{a^2}."} />
-                        </div>
-                      </div>
-
-                      <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                        <LatexRenderer latex={"\\boxed{E(X) = \\frac{a}{a - 1} \\text{ si } a > 1, \\quad Z = \\ln X \\sim \\text{Exp}(a).}"} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 15 - Moments et théorème de transfert */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 15"
-                title="Moments et théorème de transfert"
-                icon={Lightbulb}
-                stars={4}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soit } X \\text{ une variable aléatoire à densité définie sur } (\\Omega, \\mathcal{T}, P)\\text{, et } F \\text{ sa fonction de répartition.}"} />
-                    <LatexRenderer latex={"\\text{On suppose que } F \\text{ est de classe } \\mathcal{C}^1 \\text{ sur } \\mathbb{R}\\text{, } X \\text{ admet une espérance } E(X)\\text{, et}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"\\lim_{x \\to +\\infty} x \\big[1 - F(x) - F(-x)\\big] = 0."} />
-                    </div>
-                    <LatexRenderer latex={"\\text{Montrer que :}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"E(X) = \\int_0^{+\\infty} \\big[1 - F(x) - F(-x)\\big] \\, dx."} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('15')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['15'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['15'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      
-                      <LatexRenderer latex={"\\text{Soit } a > 0\\text{. On intègre par parties sur } [0, a] \\text{ :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"U = 1 - F(x) - F(-x), \\quad V = x."} />
-                      </div>
-                      
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"\\int_0^a [1 - F(x) - F(-x)] \\, dx = [x(1 - F(x) - F(-x))]_0^a + \\int_0^a x f(x)\\, dx - \\int_0^a x f(-x)\\, dx."} />
-                      </div>
-                      
-                      <LatexRenderer latex={"\\text{Changement de variable } u = -x \\text{ dans la seconde intégrale :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"- \\int_0^a x f(-x)\\, dx = \\int_{-a}^0 u f(u)\\, du."} />
-                      </div>
-                      
-                      <LatexRenderer latex={"\\text{Ainsi :}"} />
-                      <div className="text-center my-4">
-                        <LatexRenderer latex={"\\int_0^a [1 - F(x) - F(-x)] \\, dx = a[1 - F(a) - F(-a)] + \\int_{-a}^{a} x f(x)\\, dx."} />
-                      </div>
-                      
-                      <LatexRenderer latex={"\\text{Par hypothèse, } \\lim_{a \\to +\\infty} a[1 - F(a) - F(-a)] = 0\\text{, et } \\lim_{a \\to +\\infty} \\int_{-a}^{a} x f(x)\\, dx = E(X)\\text{.}"} />
-                      
-                      <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                        <LatexRenderer latex={"\\boxed{E(X) = \\int_0^{+\\infty} [1 - F(x) - F(-x)]\\, dx.}"} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 16 - Espérance et anti-répartition */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 16"
-                title="Espérance et anti-répartition"
-                icon={Target}
-                stars={3}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soit } X \\text{ une variable aléatoire réelle à valeurs positives, de densité } f \\text{ continue sur } \\mathbb{R}^+\\text{.}"} />
-                    <LatexRenderer latex={"\\text{On note } F \\text{ la fonction de répartition de } X\\text{. On suppose que } X \\text{ admet une espérance.}"} />
-                    <ol className="list-decimal list-inside space-y-2 pl-4 text-gray-800">
-                      <li>Justifier que lim<sub>x→+∞</sub> x P(X ≥ x) = 0.</li>
-                      <li>Montrer que E(X) = ∫<sub>0</sub><sup>+∞</sup> P(X &gt; x) dx = ∫<sub>0</sub><sup>+∞</sup> [1 - F(x)] dx.</li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('16')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['16'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['16'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      
-                      <div>
-                        <LatexRenderer latex={"\\textbf{1.} \\text{ Pour } x \\ge 0\\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"0 \\le x\\, P(X \\ge x) = x \\int_x^{+\\infty} f(t)\\, dt \\le \\int_x^{+\\infty} t f(t)\\, dt."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Puisque } E(X) \\text{ existe, } \\int_0^{+\\infty} t f(t)\\, dt \\text{ converge, donc le reste } \\int_x^{+\\infty} t f(t)\\, dt \\to 0 \\text{ quand } x \\to +\\infty\\text{.}"} />
-                        <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                          <LatexRenderer latex={"\\boxed{\\lim_{x \\to +\\infty} x\\, P(X \\ge x) = 0.}"} />
-                        </div>
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2.} \\text{ Intégration par parties sur } [0, x] \\text{ avec } U(t) = t \\text{ et } V'(t) = f(t) \\text{ :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_0^x t f(t)\\, dt = [t(F(t) - 1)]_0^x - \\int_0^x (F(t) - 1)\\, dt."} />
-                        </div>
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"= x(F(x) - 1) + \\int_0^x [1 - F(t)]\\, dt."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Or } x(F(x) - 1) = -x P(X \\ge x) \\to 0 \\text{ quand } x \\to +\\infty \\text{ (d'après la question 1).}"} />
-                        <LatexRenderer latex={"\\text{En faisant tendre } x \\to +\\infty \\text{ :}"} />
-                        <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                          <LatexRenderer latex={"\\boxed{E(X) = \\int_0^{+\\infty} [1 - F(t)]\\, dt = \\int_0^{+\\infty} P(X > x)\\, dx.}"} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-
-          {/* Exercice 17 - Espérance d'une transformation logarithmique */}
-          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
-            <div className="p-6">
-              <DifficultyHeader
-                level="Exercice 17"
-                title="Espérance d'une transformation logarithmique"
-                icon={Target}
-                stars={3}
-                color="orange"
-              />
-
-              {/* Énoncé */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Énoncé :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                  <div className="space-y-4">
-                    <LatexRenderer latex={"\\text{Soit } \\theta \\in [-2, 2]\\text{. On considère une variable aléatoire } X \\text{ admettant pour densité :}"} />
-                    <div className="text-center my-4">
-                      <LatexRenderer latex={"f_\\theta(x) = \\begin{cases} \\theta x + 1 - \\dfrac{\\theta}{2}, & \\text{si } x \\in [0, 1],\\\\ 0, & \\text{sinon.} \\end{cases}"} />
-                    </div>
-                    <LatexRenderer latex={"\\text{On pose } Y = -\\ln X\\text{. Montrer que } Y \\text{ admet une espérance et la calculer.}"} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Bouton Correction */}
-              <div className="flex justify-center">
-                <Button
-                  onClick={() => toggleCorrection('17')}
-                  className="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2 transition-colors"
-                >
-                  {visibleCorrections['17'] ? (
-                    <>
-                      <EyeOff className="mr-2 h-4 w-4" />
-                      Masquer la correction
-                    </>
-                  ) : (
-                    <>
-                      <Eye className="mr-2 h-4 w-4" />
-                      Voir la correction
-                    </>
-                  )}
-                </Button>
-              </div>
-
-              {/* Correction */}
-              {visibleCorrections['17'] && (
-                <div className="mt-6 pt-6 border-t border-orange-200">
-                  <h3 className="text-lg font-semibold mb-3 text-orange-700">Correction :</h3>
-                  <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                    <div className="space-y-4">
-                      <LatexRenderer latex={"\\textbf{Solution.}"} />
-                      
-                      <div>
-                        <LatexRenderer latex={"\\textbf{1. Étude de la convergence}"} />
-                        <LatexRenderer latex={"\\text{D'après le théorème de transfert, } E(Y) \\text{ existe si et seulement si :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_0^1 (-\\ln x)\\, f_\\theta(x)\\, dx \\text{ converge.}"} />
-                        </div>
-                        <LatexRenderer latex={"\\text{La fonction } x \\mapsto -\\ln x \\, (\\theta x + 1 - \\tfrac{\\theta}{2}) \\text{ est continue sur } ]0, 1] \\text{ et impropre en } 0\\text{.}"} />
-                        <LatexRenderer latex={"\\text{Lorsque } x \\to 0^+\\text{, } -\\ln x \\, (\\theta x + 1 - \\tfrac{\\theta}{2}) \\sim -\\ln x\\text{.}"} />
-                        <LatexRenderer latex={"\\text{Comme } \\int_0^1 (-\\ln x)\\, dx = 1\\text{, l'intégrale converge. Ainsi } Y \\text{ admet une espérance.}"} />
-                      </div>
-
-                      <div>
-                        <LatexRenderer latex={"\\textbf{2. Calcul de l'espérance}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"E(Y) = -\\int_0^1 \\ln x \\, (\\theta x + 1 - \\tfrac{\\theta}{2})\\, dx = -\\theta \\int_0^1 x \\ln x\\, dx - \\left(1 - \\tfrac{\\theta}{2}\\right) \\int_0^1 \\ln x\\, dx."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{On utilise les intégrales classiques :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"\\int_0^1 \\ln x\\, dx = -1, \\qquad \\int_0^1 x \\ln x\\, dx = -\\frac{1}{4}."} />
-                        </div>
-                        <LatexRenderer latex={"\\text{Ainsi :}"} />
-                        <div className="text-center my-4">
-                          <LatexRenderer latex={"E(Y) = -\\theta \\left(-\\frac{1}{4}\\right) - \\left(1 - \\frac{\\theta}{2}\\right)(-1) = \\frac{\\theta}{4} + 1 - \\frac{\\theta}{2}."} />
-                        </div>
-                      </div>
-
-                      <div className="text-center my-4 p-3 bg-orange-100 rounded-lg">
-                        <LatexRenderer latex={"\\boxed{E(Y) = 1 - \\frac{\\theta}{4}.}"} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </Card>
-        </div>
-
-        {/* Navigation */}
-        <div className="mt-12 text-center">
-          <div className="flex justify-center gap-4">
-            <Link to="/formation/maths-approfondies-2e-annee">
-              <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition-colors">
-                Retour aux chapitres
-              </Button>
-            </Link>
-            <Link to="/formation/maths-variables-aleatoires-densite">
-              <Button className="bg-slate-700 hover:bg-slate-800 text-white transition-colors">
-                Accéder au cours
-              </Button>
-            </Link>
-          </div>
-        </div>
+        )}
       </div>
-    </div>
+    );
+  };
+
+  return (
+    <MathChapterTemplate
+      chapterNumber={6}
+      chapterTitle="Variables aléatoires à densité"
+      description="Exercices progressifs sur les densités de probabilité, fonctions de répartition et transformations de variables."
+      slug="maths-variables-aleatoires-densite"
+      activeSection="exercises"
+      showNavigation={true}
+      previousChapter={{
+        slug: "maths-complements-variables-aleatoires",
+        title: "Compléments sur les variables aléatoires"
+      }}
+      nextChapter={{
+        slug: "nuplets-variables-aleatoires",
+        title: "n-uplets de variables aléatoires"
+      }}
+    >
+      <div className="space-y-8">
+
+        <section id="lois-classiques">
+          <DifficultyHeader level="Lois classiques" />
+
+          <ExerciseCard
+            id="ex-01"
+            title="Loi de −ln(U) — HEC 2010"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="U \sim \mathcal{U}(]0,1])" />. Déterminer la loi de la variable aléatoire <LatexRenderer latex="Y = -\ln(U)" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour déterminer la loi d'une transformation d'une variable à densité, on calcule la fonction de répartition de la nouvelle variable en exprimant l'événement <LatexRenderer latex="\{Y \le x\}" /> en fonction de <LatexRenderer latex="U" />, puis on utilise la loi de <LatexRenderer latex="U" />. On reconnaît ensuite une loi usuelle.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="Y = -\ln(U)" />. Comme <LatexRenderer latex="U > 0" /> p.s., on a <LatexRenderer latex="Y \ge 0" /> p.s., donc <LatexRenderer latex="F_Y(x) = 0" /> pour <LatexRenderer latex="x < 0" />.</p>
+                <p className="mt-2">Pour <LatexRenderer latex="x \ge 0" /> :</p>
+                <LatexRenderer latex="\displaystyle F_Y(x) = P(-\ln U \le x) = P(\ln U \ge -x) = P(U \ge e^{-x})." />
+                <p className="mt-2">Or <LatexRenderer latex="U \sim \mathcal{U}(]0,1])" />, donc pour <LatexRenderer latex="e^{-x} \in [0,1]" /> :</p>
+                <LatexRenderer latex="\displaystyle F_Y(x) = 1 - P(U \le e^{-x}) = 1 - e^{-x}." />
+                <p className="mt-2">On reconnaît la fonction de répartition d'une loi exponentielle de paramètre 1. Vérifions <LatexRenderer latex="\int_0^{+\infty} e^{-x}\,dx = 1" /> : la densité est bien normalisée.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="Y = -\ln(U) \sim \mathrm{Exp}(1)" />, de densité <LatexRenderer latex="f(x) = e^{-x}\,\mathbf{1}_{x \ge 0}" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-02"
+            title="Densité de probabilité — HEC 2015"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>1. Trouver <LatexRenderer latex="(c, d) \in \mathbb{R}^2" /> tel que <LatexRenderer latex="\dfrac{1}{(x+1)(x+2)} = \dfrac{c}{x+1} + \dfrac{d}{x+2}" /> pour <LatexRenderer latex="x \ge 0" />.</p>
+                <p>2. Soit <LatexRenderer latex="f(x) = \dfrac{1}{(x+1)(x+2)\ln 2}" /> pour <LatexRenderer latex="x \ge 0" /> et <LatexRenderer latex="f(x) = 0" /> sinon. Montrer que <LatexRenderer latex="f" /> est une densité.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Avant tout calcul sur une densité, vérifier <LatexRenderer latex="\int f = 1" />. La décomposition en éléments simples facilite le calcul de l'intégrale impropre en transformant le problème en une intégrale de logarithme.
+                </PointMethodo>
+                <p><strong>1.</strong> Par réduction au même dénominateur : <LatexRenderer latex="c(x+2) + d(x+1) = 1" />. En identifiant : <LatexRenderer latex="c + d = 0" /> et <LatexRenderer latex="2c + d = 1" />, d'où <LatexRenderer latex="c = 1" />, <LatexRenderer latex="d = -1" />.</p>
+                <LatexRenderer latex="\displaystyle \frac{1}{(x+1)(x+2)} = \frac{1}{x+1} - \frac{1}{x+2}." />
+                <p className="mt-2"><strong>2.</strong> La fonction <LatexRenderer latex="f" /> est positive. Vérifions <LatexRenderer latex="\int_{-\infty}^{+\infty} f = 1" /> :</p>
+                <LatexRenderer latex="\displaystyle \int_0^{+\infty} \frac{dx}{(x+1)(x+2)\ln 2} = \frac{1}{\ln 2}\int_0^{+\infty}\!\left(\frac{1}{x+1} - \frac{1}{x+2}\right)dx." />
+                <p className="mt-2">Soit, en passant à la limite :</p>
+                <LatexRenderer latex="\displaystyle = \frac{1}{\ln 2}\Bigl[\ln(x+1) - \ln(x+2)\Bigr]_0^{+\infty} = \frac{1}{\ln 2}\Bigl(0 - \ln\tfrac{1}{2}\Bigr) = \frac{\ln 2}{\ln 2} = 1." />
+                <ConclusionBox>
+                  <LatexRenderer latex="f" /> est bien une densité de probabilité.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-03"
+            title="Transformation uniforme vers exponentielle"
+            difficulty="Niveau: Facile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="U \sim \mathcal{U}([0,1[)" /> et <LatexRenderer latex="\lambda > 0" />. On pose <LatexRenderer latex="X = -\dfrac{1}{\lambda}\ln(1-U)" />.</p>
+                <p>Déterminer la loi de <LatexRenderer latex="X" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Calculer la fonction de répartition de <LatexRenderer latex="X" /> en exprimant <LatexRenderer latex="\{X \le x\}" /> en fonction de <LatexRenderer latex="U" />, puis utiliser <LatexRenderer latex="F_U(u) = u" /> sur <LatexRenderer latex="[0,1[" />. Reconnaître une loi usuelle.
+                </PointMethodo>
+                <p>Comme <LatexRenderer latex="U \in [0,1[" />, on a <LatexRenderer latex="X \ge 0" /> p.s., donc <LatexRenderer latex="F_X(x) = 0" /> pour <LatexRenderer latex="x < 0" />.</p>
+                <p className="mt-2">Pour <LatexRenderer latex="x \ge 0" /> :</p>
+                <LatexRenderer latex="\displaystyle F_X(x) = P\!\left(-\frac{\ln(1-U)}{\lambda} \le x\right) = P(\ln(1-U) \ge -\lambda x) = P(1-U \ge e^{-\lambda x}) = P(U \le 1-e^{-\lambda x})." />
+                <p className="mt-2">Or <LatexRenderer latex="1 - e^{-\lambda x} \in [0,1[" /> pour <LatexRenderer latex="x \ge 0" />, d'où :</p>
+                <LatexRenderer latex="\displaystyle F_X(x) = F_U(1-e^{-\lambda x}) = 1 - e^{-\lambda x}." />
+                <p className="mt-2">On reconnaît la fonction de répartition d'une loi exponentielle. La densité <LatexRenderer latex="\lambda e^{-\lambda x}\,\mathbf{1}_{x \ge 0}" /> vérifie bien <LatexRenderer latex="\int_0^{+\infty} \lambda e^{-\lambda x}\,dx = 1" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="X \sim \mathrm{Exp}(\lambda)" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-04"
+            title="Densité avec logarithme — ECRICOME 2015"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="f(x) = \dfrac{a}{x(\ln x)^2}" /> pour <LatexRenderer latex="x \ge 2" />, et <LatexRenderer latex="f(x) = 0" /> pour <LatexRenderer latex="x < 2" />.</p>
+                <p>1. Déterminer <LatexRenderer latex="a" /> pour que <LatexRenderer latex="f" /> soit une densité.</p>
+                <p>2. Déterminer la fonction de répartition <LatexRenderer latex="F" /> de <LatexRenderer latex="X" />.</p>
+                <p>3. <LatexRenderer latex="X" /> admet-elle une espérance ?</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Avant tout calcul, vérifier <LatexRenderer latex="\int f = 1" /> avec le changement de variable <LatexRenderer latex="t = \ln x" />. La fonction de répartition s'obtient par intégration de <LatexRenderer latex="f" />. L'existence de l'espérance équivaut à la convergence de <LatexRenderer latex="\int x\,f(x)\,dx" />, que l'on étudie par le même changement de variable.
+                </PointMethodo>
+                <Astuce>
+                  Le changement de variable <LatexRenderer latex="t = \ln x" /> transforme <LatexRenderer latex="\int \frac{a}{x(\ln x)^2}\,dx" /> en <LatexRenderer latex="\int \frac{a}{t^2}\,dt" />, une primitive classique.
+                </Astuce>
+                <p><strong>1.</strong> Avec <LatexRenderer latex="t = \ln x" />, <LatexRenderer latex="dt = dx/x" />, et <LatexRenderer latex="x \ge 2 \Leftrightarrow t \ge \ln 2" /> :</p>
+                <LatexRenderer latex="\displaystyle \int_2^{+\infty} \frac{a}{x(\ln x)^2}\,dx = a\int_{\ln 2}^{+\infty} \frac{dt}{t^2} = a\!\left[-\frac{1}{t}\right]_{\ln 2}^{+\infty} = \frac{a}{\ln 2}." />
+                <p className="mt-2">On impose <LatexRenderer latex="\dfrac{a}{\ln 2} = 1" />, soit <LatexRenderer latex="a = \ln 2" />.</p>
+                <p className="mt-2"><strong>2.</strong> Pour <LatexRenderer latex="x < 2" />, <LatexRenderer latex="F(x) = 0" />. Pour <LatexRenderer latex="x \ge 2" />, par le même changement de variable :</p>
+                <LatexRenderer latex="\displaystyle F(x) = \ln 2\int_{\ln 2}^{\ln x} \frac{du}{u^2} = \ln 2\!\left[-\frac{1}{u}\right]_{\ln 2}^{\ln x} = 1 - \frac{\ln 2}{\ln x}." />
+                <p className="mt-2"><strong>3.</strong> On étudie <LatexRenderer latex="\int_2^{+\infty} x\,f(x)\,dx = \ln 2 \int_2^{+\infty} \frac{dx}{(\ln x)^2}" />. Avec <LatexRenderer latex="t = \ln x" /> :</p>
+                <LatexRenderer latex="\displaystyle = \ln 2\int_{\ln 2}^{+\infty} \frac{e^t}{t^2}\,dt = +\infty," />
+                <p className="mt-1">car <LatexRenderer latex="e^t/t^2 \to +\infty" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="a = \ln 2" />. <LatexRenderer latex="F(x) = 1 - \dfrac{\ln 2}{\ln x}" /> pour <LatexRenderer latex="x \ge 2" />. <LatexRenderer latex="X" /> n'admet pas d'espérance.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </section>
+
+        <section id="transformations">
+          <DifficultyHeader level="Transformations de variables" />
+
+          <ExerciseCard
+            id="ex-05"
+            title="Transformation Y = X²"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X \sim \mathcal{U}([-1,1])" />. Montrer que <LatexRenderer latex="Y = X^2" /> est une variable à densité et déterminer cette densité.</p>
+                <p>Mêmes questions si <LatexRenderer latex="X \sim \mathrm{Exp}(\lambda)" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour trouver la densité d'une transformation, calculer la fonction de répartition de <LatexRenderer latex="Y" /> en exprimant <LatexRenderer latex="\{Y \le y\}" /> en fonction de <LatexRenderer latex="X" />, puis dériver pour obtenir la densité. Vérifier <LatexRenderer latex="\int f_Y = 1" /> avant de conclure.
+                </PointMethodo>
+                <p><strong>Cas 1 : <LatexRenderer latex="X \sim \mathcal{U}([-1,1])" />.</strong> Soit <LatexRenderer latex="Y = X^2" />, <LatexRenderer latex="Y(\Omega) = [0,1]" />. Pour <LatexRenderer latex="0 \le y \le 1" /> :</p>
+                <LatexRenderer latex="\displaystyle F_Y(y) = P(X^2 \le y) = P(-\sqrt{y} \le X \le \sqrt{y}) = \frac{2\sqrt{y}}{2} = \sqrt{y}." />
+                <p className="mt-2">D'où, par dérivation sur <LatexRenderer latex="]0,1[" /> :</p>
+                <LatexRenderer latex="\displaystyle f_Y(y) = \frac{1}{2\sqrt{y}}\,\mathbf{1}_{0 < y < 1}." />
+                <p className="mt-2">Vérifions : <LatexRenderer latex="\int_0^1 \frac{dy}{2\sqrt{y}} = [\sqrt{y}]_0^1 = 1" />. La densité est normalisée.</p>
+                <p className="mt-4"><strong>Cas 2 : <LatexRenderer latex="X \sim \mathrm{Exp}(\lambda)" />.</strong> Soit <LatexRenderer latex="Y = X^2" />, <LatexRenderer latex="Y(\Omega) = [0,+\infty[" />. Pour <LatexRenderer latex="y \ge 0" /> :</p>
+                <LatexRenderer latex="\displaystyle F_Y(y) = P(X \le \sqrt{y}) = 1 - e^{-\lambda\sqrt{y}}." />
+                <p className="mt-2">Par dérivation :</p>
+                <LatexRenderer latex="\displaystyle f_Y(y) = \frac{\lambda}{2\sqrt{y}}\,e^{-\lambda\sqrt{y}}\,\mathbf{1}_{y > 0}." />
+                <ConclusionBox>
+                  Si <LatexRenderer latex="X \sim \mathcal{U}([-1,1])" /> : <LatexRenderer latex="f_Y(y) = \dfrac{1}{2\sqrt{y}}\,\mathbf{1}_{0 < y < 1}" />. Si <LatexRenderer latex="X \sim \mathrm{Exp}(\lambda)" /> : <LatexRenderer latex="f_Y(y) = \dfrac{\lambda}{2\sqrt{y}}e^{-\lambda\sqrt{y}}\,\mathbf{1}_{y > 0}" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-06"
+            title="Moments de la loi exponentielle"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X \sim \mathrm{Exp}(\lambda)" />. Montrer que <LatexRenderer latex="X" /> admet des moments de tout ordre et les calculer.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour calculer <LatexRenderer latex="E(X^k)" /> d'une variable à densité, utiliser la formule intégrale et opérer un changement de variable <LatexRenderer latex="t = \lambda x" /> pour faire apparaître la fonction Gamma.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="k \in \mathbb{N}^*" />. Par définition et le <strong>théorème de transfert</strong> :</p>
+                <LatexRenderer latex="\displaystyle E(X^k) = \int_0^{+\infty} x^k\,\lambda e^{-\lambda x}\,dx." />
+                <p className="mt-2">Changement de variable <LatexRenderer latex="t = \lambda x" />, <LatexRenderer latex="dx = dt/\lambda" /> :</p>
+                <LatexRenderer latex="\displaystyle E(X^k) = \frac{1}{\lambda^k}\int_0^{+\infty} t^k e^{-t}\,dt = \frac{\Gamma(k+1)}{\lambda^k} = \frac{k!}{\lambda^k}." />
+                <p className="mt-2">L'intégrale converge pour tout <LatexRenderer latex="k \ge 0" />, donc <LatexRenderer latex="X" /> admet des moments de tout ordre.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="E(X^k) = \dfrac{k!}{\lambda^k}" /> pour tout <LatexRenderer latex="k \in \mathbb{N}^*" />. En particulier <LatexRenderer latex="E(X) = 1/\lambda" /> et <LatexRenderer latex="V(X) = E(X^2) - E(X)^2 = \dfrac{2}{\lambda^2} - \dfrac{1}{\lambda^2} = \dfrac{1}{\lambda^2}" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-07"
+            title="Loi logistique"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="F(x) = \dfrac{1}{1+e^{-x}}" /> définie sur <LatexRenderer latex="\mathbb{R}" />.</p>
+                <p>1. Montrer que <LatexRenderer latex="F" /> est la fonction de répartition d'une variable à densité <LatexRenderer latex="X" />. Déterminer une densité de <LatexRenderer latex="X" />.</p>
+                <p>2. Soient <LatexRenderer latex="X" /> et <LatexRenderer latex="Y" /> indépendantes de même fonction de répartition <LatexRenderer latex="F" />. On pose <LatexRenderer latex="Z = \max(X, Y)" />.</p>
+                <p>a. Déterminer la loi de <LatexRenderer latex="Z" />. b. En déduire une densité de <LatexRenderer latex="Z" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour vérifier qu'une fonction est une fonction de répartition : montrer qu'elle est croissante, continue à droite, de limites 0 en <LatexRenderer latex="-\infty" /> et 1 en <LatexRenderer latex="+\infty" />. La densité est la dérivée si elle est de classe <LatexRenderer latex="\mathcal{C}^1" />. La loi du maximum de variables indépendantes est le produit des fonctions de répartition.
+                </PointMethodo>
+                <p><strong>1.</strong> <LatexRenderer latex="F" /> est de classe <LatexRenderer latex="\mathcal{C}^\infty" /> sur <LatexRenderer latex="\mathbb{R}" />, strictement croissante (<LatexRenderer latex="F'(x) = e^{-x}/(1+e^{-x})^2 > 0" />), et :</p>
+                <LatexRenderer latex="\lim_{x \to -\infty} F(x) = 0, \qquad \lim_{x \to +\infty} F(x) = 1." />
+                <p className="mt-2">Donc <LatexRenderer latex="F" /> est bien une fonction de répartition. La densité associée est :</p>
+                <LatexRenderer latex="\displaystyle f(x) = F'(x) = \frac{e^{-x}}{(1+e^{-x})^2}, \quad x \in \mathbb{R}." />
+                <p className="mt-2">Vérifions <LatexRenderer latex="\int_{-\infty}^{+\infty} f = [F]_{-\infty}^{+\infty} = 1" />.</p>
+                <p className="mt-2"><strong>2.a.</strong> <LatexRenderer latex="X" /> et <LatexRenderer latex="Y" /> sont indépendantes (donné), donc :</p>
+                <LatexRenderer latex="\displaystyle F_Z(x) = P(\max(X,Y) \le x) = P(X \le x)P(Y \le x) = F(x)^2 = \frac{1}{(1+e^{-x})^2}." />
+                <p className="mt-2"><strong>2.b.</strong> Par dérivation :</p>
+                <LatexRenderer latex="\displaystyle f_Z(x) = 2F(x)F'(x) = \frac{2e^{-x}}{(1+e^{-x})^3}." />
+                <ConclusionBox>
+                  <LatexRenderer latex="f(x) = \dfrac{e^{-x}}{(1+e^{-x})^2}" /> (loi logistique). <LatexRenderer latex="F_Z(x) = \dfrac{1}{(1+e^{-x})^2}" />, de densité <LatexRenderer latex="f_Z(x) = \dfrac{2e^{-x}}{(1+e^{-x})^3}" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-08"
+            title="Loi de Pareto"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="a > 0" /> et <LatexRenderer latex="f_a(t) = a\,t^{-a-1}\,\mathbf{1}_{t \ge 1}" />.</p>
+                <p>1. Montrer que <LatexRenderer latex="f_a" /> est une densité.</p>
+                <p>2. Soit <LatexRenderer latex="X" /> de densité <LatexRenderer latex="f_a" />. a. Déterminer <LatexRenderer latex="F_X" />. b. Pour quelles valeurs de <LatexRenderer latex="a" /> <LatexRenderer latex="X" /> admet-elle une espérance ? une variance ? c. Déterminer la loi de <LatexRenderer latex="Y = \ln X" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Vérifier <LatexRenderer latex="\int f_a = 1" /> par calcul direct. Pour les moments, étudier la convergence des intégrales <LatexRenderer latex="\int_1^{+\infty} x\,f_a(x)\,dx" /> et <LatexRenderer latex="\int_1^{+\infty} x^2\,f_a(x)\,dx" />. Pour <LatexRenderer latex="Y = \ln X" />, calculer la fonction de répartition de <LatexRenderer latex="Y" /> et reconnaître une loi usuelle.
+                </PointMethodo>
+                <p><strong>1.</strong> <LatexRenderer latex="f_a \ge 0" /> et :</p>
+                <LatexRenderer latex="\displaystyle \int_1^{+\infty} a\,t^{-a-1}\,dt = a\!\left[-\frac{1}{a}t^{-a}\right]_1^{+\infty} = 1." />
+                <p className="mt-2">Donc <LatexRenderer latex="f_a" /> est une densité.</p>
+                <p className="mt-2"><strong>2.a.</strong> <LatexRenderer latex="X(\Omega) = [1, +\infty[" />. Pour <LatexRenderer latex="x \ge 1" /> :</p>
+                <LatexRenderer latex="\displaystyle F_X(x) = \int_1^x a\,t^{-a-1}\,dt = 1 - x^{-a}." />
+                <p className="mt-2"><strong>2.b.</strong> <LatexRenderer latex="E(X) = \int_1^{+\infty} a\,t^{-a}\,dt = \dfrac{a}{a-1}" /> si <LatexRenderer latex="a > 1" />, sinon <LatexRenderer latex="+\infty" />. Par la formule de König-Huygens <LatexRenderer latex="V(X) = E(X^2) - E(X)^2" />, avec <LatexRenderer latex="E(X^2) = \dfrac{a}{a-2}" /> si <LatexRenderer latex="a > 2" /> :</p>
+                <LatexRenderer latex="\displaystyle V(X) = \frac{a}{a-2} - \left(\frac{a}{a-1}\right)^2 = \frac{a}{(a-1)^2(a-2)} \quad (a > 2)." />
+                <p className="mt-2"><strong>2.c.</strong> Soit <LatexRenderer latex="Y = \ln X" />, <LatexRenderer latex="Y(\Omega) = [0, +\infty[" />. Pour <LatexRenderer latex="y \ge 0" /> :</p>
+                <LatexRenderer latex="\displaystyle F_Y(y) = P(\ln X \le y) = P(X \le e^y) = 1 - e^{-ay}." />
+                <p className="mt-2">On reconnaît la fonction de répartition d'une loi exponentielle.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="F_X(x) = 1 - x^{-a}" /> pour <LatexRenderer latex="x \ge 1" />. <LatexRenderer latex="E(X) = \dfrac{a}{a-1}" /> si <LatexRenderer latex="a > 1" />. <LatexRenderer latex="V(X) = \dfrac{a}{(a-1)^2(a-2)}" /> si <LatexRenderer latex="a > 2" />. <LatexRenderer latex="Y = \ln X \sim \mathrm{Exp}(a)" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </section>
+
+        <section id="avance">
+          <DifficultyHeader level="Avancé" />
+
+          <ExerciseCard
+            id="ex-09"
+            title="Partie entière d'une variable uniforme"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="n \in \mathbb{N}^*" /> et <LatexRenderer latex="X \sim \mathcal{U}([0, n])" />. Déterminer la loi de <LatexRenderer latex="\lfloor X \rfloor" /> (partie entière de <LatexRenderer latex="X" />).</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Identifier d'abord <LatexRenderer latex="\lfloor X \rfloor(\Omega) = \{0, 1, \dots, n-1\}" /> (en notant que <LatexRenderer latex="P(X = n) = 0" /> pour une variable continue). Calculer chaque probabilité <LatexRenderer latex="P(\lfloor X \rfloor = k)" /> en utilisant la loi uniforme.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="X \sim \mathcal{U}([0,n])" />. Comme <LatexRenderer latex="X" /> est continue, <LatexRenderer latex="P(X = n) = 0" />, donc <LatexRenderer latex="\lfloor X \rfloor(\Omega) = \{0, 1, \dots, n-1\}" />.</p>
+                <p className="mt-2">Pour <LatexRenderer latex="k \in \{0, 1, \dots, n-1\}" /> :</p>
+                <LatexRenderer latex="\displaystyle P(\lfloor X \rfloor = k) = P(k \le X < k+1) = \frac{(k+1) - k}{n} = \frac{1}{n}." />
+                <p className="mt-2">Toutes les valeurs sont équiprobables.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="\lfloor X \rfloor \sim \mathcal{U}(\{0, 1, \dots, n-1\})" /> (loi uniforme discrète sur <LatexRenderer latex="n" /> valeurs).
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-10"
+            title="Minimum de deux lois exponentielles"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soient <LatexRenderer latex="X \sim \mathrm{Exp}(\lambda)" /> et <LatexRenderer latex="Y \sim \mathrm{Exp}(\mu)" /> indépendantes. Déterminer la loi de <LatexRenderer latex="Z = \min(X, Y)" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  La loi du minimum se traite via la fonction de survie : <LatexRenderer latex="P(Z > x) = P(X > x)P(Y > x)" /> par indépendance. On reconnaît une loi exponentielle.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="Z = \min(X, Y)" />, <LatexRenderer latex="Z(\Omega) = [0, +\infty[" />. Pour <LatexRenderer latex="x \ge 0" /> :</p>
+                <LatexRenderer latex="\displaystyle P(Z > x) = P(X > x,\, Y > x)." />
+                <p className="mt-2"><LatexRenderer latex="X" /> et <LatexRenderer latex="Y" /> sont indépendantes (donné), donc :</p>
+                <LatexRenderer latex="\displaystyle P(Z > x) = P(X > x)\,P(Y > x) = e^{-\lambda x}\,e^{-\mu x} = e^{-(\lambda + \mu)x}." />
+                <p className="mt-2">D'où <LatexRenderer latex="F_Z(x) = 1 - e^{-(\lambda+\mu)x}" /> pour <LatexRenderer latex="x \ge 0" />. La densité <LatexRenderer latex="(\lambda + \mu)e^{-(\lambda+\mu)x}" /> vérifie bien <LatexRenderer latex="\int_0^{+\infty} (\lambda+\mu)e^{-(\lambda+\mu)x}\,dx = 1" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="Z = \min(X, Y) \sim \mathrm{Exp}(\lambda + \mu)" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-11"
+            title="Densité de probabilité et espérance nulle"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="f(t) = \dfrac{2}{\pi(e^t + e^{-t})}" /> définie sur <LatexRenderer latex="\mathbb{R}" />.</p>
+                <p>1. Montrer que <LatexRenderer latex="f" /> est une densité de probabilité.</p>
+                <p>2. Montrer que la variable <LatexRenderer latex="X" /> de densité <LatexRenderer latex="f" /> admet une espérance nulle.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Vérifier <LatexRenderer latex="\int f = 1" /> par un changement de variable <LatexRenderer latex="u = e^t" /> qui transforme l'intégrale en une intégrale d'arctangente. Pour l'espérance, exploiter la parité de l'intégrande et justifier la convergence avant de conclure.
+                </PointMethodo>
+                <p><strong>1.</strong> <LatexRenderer latex="f(t) > 0" /> pour tout <LatexRenderer latex="t \in \mathbb{R}" />. Changement de variable <LatexRenderer latex="u = e^t" />, <LatexRenderer latex="du = e^t\,dt" />, <LatexRenderer latex="dt = du/u" /> :</p>
+                <LatexRenderer latex="\displaystyle I = \frac{2}{\pi}\int_{-\infty}^{+\infty} \frac{dt}{e^t + e^{-t}} = \frac{2}{\pi}\int_0^{+\infty} \frac{du}{u(u + 1/u)} = \frac{2}{\pi}\int_0^{+\infty} \frac{du}{u^2 + 1} = \frac{2}{\pi} \cdot \frac{\pi}{2} = 1." />
+                <p className="mt-2">Donc <LatexRenderer latex="\int f = 1" /> et <LatexRenderer latex="f" /> est bien une densité.</p>
+                <p className="mt-2"><strong>2.</strong> La fonction <LatexRenderer latex="t \mapsto t\,f(t)" /> est impaire, car <LatexRenderer latex="e^t + e^{-t}" /> est pair. Pour justifier la convergence : pour <LatexRenderer latex="t \to +\infty" />, <LatexRenderer latex="\dfrac{t\,f(t)}{1} \sim \dfrac{2t}{\pi e^t} \to 0" /> et <LatexRenderer latex="\int_0^{+\infty} \dfrac{t}{e^t}\,dt = \Gamma(2) = 1 < +\infty" />. Ainsi l'intégrale converge, et par imparité :</p>
+                <LatexRenderer latex="\displaystyle E(X) = \int_{-\infty}^{+\infty} t\,f(t)\,dt = 0." />
+                <ConclusionBox>
+                  <LatexRenderer latex="f" /> est une densité de probabilité et <LatexRenderer latex="E(X) = 0" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-12"
+            title="Densité logarithmique et transformations"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="f(x) = \dfrac{1}{\ln 2} \cdot \dfrac{1}{1+x}" /> pour <LatexRenderer latex="x \in [0,1]" />, et <LatexRenderer latex="f(x) = 0" /> sinon.</p>
+                <p>1. Montrer que <LatexRenderer latex="f" /> est une densité et calculer <LatexRenderer latex="F_X" />.</p>
+                <p>2. On pose <LatexRenderer latex="Y = 1/X" /> et <LatexRenderer latex="Z = \lfloor Y \rfloor" />. Trouver les lois de <LatexRenderer latex="Y" /> et <LatexRenderer latex="Z" />. Admettent-elles une espérance ?</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Vérifier <LatexRenderer latex="\int f = 1" /> par calcul direct. La loi de <LatexRenderer latex="Y = 1/X" /> s'obtient en exprimant <LatexRenderer latex="F_Y" /> en fonction de <LatexRenderer latex="F_X" />, puis on dérive. Pour la loi de <LatexRenderer latex="Z = \lfloor Y \rfloor" /> (discrète), on calcule <LatexRenderer latex="P(Z = k) = P(k \le Y < k+1)" /> pour chaque entier.
+                </PointMethodo>
+                <p><strong>1.</strong> Vérifions <LatexRenderer latex="\int f = 1" /> :</p>
+                <LatexRenderer latex="\displaystyle \frac{1}{\ln 2}\int_0^1 \frac{dx}{1+x} = \frac{1}{\ln 2}[\ln(1+x)]_0^1 = \frac{\ln 2}{\ln 2} = 1." />
+                <p className="mt-2">Pour <LatexRenderer latex="x \in [0,1]" /> : <LatexRenderer latex="F_X(x) = \dfrac{\ln(1+x)}{\ln 2}" />.</p>
+                <p className="mt-2"><strong>2. Loi de <LatexRenderer latex="Y = 1/X" />.</strong> <LatexRenderer latex="X(\Omega) = [0,1]" /> donc <LatexRenderer latex="Y(\Omega) = [1,+\infty[" />. Pour <LatexRenderer latex="y > 1" /> :</p>
+                <LatexRenderer latex="\displaystyle F_Y(y) = P\!\left(X \ge \frac{1}{y}\right) = 1 - F_X\!\left(\frac{1}{y}\right) = 1 - \frac{\ln(1 + 1/y)}{\ln 2}." />
+                <p className="mt-2">D'où la densité de <LatexRenderer latex="Y" /> : <LatexRenderer latex="f_Y(y) = \dfrac{1}{\ln 2} \cdot \dfrac{1}{y(1+y)}" /> pour <LatexRenderer latex="y > 1" />.</p>
+                <p className="mt-2">Existence de <LatexRenderer latex="E(Y)" /> : <LatexRenderer latex="\int_1^{+\infty} \dfrac{dy}{1+y} = +\infty" />, donc <strong><LatexRenderer latex="Y" /> n'admet pas d'espérance</strong>.</p>
+                <p className="mt-2"><strong>Loi de <LatexRenderer latex="Z = \lfloor Y \rfloor" />.</strong> <LatexRenderer latex="Z(\Omega) = \mathbb{N}^*" />. Pour <LatexRenderer latex="k \ge 1" /> :</p>
+                <LatexRenderer latex="\displaystyle P(Z=k) = P(k \le Y < k+1) = F_Y(k+1) - F_Y(k) = \frac{1}{\ln 2}\ln\!\frac{(k+1)^2}{k(k+2)}." />
+                <p className="mt-2">Pour <LatexRenderer latex="k" /> grand, <LatexRenderer latex="k\,P(Z=k) \sim \dfrac{1}{k\ln 2}" />, donc la série diverge et <strong><LatexRenderer latex="Z" /> n'admet pas d'espérance</strong>.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="F_X(x) = \dfrac{\ln(1+x)}{\ln 2}" /> sur <LatexRenderer latex="[0,1]" />. <LatexRenderer latex="Y" /> et <LatexRenderer latex="Z" /> n'admettent pas d'espérance.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-13"
+            title="Loi logistique et supremum — Généralisation"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="F(x) = \dfrac{1}{1+e^{-x}}" /> sur <LatexRenderer latex="\mathbb{R}" />.</p>
+                <p>1. Vérifier que <LatexRenderer latex="F" /> est une fonction de répartition.</p>
+                <p>2. Soient <LatexRenderer latex="X_1, \dots, X_n" /> i.i.d. de fonction de répartition <LatexRenderer latex="F" />. Déterminer la loi de <LatexRenderer latex="Z_n = \sup(X_1,\dots,X_n)" /> et sa densité. Donner le cas <LatexRenderer latex="n = 2" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour le maximum de <LatexRenderer latex="n" /> variables indépendantes de même loi, la fonction de répartition est la puissance <LatexRenderer latex="n" />-ième de la fonction de répartition commune. La densité s'obtient par dérivation.
+                </PointMethodo>
+                <p><strong>1.</strong> <LatexRenderer latex="F" /> est de classe <LatexRenderer latex="\mathcal{C}^\infty" />, strictement croissante (<LatexRenderer latex="F'(x) > 0" />), avec <LatexRenderer latex="\lim_{-\infty} F = 0" /> et <LatexRenderer latex="\lim_{+\infty} F = 1" />. Donc <LatexRenderer latex="F" /> est une fonction de répartition (loi logistique).</p>
+                <p className="mt-2"><strong>2.</strong> Les <LatexRenderer latex="X_i" /> sont i.i.d. (donné), donc :</p>
+                <LatexRenderer latex="\displaystyle F_{Z_n}(x) = P(Z_n \le x) = \prod_{i=1}^n P(X_i \le x) = F(x)^n = \frac{1}{(1+e^{-x})^n}." />
+                <p className="mt-2">La densité de <LatexRenderer latex="Z_n" /> est obtenue par dérivation :</p>
+                <LatexRenderer latex="\displaystyle f_{Z_n}(x) = n\,F(x)^{n-1}F'(x) = \frac{n\,e^{-x}}{(1+e^{-x})^{n+1}}." />
+                <p className="mt-2">Pour <LatexRenderer latex="n = 2" /> : <LatexRenderer latex="F_{Z_2}(x) = \dfrac{1}{(1+e^{-x})^2}" /> et <LatexRenderer latex="f_{Z_2}(x) = \dfrac{2e^{-x}}{(1+e^{-x})^3}" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="F_{Z_n}(x) = \dfrac{1}{(1+e^{-x})^n}" />, de densité <LatexRenderer latex="f_{Z_n}(x) = \dfrac{n\,e^{-x}}{(1+e^{-x})^{n+1}}" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-14"
+            title="Loi de Pareto — Minimum et transformation"
+            difficulty="Niveau: Concours"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="f(t) = \dfrac{a}{t^{a+1}}\,\mathbf{1}_{t \ge 1}" /> avec <LatexRenderer latex="a > 0" />.</p>
+                <p>1. Montrer que <LatexRenderer latex="f" /> est une densité et calculer <LatexRenderer latex="F_X" />. Pour quelles valeurs de <LatexRenderer latex="a" /> <LatexRenderer latex="X" /> admet-elle une espérance ?</p>
+                <p>2. Soient <LatexRenderer latex="X_1,\dots,X_n" /> i.i.d. de densité <LatexRenderer latex="f" />. Déterminer la loi de <LatexRenderer latex="T_n = \inf(X_1,\dots,X_n)" />.</p>
+                <p>3. On pose <LatexRenderer latex="Z = \ln X" />. Déterminer la loi de <LatexRenderer latex="Z" />, son espérance et sa variance.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Vérifier <LatexRenderer latex="\int f = 1" /> par intégration directe. Pour le minimum de variables indépendantes, la fonction de survie est le produit des fonctions de survie. Pour <LatexRenderer latex="Z = \ln X" />, calculer <LatexRenderer latex="F_Z" /> et reconnaître une loi usuelle.
+                </PointMethodo>
+                <p><strong>1.</strong> <LatexRenderer latex="\int_1^{+\infty} a\,t^{-a-1}\,dt = 1" /> (calcul direct). <LatexRenderer latex="X(\Omega) = [1,+\infty[" /> et <LatexRenderer latex="F_X(x) = 1 - x^{-a}" /> pour <LatexRenderer latex="x \ge 1" />.</p>
+                <p className="mt-2"><LatexRenderer latex="E(X) = a\int_1^{+\infty} t^{-a}\,dt" /> converge si et seulement si <LatexRenderer latex="a > 1" />, auquel cas <LatexRenderer latex="E(X) = \dfrac{a}{a-1}" />.</p>
+                <p className="mt-2"><strong>2.</strong> Les <LatexRenderer latex="X_i" /> sont i.i.d. (donné). La fonction de survie du minimum :</p>
+                <LatexRenderer latex="\displaystyle P(T_n > x) = \prod_{i=1}^n P(X_i > x) = (x^{-a})^n = x^{-an}, \quad x \ge 1." />
+                <p className="mt-2">Donc <LatexRenderer latex="F_{T_n}(x) = 1 - x^{-an}" /> pour <LatexRenderer latex="x \ge 1" />, et <LatexRenderer latex="T_n" /> suit une loi de Pareto de paramètre <LatexRenderer latex="an" />.</p>
+                <p className="mt-2"><strong>3.</strong> Soit <LatexRenderer latex="Z = \ln X" />, <LatexRenderer latex="Z(\Omega) = [0,+\infty[" />. Pour <LatexRenderer latex="y \ge 0" /> :</p>
+                <LatexRenderer latex="\displaystyle F_Z(y) = P(X \le e^y) = 1 - e^{-ay}." />
+                <p className="mt-2">On reconnaît la loi exponentielle de paramètre <LatexRenderer latex="a" />. Par la formule de König-Huygens : <LatexRenderer latex="V(Z) = E(Z^2) - E(Z)^2 = \dfrac{2}{a^2} - \dfrac{1}{a^2} = \dfrac{1}{a^2}" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="T_n" /> est de Pareto de paramètre <LatexRenderer latex="an" />. <LatexRenderer latex="Z = \ln X \sim \mathrm{Exp}(a)" />, <LatexRenderer latex="E(Z) = 1/a" />, <LatexRenderer latex="V(Z) = 1/a^2" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-15"
+            title="Moments et espérance via la fonction de répartition"
+            difficulty="Niveau: Concours"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X" /> une variable à densité de fonction de répartition <LatexRenderer latex="F \in \mathcal{C}^1(\mathbb{R})" />, admettant une espérance et vérifiant <LatexRenderer latex="\displaystyle\lim_{x \to +\infty} x[1 - F(x) - F(-x)] = 0" />.</p>
+                <p>Montrer que <LatexRenderer latex="\displaystyle E(X) = \int_0^{+\infty} [1 - F(x) - F(-x)]\,dx" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Intégrer par parties l'expression <LatexRenderer latex="\int_0^a [1-F(x)-F(-x)]\,dx" /> en posant <LatexRenderer latex="u = 1-F(x)-F(-x)" /> et <LatexRenderer latex="v = x" />. Les termes aux bords sont traités par l'hypothèse de décroissance. On regroupe ensuite les deux intégrales obtenues pour retrouver <LatexRenderer latex="E(X)" />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="a > 0" />. Intégration par parties sur <LatexRenderer latex="[0,a]" /> avec <LatexRenderer latex="u = 1-F(x)-F(-x)" /> et <LatexRenderer latex="v' = 1" /> :</p>
+                <LatexRenderer latex="\displaystyle \int_0^a [1-F(x)-F(-x)]\,dx = \bigl[x(1-F(x)-F(-x))\bigr]_0^a + \int_0^a x\,f(x)\,dx - \int_0^a x\,f(-x)\,dx." />
+                <p className="mt-2">Changement de variable <LatexRenderer latex="u = -x" /> dans la dernière intégrale : <LatexRenderer latex="-\int_0^a x\,f(-x)\,dx = \int_{-a}^0 u\,f(u)\,du" />. D'où :</p>
+                <LatexRenderer latex="\displaystyle \int_0^a [1-F(x)-F(-x)]\,dx = a\bigl[1-F(a)-F(-a)\bigr] + \int_{-a}^a x\,f(x)\,dx." />
+                <p className="mt-2">En faisant <LatexRenderer latex="a \to +\infty" /> : par hypothèse le premier terme tend vers 0, et le second tend vers <LatexRenderer latex="E(X)" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="\displaystyle E(X) = \int_0^{+\infty} [1-F(x)-F(-x)]\,dx" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-16"
+            title="Espérance et anti-répartition"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X" /> une variable aléatoire réelle positive à densité, de fonction de répartition <LatexRenderer latex="F" />, admettant une espérance.</p>
+                <p>1. Justifier que <LatexRenderer latex="\displaystyle\lim_{x \to +\infty} x\,P(X \ge x) = 0" />.</p>
+                <p>2. Montrer que <LatexRenderer latex="\displaystyle E(X) = \int_0^{+\infty} P(X > x)\,dx = \int_0^{+\infty} [1-F(x)]\,dx" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour la question 1, encadrer <LatexRenderer latex="x\,P(X \ge x)" /> par le reste de l'intégrale définissant <LatexRenderer latex="E(X)" />. Pour la question 2, intégrer par parties en exploitant le résultat précédent.
+                </PointMethodo>
+                <p><strong>1.</strong> Pour <LatexRenderer latex="x \ge 0" /> :</p>
+                <LatexRenderer latex="\displaystyle 0 \le x\,P(X \ge x) = x\int_x^{+\infty} f(t)\,dt \le \int_x^{+\infty} t\,f(t)\,dt." />
+                <p className="mt-2">Comme <LatexRenderer latex="E(X) = \int_0^{+\infty} t\,f(t)\,dt < +\infty" />, le reste tend vers 0 quand <LatexRenderer latex="x \to +\infty" />. D'où <LatexRenderer latex="\lim_{x \to +\infty} x\,P(X \ge x) = 0" />.</p>
+                <p className="mt-2"><strong>2.</strong> Intégration par parties sur <LatexRenderer latex="[0,x]" /> avec <LatexRenderer latex="u = t" /> et <LatexRenderer latex="v' = f(t)" /> :</p>
+                <LatexRenderer latex="\displaystyle \int_0^x t\,f(t)\,dt = \bigl[t(F(t)-1)\bigr]_0^x - \int_0^x (F(t)-1)\,dt = x(F(x)-1) + \int_0^x [1-F(t)]\,dt." />
+                <p className="mt-2">Or <LatexRenderer latex="x(F(x)-1) = -x\,P(X \ge x) \to 0" /> (question 1). En faisant <LatexRenderer latex="x \to +\infty" /> :</p>
+                <LatexRenderer latex="\displaystyle E(X) = \int_0^{+\infty} [1-F(t)]\,dt." />
+                <ConclusionBox>
+                  <LatexRenderer latex="\displaystyle E(X) = \int_0^{+\infty} P(X > x)\,dx" /> pour toute variable positive admettant une espérance.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-17"
+            title="Espérance d'une transformation logarithmique"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="\theta \in [-2, 2]" />. Soit <LatexRenderer latex="X" /> de densité <LatexRenderer latex="f_\theta(x) = \left(\theta x + 1 - \dfrac{\theta}{2}\right)\mathbf{1}_{x \in [0,1]}" />.</p>
+                <p>On pose <LatexRenderer latex="Y = -\ln X" />. Montrer que <LatexRenderer latex="Y" /> admet une espérance et la calculer.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Par le <strong>théorème de transfert</strong>, <LatexRenderer latex="E(Y) = E(-\ln X) = \int_0^1 (-\ln x)\,f_\theta(x)\,dx" />. La convergence se justifie en comparant à <LatexRenderer latex="\int_0^1 (-\ln x)\,dx" />. Les intégrales <LatexRenderer latex="\int_0^1 \ln x\,dx" /> et <LatexRenderer latex="\int_0^1 x\ln x\,dx" /> sont des intégrales classiques.
+                </PointMethodo>
+                <Astuce>
+                  Rappels : <LatexRenderer latex="\int_0^1 \ln x\,dx = -1" /> et <LatexRenderer latex="\int_0^1 x\ln x\,dx = -\dfrac{1}{4}" /> (intégration par parties).
+                </Astuce>
+                <p>D'après le <strong>théorème de transfert</strong>, <LatexRenderer latex="E(Y)" /> existe si et seulement si <LatexRenderer latex="\int_0^1 (-\ln x)\,f_\theta(x)\,dx < +\infty" />. Or pour <LatexRenderer latex="x \to 0^+" /> :</p>
+                <LatexRenderer latex="(-\ln x)\,f_\theta(x) \sim -\ln x \cdot \left(1 - \frac{\theta}{2}\right)." />
+                <p className="mt-2">Comme <LatexRenderer latex="\int_0^1 (-\ln x)\,dx = 1 < +\infty" />, l'intégrale converge et <LatexRenderer latex="Y" /> admet une espérance.</p>
+                <p className="mt-2">Calcul :</p>
+                <LatexRenderer latex="\displaystyle E(Y) = -\theta\int_0^1 x\ln x\,dx - \left(1-\frac{\theta}{2}\right)\int_0^1 \ln x\,dx = -\theta\!\left(-\frac{1}{4}\right) - \left(1-\frac{\theta}{2}\right)(-1)." />
+                <LatexRenderer latex="\displaystyle = \frac{\theta}{4} + 1 - \frac{\theta}{2} = 1 - \frac{\theta}{4}." />
+                <ConclusionBox>
+                  <LatexRenderer latex="Y = -\ln X" /> admet une espérance et <LatexRenderer latex="E(Y) = 1 - \dfrac{\theta}{4}" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </section>
+
+      </div>
+    </MathChapterTemplate>
   );
 };
 

@@ -799,7 +799,7 @@ const ChronologieEuropePage = () => {
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'Politique': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'Politique': return 'bg-carnet-red/10 text-carnet-red-deep border-carnet-red/30';
       case 'Économique': return 'bg-green-100 text-green-800 border-green-200';
       case 'Militaire': return 'bg-red-100 text-red-800 border-red-200';
       case 'Institutionnel': return 'bg-purple-100 text-purple-800 border-purple-200';
@@ -821,7 +821,7 @@ const ChronologieEuropePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -859,7 +859,7 @@ const ChronologieEuropePage = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
           <Card className="text-center">
             <CardContent className="pt-6">
-              <Calendar className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+              <Calendar className="h-8 w-8 text-carnet-red mx-auto mb-2" />
               <div className="text-2xl font-bold text-gray-900">377 ans</div>
               <div className="text-sm text-gray-600">De 1648 à 2025</div>
             </CardContent>
@@ -888,10 +888,10 @@ const ChronologieEuropePage = () => {
         </div>
 
         {/* Timeline */}
-        <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg">
+        <Card className="border-2 border-carnet-red/30 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg">
           <CardHeader>
             <CardTitle className="text-3xl flex items-center gap-3">
-              <Calendar className="h-8 w-8 text-blue-600" />
+              <Calendar className="h-8 w-8 text-carnet-red" />
               Chronologie complète
             </CardTitle>
           </CardHeader>

@@ -33,7 +33,7 @@ Conclusión – La principal lección es la tensión entre ganancias rápidas y 
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F6F3] font-dm-sans text-pr-black">
+    <div className="relative font-dm-sans text-pr-black">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">

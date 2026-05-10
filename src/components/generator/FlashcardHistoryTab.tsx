@@ -292,29 +292,29 @@ export const FlashcardHistoryTab = ({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 text-[10px] font-bold">Q</span>
-                      <span className="text-[10px] font-bold tracking-wider text-blue-600 uppercase">
+                      <span className="w-5 h-5 rounded-full bg-pr-orange-pale flex items-center justify-center text-pr-orange-dark text-[10px] font-bold">Q</span>
+                      <span className="text-[10px] font-bold tracking-wider text-pr-orange-dark uppercase">
                         {language === 'fr' ? 'Question' : 'Question'}
                       </span>
                     </div>
-                    <p className="font-bold text-xl text-gray-900 dark:text-white">{getCardFront(flashcard)}</p>
+                    <p className="font-bold text-xl text-pr-black">{getCardFront(flashcard)}</p>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 text-[10px] font-bold">R</span>
-                      <span className="text-[10px] font-bold tracking-wider text-green-600 uppercase">
+                      <span className="w-5 h-5 rounded-full bg-pr-orange-pale flex items-center justify-center text-pr-orange text-[10px] font-bold">R</span>
+                      <span className="text-[10px] font-bold tracking-wider text-pr-orange uppercase">
                         {language === 'fr' ? 'Réponse' : 'Answer'}
                       </span>
                     </div>
-                    <p className="font-bold text-xl text-gray-900 dark:text-white">{getCardBack(flashcard)}</p>
+                    <p className="font-bold text-xl text-pr-black">{getCardBack(flashcard)}</p>
                   </div>
                 </div>
 
                 {/* Hint */}
                 {getCardHint(flashcard) && (
-                  <div className="bg-gray-50/50 dark:bg-gray-800/30 p-4 rounded-xl flex items-start gap-2">
-                    <Lightbulb className="w-4 h-4 text-yellow-500 mt-0.5 shrink-0" />
-                    <p className="text-sm italic text-gray-600 dark:text-gray-400">
+                  <div className="bg-pr-gray-bg p-4 rounded-xl flex items-start gap-2 border border-pr-gray-light">
+                    <Lightbulb className="w-4 h-4 text-pr-orange mt-0.5 shrink-0" />
+                    <p className="text-sm italic text-pr-gray-mid">
                       {getCardHint(flashcard)}
                     </p>
                   </div>
