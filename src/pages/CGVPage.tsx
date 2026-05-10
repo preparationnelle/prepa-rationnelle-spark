@@ -1,22 +1,12 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CreditCard, Euro, FileText, AlertTriangle, RefreshCw, Shield, Truck } from "lucide-react";
-import Navigation from '@/components/Navigation';
 
 export default function CGVPage() {
   return (
     <>
-      <Navigation />
-      <div className="min-h-screen bg-accent py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div className="relative py-8 px-4 sm:px-6 lg:px-8">
         {/* Floating bubbles - Blue and Orange mix like landing page */}
-        <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-        <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-5 animate-pulse"></div>
-        <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse"></div>
-        <div className="absolute -z-10 top-1/2 left-10 w-24 h-24 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 bottom-1/3 right-5 w-36 h-36 bg-blue-50 rounded-full opacity-5 animate-pulse"></div>
 
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-8">
@@ -368,7 +358,7 @@ export default function CGVPage() {
 
             {/* Section Liens utiles */}
             <div className="mt-6 space-y-4">
-              <Card className="bg-gradient-to-r from-blue-50 to-orange-50 border-2 border-blue-200">
+              <Card className="bg-gradient-to-r from-blue-50 to-orange-50 border-2 border-carnet-red/30">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-xl text-center text-primary">
                     🌟 Découvrez nos formations
@@ -386,7 +376,7 @@ export default function CGVPage() {
                       </p>
                       <a
                         href="/pourquoi-python-prepa-ecg"
-                        className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                        className="text-xs text-carnet-red hover:text-carnet-red-deep font-medium"
                       >
                         En savoir plus →
                       </a>
@@ -399,7 +389,7 @@ export default function CGVPage() {
                       </p>
                       <a
                         href="/formation/anglais"
-                        className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                        className="text-xs text-carnet-red hover:text-carnet-red-deep font-medium"
                       >
                         En savoir plus →
                       </a>
@@ -412,7 +402,7 @@ export default function CGVPage() {
                       </p>
                       <a
                         href="/formation/espagnol"
-                        className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                        className="text-xs text-carnet-red hover:text-carnet-red-deep font-medium"
                       >
                         En savoir plus →
                       </a>
@@ -425,7 +415,7 @@ export default function CGVPage() {
                       </p>
                       <a
                         href="/formation/allemand"
-                        className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                        className="text-xs text-carnet-red hover:text-carnet-red-deep font-medium"
                       >
                         En savoir plus →
                       </a>
@@ -438,7 +428,7 @@ export default function CGVPage() {
                       </p>
                       <a
                         href="/formation/geopolitique"
-                        className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                        className="text-xs text-carnet-red hover:text-carnet-red-deep font-medium"
                       >
                         En savoir plus →
                       </a>
@@ -451,7 +441,7 @@ export default function CGVPage() {
                       </p>
                       <a
                         href="/formation/maths-choix"
-                        className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                        className="text-xs text-carnet-red hover:text-carnet-red-deep font-medium"
                       >
                         En savoir plus →
                       </a>
