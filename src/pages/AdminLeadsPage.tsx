@@ -7,7 +7,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Phone, Mail, MapPin, User, Calendar, Filter, Search, ExternalLink, Edit2, Save, X } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import Navigation from '@/components/Navigation';
 
 interface ContactLead {
     id: string;
@@ -188,10 +187,9 @@ export default function AdminLeadsPage() {
     if (loading) {
         return (
             <>
-                <Navigation />
-                <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                <div className="relative min-h-[60vh] flex items-center justify-center">
                     <div className="text-center">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pr-orange mx-auto mb-4"></div>
                         <p className="text-gray-600">Chargement des leads...</p>
                     </div>
                 </div>
@@ -201,8 +199,7 @@ export default function AdminLeadsPage() {
 
     return (
         <>
-            <Navigation />
-            <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+            <div className="relative py-8 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     {/* Header */}
                     <div className="mb-8">
