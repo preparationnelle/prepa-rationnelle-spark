@@ -74,26 +74,30 @@ const EducationalSidebar: React.FC = () => {
       >
         {/* Onglet "marque-page" papier quand fermé */}
         {!isExpanded && (
-          <div
+          <button
+            type="button"
+            aria-label="Ouvrir l'espace éducatif"
+            title="Espace éducatif"
             className={cn(
               'absolute left-0 top-1/3 -translate-y-1/2 z-10 cursor-pointer group',
               'bg-carnet-paper-2 border border-l-0 border-dashed border-carnet-rule rounded-r-md',
-              'shadow-[4px_2px_16px_rgba(78,55,30,0.10)] py-6 px-2.5',
-              'flex flex-col items-center gap-4 transition-all duration-300 hover:pl-3.5'
+              'shadow-[4px_2px_16px_rgba(78,55,30,0.10)] py-7 px-3',
+              'flex flex-col items-center gap-4 transition-all duration-300 hover:pl-4',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-carnet-red focus-visible:ring-offset-2'
             )}
           >
             <div className="relative">
-              <BookOpen className="h-5 w-5 text-carnet-red group-hover:scale-110 transition-transform" />
-              <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-carnet-red rounded-full animate-pulse" />
+              <BookOpen className="h-5 w-5 text-carnet-red group-hover:scale-110 transition-transform" aria-hidden="true" />
+              <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-carnet-red rounded-full animate-pulse" aria-hidden="true" />
             </div>
             <span
-              className="font-instrument text-[10px] font-bold text-carnet-ink uppercase tracking-[0.2em] whitespace-nowrap opacity-80 group-hover:opacity-100 transition-opacity"
+              className="font-instrument text-[12px] font-bold text-carnet-ink uppercase tracking-[0.18em] whitespace-nowrap opacity-90 group-hover:opacity-100 transition-opacity"
               style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
             >
               Espace Éducatif
             </span>
-            <ChevronRight className="h-4 w-4 text-carnet-red group-hover:translate-x-1 transition-transform" />
-          </div>
+            <ChevronRight className="h-4 w-4 text-carnet-red group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+          </button>
         )}
 
         {/* Marge rouge interne (rappelle la marge du carnet) */}

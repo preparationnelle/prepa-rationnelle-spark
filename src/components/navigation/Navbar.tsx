@@ -259,7 +259,7 @@ const Navbar: React.FC<NavbarProps> = ({ showSignup = true }) => {
       )}>
         <nav className="container mx-auto px-4 lg:px-6 h-full flex items-center justify-between">
           <Link to="/" className="flex items-center" onClick={closeMenu}>
-            <Logo size="sm" />
+            <Logo size="md" />
           </Link>
 
           {/* Desktop Navigation */}

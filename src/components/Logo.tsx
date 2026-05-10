@@ -7,9 +7,9 @@ interface LogoProps {
 
 export const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
   const textSizes = {
-    sm: 'text-xs',
-    md: 'text-sm',
-    lg: 'text-lg'
+    sm: 'text-sm',       // 14px (was 12px — too small for a primary brand affordance)
+    md: 'text-base',     // 16px
+    lg: 'text-xl'        // 20px
   };
 
   return (

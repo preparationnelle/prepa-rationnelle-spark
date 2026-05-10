@@ -17,13 +17,14 @@ const ChatWidget = () => {
   };
 
   return (
-    <Button 
-      className="fixed bottom-4 right-4 z-50 shadow-lg flex items-center gap-2 pr-4 bg-green-500 hover:bg-green-600 text-white"
+    <Button
+      className="fixed bottom-4 right-4 z-50 shadow-lg flex items-center gap-2 pr-4 bg-pr-orange hover:bg-pr-orange-dark text-white"
       onClick={handleWhatsAppRedirect}
+      aria-label="Poser une question sur la prépa via WhatsApp"
     >
-      <MessageCircle className="h-5 w-5" />
-      <span className="hidden sm:inline">Une question sur la prépa ? 👇</span>
-      <span className="inline sm:hidden">Question ? 👇</span>
+      <MessageCircle className="h-5 w-5" aria-hidden="true" />
+      <span className="hidden sm:inline">Une question sur la prépa&nbsp;?</span>
+      <span className="inline sm:hidden">Question&nbsp;?</span>
     </Button>
   );
 };
