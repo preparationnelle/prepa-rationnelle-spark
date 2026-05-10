@@ -80,11 +80,11 @@ const VideoCard: React.FC<{ video: VideoItem; index: number }> = ({ video, index
             className="scale-in group"
             style={{ animationDelay: `${0.08 * index}s` }}
         >
-            <div className="bg-white border border-[#D8D6CE] rounded-xl hover:border-[#F4845F] transition-colors duration-300 overflow-hidden h-full flex flex-col">
-                <div className="h-[3px] w-full bg-[#F4845F]" />
+            <div className="bg-white border border-pr-gray-light rounded-xl hover:border-pr-orange transition-colors duration-300 overflow-hidden h-full flex flex-col">
+                <div className="h-[3px] w-full bg-pr-orange" />
 
                 {/* Vignette / lecteur */}
-                <div className="relative aspect-video bg-[#F7F6F3] overflow-hidden">
+                <div className="relative aspect-video bg-pr-gray-bg overflow-hidden">
                     {isPlaying ? (
                         <iframe
                             src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
@@ -105,15 +105,15 @@ const VideoCard: React.FC<{ video: VideoItem; index: number }> = ({ video, index
                                 }}
                             />
                             <div
-                                className="absolute inset-0 bg-[#1A1A18]/20 group-hover:bg-[#1A1A18]/10 transition-colors duration-300 flex items-center justify-center cursor-pointer"
+                                className="absolute inset-0 bg-pr-black/20 group-hover:bg-pr-black/10 transition-colors duration-300 flex items-center justify-center cursor-pointer"
                                 onClick={() => setIsPlaying(true)}
                             >
-                                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#F4845F] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-pr-orange rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <Play className="h-7 w-7 sm:h-8 sm:w-8 text-white ml-1" fill="white" />
                                 </div>
                             </div>
                             <div className="absolute top-3 left-3">
-                                <span className="inline-flex items-center px-3 py-1 rounded text-[10px] font-semibold uppercase tracking-wider text-[#C45A35] bg-[#FDF0EC] border border-[#F9C4B0]">
+                                <span className="inline-flex items-center px-3 py-1 rounded text-[10px] font-semibold uppercase tracking-wider text-pr-orange-dark bg-pr-orange-pale border border-pr-orange-soft">
                                     {categoryLabel}
                                 </span>
                             </div>
@@ -123,16 +123,16 @@ const VideoCard: React.FC<{ video: VideoItem; index: number }> = ({ video, index
 
                 {/* Corps */}
                 <div className="p-5 sm:p-6 flex-1 flex flex-col">
-                    <h3 className="font-serif text-xl text-[#1A1A18] mb-2 group-hover:text-[#F4845F] transition-colors duration-300">
+                    <h3 className="font-serif text-xl text-pr-black mb-2 group-hover:text-pr-orange transition-colors duration-300">
                         {video.title}
                     </h3>
-                    <p className="text-sm text-[#1A1A18] leading-relaxed mb-5 flex-1">
+                    <p className="text-sm text-pr-black leading-relaxed mb-5 flex-1">
                         {video.description}
                     </p>
-                    <div className="flex items-center justify-between pt-4 border-t border-[#D8D6CE]">
+                    <div className="flex items-center justify-between pt-4 border-t border-pr-gray-light">
                         <button
                             onClick={() => setIsPlaying(true)}
-                            className="inline-flex items-center gap-2 text-[#F4845F] hover:text-[#C45A35] font-semibold text-sm transition-colors duration-300"
+                            className="inline-flex items-center gap-2 text-pr-orange hover:text-pr-orange-dark font-semibold text-sm transition-colors duration-300"
                         >
                             <Play className="h-4 w-4" />
                             Regarder la vidéo
@@ -141,7 +141,7 @@ const VideoCard: React.FC<{ video: VideoItem; index: number }> = ({ video, index
                             href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-[#1A1A18]/60 hover:text-[#1A1A18] text-xs transition-colors duration-300"
+                            className="text-pr-black/60 hover:text-pr-black text-xs transition-colors duration-300"
                         >
                             YouTube ↗
                         </a>
@@ -180,7 +180,7 @@ const ConseilsVideosPage: React.FC = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-[#F7F6F3]">
+        <div className="min-h-screen bg-pr-gray-bg">
             <SEOHead
                 title="Conseils en vidéo — Prépa Rationnelle | Tous mes conseils pour réussir en prépa ECG"
                 description="Retrouvez tous mes conseils en vidéo pour réussir en prépa ECG : méthodes de travail, gestion du temps, astuces pour progresser et sessions live."
@@ -192,7 +192,7 @@ const ConseilsVideosPage: React.FC = () => {
                 <div className="fade-in-up mb-10">
                     <Link
                         to="/"
-                        className="inline-flex items-center gap-2 text-[#1A1A18] hover:text-[#F4845F] transition-colors duration-300 group text-sm font-medium"
+                        className="inline-flex items-center gap-2 text-pr-black hover:text-pr-orange transition-colors duration-300 group text-sm font-medium"
                     >
                         <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                         Retour à l'accueil
@@ -201,46 +201,46 @@ const ConseilsVideosPage: React.FC = () => {
 
                 {/* Hero */}
                 <div className="text-center mb-14 sm:mb-20">
-                    <div className="fade-in-up inline-flex items-center gap-2 bg-[#FDF0EC] text-[#C45A35] border border-[#F9C4B0] px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
+                    <div className="fade-in-up inline-flex items-center gap-2 bg-pr-orange-pale text-pr-orange-dark border border-pr-orange-soft px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
                         <Video className="h-3.5 w-3.5" />
                         {videos.length} vidéos disponibles
                     </div>
 
-                    <h1 className="fade-in-up font-serif text-5xl sm:text-6xl lg:text-7xl mb-5 text-[#1A1A18] leading-tight" style={{ animationDelay: '0.05s' }}>
-                        Tous mes <span className="text-[#F4845F]">conseils en vidéo</span>
+                    <h1 className="fade-in-up font-serif text-5xl sm:text-6xl lg:text-7xl mb-5 text-pr-black leading-tight" style={{ animationDelay: '0.05s' }}>
+                        Tous mes <span className="text-pr-orange">conseils en vidéo</span>
                     </h1>
 
                     <div className="fade-in-up flex justify-center mb-5" style={{ animationDelay: '0.07s' }}>
-                        <div className="h-[2px] w-16 bg-[#F4845F]" />
+                        <div className="h-[2px] w-16 bg-pr-orange" />
                     </div>
 
-                    <p className="fade-in-up text-base sm:text-lg text-[#1A1A18] max-w-2xl mx-auto leading-relaxed" style={{ animationDelay: '0.1s' }}>
+                    <p className="fade-in-up text-base sm:text-lg text-pr-black max-w-2xl mx-auto leading-relaxed" style={{ animationDelay: '0.1s' }}>
                         Méthodes de travail, gestion du temps, astuces pour progresser. Toutes mes vidéos pour réussir ta prépa ECG.
                     </p>
                 </div>
 
                 {/* Stats */}
                 <div className="fade-in-up max-w-3xl mx-auto mb-16" style={{ animationDelay: '0.15s' }}>
-                    <div className="bg-white border border-[#D8D6CE] rounded-xl overflow-hidden">
-                        <div className="h-[3px] w-full bg-[#F4845F]" />
+                    <div className="bg-white border border-pr-gray-light rounded-xl overflow-hidden">
+                        <div className="h-[3px] w-full bg-pr-orange" />
                         <div className="grid grid-cols-3 divide-x divide-[#D8D6CE]">
                             <div className="text-center p-6 sm:p-8">
-                                <div className="font-serif text-4xl sm:text-5xl text-[#F4845F] mb-2 leading-none">
+                                <div className="font-serif text-4xl sm:text-5xl text-pr-orange mb-2 leading-none">
                                     {videos.length}
                                 </div>
-                                <div className="text-[10px] text-[#1A1A18] font-semibold uppercase tracking-wider">Vidéos</div>
+                                <div className="text-[10px] text-pr-black font-semibold uppercase tracking-wider">Vidéos</div>
                             </div>
                             <div className="text-center p-6 sm:p-8">
-                                <div className="font-serif text-4xl sm:text-5xl text-[#F4845F] mb-2 leading-none">
+                                <div className="font-serif text-4xl sm:text-5xl text-pr-orange mb-2 leading-none">
                                     4
                                 </div>
-                                <div className="text-[10px] text-[#1A1A18] font-semibold uppercase tracking-wider">Séries de conseils</div>
+                                <div className="text-[10px] text-pr-black font-semibold uppercase tracking-wider">Séries de conseils</div>
                             </div>
                             <div className="text-center p-6 sm:p-8">
-                                <div className="font-serif text-4xl sm:text-5xl text-[#F4845F] mb-2 leading-none">
+                                <div className="font-serif text-4xl sm:text-5xl text-pr-orange mb-2 leading-none">
                                     100<span className="text-2xl">%</span>
                                 </div>
-                                <div className="text-[10px] text-[#1A1A18] font-semibold uppercase tracking-wider">Gratuit</div>
+                                <div className="text-[10px] text-pr-black font-semibold uppercase tracking-wider">Gratuit</div>
                             </div>
                         </div>
                     </div>
@@ -255,24 +255,24 @@ const ConseilsVideosPage: React.FC = () => {
 
                 {/* CTA */}
                 <div className="fade-in-up max-w-2xl mx-auto" style={{ animationDelay: '0.3s' }}>
-                    <div className="bg-white border border-[#D8D6CE] rounded-xl overflow-hidden">
-                        <div className="h-[3px] w-full bg-[#F4845F]" />
+                    <div className="bg-white border border-pr-gray-light rounded-xl overflow-hidden">
+                        <div className="h-[3px] w-full bg-pr-orange" />
                         <div className="p-10 sm:p-12 text-center">
-                            <div className="inline-flex items-center gap-2 bg-[#FDF0EC] text-[#C45A35] border border-[#F9C4B0] px-4 py-1.5 rounded-full mb-6">
+                            <div className="inline-flex items-center gap-2 bg-pr-orange-pale text-pr-orange-dark border border-pr-orange-soft px-4 py-1.5 rounded-full mb-6">
                                 <Sparkles className="h-3.5 w-3.5" />
                                 <span className="font-semibold text-xs uppercase tracking-wider">Envie d'aller plus loin ?</span>
                             </div>
-                            <h2 className="font-serif text-3xl sm:text-4xl text-[#1A1A18] mb-4 leading-tight">
-                                Rejoins les <span className="text-[#F4845F]">formations complètes</span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-pr-black mb-4 leading-tight">
+                                Rejoins les <span className="text-pr-orange">formations complètes</span>
                             </h2>
-                            <p className="text-[#1A1A18] mb-8 max-w-lg mx-auto">
+                            <p className="text-pr-black mb-8 max-w-lg mx-auto">
                                 Accède à toutes les formations : cours, exercices, flashcards, quiz et coaching personnalisé pour réussir tes concours.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-3 justify-center">
                                 <Link to="/formations">
                                     <Button
                                         size="lg"
-                                        className="w-full sm:w-auto bg-[#F4845F] hover:bg-[#C45A35] text-white font-semibold py-6 px-7 text-base rounded-lg shadow-none transition-colors"
+                                        className="w-full sm:w-auto bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold py-6 px-7 text-base rounded-lg shadow-none transition-colors"
                                     >
                                         Voir les formations
                                         <Sparkles className="ml-2 h-4 w-4" />
@@ -282,7 +282,7 @@ const ConseilsVideosPage: React.FC = () => {
                                     <Button
                                         size="lg"
                                         variant="outline"
-                                        className="w-full sm:w-auto bg-white hover:bg-[#F7F6F3] text-[#1A1A18] border border-[#D8D6CE] font-semibold py-6 px-7 text-base rounded-lg shadow-none transition-colors"
+                                        className="w-full sm:w-auto bg-white hover:bg-pr-gray-bg text-pr-black border border-pr-gray-light font-semibold py-6 px-7 text-base rounded-lg shadow-none transition-colors"
                                     >
                                         Me contacter
                                     </Button>
