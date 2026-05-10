@@ -357,26 +357,26 @@ const ProfesseurPage = () => {
             </Card>
 
             {/* Card Rémunération */}
-            <Card className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-blue-300 hover:bg-blue-50 group">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors duration-300">
-                <Euro className="h-8 w-8 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" />
+            <Card className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-pr-orange hover:bg-pr-orange-pale group">
+              <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-pr-orange-soft transition-colors duration-300">
+                <Euro className="h-8 w-8 text-carnet-red group-hover:text-carnet-red transition-colors duration-300" />
               </div>
-              <h3 className="font-semibold text-xl mb-2 text-blue-700 group-hover:text-blue-800 transition-colors duration-300">
+              <h3 className="font-semibold text-xl mb-2 text-carnet-red group-hover:text-carnet-red-deep transition-colors duration-300">
                 Rémunération attractive
               </h3>
               <p className="text-sm text-gray-600 mb-3 group-hover:text-gray-700 transition-colors duration-300">
                 Tarifs compétitifs et paiement régulier pour récompenser votre expertise
               </p>
               <div className="space-y-1 text-xs text-left">
-                <div className="flex items-center text-blue-600 group-hover:text-blue-700 transition-colors duration-300">
+                <div className="flex items-center text-carnet-red group-hover:text-carnet-red transition-colors duration-300">
                   <span className="mr-2">✓</span>
                   <span>Tarifs de 20€ à 40€/h</span>
                 </div>
-                <div className="flex items-center text-blue-600 group-hover:text-blue-700 transition-colors duration-300">
+                <div className="flex items-center text-carnet-red group-hover:text-carnet-red transition-colors duration-300">
                   <span className="mr-2">✓</span>
                   <span>Paiement mensuel garanti</span>
                 </div>
-                <div className="flex items-center text-blue-600 group-hover:text-blue-700 transition-colors duration-300">
+                <div className="flex items-center text-carnet-red group-hover:text-carnet-red transition-colors duration-300">
                   <span className="mr-2">✓</span>
                   <span>Bonus de performance</span>
                 </div>

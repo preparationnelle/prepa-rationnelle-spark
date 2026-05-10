@@ -62,9 +62,9 @@ const RoutineMathsBetonPage = () => {
               </div>
 
               {/* Solution */}
-              <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
-                <h3 className="text-xl font-bold text-blue-800 mb-3">La solution : routine, discipline et clarté pour travailler efficacement</h3>
-                <p className="text-blue-700">
+              <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-pr-orange">
+                <h3 className="text-xl font-bold text-carnet-red-deep mb-3">La solution : routine, discipline et clarté pour travailler efficacement</h3>
+                <p className="text-carnet-red">
                   Passez à une approche structurée. Voici un guide pas-à-pas pour travailler les maths ECG avec efficacité, en équilibrant motivation et discipline.
                 </p>
               </div>
@@ -90,9 +90,9 @@ const RoutineMathsBetonPage = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                      <p className="text-blue-800 font-semibold">Astuce anti-doute :</p>
-                      <p className="text-blue-700">Ne vous posez pas 100 questions. Votre routine est le boss – lancez-vous, et les réponses viendront en travaillant.</p>
+                    <div className="bg-pr-orange-pale p-4 rounded-lg border border-pr-orange-soft">
+                      <p className="text-carnet-red-deep font-semibold">Astuce anti-doute :</p>
+                      <p className="text-carnet-red">Ne vous posez pas 100 questions. Votre routine est le boss – lancez-vous, et les réponses viendront en travaillant.</p>
                     </div>
                     
                     <div className="bg-gray-100 p-4 rounded-lg">
@@ -121,9 +121,9 @@ const RoutineMathsBetonPage = () => {
                         <p className="text-gray-700 text-sm">Que vous soyez en forme ou non, avancez. Discipline signifie travailler quotidiennement, transformant l'effort en habitude automatique.</p>
                       </div>
                       
-                      <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                        <p className="text-blue-800 font-semibold">Conseil pratique :</p>
-                        <p className="text-blue-700">Si la motivation flanche, commencez par 10 minutes — souvent, cela suffit à enchaîner.</p>
+                      <div className="bg-pr-orange-pale p-4 rounded-lg border border-pr-orange-soft">
+                        <p className="text-carnet-red-deep font-semibold">Conseil pratique :</p>
+                        <p className="text-carnet-red">Si la motivation flanche, commencez par 10 minutes — souvent, cela suffit à enchaîner.</p>
                       </div>
                     </div>
                   </div>
@@ -178,12 +178,12 @@ const RoutineMathsBetonPage = () => {
               </div>
 
               {/* Conclusion */}
-              <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
-                <h3 className="text-xl font-bold text-blue-800 mb-3">Conclusion</h3>
-                <p className="text-blue-700 mb-4">
+              <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-pr-orange">
+                <h3 className="text-xl font-bold text-carnet-red-deep mb-3">Conclusion</h3>
+                <p className="text-carnet-red mb-4">
                   Travailler efficacement les maths en prépa ECG se résume à une routine inébranlable, un mix motivation-discipline, et une clarté totale sur les chapitres. Ne laissez plus les doutes ou les baisses d'humeur freiner votre progression — avancez quotidiennement pour combler retards et prendre l'avance.
                 </p>
-                <p className="text-blue-700 font-semibold">
+                <p className="text-carnet-red font-semibold">
                   Appliquez ces étapes dès maintenant pour des résultats tangibles aux concours BCE. Votre discipline d'aujourd'hui forge vos top notes de demain — lancez-vous !
                 </p>
               </div>

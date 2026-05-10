@@ -77,11 +77,11 @@ const PreparationCubePage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
-              <h4 className="font-semibold text-blue-800 mb-2">
+            <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-pr-orange-dark">
+              <h4 className="font-semibold text-carnet-red-deep mb-2">
                 Pourquoi choisir notre accompagnement ?
               </h4>
-              <p className="text-blue-700">
+              <p className="text-carnet-red">
                 Nos coachs connaissent parfaitement les exigences des concours ECG. 
                 Ils t'accompagnent avec des méthodes éprouvées et un suivi personnalisé 
                 pour maximiser tes chances de réussite.

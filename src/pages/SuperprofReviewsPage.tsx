@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Star, ExternalLink, Quote, ArrowLeft, Home, ChevronRight } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const SuperprofReviewsPage = () => {
   const reviews = [
@@ -89,7 +88,6 @@ const SuperprofReviewsPage = () => {
 
   return (
     <>
-      <Navigation />
       
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border/40">
@@ -105,7 +103,7 @@ const SuperprofReviewsPage = () => {
         </div>
       </nav>
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8 px-4">
+      <div className="relative bg-gradient-to-br from-carnet-paper-2 via-pr-orange-pale to-pr-orange-pale py-8 px-4">
         <div className="container mx-auto max-w-6xl">
           {/* En-tête */}
           <div className="text-center mb-12">
@@ -113,7 +111,7 @@ const SuperprofReviewsPage = () => {
               {renderStars()}
               <span className="text-2xl font-bold text-gray-700 ml-2">5.0/5</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-carnet-red to-pr-orange bg-clip-text text-transparent">
               Tous mes avis Superprof
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
@@ -123,7 +121,7 @@ const SuperprofReviewsPage = () => {
             {/* Statistiques */}
             <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
               <div className="bg-white rounded-xl p-6 shadow-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">15+</div>
+                <div className="text-3xl font-bold text-carnet-red mb-2">15+</div>
                 <div className="text-gray-600">Avis vérifiés</div>
               </div>
               <div className="bg-white rounded-xl p-6 shadow-lg">
@@ -140,10 +138,10 @@ const SuperprofReviewsPage = () => {
           {/* Grille des avis */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {reviews.map((review, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-2 border-blue-200 hover:border-blue-300 bg-white/90 backdrop-blur-sm">
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-2 border-carnet-red/30 hover:border-carnet-red/40 bg-white/90 backdrop-blur-sm">
                 <CardHeader className="pb-4">
                   <div className="flex items-start gap-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                    <div className="w-16 h-16 bg-gradient-to-br from-carnet-red to-pr-orange rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
                       {review.name.charAt(0)}
                     </div>
                     <div className="flex-1">
@@ -162,7 +160,7 @@ const SuperprofReviewsPage = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="relative">
-                    <Quote className="h-5 w-5 text-blue-400 absolute -top-2 -left-2" />
+                    <Quote className="h-5 w-5 text-carnet-red/60 absolute -top-2 -left-2" />
                     <p className="text-gray-700 leading-relaxed pl-6 text-sm">
                       {review.content}
                     </p>
@@ -190,7 +188,7 @@ const SuperprofReviewsPage = () => {
                 >
                   <Button 
                     size="lg" 
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-4 px-8 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                    className="bg-gradient-to-r from-carnet-red to-pr-orange hover:from-carnet-red-deep hover:to-pr-orange-dark text-white font-semibold py-4 px-8 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                   >
                     Voir tous les avis sur Superprof
                     <ExternalLink className="ml-2 h-5 w-5" />
@@ -201,7 +199,7 @@ const SuperprofReviewsPage = () => {
                   <Button 
                     variant="outline"
                     size="lg" 
-                    className="border-2 border-blue-200 hover:border-blue-300 text-blue-600 hover:text-blue-700 font-semibold py-4 px-8 text-lg"
+                    className="border-2 border-carnet-red/30 hover:border-carnet-red/40 text-carnet-red hover:text-carnet-red font-semibold py-4 px-8 text-lg"
                   >
                     Me contacter
                   </Button>

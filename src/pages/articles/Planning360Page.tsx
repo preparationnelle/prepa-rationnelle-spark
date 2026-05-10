@@ -66,9 +66,9 @@ const Planning360Page = () => {
               </div>
 
               {/* Solution */}
-              <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
-                <h3 className="text-xl font-bold text-blue-800 mb-3">La solution : intégrez les maths efficacement dans votre planning</h3>
-                <p className="text-blue-700">
+              <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-pr-orange">
+                <h3 className="text-xl font-bold text-carnet-red-deep mb-3">La solution : intégrez les maths efficacement dans votre planning</h3>
+                <p className="text-carnet-red">
                   Les maths ECG ne sont pas une charge isolée ; elles structurent votre organisation en boostant logique et rigueur, utiles partout. Voici un plan pas-à-pas pour les insérer sans oublier le reste.
                 </p>
               </div>
@@ -124,9 +124,9 @@ const Planning360Page = () => {
                       <p className="text-gray-700 text-sm">Passez à des annales BCE ; notez erreurs dans un carnet pour éviter répétitions.</p>
                     </div>
                     
-                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                      <p className="text-blue-800 font-semibold">Intégrez cela dans des slots courts :</p>
-                      <p className="text-blue-700">45 min maths avant une colle ESH, pour fluidité.</p>
+                    <div className="bg-pr-orange-pale p-4 rounded-lg border border-pr-orange-soft">
+                      <p className="text-carnet-red-deep font-semibold">Intégrez cela dans des slots courts :</p>
+                      <p className="text-carnet-red">45 min maths avant une colle ESH, pour fluidité.</p>
                     </div>
                   </div>
                 </div>
@@ -182,12 +182,12 @@ const Planning360Page = () => {
               </div>
 
               {/* Conclusion */}
-              <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
-                <h3 className="text-xl font-bold text-blue-800 mb-3">Conclusion</h3>
-                <p className="text-blue-700 mb-4">
+              <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-pr-orange">
+                <h3 className="text-xl font-bold text-carnet-red-deep mb-3">Conclusion</h3>
+                <p className="text-carnet-red mb-4">
                   Intégrer les maths ECG dans un planning chargé repose sur leur rôle structurant, des tâches ciblées (lire, comprendre, flashcards, exercices croissants), et un équilibre matières sans faille. Cela rend votre prépa efficace, booste notes aux concours BCE, et prévient l'épuisement.
                 </p>
-                <p className="text-blue-700 font-semibold">
+                <p className="text-carnet-red font-semibold">
                   Agissez : refondez votre planning dès aujourd'hui pour un équilibre gagnant. Vos top écoles BCE s'approchent – optimisez maintenant !
                 </p>
               </div>

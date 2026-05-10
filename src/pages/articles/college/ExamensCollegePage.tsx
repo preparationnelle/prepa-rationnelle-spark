@@ -2,12 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Home, ChevronRight, ArrowLeft, PenTool, Timer, CheckCircle, Brain, Calendar } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const ExamensCollegePage = () => {
     return (
         <>
-            <Navigation />
             <div className="min-h-screen bg-white">
                 {/* Fil d'Ariane */}
                 <nav className="border-b border-gray-100">
@@ -49,8 +47,8 @@ const ExamensCollegePage = () => {
                         <hr className="my-10 border-gray-200" />
 
                         <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6">1. Avant la révision : l'écoute active en classe</h2>
-                        <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-6">
-                            <p className="text-blue-900 font-medium">
+                        <div className="bg-pr-orange-pale border-l-4 border-carnet-red p-6 my-6">
+                            <p className="text-carnet-red-deep font-medium">
                                 Le secret le mieux gardé des bons élèves : 70% du travail d'apprentissage se fait EN CLASSE.
                             </p>
                         </div>

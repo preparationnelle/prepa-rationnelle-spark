@@ -74,12 +74,12 @@ const PlanAntiDecouragementPage = () => {
               </div>
 
               {/* Solution */}
-              <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
-                <h3 className="text-xl font-bold text-blue-800 mb-3 flex items-center gap-2">
+              <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-pr-orange">
+                <h3 className="text-xl font-bold text-carnet-red-deep mb-3 flex items-center gap-2">
                   <Lightbulb className="h-5 w-5" />
                   La solution : stratégies pour résister et progresser en maths ECG
                 </h3>
-                <p className="text-blue-700">
+                <p className="text-carnet-red">
                   Face à la difficulté, ne luttez pas seul. Voici un plan étape par étape pour résister, en misant sur la régularité et un mindset de gagnant.
                 </p>
               </div>
@@ -126,9 +126,9 @@ const PlanAntiDecouragementPage = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                      <p className="text-blue-800 font-semibold">Astuce :</p>
-                      <p className="text-blue-700">Utilisez un journal : notez avancées quotidiennes. Cela motive quand les notes basses frappent.</p>
+                    <div className="bg-pr-orange-pale p-4 rounded-lg border border-pr-orange-soft">
+                      <p className="text-carnet-red-deep font-semibold">Astuce :</p>
+                      <p className="text-carnet-red">Utilisez un journal : notez avancées quotidiennes. Cela motive quand les notes basses frappent.</p>
                     </div>
                     
                     <div className="bg-gray-100 p-4 rounded-lg">
@@ -160,9 +160,9 @@ const PlanAntiDecouragementPage = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                      <p className="text-blue-800 font-semibold">Conseil pratique :</p>
-                      <p className="text-blue-700">Prenez une pause active — marche ou discussion avec un pair — puis reprenez. 80% des admis BCE ont traversé ces phases.</p>
+                    <div className="bg-pr-orange-pale p-4 rounded-lg border border-pr-orange-soft">
+                      <p className="text-carnet-red-deep font-semibold">Conseil pratique :</p>
+                      <p className="text-carnet-red">Prenez une pause active — marche ou discussion avec un pair — puis reprenez. 80% des admis BCE ont traversé ces phases.</p>
                     </div>
                   </div>
                 </div>
@@ -193,12 +193,12 @@ const PlanAntiDecouragementPage = () => {
               </div>
 
               {/* Conclusion */}
-              <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
-                <h3 className="text-xl font-bold text-blue-800 mb-3">Conclusion</h3>
-                <p className="text-blue-700 mb-4">
+              <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-pr-orange">
+                <h3 className="text-xl font-bold text-carnet-red-deep mb-3">Conclusion</h3>
+                <p className="text-carnet-red mb-4">
                   Résister aux difficultés en maths ECG se joue sur régularité, objectifs clairs vers concours BCE, et une persévérance anti-découragement. Travaillez bases et applications ; acceptez que l'assimilation prenne du temps.
                 </p>
-                <p className="text-blue-700 font-semibold">
+                <p className="text-carnet-red font-semibold">
                   Cette approche transforme les frustrations en forces, boostant notes et confiance. La montée en puissance commence maintenant — persévérez !
                 </p>
               </div>

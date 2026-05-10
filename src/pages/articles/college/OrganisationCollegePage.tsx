@@ -2,12 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Home, ChevronRight, ArrowLeft, Clock, Calendar, CheckSquare, Brain, PhoneOff } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const OrganisationCollegePage = () => {
     return (
         <>
-            <Navigation />
             <div className="min-h-screen bg-white">
                 {/* Fil d'Ariane */}
                 <nav className="border-b border-gray-100">
@@ -55,8 +53,8 @@ const OrganisationCollegePage = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
                             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
-                                <div className="mx-auto bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                                    <CheckSquare className="h-6 w-6 text-blue-600" />
+                                <div className="mx-auto bg-pr-orange-pale w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                    <CheckSquare className="h-6 w-6 text-carnet-red" />
                                 </div>
                                 <h3 className="font-bold text-gray-900 mb-2">Le Lieu</h3>
                                 <p className="text-sm text-gray-600">Un bureau rangé, calme, avec tout le matériel à portée de main. Pas sur le lit, pas devant la télé.</p>

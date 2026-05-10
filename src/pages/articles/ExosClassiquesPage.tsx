@@ -7,7 +7,7 @@ import { Home, ChevronRight, CheckCircle2, ArrowLeft } from 'lucide-react';
 
 const ExosClassiquesPage = () => {
   return (
-    <div className="min-h-screen bg-[#FFFBF8]">
+    <div className="relative">
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs font-medium text-amber-700">

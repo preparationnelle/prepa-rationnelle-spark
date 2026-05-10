@@ -316,7 +316,7 @@ export default function CGUPage() {
 
             {/* Section Liens utiles */}
             <div className="mt-6 space-y-4">
-              <Card className="bg-gradient-to-r from-blue-50 to-orange-50 border-2 border-carnet-red/30">
+              <Card className="bg-gradient-to-r from-carnet-paper-2 to-pr-orange-pale border-2 border-carnet-red/30">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-xl text-center text-primary">
                     🌟 Découvrez nos formations
@@ -418,7 +418,7 @@ export default function CGUPage() {
               </Card>
 
               {/* Cours gratuit */}
-              <Card className="bg-gradient-to-r from-orange-50 to-blue-50 border-2 border-orange-200">
+              <Card className="bg-gradient-to-r from-pr-orange-pale to-carnet-paper-2 border-2 border-orange-200">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg text-center text-primary">
                     🎁 Réservez votre cours gratuit !

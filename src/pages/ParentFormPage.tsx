@@ -127,10 +127,6 @@ const ParentFormPage = () => {
         <div className="absolute -z-10 inset-0" style={{ backgroundColor: 'var(--section-bg-1)' }}></div>
 
         {/* Bulles décoratives */}
-        <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse"></div>
-        <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow"></div>
-        <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-orange-200 rounded-full opacity-5 animate-pulse"></div>
 
         <div className="relative z-10 w-full max-w-4xl mx-auto">
           <div className="text-center mb-12">
@@ -300,7 +296,7 @@ const ParentFormPage = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                    className="bg-pr-orange hover:bg-pr-orange-dark text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
                   >
                     {isSubmitting ? (
                       <>

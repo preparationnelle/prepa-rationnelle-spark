@@ -468,7 +468,7 @@ const ProfesseurDashboard = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <BookOpen className="h-5 w-5 text-blue-600" />
+                  <BookOpen className="h-5 w-5 text-carnet-red" />
                   Mes cours programmés
                 </CardTitle>
               </CardHeader>

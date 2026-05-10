@@ -2,12 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Home, ChevronRight, ArrowLeft, GraduationCap, Clock, BookOpen, Users, Calendar, CheckCircle } from 'lucide-react';
-import Navigation from '@/components/Navigation';
 
 const TransitionCollegePage = () => {
     return (
         <>
-            <Navigation />
             <div className="min-h-screen bg-white">
                 {/* Fil d'Ariane */}
                 <nav className="border-b border-gray-100">
@@ -69,9 +67,9 @@ const TransitionCollegePage = () => {
                                 </p>
                             </div>
 
-                            <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                            <div className="bg-pr-orange-pale p-6 rounded-xl border border-carnet-red/20">
                                 <div className="flex items-center gap-3 mb-3">
-                                    <Clock className="h-6 w-6 text-blue-600" />
+                                    <Clock className="h-6 w-6 text-carnet-red" />
                                     <h3 className="text-lg font-bold text-gray-900 m-0">Emploi du temps</h3>
                                 </div>
                                 <p className="text-gray-700 text-sm">

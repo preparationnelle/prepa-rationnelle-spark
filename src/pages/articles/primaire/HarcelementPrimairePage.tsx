@@ -64,10 +64,10 @@ const HarcelementPrimairePage = () => {
                         <div className="grid md:grid-cols-2 gap-6 my-8">
                             <div className="bg-pr-orange-pale p-6 rounded-xl border border-carnet-red/20">
                                 <h4 className="text-carnet-red-deep font-bold mb-3 flex items-center">
-                                    <span className="w-2 h-2 rounded-full bg-blue-500 mr-2"></span>
+                                    <span className="w-2 h-2 rounded-full bg-carnet-red mr-2"></span>
                                     Conflit Normal
                                 </h4>
-                                <ul className="text-sm text-blue-900 space-y-2">
+                                <ul className="text-sm text-carnet-red-deep space-y-2">
                                     <li>• <strong>Fréquence</strong> : Occasionnel, incident isolé</li>
                                     <li>• <strong>Raison</strong> : Dispute jeu, malentendu</li>
                                     <li>• <strong>Symétrie</strong> : Les deux peuvent avoir tort</li>

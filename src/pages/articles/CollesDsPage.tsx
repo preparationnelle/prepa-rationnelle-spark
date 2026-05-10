@@ -7,7 +7,7 @@ import { Home, ChevronRight, BookOpen, ArrowLeft, CheckCircle2 } from 'lucide-re
 
 const CollesDsPage = () => {
   return (
-    <div className="min-h-screen bg-[#F7FFF8]">
+    <div className="relative">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">

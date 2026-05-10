@@ -62,7 +62,7 @@ const OffreGratuitePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-carnet-paper-2 to-pr-orange-pale">
       {/* Header */}
       <section className="pt-20 pb-12 px-4">
         <div className="max-w-4xl mx-auto">
@@ -96,19 +96,19 @@ const OffreGratuitePage = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div 
-                className="bg-blue-50 rounded-lg p-6 border border-blue-200 cursor-pointer hover:bg-blue-100 hover:shadow-lg transition-all duration-200 hover:scale-105"
+                className="bg-pr-orange-pale rounded-lg p-6 border border-pr-orange-soft cursor-pointer hover:bg-carnet-red/10 hover:shadow-lg transition-all duration-200 hover:scale-105"
                 onClick={() => handleOptionSelection('ECG1')}
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+                  <div className="w-10 h-10 bg-carnet-red rounded-full flex items-center justify-center">
                     <User className="w-5 h-5 text-white" />
                   </div>
                   <div className="ml-3">
-                    <h3 className="font-bold text-blue-900">ECG 1ère année</h3>
-                    <p className="text-blue-700 text-sm">Session dédiée aux nouveaux arrivants</p>
+                    <h3 className="font-bold text-carnet-red-deep">ECG 1ère année</h3>
+                    <p className="text-carnet-red text-sm">Session dédiée aux nouveaux arrivants</p>
                   </div>
                 </div>
-                <div className="space-y-2 text-sm text-blue-800">
+                <div className="space-y-2 text-sm text-carnet-red-deep">
                   <div className="flex items-center">
                     <Calendar className="w-4 h-4 mr-2" />
                     15 août 2025 à 17h00
@@ -118,7 +118,7 @@ const OffreGratuitePage = () => {
                     Session Zoom interactive
                   </div>
                 </div>
-                <div className="mt-4 text-xs text-blue-600 font-semibold">
+                <div className="mt-4 text-xs text-carnet-red font-semibold">
                   👆 Cliquez ici pour accéder à votre session
                 </div>
               </div>
@@ -191,7 +191,7 @@ const OffreGratuitePage = () => {
                     <div className="space-y-4">
                       <Button 
                         onClick={() => handleOptionSelection('ECG1')}
-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white py-4 text-lg"
+                        className="w-full bg-carnet-red hover:bg-carnet-red-deep text-white py-4 text-lg"
                       >
                         Oui, je rentre en ECG 1
                       </Button>
@@ -299,8 +299,8 @@ const OffreGratuitePage = () => {
                   )}
                 </div>
                 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="text-blue-800 text-sm">
+                <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+                  <p className="text-carnet-red-deep text-sm">
                     💡 <strong>Conseil :</strong> Ajoutez cet événement à votre calendrier et rejoignez-nous 5 minutes avant le début !
                   </p>
                 </div>
