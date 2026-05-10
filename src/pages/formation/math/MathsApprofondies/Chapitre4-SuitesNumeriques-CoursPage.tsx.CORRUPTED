@@ -28,7 +28,7 @@ const MathsSuitesPage = () => {
           <Card className="border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300"
       subject="maths"
     >
-            <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+            <CardHeader className="bg-gradient-to-r from-carnet-red to-purple-600 text-white"
       subject="maths"
     >
               <CardTitle className="text-xl flex items-center gap-3"

@@ -56,7 +56,7 @@ const DiscoursIndirectPage = () => {
         </div>
 
         {/* Introduction */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50">
+        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
               <HelpCircle className="h-6 w-6" />
@@ -79,7 +79,7 @@ const DiscoursIndirectPage = () => {
               <p><span className="text-orange-700 font-semibold">Structure</span>: Subject + reporting verb + "exact words"</p>
               <p className="mt-2">Example: She said, "I am tired."</p>
             </div>
-            <div className="bg-white/70 rounded-lg p-4 border border-blue-200">
+            <div className="bg-white/70 rounded-lg p-4 border border-carnet-red/30">
               <h3 className="text-lg font-semibold mb-2">Reported Speech</h3>
               <p><span className="text-orange-700 font-semibold">Structure</span>: Subject + reporting verb + (that) + transformed clause</p>
               <p className="mt-2">Example: She said (that) she was tired.</p>
@@ -441,7 +441,7 @@ const DiscoursIndirectPage = () => {
                 </Button>
               </Link>
               <Link to="/formation/anglais/grammaire/discours-indirect/quiz">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Brain className="h-5 w-5 mr-2" />
                   Quiz
                 </Button>

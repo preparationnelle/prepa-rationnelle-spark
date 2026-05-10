@@ -24,7 +24,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
     title: string; 
     icon: any; 
   }) => (
-    <div className="bg-gradient-to-r from-blue-100 to-blue-50 border-l-4 border-carnet-red p-6 mb-6 rounded-r-lg shadow-sm">
+    <div className="bg-gradient-to-r from-carnet-red/10 to-pr-orange-pale border-l-4 border-carnet-red p-6 mb-6 rounded-r-lg shadow-sm">
       <div className="flex items-center gap-3">
         <div className="p-2 bg-carnet-red text-white rounded-lg">
           <Icon className="w-6 h-6" />
@@ -114,7 +114,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
 
       <div className="container mx-auto px-4 py-8">
         {/* En-tête */}
-        <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-br from-pr-orange-pale to-indigo-50 mb-8">
           <div className="p-8">
             <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-carnet-red to-pr-orange bg-clip-text text-transparent mb-4">
               Exercices - Chapitre 4 : Fonctions multivariées et calcul différentiel
@@ -3112,7 +3112,7 @@ const Chapitre4FonctionsMultivariees_CalculDifferentielExercicesPage = () => {
         />
 
         {/* Conseil méthodologique */}
-        <Card className="mt-8 border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50">
+        <Card className="mt-8 border-0 shadow-lg bg-gradient-to-br from-pr-orange-pale to-indigo-50">
           <div className="p-6">
             <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
               <BookOpen className="w-5 h-5" />

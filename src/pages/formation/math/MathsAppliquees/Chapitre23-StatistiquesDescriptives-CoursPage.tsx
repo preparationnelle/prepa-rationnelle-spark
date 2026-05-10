@@ -15,23 +15,23 @@ const Chapitre23StatistiquesDescriptivesCoursPage = () => {
       showNavigation={true}
     >
       {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-blue-50">
+      <Card className="border-0 shadow-lg bg-pr-orange-pale">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-statistiques-descriptives">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white">
                 <BookOpen className="mr-2 h-4 w-4" />
                 Cours
               </Button>
             </Link>
             <Link to="/formation/maths-statistiques-descriptives-exercices">
-              <Button variant="outline" className="border-blue-300 text-blue-600 hover:bg-blue-50">
+              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-orange-pale">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>
             </Link>
             <Link to="/formation/maths-statistiques-descriptives-quiz">
-              <Button variant="outline" className="border-blue-300 text-blue-600 hover:bg-blue-50">
+              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-orange-pale">
                 <Target className="mr-2 h-4 w-4" />
                 Quiz
               </Button>
@@ -43,8 +43,8 @@ const Chapitre23StatistiquesDescriptivesCoursPage = () => {
       {/* Message temporaire - En construction */}
       <Card className="border-0 shadow-lg">
         <CardContent className="p-12 text-center">
-          <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Construction className="w-10 h-10 text-blue-600" />
+          <div className="w-20 h-20 bg-carnet-red/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Construction className="w-10 h-10 text-carnet-red" />
           </div>
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             Cours en cours de construction
@@ -66,7 +66,7 @@ const Chapitre23StatistiquesDescriptivesCoursPage = () => {
               </Button>
             </Link>
             <Link to="/formation/maths-statistiques-descriptives-exercices">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>

@@ -267,7 +267,7 @@ print(res) # 55`}
             Pour écrire un algorithme, pensez toujours en 3 étapes :
             <ol className="list-decimal list-inside space-y-2 mt-2 font-medium">
               <li>
-                <span className="text-blue-600">Initialisation :</span> Définir les variables de départ (compteurs à 0, listes vides...).
+                <span className="text-carnet-red">Initialisation :</span> Définir les variables de départ (compteurs à 0, listes vides...).
               </li>
               <li>
                 <span className="text-amber-600">Traitement :</span> Le cœur du calcul (boucles, conditions).

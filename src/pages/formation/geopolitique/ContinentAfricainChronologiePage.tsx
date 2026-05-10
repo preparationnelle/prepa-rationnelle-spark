@@ -755,7 +755,7 @@ const ContinentAfricainChronologiePage = () => {
         <div className="space-y-8">
           {Object.entries(groupedEvents).sort().map(([decade, decadeEvents]) => (
             <Card key={decade} className="border-2 border-gray-200">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-slate-50">
+              <CardHeader className="bg-gradient-to-r from-pr-orange-pale to-slate-50">
                 <CardTitle className="text-2xl text-carnet-red-deep">
                   {decade.replace('-', ' - ')}
                 </CardTitle>

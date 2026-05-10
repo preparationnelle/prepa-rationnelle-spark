@@ -118,9 +118,9 @@ const MetauxPage = () => {
                   <li>• Zinc : Galvanisation, alliages</li>
                 </ul>
               </div>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-blue-800 mb-3">Métaux critiques</h4>
-                <ul className="text-sm text-blue-700 space-y-1">
+              <div className="bg-pr-orange-pale p-4 rounded-lg">
+                <h4 className="font-semibold text-carnet-red-deep mb-3">Métaux critiques</h4>
+                <ul className="text-sm text-carnet-red space-y-1">
                   <li>• Lithium : Batteries véhicules électriques</li>
                   <li>• Cobalt : Batteries haute performance</li>
                   <li>• Terres rares : Technologies avancées</li>
@@ -164,7 +164,7 @@ const MetauxPage = () => {
                 {ironProducers.map((producer, index) => (
                   <div key={index} className="text-center">
                     <div className="font-bold text-gray-700">{producer.country}</div>
-                    <div className="text-sm text-blue-600">{producer.share}</div>
+                    <div className="text-sm text-carnet-red">{producer.share}</div>
                     <div className="text-xs text-gray-600">{producer.note}</div>
                   </div>
                 ))}
@@ -177,21 +177,21 @@ const MetauxPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Battery className="h-5 w-5 text-blue-600" />
+              <Battery className="h-5 w-5 text-carnet-red" />
               Course aux métaux critiques
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {criticalMetals.map((metal, index) => (
-                <div key={index} className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div key={index} className="p-4 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <div className="font-semibold text-blue-800 mb-1">{metal.metal}</div>
-                      <div className="text-sm text-blue-700 mb-2">
+                      <div className="font-semibold text-carnet-red-deep mb-1">{metal.metal}</div>
+                      <div className="text-sm text-carnet-red mb-2">
                         <strong>Leader :</strong> {metal.leader}
                       </div>
-                      <div className="text-xs text-blue-600">
+                      <div className="text-xs text-carnet-red">
                         {metal.use && <span><strong>Usage :</strong> {metal.use} • </span>}
                         {metal.enjeu && <span><strong>Enjeu :</strong> {metal.enjeu} • </span>}
                         {metal.issue && <span><strong>Problème :</strong> {metal.issue} • </span>}
@@ -202,9 +202,9 @@ const MetauxPage = () => {
                       </div>
                     </div>
                     <div className="ml-4">
-                      {(metal.metal === 'Lithium' || metal.metal === 'Cobalt') && <Battery className="h-5 w-5 text-blue-600" />}
-                      {metal.metal === 'Terres rares' && <Cpu className="h-5 w-5 text-blue-600" />}
-                      {metal.metal === 'Graphite' && <Coins className="h-5 w-5 text-blue-600" />}
+                      {(metal.metal === 'Lithium' || metal.metal === 'Cobalt') && <Battery className="h-5 w-5 text-carnet-red" />}
+                      {metal.metal === 'Terres rares' && <Cpu className="h-5 w-5 text-carnet-red" />}
+                      {metal.metal === 'Graphite' && <Coins className="h-5 w-5 text-carnet-red" />}
                     </div>
                   </div>
                 </div>
@@ -269,9 +269,9 @@ const MetauxPage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-blue-800 mb-2">Technologies émergentes</h4>
-                      <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                    <div className="bg-pr-orange-pale p-4 rounded-lg">
+                      <h4 className="font-semibold text-carnet-red-deep mb-2">Technologies émergentes</h4>
+                      <ul className="list-disc list-inside text-sm text-carnet-red space-y-1">
                         <li><strong>Éoliennes :</strong> Terres rares (néodyme) pour aimants permanents</li>
                         <li><strong>Panneaux solaires :</strong> Argent, indium, tellure</li>
                         <li><strong>Hydrogène :</strong> Platine pour électrolyseurs, piles combustible</li>
@@ -288,12 +288,12 @@ const MetauxPage = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-6">
-                    <div className="border-l-4 border-blue-400 bg-blue-50 p-4 rounded-r-lg">
-                      <h4 className="font-semibold text-blue-800 mb-3">
+                    <div className="border-l-4 border-carnet-red/40 bg-pr-orange-pale p-4 rounded-r-lg">
+                      <h4 className="font-semibold text-carnet-red-deep mb-3">
                         <MapPin className="inline h-4 w-4 mr-2" />
                         Triangle du lithium (Bolivie)
                       </h4>
-                      <div className="text-sm text-blue-700 space-y-2">
+                      <div className="text-sm text-carnet-red space-y-2">
                         <p><strong>Réserves :</strong> Salar d'Uyuni (Bolivie) = 70% réserves mondiales</p>
                         <p><strong>Enjeu :</strong> Extraction vs. préservation environnementale</p>
                         <p><strong>Géopolitique :</strong> Chine, Russie courtisent Bolivie</p>

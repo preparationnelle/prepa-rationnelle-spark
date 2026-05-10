@@ -30,11 +30,11 @@ const FormationAllemandCivilisationPage = () => {
     <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Floating elements - Blue and orange bubbles */}
       <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse -z-10"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-10 animate-pulse-slow -z-10"></div>
+      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-carnet-red/20 rounded-full opacity-10 animate-pulse-slow -z-10"></div>
       <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow -z-10"></div>
-      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-blue-200 rounded-full opacity-5 animate-pulse -z-10"></div>
+      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-carnet-red/20 rounded-full opacity-5 animate-pulse -z-10"></div>
       <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow -z-10"></div>
-      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-blue-100 rounded-full opacity-5 animate-pulse -z-10"></div>
+      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-carnet-red/10 rounded-full opacity-5 animate-pulse -z-10"></div>
 
       {/* Sticky Breadcrumb */}
       <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
@@ -130,13 +130,13 @@ const FormationAllemandCivilisationPage = () => {
             className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
                 <span className="text-2xl">🏛️</span>
               </div>
               <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Politik</h3>
               <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Système politique allemand, élections, partis politiques et gouvernements</p>
             </div>
-            <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+            <Button className="w-full bg-gradient-to-r from-orange-500 to-pr-orange hover:from-orange-600 hover:to-pr-orange text-white font-medium transition-all duration-300">
               Explorer la politique
             </Button>
           </Link>
@@ -147,13 +147,13 @@ const FormationAllemandCivilisationPage = () => {
             className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
                 <span className="text-2xl">👥</span>
               </div>
               <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Démographie</h3>
               <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Évolution démographique, vieillissement, migration et société allemande</p>
             </div>
-            <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+            <Button className="w-full bg-gradient-to-r from-orange-500 to-pr-orange hover:from-orange-600 hover:to-pr-orange text-white font-medium transition-all duration-300">
               Explorer la démographie
             </Button>
           </Link>
@@ -164,13 +164,13 @@ const FormationAllemandCivilisationPage = () => {
             className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
                 <span className="text-2xl">🌱</span>
               </div>
               <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Écologie</h3>
               <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Transition énergétique, protection de l'environnement et développement durable</p>
             </div>
-            <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+            <Button className="w-full bg-gradient-to-r from-orange-500 to-pr-orange hover:from-orange-600 hover:to-pr-orange text-white font-medium transition-all duration-300">
               Explorer l'écologie
             </Button>
           </Link>
@@ -181,13 +181,13 @@ const FormationAllemandCivilisationPage = () => {
             className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
                 <span className="text-2xl">🏭</span>
               </div>
               <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Économie</h3>
               <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Industrie 4.0, économie allemande, commerce international et innovation</p>
             </div>
-            <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+            <Button className="w-full bg-gradient-to-r from-orange-500 to-pr-orange hover:from-orange-600 hover:to-pr-orange text-white font-medium transition-all duration-300">
               Explorer l'économie
             </Button>
           </Link>
@@ -198,13 +198,13 @@ const FormationAllemandCivilisationPage = () => {
             className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
                 <span className="text-2xl">🌍</span>
               </div>
               <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Géopolitique</h3>
               <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Union européenne, relations internationales et sécurité allemande</p>
             </div>
-            <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+            <Button className="w-full bg-gradient-to-r from-orange-500 to-pr-orange hover:from-orange-600 hover:to-pr-orange text-white font-medium transition-all duration-300">
               Explorer la géopolitique
             </Button>
           </Link>
@@ -215,13 +215,13 @@ const FormationAllemandCivilisationPage = () => {
             className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
                 <span className="text-2xl">🎭</span>
               </div>
               <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Culture</h3>
               <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Identité culturelle, diversité, histoire et mémoire collective allemande</p>
             </div>
-            <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+            <Button className="w-full bg-gradient-to-r from-orange-500 to-pr-orange hover:from-orange-600 hover:to-pr-orange text-white font-medium transition-all duration-300">
               Explorer la culture
             </Button>
           </Link>
@@ -232,13 +232,13 @@ const FormationAllemandCivilisationPage = () => {
             className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
                 <span className="text-2xl">🎓</span>
               </div>
               <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Éducation</h3>
               <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Système éducatif allemand, formation professionnelle et excellence académique</p>
             </div>
-            <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+            <Button className="w-full bg-gradient-to-r from-orange-500 to-pr-orange hover:from-orange-600 hover:to-pr-orange text-white font-medium transition-all duration-300">
               Explorer l'éducation
             </Button>
           </Link>
@@ -249,13 +249,13 @@ const FormationAllemandCivilisationPage = () => {
             className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
                 <span className="text-2xl">🔬</span>
               </div>
               <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Technologie</h3>
               <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Innovation technologique, recherche scientifique et start-ups allemandes</p>
             </div>
-            <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+            <Button className="w-full bg-gradient-to-r from-orange-500 to-pr-orange hover:from-orange-600 hover:to-pr-orange text-white font-medium transition-all duration-300">
               Explorer la technologie
             </Button>
           </Link>
@@ -266,13 +266,13 @@ const FormationAllemandCivilisationPage = () => {
             className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
                 <span className="text-2xl">⚖️</span>
               </div>
               <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Égalité</h3>
               <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Droits des femmes, égalité des genres et politiques sociales en Allemagne</p>
             </div>
-            <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+            <Button className="w-full bg-gradient-to-r from-orange-500 to-pr-orange hover:from-orange-600 hover:to-pr-orange text-white font-medium transition-all duration-300">
               Explorer l'égalité
             </Button>
           </Link>
@@ -283,13 +283,13 @@ const FormationAllemandCivilisationPage = () => {
             className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-blue-200 transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
                 <span className="text-2xl">📜</span>
               </div>
               <h3 className="font-bold text-xl mb-4 text-center text-orange-700 group-hover:text-orange-800 transition-colors">Histoire</h3>
               <p className="text-sm text-orange-700 mb-6 text-center leading-relaxed">Mémoire collective, travail de mémoire et histoire contemporaine allemande</p>
             </div>
-            <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium transition-all duration-300">
+            <Button className="w-full bg-gradient-to-r from-orange-500 to-pr-orange hover:from-orange-600 hover:to-pr-orange text-white font-medium transition-all duration-300">
               Explorer l'histoire
             </Button>
           </Link>
@@ -299,7 +299,7 @@ const FormationAllemandCivilisationPage = () => {
         <div className="text-center mt-12">
           <Link
             to="/formation/allemand"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white font-medium rounded-lg transition-all duration-300"
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-pr-orange hover:from-orange-600 hover:to-pr-orange text-white font-medium rounded-lg transition-all duration-300"
           >
             Retour à la formation Allemand
           </Link>

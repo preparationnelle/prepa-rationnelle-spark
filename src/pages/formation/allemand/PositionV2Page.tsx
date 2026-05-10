@@ -70,15 +70,15 @@ const PositionV2Page = () => {
               <div>
                 <h3 className="font-semibold mb-2">Phrase déclarative normale :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p><span className="text-orange-600">Position 1</span> | <span className="text-blue-600">Position 2 (Verbe)</span> | <span className="text-green-600">Compléments</span></p>
-                  <p>Ich <span className="text-blue-600">esse</span> jeden Tag Suppe.</p>
+                  <p><span className="text-orange-600">Position 1</span> | <span className="text-carnet-red">Position 2 (Verbe)</span> | <span className="text-green-600">Compléments</span></p>
+                  <p>Ich <span className="text-carnet-red">esse</span> jeden Tag Suppe.</p>
                   <p className="text-sm text-gray-700">(Je mange de la soupe chaque jour.)</p>
                 </div>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Phrase avec complément en première position :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p>Jeden Tag <span className="text-blue-600">esse</span> ich Suppe.</p>
+                  <p>Jeden Tag <span className="text-carnet-red">esse</span> ich Suppe.</p>
                   <p className="text-sm text-gray-700">(Chaque jour, je mange de la soupe.)</p>
                 </div>
               </div>
@@ -90,7 +90,7 @@ const PositionV2Page = () => {
             <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Application selon le type de phrase</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold mb-3 text-blue-700">Phrases déclaratives :</h3>
+                <h3 className="font-semibold mb-3 text-carnet-red">Phrases déclaratives :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p>Élément + Verbe conjugué + Compléments</p>
                   <p>Morgen <span className="text-orange-600">gehe</span> ich ins Kino.</p>

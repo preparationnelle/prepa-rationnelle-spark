@@ -308,7 +308,7 @@ const VocabulaireBildungFlashcardsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-gradient-to-br from-orange-500 to-blue-500 text-white">
+            <div className="p-3 rounded-lg bg-gradient-to-br from-orange-500 to-pr-orange text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Vocabulaire Éducation et Formation
@@ -319,7 +319,7 @@ const VocabulaireBildungFlashcardsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">{cards.length} mots</Badge>
             <Badge variant="outline">Module 7 - Bildung und Ausbildung</Badge>
-            <Badge className="bg-gradient-to-r from-orange-500 to-blue-500 text-white">Flashcards</Badge>
+            <Badge className="bg-gradient-to-r from-orange-500 to-pr-orange text-white">Flashcards</Badge>
           </div>
         </div>
 
@@ -331,7 +331,7 @@ const VocabulaireBildungFlashcardsPage = () => {
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2.5">
             <div
-              className="bg-gradient-to-r from-orange-500 to-blue-500 h-2.5 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-orange-500 to-pr-orange h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -460,7 +460,7 @@ const VocabulaireBildungFlashcardsPage = () => {
 
         {/* Section informative */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50 shadow-lg">
+          <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale shadow-lg">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-orange-900 mb-4">🎓 Conseils pour l'apprentissage</h3>
               <div className="grid md:grid-cols-2 gap-6">

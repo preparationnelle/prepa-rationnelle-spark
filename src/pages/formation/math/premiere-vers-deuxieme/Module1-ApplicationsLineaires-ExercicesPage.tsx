@@ -40,9 +40,9 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
 
       <div className="container mx-auto px-4 py-8">
         {/* En-tête */}
-        <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-br from-pr-orange-pale to-indigo-50 mb-8">
           <div className="p-8">
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-carnet-red to-indigo-600 bg-clip-text text-transparent mb-2">
               Module 1 - exercice (Applications linéaires)
             </h1>
             <p className="text-slate-600">Exercices ciblés sur les applications linéaires et la structure des noyaux/images.</p>
@@ -56,8 +56,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
-              <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Exercice 1</div>
-              <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">Moyen</div>
+              <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 1</div>
+              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Moyen</div>
             </div>
             <div className="space-y-3 mb-4">
               <p>
@@ -109,8 +109,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
-              <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Exercice 2</div>
-              <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">Difficile</div>
+              <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 2</div>
+              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Difficile</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Exercice 2 - Endomorphisme nilpotent</h3>
@@ -203,8 +203,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
-              <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Exercice 3</div>
-              <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">Intermédiaire</div>
+              <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 3</div>
+              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Intermédiaire</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Exercice 3 — Un peu théorique…</h3>
@@ -272,8 +272,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
-              <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Exercice 4</div>
-              <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">Moyen</div>
+              <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 4</div>
+              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Moyen</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Exercice 4</h3>
@@ -351,8 +351,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
-              <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Exercice 5</div>
-              <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">Difficile (♥)</div>
+              <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 5</div>
+              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Difficile (♥)</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Matrice de l’endomorphisme dans la base canonique</h3>
@@ -414,8 +414,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
-              <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Exercice 6</div>
-              <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">Difficile (♥)</div>
+              <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 6</div>
+              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Difficile (♥)</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Permutation cyclique sur R^3</h3>
@@ -465,8 +465,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
          <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
-              <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Exercice 7</div>
-              <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">Intermédiaire</div>
+              <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 7</div>
+              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Intermédiaire</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Exercice 7</h3>
@@ -554,8 +554,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
-              <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Exercice 8</div>
-              <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">Intermédiaire</div>
+              <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 8</div>
+              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Intermédiaire</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Composition f ∘ g = Id</h3>
@@ -623,8 +623,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
-              <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Exercice 9</div>
-              <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">Intermédiaire</div>
+              <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 9</div>
+              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Intermédiaire</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">
@@ -709,8 +709,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
-              <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">Exercice 10</div>
-              <div className="text-xs text-blue-500 bg-blue-50 px-2 py-1 rounded">Avancé</div>
+              <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 10</div>
+              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Avancé</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Décomposition spectrale simple et puissances de f</h3>
@@ -847,7 +847,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         </Card>
 
         <div className="mt-8">
-          <Link to="/formation/math/premiere-vers-deuxieme" className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+          <Link to="/formation/math/premiere-vers-deuxieme" className="inline-flex items-center justify-center px-6 py-3 bg-carnet-red text-white font-semibold rounded-lg hover:bg-carnet-red-deep transition-colors">
             Retourner aux chapitres
           </Link>
         </div>

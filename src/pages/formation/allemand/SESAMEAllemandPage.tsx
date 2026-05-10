@@ -101,7 +101,7 @@ const SESAMEAllemandPage = () => {
         }
 
         // Si pas encore répondu
-        return "border-gray-200 hover:border-blue-300 hover:bg-blue-50";
+        return "border-gray-200 hover:border-carnet-red/40 hover:bg-pr-orange-pale";
     };
 
     const score = showResults ? calculateScore() : null;
@@ -109,9 +109,9 @@ const SESAMEAllemandPage = () => {
     return (
         <div className="min-h-screen bg-white relative overflow-hidden">
             {/* Floating elements */}
-            <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-10 animate-pulse"></div>
-            <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-blue-200 rounded-full opacity-15 animate-pulse-slow"></div>
-            <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-blue-100 rounded-full opacity-10 animate-pulse-slow"></div>
+            <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-carnet-red/20 rounded-full opacity-10 animate-pulse"></div>
+            <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-carnet-red/20 rounded-full opacity-15 animate-pulse-slow"></div>
+            <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-carnet-red/10 rounded-full opacity-10 animate-pulse-slow"></div>
 
             {/* Sticky Breadcrumb */}
             <nav className="sticky top-0 z-50 bg-white border-b border-border/40">
@@ -137,11 +137,11 @@ const SESAMEAllemandPage = () => {
             <div className="container mx-auto py-8 px-4">
                 {/* Header */}
                 <div className="text-center mb-10">
-                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl mb-6">
-                        <Award className="h-10 w-10 text-blue-600" />
+                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-pr-orange-pale to-pr-orange-soft rounded-2xl mb-6">
+                        <Award className="h-10 w-10 text-carnet-red" />
                     </div>
                     <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-                        <span className="text-blue-600">EXERCICES</span>
+                        <span className="text-carnet-red">EXERCICES</span>
                         <span className="text-black"> - Allemand</span>
                     </h1>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -163,11 +163,11 @@ const SESAMEAllemandPage = () => {
                                         setSelectedCategory(category);
                                         setCurrentQuestionIndex(0);
                                     }}
-                                    className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 group"
+                                    className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-carnet-red hover:bg-pr-orange-pale transition-all duration-300 group"
                                 >
                                     <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                                            <BookOpen className="h-6 w-6 text-blue-600" />
+                                        <div className="w-12 h-12 bg-carnet-red/10 rounded-lg flex items-center justify-center group-hover:bg-carnet-red/20 transition-colors">
+                                            <BookOpen className="h-6 w-6 text-carnet-red" />
                                         </div>
                                         <div className="text-left">
                                             <h3 className="font-bold text-lg text-gray-800">{category}</h3>
@@ -188,7 +188,7 @@ const SESAMEAllemandPage = () => {
                                     }}
                                     size="lg"
                                     variant="outline"
-                                    className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8"
+                                    className="border-2 border-carnet-red text-carnet-red hover:bg-pr-orange-pale px-8"
                                 >
                                     Mode Normal (question par question)
                                 </Button>
@@ -226,7 +226,7 @@ const SESAMEAllemandPage = () => {
                                 </div>
                                 <div className="w-full bg-gray-200 rounded-full h-2.5">
                                     <div
-                                        className="bg-blue-600 h-2.5 rounded-full transition-all duration-300"
+                                        className="bg-carnet-red h-2.5 rounded-full transition-all duration-300"
                                         style={{ width: `${((currentQuestionIndex + 1) / currentQuestions.length) * 100}%` }}
                                     ></div>
                                 </div>
@@ -262,18 +262,18 @@ const SESAMEAllemandPage = () => {
 
                         {/* Score Display */}
                         {showResults && score && (
-                            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8 mb-8 border-2 border-blue-200">
+                            <div className="bg-gradient-to-br from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-8 mb-8 border-2 border-carnet-red/30">
                                 <div className="text-center">
-                                    <Trophy className="h-16 w-16 text-blue-600 mx-auto mb-4" />
+                                    <Trophy className="h-16 w-16 text-carnet-red mx-auto mb-4" />
                                     <h2 className="text-3xl font-bold text-gray-800 mb-2">Résultats</h2>
-                                    <p className="text-5xl font-bold text-blue-600 mb-2">{score.percentage}%</p>
+                                    <p className="text-5xl font-bold text-carnet-red mb-2">{score.percentage}%</p>
                                     <p className="text-xl text-gray-700">
                                         {score.correct} bonnes réponses sur {score.total}
                                     </p>
                                     <div className="mt-6 flex gap-4 justify-center">
                                         <Button
                                             onClick={handleReset}
-                                            className="bg-blue-600 hover:bg-blue-700 text-white"
+                                            className="bg-carnet-red hover:bg-carnet-red-deep text-white"
                                         >
                                             <RotateCcw className="mr-2 h-4 w-4" />
                                             Recommencer
@@ -296,7 +296,7 @@ const SESAMEAllemandPage = () => {
                         {!showResults && !examMode && currentQuestion && (
                             <div className="bg-white rounded-xl border-2 border-gray-200 p-8 mb-6 shadow-lg">
                                 <div className="mb-6">
-                                    <div className="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full mb-4">
+                                    <div className="inline-block bg-carnet-red/10 text-carnet-red-deep text-sm font-semibold px-3 py-1 rounded-full mb-4">
                                         {currentQuestion.category}
                                     </div>
                                     <h3 className="text-2xl font-bold text-gray-800 mb-4">
@@ -339,7 +339,7 @@ const SESAMEAllemandPage = () => {
 
                                 {/* Explication automatique après réponse */}
                                 {userAnswers[currentQuestion.id] && currentQuestion.explanation && (
-                                    <div className="mt-6 p-5 bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 rounded-lg shadow-sm">
+                                    <div className="mt-6 p-5 bg-gradient-to-r from-pr-orange-pale to-indigo-50 border-l-4 border-carnet-red rounded-lg shadow-sm">
                                         <div className="flex items-start gap-3">
                                             <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${userAnswers[currentQuestion.id] === currentQuestion.correctAnswer
                                                 ? 'bg-green-100 text-green-700'
@@ -365,7 +365,7 @@ const SESAMEAllemandPage = () => {
                                                 </div>
 
                                                 <p className="text-sm text-gray-700 mb-2">
-                                                    <strong className="text-blue-800">Explication : </strong>
+                                                    <strong className="text-carnet-red-deep">Explication : </strong>
                                                     {currentQuestion.explanation}
                                                 </p>
                                             </div>
@@ -396,7 +396,7 @@ const SESAMEAllemandPage = () => {
                                             Terminer
                                         </Button>
                                     ) : (
-                                        <Button onClick={handleNext} className="bg-blue-600 hover:bg-blue-700 text-white">
+                                        <Button onClick={handleNext} className="bg-carnet-red hover:bg-carnet-red-deep text-white">
                                             Suivant
                                         </Button>
                                     )}
@@ -414,7 +414,7 @@ const SESAMEAllemandPage = () => {
                                                 {qIndex + 1}
                                             </div>
                                             <div className="flex-1">
-                                                <div className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full mb-2">
+                                                <div className="inline-block bg-carnet-red/10 text-carnet-red-deep text-xs font-semibold px-2 py-1 rounded-full mb-2">
                                                     {question.category}
                                                 </div>
                                                 <h4 className="text-lg font-bold text-gray-800 mb-4">
@@ -502,16 +502,16 @@ const SESAMEAllemandPage = () => {
                                                     {question.explanation && (
                                                         <button
                                                             onClick={() => toggleExplanation(question.id)}
-                                                            className="text-blue-600 hover:text-blue-800 font-medium text-sm flex items-center gap-2"
+                                                            className="text-carnet-red hover:text-carnet-red-deep font-medium text-sm flex items-center gap-2"
                                                         >
                                                             {showExplanation[question.id] ? '− Masquer' : '+ Afficher'} l'explication
                                                         </button>
                                                     )}
 
                                                     {showExplanation[question.id] && question.explanation && (
-                                                        <div className="mt-3 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
+                                                        <div className="mt-3 p-4 bg-pr-orange-pale border-l-4 border-carnet-red rounded">
                                                             <p className="text-sm text-gray-700">
-                                                                <strong className="text-blue-800">Explication : </strong>
+                                                                <strong className="text-carnet-red-deep">Explication : </strong>
                                                                 {question.explanation}
                                                             </p>
                                                         </div>

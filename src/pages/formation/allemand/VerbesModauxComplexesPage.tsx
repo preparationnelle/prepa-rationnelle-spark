@@ -68,7 +68,7 @@ const VerbesModauxComplexesPage = () => {
             <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Présentation des six verbes modaux</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold mb-3 text-blue-700">können (pouvoir/capacité)</h3>
+                <h3 className="font-semibold mb-3 text-carnet-red">können (pouvoir/capacité)</h3>
                 <div className="bg-gray-50 p-4 rounded-lg mb-4">
                   <p className="font-medium">Présent : kann, kannst, kann, können, könnt, können</p>
                   <p>Ich <span className="text-orange-600">kann</span> Deutsch sprechen.</p>
@@ -181,7 +181,7 @@ const VerbesModauxComplexesPage = () => {
               <div>
                 <h3 className="font-semibold mb-2">Différenciation können/mögen :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p><span className="text-blue-700">können</span> = pouvoir/capacité : Ich kann schwimmen. (Je sais nager.)</p>
+                  <p><span className="text-carnet-red">können</span> = pouvoir/capacité : Ich kann schwimmen. (Je sais nager.)</p>
                   <p><span className="text-teal-700">mögen</span> = aimer : Ich mag schwimmen. (J'aime nager.)</p>
                 </div>
               </div>

@@ -44,9 +44,9 @@ const questionsOuvertesData = {
       id: 2,
       title: "Chapitre 2 : Programmation Python",
       icon: Code,
-      color: "text-blue-600",
-      bgColor: "bg-blue-50",
-      borderColor: "border-blue-200",
+      color: "text-carnet-red",
+      bgColor: "bg-pr-orange-pale",
+      borderColor: "border-carnet-red/30",
       questions: [
         {
           id: 4,
@@ -162,7 +162,7 @@ const OteriaEvaluationFinaleQuestionsOuvertesPage: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale to-indigo-100 py-8 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
@@ -172,11 +172,11 @@ const OteriaEvaluationFinaleQuestionsOuvertesPage: React.FC = () => {
               Retour à l'accueil
             </Button>
           </Link>
-          <h1 className="text-4xl font-bold text-blue-900 mb-2">{questionsOuvertesData.title}</h1>
-          <p className="text-xl text-blue-700 mb-4">{questionsOuvertesData.subtitle}</p>
+          <h1 className="text-4xl font-bold text-carnet-red-deep mb-2">{questionsOuvertesData.title}</h1>
+          <p className="text-xl text-carnet-red mb-4">{questionsOuvertesData.subtitle}</p>
 
           <div className="flex items-center justify-center gap-6 mb-6">
-            <Badge variant="secondary" className="bg-blue-100 text-blue-800 px-4 py-2">
+            <Badge variant="secondary" className="bg-carnet-red/10 text-carnet-red-deep px-4 py-2">
               <Target className="mr-2 h-4 w-4" />
               {totalQuestions} questions
             </Badge>
@@ -192,9 +192,9 @@ const OteriaEvaluationFinaleQuestionsOuvertesPage: React.FC = () => {
         </div>
 
         {/* Introduction */}
-        <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <Card className="mb-8 border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-indigo-50">
           <CardContent className="p-6">
-            <p className="text-lg text-blue-800 text-center">
+            <p className="text-lg text-carnet-red-deep text-center">
               {questionsOuvertesData.introduction}
             </p>
             <div className="mt-4 text-center">
@@ -228,12 +228,12 @@ const OteriaEvaluationFinaleQuestionsOuvertesPage: React.FC = () => {
                 <CardContent>
                   <div className="space-y-6">
                     {chapter.questions.map((question) => (
-                      <div key={question.id} className="border-l-4 border-blue-300 pl-4 bg-white p-4 rounded-r-lg">
+                      <div key={question.id} className="border-l-4 border-carnet-red/40 pl-4 bg-white p-4 rounded-r-lg">
                         <div className="flex items-start justify-between mb-3">
                           <h3 className="text-lg font-semibold text-gray-900">
                             Question {question.id}
                           </h3>
-                          <Badge variant="secondary" className="bg-blue-100 text-blue-800">
+                          <Badge variant="secondary" className="bg-carnet-red/10 text-carnet-red-deep">
                             {question.points} points
                           </Badge>
                         </div>
@@ -260,13 +260,13 @@ const OteriaEvaluationFinaleQuestionsOuvertesPage: React.FC = () => {
         <div className="text-center mt-12 space-y-4">
           <div className="flex justify-center gap-4">
             <Link to="/formation/oteria/evaluation-finale">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
+              <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white px-8 py-3">
                 <Target className="mr-2 h-5 w-5" />
                 Passer l'évaluation QCM
               </Button>
             </Link>
             <Link to="/formation/oteria/fiche-evaluation-finale">
-              <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3">
+              <Button variant="outline" className="border-carnet-red text-carnet-red hover:bg-pr-orange-pale px-8 py-3">
                 <BookOpen className="mr-2 h-5 w-5" />
                 Fiche récapitulative
               </Button>

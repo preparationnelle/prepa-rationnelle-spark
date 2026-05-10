@@ -25,7 +25,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
       {/* Section 1: Propositions et opérations logiques */}
       <Card className="border-0 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
+          <CardTitle className="text-2xl font-bold text-carnet-red">
             1. Propositions et opérations logiques
           </CardTitle>
         </CardHeader>
@@ -153,7 +153,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Négation des quantificateurs</p>
               <div className="mt-2 space-y-2">
                 <ul className="space-y-2 ml-4">
@@ -179,14 +179,14 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
       {/* Section 3: Méthodes de démonstration */}
       <Card className="border-0 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
+          <CardTitle className="text-2xl font-bold text-carnet-red">
             3. Méthodes de démonstration
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Démonstration directe</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -195,19 +195,19 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Démonstration par contraposée</p>
               <div className="mt-2 space-y-2">
                 <p>
                   Pour démontrer <LatexRenderer latex="P \Rightarrow Q" block={false} />, on démontre la contraposée <LatexRenderer latex="\neg Q \Rightarrow \neg P" block={false} />.
                 </p>
-                <p className="text-sm text-blue-700">
+                <p className="text-sm text-carnet-red">
                   Principe : <LatexRenderer latex="(P \Rightarrow Q) \Leftrightarrow (\neg Q \Rightarrow \neg P)" block={false} />
                 </p>
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Démonstration par l'absurde</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -216,7 +216,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Démonstration par récurrence</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -230,7 +230,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Disjonction de cas</p>
               <div className="mt-2 space-y-2">
                 <p>

@@ -269,7 +269,7 @@ const EpreuvesOralesPage = () => {
         {/* Bouton retour en bas de page */}
         <div className="flex justify-center mt-12 pb-8">
           <Link to="/formation/allemand/epreuves">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium flex items-center gap-2 transition-colors">
+            <button className="bg-carnet-red hover:bg-carnet-red-deep text-white px-6 py-3 rounded-md font-medium flex items-center gap-2 transition-colors">
               <ArrowLeft className="h-4 w-4" />
               Retour aux épreuves allemandes
             </button>

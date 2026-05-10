@@ -339,7 +339,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
   const { correct, total } = calculateScore();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale to-indigo-100 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
@@ -349,16 +349,16 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
               Retour à l'accueil
             </Button>
           </Link>
-          <h1 className="text-3xl font-bold text-blue-900 mb-2">{qcmData.title}</h1>
-          <p className="text-lg text-blue-700 mb-2">{qcmData.subtitle}</p>
-          <p className="text-sm text-blue-600 mb-4 font-medium">{qcmData.duration}</p>
+          <h1 className="text-3xl font-bold text-carnet-red-deep mb-2">{qcmData.title}</h1>
+          <p className="text-lg text-carnet-red mb-2">{qcmData.subtitle}</p>
+          <p className="text-sm text-carnet-red mb-4 font-medium">{qcmData.duration}</p>
           <div className="flex items-center justify-center gap-4 mb-4">
-            <Badge variant="secondary" className="bg-blue-100 text-blue-800">
+            <Badge variant="secondary" className="bg-carnet-red/10 text-carnet-red-deep">
               <Target className="mr-1 h-3 w-3" />
               Question {currentQuestion + 1} / {qcmData.questions.length}
             </Badge>
             {!showResults && (
-              <Badge variant="outline" className="border-blue-300 text-blue-700">
+              <Badge variant="outline" className="border-carnet-red/40 text-carnet-red">
                 <Calculator className="mr-1 h-3 w-3" />
                 {Object.keys(answers).length} / {qcmData.questions.length} répondues
               </Badge>
@@ -368,18 +368,18 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
 
         {/* Results */}
         {showResults && (
-          <Card className="mb-8 border-2 border-blue-200">
-            <CardHeader className="bg-blue-50">
-              <CardTitle className="text-center text-blue-900 flex items-center justify-center gap-2">
+          <Card className="mb-8 border-2 border-carnet-red/30">
+            <CardHeader className="bg-pr-orange-pale">
+              <CardTitle className="text-center text-carnet-red-deep flex items-center justify-center gap-2">
                 <Database className="h-5 w-5" />
                 Résultats du QCM
               </CardTitle>
             </CardHeader>
             <CardContent className="text-center py-8">
-              <div className="text-6xl font-bold text-blue-600 mb-4">
+              <div className="text-6xl font-bold text-carnet-red mb-4">
                 {correct}/{total}
               </div>
-              <p className="text-xl text-blue-700 mb-6">
+              <p className="text-xl text-carnet-red mb-6">
                 Score : {Math.round((correct / total) * 100)}%
               </p>
               {saveMessage && (
@@ -388,11 +388,11 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
                 </div>
               )}
               <div className="flex justify-center gap-4">
-                <Button onClick={resetQuiz} className="bg-blue-600 hover:bg-blue-700">
+                <Button onClick={resetQuiz} className="bg-carnet-red hover:bg-carnet-red-deep">
                   Refaire le QCM
                 </Button>
                 <Link to="/articles/oteria-cyber-school">
-                  <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                  <Button variant="outline" className="border-carnet-red text-carnet-red hover:bg-pr-orange-pale">
                     <BookOpen className="mr-2 h-4 w-4" />
                     Retour au programme
                   </Button>
@@ -404,12 +404,12 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
 
         {/* Question */}
         {!showResults && (
-          <Card className="mb-8 border-2 border-blue-200">
-            <CardHeader className="bg-blue-50">
-              <Badge variant="outline" className="mb-2 border-blue-300 text-blue-700">
+          <Card className="mb-8 border-2 border-carnet-red/30">
+            <CardHeader className="bg-pr-orange-pale">
+              <Badge variant="outline" className="mb-2 border-carnet-red/40 text-carnet-red">
                 {question.chapter}
               </Badge>
-              <CardTitle className="text-blue-900 whitespace-pre-line">{question.question}</CardTitle>
+              <CardTitle className="text-carnet-red-deep whitespace-pre-line">{question.question}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
@@ -418,8 +418,8 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
                     key={choice.key}
                     onClick={() => handleAnswer(question.id, choice.key)}
                     className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${answers[question.id] === choice.key
-                        ? 'border-blue-500 bg-blue-50 text-blue-900'
-                        : 'border-gray-200 hover:border-blue-300 hover:bg-blue-25'
+                        ? 'border-carnet-red bg-pr-orange-pale text-carnet-red-deep'
+                        : 'border-gray-200 hover:border-carnet-red/40 hover:bg-carnet-paper-2'
                       }`}
                   >
                     <span className="font-medium mr-3">{choice.key.toUpperCase()}.</span>
@@ -444,7 +444,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
                       variant="ghost"
                       size="sm"
                       onClick={() => toggleExplanation(question.id)}
-                      className="text-blue-600 hover:text-blue-800"
+                      className="text-carnet-red hover:text-carnet-red-deep"
                     >
                       {showExplanations[question.id] ? (
                         <>
@@ -476,7 +476,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
               onClick={prevQuestion}
               disabled={currentQuestion === 0}
               variant="outline"
-              className="border-blue-600 text-blue-600 hover:bg-blue-50 disabled:opacity-50"
+              className="border-carnet-red text-carnet-red hover:bg-pr-orange-pale disabled:opacity-50"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
               Précédent
@@ -488,9 +488,9 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
                   key={index}
                   onClick={() => setCurrentQuestion(index)}
                   className={`w-3 h-3 rounded-full transition-all ${index === currentQuestion
-                      ? 'bg-blue-600'
+                      ? 'bg-carnet-red'
                       : answers[qcmData.questions[index].id]
-                        ? 'bg-blue-300'
+                        ? 'bg-carnet-red/30'
                         : 'bg-gray-300'
                     }`}
                 />
@@ -500,7 +500,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
             <Button
               onClick={nextQuestion}
               disabled={!answers[question.id]}
-              className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
+              className="bg-carnet-red hover:bg-carnet-red-deep disabled:opacity-50"
             >
               {currentQuestion === qcmData.questions.length - 1 ? 'Voir résultats' : 'Suivant'}
               <ChevronRight className="ml-2 h-4 w-4" />
@@ -513,7 +513,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
           <div className="mt-8">
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div
-                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                className="bg-carnet-red h-2 rounded-full transition-all duration-300"
                 style={{ width: `${((currentQuestion + 1) / qcmData.questions.length) * 100}%` }}
               />
             </div>

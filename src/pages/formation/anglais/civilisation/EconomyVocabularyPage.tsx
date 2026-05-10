@@ -199,7 +199,7 @@ const EconomyVocabularyPage = () => {
 
   const getCategoryColor = (category: string) => {
     const colors: { [key: string]: string } = {
-      'Concepts économiques de base': 'bg-blue-500',
+      'Concepts économiques de base': 'bg-carnet-red',
       'Politiques économiques': 'bg-green-500',
       'Commerce et mondialisation': 'bg-purple-500',
       'Acteurs économiques': 'bg-orange-500',

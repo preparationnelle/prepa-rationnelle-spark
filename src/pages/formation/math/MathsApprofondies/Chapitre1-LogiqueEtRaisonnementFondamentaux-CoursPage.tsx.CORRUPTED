@@ -17,7 +17,7 @@ const Chapitre1LogiqueEtRaisonnementFondamentauxCoursPage = () => {
       <Card className="border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
       subject="maths"
     >
-        <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-white"
+        <CardHeader className="bg-gradient-to-r from-carnet-red to-pr-orange text-white"
       subject="maths"
     >
           <CardTitle className="text-xl flex items-center gap-3"

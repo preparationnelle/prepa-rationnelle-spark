@@ -75,7 +75,7 @@ const AuxiliaireParfaitPage = () => {
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold mb-3 text-blue-700">Verbes réfléchis :</h3>
+                <h3 className="font-semibold mb-3 text-carnet-red">Verbes réfléchis :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p>Ich <span className="text-orange-600">habe</span> mich <span className="text-orange-600">gewaschen</span>.</p>
                   <p className="text-sm text-gray-700">(Je me suis lavé.)</p>
@@ -103,7 +103,7 @@ const AuxiliaireParfaitPage = () => {
             <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">SEIN : verbes de mouvement et changement d'état</h2>
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold mb-3 text-blue-700">Verbes de mouvement :</h3>
+                <h3 className="font-semibold mb-3 text-carnet-red">Verbes de mouvement :</h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <p>gehen (aller) → Ich bin gegangen.</p>
@@ -251,7 +251,7 @@ const AuxiliaireParfaitPage = () => {
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Règle générale :</h3>
-                <div className="bg-blue-50 p-4 rounded-lg">
+                <div className="bg-pr-orange-pale p-4 rounded-lg">
                   <p className="font-medium">En cas de doute → HABEN</p>
                   <p className="text-sm text-gray-700">La majorité des verbes utilisent HABEN, SEIN est l'exception.</p>
                 </div>

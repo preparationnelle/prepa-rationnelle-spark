@@ -26,17 +26,17 @@ const GouvernanceMondialePage: React.FC = () => {
         <div className="max-w-4xl mx-auto bg-white border rounded-xl p-6">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-900">Gouvernance mondiale</h1>
-            <div className="mt-2 h-1 w-24 bg-blue-600 rounded"></div>
+            <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
           <div className="space-y-8 text-gray-900">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
               <p>Quand le monde était bipolaire (guerre froide) et unipolaire (domination exclusive des États‑Unis en 1991), les rapports de force paraissaient bordés par un jeu d’alliances bien défini (OTAN, Pacte de Varsovie…). Depuis l’émergence d’un monde multipolaire, voire apolaire, les rapports de force se sont complexifiés.</p>
               <p className="mt-2">Si des gouvernances régionales semblent avoir acquis une certaine maturité (UE ou ZIR comme le Mercosur), la gouvernance mondiale apparaît en retard (financement, pratiques – consensus laborieux…).</p>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">Définitions et cadres</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">Définitions et cadres</h2>
               <p><strong>Gouvernance mondiale</strong> : ensemble des règles qui permettent d’assurer le bon fonctionnement d’un État, d’une institution, d’une organisation (ONG…) à l’échelle régionale, nationale ou planétaire.</p>
               <ul className="list-disc list-inside space-y-1 mt-2">
                 <li>Volonté de mettre en place un nouveau système de régulation international susceptible de garantir la paix.</li>
@@ -46,8 +46,8 @@ const GouvernanceMondialePage: React.FC = () => {
               <p className="mt-2">Vieux dessein : Kant (paix perpétuelle), SDN (1919)… mais projet inabouti (défis alimentaires, climatiques, justice mondiale). Le contexte renforce l’urgence d’une approche globale concertée (mafias, terrorisme, paradis fiscaux, cyberattaques, trafics, guerres…), multiplication des populismes (Rosanvallon : « totalitarismes du XXIe siècle »), mouvements alter/anti/démondialistes.</p>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">Limites et réussites</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">Limites et réussites</h2>
               <h3 className="text-xl font-semibold mb-2">Limites de la gouvernance actuelle</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Conseil de sécurité : aucun acteur africain; Brésil non permanent; Japon et Allemagne candidats; Russie écartée.</li>
@@ -65,8 +65,8 @@ const GouvernanceMondialePage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">Architecture historique de la gouvernance</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">Architecture historique de la gouvernance</h2>
               <ul className="list-disc list-inside space-y-1">
                 <li>Monétaire : Bretton Woods (1944) → BIRD, FMI.</li>
                 <li>Financière : Banque mondiale; Club de Paris.</li>
@@ -80,8 +80,8 @@ const GouvernanceMondialePage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">Plans d’analyse</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">Plans d’analyse</h2>
               <ol className="list-decimal list-inside space-y-1">
                 <li>Processus historique adaptatif de la gouvernance mondiale (crises et réformes).</li>
                 <li>Gouvernance menacée par des « égoïsmes sacrés » (B. Badie, <em>Le retournement du monde</em>).</li>

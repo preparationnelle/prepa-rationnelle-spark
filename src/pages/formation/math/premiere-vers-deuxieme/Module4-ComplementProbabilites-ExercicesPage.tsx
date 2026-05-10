@@ -26,9 +26,9 @@ const Module4ComplementProbabilitesExercicesPage: React.FC = () => {
       </nav>
 
       <div className="container mx-auto px-4 py-8">
-        <Card className="border-0 shadow-lg bg-gradient-to-br from-blue-50 to-indigo-50 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-br from-pr-orange-pale to-indigo-50 mb-8">
           <div className="p-8">
-            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-carnet-red to-indigo-600 bg-clip-text text-transparent mb-2">
               Module 4 - exercice (Complément de probabilités)
             </h1>
             <p className="text-slate-600">Contenu en construction.</p>
@@ -37,12 +37,12 @@ const Module4ComplementProbabilitesExercicesPage: React.FC = () => {
 
         <Card className="border-0 shadow-lg">
           <div className="p-12 text-center">
-            <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Construction className="w-10 h-10 text-blue-600" />
+            <div className="w-20 h-20 bg-carnet-red/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Construction className="w-10 h-10 text-carnet-red" />
             </div>
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Contenu en construction</h2>
             <p className="text-gray-600 max-w-2xl mx-auto mb-8">Les exercices seront créés spécifiquement pour ce module. Les anciens exercices liés à une autre formation ont été supprimés.</p>
-            <Link to="/formation/math/premiere-vers-deuxieme" className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+            <Link to="/formation/math/premiere-vers-deuxieme" className="inline-flex items-center justify-center px-6 py-3 bg-carnet-red text-white font-semibold rounded-lg hover:bg-carnet-red-deep transition-colors">
               Retourner aux chapitres
             </Link>
           </div>

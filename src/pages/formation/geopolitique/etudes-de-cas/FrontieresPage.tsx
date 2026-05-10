@@ -168,23 +168,23 @@ const FrontieresPage = () => {
           </AccordionItem>
 
           <AccordionItem value="cooperation">
-            <AccordionTrigger className="text-xl text-blue-700">
+            <AccordionTrigger className="text-xl text-carnet-red">
               II. Coopérations frontalières et flux économiques
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-6">
 
-                <Card className="bg-blue-50 border-blue-200">
+                <Card className="bg-pr-orange-pale border-carnet-red/30">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-blue-800">
+                    <CardTitle className="flex items-center gap-2 text-carnet-red-deep">
                       <Coins className="h-5 w-5" />
                       IDE et intégration économique frontalière
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="bg-blue-100 p-4 rounded-lg mb-6">
-                      <h4 className="font-semibold text-blue-800 mb-2">Records d'investissements 2024</h4>
-                      <ul className="text-sm text-blue-700 space-y-2">
+                    <div className="bg-carnet-red/10 p-4 rounded-lg mb-6">
+                      <h4 className="font-semibold text-carnet-red-deep mb-2">Records d'investissements 2024</h4>
+                      <ul className="text-sm text-carnet-red space-y-2">
                         <li><strong>IDE mondiaux :</strong> 2 000 milliards $ (record historique)</li>
                         <li><strong>Croissance :</strong> +15% par rapport à 2023</li>
                         <li><strong>Principaux flux :</strong> Asie-Pacifique, Europe, Amérique Nord</li>
@@ -194,25 +194,25 @@ const FrontieresPage = () => {
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-semibold text-blue-800 mb-3">Zones d'intégration</h4>
+                        <h4 className="font-semibold text-carnet-red-deep mb-3">Zones d'intégration</h4>
                         <div className="space-y-3">
-                          <div className="p-3 bg-blue-100 rounded-lg">
-                            <div className="font-semibold text-blue-800 mb-1">Union Européenne</div>
-                            <div className="text-sm text-blue-700">
+                          <div className="p-3 bg-carnet-red/10 rounded-lg">
+                            <div className="font-semibold text-carnet-red-deep mb-1">Union Européenne</div>
+                            <div className="text-sm text-carnet-red">
                               Libre circulation des capitaux, biens, services et personnes. 
                               Suppression frontières internes, renforcement externes.
                             </div>
                           </div>
-                          <div className="p-3 bg-blue-100 rounded-lg">
-                            <div className="font-semibold text-blue-800 mb-1">ASEAN</div>
-                            <div className="text-sm text-blue-700">
+                          <div className="p-3 bg-carnet-red/10 rounded-lg">
+                            <div className="font-semibold text-carnet-red-deep mb-1">ASEAN</div>
+                            <div className="text-sm text-carnet-red">
                               Intégration économique progressive, maintien souveraineté nationale. 
                               Corridors économiques transfrontaliers.
                             </div>
                           </div>
-                          <div className="p-3 bg-blue-100 rounded-lg">
-                            <div className="font-semibold text-blue-800 mb-1">ALENA/USMCA</div>
-                            <div className="text-sm text-blue-700">
+                          <div className="p-3 bg-carnet-red/10 rounded-lg">
+                            <div className="font-semibold text-carnet-red-deep mb-1">ALENA/USMCA</div>
+                            <div className="text-sm text-carnet-red">
                               Intégration commerciale malgré renforcement frontière US-Mexique. 
                               Paradoxe ouverture économique/fermeture migratoire.
                             </div>
@@ -221,7 +221,7 @@ const FrontieresPage = () => {
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-blue-800 mb-3">Défis contemporains</h4>
+                        <h4 className="font-semibold text-carnet-red-deep mb-3">Défis contemporains</h4>
                         <div className="space-y-3">
                           <div className="p-3 bg-orange-100 rounded-lg border border-orange-200">
                             <div className="font-semibold text-orange-800 mb-1">Brexit</div>
@@ -307,9 +307,9 @@ const FrontieresPage = () => {
                               légitimes, détection menaces.
                             </div>
                           </div>
-                          <div className="p-3 bg-blue-100 rounded-lg border border-blue-200">
-                            <div className="font-semibold text-blue-800 mb-1">Coopération régionale</div>
-                            <div className="text-sm text-blue-700">
+                          <div className="p-3 bg-carnet-red/10 rounded-lg border border-carnet-red/30">
+                            <div className="font-semibold text-carnet-red-deep mb-1">Coopération régionale</div>
+                            <div className="text-sm text-carnet-red">
                               Schengen, CARICOM, Union africaine. Mutualisation 
                               contrôles, harmonisation procédures.
                             </div>

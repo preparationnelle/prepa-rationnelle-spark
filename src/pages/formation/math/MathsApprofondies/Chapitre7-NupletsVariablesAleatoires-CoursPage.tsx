@@ -152,7 +152,7 @@ const Chapitre7NupletsVariablesAleatoiresCoursPage = () => {
               </table>
             </div>
 
-            <div className="bg-blue-50 border border-blue-100 p-4 rounded text-blue-900 text-sm mt-6">
+            <div className="bg-pr-orange-pale border border-carnet-red/20 p-4 rounded text-carnet-red-deep text-sm mt-6">
               <strong>Théorème Central Limite (TCL) :</strong> Si les <LatexRenderer latex={"X_i"} /> sont i.i.d (espérance <LatexRenderer latex={"\\mu"} />, variance <LatexRenderer latex={"\\sigma^2"} />), alors la somme centrée réduite converge en loi vers la loi normale <LatexRenderer latex={"\\mathcal{N}(0,1)"} />.
             </div>
 

@@ -18,23 +18,23 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
       
     >
       {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-blue-50">
+      <Card className="border-0 shadow-lg bg-pr-orange-pale">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-endomorphismes-matrices-avancees-exercices">
-              <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>
             </Link>
             <Link to="/formation/maths-endomorphismes-matrices-avancees-flashcards">
-              <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
                 <Brain className="mr-2 h-4 w-4" />
                 Flashcards
               </Button>
             </Link>
             <Link to="/formation/maths-endomorphismes-matrices-avancees-quiz">
-              <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
                 <Target className="mr-2 h-4 w-4" />
                 Quiz
               </Button>
@@ -46,13 +46,13 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
       {/* Section 1 — Changement de bases */}
       <Card className="border-0 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
+          <CardTitle className="text-2xl font-bold text-carnet-red">
             1. Changement de bases
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — matrice d'une application linéaire</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -67,7 +67,7 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Théorème — isomorphisme</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -81,7 +81,7 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Théorème — image d'un vecteur</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -94,7 +94,7 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Théorème — produit matriciel et composition</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -107,7 +107,7 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Corollaire — inversibilité et isomorphisme</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -131,13 +131,13 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
       {/* Section 2 — Matrices de passage */}
       <Card className="border-0 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
+          <CardTitle className="text-2xl font-bold text-carnet-red">
             2. Matrices de passage
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — matrices de passage</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -149,7 +149,7 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Proposition — inversibilité</p>
               <div className="mt-2 space-y-2">
                 <p>La matrice de passage <LatexRenderer latex="P_{\mathcal{B}\leftarrow \mathcal{C}}" inline /> est inversible et</p>
@@ -159,7 +159,7 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Théorème — changement de bases</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -177,13 +177,13 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
       {/* Section 3 — Matrices semblables */}
       <Card className="border-0 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
+          <CardTitle className="text-2xl font-bold text-carnet-red">
             3. Matrices semblables
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — matrices semblables</p>
               <div className="mt-2 space-y-2">
                 <p>Soient <LatexRenderer latex="A,B \in \mathcal{M}_n(\mathbb{R})" inline />.</p>
@@ -196,7 +196,7 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Proposition — endomorphisme et similarité</p>
               <div className="mt-2 space-y-2">
                 <p>Soient <LatexRenderer latex="A,B \in \mathcal{M}_n(\mathbb{R})" inline /> semblables.</p>
@@ -209,7 +209,7 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Corollaire — invariance du rang</p>
               <div className="mt-2">
                 <p>Si <LatexRenderer latex="A" inline /> et <LatexRenderer latex="B" inline /> sont semblables, alors ils ont le même rang.</p>
@@ -222,13 +222,13 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
       {/* Section 4 — Trace d'une matrice */}
       <Card className="border-0 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
+          <CardTitle className="text-2xl font-bold text-carnet-red">
             4. Trace d'une matrice
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — trace</p>
               <div className="mt-2 space-y-2">
                 <p>Pour <LatexRenderer latex="A \in \mathcal{M}_n(\mathbb{R})" inline />, on définit la trace par</p>
@@ -238,7 +238,7 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Proposition — forme linéaire</p>
               <div className="mt-2 space-y-2">
                 <p>L'application <LatexRenderer latex="\mathrm{Tr}: \mathcal{M}_n(\mathbb{R}) \to \mathbb{R}" inline /> est linéaire :</p>
@@ -248,7 +248,7 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Proposition — trace et produit</p>
               <div className="mt-2 space-y-2">
                 <p>Pour tous <LatexRenderer latex="A,B \in \mathcal{M}_n(\mathbb{R})" inline /> :</p>
@@ -258,7 +258,7 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Corollaire — invariance par similarité</p>
               <div className="mt-2 space-y-2">
                 <p>Soient <LatexRenderer latex="A \in \mathcal{M}_n(\mathbb{R})" inline /> et <LatexRenderer latex="P" inline /> inversible. Alors :</p>
@@ -274,13 +274,13 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
       {/* Section 5 — Espaces stables */}
       <Card className="border-0 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
+          <CardTitle className="text-2xl font-bold text-carnet-red">
             5. Espaces stables
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — espace stable</p>
               <div className="mt-2 space-y-2">
                 <p>Soient <LatexRenderer latex="\varphi \in \mathcal{L}(E)" inline /> et <LatexRenderer latex="F \subset E" inline />.</p>
@@ -304,7 +304,7 @@ const Chapitre2EndomorphismesMatricesAvanceesCoursPage = () => {
               </Button>
             </Link>
             <Link to="/formation/maths-endomorphismes-matrices-avancees-exercices">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>

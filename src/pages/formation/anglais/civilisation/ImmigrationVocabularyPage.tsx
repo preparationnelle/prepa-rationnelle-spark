@@ -199,7 +199,7 @@ const ImmigrationVocabularyPage = () => {
 
   const getCategoryColor = (category: string) => {
     const colors: { [key: string]: string } = {
-      'Immigration et migration': 'bg-blue-500',
+      'Immigration et migration': 'bg-carnet-red',
       'Réfugiés et asile': 'bg-green-500',
       'Contrôle et sécurité': 'bg-red-500',
       'Frontières et zones': 'bg-orange-500',
@@ -226,7 +226,7 @@ const ImmigrationVocabularyPage = () => {
               </Link>
             </div>
             <div className="flex items-center gap-4">
-              <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
+              <Badge variant="outline" className="bg-pr-orange-pale text-carnet-red border-carnet-red/30">
                 Immigration et Contrôle des frontières
               </Badge>
               <span className="text-sm text-gray-600">
@@ -246,15 +246,15 @@ const ImmigrationVocabularyPage = () => {
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+              className="bg-carnet-red h-2 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
         </div>
 
         {/* Carte principale */}
-        <Card className="mb-8 border-2 border-blue-200">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
+        <Card className="mb-8 border-2 border-carnet-red/30">
+          <CardHeader className="bg-gradient-to-r from-pr-orange-pale to-indigo-50">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Badge className={`${getCategoryColor(currentCard.category)} text-white`}>

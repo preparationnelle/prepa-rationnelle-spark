@@ -453,7 +453,7 @@ const VocabulaireBildungFlashcardsPage = () => {
 
         {/* Section informative */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-blue-50 shadow-lg">
+          <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale shadow-lg">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-orange-900 mb-4">🎓 Conseils pour l'apprentissage</h3>
               <div className="grid md:grid-cols-2 gap-6">

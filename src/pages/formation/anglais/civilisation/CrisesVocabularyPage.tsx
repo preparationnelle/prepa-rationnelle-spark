@@ -202,7 +202,7 @@ const CrisesVocabularyPage = () => {
       'Crises sanitaires et pandémiques': 'bg-red-500',
       'Crises économiques et financières': 'bg-orange-500',
       'Crises environnementales et climatiques': 'bg-green-500',
-      'Catastrophes naturelles': 'bg-blue-500',
+      'Catastrophes naturelles': 'bg-carnet-red',
       'Crises migratoires et humanitaires': 'bg-purple-500',
       'Crises politiques et conflits': 'bg-indigo-500',
       'Crises technologiques et cybersécurité': 'bg-pink-500',

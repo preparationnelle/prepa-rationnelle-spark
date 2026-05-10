@@ -148,11 +148,11 @@ const OteriaFonctionsExercicesPage = () => {
               </div>
 
               {exercise.tips && exercise.tips.length > 0 && (
-                <div className="mt-4 bg-blue-50 p-4 rounded-md border border-blue-100">
-                  <p className="font-semibold text-blue-900 mb-2 flex items-center gap-2 text-sm">
+                <div className="mt-4 bg-pr-orange-pale p-4 rounded-md border border-carnet-red/20">
+                  <p className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2 text-sm">
                     💡 Points clés
                   </p>
-                  <ul className="list-disc list-inside space-y-1 text-sm text-blue-800">
+                  <ul className="list-disc list-inside space-y-1 text-sm text-carnet-red-deep">
                     {exercise.tips.map((tip, idx) => (
                       <li key={idx}><LatexRenderer latex={tip} inline /></li>
                     ))}
@@ -165,7 +165,7 @@ const OteriaFonctionsExercicesPage = () => {
 
         {/* ─── CONSEILS ─────────────────────────────────────────────── */}
         <WarningBlock title="Conseils pratiques Matplotlib" variant="info">
-          <ul className="space-y-2 text-blue-800 list-disc list-inside text-sm">
+          <ul className="space-y-2 text-carnet-red-deep list-disc list-inside text-sm">
             <li>Idéal pour l'analyse scientifique et les mathématiques</li>
             <li>Utiliser <code>np.linspace(start, stop, num)</code> pour un nombre précis de points</li>
             <li>Toujours ajouter des labels aux axes pour la clarté</li>

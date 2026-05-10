@@ -198,12 +198,12 @@ const CriminalitePage = () => {
                       ))}
                     </div>
 
-                    <div className="mt-6 p-4 bg-blue-100 rounded-lg border border-blue-200">
-                      <h4 className="font-semibold text-blue-800 mb-2">Hubs géographiques des trafics</h4>
+                    <div className="mt-6 p-4 bg-carnet-red/10 rounded-lg border border-carnet-red/30">
+                      <h4 className="font-semibold text-carnet-red-deep mb-2">Hubs géographiques des trafics</h4>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <h5 className="font-semibold text-blue-800 mb-2">Plaques tournantes</h5>
-                          <ul className="text-sm text-blue-700 space-y-1">
+                          <h5 className="font-semibold text-carnet-red-deep mb-2">Plaques tournantes</h5>
+                          <ul className="text-sm text-carnet-red space-y-1">
                             <li>• <strong>Anvers :</strong> Port d'entrée cocaïne Europe</li>
                             <li>• <strong>Dubai :</strong> Blanchiment or, cryptomonnaies</li>
                             <li>• <strong>Singapour :</strong> Contrefaçon, cyber</li>
@@ -211,8 +211,8 @@ const CriminalitePage = () => {
                           </ul>
                         </div>
                         <div>
-                          <h5 className="font-semibold text-blue-800 mb-2">Zones de production</h5>
-                          <ul className="text-sm text-blue-700 space-y-1">
+                          <h5 className="font-semibold text-carnet-red-deep mb-2">Zones de production</h5>
+                          <ul className="text-sm text-carnet-red space-y-1">
                             <li>• <strong>Afghanistan :</strong> 80% opium mondial</li>
                             <li>• <strong>Colombie :</strong> 60% cocaïne mondiale</li>
                             <li>• <strong>Chine :</strong> 80% faux produits</li>
@@ -306,9 +306,9 @@ const CriminalitePage = () => {
                       <div>
                         <h4 className="font-semibold text-green-800 mb-3">Initiatives régionales</h4>
                         <div className="space-y-3">
-                          <div className="p-3 bg-blue-100 rounded-lg border border-blue-200">
-                            <div className="font-semibold text-blue-800 mb-1">Europol (UE)</div>
-                            <div className="text-sm text-blue-700">
+                          <div className="p-3 bg-carnet-red/10 rounded-lg border border-carnet-red/30">
+                            <div className="font-semibold text-carnet-red-deep mb-1">Europol (UE)</div>
+                            <div className="text-sm text-carnet-red">
                               Agence européenne police. Coordination enquêtes, 
                               renseignement criminalité, cybersécurité.
                             </div>

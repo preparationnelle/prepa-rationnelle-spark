@@ -27,16 +27,16 @@ const EspacesMaritimesPage: React.FC = () => {
         <div className="max-w-4xl mx-auto bg-white border rounded-xl p-6">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-900">Les espaces maritimes</h1>
-            <div className="mt-2 h-1 w-24 bg-blue-600 rounded"></div>
+            <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
           <div className="max-w-none text-gray-900 space-y-8">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
               <p className="leading-relaxed">Autrefois vierges, les espaces maritimes font l’objet d’une appropriation croissante par les États. ⇒ territorialisation sans précédent dont l’extension du droit de la mer est la conséquence. Les espaces maritimes apparaissent ainsi comme des espaces à conquérir (fronts) et à délimiter pour exercer pleinement une souveraineté. Leur appropriation les transforme en territoires propices aux rivalités, aux tensions et au jeu des puissances.</p>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">I. La territorialisation des espaces maritimes conduit à multiplier les frontières maritimes</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">I. La territorialisation des espaces maritimes conduit à multiplier les frontières maritimes</h2>
               <h3 className="text-xl font-semibold mb-2">A. Une nouvelle lecture des espaces maritimes appropriés par les États</h3>
               <p>Deux conceptions s’opposent :</p>
               <ul className="list-disc list-inside space-y-1">
@@ -56,8 +56,8 @@ const EspacesMaritimesPage: React.FC = () => {
               <p>Le droit de la mer est également un marqueur de la socialisation de ces espaces : la dimension écologique nourrit l’argumentaire soutenant l’extension des juridictions en mer.</p>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">II. La territorialisation des espaces maritimes s’explique par la maritimisation croissante de l’économie mondiale</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">II. La territorialisation des espaces maritimes s’explique par la maritimisation croissante de l’économie mondiale</h2>
               <h3 className="text-xl font-semibold mb-2">A. Des ressources à exploiter qui les propulsent comme nouvelles frontières de la mondialisation</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Ressources halieutiques : 2 100 catégories d’espèces qui font l’objet d’une exploitation commerciale, assurent 10% des exportations agricoles à l’échelle du monde et génèrent 200 millions d’emplois.</li>
@@ -84,8 +84,8 @@ const EspacesMaritimesPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">III. Dès lors, puissance navale et puissance maritime s’expriment à travers les rivalités inhérentes à la territorialisation des espaces maritimes</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">III. Dès lors, puissance navale et puissance maritime s’expriment à travers les rivalités inhérentes à la territorialisation des espaces maritimes</h2>
               <h3 className="text-xl font-semibold mb-2">A. Espaces maritimes, commerce et État, creuset de la puissance navale</h3>
               <p>À partir du XVIe siècle, les espaces maritimes deviennent centraux dans le jeu des puissances.</p>
               <ul className="list-disc list-inside space-y-1">
@@ -99,8 +99,8 @@ const EspacesMaritimesPage: React.FC = () => {
               <p>Passage de la protection du territoire à la projection de puissance. Enjeux liés aux systèmes d’alliance et à la dimension maritime de l’exercice de la puissance.</p>
               <p>Sécurité maritime et sauvetage en mer (Méditerranée) — nouveaux enjeux. Recours à des moyens navals contre des menaces asymétriques (piraterie, trafics, terrorisme…).</p>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
-                <h4 className="font-semibold text-blue-700 mb-2">Compléments</h4>
+              <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 mt-4">
+                <h4 className="font-semibold text-carnet-red mb-2">Compléments</h4>
                 <p><strong>Porte‑avions chinois</strong> : Liaoning (ex‑soviétique, 1er en service 2017), Shandong (1er construit en RPC), Fujian (Type 003, 2022).</p>
                 <p><strong>US Navy</strong> : 11 porte‑avions (classe Nimitz puis Gerald Ford). « Atout majeur des grandes puissances maritimes… » (Bernard Prézelin, <em>Flottes de combat</em>, 2016).</p>
                 <p><strong>Sous‑marins</strong> : SNA (attaque) — USA 56, Russie 17, Chine 8, Royaume‑Uni 6, France 6. SNLE (dissuasion) — USA 14, Russie 10, Chine 5 (Hainan), Royaume‑Uni 4, France 4, Inde 1.</p>

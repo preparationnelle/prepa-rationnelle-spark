@@ -70,7 +70,7 @@ const GrammaireAvanceePage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Quand veux-tu visiter ce célèbre musée : demain ou seulement dimanche ?
                 </p>
-                <p className="text-blue-700 font-medium mb-3">
+                <p className="text-carnet-red font-medium mb-3">
                   Wann willst du dieses berühmte Museum besichtigen: morgen oder erst am Sonntag?
                 </p>
               </div>
@@ -100,7 +100,7 @@ const GrammaireAvanceePage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Aujourd'hui, on constate que beaucoup de gens font de moins en moins confiance aux hommes politiques.
                 </p>
-                <p className="text-blue-700 font-medium mb-3">
+                <p className="text-carnet-red font-medium mb-3">
                   Heutzutage stellt man fest, dass viele Menschen den Politikern immer weniger vertrauen.
                 </p>
               </div>
@@ -130,7 +130,7 @@ const GrammaireAvanceePage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Nos amis, qui ont passé quatre jours en Autriche, s'intéressent à l'histoire de ce pays.
                 </p>
-                <p className="text-blue-700 font-medium mb-3">
+                <p className="text-carnet-red font-medium mb-3">
                   Unsere Freunde, die vier Tage in Österreich verbracht haben, interessieren sich für die Geschichte dieses Landes.
                 </p>
               </div>
@@ -160,7 +160,7 @@ const GrammaireAvanceePage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Après leur stage, ils ont voulu travailler dans une grande entreprise de Stuttgart.
                 </p>
-                <p className="text-blue-700 font-medium mb-3">
+                <p className="text-carnet-red font-medium mb-3">
                   Nach ihrem Praktikum haben sie in einer großen Stuttgarter Firma arbeiten wollen.
                 </p>
               </div>
@@ -190,7 +190,7 @@ const GrammaireAvanceePage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Si elle avait eu plus de temps, elle serait restée à la mer tout le week-end.
                 </p>
-                <p className="text-blue-700 font-medium mb-3">
+                <p className="text-carnet-red font-medium mb-3">
                   Wenn sie mehr Zeit gehabt hätte, wäre sie das ganze Wochenende am Meer geblieben.
                 </p>
               </div>
@@ -220,7 +220,7 @@ const GrammaireAvanceePage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Mon mari et moi avons rencontré une famille allemande dans l'avion pour Munich au mois de juillet.
                 </p>
-                <p className="text-blue-700 font-medium mb-3">
+                <p className="text-carnet-red font-medium mb-3">
                   Im Juli haben mein Mann und ich im Flugzeug nach München eine deutsche Familie getroffen.
                 </p>
               </div>
@@ -250,7 +250,7 @@ const GrammaireAvanceePage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Te souviens-tu que les enfants ne sont pas allés à l'école pendant des semaines l'année dernière ?
                 </p>
-                <p className="text-blue-700 font-medium mb-3">
+                <p className="text-carnet-red font-medium mb-3">
                   Erinnerst du dich daran, dass die Kinder letztes Jahr wochenlang nicht zur Schule gegangen sind?
                 </p>
               </div>
@@ -280,7 +280,7 @@ const GrammaireAvanceePage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Malgré le confinement et les difficultés, les étudiants sérieux ont réussi l'examen.
                 </p>
-                <p className="text-blue-700 font-medium mb-3">
+                <p className="text-carnet-red font-medium mb-3">
                   Trotz des Lockdowns und der Schwierigkeiten haben die fleißigen Studenten die Prüfung bestanden.
                 </p>
               </div>
@@ -310,7 +310,7 @@ const GrammaireAvanceePage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Cette très belle maison a été louée par des touristes américains qu'il connaît bien.
                 </p>
-                <p className="text-blue-700 font-medium mb-3">
+                <p className="text-carnet-red font-medium mb-3">
                   Dieses sehr schöne Haus ist von amerikanischen Touristen, die er gut kennt, gemietet worden.
                 </p>
               </div>
@@ -340,7 +340,7 @@ const GrammaireAvanceePage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Comme j'habite maintenant dans le centre-ville, je n'ai plus besoin de voiture.
                 </p>
-                <p className="text-blue-700 font-medium mb-3">
+                <p className="text-carnet-red font-medium mb-3">
                   Da ich nun in der Innenstadt wohne, brauche ich kein Auto mehr.
                 </p>
               </div>
@@ -380,7 +380,7 @@ const GrammaireAvanceePage = () => {
         {/* Bouton retour en bas de page */}
         <div className="flex justify-center mt-12 pb-8">
           <Link to="/formation/allemand/epreuves">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium flex items-center gap-2 transition-colors">
+            <button className="bg-carnet-red hover:bg-carnet-red-deep text-white px-6 py-3 rounded-md font-medium flex items-center gap-2 transition-colors">
               <ArrowLeft className="h-4 w-4" />
               Retour aux épreuves allemandes
             </button>

@@ -253,7 +253,7 @@ const OteriaVariablesAleatoiresExercicesPage = () => {
             <p className="mb-2">La loi exponentielle a la propriété d'absence de mémoire :</p>
             <LatexRenderer latex="P(T > 2+3 \mid T > 2) = P(T > 3)" block={true} />
             <LatexRenderer latex="= e^{-0.5 \times 3} = e^{-1.5} \approx 0.223" block={true} />
-            <p className="mt-3 text-sm bg-blue-50 p-2 rounded border border-blue-200">
+            <p className="mt-3 text-sm bg-pr-orange-pale p-2 rounded border border-carnet-red/30">
               <strong>Interprétation :</strong> Le fait d'avoir déjà attendu 2h sans panne ne change pas la probabilité d'attendre encore 3h sans panne. C'est comme si on recommençait à zéro !
             </p>
           </div>
@@ -326,7 +326,7 @@ plt.legend()
 plt.grid(True, alpha=0.3)
 plt.show()`}
           />
-          <div className="bg-blue-50 p-4 rounded mt-4 text-sm text-slate-700">
+          <div className="bg-pr-orange-pale p-4 rounded mt-4 text-sm text-slate-700">
             <p className="font-semibold mb-3">Résultats attendus :</p>
             <ul className="space-y-2 list-disc ml-4">
               <li><strong>Moyenne empirique :</strong> ≈ 30 (théorique: 30)</li>

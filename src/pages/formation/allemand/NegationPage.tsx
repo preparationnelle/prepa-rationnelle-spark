@@ -83,7 +83,7 @@ const NegationPage = () => {
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold mb-3 text-blue-700">KEIN pour :</h3>
+                <h3 className="font-semibold mb-3 text-carnet-red">KEIN pour :</h3>
                 <ul className="list-disc list-inside text-gray-700 space-y-2">
                   <li>Noms indéfinis : <span className="text-orange-600">ein Mann → kein Mann</span></li>
                   <li>Noms sans article : <span className="text-orange-600">Brot → kein Brot</span></li>

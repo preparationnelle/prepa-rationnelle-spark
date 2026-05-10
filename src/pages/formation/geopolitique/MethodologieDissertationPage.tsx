@@ -120,7 +120,7 @@ const MethodologieDissertationPage = () => {
         {/* Header de l'article */}
         <div className="max-w-4xl mx-auto">
           <Card className="border-2 border-carnet-red/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
+            <CardHeader className="bg-gradient-to-r from-pr-orange-pale to-indigo-50">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 rounded-lg bg-carnet-red text-white">
                   <PenTool className="h-5 w-5" />

@@ -199,7 +199,7 @@ const VocabulaireInnovationFlashcardsPage = () => {
     const colors = {
       "Innovation générale": "bg-cyan-100 text-cyan-800",
       "Technologie générale": "bg-teal-100 text-teal-800",
-      "Souveraineté technologique": "bg-blue-100 text-blue-800",
+      "Souveraineté technologique": "bg-carnet-red/10 text-carnet-red-deep",
       "Transformation numérique": "bg-sky-100 text-sky-800",
       "Intelligence artificielle": "bg-purple-100 text-purple-800",
       "Cybersécurité": "bg-red-100 text-red-800",
@@ -211,7 +211,7 @@ const VocabulaireInnovationFlashcardsPage = () => {
       "Géopolitique technologique": "bg-indigo-100 text-indigo-800",
       "Développement IA": "bg-purple-100 text-purple-800",
       "Régulation des données": "bg-green-100 text-green-800",
-      "Souveraineté numérique": "bg-blue-100 text-blue-800",
+      "Souveraineté numérique": "bg-carnet-red/10 text-carnet-red-deep",
       "Menaces cybernétiques": "bg-red-100 text-red-800",
       "Sécurité des infrastructures": "bg-amber-100 text-orange-800",
       "Éthique IA": "bg-pink-100 text-pink-800",
@@ -221,7 +221,7 @@ const VocabulaireInnovationFlashcardsPage = () => {
       "Technologies fondamentales": "bg-slate-100 text-slate-800",
       "Automatisation": "bg-gray-100 text-gray-800",
       "Robotique": "bg-zinc-100 text-zinc-800",
-      "Industrie 4.0": "bg-blue-100 text-blue-800",
+      "Industrie 4.0": "bg-carnet-red/10 text-carnet-red-deep",
       "Manufacturing intelligent": "bg-cyan-100 text-cyan-800",
       "IoT et connectivité": "bg-teal-100 text-teal-800",
       "Cloud et infrastructure": "bg-sky-100 text-sky-800",
@@ -229,7 +229,7 @@ const VocabulaireInnovationFlashcardsPage = () => {
       "Monnaies numériques": "bg-yellow-100 text-yellow-800",
       "Réseaux télécoms": "bg-green-100 text-green-800",
       "Infrastructure réseau": "bg-emerald-100 text-emerald-800",
-      "Stratégies numériques": "bg-blue-100 text-blue-800",
+      "Stratégies numériques": "bg-carnet-red/10 text-carnet-red-deep",
       "Politiques européennes": "bg-indigo-100 text-indigo-800",
       "Projets européens": "bg-purple-100 text-purple-800",
       "Développement logiciel": "bg-cyan-100 text-cyan-800",
@@ -241,7 +241,7 @@ const VocabulaireInnovationFlashcardsPage = () => {
       "Startups valorisées": "bg-green-100 text-green-800",
       "Financement innovation": "bg-emerald-100 text-emerald-800",
       "Hubs d'innovation": "bg-teal-100 text-teal-800",
-      "Organismes de recherche": "bg-blue-100 text-blue-800",
+      "Organismes de recherche": "bg-carnet-red/10 text-carnet-red-deep",
       "Acteurs cybersécurité": "bg-red-100 text-red-800",
       "Types d'attaques": "bg-amber-100 text-orange-800",
       "Malwares": "bg-red-100 text-red-800",
@@ -256,7 +256,7 @@ const VocabulaireInnovationFlashcardsPage = () => {
       "Principes éthiques": "bg-purple-100 text-purple-800",
       "Cadre réglementaire": "bg-indigo-100 text-indigo-800",
       "Régulation IA": "bg-violet-100 text-violet-800",
-      "Classification IA": "bg-blue-100 text-blue-800",
+      "Classification IA": "bg-carnet-red/10 text-carnet-red-deep",
       "Types d'IA": "bg-cyan-100 text-cyan-800",
       "Applications IA": "bg-teal-100 text-teal-800",
       "Technologies controversées": "bg-red-100 text-red-800",
@@ -268,7 +268,7 @@ const VocabulaireInnovationFlashcardsPage = () => {
       "Institutions gouvernementales": "bg-green-100 text-green-800",
       "Performance numérique": "bg-sky-100 text-sky-800",
       "Métriques numériques": "bg-cyan-100 text-cyan-800",
-      "Administration numérique": "bg-blue-100 text-blue-800",
+      "Administration numérique": "bg-carnet-red/10 text-carnet-red-deep",
       "Services numériques": "bg-teal-100 text-teal-800",
       "Inégalités numériques": "bg-red-100 text-red-800",
       "Couverture réseau": "bg-emerald-100 text-emerald-800",
@@ -284,7 +284,7 @@ const VocabulaireInnovationFlashcardsPage = () => {
       "Soutien à l'innovation": "bg-lime-100 text-lime-800",
       "Écosystèmes innovation": "bg-green-100 text-green-800",
       "Références mondiales": "bg-amber-100 text-amber-800",
-      "Initiatives nationales": "bg-blue-100 text-blue-800"
+      "Initiatives nationales": "bg-carnet-red/10 text-carnet-red-deep"
     };
     return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
   };

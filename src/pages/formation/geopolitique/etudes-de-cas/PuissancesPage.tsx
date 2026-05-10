@@ -53,13 +53,13 @@ const PuissancesPage = () => {
       </nav>
 
         {/* Header */}
-        <Card className="mb-8 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-carnet-red to-indigo-600 text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Globe className="h-8 w-8" />
               <div>
                 <CardTitle className="text-3xl font-bold">La France : Puissance mondiale</CardTitle>
-                <p className="text-blue-100 mt-2">
+                <p className="text-carnet-paper-2 mt-2">
                   Économie, hard power, soft power et défis structurels
                 </p>
               </div>
@@ -69,19 +69,19 @@ const PuissancesPage = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div className="bg-white/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">2900Md$</div>
-                <div className="text-sm text-blue-100">PIB France</div>
+                <div className="text-sm text-carnet-paper-2">PIB France</div>
               </div>
               <div className="bg-white/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">10e</div>
-                <div className="text-sm text-blue-100">Rang PIB PPA</div>
+                <div className="text-sm text-carnet-paper-2">Rang PIB PPA</div>
               </div>
               <div className="bg-white/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">50Md€</div>
-                <div className="text-sm text-blue-100">Défense 2025</div>
+                <div className="text-sm text-carnet-paper-2">Défense 2025</div>
               </div>
               <div className="bg-white/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">5e</div>
-                <div className="text-sm text-blue-100">Rang FTN mondial</div>
+                <div className="text-sm text-carnet-paper-2">Rang FTN mondial</div>
               </div>
             </div>
           </CardContent>
@@ -91,16 +91,16 @@ const PuissancesPage = () => {
         <Accordion type="single" collapsible className="w-full space-y-4">
           
           <AccordionItem value="france-economy">
-            <AccordionTrigger className="text-xl text-blue-700">
+            <AccordionTrigger className="text-xl text-carnet-red">
               I. La France : Puissance économique mondiale
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-6">
                 
                 {/* Position économique */}
-                <Card className="bg-blue-50 border-blue-200">
+                <Card className="bg-pr-orange-pale border-carnet-red/30">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-blue-800">
+                    <CardTitle className="flex items-center gap-2 text-carnet-red-deep">
                       <DollarSign className="h-5 w-5" />
                       Position économique mondiale
                     </CardTitle>
@@ -108,8 +108,8 @@ const PuissancesPage = () => {
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-semibold text-blue-800 mb-3">Indicateurs généraux</h4>
-                        <ul className="text-sm text-blue-700 space-y-2">
+                        <h4 className="font-semibold text-carnet-red-deep mb-3">Indicateurs généraux</h4>
+                        <ul className="text-sm text-carnet-red space-y-2">
                           <li><strong>PIB PPA :</strong> 10e mondial (dépassée par Brésil, Russie)</li>
                           <li><strong>PIB/habitant :</strong> 45 000$ (20e mondial)</li>
                           <li><strong>PIB nominal :</strong> 2 900 Mds$ (7e rang, 3% PIB mondial)</li>
@@ -118,8 +118,8 @@ const PuissancesPage = () => {
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-blue-800 mb-3">Performance commerciale</h4>
-                        <ul className="text-sm text-blue-700 space-y-2">
+                        <h4 className="font-semibold text-carnet-red-deep mb-3">Performance commerciale</h4>
+                        <ul className="text-sm text-carnet-red space-y-2">
                           <li><strong>Exportations :</strong> 5e exportateur mondial (600 Mds €)</li>
                           <li><strong>Services :</strong> 3e rang mondial</li>
                           <li><strong>Agriculture :</strong> 1re puissance agricole UE</li>
@@ -129,8 +129,8 @@ const PuissancesPage = () => {
                       </div>
                     </div>
                     
-                    <div className="mt-4 p-3 bg-blue-100 rounded-lg">
-                      <p className="text-sm text-blue-800">
+                    <div className="mt-4 p-3 bg-carnet-red/10 rounded-lg">
+                      <p className="text-sm text-carnet-red-deep">
                         <strong>Citation Hubert Védrine :</strong> <em>"Puissance d'influence mondiale"</em> - 
                         La France compense sa taille par son soft power et sa diplomatie.
                       </p>
@@ -233,9 +233,9 @@ const PuissancesPage = () => {
                 </Card>
 
                 {/* Soft Power */}
-                <Card className="bg-blue-50 border-blue-200">
+                <Card className="bg-pr-orange-pale border-carnet-red/30">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-blue-800">
+                    <CardTitle className="flex items-center gap-2 text-carnet-red-deep">
                       <Users className="h-5 w-5" />
                       Soft Power : Influence culturelle
                     </CardTitle>
@@ -243,16 +243,16 @@ const PuissancesPage = () => {
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-semibold text-blue-800 mb-3">Francophonie</h4>
-                        <ul className="text-sm text-blue-700 space-y-2">
+                        <h4 className="font-semibold text-carnet-red-deep mb-3">Francophonie</h4>
+                        <ul className="text-sm text-carnet-red space-y-2">
                           <li><strong>280 millions</strong> francophones (5e langue mondiale)</li>
                           <li><strong>Commerce stimulé :</strong> +35% entre pays francophones</li>
                           <li><strong>OIF (1970) :</strong> Promeut paix/démocratie</li>
                           <li><strong>Nobel littérature :</strong> 15 fois français</li>
                         </ul>
                         
-                        <h4 className="font-semibold text-blue-800 mb-3 mt-4">Rayonnement</h4>
-                        <ul className="text-sm text-blue-700 space-y-2">
+                        <h4 className="font-semibold text-carnet-red-deep mb-3 mt-4">Rayonnement</h4>
+                        <ul className="text-sm text-carnet-red space-y-2">
                           <li><strong>500 établissements</strong> français à l'étranger</li>
                           <li><strong>350 000 élèves</strong> dans réseau français</li>
                           <li><strong>30 centres</strong> de recherche internationaux</li>
@@ -261,8 +261,8 @@ const PuissancesPage = () => {
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-blue-800 mb-3">Outre-mer</h4>
-                        <ul className="text-sm text-blue-700 space-y-2">
+                        <h4 className="font-semibold text-carnet-red-deep mb-3">Outre-mer</h4>
+                        <ul className="text-sm text-carnet-red space-y-2">
                           <li><strong>DROM-COM :</strong> Guadeloupe, Martinique, Guyane, Réunion, Mayotte</li>
                           <li><strong>ZEE :</strong> 95% en outre-mer (2e mondiale)</li>
                           <li><strong>Présence :</strong> Pacifique, Indien, Atlantique</li>

@@ -173,23 +173,23 @@ const EnergiePage = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Zap className="h-5 w-5 text-blue-600" />
+                <Zap className="h-5 w-5 text-carnet-red" />
                 Énergie nucléaire mondiale
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 {nuclearCountries.map((country, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <div key={index} className="flex items-center justify-between p-3 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
                     <div>
-                      <div className="font-semibold text-blue-800">{country.country}</div>
-                      <div className="text-sm text-blue-600">{country.share} mondial</div>
+                      <div className="font-semibold text-carnet-red-deep">{country.country}</div>
+                      <div className="text-sm text-carnet-red">{country.share} mondial</div>
                     </div>
-                    <div className="font-bold text-blue-700">{country.reactors} réacteurs</div>
+                    <div className="font-bold text-carnet-red">{country.reactors} réacteurs</div>
                   </div>
                 ))}
-                <div className="bg-blue-100 p-3 rounded-lg border border-blue-300">
-                  <p className="text-sm text-blue-800">
+                <div className="bg-carnet-red/10 p-3 rounded-lg border border-carnet-red/40">
+                  <p className="text-sm text-carnet-red-deep">
                     <strong>Total :</strong> 440 réacteurs dans 32 pays • <strong>Production :</strong> 10% électricité mondiale
                   </p>
                 </div>
@@ -227,12 +227,12 @@ const EnergiePage = () => {
                 </ul>
               </div>
               
-              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+              <div className="bg-pr-orange-pale p-4 rounded-lg border border-carnet-red/30">
                 <div className="flex items-center gap-2 mb-3">
-                  <Wind className="h-5 w-5 text-blue-600" />
-                  <h4 className="font-semibold text-blue-800">Éolien offshore</h4>
+                  <Wind className="h-5 w-5 text-carnet-red" />
+                  <h4 className="font-semibold text-carnet-red-deep">Éolien offshore</h4>
                 </div>
-                <ul className="text-sm text-blue-700 space-y-1">
+                <ul className="text-sm text-carnet-red space-y-1">
                   <li>• UK : 40% production mondiale</li>
                   <li>• Danemark : 15%</li>
                   <li>• Chine : 12%</li>
@@ -312,9 +312,9 @@ const EnergiePage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-blue-800 mb-2">Transition énergétique</h4>
-                      <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                    <div className="bg-pr-orange-pale p-4 rounded-lg">
+                      <h4 className="font-semibold text-carnet-red-deep mb-2">Transition énergétique</h4>
+                      <ul className="list-disc list-inside text-sm text-carnet-red space-y-1">
                         <li><strong>Hydrogène vert :</strong> Europe face aux tensions géopolitiques</li>
                         <li><strong>Terres rares :</strong> Dépendance chinoise pour éoliennes/batteries</li>
                         <li><strong>Lithium :</strong> Triangle ABC (Argentine-Bolivie-Chili)</li>
@@ -345,12 +345,12 @@ const EnergiePage = () => {
                       </div>
                     </div>
 
-                    <div className="border-l-4 border-blue-400 bg-blue-50 p-4 rounded-r-lg">
-                      <h4 className="font-semibold text-blue-800 mb-3">
+                    <div className="border-l-4 border-carnet-red/40 bg-pr-orange-pale p-4 rounded-r-lg">
+                      <h4 className="font-semibold text-carnet-red-deep mb-3">
                         <Zap className="inline h-4 w-4 mr-2" />
                         Débats nucléaires
                       </h4>
-                      <div className="text-sm text-blue-700 space-y-2">
+                      <div className="text-sm text-carnet-red space-y-2">
                         <p><strong>Divergences :</strong> Allemagne sortie (2023) vs. France maintien</p>
                         <p><strong>Japon :</strong> Relance post-Fukushima pour indépendance énergétique</p>
                         <p><strong>Nouveaux entrants :</strong> Émirats, Pologne, programmes nucléaires</p>

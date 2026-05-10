@@ -27,12 +27,12 @@ const EspacesMaritimesTensionsPage: React.FC = () => {
         <div className="max-w-4xl mx-auto bg-white border rounded-xl p-6">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-900">Les espaces maritimes, objets de tensions et de conflits entre États</h1>
-            <div className="mt-2 h-1 w-24 bg-blue-600 rounded"></div>
+            <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
           <div className="max-w-none text-gray-900 space-y-8">
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">I. Attribut classique de la puissance, la maîtrise d’un espace maritime a pu engendrer des tensions latentes tout autant que des conflits manifestes</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">I. Attribut classique de la puissance, la maîtrise d’un espace maritime a pu engendrer des tensions latentes tout autant que des conflits manifestes</h2>
 
               <h3 className="text-xl font-semibold mb-2">A. La possession d’un vaste espace maritime peut être vue comme un attribut de la puissance nationale</h3>
               <ul className="list-disc list-inside space-y-1">
@@ -56,8 +56,8 @@ const EspacesMaritimesTensionsPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">II. En raison de leur nouvelle importance économique, les espaces maritimes suscitent un renouveau juridique et théorique pour mieux en appréhender la conflictualité</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">II. En raison de leur nouvelle importance économique, les espaces maritimes suscitent un renouveau juridique et théorique pour mieux en appréhender la conflictualité</h2>
 
               <h3 className="text-xl font-semibold mb-2">A. Mondialisation : hausse des échanges qui bouleverse la géopolitique</h3>
               <p>Les espaces maritimes jouent un rôle déterminant par le transport maritime (≈ 80% du commerce mondial).</p>
@@ -70,8 +70,8 @@ const EspacesMaritimesTensionsPage: React.FC = () => {
               <p>Y. Lacoste, <em>Géopolitique de la Méditerranée</em> : « carrefour des civilisations », « enjeu stratégique majeur ».</p>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">III. Dans ce contexte, ces zones géographiques cristallisent de nouvelles tensions pour leurs ressources et leur sécurité…</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">III. Dans ce contexte, ces zones géographiques cristallisent de nouvelles tensions pour leurs ressources et leur sécurité…</h2>
 
               <h3 className="text-xl font-semibold mb-2">A. Raréfaction des ressources : volonté accrue d’exploiter le sous‑sol maritime</h3>
               <p>Hausse de population ⇒ hausse de la consommation. « Peak oil » : point où les découvertes ne compensent plus l’exploitation (Rapport Meadows, 1972).</p>
@@ -89,8 +89,8 @@ const EspacesMaritimesTensionsPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="text-lg font-semibold text-blue-700 mb-2">Conclusion et ouverture</h3>
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+              <h3 className="text-lg font-semibold text-carnet-red mb-2">Conclusion et ouverture</h3>
               <p>
                 Tonalité ironique à l’aphorisme du poète : « Homme libre, toujours tu chériras la mer ! » (Baudelaire, Les Fleurs du Mal, « L’homme et la mer »).
               </p>

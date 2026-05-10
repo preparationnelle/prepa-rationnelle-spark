@@ -155,13 +155,13 @@ const VocabulairePolitiqueFlashcardsPage = () => {
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      "Institutions": "bg-blue-100 text-blue-800",
+      "Institutions": "bg-carnet-red/10 text-carnet-red-deep",
       "Système politique": "bg-purple-100 text-purple-800",
       "Relations": "bg-green-100 text-green-800",
       "Élections": "bg-red-100 text-red-800",
       "Économie": "bg-yellow-100 text-yellow-800",
       "Politique": "bg-indigo-100 text-indigo-800",
-      "Gouvernement": "bg-blue-100 text-blue-800",
+      "Gouvernement": "bg-carnet-red/10 text-carnet-red-deep",
       "Société": "bg-gray-100 text-gray-800",
       "Droits": "bg-emerald-100 text-emerald-800",
       "Droit": "bg-emerald-100 text-emerald-800",
@@ -176,7 +176,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale via-white to-purple-50">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -201,7 +201,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
 
       {/* Arrière-plan animé */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -z-10 -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+        <div className="absolute -z-10 -top-40 -right-40 w-80 h-80 bg-carnet-red/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
         <div className="absolute -z-10 -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
         <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
       </div>
@@ -210,7 +210,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-blue-600 text-white">
+            <div className="p-3 rounded-lg bg-carnet-red text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Vocabulaire Politique Allemand
@@ -221,7 +221,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">{cards.length} mots</Badge>
             <Badge variant="outline">Module 1 - Deutsche Politik</Badge>
-            <Badge className="bg-blue-600">Flashcards</Badge>
+            <Badge className="bg-carnet-red">Flashcards</Badge>
           </div>
         </div>
 
@@ -233,7 +233,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2.5">
             <div 
-              className="bg-gradient-to-r from-blue-500 to-purple-500 h-2.5 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-carnet-red to-purple-500 h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -270,14 +270,14 @@ const VocabulairePolitiqueFlashcardsPage = () => {
 
           {/* Aide aux raccourcis */}
           {showHelp && (
-            <Card className="mb-4 bg-blue-50 border-blue-200">
+            <Card className="mb-4 bg-pr-orange-pale border-carnet-red/30">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-blue-900 mb-3">Raccourcis clavier :</h3>
-                <div className="grid grid-cols-2 gap-2 text-sm text-blue-700">
-                  <div><kbd className="bg-blue-100 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-blue-100 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
-                  <div><kbd className="bg-blue-100 px-2 py-1 rounded">←</kbd> <kbd className="bg-blue-100 px-2 py-1 rounded">→</kbd> : Navigation</div>
-                  <div><kbd className="bg-blue-100 px-2 py-1 rounded">S</kbd> : Mélanger</div>
-                  <div><kbd className="bg-blue-100 px-2 py-1 rounded">R</kbd> : Recommencer</div>
+                <h3 className="font-semibold text-carnet-red-deep mb-3">Raccourcis clavier :</h3>
+                <div className="grid grid-cols-2 gap-2 text-sm text-carnet-red">
+                  <div><kbd className="bg-carnet-red/10 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-carnet-red/10 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
+                  <div><kbd className="bg-carnet-red/10 px-2 py-1 rounded">←</kbd> <kbd className="bg-carnet-red/10 px-2 py-1 rounded">→</kbd> : Navigation</div>
+                  <div><kbd className="bg-carnet-red/10 px-2 py-1 rounded">S</kbd> : Mélanger</div>
+                  <div><kbd className="bg-carnet-red/10 px-2 py-1 rounded">R</kbd> : Recommencer</div>
                 </div>
               </CardContent>
             </Card>
@@ -362,13 +362,13 @@ const VocabulairePolitiqueFlashcardsPage = () => {
 
         {/* Section informative */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50 shadow-lg">
+          <Card className="border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-purple-50 shadow-lg">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-blue-900 mb-4">💡 Conseils pour l'apprentissage</h3>
+              <h3 className="text-xl font-bold text-carnet-red-deep mb-4">💡 Conseils pour l'apprentissage</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-blue-800">Technique de révision :</h4>
-                  <ul className="text-sm text-blue-700 space-y-1">
+                  <h4 className="font-semibold text-carnet-red-deep">Technique de révision :</h4>
+                  <ul className="text-sm text-carnet-red space-y-1">
                     <li>• Commencez par le français (plus familier)</li>
                     <li>• Tentez de deviner l'allemand avant de retourner</li>
                     <li>• Répétez à voix haute pour la prononciation</li>
@@ -376,8 +376,8 @@ const VocabulairePolitiqueFlashcardsPage = () => {
                   </ul>
                 </div>
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-blue-800">Pour les concours :</h4>
-                  <ul className="text-sm text-blue-700 space-y-1">
+                  <h4 className="font-semibold text-carnet-red-deep">Pour les concours :</h4>
+                  <ul className="text-sm text-carnet-red space-y-1">
                     <li>• Vocabulaire essentiel pour les dissertations</li>
                     <li>• Termes techniques du système politique allemand</li>
                     <li>• Base indispensable pour Module 1 - Deutsche Politik</li>

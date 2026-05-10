@@ -888,7 +888,7 @@ const ChronologieEuropePage = () => {
         </div>
 
         {/* Timeline */}
-        <Card className="border-2 border-carnet-red/30 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg">
+        <Card className="border-2 border-carnet-red/30 bg-gradient-to-br from-pr-orange-pale to-indigo-50 shadow-lg">
           <CardHeader>
             <CardTitle className="text-3xl flex items-center gap-3">
               <Calendar className="h-8 w-8 text-carnet-red" />

@@ -2661,7 +2661,7 @@ const AmeriqueLatinePage = () => {
                     </div>
 
                     {/* Conclusion finale de la dissertation */}
-                    <div className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg border-2 border-carnet-red/30">
+                    <div className="bg-gradient-to-r from-pr-orange-pale to-green-50 p-6 rounded-lg border-2 border-carnet-red/30">
                       <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
                         <CheckCircle className="h-5 w-5 text-gray-600" />
                         Conclusion générale de la dissertation

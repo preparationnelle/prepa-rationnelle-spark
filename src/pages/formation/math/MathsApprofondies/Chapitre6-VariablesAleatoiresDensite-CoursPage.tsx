@@ -16,7 +16,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
       
     >
       {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-blue-50"
+      <Card className="border-0 shadow-lg bg-pr-orange-pale"
       
     >
         <CardContent className="pt-6"
@@ -25,7 +25,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
           <div className="flex flex-wrap justify-center gap-3"
       
     >
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white"
+            <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white"
       
     >
               <BookOpen className="mr-2 h-4 w-4" /
@@ -38,7 +38,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <Link to="/formation/maths-variables-aleatoires-densite-exercices"
       
     >
-              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50"
+              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-orange-pale"
       
     >
                 <PenTool className="mr-2 h-4 w-4" /
@@ -54,7 +54,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <Link to="/formation/maths-variables-aleatoires-densite-flashcards"
       
     >
-              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50"
+              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-orange-pale"
       
     >
                 <Brain className="mr-2 h-4 w-4" /
@@ -70,7 +70,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <Link to="/formation/maths-variables-aleatoires-densite-quiz"
       
     >
-              <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50"
+              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-orange-pale"
       
     >
                 <Target className="mr-2 h-4 w-4" /
@@ -100,7 +100,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardHeader
       
     >
-          <CardTitle className="text-2xl font-bold text-blue-600"
+          <CardTitle className="text-2xl font-bold text-carnet-red"
       
     >
             1. Définition
@@ -125,7 +125,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="bg-blue-50 p-4 rounded-lg"
+            <div className="bg-pr-orange-pale p-4 rounded-lg"
       
     >
               <p className="text-black mb-3"
@@ -171,7 +171,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardHeader
       
     >
-          <CardTitle className="text-2xl font-bold text-blue-600"
+          <CardTitle className="text-2xl font-bold text-carnet-red"
       
     >
             2. Caractérisation d'une densité
@@ -239,7 +239,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardHeader
       
     >
-          <CardTitle className="text-2xl font-bold text-blue-600"
+          <CardTitle className="text-2xl font-bold text-carnet-red"
       
     >
             3. Probabilités et fonction de répartition
@@ -262,7 +262,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg"
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -277,7 +277,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </div
       
     >
-            <div className="mt-4 bg-blue-50 p-4 rounded-lg"
+            <div className="mt-4 bg-pr-orange-pale p-4 rounded-lg"
       
     >
               <p className="text-black"
@@ -308,7 +308,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardHeader
       
     >
-          <CardTitle className="text-2xl font-bold text-blue-600"
+          <CardTitle className="text-2xl font-bold text-carnet-red"
       
     >
             4. Espérance et moments
@@ -334,7 +334,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg"
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -367,7 +367,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg"
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -406,7 +406,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg"
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -438,7 +438,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardHeader
       
     >
-          <CardTitle className="text-2xl font-bold text-blue-600"
+          <CardTitle className="text-2xl font-bold text-carnet-red"
       
     >
             5. Variance
@@ -461,7 +461,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg"
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -486,7 +486,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <h3 className="text-lg font-semibold mb-3">Formule de Koenig–Huygens</h3
       
     >
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg"
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -521,7 +521,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4"
       
     >
-              <div className="bg-blue-50 p-3 rounded-lg text-center"
+              <div className="bg-pr-orange-pale p-3 rounded-lg text-center"
       
     >
                 <LatexRenderer latex="\mathbb{E}(aX+b)=a\,\mathbb{E}(X)+b" /
@@ -530,7 +530,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
               </div
       
     >
-              <div className="bg-blue-50 p-3 rounded-lg text-center"
+              <div className="bg-pr-orange-pale p-3 rounded-lg text-center"
       
     >
                 <LatexRenderer latex="\operatorname{Var}(aX+b)=a^{2}\operatorname{Var}(X)" /
@@ -559,7 +559,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardHeader
       
     >
-          <CardTitle className="text-2xl font-bold text-blue-600"
+          <CardTitle className="text-2xl font-bold text-carnet-red"
       
     >
             6. Variable réduite et centrée réduite
@@ -608,7 +608,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <h3 className="text-lg font-semibold mb-3">Variable centrée réduite associée</h3
       
     >
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg"
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -648,7 +648,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardHeader
       
     >
-          <CardTitle className="text-2xl font-bold text-blue-600"
+          <CardTitle className="text-2xl font-bold text-carnet-red"
       
     >
             7. Loi uniforme sur [a,b] (a&lt;b)
@@ -661,7 +661,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardContent className="space-y-6"
       
     >
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6"
+          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6"
       
     >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -706,7 +706,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </div
       
     >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-blue-200"
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-carnet-red/30"
       
     >
               <div
@@ -799,7 +799,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardHeader
       
     >
-          <CardTitle className="text-2xl font-bold text-blue-600"
+          <CardTitle className="text-2xl font-bold text-carnet-red"
       
     >
             8. Loi exponentielle ℰ(λ) (λ&gt;0)
@@ -812,7 +812,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardContent className="space-y-6"
       
     >
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6"
+          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6"
       
     >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -857,7 +857,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </div
       
     >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-blue-200"
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-carnet-red/30"
       
     >
               <div
@@ -916,7 +916,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="text-center bg-blue-50 p-4 rounded-lg"
+            <div className="text-center bg-pr-orange-pale p-4 rounded-lg"
       
     >
               <LatexRenderer latex="\mathbb{P}(X>t+h\mid X>h)=\mathbb{P}(X>t)" /
@@ -935,7 +935,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <h3 className="text-lg font-semibold mb-3">Transformations</h3
       
     >
-            <div className="text-center bg-blue-50 p-4 rounded-lg"
+            <div className="text-center bg-pr-orange-pale p-4 rounded-lg"
       
     >
               <LatexRenderer latex="X\sim\mathcal{E}(1)\ \Longleftrightarrow\ \frac{X}{\lambda}\sim\mathcal{E}(\lambda)" /
@@ -961,7 +961,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardHeader
       
     >
-          <CardTitle className="text-2xl font-bold text-blue-600"
+          <CardTitle className="text-2xl font-bold text-carnet-red"
       
     >
             9. Loi gamma γ(k) (k&gt;0)
@@ -974,7 +974,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardContent className="space-y-6"
       
     >
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6"
+          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6"
       
     >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -1019,7 +1019,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </div
       
     >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-blue-200"
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-carnet-red/30"
       
     >
               <div
@@ -1097,7 +1097,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardHeader
       
     >
-          <CardTitle className="text-2xl font-bold text-blue-600"
+          <CardTitle className="text-2xl font-bold text-carnet-red"
       
     >
             10. Loi normale 𝒩(m,σ²) (σ&gt;0)
@@ -1110,7 +1110,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardContent className="space-y-6"
       
     >
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6"
+          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6"
       
     >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -1155,7 +1155,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </div
       
     >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-blue-200"
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 pt-6 border-t border-carnet-red/30"
       
     >
               <div
@@ -1207,7 +1207,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <h3 className="text-lg font-semibold mb-3">Normale centrée réduite 𝒩(0,1)</h3
       
     >
-            <div className="bg-blue-50 p-4 rounded-lg"
+            <div className="bg-pr-orange-pale p-4 rounded-lg"
       
     >
               <div className="text-center space-y-2"
@@ -1255,7 +1255,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <div className="space-y-4"
       
     >
-              <div className="bg-blue-50 p-4 rounded-lg text-center"
+              <div className="bg-pr-orange-pale p-4 rounded-lg text-center"
       
     >
                 <LatexRenderer latex="X\sim\mathcal{N}(m,\sigma^{2})\;\Longleftrightarrow\;\frac{X-m}{\sigma}\sim\mathcal{N}(0,1)" /
@@ -1267,7 +1267,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
               <p className="text-black text-center">Par ailleurs,</p
       
     >
-              <div className="bg-blue-50 p-4 rounded-lg text-center"
+              <div className="bg-pr-orange-pale p-4 rounded-lg text-center"
       
     >
                 <LatexRenderer latex="X\sim\mathcal{N}(m,\sigma^{2})\;\Longleftrightarrow\;aX+b\sim\mathcal{N}(am+b,\;a^{2}\sigma^{2})\quad(a\neq0)" /
@@ -1296,7 +1296,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardHeader
       
     >
-          <CardTitle className="text-2xl font-bold text-blue-600"
+          <CardTitle className="text-2xl font-bold text-carnet-red"
       
     >
             11. Loi de Laplace–Gauss
@@ -1330,7 +1330,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardHeader
       
     >
-          <CardTitle className="text-2xl font-bold text-blue-600"
+          <CardTitle className="text-2xl font-bold text-carnet-red"
       
     >
             12. Récapitulatif affine
@@ -1343,7 +1343,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardContent
       
     >
-          <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg"
+          <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
             <p className="text-black"

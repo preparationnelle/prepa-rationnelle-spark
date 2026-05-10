@@ -26,12 +26,12 @@ const PuissancePage: React.FC = () => {
         <div className="max-w-4xl mx-auto bg-white border rounded-xl p-6">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-900">La puissance</h1>
-            <div className="mt-2 h-1 w-24 bg-blue-600 rounded"></div>
+            <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
           <div className="space-y-8 text-gray-900">
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">I. Définir la puissance</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">I. Définir la puissance</h2>
               <h3 className="text-xl font-semibold mb-2">A. Définition classique</h3>
               <p>La puissance représente la capacité d’action des acteurs sur la scène internationale, souvent entendue comme le moyen d’imposer sa volonté à un autre acteur.</p>
               <p className="mt-2">Serge Sur, <em>Les Relations internationales</em> (1995) : « la capacité de faire, de faire faire, d’empêcher de faire, de refuser de faire ».</p>
@@ -47,8 +47,8 @@ const PuissancePage: React.FC = () => {
               <p>Bertrand Badie, <em>L’impuissance de la puissance</em> (2004) : maîtriser tous les attributs n’exclut pas l’échec (ex : USA en Afghanistan).</p>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">II. Les critères de la puissance</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">II. Les critères de la puissance</h2>
               <p>Hans Morgenthau, <em>Politics among Nations</em> (1947) : base géographique, base géopolitique, puissance économique, influence culturelle, mobilisation de l’opinion.</p>
               <p>Pierre Buhler, <em>La puissance au XXIe</em> (2011) : variables multiples — État/force militaire, droit/légitimité, géographie/ressources, démographie, finance/endettement, réseaux/connectivité/soft power.</p>
 

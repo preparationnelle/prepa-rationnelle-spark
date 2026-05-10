@@ -68,7 +68,7 @@ const GenetifPage = () => {
             <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Formation selon le genre</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div>
-                <h3 className="font-semibold mb-3 text-blue-700">Masculin :</h3>
+                <h3 className="font-semibold mb-3 text-carnet-red">Masculin :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p>Article : des</p>
                   <p>Nom : -(e)s</p>

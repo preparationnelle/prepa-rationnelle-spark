@@ -11,8 +11,8 @@ const ReussirCollePage: React.FC = () => {
       id: 1,
       title: "Préparation avant l'épreuve",
       icon: <Users className="w-5 h-5" />,
-      color: "from-blue-600 to-cyan-600",
-      bgColor: "from-blue-50 to-cyan-50",
+      color: "from-carnet-red to-cyan-600",
+      bgColor: "from-pr-orange-pale to-cyan-50",
       points: [
         "Arrivez en avance et détendu",
         "Préparez votre matériel (stylo, feuille)",
@@ -414,7 +414,7 @@ const ReussirCollePage: React.FC = () => {
         </Card>
 
         {/* Conseils pour la compréhension */}
-        <Card className="mb-8 bg-gradient-to-r from-cyan-50 to-blue-50 border-cyan-200">
+        <Card className="mb-8 bg-gradient-to-r from-cyan-50 to-pr-orange-pale border-cyan-200">
           <CardHeader>
             <CardTitle className="text-xl text-cyan-800">
               Conseils pour la compréhension

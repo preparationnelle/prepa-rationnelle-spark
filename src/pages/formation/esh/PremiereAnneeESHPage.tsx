@@ -68,7 +68,7 @@ const PremiereAnneeESHPage = () => {
             {/* Chapitres du Module 1 */}
             <div className="space-y-3 ml-8">
               {/* Section principale - Les fondements de l'économie */}
-              <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
+              <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
                 <div className="flex items-start gap-4">
                   <div className="flex-1">
                     <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Les fondements de l'économie</h4>
@@ -153,7 +153,7 @@ const PremiereAnneeESHPage = () => {
               </div>
 
               {/* Section principale - Le comportement des agents et le fonctionnement du marché */}
-              <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
+              <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
                 <div className="flex items-start gap-4">
                   <div className="flex-1">
                     <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Le comportement des agents et le fonctionnement du marché</h4>
@@ -238,7 +238,7 @@ const PremiereAnneeESHPage = () => {
               </div>
 
               {/* Section principale - Les fondements de la sociologie */}
-              <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
+              <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
                 <div className="flex items-start gap-4">
                   <div className="flex-1">
                     <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Les fondements de la sociologie</h4>
@@ -317,7 +317,7 @@ const PremiereAnneeESHPage = () => {
             </div>
 
             {/* Section principale - La croissance et le développement depuis le XIXe siècle */}
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
+            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
               <div className="flex items-start gap-4">
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-carnet-red-deep mb-2">La croissance et le développement depuis le XIXe siècle</h4>
@@ -401,7 +401,7 @@ const PremiereAnneeESHPage = () => {
             </div>
 
             {/* Section principale - Les transformations des structures économiques, sociales et démographiques depuis le XIXe siècle */}
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
+            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
               <div className="flex items-start gap-4">
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Les transformations des structures économiques, sociales et démographiques depuis le XIXe siècle</h4>
@@ -485,7 +485,7 @@ const PremiereAnneeESHPage = () => {
             </div>
 
             {/* Section principale - Entreprise et organisations */}
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
+            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
               <div className="flex items-start gap-4">
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Entreprise et organisations</h4>

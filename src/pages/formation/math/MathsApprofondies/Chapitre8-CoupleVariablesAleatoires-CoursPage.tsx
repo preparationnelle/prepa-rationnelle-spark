@@ -112,7 +112,7 @@ const Chapitre8CoupleVariablesAleatoiresCoursPage = () => {
                   <div className="text-center text-sm"><LatexRenderer latex="E(XY) = E(X)E(Y)" /></div>
                 </div>
               </div>
-              <div className="mt-4 bg-blue-50 border border-blue-100 p-4 rounded text-blue-900 text-sm">
+              <div className="mt-4 bg-pr-orange-pale border border-carnet-red/20 p-4 rounded text-carnet-red-deep text-sm">
                 <strong>Stabilité :</strong> Somme de Poissons indép. est Poisson. Somme de Binomiales (même p) indép. est Binomiale.
               </div>
             </div>

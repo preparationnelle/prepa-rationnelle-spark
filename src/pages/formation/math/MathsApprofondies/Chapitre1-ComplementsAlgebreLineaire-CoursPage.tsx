@@ -18,7 +18,7 @@ const Chapitre1ComplementsAlgebreLineaireCoursPage = () => {
       {/* Section 1 — Sommes de deux sous-espaces et supplémentaires */}
       <Card className="border-0 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
+          <CardTitle className="text-2xl font-bold text-carnet-red">
             1. Sommes de deux sous-espaces et supplémentaires
           </CardTitle>
         </CardHeader>
@@ -27,7 +27,7 @@ const Chapitre1ComplementsAlgebreLineaireCoursPage = () => {
             <p>
               Soient <LatexRenderer latex="F,G\subset E" inline /> deux sous-espaces vectoriels d'un espace vectoriel <LatexRenderer latex="E" inline />.
             </p>
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition</p>
               <div className="mt-2 space-y-2">
                 <div>
@@ -42,7 +42,7 @@ const Chapitre1ComplementsAlgebreLineaireCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Proposition — unicité de décomposition</p>
               <p className="mt-2">
                 <em>
@@ -64,14 +64,14 @@ const Chapitre1ComplementsAlgebreLineaireCoursPage = () => {
               </ul>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — sous-espaces supplémentaires</p>
               <div className="mt-2">
                 <LatexRenderer latex="F\text{ et }G\text{ sont \textbf{supplémentaires} dans }E\iff E=F\oplus G" />
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-200 p-4 rounded-lg">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/30 p-4 rounded-lg">
               <p>
                 En dimension finie, tout sous-espace de <LatexRenderer latex="E" inline /> admet un supplémentaire.
               </p>
@@ -83,27 +83,27 @@ const Chapitre1ComplementsAlgebreLineaireCoursPage = () => {
       {/* Section 2 — Dimension et formules */}
       <Card className="border-0 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
+          <CardTitle className="text-2xl font-bold text-carnet-red">
             2. Dimension et formules (Grassmann)
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Somme directe</p>
               <div className="mt-2">
                 <LatexRenderer latex="\dim(F\oplus G)=\dim F+\dim G" />
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Formule de Grassmann</p>
               <div className="mt-2">
                 <LatexRenderer latex="\dim(F+G)=\dim F+\dim G-\dim(F\cap G)" />
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Caractérisation des supplémentaires (dim. finie)</p>
               <ul className="list-disc list-inside mt-2 space-y-1">
                 <li>
@@ -121,13 +121,13 @@ const Chapitre1ComplementsAlgebreLineaireCoursPage = () => {
       {/* Section 3 — Somme de p sous-espaces */}
       <Card className="border-0 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-blue-600">
+          <CardTitle className="text-2xl font-bold text-carnet-red">
             3. Somme de p sous-espaces et somme directe
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définitions</p>
               <div className="mt-2 space-y-2">
                 <div>
@@ -140,14 +140,14 @@ const Chapitre1ComplementsAlgebreLineaireCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Unicité de décomposition</p>
               <p className="mt-2">
                 Tout vecteur de <LatexRenderer latex="\sum_{i=1}^{p}F_i" inline /> s'écrit de manière unique comme somme de vecteurs <LatexRenderer latex="u_i\in F_i" inline /> ssi la somme est directe.
               </p>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Critères équivalents (dimension finie)</p>
               <ul className="list-disc list-inside mt-2 space-y-1">
                 <li>
@@ -172,7 +172,7 @@ const Chapitre1ComplementsAlgebreLineaireCoursPage = () => {
               </Button>
             </Link>
             <Link to="/formation/maths-complements-algebre-lineaire-exercices">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>

@@ -256,7 +256,7 @@ const PassifPage = () => {
           <section className="mb-10">
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-lg flex items-center justify-center">
                   <span className="text-orange-600 font-bold text-sm">3</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">Gérer l'agent ou le moyen</h2>
@@ -298,7 +298,7 @@ const PassifPage = () => {
           <section className="mb-10">
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-lg flex items-center justify-center">
                   <span className="text-orange-600 font-bold text-sm">4</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">Règles clés & astuces</h2>
@@ -352,7 +352,7 @@ const PassifPage = () => {
           <section className="mb-10">
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-lg flex items-center justify-center">
                   <span className="text-orange-600 font-bold text-sm">5</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">Exercices d'application (corrigé immédiat)</h2>
@@ -429,10 +429,10 @@ const PassifPage = () => {
           <section className="mb-10">
             <div className="bg-orange-50 rounded-lg p-6 border border-orange-200">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-carnet-red/10 rounded-lg flex items-center justify-center">
                   <span className="text-orange-600 font-bold text-sm">6</span>
                 </div>
-                <h2 className="text-xl font-bold text-blue-900">Verdict</h2>
+                <h2 className="text-xl font-bold text-carnet-red-deep">Verdict</h2>
               </div>
 
               <div className="space-y-3 text-gray-700">
@@ -444,7 +444,7 @@ const PassifPage = () => {
               </div>
 
               <div className="mt-4 p-4 bg-white rounded-lg border border-orange-300">
-                <p className="font-semibold text-blue-800">
+                <p className="font-semibold text-carnet-red-deep">
                   Entraînement rapide : prenez 5 phrases actives de vos notes, convertissez-les en passif-action, puis dites-les à voix haute en ajoutant l'agent (von...) ou en l'omettant. Votre automatisme passera au niveau supérieur !
                 </p>
               </div>

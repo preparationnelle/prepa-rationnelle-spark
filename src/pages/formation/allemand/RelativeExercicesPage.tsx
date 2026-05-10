@@ -814,7 +814,7 @@ const RelativeExercicesPage = () => {
 
         {/* Exam Timer and Controls (visible only in exam mode and when started) */}
         {examMode && (
-          <Card className="mb-8 border-2 border-carnet-red/30 bg-gradient-to-r from-blue-50 to-indigo-50">
+          <Card className="mb-8 border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-indigo-50">
             <CardContent className="py-4">
               {!examStarted ? (
                 <div className="flex items-center justify-center gap-4">

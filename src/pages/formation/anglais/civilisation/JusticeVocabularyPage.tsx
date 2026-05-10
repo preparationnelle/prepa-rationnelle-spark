@@ -199,7 +199,7 @@ const JusticeVocabularyPage = () => {
 
   const getCategoryColor = (category: string) => {
     const colors: { [key: string]: string } = {
-      'Système judiciaire': 'bg-blue-500',
+      'Système judiciaire': 'bg-carnet-red',
       'Droit et législation': 'bg-green-500',
       'Procédure et procès': 'bg-red-500',
       'Droits et libertés': 'bg-purple-500',

@@ -199,7 +199,7 @@ const EducationVocabularyPage = () => {
 
   const getCategoryColor = (category: string) => {
     const colors: { [key: string]: string } = {
-      'Système éducatif (général)': 'bg-blue-500',
+      'Système éducatif (général)': 'bg-carnet-red',
       'Acteurs et structures': 'bg-green-500',
       'Diplômes et examens': 'bg-purple-500',
       'Politiques éducatives': 'bg-orange-500',

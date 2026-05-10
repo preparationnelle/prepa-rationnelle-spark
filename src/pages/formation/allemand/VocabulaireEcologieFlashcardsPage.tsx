@@ -198,7 +198,7 @@ const VocabulaireEcologieFlashcardsPage = () => {
   const getCategoryColor = (category: string) => {
     const colors = {
       "Transition énergétique": "bg-emerald-100 text-emerald-800",
-      "Politique": "bg-blue-100 text-blue-800",
+      "Politique": "bg-carnet-red/10 text-carnet-red-deep",
       "Développement durable": "bg-green-100 text-green-800",
       "Économie": "bg-yellow-100 text-yellow-800",
       "Énergie nucléaire": "bg-red-100 text-red-800",
@@ -218,7 +218,7 @@ const VocabulaireEcologieFlashcardsPage = () => {
       "Accords internationaux": "bg-cyan-100 text-cyan-800",
       "Nature": "bg-green-100 text-green-800",
       "Gestion des déchets": "bg-amber-100 text-orange-800",
-      "Eau": "bg-blue-100 text-blue-800",
+      "Eau": "bg-carnet-red/10 text-carnet-red-deep",
       "Catastrophes naturelles": "bg-red-100 text-red-800",
       "Agriculture": "bg-lime-100 text-lime-800",
       "Éducation": "bg-purple-100 text-purple-800",

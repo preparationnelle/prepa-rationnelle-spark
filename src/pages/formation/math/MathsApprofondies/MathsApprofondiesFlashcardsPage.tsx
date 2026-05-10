@@ -121,19 +121,19 @@ const MathsApprofondiesFlashcardsPage: React.FC = () => {
         previousChapter={previousChapter}
         nextChapter={nextChapter}
       >
-        <div className="bg-blue-50 border border-blue-200 text-blue-800 rounded-lg p-6">
+        <div className="bg-pr-orange-pale border border-carnet-red/30 text-carnet-red-deep rounded-lg p-6">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-              <span className="text-blue-600 font-bold text-sm">📚</span>
+            <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
+              <span className="text-carnet-red font-bold text-sm">📚</span>
             </div>
-            <h3 className="text-lg font-semibold text-blue-900">Flashcards en préparation</h3>
+            <h3 className="text-lg font-semibold text-carnet-red-deep">Flashcards en préparation</h3>
           </div>
-          <p className="text-blue-700">
+          <p className="text-carnet-red">
             Les flashcards pour le chapitre <strong>"{meta.title}"</strong> sont actuellement en cours de développement.
             Elles seront bientôt disponibles pour vous aider à réviser de manière interactive !
           </p>
-          <div className="mt-4 p-3 bg-blue-100 rounded-md">
-            <p className="text-sm text-blue-800">
+          <div className="mt-4 p-3 bg-carnet-red/10 rounded-md">
+            <p className="text-sm text-carnet-red-deep">
               💡 <strong>Astuce :</strong> En attendant, consultez les cours et exercices de ce chapitre pour bien assimiler les concepts.
             </p>
           </div>

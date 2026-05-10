@@ -39,57 +39,57 @@ const OteriaFicheEvaluationFinalePage = () => {
             </div>
           </div>
           <h1 className="text-3xl font-bold mb-4 text-teal-900">Fiche Récapitulative</h1>
-          <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
+          <p className="text-lg text-carnet-red-deep max-w-3xl mx-auto mb-6">
             Évaluation Finale - Bachelor 2 : Mathématiques et Informatique
           </p>
 
           {/* Informations générales */}
           <div className="max-w-4xl mx-auto mb-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 shadow-sm">
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6 shadow-sm">
               <div className="text-center mb-4">
-                <h2 className="text-xl font-bold text-blue-900 mb-2">Format de l'évaluation</h2>
-                <p className="text-blue-700">Évaluation mixte sur 2 heures</p>
+                <h2 className="text-xl font-bold text-carnet-red-deep mb-2">Format de l'évaluation</h2>
+                <p className="text-carnet-red">Évaluation mixte sur 2 heures</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-                <div className="bg-white p-4 rounded-lg border border-blue-200">
-                  <div className="font-semibold text-blue-800 mb-2">Partie 1 : QCM</div>
+                <div className="bg-white p-4 rounded-lg border border-carnet-red/30">
+                  <div className="font-semibold text-carnet-red-deep mb-2">Partie 1 : QCM</div>
                   <div className="text-sm text-gray-600">
                     Questions à choix multiples sur les concepts théoriques
                   </div>
                 </div>
 
-                <div className="bg-white p-4 rounded-lg border border-blue-200">
-                  <div className="font-semibold text-blue-800 mb-2">Partie 2 : Questions ouvertes</div>
+                <div className="bg-white p-4 rounded-lg border border-carnet-red/30">
+                  <div className="font-semibold text-carnet-red-deep mb-2">Partie 2 : Questions ouvertes</div>
                   <div className="text-sm text-gray-600">
                     Réponses développées sur les notions mathématiques et algorithmiques
                   </div>
                 </div>
 
-                <div className="bg-white p-4 rounded-lg border border-blue-200">
-                  <div className="font-semibold text-blue-800 mb-2">Partie 3 : Compréhension de code</div>
+                <div className="bg-white p-4 rounded-lg border border-carnet-red/30">
+                  <div className="font-semibold text-carnet-red-deep mb-2">Partie 3 : Compréhension de code</div>
                   <div className="text-sm text-gray-600">
                     Analyse et explication de programmes Python fournis
                   </div>
                 </div>
 
-                <div className="bg-white p-4 rounded-lg border border-blue-200">
-                  <div className="font-semibold text-blue-800 mb-2">Partie 4 : Analyse de résultats</div>
+                <div className="bg-white p-4 rounded-lg border border-carnet-red/30">
+                  <div className="font-semibold text-carnet-red-deep mb-2">Partie 4 : Analyse de résultats</div>
                   <div className="text-sm text-gray-600">
                     Interprétation des sorties et comportements des programmes
                   </div>
                 </div>
 
-                <div className="bg-white p-4 rounded-lg border border-blue-200">
-                  <div className="font-semibold text-blue-800 mb-2">Partie 5 : Écriture de programme</div>
+                <div className="bg-white p-4 rounded-lg border border-carnet-red/30">
+                  <div className="font-semibold text-carnet-red-deep mb-2">Partie 5 : Écriture de programme</div>
                   <div className="text-sm text-gray-600">
                     Développement de solutions algorithmiques en Python
                   </div>
                 </div>
 
-                <div className="bg-white p-4 rounded-lg border border-blue-200 text-center">
-                  <div className="font-semibold text-blue-800 mb-2">Durée totale</div>
-                  <div className="text-2xl font-bold text-blue-900">2h30</div>
+                <div className="bg-white p-4 rounded-lg border border-carnet-red/30 text-center">
+                  <div className="font-semibold text-carnet-red-deep mb-2">Durée totale</div>
+                  <div className="text-2xl font-bold text-carnet-red-deep">2h30</div>
                   <div className="text-sm text-gray-600">Seuil de réussite : 30/50</div>
                 </div>
               </div>
@@ -104,7 +104,7 @@ const OteriaFicheEvaluationFinalePage = () => {
               </button>
             </Link>
             <Link to="/articles/oteria-cyber-school">
-              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+              <button className="inline-flex items-center gap-2 bg-carnet-red text-white px-6 py-3 rounded-lg hover:bg-carnet-red-deep transition-colors">
                 <ArrowLeft className="h-4 w-4" />
                 Retour au programme
               </button>
@@ -115,16 +115,16 @@ const OteriaFicheEvaluationFinalePage = () => {
         {/* Contenu de la fiche */}
         <div className="space-y-6">
           {/* Conseils */}
-          <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-blue-100">
+          <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60">
             <CardHeader>
-              <CardTitle className="text-2xl font-bold text-blue-600 flex items-center gap-2">
+              <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
                 Conseils pour réussir
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-blue-800">Gestion du temps :</h4>
+                  <h4 className="font-semibold text-carnet-red-deep">Gestion du temps :</h4>
                   <ul className="text-sm text-gray-700 space-y-1">
                     <li>• QCM : 30-35 min (questions rapides)</li>
                     <li>• Questions ouvertes : 30-35 min</li>
@@ -134,7 +134,7 @@ const OteriaFicheEvaluationFinalePage = () => {
                     <li>• Laisser 15 min pour relecture</li>
                   </ul>
 
-                  <h4 className="font-semibold text-blue-800">Préparation :</h4>
+                  <h4 className="font-semibold text-carnet-red-deep">Préparation :</h4>
                   <ul className="text-sm text-gray-700 space-y-1">
                     <li>• Réviser les concepts théoriques</li>
                     <li>• Pratiquer l'écriture de code</li>
@@ -144,7 +144,7 @@ const OteriaFicheEvaluationFinalePage = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-blue-800">Conseils par partie :</h4>
+                  <h4 className="font-semibold text-carnet-red-deep">Conseils par partie :</h4>
                   <ul className="text-sm text-gray-700 space-y-1">
                     <li>• QCM : Éliminer rapidement les mauvaises réponses</li>
                     <li>• Questions ouvertes : Montrer le raisonnement</li>
@@ -152,7 +152,7 @@ const OteriaFicheEvaluationFinalePage = () => {
                     <li>• Analyse : Expliquer les résultats obtenus</li>
                   </ul>
 
-                  <h4 className="font-semibold text-blue-800">Répartition estimée :</h4>
+                  <h4 className="font-semibold text-carnet-red-deep">Répartition estimée :</h4>
                   <ul className="text-sm text-gray-700 space-y-1">
                     <li>• QCM : 30% (concepts de base)</li>
                     <li>• Questions ouvertes : 20%</li>
@@ -188,12 +188,12 @@ const OteriaFicheEvaluationFinalePage = () => {
 
           {/* Action buttons */}
           <div className="text-center space-y-4">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <p className="text-blue-800 font-medium mb-3">
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+              <p className="text-carnet-red-deep font-medium mb-3">
                 Prêt à passer l'évaluation finale ?
               </p>
               <Link to="/formation/oteria/evaluation-finale">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
+                <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white px-8 py-3 text-lg">
                   <Target className="mr-2 h-5 w-5" />
                   Commencer l'évaluation (5 parties - 2h30)
                 </Button>

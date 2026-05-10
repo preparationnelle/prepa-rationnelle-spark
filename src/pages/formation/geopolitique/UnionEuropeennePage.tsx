@@ -72,7 +72,7 @@ const UnionEuropeennePage = () => {
         </div>
 
         {/* Études de cas clés */}
-        <Card className="mb-8 border-2 border-carnet-red/30 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <Card className="mb-8 border-2 border-carnet-red/30 bg-gradient-to-br from-pr-orange-pale to-indigo-50">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-3">
               <Lightbulb className="h-6 w-6 text-carnet-red" />
@@ -135,7 +135,7 @@ const UnionEuropeennePage = () => {
         </div>
 
         {/* Partie I */}
-        <Card className="border-2 border-carnet-red/30 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg">
+        <Card className="border-2 border-carnet-red/30 bg-gradient-to-br from-pr-orange-pale to-indigo-50 shadow-lg">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-3">
               <Globe className="h-6 w-6 text-carnet-red" />

@@ -10,8 +10,8 @@ const ReussirLaisserPage: React.FC = () => {
       id: 1,
       title: "Comprendre le sujet",
       icon: <BookOpen className="w-5 h-5" />,
-      color: "from-blue-600 to-cyan-600",
-      bgColor: "from-blue-50 to-cyan-50",
+      color: "from-carnet-red to-cyan-600",
+      bgColor: "from-pr-orange-pale to-cyan-50",
       points: [
         "Lisez attentivement le sujet plusieurs fois",
         "Identifiez les mots-clés et la problématique",
@@ -65,7 +65,7 @@ const ReussirLaisserPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale via-white to-cyan-50">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Header */}
         <div className="mb-8">
@@ -89,7 +89,7 @@ const ReussirLaisserPage: React.FC = () => {
         </div>
 
         {/* Description de l'épreuve */}
-        <Card className="mb-8 bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-carnet-red to-cyan-600 text-white">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center">
               Qu'est-ce que le laisser ?
@@ -139,7 +139,7 @@ const ReussirLaisserPage: React.FC = () => {
                   <ul className="space-y-2">
                     {conseil.points.map((point, index) => (
                       <li key={index} className="flex items-start gap-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-2 h-2 bg-carnet-red rounded-full mt-2 flex-shrink-0"></div>
                         <span className="text-gray-700 text-sm">{point}</span>
                       </li>
                     ))}
@@ -247,12 +247,12 @@ const ReussirLaisserPage: React.FC = () => {
               </div>
 
               {/* TEIL II: Eigene Meinung entwickeln */}
-              <div className="bg-white p-4 rounded-lg border border-blue-200">
-                <h4 className="font-bold text-blue-800 text-lg mb-3">TEIL II: Eigene Meinung entwickeln / Développer sa propre position</h4>
+              <div className="bg-white p-4 rounded-lg border border-carnet-red/30">
+                <h4 className="font-bold text-carnet-red-deep text-lg mb-3">TEIL II: Eigene Meinung entwickeln / Développer sa propre position</h4>
                 
                 <div className="space-y-3">
                   <div>
-                    <h5 className="font-semibold text-blue-700 mb-2">Introduire une opinion personnelle</h5>
+                    <h5 className="font-semibold text-carnet-red mb-2">Introduire une opinion personnelle</h5>
                     <ul className="text-sm text-gray-600 space-y-1 ml-4">
                       <li>• <em>Meiner Meinung / Ansicht nach + V2</em></li>
                       <li>• <em>Ich bin der Meinung / Ansicht, dass...</em></li>
@@ -268,7 +268,7 @@ const ReussirLaisserPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <h5 className="font-semibold text-blue-700 mb-2">Introduire une nuance</h5>
+                    <h5 className="font-semibold text-carnet-red mb-2">Introduire une nuance</h5>
                     <ul className="text-sm text-gray-600 space-y-1 ml-4">
                       <li>• <em>Ich muss zugeben, dass ich gegen Ihren Vorschlag nichts einzuwenden habe.</em></li>
                       <li>• <em>Man sollte vielleicht zwischen (+D) und (+D) unterscheiden.</em></li>

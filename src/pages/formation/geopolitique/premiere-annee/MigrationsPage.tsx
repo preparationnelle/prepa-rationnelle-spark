@@ -26,18 +26,18 @@ const MigrationsPage: React.FC = () => {
         <div className="max-w-4xl mx-auto bg-white border rounded-xl p-6">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-900">Les migrations</h1>
-            <div className="mt-2 h-1 w-24 bg-blue-600 rounded"></div>
+            <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
           <div className="space-y-8 text-gray-900">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
               <p>Crise migratoire de 2015 : arrivée incontrôlée d’environ 1,5 M de migrants du Moyen‑Orient et d’Afrique subsaharienne — incapacité des membres de l’UE à adopter une réponse commune (accueil vs murs).</p>
               <p className="mt-2">Migration : internationale (entre pays) ou interne (au sein d’un pays). ≈ 280 M de migrants internationaux (≈3,5% de la population mondiale en 2022). Dans la mondialisation contemporaine : dynamiques push/pull, rejets xénophobes/populistes ou élans de solidarité, rééquilibrages démographiques, main‑d’œuvre, remises…</p>
               <p className="mt-2 font-medium">Problématique : le phénomène migratoire est‑il une expression contestable du désordre mondial ou un palliatif qui l’atténue ?</p>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">I. Motivées par des raisons économiques ou géopolitiques, les migrations contemporaines prennent de l’ampleur</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">I. Motivées par des raisons économiques ou géopolitiques, les migrations contemporaines prennent de l’ampleur</h2>
               <h3 className="text-xl font-semibold mb-2">A. Migrations issues d’inégalités ou de crises économiques</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Afrique subsaharienne : migrations économiques nombreuses; &gt;80% intra‑africaines (Afrique du Sud, Nigéria, Kenya…).</li>
@@ -59,8 +59,8 @@ const MigrationsPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">II. Symptômes d’une gouvernance déficiente, des effets contrastés pour pays d’origine et d’accueil</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">II. Symptômes d’une gouvernance déficiente, des effets contrastés pour pays d’origine et d’accueil</h2>
               <h3 className="text-xl font-semibold mb-2">A. Gouvernance insuffisante → tensions externes et internes</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Turquie : hub de transit (Syriens, Afghans, Pakistanais) vers l’Europe (route des Balkans).</li>
@@ -83,8 +83,8 @@ const MigrationsPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">III. Pressions environnementales et démographiques → vers un nouvel ordre multilatéral</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">III. Pressions environnementales et démographiques → vers un nouvel ordre multilatéral</h2>
               <h3 className="text-xl font-semibold mb-2">A. Migrations climatiques en hausse</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>+1,2°C vs ère pré‑industrielle (objectif Paris : 1,5°C). Projections ≈ +2,5°C en fin de siècle.</li>
@@ -103,8 +103,8 @@ const MigrationsPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="text-lg font-semibold text-blue-700 mb-2">Éléments complémentaires</h3>
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+              <h3 className="text-lg font-semibold text-carnet-red mb-2">Éléments complémentaires</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Flux d’info et visibilité — exode rural, métropolisation, littoralisation; nuances conjoncturelles.</li>
                 <li>Passeports inégaux : Afghanistan (26 pays sans visa/à l’arrivée) vs Japon/Singapour (192) — Henley 2022.</li>
@@ -113,7 +113,7 @@ const MigrationsPage: React.FC = () => {
                 <li>Diogène le Cynique : « citoyen du monde » — origine du terme « cosmopolite ».</li>
               </ul>
 
-              <h4 className="font-semibold text-blue-700 mt-4 mb-2">Diaspora indienne</h4>
+              <h4 className="font-semibold text-carnet-red mt-4 mb-2">Diaspora indienne</h4>
               <ul className="list-disc list-inside space-y-1">
                 <li>≈30 M de personnes dans ~130 pays; soft power/lobbying; « Little India » (ex : La Chapelle, Paris).</li>
                 <li>Communauté indienne aux USA (~4,5 M) : plus haut PIB/habitant parmi les minorités.</li>

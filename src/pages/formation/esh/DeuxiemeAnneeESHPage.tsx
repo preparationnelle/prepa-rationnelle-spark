@@ -47,7 +47,7 @@ const DeuxiemeAnneeESHPage = () => {
             </div>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-carnet-red to-blue-700 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-carnet-red to-pr-orange-dark bg-clip-text text-transparent">
               Deuxième année ESH
             </span>
           </h1>
@@ -79,7 +79,7 @@ const DeuxiemeAnneeESHPage = () => {
             </div>
 
             {/* Section principale - La dynamique de la mondialisation économique */}
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
+            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
               <div className="flex items-start gap-4">
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-carnet-red-deep mb-2">La dynamique de la mondialisation économique</h4>
@@ -161,7 +161,7 @@ const DeuxiemeAnneeESHPage = () => {
             </div>
 
             {/* Section principale - La dynamique de la mondialisation financière */}
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
+            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
               <div className="flex items-start gap-4">
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-carnet-red-deep mb-2">La dynamique de la mondialisation financière</h4>
@@ -243,7 +243,7 @@ const DeuxiemeAnneeESHPage = () => {
             </div>
 
             {/* Section principale - L'intégration européenne */}
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
+            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
               <div className="flex items-start gap-4">
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-carnet-red-deep mb-2">L'intégration européenne</h4>
@@ -345,7 +345,7 @@ const DeuxiemeAnneeESHPage = () => {
             </div>
 
             {/* Section principale - Équilibres et déséquilibres macroéconomiques */}
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
+            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
               <div className="flex items-start gap-4">
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Équilibres et déséquilibres macroéconomiques</h4>
@@ -404,7 +404,7 @@ const DeuxiemeAnneeESHPage = () => {
             </div>
 
             {/* Section principale - L'intervention économique des pouvoirs publics */}
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
+            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
               <div className="flex items-start gap-4">
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-carnet-red-deep mb-2">L'intervention économique des pouvoirs publics</h4>
@@ -486,7 +486,7 @@ const DeuxiemeAnneeESHPage = () => {
             </div>
 
             {/* Section principale - Les politiques sociales */}
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
+            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
               <div className="flex items-start gap-4">
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Les politiques sociales</h4>
@@ -603,7 +603,7 @@ const DeuxiemeAnneeESHPage = () => {
           {/* Call to action */}
           <div className="text-center">
             <Link to="/formation/esh/methodologie">
-              <Button size="lg" className="bg-gradient-to-r from-carnet-red to-pr-orange hover:from-carnet-red hover:to-blue-700 text-white px-8 py-3 text-lg">
+              <Button size="lg" className="bg-gradient-to-r from-carnet-red to-pr-orange hover:from-carnet-red hover:to-pr-orange-dark text-white px-8 py-3 text-lg">
                 Découvrir la méthodologie
                 <ChevronRight className="ml-2 h-5 w-5" />
               </Button>

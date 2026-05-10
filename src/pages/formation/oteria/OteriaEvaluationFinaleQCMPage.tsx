@@ -718,7 +718,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
             </div>
           </div>
           <h1 className="text-3xl font-bold mb-4 text-orange-900">Évaluation Finale - QCM Complet</h1>
-          <p className="text-lg text-blue-800 max-w-3xl mx-auto mb-6">
+          <p className="text-lg text-carnet-red-deep max-w-3xl mx-auto mb-6">
             Testez vos connaissances acquises tout au long du programme Bachelor 2
           </p>
 
@@ -801,7 +801,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
                           : showIncorrect
                             ? 'border-red-500 bg-red-500'
                             : isSelected
-                              ? 'border-blue-500 bg-blue-500'
+                              ? 'border-carnet-red bg-carnet-red'
                               : 'border-gray-400'
                           }`}>
                           {(showCorrect || (isSelected && !showIncorrect)) && (
@@ -816,9 +816,9 @@ const OteriaEvaluationFinaleQCMPage = () => {
               </div>
 
               {showExplanation && (
-                <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-                  <h4 className="font-semibold text-blue-900 mb-2">Explication :</h4>
-                  <p className="text-blue-800">{currentQ.explanation}</p>
+                <div className="mt-6 p-4 bg-pr-orange-pale rounded-lg border-l-4 border-carnet-red">
+                  <h4 className="font-semibold text-carnet-red-deep mb-2">Explication :</h4>
+                  <p className="text-carnet-red-deep">{currentQ.explanation}</p>
                 </div>
               )}
             </CardContent>
@@ -883,9 +883,9 @@ const OteriaEvaluationFinaleQCMPage = () => {
         </div>
 
         {/* Navigation finale */}
-        <div className="flex justify-between items-center bg-blue-50 p-6 rounded-lg mt-8">
+        <div className="flex justify-between items-center bg-pr-orange-pale p-6 rounded-lg mt-8">
           <Link to="/articles/oteria-cyber-school">
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            <button className="bg-carnet-red text-white px-4 py-2 rounded-lg hover:bg-carnet-red-deep transition-colors font-medium">
               ← Programme principal
             </button>
           </Link>
@@ -895,7 +895,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
               <div className="text-lg font-bold text-teal-600">{formatTime(timeLeft)}</div>
             </div>
           </div>
-          <div className="text-blue-600 font-medium">Évaluation finale →</div>
+          <div className="text-carnet-red font-medium">Évaluation finale →</div>
         </div>
       </div>
     </div>

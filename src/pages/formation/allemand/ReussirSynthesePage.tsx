@@ -11,8 +11,8 @@ const ReussirSynthesePage: React.FC = () => {
       id: 1,
       title: "Lecture et analyse",
       icon: <Search className="w-5 h-5" />,
-      color: "from-blue-600 to-cyan-600",
-      bgColor: "from-blue-50 to-cyan-50",
+      color: "from-carnet-red to-cyan-600",
+      bgColor: "from-pr-orange-pale to-cyan-50",
       points: [
         "Lisez le texte 2-3 fois attentivement",
         "Identifiez l'idée principale et la thèse",
@@ -205,7 +205,7 @@ const ReussirSynthesePage: React.FC = () => {
         </Card>
 
         {/* Fiche méthodologique complète : SYNTHÈSE PARFAITE */}
-        <Card className="mb-8 bg-gradient-to-r from-cyan-50 to-blue-50 border-cyan-200">
+        <Card className="mb-8 bg-gradient-to-r from-cyan-50 to-pr-orange-pale border-cyan-200">
           <CardHeader>
             <CardTitle className="text-xl text-cyan-800 flex items-center gap-2">
               <FileText className="w-5 h-5" />
@@ -465,7 +465,7 @@ const ReussirSynthesePage: React.FC = () => {
         </Card>
 
         {/* Conseils pratiques */}
-        <Card className="mb-8 bg-gradient-to-r from-cyan-50 to-blue-50 border-cyan-200">
+        <Card className="mb-8 bg-gradient-to-r from-cyan-50 to-pr-orange-pale border-cyan-200">
           <CardHeader>
             <CardTitle className="text-xl text-cyan-800">
               Conseils pratiques pour réussir

@@ -183,7 +183,7 @@ print("Distribution stationnaire:", vecteur_stationnaire)
 # Vérification
 print("Vérification pi @ P:", vecteur_stationnaire @ P)`}
           />
-          <div className="bg-blue-50 p-4 rounded text-sm text-slate-700">
+          <div className="bg-pr-orange-pale p-4 rounded text-sm text-slate-700">
             <p className="font-semibold mb-2">Résultat théorique :</p>
             <p>On peut résoudre le système à la main :</p>
             <LatexRenderer latex="\begin{cases} 0.7x + 0.8y = x \\ 0.3x + 0.2y = y \\ x + y = 1 \end{cases}" block={true} />

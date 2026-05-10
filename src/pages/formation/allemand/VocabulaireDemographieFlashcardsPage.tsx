@@ -198,7 +198,7 @@ const VocabulaireDemographieFlashcardsPage = () => {
   const getCategoryColor = (category: string) => {
     const colors = {
       "Démographie": "bg-green-100 text-green-800",
-      "Statistiques": "bg-blue-100 text-blue-800",
+      "Statistiques": "bg-carnet-red/10 text-carnet-red-deep",
       "Migration": "bg-amber-100 text-orange-800",
       "Emploi": "bg-purple-100 text-purple-800",
       "Société": "bg-indigo-100 text-indigo-800",

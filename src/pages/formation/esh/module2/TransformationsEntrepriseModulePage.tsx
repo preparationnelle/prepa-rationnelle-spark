@@ -40,7 +40,7 @@ const TransformationsEntrepriseModulePage = () => {
 
           {/* Hero */}
           <div className="mb-8">
-            <div className="rounded-2xl bg-gradient-to-r from-carnet-red to-blue-700 text-white p-8 shadow-md">
+            <div className="rounded-2xl bg-gradient-to-r from-carnet-red to-pr-orange-dark text-white p-8 shadow-md">
               <div className="flex items-center justify-center gap-4">
                 <div className="w-16 h-16 bg-white/15 rounded-full flex items-center justify-center ring-1 ring-white/30">
                   <Factory className="h-8 w-8 text-white" />

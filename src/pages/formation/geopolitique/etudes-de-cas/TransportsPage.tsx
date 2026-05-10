@@ -61,7 +61,7 @@ const TransportsPage = () => {
       <div className="container mx-auto px-4 py-8">
 
         {/* Header */}
-        <Card className="mb-8 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-purple-600 to-pr-orange text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Globe className="h-8 w-8" />
@@ -99,7 +99,7 @@ const TransportsPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Ship className="h-5 w-5 text-blue-600" />
+              <Ship className="h-5 w-5 text-carnet-red" />
               Transport maritime
             </CardTitle>
           </CardHeader>
@@ -112,8 +112,8 @@ const TransportsPage = () => {
                   atteignant 11 milliards de tonnes transportées en 2024. L'innovation du conteneur depuis 1956 
                   a révolutionné le transport, avec des navires atteignant 24 000 TEU et une vitesse de 25 nœuds.
                 </p>
-                <div className="bg-blue-50 p-3 rounded-lg">
-                  <p className="text-sm text-blue-800">
+                <div className="bg-pr-orange-pale p-3 rounded-lg">
+                  <p className="text-sm text-carnet-red-deep">
                     <strong>L. Carroué :</strong> <em>"Le transport du conteneur assure sécurité, fiabilité, vitesse et intermodalité"</em>
                   </p>
                 </div>
@@ -121,12 +121,12 @@ const TransportsPage = () => {
               
               <div className="space-y-3">
                 {maritimeStats.map((stat, index) => (
-                  <div key={index} className="bg-blue-50 p-3 rounded-lg border border-blue-200">
+                  <div key={index} className="bg-pr-orange-pale p-3 rounded-lg border border-carnet-red/30">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-blue-800">{stat.label}</span>
-                      <span className="font-bold text-blue-700">{stat.value}</span>
+                      <span className="text-sm font-medium text-carnet-red-deep">{stat.label}</span>
+                      <span className="font-bold text-carnet-red">{stat.value}</span>
                     </div>
-                    <div className="text-xs text-blue-600 mt-1">{stat.change || stat.share || stat.note}</div>
+                    <div className="text-xs text-carnet-red mt-1">{stat.change || stat.share || stat.note}</div>
                   </div>
                 ))}
               </div>
@@ -213,28 +213,28 @@ const TransportsPage = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Plane className="h-5 w-5 text-blue-600" />
+                <Plane className="h-5 w-5 text-carnet-red" />
                 Top 10 aéroports passagers (2024)
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 {topAirports.map((airport, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <div key={index} className="flex items-center justify-between p-3 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      <div className="w-8 h-8 bg-carnet-red text-white rounded-full flex items-center justify-center text-sm font-bold">
                         {airport.rank}
                       </div>
                       <div>
-                        <div className="font-semibold text-blue-800">{airport.name}</div>
-                        <div className="text-sm text-blue-600">{airport.country}</div>
+                        <div className="font-semibold text-carnet-red-deep">{airport.name}</div>
+                        <div className="text-sm text-carnet-red">{airport.country}</div>
                       </div>
                     </div>
-                    <div className="font-bold text-blue-700">{airport.passengers}</div>
+                    <div className="font-bold text-carnet-red">{airport.passengers}</div>
                   </div>
                 ))}
-                <div className="bg-blue-100 p-3 rounded-lg border border-blue-300">
-                  <p className="text-sm text-blue-800">
+                <div className="bg-carnet-red/10 p-3 rounded-lg border border-carnet-red/40">
+                  <p className="text-sm text-carnet-red-deep">
                     <strong>6-10 :</strong> Denver (77M), Istanbul (76M), Los Angeles (75M), Chicago O'Hare (73M), Paris CDG (72M)
                   </p>
                 </div>
@@ -266,9 +266,9 @@ const TransportsPage = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-4">
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-blue-800 mb-2">Concentration géographique</h4>
-                      <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                    <div className="bg-pr-orange-pale p-4 rounded-lg">
+                      <h4 className="font-semibold text-carnet-red-deep mb-2">Concentration géographique</h4>
+                      <ul className="list-disc list-inside text-sm text-carnet-red space-y-1">
                         <li><strong>Asie dominante :</strong> 8 des 10 premiers ports conteneurs (Chine en tête)</li>
                         <li><strong>Armateurs principaux :</strong> Maersk (Danemark), MSC (Suisse), COSCO (Chine)</li>
                         <li><strong>Spécialisation :</strong> Rotterdam 10e en tonnage total (500 millions tonnes)</li>
@@ -350,12 +350,12 @@ const TransportsPage = () => {
                       </div>
                     </div>
 
-                    <div className="border-l-4 border-blue-400 bg-blue-50 p-4 rounded-r-lg">
-                      <h4 className="font-semibold text-blue-800 mb-3">
+                    <div className="border-l-4 border-carnet-red/40 bg-pr-orange-pale p-4 rounded-r-lg">
+                      <h4 className="font-semibold text-carnet-red-deep mb-3">
                         <Plane className="inline h-4 w-4 mr-2" />
                         Résilience et adaptation
                       </h4>
-                      <div className="text-sm text-blue-700 space-y-2">
+                      <div className="text-sm text-carnet-red space-y-2">
                         <p><strong>Diversification :</strong> Multiplication des routes alternatives</p>
                         <p><strong>Technologie :</strong> Tracking temps réel, optimisation IA</p>
                         <p><strong>Stocks stratégiques :</strong> Reconstitution après COVID-19</p>

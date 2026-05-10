@@ -122,7 +122,7 @@ for N in [1000, 10000, 100000, 1000000]:
     erreur = abs(pi_est - math.pi)
     print(f"N={N:7d} : {pi_est:.6f} (Err: {erreur:.6f})")`}
           />
-          <div className="bg-blue-50 p-4 rounded text-sm text-slate-700">
+          <div className="bg-pr-orange-pale p-4 rounded text-sm text-slate-700">
             <p className="font-semibold mb-2">Observation :</p>
             <p>La vitesse de convergence de Monte-Carlo est en <LatexRenderer latex="1/\sqrt{N}" inline />.</p>
             <p>Pour gagner un facteur 10 en précision (diviser l'erreur par 10), il faut multiplier le nombre de points par 100.</p>

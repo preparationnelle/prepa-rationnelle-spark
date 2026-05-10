@@ -124,7 +124,7 @@ const ComparatifSuperlatifPage = () => {
             <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Adjectifs irréguliers importants</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold mb-3 text-blue-700">Adjectifs courants irréguliers :</h3>
+                <h3 className="font-semibold mb-3 text-carnet-red">Adjectifs courants irréguliers :</h3>
                 <div className="space-y-2">
                   <div className="bg-gray-50 p-3 rounded-lg">
                     <p>gut (bon) → besser → am besten</p>

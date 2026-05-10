@@ -216,7 +216,7 @@ const ConcordanceTempsExercicesPage = () => {
           <Button
             onClick={() => validateAnswer(exerciseId)}
             disabled={!userAnswers[exerciseId]}
-            className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
+            className="bg-carnet-red hover:bg-carnet-red-deep text-white flex items-center gap-2"
           >
             <CheckCircle className="h-4 w-4" />
             Valider ma réponse
@@ -295,7 +295,7 @@ const ConcordanceTempsExercicesPage = () => {
   }, [examMode, examStarted]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale via-white to-indigo-50">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -331,7 +331,7 @@ const ConcordanceTempsExercicesPage = () => {
               </Button>
             </Link>
             <Link to="/formation/anglais/grammaire/concordance/quiz">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2">
+              <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white flex items-center gap-2">
                 <Brain className="h-4 w-4" />
                 Aller au Quiz
               </Button>
@@ -355,7 +355,7 @@ const ConcordanceTempsExercicesPage = () => {
           </div>
 
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-blue-600 text-white">
+            <div className="p-3 rounded-lg bg-carnet-red text-white">
               <Brain className="h-9 w-9" />
             </div>
             Exercices Concordance des Temps
@@ -366,7 +366,7 @@ const ConcordanceTempsExercicesPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">Niveau Intermédiaire - Avancé</Badge>
             <Badge variant="outline">{concordanceTempsExercises.length} exercices</Badge>
-            <Badge className="bg-blue-600">Grammaire</Badge>
+            <Badge className="bg-carnet-red">Grammaire</Badge>
           </div>
         </div>
 
@@ -375,7 +375,7 @@ const ConcordanceTempsExercicesPage = () => {
           <Button
             variant={examMode ? "default" : "outline"}
             onClick={() => setExamMode(prev => !prev)}
-            className={examMode ? "bg-blue-600 hover:bg-blue-700 text-white" : "border-blue-600 text-blue-600 hover:bg-blue-50"}
+            className={examMode ? "bg-carnet-red hover:bg-carnet-red-deep text-white" : "border-carnet-red text-carnet-red hover:bg-pr-orange-pale"}
           >
             {examMode ? "Désactiver le Mode Examen" : "Activer le Mode Examen"}
           </Button>
@@ -383,13 +383,13 @@ const ConcordanceTempsExercicesPage = () => {
 
         {/* Exam Timer and Controls (visible only in exam mode and when started) */}
         {examMode && (
-          <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+          <Card className="mb-8 border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-indigo-50">
             <CardContent className="py-4">
               {!examStarted ? (
                 <div className="flex items-center justify-center gap-4">
                   <Button
                     onClick={startExam}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2"
+                    className="bg-carnet-red hover:bg-carnet-red-deep text-white px-6 py-2"
                   >
                     <Play className="h-4 w-4 mr-2" />
                     Commencer l'examen
@@ -398,8 +398,8 @@ const ConcordanceTempsExercicesPage = () => {
                 </div>
               ) : (
                 <div className="flex items-center justify-center gap-4">
-                  <div className="bg-blue-200 rounded-lg px-4 py-2">
-                    <span className="text-blue-900 font-mono text-lg">
+                  <div className="bg-carnet-red/20 rounded-lg px-4 py-2">
+                    <span className="text-carnet-red-deep font-mono text-lg">
                       ⏱️ {formatTime(examTime)}
                     </span>
                   </div>
@@ -417,9 +417,9 @@ const ConcordanceTempsExercicesPage = () => {
         )}
 
         {/* Filtres */}
-        <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <Card className="mb-8 border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-indigo-50">
           <CardHeader>
-            <CardTitle className="text-xl flex items-center gap-2 text-blue-800">
+            <CardTitle className="text-xl flex items-center gap-2 text-carnet-red-deep">
               <Target className="h-5 w-5" />
               Filtrer les exercices
             </CardTitle>
@@ -427,13 +427,13 @@ const ConcordanceTempsExercicesPage = () => {
           <CardContent>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-blue-700 mb-2">
+                <label className="block text-sm font-medium text-carnet-red mb-2">
                   Catégorie :
                 </label>
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-3 py-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-carnet-red/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   disabled={examStarted} // Disable filters in exam mode
                 >
                   <option value="toutes">Toutes les catégories</option>
@@ -443,13 +443,13 @@ const ConcordanceTempsExercicesPage = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-blue-700 mb-2">
+                <label className="block text-sm font-medium text-carnet-red mb-2">
                   Niveau :
                 </label>
                 <select
                   value={selectedLevel}
                   onChange={(e) => setSelectedLevel(e.target.value)}
-                  className="w-full px-3 py-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-carnet-red/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   disabled={examStarted} // Disable filters in exam mode
                 >
                   <option value="tous">Tous les niveaux</option>
@@ -464,9 +464,9 @@ const ConcordanceTempsExercicesPage = () => {
 
         {/* Section de sélection du type d'exercice */}
         {!examStarted && ( // Only show type selection outside exam mode
-          <Card className="mb-8 border-4 border-blue-500 bg-gradient-to-r from-blue-100 to-indigo-100 shadow-lg">
+          <Card className="mb-8 border-4 border-carnet-red bg-gradient-to-r from-carnet-red/10 to-indigo-100 shadow-lg">
             <CardHeader>
-              <CardTitle className="text-2xl font-bold flex items-center gap-2 text-blue-900">
+              <CardTitle className="text-2xl font-bold flex items-center gap-2 text-carnet-red-deep">
                 <BookOpenIcon className="h-6 w-6" />
                 Choisir le type d'exercices
               </CardTitle>
@@ -476,21 +476,21 @@ const ConcordanceTempsExercicesPage = () => {
                 <Button
                   variant={selectedExerciseType === 'qcm' ? 'default' : 'outline'}
                   onClick={() => setSelectedExerciseType('qcm')}
-                  className={selectedExerciseType === 'qcm' ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'border-blue-600 text-blue-600 hover:bg-blue-50'}
+                  className={selectedExerciseType === 'qcm' ? 'bg-carnet-red hover:bg-carnet-red-deep text-white' : 'border-carnet-red text-carnet-red hover:bg-pr-orange-pale'}
                 >
                   QCM ({getConcordanceTempsExercisesByType('qcm').length})
                 </Button>
                 <Button
                   variant={selectedExerciseType === 'choix' ? 'default' : 'outline'}
                   onClick={() => setSelectedExerciseType('choix')}
-                  className={selectedExerciseType === 'choix' ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'border-blue-600 text-blue-600 hover:bg-blue-50'}
+                  className={selectedExerciseType === 'choix' ? 'bg-carnet-red hover:bg-carnet-red-deep text-white' : 'border-carnet-red text-carnet-red hover:bg-pr-orange-pale'}
                 >
                   Choix multiples ({getConcordanceTempsExercisesByType('choix').length})
                 </Button>
                 <Button
                   variant={selectedExerciseType === 'complet' ? 'default' : 'outline'}
                   onClick={() => setSelectedExerciseType('complet')}
-                  className={selectedExerciseType === 'complet' ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'border-blue-600 text-blue-600 hover:bg-blue-50'}
+                  className={selectedExerciseType === 'complet' ? 'bg-carnet-red hover:bg-carnet-red-deep text-white' : 'border-carnet-red text-carnet-red hover:bg-pr-orange-pale'}
                 >
                   Mots à compléter ({getConcordanceTempsExercisesByType('complet').length})
                 </Button>
@@ -503,24 +503,24 @@ const ConcordanceTempsExercicesPage = () => {
         {filteredExercises.length > 0 && currentExercise && (
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <FileText className="h-8 w-8 text-blue-600" />
+              <FileText className="h-8 w-8 text-carnet-red" />
               Question {currentExerciseIndex + 1} / {filteredExercises.length}
               <Badge variant="outline" className="ml-2">
                 {currentExercise.category} - {currentExercise.level === 'beginner' ? 'Débutant' : currentExercise.level === 'intermediate' ? 'Intermédiaire' : 'Avancé'}
               </Badge>
             </h2>
 
-            <Card key={currentExercise.id} className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+            <Card key={currentExercise.id} className="border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-indigo-50">
               <CardHeader>
-                <CardTitle className="text-xl flex items-center gap-2 text-blue-800">
+                <CardTitle className="text-xl flex items-center gap-2 text-carnet-red-deep">
                   <FileText className="h-5 w-5" />
                   Exercice de {selectedExerciseType === 'qcm' ? 'QCM' : selectedExerciseType === 'choix' ? 'Choix multiples' : 'Mots à compléter'}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {/* Question */}
-                <div className="bg-white/70 rounded-lg p-4 border border-blue-200">
-                  <h4 className="font-semibold text-blue-900 mb-2">Question :</h4>
+                <div className="bg-white/70 rounded-lg p-4 border border-carnet-red/30">
+                  <h4 className="font-semibold text-carnet-red-deep mb-2">Question :</h4>
                   <p className="text-lg text-gray-800 font-mono">{currentExercise.question}</p>
                 </div>
 
@@ -535,7 +535,7 @@ const ConcordanceTempsExercicesPage = () => {
                           value={option}
                           checked={userAnswers[currentExercise.id] === option}
                           onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                          className="text-blue-600 focus:ring-blue-500"
+                          className="text-carnet-red focus:ring-blue-500"
                           disabled={examMode && examStarted} // Disable input in exam mode
                         />
                         <span className="text-gray-800">{option}</span>
@@ -543,13 +543,13 @@ const ConcordanceTempsExercicesPage = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                    <h4 className="font-semibold text-blue-900 mb-2">✍️ Votre réponse :</h4>
+                  <div className="bg-pr-orange-pale rounded-lg p-4 border border-carnet-red/30">
+                    <h4 className="font-semibold text-carnet-red-deep mb-2">✍️ Votre réponse :</h4>
                     <input
                       type="text"
                       value={userAnswers[currentExercise.id] || ''}
                       onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                      className="w-full p-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg text-gray-800"
+                      className="w-full p-2 border border-carnet-red/40 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg text-gray-800"
                       placeholder="Tapez votre réponse ici..."
                       disabled={examMode && examStarted} // Disable input in exam mode
                     />
@@ -598,9 +598,9 @@ const ConcordanceTempsExercicesPage = () => {
         )}
 
         {filteredExercises.length === 0 && ( // Message si aucun exercice
-          <Card className="border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+          <Card className="border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-indigo-50">
             <CardContent className="text-center py-8">
-              <p className="text-blue-600 text-lg">
+              <p className="text-carnet-red text-lg">
                 Aucun exercice trouvé avec les filtres actuels. Modifiez vos critères de recherche.
               </p>
             </CardContent>
@@ -612,7 +612,7 @@ const ConcordanceTempsExercicesPage = () => {
           <div className="flex justify-center gap-4 mt-10">
             <Button
               onClick={calculateScore}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg flex items-center gap-2"
+              className="bg-carnet-red hover:bg-carnet-red-deep text-white px-8 py-3 text-lg flex items-center gap-2"
             >
               <CheckCircle className="h-5 w-5" />
               Terminer et voir le score
@@ -620,7 +620,7 @@ const ConcordanceTempsExercicesPage = () => {
             <Button
               onClick={resetQuiz}
               variant="outline"
-              className="px-8 py-3 text-lg flex items-center gap-2 border-blue-600 text-blue-600 hover:bg-blue-50"
+              className="px-8 py-3 text-lg flex items-center gap-2 border-carnet-red text-carnet-red hover:bg-pr-orange-pale"
             >
               <RotateCcw className="h-5 w-5" />
               Réinitialiser
@@ -630,22 +630,22 @@ const ConcordanceTempsExercicesPage = () => {
 
         {/* Score affiché */}
         {showScore && score !== null && (
-          <Card className={`mt-10 border-2 ${examMode ? 'border-blue-200 bg-blue-50' : 'border-blue-200 bg-blue-50'}`}>
+          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-orange-pale' : 'border-carnet-red/30 bg-pr-orange-pale'}`}>
             <CardHeader className="text-center">
-              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-blue-800' : 'text-blue-800'}`}>
+              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-carnet-red-deep' : 'text-carnet-red-deep'}`}>
                 <Award className="h-8 w-8" />
                 {examMode ? 'Résultats de l\'Examen' : 'Votre Score'} : {score}%
               </CardTitle>
             </CardHeader>
             <CardContent className="text-center">
               {examMode && examTime > 0 && (
-                <div className="mb-4 p-3 bg-blue-100 rounded-lg border border-blue-200">
-                  <p className="text-blue-800 font-medium">
+                <div className="mb-4 p-3 bg-carnet-red/10 rounded-lg border border-carnet-red/30">
+                  <p className="text-carnet-red-deep font-medium">
                     ⏱️ Temps total : {formatTime(examTime)}
                   </p>
                 </div>
               )}
-              <div className={`text-lg ${examMode ? 'text-blue-700' : 'text-blue-700'
+              <div className={`text-lg ${examMode ? 'text-carnet-red' : 'text-carnet-red'
                 }`}>
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
@@ -659,14 +659,14 @@ const ConcordanceTempsExercicesPage = () => {
                   </div>
                 ) : ( // Less than 50%
                   <div className="flex items-center justify-center gap-2">
-                    <Lightbulb className="h-6 w-6 text-blue-500" />
+                    <Lightbulb className="h-6 w-6 text-carnet-red" />
                     {examMode ? 'Examen non validé. Continuez à vous entraîner !' : 'Ne vous découragez pas ! Révisez les règles et réessayez.'}
                   </div>
                 )}
               </div>
               {examMode && (
-                <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                  <p className="text-blue-700 text-sm">
+                <div className="mt-4 p-3 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
+                  <p className="text-carnet-red text-sm">
                     💡 En mode normal, vous pouvez voir les corrections détaillées de chaque exercice.
                   </p>
                 </div>

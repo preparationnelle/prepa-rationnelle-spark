@@ -174,19 +174,19 @@ const AgroalimentairePage = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Factory className="h-5 w-5 text-blue-600" />
+                <Factory className="h-5 w-5 text-carnet-red" />
                 Top 5 firmes agroalimentaires (2025)
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 {topCompanies.map((company, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <div key={index} className="flex items-center justify-between p-3 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
                     <div>
-                      <div className="font-semibold text-blue-800">{company.company}</div>
-                      <div className="text-sm text-blue-600">{company.country} • {company.sector}</div>
+                      <div className="font-semibold text-carnet-red-deep">{company.company}</div>
+                      <div className="text-sm text-carnet-red">{company.country} • {company.sector}</div>
                     </div>
-                    {company.ca && <div className="font-bold text-blue-700">{company.ca}</div>}
+                    {company.ca && <div className="font-bold text-carnet-red">{company.ca}</div>}
                   </div>
                 ))}
               </div>
@@ -289,12 +289,12 @@ const AgroalimentairePage = () => {
                       </div>
                     </div>
 
-                    <div className="border-l-4 border-blue-400 bg-blue-50 p-4 rounded-r-lg">
-                      <h4 className="font-semibold text-blue-800 mb-3">
+                    <div className="border-l-4 border-carnet-red/40 bg-pr-orange-pale p-4 rounded-r-lg">
+                      <h4 className="font-semibold text-carnet-red-deep mb-3">
                         <Building className="inline h-4 w-4 mr-2" />
                         Agriculture de précision et numérique
                       </h4>
-                      <div className="text-sm text-blue-700 space-y-2">
+                      <div className="text-sm text-carnet-red space-y-2">
                         <p><strong>Technologies :</strong> GPS, drones, capteurs IoT, satellites</p>
                         <p><strong>Objectifs :</strong> Optimisation intrants, réduction impact environnemental</p>
                         <p><strong>Leaders :</strong> John Deere, Trimble, firmes tech (Google, Microsoft)</p>

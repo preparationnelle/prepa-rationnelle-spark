@@ -101,7 +101,7 @@ const InegalitesPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BarChart className="h-5 w-5 text-blue-600" />
+              <BarChart className="h-5 w-5 text-carnet-red" />
               Comment mesurer les inégalités ?
             </CardTitle>
           </CardHeader>
@@ -113,16 +113,16 @@ const InegalitesPage = () => {
             
             <div className="space-y-4">
               {inequalityIndicators.map((indicator, index) => (
-                <div key={index} className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div key={index} className="p-4 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <Badge className="bg-blue-600 text-white font-semibold">
+                        <Badge className="bg-carnet-red text-white font-semibold">
                           {indicator.indicator}
                         </Badge>
-                        <span className="font-semibold text-blue-800">{indicator.definition}</span>
+                        <span className="font-semibold text-carnet-red-deep">{indicator.definition}</span>
                       </div>
-                      <div className="text-sm text-blue-700">
+                      <div className="text-sm text-carnet-red">
                         {indicator.composition && <span><strong>Composition :</strong> {indicator.composition}</span>}
                         {indicator.threshold && <span><strong>Seuil :</strong> {indicator.threshold}</span>}
                         {indicator.focus && <span><strong>Focus :</strong> {indicator.focus}</span>}
@@ -322,9 +322,9 @@ const InegalitesPage = () => {
                       </div>
                     </div>
 
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-blue-800 mb-2">Impact géopolitique</h4>
-                      <ul className="list-disc list-inside text-sm text-blue-700 space-y-1">
+                    <div className="bg-pr-orange-pale p-4 rounded-lg">
+                      <h4 className="font-semibold text-carnet-red-deep mb-2">Impact géopolitique</h4>
+                      <ul className="list-disc list-inside text-sm text-carnet-red space-y-1">
                         <li><strong>Souveraineté alimentaire :</strong> Priorité sur exportations</li>
                         <li><strong>Régulation :</strong> Encadrement international investissements fonciers</li>
                         <li><strong>Limitation :</strong> &lt;20% terres pour cultures non-alimentaires</li>
@@ -353,9 +353,9 @@ const InegalitesPage = () => {
                     </div>
                     
                     <div className="grid md:grid-cols-3 gap-4">
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <h5 className="font-semibold text-blue-800 mb-2">Asie : Émergence</h5>
-                        <ul className="text-xs text-blue-700 space-y-1">
+                      <div className="bg-pr-orange-pale p-4 rounded-lg">
+                        <h5 className="font-semibold text-carnet-red-deep mb-2">Asie : Émergence</h5>
+                        <ul className="text-xs text-carnet-red space-y-1">
                           <li>• Chine : Classe moyenne 400M</li>
                           <li>• Inde : Hub technologique</li>
                           <li>• Corée, Singapour : Développés</li>

@@ -47,7 +47,7 @@ const MethodologieESHPage = () => {
             </div>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-carnet-red to-blue-700 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-carnet-red to-pr-orange-dark bg-clip-text text-transparent">
               Méthodologie ESH
             </span>
           </h1>

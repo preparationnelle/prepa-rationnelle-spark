@@ -458,7 +458,7 @@ const ContinentAfricainPage = () => {
                         </div>
 
                         {/* Transition */}
-                        <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border-l-4 border-carnet-red">
+                        <div className="bg-gradient-to-r from-pr-orange-pale to-green-50 p-4 rounded-lg border-l-4 border-carnet-red">
                           <h4 className="font-semibold text-carnet-red-deep mb-2">Transition vers la mondialisation contemporaine</h4>
                           <p className="text-gray-700 text-sm">
                             Après la guerre froide, l'Afrique reste stratégique : nouveaux acteurs émergents (Chine, Russie, Turquie, Inde), lutte pour les ressources, reconfiguration économique mondiale.
@@ -974,7 +974,7 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* Conclusion */}
-                      <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border-l-4 border-carnet-red">
+                      <div className="bg-gradient-to-r from-pr-orange-pale to-green-50 p-4 rounded-lg border-l-4 border-carnet-red">
                         <h4 className="font-semibold text-carnet-red-deep mb-2">Conclusion</h4>
                         <div className="space-y-2 text-sm text-gray-700">
                           <p><strong>• Constat :</strong> Manque de coopération intra-africaine et faiblesse institutions limitent l'intégration continentale</p>
@@ -1137,7 +1137,7 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* Conclusion et perspectives */}
-                      <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-5 rounded-lg border-l-4 border-purple-500">
+                      <div className="bg-gradient-to-r from-purple-50 to-pr-orange-pale p-5 rounded-lg border-l-4 border-purple-500">
                         <h4 className="font-semibold text-purple-800 mb-3">Conclusion et perspectives</h4>
                         <div className="space-y-2 text-sm text-gray-700">
                           <p><strong>• Constat :</strong> L'Afrique confrontée à des crises multiples et interdépendantes (politiques, économiques, écologiques, sécuritaires)</p>
@@ -1339,7 +1339,7 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* Conclusion */}
-                      <div className="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-lg border-l-4 border-green-500">
+                      <div className="bg-gradient-to-r from-green-50 to-pr-orange-pale p-4 rounded-lg border-l-4 border-green-500">
                         <h4 className="font-semibold text-green-800 mb-2">Conclusion</h4>
                         <div className="space-y-2 text-sm text-gray-700">
                           <p><strong>• Diversité :</strong> L'Afrique loin d'être un bloc homogène → diversité géographique, culturelle et économique</p>
@@ -1429,7 +1429,7 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* Conclusion */}
-                      <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-3 rounded-lg border-l-4 border-carnet-red">
+                      <div className="bg-gradient-to-r from-pr-orange-pale to-purple-50 p-3 rounded-lg border-l-4 border-carnet-red">
                         <h4 className="font-semibold text-carnet-red-deep mb-1">Conclusion</h4>
                         <p className="text-sm text-gray-700">Démographie explosive = défis + levier potentiel | Intégration économique cruciale | Migrations = réalité à gérer | Réformes majeures nécessaires</p>
                       </div>
@@ -1524,7 +1524,7 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* Conclusion finale */}
-                      <div className="bg-gradient-to-r from-violet-50 to-blue-50 p-3 rounded-lg border-l-4 border-carnet-red">
+                      <div className="bg-gradient-to-r from-violet-50 to-pr-orange-pale p-3 rounded-lg border-l-4 border-carnet-red">
                         <h4 className="font-semibold text-carnet-red-deep mb-1">L'avenir incertain</h4>
                         <div className="text-sm text-gray-700 space-y-1">
                           <p><strong>• Tournant :</strong> Marginalisation vs intégration accélérée</p>
@@ -1715,7 +1715,7 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* Conclusion */}
-                      <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-lg border border-purple-200">
+                      <div className="bg-gradient-to-r from-purple-50 to-pr-orange-pale p-6 rounded-lg border border-purple-200">
                         <h4 className="text-lg font-semibold text-purple-800 mb-4">Conclusion</h4>
                         <div className="space-y-3 text-gray-700">
                           <p>
@@ -1863,7 +1863,7 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* Bilan */}
-                      <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-lg border border-purple-200">
+                      <div className="bg-gradient-to-r from-purple-50 to-pr-orange-pale p-6 rounded-lg border border-purple-200">
                         <h4 className="text-lg font-semibold text-purple-800 mb-4">Bilan</h4>
                         <div className="space-y-3 text-gray-700">
                           <div className="flex items-start gap-2">
@@ -2051,7 +2051,7 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* Bilan */}
-                      <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-lg border border-purple-200">
+                      <div className="bg-gradient-to-r from-purple-50 to-pr-orange-pale p-6 rounded-lg border border-purple-200">
                         <h4 className="text-lg font-semibold text-purple-800 mb-4">Bilan</h4>
                         <div className="space-y-3 text-gray-700">
                           <div className="flex items-start gap-2">
@@ -2256,7 +2256,7 @@ const ContinentAfricainPage = () => {
                       </div>
 
                       {/* Bilan */}
-                      <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-lg border border-purple-200">
+                      <div className="bg-gradient-to-r from-purple-50 to-pr-orange-pale p-6 rounded-lg border border-purple-200">
                         <h4 className="text-lg font-semibold text-purple-800 mb-4">Bilan</h4>
                         <div className="space-y-3 text-gray-700">
                           <div className="flex items-start gap-2">

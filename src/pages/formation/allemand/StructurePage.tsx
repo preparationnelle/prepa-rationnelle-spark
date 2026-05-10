@@ -597,7 +597,7 @@ const StructurePage = () => {
           </div>
 
           {/* Synthèse : Mécanismes Clés */}
-          <div className="bg-gradient-to-r from-orange-50 to-blue-50 rounded-xl p-8 shadow-lg mb-8 border border-orange-200">
+          <div className="bg-gradient-to-r from-orange-50 to-pr-orange-pale rounded-xl p-8 shadow-lg mb-8 border border-orange-200">
             <h2 className="text-2xl font-bold mb-6 text-orange-700 border-b border-orange-200 pb-2">Synthèse : Mécanismes Clés</h2>
 
             <div className="space-y-6">

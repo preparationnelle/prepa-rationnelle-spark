@@ -200,7 +200,7 @@ const ReussirEpreuvesAllemandePage = () => {
           <div className="text-center mt-12">
             <Link
               to="/formation/allemand"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300"
+              className="inline-flex items-center px-6 py-3 bg-carnet-red hover:bg-carnet-red-deep text-white font-medium rounded-lg transition-all duration-300"
             >
               Retour à la formation Allemand
             </Link>

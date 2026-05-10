@@ -26,12 +26,12 @@ const RessourcesStrategiquesPage: React.FC = () => {
         <div className="max-w-4xl mx-auto bg-white border rounded-xl p-6">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-900">Les ressources stratégiques</h1>
-            <div className="mt-2 h-1 w-24 bg-blue-600 rounded"></div>
+            <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
           <div className="space-y-8 text-gray-900">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="text-lg font-semibold text-blue-700 mb-2">Typologie</h3>
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+              <h3 className="text-lg font-semibold text-carnet-red mb-2">Typologie</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Productions agricoles</li>
                 <li>Minerais (or, argent, étain, zinc…) et métaux rares (cobalt, lithium…), dont terres rares</li>
@@ -40,31 +40,31 @@ const RessourcesStrategiquesPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="text-lg font-semibold text-blue-700 mb-2">Conflits et ressources</h3>
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+              <h3 className="text-lg font-semibold text-carnet-red mb-2">Conflits et ressources</h3>
               <p>Si les conflits existent à toutes les échelles, le caractère stratégique des ressources favorise d’abord la coopération : dans un monde où nul n’est autosuffisant, instabilités et conflits perturbent l’approvisionnement et l’exploitation.</p>
               <ul className="list-disc list-inside mt-2 space-y-1">
                 <li><strong>Approche géographique</strong> : ressources liées aux territoires, inégalement réparties.</li>
                 <li><strong>Approche historique</strong> : tournant avec les révolutions industrielles; conquêtes et mises en valeur.</li>
               </ul>
               <div className="mt-3 grid md:grid-cols-2 gap-3">
-                <div className="bg-white border border-blue-100 rounded p-3">
-                  <h4 className="font-semibold text-blue-700 mb-1">Pressions accrues</h4>
+                <div className="bg-white border border-carnet-red/20 rounded p-3">
+                  <h4 className="font-semibold text-carnet-red mb-1">Pressions accrues</h4>
                   <ul className="list-disc list-inside text-sm space-y-1">
                     <li>Besoins en hausse (industrialisation, émergences)</li>
                     <li>Croissance démographique</li>
                     <li>Défi environnemental (Rapport Meadows, 1972), risques d’épuisement</li>
                   </ul>
                 </div>
-                <div className="bg-white border border-blue-100 rounded p-3">
-                  <h4 className="font-semibold text-blue-700 mb-1">Interdépendances</h4>
+                <div className="bg-white border border-carnet-red/20 rounded p-3">
+                  <h4 className="font-semibold text-carnet-red mb-1">Interdépendances</h4>
                   <p className="text-sm">Économies imbriquées ⇒ coopérations nécessaires sur les flux et la sécurité d’approvisionnement.</p>
                 </div>
               </div>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">I. Rivalités</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">I. Rivalités</h2>
               <p className="mb-2">Ressources inégalement réparties et au cœur des stratégies de puissance/développement ⇒ conflits à toutes les échelles.</p>
               <ul className="list-disc list-inside space-y-1">
                 <li>Nombreux conflits de basse/moyenne intensité pour le contrôle local; les guerres ouvertes restent plus rares.</li>
@@ -73,8 +73,8 @@ const RessourcesStrategiquesPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">II. Coopération</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">II. Coopération</h2>
               <p className="mb-2">Aucun acteur n’est autosuffisant : importateurs et exportateurs redoutent les conflits car ils menacent recettes et approvisionnements.</p>
               <ul className="list-disc list-inside space-y-1">
                 <li>Coopérations entre acteurs supposés hostiles lorsque les coûts d’interruption sont trop élevés.</li>
@@ -82,8 +82,8 @@ const RessourcesStrategiquesPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">III. Perspectives</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">III. Perspectives</h2>
               <p className="mb-2">Ressources et enjeux géopolitiques se recomposent.</p>
               <ul className="list-disc list-inside space-y-1">
                 <li>« 3e révolution industrielle » (J. Rifkin) : rend stratégiques de nouveaux matériaux, rebat les hiérarchies.</li>
@@ -99,11 +99,11 @@ const RessourcesStrategiquesPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="text-lg font-semibold text-blue-700 mb-2">Études de cas</h3>
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+              <h3 className="text-lg font-semibold text-carnet-red mb-2">Études de cas</h3>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-blue-700">Hydrocarbures non conventionnels – Bassin permien (Texas/Nouveau‑Mexique)</h4>
+                  <h4 className="font-semibold text-carnet-red">Hydrocarbures non conventionnels – Bassin permien (Texas/Nouveau‑Mexique)</h4>
                   <p className="text-sm">Gisement majeur de schistes. Collusions politiques/industrie; remodelage paysager, économique et environnemental.</p>
                   <ul className="list-disc list-inside text-sm space-y-1">
                     <li>ExxonMobil, Chevron, ConocoPhillips…</li>
@@ -113,7 +113,7 @@ const RessourcesStrategiquesPage: React.FC = () => {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-blue-700">Orpaillage en Guyane française</h4>
+                  <h4 className="font-semibold text-carnet-red">Orpaillage en Guyane française</h4>
                   <ul className="list-disc list-inside text-sm space-y-1">
                     <li>Marché mondial : ~4 000 t/an (50% bijouterie, 40% lingots, 10% usages techniques).</li>
                     <li>Prix : ~10 €/g (2000‑2006) → 30‑40 €/g (2019).</li>
@@ -122,7 +122,7 @@ const RessourcesStrategiquesPage: React.FC = () => {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-blue-700">Front pionnier agro‑désertique égyptien</h4>
+                  <h4 className="font-semibold text-carnet-red">Front pionnier agro‑désertique égyptien</h4>
                   <p className="text-sm">Objectif : maîtriser foncier et eau pour répondre à la croissance démographique et diversifier l’agriculture.</p>
                   <ul className="list-disc list-inside text-sm space-y-1">
                     <li>Historique : Nasser (bonification; Assouan) → Sadate (Est du Delta) → Moubarak (Toshka, 1997, échec) → Sissi (1,5 M de feddans, « New Delta »).</li>

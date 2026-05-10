@@ -26,19 +26,19 @@ const GuerresPage: React.FC = () => {
         <div className="max-w-4xl mx-auto bg-white border rounded-xl p-6">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-900">Les guerres</h1>
-            <div className="mt-2 h-1 w-24 bg-blue-600 rounded"></div>
+            <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
           <div className="space-y-8 text-gray-900">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
               <p className="italic">« Soumettre l’ennemi par la force n’est pas le summum de l’art de la guerre, le summum de cet art est de soumettre l’ennemi sans verser une seule goutte de sang » — Sun Tzu, L’Art de la guerre.</p>
               <p className="italic">« La guerre, c’est la guerre des hommes ; la paix, c’est la guerre des idées » — Victor Hugo.</p>
               <p className="italic">« La guerre n’est que la continuation de la politique par d’autres moyens » — Carl von Clausewitz.</p>
               <p className="mt-2">Étymologie: conflit ← <em>confligere</em> (heurter), <em>conflictus</em> (choc). La guerre est une forme armée de conflit, encadrée par un corpus juridique (déclaration formelle, traité de paix).</p>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">I. Les guerres actuelles reprennent les logiques des guerres passées…</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">I. Les guerres actuelles reprennent les logiques des guerres passées…</h2>
               <h3 className="text-xl font-semibold mb-2">A. Un droit de la guerre défini sur le temps long</h3>
               <p>Grotius et l’École de Salamanque (XVIe‑XVIIe) posent les bases du droit international : <em>jus ad bellum</em> (raisons de faire la guerre) et <em>jus in bello</em> (manière de la faire). Traités de Westphalie (1648) : souveraineté étatique, droit de s’allier.</p>
               <p>Après 1918/1945 : SDN puis ONU — légitimité de l’usage de la force par approbation de la communauté. Conflits interétatiques devenus exceptionnels.</p>
@@ -57,8 +57,8 @@ const GuerresPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">II. … mais s’en écartent par ce qu’elles mettent en œuvre…</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">II. … mais s’en écartent par ce qu’elles mettent en œuvre…</h2>
               <h3 className="text-xl font-semibold mb-2">A. Après la guerre froide : nouvelles violences et dissémination</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Coûts financiers, rejet des valeurs guerrières, dissuasion nucléaire.</li>
@@ -81,8 +81,8 @@ const GuerresPage: React.FC = () => {
               <p>Privatisation : SMP (DynCorp, Academi/Blackwater), Groupe Wagner (paramilitaire, Ukraine/Syrie, ressources en Afrique).</p>
             </div>
 
-            <div className="border-l-4 border-blue-600 pl-4">
-              <h2 className="text-2xl font-semibold text-blue-700 mb-2">III. … rendant la guerre polysémique et aux contours flous</h2>
+            <div className="border-l-4 border-carnet-red pl-4">
+              <h2 className="text-2xl font-semibold text-carnet-red mb-2">III. … rendant la guerre polysémique et aux contours flous</h2>
               <h3 className="text-xl font-semibold mb-2">A. Guerre économique</h3>
               <p>Ali Laïdi (2016) : l’économie de marché comme espace de confrontation — géoéconomie, contrôle des ressources rares; transposition au niveau des entreprises (avantage concurrentiel).</p>
 
@@ -99,8 +99,8 @@ const GuerresPage: React.FC = () => {
               <p>Nouveau cycle nucléaire : essais nord‑coréens, retrait US du JCPoA; égalisation des arsenaux (B. Tertrais); instabilités accrues vs guerre froide.</p>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="text-lg font-semibold text-blue-700 mb-2">Conclusion</h3>
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+              <h3 className="text-lg font-semibold text-carnet-red mb-2">Conclusion</h3>
               <p className="italic">« La guerre est semblable au feu, lorsqu’elle se prolonge, elle met en péril ceux qui l’ont provoqué » — Sun Tzu.</p>
               <p className="italic">« Être inerte, c’est être battu. » — Charles de Gaulle.</p>
               <p className="italic">« Le révolutionnaire doit être dans la population comme un poisson dans l’eau » — Mao Zedong.</p>

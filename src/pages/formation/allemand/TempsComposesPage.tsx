@@ -82,7 +82,7 @@ const TempsComposesPage = () => {
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold mb-2 text-blue-700">SEIN utilisent certains verbes :</h3>
+                <h3 className="font-semibold mb-2 text-carnet-red">SEIN utilisent certains verbes :</h3>
                 <ul className="list-disc list-inside text-gray-700 ml-4">
                   <li>Verbes de mouvement (gehen, kommen, fahren, etc.)</li>
                   <li>Verbes de changement d'état (werden, aufwachen, etc.)</li>
@@ -109,7 +109,7 @@ const TempsComposesPage = () => {
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold mb-3 text-blue-700">Verbes forts (irréguliers) :</h3>
+                <h3 className="font-semibold mb-3 text-carnet-red">Verbes forts (irréguliers) :</h3>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p>Changement vocalique + <span className="text-orange-600">-en</span></p>
                   <p>gehen → ge<span className="text-orange-600">gangen</span></p>

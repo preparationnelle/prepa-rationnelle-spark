@@ -160,15 +160,15 @@ const OteriaDenombrementExercicesPage = () => {
 
             <p className="mt-3 mb-2"><strong>Total :</strong></p>
             <LatexRenderer latex="N = 21\,902\,400\,000 \times 560 = \boxed{12\,265\,344\,000\,000}" block={true} />
-            <p className="text-sm mt-2 text-blue-600">Plus de 12 mille milliards de possibilités !</p>
+            <p className="text-sm mt-2 text-carnet-red">Plus de 12 mille milliards de possibilités !</p>
           </div>
           <div>
             <p className="font-semibold mb-2">2. Probabilité de deviner du premier coup</p>
             <LatexRenderer latex="\boxed{\frac{1}{12\,265\,344\,000\,000}} \approx 8{,}15 \times 10^{-14}" block={true} />
             <p className="text-sm mt-2 text-slate-600">Une chance sur 12 mille milliards - pratiquement impossible !</p>
           </div>
-          <div className="bg-blue-50 border border-blue-200 rounded p-4 mt-4">
-            <p className="font-semibold text-blue-800 mb-2">🔐 Remarques pédagogiques</p>
+          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded p-4 mt-4">
+            <p className="font-semibold text-carnet-red-deep mb-2">🔐 Remarques pédagogiques</p>
             <ul className="text-sm space-y-1 list-disc ml-5 text-slate-700">
               <li>Quand l'ordre est rendu "invisible", on divise par la factorielle de la taille du groupe concerné (ex. 3! pour 3 lettres).</li>
               <li>Les placements de types se gèrent par un coefficient multinomial (ici 8!/(3!·3!·2!)).</li>
@@ -391,8 +391,8 @@ const OteriaDenombrementExercicesPage = () => {
             <LatexRenderer latex="\approx 0.493" block={true} />
             <p className="mb-2 mt-3">Probabilité qu'au moins deux personnes aient le même anniversaire :</p>
             <LatexRenderer latex="P(\text{collision}) = 1 - 0.493 \approx 0.507" block={true} />
-            <div className="bg-blue-50 border border-blue-200 rounded p-3 mt-3">
-              <p className="font-semibold text-blue-800">🎉 Le paradoxe !</p>
+            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded p-3 mt-3">
+              <p className="font-semibold text-carnet-red-deep">🎉 Le paradoxe !</p>
               <p className="text-sm mt-1 text-slate-700">Avec seulement 23 personnes, il y a plus de 50% de chances que deux personnes aient le même anniversaire !</p>
               <p className="text-sm mt-1 text-slate-500">Application en cryptographie : attaques par collision sur les fonctions de hachage.</p>
             </div>
@@ -479,13 +479,13 @@ const OteriaDenombrementExercicesPage = () => {
         </div>
 
         {/* ─── RAPPELS ────────────────────────────────────────────── */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-sm p-8 border border-blue-100">
-          <h2 className="text-xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+        <div className="bg-gradient-to-r from-pr-orange-pale to-indigo-50 rounded-xl shadow-sm p-8 border border-carnet-red/20">
+          <h2 className="text-xl font-bold text-carnet-red-deep mb-4 flex items-center gap-2">
             Rappels (très concis)
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-slate-800">
-            <div className="bg-white p-4 rounded-lg border-l-4 border-blue-400 shadow-sm">
-              <p className="font-semibold text-blue-800 mb-2">Permutation de n :</p>
+            <div className="bg-white p-4 rounded-lg border-l-4 border-carnet-red/40 shadow-sm">
+              <p className="font-semibold text-carnet-red-deep mb-2">Permutation de n :</p>
               <p className="mb-2 text-sm">L'ordre compte, on prend tout.</p>
               <LatexRenderer latex="P_n = n!" block={true} />
             </div>

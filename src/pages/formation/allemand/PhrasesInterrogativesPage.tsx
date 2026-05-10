@@ -114,7 +114,7 @@ const PhrasesInterrogativesPage = () => {
             <h2 className="text-xl font-bold mb-4 text-orange-600 border-b border-orange-200 pb-2">Mots interrogatifs courants</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold mb-3 text-blue-700">Questions sur les personnes/choses :</h3>
+                <h3 className="font-semibold mb-3 text-carnet-red">Questions sur les personnes/choses :</h3>
                 <ul className="space-y-2 text-gray-700">
                   <li><span className="text-orange-600">Wer?</span> - Qui ?</li>
                   <li className="ml-4">Wer kommt morgen? (Qui vient demain ?)</li>

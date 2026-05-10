@@ -112,24 +112,24 @@ const DeveloppementDurablePage = () => {
         <Accordion type="single" collapsible className="w-full space-y-4">
           
           <AccordionItem value="demographic-transition">
-            <AccordionTrigger className="text-xl text-blue-700">
+            <AccordionTrigger className="text-xl text-carnet-red">
               I. Transition démographique mondiale (1974-2084)
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-6">
                 
                 {/* Évolution historique */}
-                <Card className="bg-blue-50 border-blue-200">
+                <Card className="bg-pr-orange-pale border-carnet-red/30">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-blue-800">
+                    <CardTitle className="flex items-center gap-2 text-carnet-red-deep">
                       <TrendingUp className="h-5 w-5" />
                       Évolution de la croissance démographique
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="bg-blue-100 p-4 rounded-lg mb-6">
-                      <h4 className="font-semibold text-blue-800 mb-2">Tendance générale</h4>
-                      <ul className="text-sm text-blue-700 space-y-2">
+                    <div className="bg-carnet-red/10 p-4 rounded-lg mb-6">
+                      <h4 className="font-semibold text-carnet-red-deep mb-2">Tendance générale</h4>
+                      <ul className="text-sm text-carnet-red space-y-2">
                         <li><strong>Ralentissement continu :</strong> Taux croissance toujours positif mais décroissant</li>
                         <li><strong>Fécondité globale :</strong> 2,2 enfants/femme (2024) vs seuil remplacement 2,1</li>
                         <li><strong>Transition achevée :</strong> Partout la fécondité baisse ou a déjà baissé</li>
@@ -139,16 +139,16 @@ const DeveloppementDurablePage = () => {
 
                     <div className="space-y-4">
                       {demographicStats.map((stat, index) => (
-                        <div key={index} className="p-4 bg-blue-100 rounded-lg border border-blue-300">
+                        <div key={index} className="p-4 bg-carnet-red/10 rounded-lg border border-carnet-red/40">
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <div className="flex items-center gap-3 mb-2">
-                                <Badge className="bg-blue-600 text-white font-semibold">
+                                <Badge className="bg-carnet-red text-white font-semibold">
                                   {stat.year}
                                 </Badge>
-                                <span className="font-bold text-blue-800">{stat.population}</span>
+                                <span className="font-bold text-carnet-red-deep">{stat.population}</span>
                               </div>
-                              <div className="text-sm text-blue-700">
+                              <div className="text-sm text-carnet-red">
                                 <div><strong>Croissance :</strong> {stat.growth}</div>
                                 <div><strong>Contexte :</strong> {stat.context}</div>
                               </div>
@@ -317,7 +317,7 @@ const DeveloppementDurablePage = () => {
                         
                         <h4 className="font-semibold text-gray-800 mb-3">Contraste Afrique-Europe</h4>
                         <div className="space-y-2">
-                          <div className="p-2 bg-blue-100 rounded text-sm">
+                          <div className="p-2 bg-carnet-red/10 rounded text-sm">
                             <strong>Europe :</strong> Âge médian 44 ans, population active vieillissante
                           </div>
                           <div className="p-2 bg-orange-100 rounded text-sm">
@@ -434,9 +434,9 @@ const DeveloppementDurablePage = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-blue-50 border-blue-200">
+                <Card className="bg-pr-orange-pale border-carnet-red/30">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-blue-800">
+                    <CardTitle className="flex items-center gap-2 text-carnet-red-deep">
                       <Target className="h-5 w-5" />
                       Thèse du basculement démographique mondial (2084)
                     </CardTitle>
@@ -444,9 +444,9 @@ const DeveloppementDurablePage = () => {
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-semibold text-blue-800 mb-3">Projection 2084</h4>
-                        <div className="bg-blue-100 p-4 rounded-lg">
-                          <ul className="text-sm text-blue-700 space-y-2">
+                        <h4 className="font-semibold text-carnet-red-deep mb-3">Projection 2084</h4>
+                        <div className="bg-carnet-red/10 p-4 rounded-lg">
+                          <ul className="text-sm text-carnet-red space-y-2">
                             <li><strong>Pic démographique :</strong> 10,3 milliards d'habitants</li>
                             <li><strong>Après 2084 :</strong> Début du déclin démographique mondial</li>
                             <li><strong>Moteur africain :</strong> L'Afrique devient le centre de croissance humaine</li>
@@ -456,9 +456,9 @@ const DeveloppementDurablePage = () => {
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-blue-800 mb-3">Reshaping géopolitique</h4>
-                        <div className="bg-blue-100 p-4 rounded-lg">
-                          <ul className="text-sm text-blue-700 space-y-2">
+                        <h4 className="font-semibold text-carnet-red-deep mb-3">Reshaping géopolitique</h4>
+                        <div className="bg-carnet-red/10 p-4 rounded-lg">
+                          <ul className="text-sm text-carnet-red space-y-2">
                             <li><strong>Puissance démographique :</strong> Afrique poids mondial croissant</li>
                             <li><strong>Jeunesse dynamique :</strong> Innovation, entrepreneuriat, consommation</li>
                             <li><strong>Défis :</strong> Éducation, emplois, gouvernance</li>

@@ -7,7 +7,7 @@ import { Home, ChevronRight, BookOpen, Globe, Quote, AlertTriangle, CheckCircle,
 
 const SciencesTechnologiesPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-50 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-pr-orange-pale p-4">
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
         <nav className="flex items-center space-x-2 text-sm mb-6">
@@ -28,7 +28,7 @@ const SciencesTechnologiesPage = () => {
         </nav>
 
         {/* Header */}
-        <Card className="mb-8 bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-indigo-600 to-pr-orange text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Cpu className="h-8 w-8" />
@@ -63,7 +63,7 @@ const SciencesTechnologiesPage = () => {
         </Card>
 
         {/* Accroche */}
-        <Card className="mb-8 border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-blue-50 shadow-lg">
+        <Card className="mb-8 border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-pr-orange-pale shadow-lg">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-3">
               <Quote className="h-6 w-6 text-indigo-600" />
@@ -99,8 +99,8 @@ const SciencesTechnologiesPage = () => {
                     Ce qui est "en jeu" dans un affrontement ; ce que l'on gagne à contrôler ou ce qui a des effets majeurs sur le fonctionnement du système géopolitique.
                   </p>
                 </div>
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-blue-800 mb-2">Technologie</h4>
+                <div className="bg-pr-orange-pale p-4 rounded-lg">
+                  <h4 className="font-semibold text-carnet-red-deep mb-2">Technologie</h4>
                   <p className="text-sm text-gray-700">
                     Forme de savoir technique sophistiqué, impliquant une capacité de mise en œuvre (par opposition à une simple technique).
                   </p>
@@ -161,10 +161,10 @@ const SciencesTechnologiesPage = () => {
         </div>
 
         {/* Chronologie */}
-        <Card className="mb-8 border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg">
+        <Card className="mb-8 border-2 border-carnet-red/30 bg-gradient-to-br from-pr-orange-pale to-indigo-50 shadow-lg">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-3">
-              <Rocket className="h-6 w-6 text-blue-600" />
+              <Rocket className="h-6 w-6 text-carnet-red" />
               Chronologie Sélective
             </CardTitle>
           </CardHeader>
@@ -172,35 +172,35 @@ const SciencesTechnologiesPage = () => {
             <div className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="bg-white p-4 rounded-lg border">
-                  <div className="font-semibold text-blue-700 mb-2">1945</div>
+                  <div className="font-semibold text-carnet-red mb-2">1945</div>
                   <p className="text-sm text-gray-700">Bombe atomique et fin de la Seconde Guerre mondiale ; émergence de la dissuasion nucléaire</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg border">
-                  <div className="font-semibold text-blue-700 mb-2">1957-1969</div>
+                  <div className="font-semibold text-carnet-red mb-2">1957-1969</div>
                   <p className="text-sm text-gray-700">Course à l'espace (Spoutnik 1957, Apollo 1969) symbolise la rivalité URSS-USA</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg border">
-                  <div className="font-semibold text-blue-700 mb-2">1970s</div>
+                  <div className="font-semibold text-carnet-red mb-2">1970s</div>
                   <p className="text-sm text-gray-700">Chocs pétroliers ; montée de la géo-économie où la technologie domine la valeur ajoutée</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg border">
-                  <div className="font-semibold text-blue-700 mb-2">1980-1990s</div>
+                  <div className="font-semibold text-carnet-red mb-2">1980-1990s</div>
                   <p className="text-sm text-gray-700">Fin de la Guerre froide ; essor d'Internet et du soft power technologique (Silicon Valley)</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg border">
-                  <div className="font-semibold text-blue-700 mb-2">2000s</div>
+                  <div className="font-semibold text-carnet-red mb-2">2000s</div>
                   <p className="text-sm text-gray-700">Mondialisation numérique ; défis écologiques nécessitant innovations technologiques</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg border">
-                  <div className="font-semibold text-blue-700 mb-2">2010-2020</div>
+                  <div className="font-semibold text-carnet-red mb-2">2010-2020</div>
                   <p className="text-sm text-gray-700">IA, big data, biotechnologies ; tensions sino-américaines sur la 5G et les semi-conducteurs</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg border">
-                  <div className="font-semibold text-blue-700 mb-2">2020-2025</div>
+                  <div className="font-semibold text-carnet-red mb-2">2020-2025</div>
                   <p className="text-sm text-gray-700">Pandémie COVID-19 ; boom de l'IA ; ONU déclare 2025 Année des Sciences Quantiques</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg border">
-                  <div className="font-semibold text-blue-700 mb-2">2025</div>
+                  <div className="font-semibold text-carnet-red mb-2">2025</div>
                   <p className="text-sm text-gray-700">Intensification "tech war" US-Chine ; investissements quantiques 42B$ ; AI Act européen</p>
                 </div>
               </div>
@@ -292,14 +292,14 @@ const SciencesTechnologiesPage = () => {
                     </div>
 
                     <div className="space-y-6">
-                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-blue-200 pb-2">
+                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-carnet-red/30 pb-2">
                         C. Monde Informationnel : Contrôle des Sciences pour le Soft Power
                       </h4>
                       
                       <div className="ml-4">
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Soft power technologique</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Soft power technologique</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li>Attractivité des États-Unis via Hollywood et Silicon Valley</li>
                               <li>Influence chinoise via TikTok et Huawei</li>
@@ -307,8 +307,8 @@ const SciencesTechnologiesPage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">IA comme outil géopolitique (2025)</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">IA comme outil géopolitique (2025)</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li>Diplomatie vaccinale post-COVID</li>
                               <li>IA comme soft power dans le Global South</li>
@@ -396,14 +396,14 @@ const SciencesTechnologiesPage = () => {
                     </div>
 
                     <div className="space-y-6">
-                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-blue-200 pb-2">
+                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-carnet-red/30 pb-2">
                         C. Concurrence Globale : Avantage Comparatif Préservable
                       </h4>
                       
                       <div className="ml-4">
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Investissements en R&D</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Investissements en R&D</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li>USA : 3% du PIB en R&D</li>
                               <li>Attractivité de la "classe créative" (Richard Florida)</li>
@@ -411,8 +411,8 @@ const SciencesTechnologiesPage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Fragmentation technologique (2025)</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Fragmentation technologique (2025)</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li>Croissance limitée des jobs quantiques (4.4% en 2024)</li>
                               <li>Brain drain vers USA/Chine</li>
@@ -500,14 +500,14 @@ const SciencesTechnologiesPage = () => {
                     </div>
 
                     <div className="space-y-6">
-                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-blue-200 pb-2">
+                      <h4 className="text-xl font-semibold text-gray-800 border-b-2 border-carnet-red/30 pb-2">
                         C. Hiérarchisation des Puissances : Facteur Décisif
                       </h4>
                       
                       <div className="ml-4">
                         <div className="space-y-4">
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Domination établie</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Domination établie</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li>USA/Europe dominent (capital historique, attractivité créative)</li>
                               <li>Émergents rattrapent mais inégalités persistent</li>
@@ -515,8 +515,8 @@ const SciencesTechnologiesPage = () => {
                             </ul>
                           </div>
                           
-                          <div className="bg-blue-50 p-4 rounded-lg">
-                            <h6 className="font-semibold text-blue-700 mb-2">Conséquences géopolitiques</h6>
+                          <div className="bg-pr-orange-pale p-4 rounded-lg">
+                            <h6 className="font-semibold text-carnet-red mb-2">Conséquences géopolitiques</h6>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                               <li>Puissances tech (G7) vs. pays dépendants</li>
                               <li>"Classe créative" comme atout (migration des talents)</li>

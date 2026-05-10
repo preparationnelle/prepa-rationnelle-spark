@@ -89,7 +89,7 @@ const MethodologieTravailPage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Depuis le début des années 90, le Japon se bat contre la déflation et une croissance faible.
                 </p>
-                <p className="text-blue-700 font-medium mb-2">
+                <p className="text-carnet-red font-medium mb-2">
                   Seit Anfang der 90er Jahre kämpft Japan gegen die Deflation und ein schwaches Wachstum.
                 </p>
                 <p className="text-sm text-gray-600">
@@ -101,7 +101,7 @@ const MethodologieTravailPage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Si la reprise économique n'avait pas été si timide, il n'y aurait pas eu tant de fermetures d'usines.
                 </p>
-                <p className="text-blue-700 font-medium mb-2">
+                <p className="text-carnet-red font-medium mb-2">
                   Hätte die wirtschaftliche Erholung nicht so zaghaft gewesen, hätte es nicht so viele Betriebsschließungen gegeben.
                 </p>
                 <p className="text-sm text-gray-600">
@@ -113,7 +113,7 @@ const MethodologieTravailPage = () => {
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Moins vous passerez de temps sur les réseaux sociaux, plus vous vous rapprocherez de vos vrais amis.
                 </p>
-                <p className="text-blue-700 font-medium mb-2">
+                <p className="text-carnet-red font-medium mb-2">
                   Je weniger Zeit Sie in sozialen Netzwerken verbringen, desto näher kommen Sie Ihren wahren Freunden.
                 </p>
                 <p className="text-sm text-gray-600">
@@ -397,7 +397,7 @@ const MethodologieTravailPage = () => {
         {/* Bouton retour en bas de page */}
         <div className="flex justify-center mt-12 pb-8">
           <Link to="/formation/allemand/epreuves">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium flex items-center gap-2 transition-colors">
+            <button className="bg-carnet-red hover:bg-carnet-red-deep text-white px-6 py-3 rounded-md font-medium flex items-center gap-2 transition-colors">
               <ArrowLeft className="h-4 w-4" />
               Retour aux épreuves allemandes
             </button>

@@ -212,7 +212,7 @@ const PrepositionsPhrasalVerbsExercicesPage = () => {
                             ? 'border-red-300 bg-red-50 text-red-800'
                             : 'border-gray-200 bg-white'
                         : isSelected
-                          ? 'border-blue-300 bg-blue-50 text-blue-800'
+                          ? 'border-carnet-red/40 bg-pr-orange-pale text-carnet-red-deep'
                           : 'border-gray-200 bg-white hover:border-gray-300'
                     }`}
                   >
@@ -262,7 +262,7 @@ const PrepositionsPhrasalVerbsExercicesPage = () => {
                             ? 'border-red-300 bg-red-50 text-red-800'
                             : 'border-gray-200 bg-white'
                         : isSelected
-                          ? 'border-blue-300 bg-blue-50 text-blue-800'
+                          ? 'border-carnet-red/40 bg-pr-orange-pale text-carnet-red-deep'
                           : 'border-gray-200 bg-white hover:border-gray-300'
                     }`}
                   >
@@ -320,11 +320,11 @@ const PrepositionsPhrasalVerbsExercicesPage = () => {
 
           {/* Correction */}
           {showCorrections[exercise.id] && (
-            <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-              <p className="text-blue-800">
+            <div className="mt-4 p-3 bg-pr-orange-pale border border-carnet-red/30 rounded-lg">
+              <p className="text-carnet-red-deep">
                 <strong>✅ Correct answer :</strong> {exercise.correctAnswer}
               </p>
-              <p className="text-blue-700 text-sm mt-1">
+              <p className="text-carnet-red text-sm mt-1">
                 <strong>📝 Explanation :</strong> {exercise.explanation}
               </p>
             </div>
@@ -371,7 +371,7 @@ const PrepositionsPhrasalVerbsExercicesPage = () => {
               </Button>
             </Link>
             <Link to="/formation/anglais/grammaire/prepositions/quiz">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2">
+              <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white flex items-center gap-2">
                 <Brain className="h-4 w-4" />
                 Aller au Quiz
               </Button>
@@ -386,7 +386,7 @@ const PrepositionsPhrasalVerbsExercicesPage = () => {
         {/* En-tête */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-blue-600 text-white">
+            <div className="p-3 rounded-lg bg-carnet-red text-white">
               <Brain className="h-9 w-9" />
             </div>
             Sequence of Tenses - Exercises
@@ -549,7 +549,7 @@ const PrepositionsPhrasalVerbsExercicesPage = () => {
           <div className="flex justify-center gap-4 mt-10">
             <Button
               onClick={calculateScore}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg flex items-center gap-2"
+              className="bg-carnet-red hover:bg-carnet-red-deep text-white px-8 py-3 text-lg flex items-center gap-2"
             >
               <CheckCircle className="h-5 w-5" />
               Finish and See Score
@@ -557,7 +557,7 @@ const PrepositionsPhrasalVerbsExercicesPage = () => {
             <Button
               onClick={resetQuiz}
               variant="outline"
-              className="px-8 py-3 text-lg flex items-center gap-2 border-blue-600 text-blue-600 hover:bg-blue-50"
+              className="px-8 py-3 text-lg flex items-center gap-2 border-carnet-red text-carnet-red hover:bg-pr-orange-pale"
             >
               <RotateCcw className="h-5 w-5" />
               Reset
@@ -567,23 +567,23 @@ const PrepositionsPhrasalVerbsExercicesPage = () => {
 
         {/* Score affiché */}
         {showScore && score !== null && (
-          <Card className={`mt-10 border-2 ${examMode ? 'border-blue-200 bg-blue-50' : 'border-blue-200 bg-blue-50'}`}>
+          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-orange-pale' : 'border-carnet-red/30 bg-pr-orange-pale'}`}>
             <CardHeader className="text-center">
-              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-blue-800' : 'text-blue-800'}`}>
+              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-carnet-red-deep' : 'text-carnet-red-deep'}`}>
                 <Award className="h-8 w-8" />
                 {examMode ? 'Exam Results' : 'Your Score'} : {score}%
               </CardTitle>
             </CardHeader>
             <CardContent className="text-center">
               {examMode && examTime > 0 && (
-                <div className="mb-4 p-3 bg-blue-100 rounded-lg border border-blue-200">
-                  <p className="text-blue-800 font-medium">
+                <div className="mb-4 p-3 bg-carnet-red/10 rounded-lg border border-carnet-red/30">
+                  <p className="text-carnet-red-deep font-medium">
                     ⏱️ Total time : {formatTime(examTime)}
                   </p>
                 </div>
               )}
               <div className={`text-lg ${
-                examMode ? 'text-blue-700' : 'text-blue-700'
+                examMode ? 'text-carnet-red' : 'text-carnet-red'
               }`}>
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
