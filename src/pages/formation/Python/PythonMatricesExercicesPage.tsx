@@ -888,7 +888,7 @@ print(combi(M, A))`
         <Card className="border border-gray-200 bg-white shadow-sm">
           <CardHeader className="border-b border-gray-100 bg-gray-50/50 px-6 py-4">
             <CardTitle className="text-gray-800 text-lg flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-pr-orange" />
+              <BookOpen className="h-5 w-5 text-carnet-red" />
               Exercice 1.1
             </CardTitle>
           </CardHeader>
@@ -898,7 +898,7 @@ print(combi(M, A))`
               variant="outline"
               size="sm"
               onClick={() => toggleSolution('ex1-1')}
-              className="flex items-center gap-2 mb-4 text-pr-orange border-pr-orange-soft hover:bg-pr-orange-pale"
+              className="flex items-center gap-2 mb-4 text-carnet-red border-[rgba(193,68,58,0.3)] hover:bg-[rgba(193,68,58,0.06)]"
             >
               {showSolution['ex1-1'] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               {showSolution['ex1-1'] ? 'Masquer' : 'Voir'} la solution
@@ -936,7 +936,7 @@ print(M2)`}
         <Card className="border border-gray-200 bg-white shadow-sm">
           <CardHeader className="border-b border-gray-100 bg-gray-50/50 px-6 py-4">
             <CardTitle className="text-gray-800 text-lg flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-pr-orange" />
+              <BookOpen className="h-5 w-5 text-carnet-red" />
               Exercice 1.2
             </CardTitle>
           </CardHeader>
@@ -946,7 +946,7 @@ print(M2)`}
               variant="outline"
               size="sm"
               onClick={() => toggleSolution('ex1-2')}
-              className="flex items-center gap-2 mb-4 text-pr-orange border-pr-orange-soft hover:bg-pr-orange-pale"
+              className="flex items-center gap-2 mb-4 text-carnet-red border-[rgba(193,68,58,0.3)] hover:bg-[rgba(193,68,58,0.06)]"
             >
               {showSolution['ex1-2'] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               {showSolution['ex1-2'] ? 'Masquer' : 'Voir'} la solution
@@ -1253,7 +1253,7 @@ def Nilp(A):
             />
           </>
         ) : (
-          <div className="bg-white border border-pr-gray-light rounded-2xl p-10 text-center text-pr-gray-mid">
+          <div className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl p-10 text-center text-carnet-ink-mute">
             Le contenu de cet exercice sera bientôt disponible.
           </div>
         )}
@@ -1279,7 +1279,7 @@ def Nilp(A):
       {!showQCM && (
         <PythonExerciseHero
           moduleLabel="Module 1 · Exercices"
-          title={<>Exercices · <span className="text-pr-orange">Matrices NumPy</span></>}
+          title={<>Exercices · <span className="text-carnet-red">Matrices NumPy</span></>}
           subtitle="Manipulez les matrices avec NumPy : création, indexation, opérations et applications pratiques."
           annotation={"↗ NumPy,\nl'arme secrète"}
         />

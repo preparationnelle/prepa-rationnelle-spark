@@ -604,7 +604,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
         <>
           <PythonExerciseHero
             moduleLabel="Module 2 · Exercices"
-            title={<>Exercices · <span className="text-pr-orange">Analyse numérique</span></>}
+            title={<>Exercices · <span className="text-carnet-red">Analyse numérique</span></>}
             subtitle="Suites, calcul numérique et fonctions : implémentez des algorithmes d'analyse en Python."
             annotation={"↗ ici, ça\ndevient sérieux"}
           />
@@ -741,7 +741,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                     <div className="space-y-6">
                       <div>
                         <h3 className="text-lg font-semibold mb-3">Interprétation de commandes</h3>
-                        <div className="p-4 bg-pr-gray-bg rounded-lg mb-4">
+                        <div className="p-4 bg-[rgba(78,55,30,0.04)] rounded-lg mb-4">
                           <p className="text-sm mb-3">Que calculent les commandes suivantes :</p>
 
                           <div className="space-y-3">
@@ -844,7 +844,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-lg font-semibold mb-3">Approximation de série</h3>
-                      <div className="p-4 bg-pr-gray-bg rounded-lg mb-4">
+                      <div className="p-4 bg-[rgba(78,55,30,0.04)] rounded-lg mb-4">
                         <p className="text-sm mb-2">On admet que pour tout n ∈ ℕ*, on a :</p>
                         <div className="text-center text-lg font-mono bg-white p-3 rounded border mb-3">
                           0 ≤ ∑(k=1 à n) 1/k² + 1/n - S ≤ 1/n²
@@ -937,7 +937,7 @@ print("Valeur approchée de S :", S_approx)`}</code>
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-lg font-semibold mb-3">Factorielle seuil</h3>
-                      <div className="p-4 bg-pr-gray-bg rounded-lg mb-4">
+                      <div className="p-4 bg-[rgba(78,55,30,0.04)] rounded-lg mb-4">
                         <p className="text-sm mb-2">Écrire un script Python qui calcule le plus petit entier naturel k tel que la factorielle de k soit strictement supérieure à un million.</p>
                         <div className="text-center text-lg font-mono bg-white p-3 rounded border">
                           Trouver le plus petit k tel que k! &gt; 1 000 000
@@ -1005,7 +1005,7 @@ print(k)`}</code>
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-lg font-semibold mb-3">Fonction par cas</h3>
-                      <div className="p-4 bg-pr-gray-bg rounded-lg mb-4">
+                      <div className="p-4 bg-[rgba(78,55,30,0.04)] rounded-lg mb-4">
                         <p className="text-sm mb-2">On considère la fonction g définie sur ℝ par :</p>
                         <div className="bg-white p-3 rounded border mb-3">
                           <p className="text-sm font-mono">g(x) = 2 si x &lt; -1</p>
@@ -1071,7 +1071,7 @@ else:
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-lg font-semibold mb-3">Sommes doubles</h3>
-                      <div className="p-4 bg-pr-gray-bg rounded-lg mb-4">
+                      <div className="p-4 bg-[rgba(78,55,30,0.04)] rounded-lg mb-4">
                         <p className="text-sm mb-2">Écrire des scripts Python pour calculer les sommes doubles suivantes :</p>
                         <div className="space-y-3">
                           <div className="bg-white p-3 rounded border">
@@ -1155,7 +1155,7 @@ print(S)`}</code>
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-lg font-semibold mb-3">Approximation de racine carrée</h3>
-                      <div className="p-4 bg-pr-gray-bg rounded-lg mb-4">
+                      <div className="p-4 bg-[rgba(78,55,30,0.04)] rounded-lg mb-4">
                         <p className="text-sm mb-2">Implémenter la méthode de Babylone (ou méthode de Héron) pour approcher la racine carrée d'un nombre positif.</p>
                         <div className="text-center text-lg font-mono bg-white p-3 rounded border mb-3">
                           On considère la suite définie pour a {`>`} 0 par :
@@ -1229,7 +1229,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
             )}
             {/* Fallback */}
             {!exercises[selectedExercise - 1].content && ![3, 10, 13, 14, 15, 16].includes(selectedExercise) && (
-              <div className="bg-white border border-pr-gray-light rounded-2xl p-10 text-center text-pr-gray-mid">
+              <div className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl p-10 text-center text-carnet-ink-mute">
                 Le contenu de cet exercice sera bientôt disponible.
               </div>
             )}
@@ -1256,24 +1256,24 @@ print(f"Erreur absolue : {abs(approx - exact)}")
             hasNext={selectedExercise < exercises.length}
           />
 
-          <div className="mt-20 mb-12 relative overflow-hidden rounded-3xl bg-[#0F172A] py-12 px-6 sm:px-12 md:py-20 shadow-2xl border border-pr-orange-dark/30">
+          <div className="mt-20 mb-12 relative overflow-hidden rounded-3xl bg-[#0F172A] py-12 px-6 sm:px-12 md:py-20 shadow-2xl border border-carnet-red-dark/30">
             {/* Background Effects */}
-            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-pr-orange/20 rounded-full blur-[120px] animate-pulse"></div>
-            <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-pr-orange/20 rounded-full blur-[100px] animate-pulse delay-1000"></div>
+            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-carnet-red/20 rounded-full blur-[120px] animate-pulse"></div>
+            <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-carnet-red/20 rounded-full blur-[100px] animate-pulse delay-1000"></div>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="text-left space-y-8">
                 <div>
-                  <Badge variant="outline" className="mb-4 bg-pr-orange-dark/50 text-pr-orange-pale border-pr-orange-dark/50 px-3 py-1 text-sm font-medium">
-                    <Sparkles className="w-3.5 h-3.5 mr-2 text-pr-orange fill-blue-400" />
+                  <Badge variant="outline" className="mb-4 bg-carnet-red-dark/50 text-carnet-paper border-carnet-red-dark/50 px-3 py-1 text-sm font-medium">
+                    <Sparkles className="w-3.5 h-3.5 mr-2 text-carnet-red fill-blue-400" />
                     Offre spéciale Étudiants
                   </Badge>
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-                    Une <span className="text-transparent bg-clip-text bg-gradient-to-r from-pr-orange to-pr-orange-dark">bonne méthode</span> rend la <span className="text-white">progression inévitable</span>.
+                    Une <span className="italic text-carnet-red font-lora">bonne méthode</span> rend la <span className="text-white">progression inévitable</span>.
                   </h2>
                   <p className="text-lg text-gray-300/90 max-w-xl leading-relaxed">
-                    Ne laissez pas les lacunes s'accumuler en Python. Remplissez ce formulaire pour obtenir votre programme personnalisé et un <span className="text-pr-orange-pale font-semibold border-b border-pr-orange/50">premier cours offert</span>.
+                    Ne laissez pas les lacunes s'accumuler en Python. Remplissez ce formulaire pour obtenir votre programme personnalisé et un <span className="text-carnet-paper font-semibold border-b border-carnet-red/50">premier cours offert</span>.
                   </p>
                 </div>
 
@@ -1284,7 +1284,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                     { text: 'Cours 100% offert sans engagement', icon: Star }
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-4 text-gray-200 group">
-                      <div className="h-10 w-10 rounded-xl bg-pr-orange/10 border border-pr-orange/20 flex items-center justify-center text-pr-orange group-hover:bg-pr-orange/20 group-hover:text-pr-orange-soft transition-all duration-300">
+                      <div className="h-10 w-10 rounded-xl bg-carnet-red/10 border border-carnet-red/20 flex items-center justify-center text-carnet-red group-hover:bg-carnet-red/20 group-hover:text-carnet-red-soft transition-all duration-300">
                         <item.icon className="h-5 w-5" />
                       </div>
                       <span className="font-medium">{item.text}</span>
@@ -1294,7 +1294,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
               </div>
 
               <div className="relative">
-                <div className="absolute inset-0 bg-pr-orange/10 blur-3xl rounded-full transform rotate-3"></div>
+                <div className="absolute inset-0 bg-carnet-red/10 blur-3xl rounded-full transform rotate-3"></div>
                 <HeroContactForm showContent={true} theme="blue" />
               </div>
             </div>

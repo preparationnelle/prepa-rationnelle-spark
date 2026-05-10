@@ -99,13 +99,13 @@ const TextSelectionPopover: React.FC<TextSelectionPopoverProps> = ({
             className="absolute z-[100] animate-in fade-in-0 zoom-in-95 duration-150"
             style={{ top: position.top, left: position.left }}
         >
-            <div className="bg-white rounded-xl shadow-2xl border border-gray-200 p-1.5 flex items-center gap-1">
+            <div className="bg-white rounded-xl shadow-[0_8px_30px_rgba(26,26,24,0.12)] border border-pr-gray-light p-1.5 flex items-center gap-1 font-dm-sans">
                 <button
                     onClick={() => {
                         onExplain(selectedText);
                         setVisible(false);
                     }}
-                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-teal-700 hover:bg-teal-50 transition-colors whitespace-nowrap"
+                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-pr-orange-dark hover:bg-pr-orange-pale transition-colors whitespace-nowrap"
                     title="Expliquer avec l'IA"
                 >
                     <Bot className="h-4 w-4" />
@@ -117,28 +117,28 @@ const TextSelectionPopover: React.FC<TextSelectionPopoverProps> = ({
                     </span>
                 </button>
 
-                <div className="w-px h-6 bg-gray-200" />
+                <div className="w-px h-6 bg-pr-gray-light" />
 
                 <button
                     onClick={() => {
                         onAddNote(selectedText);
                         setVisible(false);
                     }}
-                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-amber-700 hover:bg-amber-50 transition-colors whitespace-nowrap"
+                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-pr-gray-dark hover:bg-pr-gray-bg transition-colors whitespace-nowrap"
                     title="Ajouter une note"
                 >
                     <StickyNote className="h-4 w-4" />
                     <span className="hidden sm:inline">Note</span>
                 </button>
 
-                <div className="w-px h-6 bg-gray-200" />
+                <div className="w-px h-6 bg-pr-gray-light" />
 
                 <button
                     onClick={() => {
                         onHighlight(selectedText);
                         setVisible(false);
                     }}
-                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-purple-700 hover:bg-purple-50 transition-colors whitespace-nowrap"
+                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-pr-orange hover:bg-pr-orange-pale transition-colors whitespace-nowrap"
                     title="Surligner"
                 >
                     <Highlighter className="h-4 w-4" />

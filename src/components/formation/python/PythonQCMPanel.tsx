@@ -1,7 +1,6 @@
 import React from 'react';
 import { ArrowLeft, CheckCircle, X, RotateCcw, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
 export interface PythonQCMQuestion {
@@ -59,32 +58,30 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
 
   return (
     <div>
-      {/* Header de section */}
+      {/* Header */}
       <div className="mb-8">
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.12em] font-semibold text-pr-gray-mid hover:text-pr-orange-dark transition-colors mb-6"
+          className="inline-flex items-center gap-1.5 font-instrument text-[11px] uppercase tracking-[0.12em] font-semibold text-carnet-ink-mute hover:text-carnet-red transition-colors mb-6"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Liste des exercices
         </button>
 
-        <div className="flex items-start justify-between gap-4 pb-6 border-b border-pr-gray-light/60">
+        <div className="flex items-start justify-between gap-4 pb-6 border-b border-dashed border-[rgba(78,55,30,0.18)]">
           <div className="flex-1 min-w-0">
-            <div className="text-[11px] uppercase tracking-[0.12em] font-semibold text-pr-orange mb-3">
-              Évaluation
-            </div>
-            <h1 className="font-dm-serif text-3xl md:text-4xl text-pr-black leading-tight tracking-tight mb-2">
+            <div className="carnet-eyebrow text-[11px] mb-3">Évaluation</div>
+            <h1 className="font-lora text-3xl md:text-4xl text-carnet-ink leading-tight mb-2">
               {title}
             </h1>
             {intro && (
-              <p className="text-base text-pr-gray-dark/80 leading-relaxed">
+              <p className="font-instrument text-base text-carnet-ink-soft leading-relaxed">
                 {intro}
               </p>
             )}
           </div>
           {!submitted && (
-            <span className="inline-flex flex-shrink-0 items-center text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark bg-pr-orange-pale border border-pr-orange-soft/40 rounded-full px-3 py-1.5">
+            <span className="font-instrument inline-flex flex-shrink-0 items-center text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-red bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.2)] rounded-full px-3 py-1.5">
               {answered}/{total} répondues
             </span>
           )}
@@ -95,26 +92,26 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
             {questions.map((question) => (
-              <Card
+              <div
                 key={question.id}
-                className="bg-white border border-pr-gray-light rounded-2xl shadow-none overflow-hidden relative"
+                className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl overflow-hidden relative"
               >
                 <div
                   className={cn(
                     'absolute left-0 top-0 bottom-0 w-[3px] transition-colors',
-                    answers[question.id] ? 'bg-pr-orange' : 'bg-pr-gray-light'
+                    answers[question.id] ? 'bg-carnet-red' : 'bg-[rgba(78,55,30,0.12)]'
                   )}
                 />
-                <CardContent className="p-6">
+                <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark bg-pr-orange-pale border border-pr-orange-soft/40 rounded-full px-2.5 py-1">
+                    <span className="font-instrument text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-red bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.2)] rounded-full px-2.5 py-1">
                       Q{question.id}
                     </span>
                     {answers[question.id] && (
-                      <CheckCircle className="h-3.5 w-3.5 text-pr-orange" />
+                      <CheckCircle className="h-3.5 w-3.5 text-carnet-red" />
                     )}
                   </div>
-                  <p className="text-pr-black text-[15px] font-medium leading-relaxed mb-4">
+                  <p className="font-instrument text-carnet-ink text-[15px] font-medium leading-relaxed mb-4">
                     {question.question}
                   </p>
                   <div className="space-y-2">
@@ -126,16 +123,16 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
                           className={cn(
                             'flex items-center gap-3 px-3 py-2.5 rounded-lg border cursor-pointer transition-all',
                             isSelected
-                              ? 'bg-pr-orange-pale border-pr-orange-soft'
-                              : 'bg-white border-pr-gray-light hover:border-pr-orange-soft/50 hover:bg-pr-gray-bg'
+                              ? 'bg-[rgba(193,68,58,0.06)] border-[rgba(193,68,58,0.3)]'
+                              : 'bg-white border-[rgba(78,55,30,0.12)] hover:border-[rgba(193,68,58,0.2)] hover:bg-[rgba(78,55,30,0.03)]'
                           )}
                         >
                           <span
                             className={cn(
                               'flex-shrink-0 w-4 h-4 rounded-full border-2 transition-all',
                               isSelected
-                                ? 'border-pr-orange bg-pr-orange ring-2 ring-pr-orange-pale ring-offset-0'
-                                : 'border-pr-gray-light'
+                                ? 'border-carnet-red bg-carnet-red'
+                                : 'border-[rgba(78,55,30,0.2)]'
                             )}
                           >
                             <input
@@ -149,10 +146,8 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
                           </span>
                           <span
                             className={cn(
-                              'text-sm leading-relaxed',
-                              isSelected
-                                ? 'text-pr-orange-dark font-semibold'
-                                : 'text-pr-gray-dark'
+                              'font-instrument text-sm leading-relaxed',
+                              isSelected ? 'text-carnet-red font-semibold' : 'text-carnet-ink-soft'
                             )}
                           >
                             {option}
@@ -161,8 +156,8 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
                       );
                     })}
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
 
@@ -170,7 +165,7 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
             <Button
               onClick={onSubmit}
               disabled={answered < total}
-              className="bg-pr-orange hover:bg-pr-orange-dark text-white rounded-xl px-8 py-5 h-auto text-sm font-semibold shadow-sm disabled:opacity-40"
+              className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold rounded-full h-10 px-8 text-sm border-0 disabled:opacity-40"
             >
               <Trophy className="h-4 w-4 mr-2" />
               Valider le QCM
@@ -180,80 +175,67 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
       ) : (
         <>
           {/* Score */}
-          <Card className="bg-white border border-pr-gray-light rounded-2xl shadow-none overflow-hidden relative mb-10">
-            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-pr-orange" />
+          <div className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl overflow-hidden relative mb-10">
+            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-carnet-red" />
             {score !== null && (() => {
               const a = scoreAnnotation(score);
               return (
                 <div
-                  className="carnet-hand hidden md:block absolute pointer-events-none whitespace-pre-line"
-                  style={{
-                    right: 24,
-                    top: 22,
-                    fontSize: 24,
-                    transform: `rotate(${a.rot}deg)`,
-                    lineHeight: 1.05,
-                    textAlign: 'left',
-                  }}
+                  className="carnet-hand hidden md:block absolute pointer-events-none whitespace-pre-line text-carnet-red"
+                  style={{ right: 24, top: 22, fontSize: 24, transform: `rotate(${a.rot}deg)`, lineHeight: 1.05, textAlign: 'left' }}
                 >
                   {a.text}
                 </div>
               );
             })()}
-            <CardContent className="p-8 text-center">
-              <div className="text-[10px] uppercase tracking-[0.16em] font-semibold text-pr-orange-dark mb-2">
-                Résultat
+            <div className="p-8 text-center">
+              <div className="carnet-eyebrow text-[10px] mb-2">Résultat</div>
+              <div className="font-lora text-6xl md:text-7xl text-carnet-ink leading-none mb-2">
+                {score?.toFixed(1)}<span className="text-carnet-red">/20</span>
               </div>
-              <div className="font-dm-serif text-6xl md:text-7xl text-pr-black leading-none mb-2">
-                {score?.toFixed(1)}<span className="text-pr-orange">/20</span>
-              </div>
-              <div className="flex justify-center my-4">
-                <div className="h-[2px] w-12 bg-pr-orange" />
-              </div>
-              <p className="text-base text-pr-gray-dark/80 max-w-lg mx-auto leading-relaxed">
+              <hr className="w-12 h-0.5 bg-carnet-ink border-0 mx-auto my-4" />
+              <p className="font-instrument text-base text-carnet-ink-soft max-w-lg mx-auto leading-relaxed">
                 {score !== null && scoreFeedback(score)}
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Détail des réponses */}
           <div className="mb-10">
-            <div className="text-[10px] uppercase tracking-[0.12em] font-semibold text-pr-orange-dark mb-4">
-              Détail des réponses
-            </div>
+            <div className="carnet-eyebrow text-[10px] mb-4">Détail des réponses</div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {questions.map((question) => {
                 const userAnswer = answers[question.id];
                 const isCorrect = userAnswer === question.answer;
 
                 return (
-                  <Card
+                  <div
                     key={question.id}
-                    className="bg-white border border-pr-gray-light rounded-2xl shadow-none overflow-hidden relative"
+                    className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl overflow-hidden relative"
                   >
                     <div
                       className={cn(
                         'absolute left-0 top-0 bottom-0 w-[3px]',
-                        isCorrect ? 'bg-pr-orange' : 'bg-pr-gray-light'
+                        isCorrect ? 'bg-carnet-red' : 'bg-[rgba(78,55,30,0.12)]'
                       )}
                     />
-                    <CardContent className="p-6">
+                    <div className="p-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark bg-pr-orange-pale border border-pr-orange-soft/40 rounded-full px-2.5 py-1">
+                        <span className="font-instrument text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-red bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.2)] rounded-full px-2.5 py-1">
                           Q{question.id}
                         </span>
                         {isCorrect ? (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark">
+                          <span className="font-instrument inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-red">
                             <CheckCircle className="h-3.5 w-3.5" /> Correct
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-gray-mid">
+                          <span className="font-instrument inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-ink-mute">
                             <X className="h-3.5 w-3.5" /> À revoir
                           </span>
                         )}
                       </div>
 
-                      <p className="text-pr-black text-[15px] font-medium leading-relaxed mb-4">
+                      <p className="font-instrument text-carnet-ink text-[15px] font-medium leading-relaxed mb-4">
                         {question.question}
                       </p>
 
@@ -262,20 +244,20 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
                           const isUserAnswer = userAnswer === option;
                           const isCorrectAnswer = question.answer === option;
 
-                          let style = 'flex items-center gap-2 px-3 py-2 rounded-lg text-sm border';
+                          let style = 'flex items-center gap-2 px-3 py-2 rounded-lg text-sm border font-instrument';
 
                           if (isCorrectAnswer) {
-                            style += ' bg-pr-orange-pale border-pr-orange-soft text-pr-orange-dark font-semibold';
+                            style += ' bg-[rgba(193,68,58,0.06)] border-[rgba(193,68,58,0.3)] text-carnet-red font-semibold';
                           } else if (isUserAnswer && !isCorrect) {
-                            style += ' bg-pr-gray-bg border-pr-gray-light text-pr-gray-dark line-through decoration-pr-gray-mid';
+                            style += ' bg-[rgba(78,55,30,0.04)] border-[rgba(78,55,30,0.12)] text-carnet-ink-soft line-through decoration-carnet-ink-mute';
                           } else {
-                            style += ' bg-white border-pr-gray-light/60 text-pr-gray-dark/70';
+                            style += ' bg-white border-[rgba(78,55,30,0.08)] text-carnet-ink-soft/60';
                           }
 
                           return (
                             <div key={optIndex} className={style}>
-                              {isCorrectAnswer && <CheckCircle className="h-3.5 w-3.5 text-pr-orange flex-shrink-0" />}
-                              {isUserAnswer && !isCorrect && <X className="h-3.5 w-3.5 text-pr-gray-mid flex-shrink-0" />}
+                              {isCorrectAnswer && <CheckCircle className="h-3.5 w-3.5 text-carnet-red flex-shrink-0" />}
+                              {isUserAnswer && !isCorrect && <X className="h-3.5 w-3.5 text-carnet-ink-mute flex-shrink-0" />}
                               {!isCorrectAnswer && !isUserAnswer && <span className="h-3.5 w-3.5 flex-shrink-0" />}
                               <span>{option}</span>
                             </div>
@@ -284,17 +266,15 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
                       </div>
 
                       {question.explanation && (
-                        <div className="mt-4 px-4 py-3 bg-pr-orange-pale/60 border-l-[3px] border-pr-orange rounded-r-lg">
-                          <div className="text-[10px] uppercase tracking-[0.12em] font-semibold text-pr-orange-dark mb-1">
-                            Explication
-                          </div>
-                          <p className="text-sm text-pr-gray-dark leading-relaxed">
+                        <div className="mt-4 px-4 py-3 bg-[rgba(193,68,58,0.04)] border-l-[3px] border-carnet-red rounded-r-lg">
+                          <div className="carnet-eyebrow text-[10px] mb-1">Explication</div>
+                          <p className="font-instrument text-sm text-carnet-ink-soft leading-relaxed">
                             {question.explanation}
                           </p>
                         </div>
                       )}
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 );
               })}
             </div>
@@ -304,7 +284,7 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
             <Button
               onClick={onRestart}
               variant="outline"
-              className="rounded-xl border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft"
+              className="rounded-full border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument text-xs bg-transparent"
             >
               <RotateCcw className="h-4 w-4 mr-2" />
               Recommencer le QCM

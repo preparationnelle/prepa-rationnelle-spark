@@ -1661,7 +1661,7 @@ print(esp(10000))   # ~0.667 (theorique : 2/3)`
             />
           </>
         ) : (
-          <div className="bg-white border border-pr-gray-light rounded-2xl p-10 text-center text-pr-gray-mid">
+          <div className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl p-10 text-center text-carnet-ink-mute">
             Contenu détaillé de l'exercice sera développé ici…
           </div>
         )}
@@ -1688,7 +1688,7 @@ print(esp(10000))   # ~0.667 (theorique : 2/3)`
         <>
           <PythonExerciseHero
             moduleLabel="Module 3 · Exercices"
-            title={<>Exercices · <span className="text-pr-orange">Probabilités</span></>}
+            title={<>Exercices · <span className="text-carnet-red">Probabilités</span></>}
             subtitle="Simulations Monte-Carlo, processus stochastiques et lois d'arrêt avec Python."
             annotation={"↘ Monte-Carlo,\nle classique"}
           />

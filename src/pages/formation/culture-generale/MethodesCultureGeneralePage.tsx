@@ -26,7 +26,7 @@ const methods: MethodItem[] = [
     number: 3,
     title: 'Utiliser efficacement les exemples',
     description: 'Constituer un stock de 30 références et les mobiliser avec précision le jour J.',
-    route: '#',
+    route: '/formation/culture-generale/methodes/utiliser-exemples',
   },
   {
     number: 4,

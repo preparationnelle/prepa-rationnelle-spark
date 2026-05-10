@@ -21,66 +21,39 @@ const notions = [
 const PythonQuizPage: React.FC = () => {
   return (
     <PythonModuleLayout>
-
-      {/* ── HERO ── */}
-      <div
-        className="rounded-2xl overflow-hidden font-dm-sans mb-6"
-        style={{ border: '0.5px solid #D8D6CE', background: '#FFFFFF' }}
-      >
-        {/* Trait orange signature */}
-        <div style={{ height: 3, background: '#F4845F' }} />
-
-        <div className="px-8 pt-7 pb-8">
-          {/* Badge + label marque */}
+      {/* Hero */}
+      <div className="carnet-card overflow-hidden font-instrument mb-6">
+        <div className="px-7 pt-6 pb-7">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <span
-                className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
-                style={{ background: '#FDF0EC', color: '#C45A35', letterSpacing: '0.08em' }}
-              >
+              <span className="carnet-eyebrow text-[10px] px-3 py-1 rounded-full bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.2)] text-carnet-red">
                 Module 0
               </span>
-              <span
-                className="text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
-                style={{ background: '#F7F6F3', color: '#888880', letterSpacing: '0.08em' }}
-              >
+              <span className="carnet-eyebrow text-[10px] px-3 py-1 rounded-full bg-[rgba(78,55,30,0.06)] border border-[rgba(78,55,30,0.12)] text-carnet-ink-soft">
                 Python ECG
               </span>
             </div>
-            <span
-              className="text-xs font-semibold uppercase tracking-widest hidden sm:block"
-              style={{ color: '#F4845F', letterSpacing: '0.08em' }}
-            >
+            <span className="carnet-eyebrow text-[10px] hidden sm:block text-carnet-red">
               Prépa Rationnelle
             </span>
           </div>
 
-          {/* Titre */}
           <div className="mb-2">
-            <p className="text-sm font-medium mb-1" style={{ color: '#888880' }}>
+            <p className="font-instrument text-sm text-carnet-ink-mute mb-1">
               Quiz de validation
             </p>
-            <h1
-              className="font-dm-serif leading-tight"
-              style={{ fontSize: 36, color: '#1A1A18' }}
-            >
+            <h1 className="font-lora text-[32px] text-carnet-ink leading-tight">
               Les Fondamentaux
             </h1>
           </div>
 
-          {/* Trait orange */}
-          <div style={{ width: 40, height: 2, background: '#F4845F', marginBottom: 16 }} />
+          <hr className="w-10 h-0.5 bg-carnet-ink border-0 my-4" />
 
-          {/* Description */}
-          <p
-            className="text-sm leading-relaxed max-w-xl mb-6"
-            style={{ color: '#3A3A38' }}
-          >
+          <p className="font-instrument text-sm text-carnet-ink-soft leading-relaxed max-w-xl mb-6">
             Teste tes connaissances sur les 12 notions du Module 0.
             Pour chaque question, tape directement ta réponse Python — syntaxe exacte requise.
           </p>
 
-          {/* Stats */}
           <div className="flex flex-wrap gap-4">
             {[
               { icon: Target, label: '15 questions' },
@@ -88,8 +61,8 @@ const PythonQuizPage: React.FC = () => {
               { icon: Code, label: 'Saisie libre' },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-1.5">
-                <Icon className="h-3.5 w-3.5" style={{ color: '#F4845F' }} />
-                <span className="text-sm font-medium" style={{ color: '#3A3A38' }}>
+                <Icon className="h-3.5 w-3.5 text-carnet-red" />
+                <span className="font-instrument text-sm text-carnet-ink">
                   {label}
                 </span>
               </div>
@@ -98,28 +71,15 @@ const PythonQuizPage: React.FC = () => {
         </div>
       </div>
 
-      {/* ── NOTIONS COUVERTES ── */}
-      <div
-        className="rounded-2xl overflow-hidden font-dm-sans mb-2"
-        style={{ border: '0.5px solid #D8D6CE', background: '#FFFFFF' }}
-      >
+      {/* Notions couvertes */}
+      <div className="carnet-card overflow-hidden font-instrument mb-2">
         <div className="px-6 py-5">
-          <p
-            className="text-xs font-semibold uppercase tracking-widest mb-3"
-            style={{ color: '#888880', letterSpacing: '0.08em' }}
-          >
-            Notions testées
-          </p>
+          <p className="carnet-eyebrow text-[10px] mb-3">Notions testées</p>
           <div className="flex flex-wrap gap-2">
             {notions.map((n) => (
               <span
                 key={n}
-                className="text-xs font-medium px-3 py-1 rounded-full"
-                style={{
-                  background: '#F7F6F3',
-                  color: '#3A3A38',
-                  border: '0.5px solid #D8D6CE',
-                }}
+                className="font-instrument text-xs font-medium px-3 py-1 rounded-full bg-[rgba(78,55,30,0.06)] border border-[rgba(78,55,30,0.12)] text-carnet-ink"
               >
                 {n}
               </span>
@@ -128,61 +88,49 @@ const PythonQuizPage: React.FC = () => {
         </div>
       </div>
 
-      {/* ── QUIZ ── */}
+      {/* Quiz */}
       <PythonModuleQuiz
         title="Quiz — Fondamentaux"
         questions={fundamentalsQuizQuestions}
       />
 
-      {/* ── NAVIGATION ── */}
-      <div
-        className="mt-6 rounded-2xl overflow-hidden font-dm-sans"
-        style={{ border: '0.5px solid #D8D6CE', background: '#FFFFFF' }}
-      >
-        <div
-          className="px-6 py-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
-        >
-          {/* Cours */}
+      {/* Navigation */}
+      <div className="mt-6 carnet-card overflow-hidden font-instrument">
+        <div className="px-6 py-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           <Link
             to="/formation/python-fondamentaux"
-            className="flex-1 flex items-center gap-3 px-4 py-3 rounded-xl transition-colors group"
-            style={{ background: '#F7F6F3', border: '0.5px solid #D8D6CE' }}
+            className="flex-1 flex items-center gap-3 px-4 py-3 rounded-xl bg-[rgba(78,55,30,0.04)] border border-[rgba(78,55,30,0.10)] hover:bg-[rgba(193,68,58,0.04)] hover:border-carnet-red/20 transition-colors group"
           >
-            <BookOpen className="h-4 w-4 shrink-0" style={{ color: '#F4845F' }} />
+            <BookOpen className="h-4 w-4 shrink-0 text-carnet-red" />
             <div>
-              <p className="text-xs" style={{ color: '#888880' }}>Retour au</p>
-              <p className="text-sm font-semibold" style={{ color: '#1A1A18' }}>Cours — Module 0</p>
+              <p className="font-instrument text-xs text-carnet-ink-mute">Retour au</p>
+              <p className="font-instrument text-sm font-semibold text-carnet-ink">Cours — Module 0</p>
             </div>
           </Link>
 
-          {/* Exercices */}
           <Link
             to="/formation/python-fondamentaux-exercices"
-            className="flex-1 flex items-center gap-3 px-4 py-3 rounded-xl transition-colors group"
-            style={{ background: '#F7F6F3', border: '0.5px solid #D8D6CE' }}
+            className="flex-1 flex items-center gap-3 px-4 py-3 rounded-xl bg-[rgba(78,55,30,0.04)] border border-[rgba(78,55,30,0.10)] hover:bg-[rgba(193,68,58,0.04)] hover:border-carnet-red/20 transition-colors group"
           >
-            <PenTool className="h-4 w-4 shrink-0" style={{ color: '#F4845F' }} />
+            <PenTool className="h-4 w-4 shrink-0 text-carnet-red" />
             <div>
-              <p className="text-xs" style={{ color: '#888880' }}>S'entraîner sur les</p>
-              <p className="text-sm font-semibold" style={{ color: '#1A1A18' }}>Exercices — Module 0</p>
+              <p className="font-instrument text-xs text-carnet-ink-mute">S'entraîner sur les</p>
+              <p className="font-instrument text-sm font-semibold text-carnet-ink">Exercices — Module 0</p>
             </div>
           </Link>
 
-          {/* Module suivant */}
           <Link
             to="/formation/python-matrices"
-            className="flex-1 flex items-center justify-between gap-3 px-4 py-3 rounded-xl transition-colors"
-            style={{ background: '#FDF0EC', border: '0.5px solid #F9C4B0' }}
+            className="flex-1 flex items-center justify-between gap-3 px-4 py-3 rounded-xl bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.2)] hover:bg-[rgba(193,68,58,0.10)] transition-colors"
           >
             <div>
-              <p className="text-xs" style={{ color: '#C45A35' }}>Module suivant</p>
-              <p className="text-sm font-semibold" style={{ color: '#1A1A18' }}>Module 1 — Matrices</p>
+              <p className="font-instrument text-xs text-carnet-red">Module suivant</p>
+              <p className="font-instrument text-sm font-semibold text-carnet-ink">Module 1 — Matrices</p>
             </div>
-            <ChevronRight className="h-4 w-4 shrink-0" style={{ color: '#F4845F' }} />
+            <ChevronRight className="h-4 w-4 shrink-0 text-carnet-red" />
           </Link>
         </div>
       </div>
-
     </PythonModuleLayout>
   );
 };

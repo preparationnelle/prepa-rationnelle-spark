@@ -164,7 +164,7 @@ const CourseContentWrapper: React.FC<CourseContentWrapperProps> = ({
                             </button>
                             <button
                                 onClick={handleSubmitNote}
-                                className="px-4 py-2 text-sm bg-teal-600 text-white rounded-lg hover:bg-teal-700 font-medium"
+                                className="px-4 py-2 text-sm bg-pr-orange text-white rounded-lg hover:bg-pr-orange-dark font-medium font-dm-sans transition-colors"
                             >
                                 Sauvegarder
                             </button>

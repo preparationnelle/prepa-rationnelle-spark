@@ -368,6 +368,7 @@ const DevenirHumainEducationPage = lazy(() => import('../pages/formation/culture
 const MethodesCultureGeneralePage = lazy(() => import('../pages/formation/culture-generale/MethodesCultureGeneralePage'));
 const ProgrammeCultureGeneralePage = lazy(() => import('../pages/formation/culture-generale/ProgrammeCultureGeneralePage'));
 const TroisMethodesDissertationPage = lazy(() => import('../pages/formation/culture-generale/methodes/TroisMethodesDissertationPage'));
+const UtiliserExemplesPage = lazy(() => import('../pages/formation/culture-generale/methodes/UtiliserExemplesPage'));
 const MethodesParagraphesJugerPage = lazy(() => import('../pages/formation/culture-generale/methodes/MethodesParagraphesJugerPage'));
 const IntroductionJugerPage = lazy(() => import('../pages/formation/culture-generale/methodes/IntroductionJugerPage'));
 const SousPartiesJugerPage = lazy(() => import('../pages/formation/culture-generale/methodes/SousPartiesJugerPage'));
@@ -540,6 +541,14 @@ const FinirEntretienPage = lazy(() => import('../pages/methodologie/FinirEntreti
 const ErreursEviterPage = lazy(() => import('../pages/methodologie/ErreursEviterPage'));
 const TendrePerchesPage = lazy(() => import('../pages/methodologie/TendrePerchesPage'));
 const PitchIntroPage = lazy(() => import('../pages/methodologie/PitchIntroPage'));
+const GestionStressPage = lazy(() => import('../pages/methodologie/GestionStressPage'));
+const QuestionsActualitePage = lazy(() => import('../pages/methodologie/QuestionsActualitePage'));
+const LangageNonVerbalPage = lazy(() => import('../pages/methodologie/LangageNonVerbalPage'));
+const QuestionsComportementalesPage = lazy(() => import('../pages/methodologie/QuestionsComportementalesPage'));
+const QuestionsDestabilisantesPage = lazy(() => import('../pages/methodologie/QuestionsDestabilisantesPage'));
+const ParlerDefautsPage = lazy(() => import('../pages/methodologie/ParlerDefautsPage'));
+const ValoriserExperiencesPage = lazy(() => import('../pages/methodologie/ValoriserExperiencesPage'));
+const QuestionsAuJuryPage = lazy(() => import('../pages/methodologie/QuestionsAuJuryPage'));
 
 // Articles pages
 const ArticlesPrimairePage = lazy(() => import('../pages/ArticlesPrimairePage'));
@@ -964,6 +973,14 @@ export const routes: RouteConfig[] = [
   { path: '/methodologie/erreur-entretien', component: ErreursEviterPage, title: 'Erreurs à Éviter' },
   { path: '/methodologie/tendre-perches', component: TendrePerchesPage, title: 'Tendre des Perches' },
   { path: '/methodologie/pitch-intro', component: PitchIntroPage, title: 'Pitch d\'Introduction' },
+  { path: '/methodologie/gestion-stress', component: GestionStressPage, title: 'Gestion du Stress' },
+  { path: '/methodologie/questions-actualite', component: QuestionsActualitePage, title: 'Questions d\'Actualité' },
+  { path: '/methodologie/langage-non-verbal', component: LangageNonVerbalPage, title: 'Langage Non-verbal' },
+  { path: '/methodologie/questions-comportementales', component: QuestionsComportementalesPage, title: 'Questions Comportementales' },
+  { path: '/methodologie/questions-destabilisantes', component: QuestionsDestabilisantesPage, title: 'Questions Déstabilisantes' },
+  { path: '/methodologie/parler-defauts', component: ParlerDefautsPage, title: 'Parler de ses Défauts' },
+  { path: '/methodologie/valoriser-experiences', component: ValoriserExperiencesPage, title: 'Valoriser ses Expériences' },
+  { path: '/methodologie/questions-au-jury', component: QuestionsAuJuryPage, title: 'Questions au Jury' },
   { path: '/dashboard', component: DashboardPage, title: 'Mon Tableau de bord', protected: true },
 
   // Protected pages
@@ -1236,6 +1253,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/culture-generale/articles/devenir-humain-education', component: DevenirHumainEducationPage, title: 'CG — Devenir humain (éducation, culture)' },
   { path: '/formation/culture-generale/methodes', component: MethodesCultureGeneralePage, title: 'CG — Méthodes' },
   { path: '/formation/culture-generale/methodes/trois-approches-dissertation', component: TroisMethodesDissertationPage, title: 'CG — 3 Méthodes de Dissertation' },
+  { path: '/formation/culture-generale/methodes/utiliser-exemples', component: UtiliserExemplesPage, title: 'CG — Utiliser efficacement les exemples' },
   { path: '/formation/culture-generale/methodes/paragraphes-juger', component: MethodesParagraphesJugerPage, title: 'CG — Paragraphes (Humanité)' },
   { path: '/formation/culture-generale/methodes/introduction-juger', component: IntroductionJugerPage, title: 'CG — Introduction (Humanité)' },
   { path: '/formation/culture-generale/methodes/sous-parties-juger', component: SousPartiesJugerPage, title: 'CG — Sous-parties (Humanité)' },

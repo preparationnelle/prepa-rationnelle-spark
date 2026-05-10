@@ -17,7 +17,7 @@ const AtlasECGFloatingWidget: React.FC = () => {
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white shadow-xl shadow-blue-500/30 p-0 transition-all duration-300 hover:scale-110"
+          className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-pr-orange hover:bg-pr-orange-dark text-white shadow-[0_8px_24px_rgba(244,132,95,0.4)] p-0 transition-all duration-300 hover:scale-110"
         >
           <Globe className="h-6 w-6" />
         </Button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { BookOpen, Play, Target, Brain } from 'lucide-react';
+import { BookOpen, Play, Target, Brain, Lightbulb } from 'lucide-react';
 import { getAllRoutePaths } from '@/config/routes';
 
 interface Chapter {
@@ -27,11 +27,13 @@ const MathsChapterListRow: React.FC<MathsChapterListRowProps> = ({ chapter }) =>
     const exercisesPath = `/formation/maths-${chapter.slug}-exercices`;
     const flashcardsPath = `/formation/maths-${chapter.slug}-flashcards`;
     const quizPath = `/formation/maths-${chapter.slug}-quiz`;
+    const methodesPath = `/formation/maths-${chapter.slug}-methodes`;
 
     const hasCourse = allPaths.includes(coursePath);
     const hasExercises = allPaths.includes(exercisesPath);
     const hasFlashcards = true;
     const hasQuiz = true;
+    const hasMethodes = allPaths.includes(methodesPath);
 
     const resolvedCourseHref = hasCourse ? coursePath : (hasExercises ? exercisesPath : undefined);
     const ChapterIcon = chapter.icon;
@@ -112,7 +114,7 @@ const MathsChapterListRow: React.FC<MathsChapterListRowProps> = ({ chapter }) =>
                     </div>
 
                     <div
-                        className="flex flex-wrap gap-2 lg:flex-nowrap flex-shrink-0"
+                        className="flex flex-wrap gap-2 flex-shrink-0"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {resolvedCourseHref && (
@@ -162,6 +164,19 @@ const MathsChapterListRow: React.FC<MathsChapterListRowProps> = ({ chapter }) =>
                                 >
                                     <Target className="mr-2 h-3.5 w-3.5" />
                                     Quiz
+                                </Button>
+                            </Link>
+                        )}
+
+                        {hasMethodes && (
+                            <Link to={methodesPath}>
+                                <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red font-instrument rounded-full h-9 px-4 text-xs bg-transparent"
+                                >
+                                    <Lightbulb className="mr-2 h-3.5 w-3.5" />
+                                    Méthodes
                                 </Button>
                             </Link>
                         )}

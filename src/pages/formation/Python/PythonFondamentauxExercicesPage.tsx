@@ -835,7 +835,7 @@ print("Liste triée :", tri_insertion(L))`
         />
 
         {ex.description && (
-          <p className="text-base md:text-lg text-pr-gray-dark/80 leading-relaxed mb-8 -mt-2">
+          <p className="text-base md:text-lg text-carnet-ink-soft leading-relaxed mb-8 -mt-2">
             {ex.description}
           </p>
         )}
@@ -869,19 +869,19 @@ print("Liste triée :", tri_insertion(L))`
               <p className="mb-6">{ex.content.enonce_complet.introduction}</p>
               <div className="space-y-5">
                 {ex.content.enonce_complet.parties.map((partie, index) => (
-                  <div key={index} className="bg-pr-gray-bg/60 rounded-xl border border-pr-gray-light/50 p-5">
-                    <h4 className="text-[15px] font-semibold text-pr-black mb-3 flex items-center gap-2.5">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-pr-orange-pale border border-pr-orange-soft/40 text-[11px] font-bold text-pr-orange-dark">
+                  <div key={index} className="bg-[rgba(78,55,30,0.03)] rounded-xl border border-[rgba(78,55,30,0.10)] p-5">
+                    <h4 className="text-[15px] font-semibold text-carnet-ink mb-3 flex items-center gap-2.5">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] text-[11px] font-bold text-carnet-red">
                         {partie.numero}
                       </span>
                       {partie.titre}
                     </h4>
-                    <div className="text-pr-gray-dark pl-[34px]">
+                    <div className="text-carnet-ink-soft pl-[34px]">
                       <LatexRenderer latex={partie.enonce_latex} />
                     </div>
                     {partie.exemple_latex && (
-                      <div className="mt-4 ml-[34px] px-4 py-3 bg-white rounded-lg border-l-[3px] border-pr-orange">
-                        <p className="text-[10px] uppercase tracking-[0.12em] font-semibold text-pr-orange-dark mb-1">Exemple</p>
+                      <div className="mt-4 ml-[34px] px-4 py-3 bg-white rounded-lg border-l-[3px] border-carnet-red">
+                        <p className="text-[10px] uppercase tracking-[0.12em] font-semibold text-carnet-red mb-1">Exemple</p>
                         <LatexRenderer latex={partie.exemple_latex} />
                       </div>
                     )}
@@ -902,16 +902,16 @@ print("Liste triée :", tri_insertion(L))`
                 {Object.entries(ex.content.corrections).map(([key, correction]: [string, any]) => (
                   <PythonCorrectionPanel key={key} title={correction.titre}>
                     <div className="px-6 md:px-8 pt-5 pb-1">
-                      <p className="text-pr-gray-dark text-[15px] leading-relaxed">
+                      <p className="text-carnet-ink-soft text-[15px] leading-relaxed">
                         {correction.explication}
                       </p>
                     </div>
                     <PythonCodeBlock code={correction.code} caption="Code" />
-                    <div className="px-6 md:px-8 py-4 bg-pr-orange-pale/40 border-t border-pr-orange-pale">
-                      <div className="text-[10px] uppercase tracking-[0.12em] font-semibold text-pr-orange-dark mb-1">
+                    <div className="px-6 md:px-8 py-4 bg-[rgba(193,68,58,0.04)] border-t border-[rgba(193,68,58,0.1)]">
+                      <div className="text-[10px] uppercase tracking-[0.12em] font-semibold text-carnet-red mb-1">
                         Résultat attendu
                       </div>
-                      <div className="text-pr-gray-dark text-[15px]">
+                      <div className="text-carnet-ink-soft text-[15px]">
                         <LatexRenderer latex={correction.resultat_latex} />
                       </div>
                     </div>
@@ -931,7 +931,7 @@ print("Liste triée :", tri_insertion(L))`
                     <div>
                       <LatexRenderer latex={exercice.enonce_latex} />
                       {exercice.exemple && (
-                        <p className="mt-3 text-sm whitespace-pre-line text-pr-gray-mid">
+                        <p className="mt-3 text-sm whitespace-pre-line text-carnet-ink-mute">
                           {exercice.exemple}
                         </p>
                       )}
@@ -945,7 +945,7 @@ print("Liste triée :", tri_insertion(L))`
                   <Button
                     variant="ghost"
                     onClick={() => toggleCorrection(index + 100)}
-                    className="text-[12px] uppercase tracking-[0.08em] font-semibold text-pr-orange-dark hover:bg-pr-orange-pale"
+                    className="text-[12px] uppercase tracking-[0.08em] font-semibold text-carnet-red hover:bg-[rgba(193,68,58,0.06)]"
                   >
                     {showCorrections.has(index + 100) ? (
                       <><ChevronUp className="h-4 w-4 mr-2" />Masquer la correction</>
@@ -1023,7 +1023,7 @@ print("Liste triée :", tri_insertion(L))`
         <>
           <PythonExerciseHero
             moduleLabel="Module 0 · Exercices"
-            title={<>Exercices · <span className="text-pr-orange">Fondamentaux</span></>}
+            title={<>Exercices · <span className="text-carnet-red">Fondamentaux</span></>}
             subtitle="Renforcez les bases de Python : variables, structures de contrôle, fonctions et algorithmes simples."
             annotation={"↘ on commence\npar les bases"}
           />

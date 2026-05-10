@@ -87,7 +87,7 @@ const TeacherCourseDetailPage = () => {
   const getAssignmentTypeBadge = (type: string) => {
     const colors = {
       exam: 'bg-red-100 text-red-800',
-      homework: 'bg-blue-100 text-blue-800',
+      homework: 'bg-carnet-red/10 text-carnet-red-deep',
       project: 'bg-purple-100 text-purple-800'
     };
     return colors[type as keyof typeof colors] || colors.homework;

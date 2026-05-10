@@ -14,17 +14,17 @@ interface AIExplainPanelProps {
 }
 
 const SUBJECT_LABELS: Record<string, { name: string; icon: string; gradient: string }> = {
-    maths: { name: 'Assistant Maths', icon: '📐', gradient: 'from-blue-500 to-indigo-600' },
-    geopolitique: { name: 'Atlas ECG', icon: '🌍', gradient: 'from-emerald-500 to-teal-600' },
-    anglais: { name: 'Assistant Anglais', icon: '🇬🇧', gradient: 'from-red-500 to-rose-600' },
-    esh: { name: 'Assistant ESH', icon: '📊', gradient: 'from-orange-500 to-amber-600' },
-    python: { name: 'Assistant Python', icon: '💻', gradient: 'from-yellow-500 to-green-600' },
-    cybersecurite: { name: 'Assistant Cyber', icon: '🔐', gradient: 'from-violet-500 to-purple-600' },
-    espagnol: { name: 'Assistant Espagnol', icon: '🇪🇸', gradient: 'from-red-500 to-yellow-500' },
-    'culture-generale': { name: 'Assistant CG', icon: '📚', gradient: 'from-pink-500 to-fuchsia-600' },
+    maths: { name: 'Assistant Maths', icon: '📐', gradient: 'from-pr-orange to-pr-orange-dark' },
+    geopolitique: { name: 'Atlas ECG', icon: '🌍', gradient: 'from-pr-orange to-pr-orange-dark' },
+    anglais: { name: 'Assistant Anglais', icon: '🇬🇧', gradient: 'from-pr-orange to-pr-orange-dark' },
+    esh: { name: 'Assistant ESH', icon: '📊', gradient: 'from-pr-orange to-pr-orange-dark' },
+    python: { name: 'Assistant Python', icon: '💻', gradient: 'from-pr-orange to-pr-orange-dark' },
+    cybersecurite: { name: 'Assistant Cyber', icon: '🔐', gradient: 'from-pr-orange to-pr-orange-dark' },
+    espagnol: { name: 'Assistant Espagnol', icon: '🇪🇸', gradient: 'from-pr-orange to-pr-orange-dark' },
+    'culture-generale': { name: 'Assistant CG', icon: '📚', gradient: 'from-pr-orange to-pr-orange-dark' },
 };
 
-const DEFAULT_LABEL = { name: 'Majora AI', icon: '🤖', gradient: 'from-teal-400 to-emerald-500' };
+const DEFAULT_LABEL = { name: 'Majora AI', icon: '🤖', gradient: 'from-pr-orange to-pr-orange-dark' };
 
 const AIExplainPanel: React.FC<AIExplainPanelProps> = ({
     isOpen,
@@ -173,10 +173,10 @@ const AIExplainPanel: React.FC<AIExplainPanelProps> = ({
                                 </div>
                             ) : loading && !explanation ? (
                                 <div className="flex flex-col items-center justify-center py-12 gap-3">
-                                    <div className="h-12 w-12 rounded-full bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center animate-pulse">
+                                    <div className="h-12 w-12 rounded-full bg-pr-orange flex items-center justify-center animate-pulse">
                                         <Sparkles className="h-6 w-6 text-white" />
                                     </div>
-                                    <p className="text-sm text-gray-500">Analyse en cours...</p>
+                                    <p className="text-sm text-pr-gray-mid font-dm-sans">Analyse en cours…</p>
                                 </div>
                             ) : (
                                 <div className="prose prose-sm max-w-none">
@@ -196,15 +196,15 @@ const AIExplainPanel: React.FC<AIExplainPanelProps> = ({
 
                         {/* Actions */}
                         {explanation && !error && (
-                            <div className="px-5 py-3 border-t border-gray-100 bg-gray-50/50">
+                            <div className="px-5 py-3 border-t border-pr-gray-light bg-pr-gray-bg/60">
                                 <button
                                     onClick={handleSaveNote}
                                     disabled={saved}
                                     className={cn(
-                                        "w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all mb-3",
+                                        "w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all mb-3 font-dm-sans",
                                         saved
-                                            ? "bg-green-100 text-green-700"
-                                            : "bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200"
+                                            ? "bg-pr-orange text-white"
+                                            : "bg-pr-orange-pale text-pr-orange-dark hover:bg-pr-orange-soft border border-pr-orange/20"
                                     )}
                                 >
                                     <BookmarkPlus className="h-4 w-4" />
@@ -215,8 +215,8 @@ const AIExplainPanel: React.FC<AIExplainPanelProps> = ({
                                     <input
                                         value={followUp}
                                         onChange={e => setFollowUp(e.target.value)}
-                                        placeholder="Poser une question de suivi..."
-                                        className="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-300"
+                                        placeholder="Poser une question de suivi…"
+                                        className="flex-1 px-4 py-2.5 rounded-xl border border-pr-gray-light bg-white text-sm focus:outline-none focus:ring-2 focus:ring-pr-orange/20 focus:border-pr-orange text-pr-black placeholder:text-pr-gray-mid font-dm-sans"
                                         disabled={loading}
                                     />
                                     <button
@@ -225,8 +225,8 @@ const AIExplainPanel: React.FC<AIExplainPanelProps> = ({
                                         className={cn(
                                             "h-10 w-10 rounded-xl flex items-center justify-center transition-all shrink-0",
                                             followUp.trim()
-                                                ? "bg-teal-600 hover:bg-teal-700 text-white"
-                                                : "bg-gray-100 text-gray-400"
+                                                ? "bg-pr-orange hover:bg-pr-orange-dark text-white"
+                                                : "bg-pr-gray-light text-pr-gray-mid"
                                         )}
                                     >
                                         <Send className="h-4 w-4" />

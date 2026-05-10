@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Play, ArrowRight, Flame, ChevronRight } from 'lucide-react';
+import { ArrowRight, Flame, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const HeroSection = () => {
@@ -41,7 +41,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.4 }}
             className="carnet-eyebrow mb-8"
           >
-            Méthode · Mathématiques & Prépa ECG
+            Cours · Mathématiques & Python Prépa ECG
           </motion.p>
 
 
@@ -103,7 +103,6 @@ export const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="flex flex-wrap items-center justify-center gap-4 mt-10"
           >
-            {/* Wrapper relatif pour ancrer l'annotation */}
             {/* Annotation + bouton dans un groupe aligné */}
             <div className="flex items-center gap-5">
               {/* "ici, le déclic" à gauche, pointant → vers le bouton */}
@@ -120,21 +119,13 @@ export const HeroSection = () => {
 
               <Button
                 asChild
-                className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold text-[16px] py-[18px] px-7 rounded-full transition-all hover:-translate-y-0.5 border-0 h-auto"
+                className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold text-[18px] py-[22px] px-10 rounded-full transition-all hover:-translate-y-0.5 border-0 h-auto"
               >
-                <Link to="/dashboard">
-                  <Play className="mr-2 h-4 w-4 fill-current" />
-                  Commencer maintenant
-                </Link>
+                <a href="https://calendly.com/preparationnelle/30min" target="_blank" rel="noopener noreferrer">
+                  Réserver un cours gratuit
+                </a>
               </Button>
             </div>
-
-            <Link
-              to="/formations"
-              className="font-instrument text-[15px] font-medium text-carnet-ink-soft hover:text-carnet-red transition-colors flex items-center gap-1.5"
-            >
-              Voir les formations →
-            </Link>
           </motion.div>
 
           {/* Métriques manuscrites — centrées */}

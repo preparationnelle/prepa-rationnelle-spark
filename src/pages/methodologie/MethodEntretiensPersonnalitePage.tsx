@@ -6,7 +6,7 @@ import { useProgress } from '@/context/ProgressContext';
 import { SchoolCard } from '@/components/SchoolCard';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
-import { Bot, Users, Puzzle, HelpCircle, Target, FileText, MessageSquare, School, Heart, CheckCircle, AlertTriangle, HandHeart, Presentation } from 'lucide-react';
+import { Bot, Users, Puzzle, HelpCircle, Target, FileText, MessageSquare, School, Heart, CheckCircle, AlertTriangle, HandHeart, Presentation, Brain, Newspaper, Eye, Star, Zap, ThumbsDown, Briefcase } from 'lucide-react';
 
 const MethodEntretiensPersonnalitePage = () => {
   const { trackPageVisit } = useProgress();
@@ -35,6 +35,14 @@ const MethodEntretiensPersonnalitePage = () => {
     { to: "/methodologie/erreur-entretien", icon: AlertTriangle, label: "Erreurs à éviter" },
     { to: "/methodologie/tendre-perches", icon: HandHeart, label: "Tendre des perches" },
     { to: "/methodologie/pitch-intro", icon: Presentation, label: "Pitch d'introduction" },
+    { to: "/methodologie/gestion-stress", icon: Brain, label: "Gestion du stress" },
+    { to: "/methodologie/questions-actualite", icon: Newspaper, label: "Questions d'actualité" },
+    { to: "/methodologie/langage-non-verbal", icon: Eye, label: "Langage non-verbal" },
+    { to: "/methodologie/questions-comportementales", icon: Star, label: "Questions comportementales" },
+    { to: "/methodologie/questions-destabilisantes", icon: Zap, label: "Questions déstabilisantes" },
+    { to: "/methodologie/parler-defauts", icon: ThumbsDown, label: "Parler de ses défauts" },
+    { to: "/methodologie/valoriser-experiences", icon: Briefcase, label: "Valoriser ses expériences" },
+    { to: "/methodologie/questions-au-jury", icon: HelpCircle, label: "Questions au jury" },
   ];
 
   return (
@@ -65,7 +73,7 @@ const MethodEntretiensPersonnalitePage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-3xl mx-auto mt-12">
               {[
                 { num: "9", label: "Écoles détaillées" },
-                { num: "8", label: "Modules méthodologie" },
+                { num: "16", label: "Modules méthodologie" },
                 { num: "∞", label: "Questions générées par IA" },
               ].map((stat) => (
                 <div

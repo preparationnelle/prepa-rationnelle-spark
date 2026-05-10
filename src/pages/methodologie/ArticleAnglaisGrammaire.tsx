@@ -46,7 +46,7 @@ export default function ArticleAnglaisGrammaire() {
           </ol>
         </div>
         <div className="mb-2 mt-4">
-          <a href="https://www.ecricome.org/wp-content/uploads/2021/01/ANNALE-LV2-ANGLAISALLEMAND-ESPAGNOL-PRE%CC%81PA-2018.pdf" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline font-medium">
+          <a href="https://www.ecricome.org/wp-content/uploads/2021/01/ANNALE-LV2-ANGLAISALLEMAND-ESPAGNOL-PRE%CC%81PA-2018.pdf" target="_blank" rel="noopener noreferrer" className="text-carnet-red underline font-medium">
             Lien vers le corrigé complet
           </a>
         </div>

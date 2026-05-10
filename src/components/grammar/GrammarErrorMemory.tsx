@@ -143,7 +143,7 @@ export const GrammarErrorMemory: React.FC<GrammarErrorMemoryProps> = ({
     <Card className="mt-6">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Brain className="h-5 w-5 text-purple-600" />
+          <Brain className="h-5 w-5 text-pr-orange" />
           Mémoire des erreurs grammaticales
         </CardTitle>
       </CardHeader>
@@ -173,7 +173,7 @@ export const GrammarErrorMemory: React.FC<GrammarErrorMemoryProps> = ({
                       <p><strong>Phrase:</strong> {error.french_sentence}</p>
                       <p className="text-red-600"><strong>Votre réponse:</strong> {error.student_answer}</p>
                       <p className="text-green-600"><strong>Correction:</strong> {error.correct_answer}</p>
-                      <p className="text-blue-600"><strong>Règle:</strong> {error.rule}</p>
+                      <p className="text-pr-orange-dark"><strong>Règle :</strong> {error.rule}</p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2">
