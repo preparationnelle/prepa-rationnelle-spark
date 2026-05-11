@@ -57,25 +57,25 @@ const ConjugaisonPage = () => {
   const currentExercise = conjugationExercises[currentExerciseIndex];
 
   return (
-    <div className="relative font-dm-sans text-pr-black">
+    <div className="carnet-paper min-h-screen font-instrument text-carnet-ink">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol" className="hover:text-carnet-red transition-colors">
               Formation Espagnol
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol/grammaire" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol/grammaire" className="hover:text-carnet-red transition-colors">
               Grammaire
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Conjugaison</span>
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <span className="text-carnet-ink font-semibold">Conjugaison</span>
           </div>
         </div>
       </nav>
@@ -84,13 +84,13 @@ const ConjugaisonPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+          <h1 className="text-4xl font-lora text-carnet-ink mb-4 flex items-center justify-center gap-3">
+            <div className="p-3 rounded-lg bg-carnet-red text-carnet-paper">
               <Clock className="h-9 w-9" />
             </div>
             Conjugaison et Temps Verbaux
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-carnet-ink-mute max-w-3xl mx-auto leading-relaxed">
             Maîtrisez les structures grammaticales complexes pour exceller aux épreuves d'espagnol ECG
           </p>
         </div>
@@ -99,8 +99,8 @@ const ConjugaisonPage = () => {
 
         {/* Tableaux de conjugaison */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Table className="h-6 w-6 text-pr-orange-dark" />
+          <h2 className="text-2xl font-lora text-carnet-ink mb-6 flex items-center gap-3">
+            <Table className="h-6 w-6 text-carnet-red" />
             Tableaux
           </h2>
           
@@ -127,8 +127,8 @@ const ConjugaisonPage = () => {
 
         {/* Sections théoriques */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <BookOpenIcon className="h-6 w-6 text-pr-orange-dark" />
+          <h2 className="text-2xl font-lora text-carnet-ink mb-6 flex items-center gap-3">
+            <BookOpenIcon className="h-6 w-6 text-carnet-red" />
             Théorie
           </h2>
           
@@ -141,22 +141,22 @@ const ConjugaisonPage = () => {
 
         {/* Exercices pratiques */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Target className="h-6 w-6 text-pr-orange-dark" />
+          <h2 className="text-2xl font-lora text-carnet-ink mb-6 flex items-center gap-3">
+            <Target className="h-6 w-6 text-carnet-red" />
             Exercices
           </h2>
 
           {/* Navigateur d'exercices */}
-          <Card className="border border-gray-200 bg-white shadow-sm">
+          <Card className="carnet-card border-0 bg-carnet-paper-2 shadow-sm">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <CardTitle className="text-xl flex items-center gap-2 text-gray-900">
-                    <FileText className="h-5 w-5 text-pr-orange-dark" />
+                  <CardTitle className="text-xl font-lora flex items-center gap-2 text-carnet-ink">
+                    <FileText className="h-5 w-5 text-carnet-red" />
                     {currentExercise.title}
                   </CardTitle>
                   <div className="flex gap-2">
-                    <Badge variant="outline" className="text-pr-orange-dark">
+                    <Badge variant="outline" className="text-carnet-red">
                       {currentExercise.level}
                     </Badge>
                     <Badge variant="secondary">
@@ -166,7 +166,7 @@ const ConjugaisonPage = () => {
                 </div>
 
                 {/* Indicateur de progression */}
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-carnet-ink-mute">
                   Exercice {currentExerciseIndex + 1} sur {conjugationExercises.length}
                 </div>
               </div>
@@ -190,8 +190,8 @@ const ConjugaisonPage = () => {
                       onClick={() => setCurrentExerciseIndex(index)}
                       className={`w-3 h-3 rounded-full transition-colors ${
                         index === currentExerciseIndex
-                          ? 'bg-pr-orange-dark'
-                          : 'bg-orange-200 hover:bg-orange-300'
+                          ? 'bg-carnet-red'
+                          : 'bg-[rgba(193,68,58,0.15)] hover:bg-[rgba(193,68,58,0.2)]'
                       }`}
                     />
                   ))}
@@ -211,15 +211,15 @@ const ConjugaisonPage = () => {
 
             <CardContent className="space-y-4">
               {/* Instruction */}
-              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                <h4 className="font-semibold text-gray-900 mb-2">Instruction :</h4>
-                <p className="text-gray-800">{currentExercise.instruction}</p>
+              <div className="carnet-paper-plain rounded-lg p-4 border border-dashed border-[rgba(78,55,30,0.18)]">
+                <h4 className="font-lora text-carnet-ink mb-2">Instruction :</h4>
+                <p className="text-carnet-ink">{currentExercise.instruction}</p>
               </div>
 
               {/* Question */}
-              <div className="bg-white rounded-lg p-4 border border-gray-200 mt-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Question :</h4>
-                <p className="text-gray-800 font-mono">{currentExercise.content.question}</p>
+              <div className="bg-white rounded-lg p-4 border border-dashed border-[rgba(78,55,30,0.18)] mt-4">
+                <h4 className="font-lora text-carnet-ink mb-2">Question :</h4>
+                <p className="text-carnet-ink font-mono">{currentExercise.content.question}</p>
               </div>
 
               {/* Boutons d'action */}
@@ -244,15 +244,15 @@ const ConjugaisonPage = () => {
 
               {/* Indices */}
               {showHints[currentExercise.id] && (
-                <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
-                  <h4 className="font-semibold text-orange-900 mb-3 flex items-center gap-2">
-                    <Lightbulb className="h-4 w-4 text-pr-orange-dark" />
+                <div className="bg-[rgba(193,68,58,0.05)] rounded-lg p-4 border border-[rgba(193,68,58,0.25)]">
+                  <h4 className="font-semibold text-carnet-red-deep mb-3 flex items-center gap-2">
+                    <Lightbulb className="h-4 w-4 text-carnet-red" />
                     Indices et règles :
                   </h4>
                   <ul className="space-y-2">
                     {currentExercise.content.hints.map((hint, index) => (
-                      <li key={index} className="flex items-start gap-2 text-orange-800">
-                        <span className="w-2 h-2 rounded-full bg-pr-orange mt-2 flex-shrink-0"></span>
+                      <li key={index} className="flex items-start gap-2 text-carnet-red-deep">
+                        <span className="w-2 h-2 rounded-full bg-carnet-red mt-2 flex-shrink-0"></span>
                         <span className="text-sm">{hint}</span>
                       </li>
                     ))}
@@ -262,13 +262,13 @@ const ConjugaisonPage = () => {
 
               {/* Correction */}
               {showCorrections[currentExercise.id] && (
-                <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                  <h4 className="font-semibold text-green-900 mb-3 flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                <div className="bg-[rgba(193,68,58,0.05)] rounded-lg p-4 border border-[rgba(193,68,58,0.25)]">
+                  <h4 className="font-semibold text-carnet-red-deep mb-3 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-carnet-red" />
                     Correction et explication :
                   </h4>
-                  <p className="text-green-800 font-medium mb-2">{currentExercise.content.correction}</p>
-                  <p className="text-sm text-green-700">{currentExercise.content.explanation}</p>
+                  <p className="text-carnet-red-deep font-medium mb-2">{currentExercise.content.correction}</p>
+                  <p className="text-sm text-carnet-ink-soft">{currentExercise.content.explanation}</p>
                 </div>
               )}
             </CardContent>
@@ -276,19 +276,19 @@ const ConjugaisonPage = () => {
         </div>
 
         {/* Bouton vers les exercices */}
-        <Card className="mb-8 border border-gray-200 bg-white shadow-sm">
+        <Card className="mb-8 carnet-card border-0 bg-carnet-paper-2 shadow-sm">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-gray-900">
-              <Target className="h-6 w-6 text-pr-orange-dark" />
+            <CardTitle className="text-2xl font-lora flex items-center gap-2 text-carnet-ink">
+              <Target className="h-6 w-6 text-carnet-red" />
               Prêt à tester vos connaissances ?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-gray-700 mb-6">
+            <p className="text-carnet-ink-soft mb-6">
               Maintenant que vous avez étudié la théorie, mettez vos connaissances en pratique avec nos exercices interactifs !
             </p>
             <Link to="/formation/espagnol/grammaire/conjugaison/exercices">
-              <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3">
+              <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper px-8 py-3">
                 <Target className="h-5 w-5 mr-2" />
                 Commencer les exercices
               </Button>

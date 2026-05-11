@@ -21,6 +21,7 @@ import {
   CheckCircle2,
   Edit3,
   Lightbulb,
+  Home,
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Link } from 'react-router-dom';
@@ -30,7 +31,6 @@ import { DefinitionTraining } from '@/components/generator/DefinitionTraining';
 import { CultureGeneraleParadoxGenerator } from '@/components/generator/CultureGeneraleParadoxGenerator';
 import { ProblematiquesGenerator } from '@/components/generator/ProblematiquesGenerator';
 import { PlanGenerator } from '@/components/generator/PlanGenerator';
-import { GeneratorHero } from '@/components/generator/GeneratorHero';
 
 const CultureGeneraleUnifiedGeneratorPage = () => {
   const [selectedYear, setSelectedYear] = useState<1 | 2>(2);
@@ -71,32 +71,28 @@ const CultureGeneraleUnifiedGeneratorPage = () => {
   ] as const;
 
   return (
-    <div className="min-h-screen bg-pr-gray-bg font-dm-sans">
-      {/* Navbar — sticky breadcrumb charte PR */}
-      <nav className="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-pr-gray-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14 flex-wrap gap-2">
-            <div className="flex items-center gap-1.5 text-xs text-pr-gray-mid">
-              <Link to="/" className="hover:text-pr-orange transition-colors flex items-center gap-1">
-                <Library className="h-3.5 w-3.5" /> Accueil
+    <div className="min-h-screen carnet-paper">
+      {/* Fil d'Ariane sticky */}
+      <nav className="sticky top-0 z-50 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+              <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+                <Home className="h-3.5 w-3.5" />
+                <span>Accueil</span>
               </Link>
-              <ChevronRight className="h-3 w-3" />
-              <Link to="/generator" className="hover:text-pr-orange transition-colors">Générateurs</Link>
-              <ChevronRight className="h-3 w-3" />
-              <span className="text-pr-orange-dark font-semibold uppercase tracking-[0.06em] text-[10px] bg-pr-orange-pale px-2 py-1 rounded-full">
-                Culture Générale
-              </span>
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/generator" className="hover:text-carnet-red transition-colors">Générateurs</Link>
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <span className="carnet-eyebrow text-[11px]">Culture Générale</span>
             </div>
 
-            {/* Sujet en cours */}
             {isSubjectValidated && (
-              <div className="hidden md:flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-500">
-                <span className="text-[10px] text-pr-gray-mid font-semibold uppercase tracking-[0.08em]">
-                  Sujet en cours
-                </span>
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-pr-orange-pale border border-pr-orange/30 rounded-full">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-pr-orange" />
-                  <span className="text-sm font-medium text-pr-black truncate max-w-[280px]" title={selectedSubject}>
+              <div className="hidden md:flex items-center gap-2">
+                <span className="carnet-eyebrow text-[10px]">Sujet en cours</span>
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.25)] rounded-full">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-carnet-red" />
+                  <span className="text-sm font-instrument font-medium text-carnet-ink truncate max-w-[280px]" title={selectedSubject}>
                     {selectedSubject}
                   </span>
                 </div>
@@ -104,7 +100,7 @@ const CultureGeneraleUnifiedGeneratorPage = () => {
                   onClick={handleEditSubject}
                   variant="ghost"
                   size="icon"
-                  className="h-8 w-8 text-pr-gray-mid hover:text-pr-orange hover:bg-pr-orange-pale rounded-full"
+                  className="h-8 w-8 text-carnet-ink-mute hover:text-carnet-red hover:bg-[rgba(193,68,58,0.06)] rounded-full"
                 >
                   <Edit3 className="h-3.5 w-3.5" />
                 </Button>
@@ -114,41 +110,50 @@ const CultureGeneraleUnifiedGeneratorPage = () => {
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+      <main className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-14 lg:py-16 space-y-12">
         {/* Hero */}
-        <GeneratorHero
-          badge="Culture Générale"
-          badgeIcon={Library}
-          title="Générateur"
-          highlight="Culture Générale"
-          subtitle="Un espace unique pour t'exercer : accroche, définitions, paradoxe, problématique et plan."
-        />
+        <header className="max-w-[820px]">
+          <div className="carnet-eyebrow mb-5">Feedback IA · Culture Générale</div>
+          <div className="flex items-center gap-4 mb-5">
+            <div className="w-14 h-14 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+              <Library className="h-6 w-6 text-carnet-red" />
+            </div>
+            <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] text-carnet-ink tracking-tight">
+              Générateur <em className="font-lora italic text-carnet-red">Culture Générale</em>.
+            </h1>
+          </div>
+          <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.6] text-carnet-ink-soft max-w-[640px]">
+            Un espace unique pour t'exercer : <span className="carnet-hl font-lora italic">accroche, définitions, paradoxe, problématique et plan</span>.
+          </p>
+        </header>
 
         {/* Sélection du sujet */}
         {!isSubjectValidated ? (
-          <div className="max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150">
-            <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-sm">
-              <div className="h-[3px] w-full bg-pr-orange" />
+          <div className="max-w-2xl mx-auto">
+            <div className="carnet-card overflow-hidden">
               <div className="pt-8 pb-2 text-center px-8">
-                <h2 className="font-dm-serif text-2xl text-pr-black">Définis ton sujet</h2>
-                <p className="text-pr-gray-mid font-dm-sans text-sm mt-1">
+                <div className="flex items-baseline justify-center gap-3 mb-2">
+                  <span className="carnet-hand text-[32px] text-carnet-red leading-none font-semibold">01</span>
+                  <h2 className="font-lora text-[26px] text-carnet-ink">
+                    Définis ton <em className="font-lora italic text-carnet-red">sujet</em>
+                  </h2>
+                </div>
+                <p className="text-carnet-ink-mute font-instrument text-sm mt-1">
                   Pour commencer, choisis ou saisis le sujet de ta dissertation.
                 </p>
               </div>
               <div className="p-8 space-y-6">
                 {/* Année */}
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold text-pr-gray-mid uppercase tracking-[0.08em] font-dm-sans">
-                    Année de prépa
-                  </label>
+                  <label className="carnet-eyebrow text-[11px]">Année de prépa</label>
                   <div className="flex gap-3">
                     <Button
                       type="button"
                       onClick={() => setSelectedYear(1)}
-                      className={`flex-1 h-12 rounded-xl font-dm-sans ${
+                      className={`flex-1 h-12 rounded-md font-instrument ${
                         selectedYear === 1
-                          ? 'bg-pr-orange text-white hover:bg-pr-orange-dark'
-                          : 'bg-white text-pr-gray-dark border border-pr-gray-light hover:bg-pr-orange-pale hover:border-pr-orange/40 hover:text-pr-orange-dark'
+                          ? 'bg-carnet-red text-carnet-paper hover:bg-carnet-red-deep'
+                          : 'bg-carnet-paper-2 text-carnet-ink-soft border border-dashed border-[rgba(78,55,30,0.18)] hover:bg-[rgba(193,68,58,0.06)] hover:border-[rgba(193,68,58,0.25)] hover:text-carnet-red'
                       }`}
                     >
                       <span className="font-semibold">1ère année</span>
@@ -157,10 +162,10 @@ const CultureGeneraleUnifiedGeneratorPage = () => {
                     <Button
                       type="button"
                       onClick={() => setSelectedYear(2)}
-                      className={`flex-1 h-12 rounded-xl font-dm-sans ${
+                      className={`flex-1 h-12 rounded-md font-instrument ${
                         selectedYear === 2
-                          ? 'bg-pr-orange text-white hover:bg-pr-orange-dark'
-                          : 'bg-white text-pr-gray-dark border border-pr-gray-light hover:bg-pr-orange-pale hover:border-pr-orange/40 hover:text-pr-orange-dark'
+                          ? 'bg-carnet-red text-carnet-paper hover:bg-carnet-red-deep'
+                          : 'bg-carnet-paper-2 text-carnet-ink-soft border border-dashed border-[rgba(78,55,30,0.18)] hover:bg-[rgba(193,68,58,0.06)] hover:border-[rgba(193,68,58,0.25)] hover:text-carnet-red'
                       }`}
                     >
                       <span className="font-semibold">2ème année</span>
@@ -171,33 +176,31 @@ const CultureGeneraleUnifiedGeneratorPage = () => {
 
                 {/* Sujet */}
                 <div className="space-y-2">
-                  <label className="text-xs font-semibold text-pr-gray-mid uppercase tracking-[0.08em] font-dm-sans">
-                    Sujet
-                  </label>
-                  <div className="flex bg-white rounded-xl border border-pr-gray-light focus-within:border-pr-orange transition-colors">
+                  <label className="carnet-eyebrow text-[11px]">Sujet</label>
+                  <div className="flex bg-carnet-paper-2 rounded-md border border-dashed border-[rgba(78,55,30,0.18)] focus-within:border-carnet-red transition-colors">
                     <Input
                       placeholder="Saisis ton sujet de dissertation..."
                       value={selectedSubject}
                       onChange={(e) => setSelectedSubject(e.target.value)}
-                      className="flex-1 border-0 bg-transparent py-3 px-4 text-base font-medium placeholder:text-pr-gray-mid focus-visible:ring-0 rounded-xl h-auto font-dm-sans"
+                      className="flex-1 border-0 bg-transparent py-3 px-4 text-base font-medium placeholder:text-carnet-ink-mute focus-visible:ring-0 rounded-md h-auto font-instrument text-carnet-ink"
                     />
                     <div className="pr-2 flex items-center">
                       <Select onValueChange={(value) => setSelectedSubject(value)}>
-                        <SelectTrigger className="border-0 shadow-none bg-pr-orange-pale hover:bg-pr-orange-soft text-pr-orange-dark font-medium w-auto gap-2 px-3 py-2 h-auto rounded-lg transition-colors text-sm font-dm-sans">
+                        <SelectTrigger className="border-0 shadow-none bg-[rgba(193,68,58,0.06)] hover:bg-[rgba(193,68,58,0.12)] text-carnet-red font-medium w-auto gap-2 px-3 py-2 h-auto rounded transition-colors text-sm font-instrument">
                           <BookOpenCheck className="h-4 w-4" />
                           <span>Suggestions</span>
                         </SelectTrigger>
-                        <SelectContent className="max-h-[300px] border-pr-gray-light shadow-xl">
+                        <SelectContent className="max-h-[300px] border-[rgba(78,55,30,0.18)] shadow-xl">
                           {(Object.keys(yearData.categories) as Array<keyof typeof yearData.categories>).map((category) => (
                             <SelectGroup key={category}>
-                              <SelectLabel className="text-[10px] uppercase tracking-[0.08em] text-pr-gray-mid font-bold px-3 py-2 mt-2 font-dm-sans">
+                              <SelectLabel className="carnet-eyebrow text-[10px] px-3 py-2 mt-2">
                                 {yearData.getCategoryName(category)}
                               </SelectLabel>
                               {yearData.categories[category].map((subj, idx) => (
                                 <SelectItem
                                   key={`${category}-${idx}`}
                                   value={subj}
-                                  className="text-sm py-2 text-pr-gray-dark cursor-pointer focus:bg-pr-orange-pale focus:text-pr-orange-dark font-dm-sans"
+                                  className="text-sm py-2 text-carnet-ink-soft cursor-pointer focus:bg-[rgba(193,68,58,0.06)] focus:text-carnet-red font-instrument"
                                 >
                                   {subj}
                                 </SelectItem>
@@ -213,7 +216,7 @@ const CultureGeneraleUnifiedGeneratorPage = () => {
                 <Button
                   onClick={handleValidateSubject}
                   disabled={!selectedSubject.trim()}
-                  className="w-full h-12 bg-pr-orange hover:bg-pr-orange-dark text-white text-base font-semibold rounded-xl shadow-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-dm-sans"
+                  className="w-full h-12 bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper text-base font-semibold rounded-md shadow-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-instrument"
                 >
                   <Sparkles className="h-4 w-4 mr-2" />
                   Commencer l'analyse
@@ -222,10 +225,10 @@ const CultureGeneraleUnifiedGeneratorPage = () => {
             </div>
           </div>
         ) : (
-          <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
+          <div>
             <Tabs value={selectedTool} onValueChange={(value) => setSelectedTool(value as any)} className="w-full space-y-8">
               <div className="flex justify-center">
-                <TabsList className="h-auto p-1 bg-white border border-pr-gray-light rounded-2xl flex flex-wrap justify-center gap-1">
+                <TabsList className="h-auto p-1 carnet-card flex flex-wrap justify-center gap-1">
                   {toolsConfig.map((tool) => {
                     const Icon = tool.icon;
                     const isActive = selectedTool === tool.id;
@@ -233,10 +236,10 @@ const CultureGeneraleUnifiedGeneratorPage = () => {
                       <TabsTrigger
                         key={tool.id}
                         value={tool.id}
-                        className={`relative px-4 py-2.5 rounded-xl transition-all duration-200 flex items-center gap-2 outline-none font-dm-sans text-sm ${
+                        className={`relative px-4 py-2.5 rounded transition-all duration-200 flex items-center gap-2 outline-none font-instrument text-sm ${
                           isActive
-                            ? 'bg-pr-orange text-white font-semibold'
-                            : 'text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark'
+                            ? 'bg-carnet-red text-carnet-paper font-semibold'
+                            : 'text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red'
                         }`}
                       >
                         <Icon className="h-4 w-4" />
@@ -249,33 +252,23 @@ const CultureGeneraleUnifiedGeneratorPage = () => {
 
               <div className="max-w-5xl mx-auto min-h-[500px]">
                 <TabsContent value="hook" className="focus-visible:outline-none focus:outline-none">
-                  <div className="transition-all duration-500 animate-in fade-in slide-in-from-bottom-4">
-                    <CultureGeneraleHookEvaluator subjectFromParent={selectedSubject} year={selectedYear} />
-                  </div>
+                  <CultureGeneraleHookEvaluator subjectFromParent={selectedSubject} year={selectedYear} />
                 </TabsContent>
 
                 <TabsContent value="definitions" className="focus-visible:outline-none focus:outline-none">
-                  <div className="transition-all duration-500 animate-in fade-in slide-in-from-bottom-4">
-                    <DefinitionTraining mode="culture-generale" subjectFromParent={selectedSubject} />
-                  </div>
+                  <DefinitionTraining mode="culture-generale" subjectFromParent={selectedSubject} />
                 </TabsContent>
 
                 <TabsContent value="paradoxe" className="focus-visible:outline-none focus:outline-none">
-                  <div className="transition-all duration-500 animate-in fade-in slide-in-from-bottom-4">
-                    <CultureGeneraleParadoxGenerator subjectFromParent={selectedSubject} year={selectedYear} />
-                  </div>
+                  <CultureGeneraleParadoxGenerator subjectFromParent={selectedSubject} year={selectedYear} />
                 </TabsContent>
 
                 <TabsContent value="problematique" className="focus-visible:outline-none focus:outline-none">
-                  <div className="transition-all duration-500 animate-in fade-in slide-in-from-bottom-4">
-                    <ProblematiquesGenerator mode="culture-generale" subjectFromParent={selectedSubject} />
-                  </div>
+                  <ProblematiquesGenerator mode="culture-generale" subjectFromParent={selectedSubject} />
                 </TabsContent>
 
                 <TabsContent value="plan" className="focus-visible:outline-none focus:outline-none">
-                  <div className="transition-all duration-500 animate-in fade-in slide-in-from-bottom-4">
-                    <PlanGenerator mode="culture-generale" subjectFromParent={selectedSubject} />
-                  </div>
+                  <PlanGenerator mode="culture-generale" subjectFromParent={selectedSubject} />
                 </TabsContent>
               </div>
             </Tabs>

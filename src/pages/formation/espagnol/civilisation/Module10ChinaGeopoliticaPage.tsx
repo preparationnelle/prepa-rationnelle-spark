@@ -33,86 +33,86 @@ Conclusión – La principal lección es la tensión entre ganancias rápidas y 
   };
 
   return (
-    <div className="relative font-dm-sans text-pr-black">
+    <div className="carnet-paper min-h-screen font-instrument text-carnet-ink">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
-              <Globe className="h-6 w-6 text-pr-orange-dark" />
+            <div className="w-12 h-12 bg-[rgba(193,68,58,0.05)] rounded-full flex items-center justify-center border border-[rgba(193,68,58,0.25)]">
+              <Globe className="h-6 w-6 text-carnet-red" />
             </div>
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-4xl font-lora text-carnet-ink">
             China y Geopolítica Global
           </h1>
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-carnet-ink-mute max-w-3xl mx-auto leading-relaxed">
             Alianza estratégica vs dependencia 2.0 - Análisis de las relaciones sino-latinoamericanas
           </p>
           <div className="flex justify-center gap-3 mt-6">
-            <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">10 thématiques clés</span>
-            <span className="px-4 py-2 border border-gray-200 text-gray-700 rounded-full text-sm font-medium">Actualisé 2024</span>
-            <span className="px-4 py-2 bg-pr-orange-dark text-white rounded-full text-sm font-medium">Niveau Prépa</span>
+            <span className="px-4 py-2 bg-gray-100 text-carnet-ink-soft rounded-full text-sm font-medium">10 thématiques clés</span>
+            <span className="px-4 py-2 border border-dashed border-[rgba(78,55,30,0.18)] text-carnet-ink-soft rounded-full text-sm font-medium">Actualisé 2024</span>
+            <span className="px-4 py-2 bg-carnet-red text-carnet-paper rounded-full text-sm font-medium">Niveau Prépa</span>
           </div>
         </div>
 
         {/* Module Content */}
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-xl p-8 shadow-md">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Contenido del Módulo</h2>
+            <h2 className="text-2xl font-lora text-carnet-ink mb-6">Contenido del Módulo</h2>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">1. Dépendance commerciale latino-américaine</h3>
-                <p className="text-gray-600">Analyse des échanges commerciaux asymétriques et de la balance commerciale négative chronique</p>
+                <h3 className="text-lg font-semibold text-carnet-ink mb-3">1. Dépendance commerciale latino-américaine</h3>
+                <p className="text-carnet-ink-mute">Analyse des échanges commerciaux asymétriques et de la balance commerciale négative chronique</p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">2. Dette et investissements chinois</h3>
-                <p className="text-gray-600">Prêts conditionnés, infrastructure stratégique et dépendance financière croissante</p>
+                <h3 className="text-lg font-semibold text-carnet-ink mb-3">2. Dette et investissements chinois</h3>
+                <p className="text-carnet-ink-mute">Prêts conditionnés, infrastructure stratégique et dépendance financière croissante</p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">3. Initiatives chinoises en Amérique latine</h3>
-                <p className="text-gray-600">Belt and Road Initiative, Nouvelle Route de la Soie et projets d'infrastructure</p>
+                <h3 className="text-lg font-semibold text-carnet-ink mb-3">3. Initiatives chinoises en Amérique latine</h3>
+                <p className="text-carnet-ink-mute">Belt and Road Initiative, Nouvelle Route de la Soie et projets d'infrastructure</p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">4. Géopolitique et influence chinoise</h3>
-                <p className="text-gray-600">Soft power, diplomatie des chèques et rivalité avec les États-Unis</p>
+                <h3 className="text-lg font-semibold text-carnet-ink mb-3">4. Géopolitique et influence chinoise</h3>
+                <p className="text-carnet-ink-mute">Soft power, diplomatie des chèques et rivalité avec les États-Unis</p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">5. Impact économique sur l'Amérique latine</h3>
-                <p className="text-gray-600">Croissance économique, emplois générés et développement industriel</p>
+                <h3 className="text-lg font-semibold text-carnet-ink mb-3">5. Impact économique sur l'Amérique latine</h3>
+                <p className="text-carnet-ink-mute">Croissance économique, emplois générés et développement industriel</p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">6. Risques et vulnérabilités</h3>
-                <p className="text-gray-600">Souveraineté en risque, capture institutionnelle et dépendance stratégique</p>
+                <h3 className="text-lg font-semibold text-carnet-ink mb-3">6. Risques et vulnérabilités</h3>
+                <p className="text-carnet-ink-mute">Souveraineté en risque, capture institutionnelle et dépendance stratégique</p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">7. Réponses et stratégies latino-américaines</h3>
-                <p className="text-gray-600">Diversification commerciale, intégration régionale et autonomie stratégique</p>
+                <h3 className="text-lg font-semibold text-carnet-ink mb-3">7. Réponses et stratégies latino-américaines</h3>
+                <p className="text-carnet-ink-mute">Diversification commerciale, intégration régionale et autonomie stratégique</p>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">8. Perspectives d'avenir</h3>
-                <p className="text-gray-600">Transition énergétique, économie verte et coopération triangulaire</p>
+                <h3 className="text-lg font-semibold text-carnet-ink mb-3">8. Perspectives d'avenir</h3>
+                <p className="text-carnet-ink-mute">Transition énergétique, économie verte et coopération triangulaire</p>
               </div>
             </div>
 
             <div className="mt-8 pt-6 border-t border-gray-200">
               <div className="flex gap-3">
                 <Link to="/formation/espagnol/civilisation/module10/vocabulaire">
-                  <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
+                  <Button variant="outline" className="border-gray-300 text-carnet-ink-soft hover:carnet-paper-plain px-4 py-2 rounded-md">
                     <Briefcase className="mr-2 h-4 w-4" />
                     Vocabulaire Géopolitique Chinois
                   </Button>
                 </Link>
                 <Button
                   variant="outline"
-                  className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md"
+                  className="border-gray-300 text-carnet-ink-soft hover:carnet-paper-plain px-4 py-2 rounded-md"
                   onClick={() => handleShowSubject(chinaSubject)}
                 >
                   <BookOpen className="mr-2 h-4 w-4" />
@@ -129,12 +129,12 @@ Conclusión – La principal lección es la tensión entre ganancias rápidas y 
             <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
               <div className="sticky top-0 bg-white border-b p-6 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-orange-100 hover:bg-orange-200 transition-colors">
-                    <BookOpen className="h-5 w-5 text-pr-orange-dark" />
+                  <div className="p-2 rounded-lg bg-[rgba(193,68,58,0.08)] hover:bg-[rgba(193,68,58,0.15)] transition-colors">
+                    <BookOpen className="h-5 w-5 text-carnet-red" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-gray-900">{selectedSubject.title}</h2>
-                    <p className="text-sm text-gray-600">Sujet rédigé - Formation Espagnol</p>
+                    <h2 className="text-xl font-lora text-carnet-ink">{selectedSubject.title}</h2>
+                    <p className="text-sm text-carnet-ink-mute">Sujet rédigé - Formation Espagnol</p>
                   </div>
                 </div>
                 <Button onClick={closeSubjectModal} variant="ghost" size="sm">
@@ -144,14 +144,14 @@ Conclusión – La principal lección es la tensión entre ganancias rápidas y 
 
               <div className="p-6">
                 <div className="prose max-w-none">
-                  <div className="whitespace-pre-wrap text-gray-800 leading-relaxed font-medium">
+                  <div className="whitespace-pre-wrap text-carnet-ink leading-relaxed font-medium">
                     {selectedSubject.content}
                   </div>
                 </div>
               </div>
 
-              <div className="sticky bottom-0 bg-gray-50 border-t p-4 flex justify-end">
-                <Button onClick={closeSubjectModal} className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white">
+              <div className="sticky bottom-0 carnet-paper-plain border-t p-4 flex justify-end">
+                <Button onClick={closeSubjectModal} className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper">
                   Fermer
                 </Button>
               </div>

@@ -297,6 +297,180 @@ const Chapitre10ProbabilitesEtConditionnementExercicesPage = () => {
           />
         </div>
 
+        <div>
+          <DifficultyHeader level="Module 4 — Système complet et formule des probabilités totales" />
+
+          <ExerciseCard
+            id="ex10"
+            title="Système complet d'événements"
+            difficulty="Niveau: Facile"
+            content={
+              <div className="space-y-2">
+                <p>Trois machines A, B, C produisent respectivement 30 %, 50 % et 20 % de la production totale. Les taux de défaut sont 4 %, 2 %, 5 %.</p>
+                <p>Quelle est la probabilité qu'une pièce prise au hasard soit défectueuse ?</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour calculer la probabilité d'un événement <LatexRenderer latex="D" /> via un système complet d'événements <LatexRenderer latex="(A, B, C)" />, on applique la formule des probabilités totales : <LatexRenderer latex="P(D) = \sum_i P(D \mid A_i) P(A_i)" />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="(A, B, C)" /> un système complet d'événements (les 3 machines partitionnent la production). On a :</p>
+                <LatexRenderer latex="P(A) = 0{,}30, \quad P(B) = 0{,}50, \quad P(C) = 0{,}20." />
+                <LatexRenderer latex="P(D \mid A) = 0{,}04, \quad P(D \mid B) = 0{,}02, \quad P(D \mid C) = 0{,}05." />
+                <p className="mt-2">D'où, par la formule des probabilités totales :</p>
+                <LatexRenderer latex="P(D) = 0{,}04 \cdot 0{,}30 + 0{,}02 \cdot 0{,}50 + 0{,}05 \cdot 0{,}20 = 0{,}012 + 0{,}010 + 0{,}010 = 0{,}032." />
+                <Astuce>
+                  Vérification : <LatexRenderer latex="P(A) + P(B) + P(C) = 1" />. ✓ Le système est bien complet.
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="P(D) = 3{,}2\%" />. La pièce a une probabilité de 3,2 % d'être défectueuse.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 5 — Indépendance d'événements" />
+
+          <ExerciseCard
+            id="ex11"
+            title="Indépendance mutuelle versus deux à deux"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-2">
+                <p>On lance deux pièces équilibrées. Soient les événements <LatexRenderer latex="A" /> = "la première donne pile", <LatexRenderer latex="B" /> = "la seconde donne pile", <LatexRenderer latex="C" /> = "les deux pièces donnent le même résultat".</p>
+                <p>1. Démontrer que <LatexRenderer latex="A, B, C" /> sont deux à deux indépendants.</p>
+                <p>2. Vérifier que <LatexRenderer latex="A, B, C" /> ne sont pas mutuellement indépendants.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Trois événements sont indépendants deux à deux si <LatexRenderer latex="P(A \cap B) = P(A) P(B)" /> pour chaque paire. Ils sont mutuellement indépendants si en plus <LatexRenderer latex="P(A \cap B \cap C) = P(A) P(B) P(C)" />. La distinction est subtile : l'indépendance deux à deux n'implique pas l'indépendance mutuelle.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="\Omega = \{PP, PF, FP, FF\}" /> équiprobable.</p>
+                <p>Or <LatexRenderer latex="A = \{PP, PF\}" />, <LatexRenderer latex="B = \{PP, FP\}" />, <LatexRenderer latex="C = \{PP, FF\}" />, et <LatexRenderer latex="P(A) = P(B) = P(C) = 1/2" />.</p>
+                <p className="mt-2"><strong>1. Indépendance deux à deux.</strong></p>
+                <LatexRenderer latex="P(A \cap B) = P(\{PP\}) = 1/4 = (1/2)(1/2) = P(A) P(B). \;\checkmark" />
+                <LatexRenderer latex="P(A \cap C) = P(\{PP\}) = 1/4 = P(A) P(C). \;\checkmark" />
+                <LatexRenderer latex="P(B \cap C) = P(\{PP\}) = 1/4 = P(B) P(C). \;\checkmark" />
+                <p className="mt-2">Donc <LatexRenderer latex="A, B, C" /> sont deux à deux indépendants.</p>
+                <p className="mt-2"><strong>2. Indépendance mutuelle.</strong> Or <LatexRenderer latex="A \cap B \cap C = \{PP\}" />, donc <LatexRenderer latex="P(A \cap B \cap C) = 1/4" />. Mais <LatexRenderer latex="P(A) P(B) P(C) = 1/8" />.</p>
+                <Astuce>
+                  Ce contre-exemple classique montre que l'indépendance mutuelle est strictement plus forte que l'indépendance deux à deux.
+                </Astuce>
+                <p className="mt-2">D'où <LatexRenderer latex="P(A \cap B \cap C) = 1/4 \ne 1/8 = P(A) P(B) P(C)" />. Donc <LatexRenderer latex="A, B, C" /> ne sont <strong>pas</strong> mutuellement indépendants.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="A, B, C" /> sont deux à deux indépendants mais pas mutuellement indépendants.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex12"
+            title="Théorème de Bayes — diagnostic médical"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-2">
+                <p>Une maladie touche 1 % de la population. Un test de dépistage est positif chez 99 % des malades et chez 5 % des non-malades.</p>
+                <p>Quelle est la probabilité d'être malade sachant que le test est positif ?</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Le théorème de Bayes inverse le conditionnement : <LatexRenderer latex="P(M \mid T) = P(T \mid M) P(M) / P(T)" />, où <LatexRenderer latex="P(T)" /> se calcule par la formule des probabilités totales.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="M" /> = "malade", <LatexRenderer latex="T" /> = "test positif". Données :</p>
+                <LatexRenderer latex="P(M) = 0{,}01, \quad P(\overline{M}) = 0{,}99, \quad P(T \mid M) = 0{,}99, \quad P(T \mid \overline{M}) = 0{,}05." />
+                <p className="mt-2"><strong>Probabilité totale.</strong> Or :</p>
+                <LatexRenderer latex="P(T) = P(T \mid M) P(M) + P(T \mid \overline{M}) P(\overline{M}) = 0{,}99 \cdot 0{,}01 + 0{,}05 \cdot 0{,}99 = 0{,}0099 + 0{,}0495 = 0{,}0594." />
+                <p className="mt-2"><strong>Bayes.</strong> D'où :</p>
+                <LatexRenderer latex="P(M \mid T) = \frac{P(T \mid M) P(M)}{P(T)} = \frac{0{,}0099}{0{,}0594} \approx 0{,}167 = 16{,}7\%." />
+                <Astuce>
+                  Résultat contre-intuitif : malgré un test fiable à 99%, la probabilité d'être réellement malade quand le test est positif n'est que de 17%. C'est dû à la rareté de la maladie (1%) qui domine la précision du test.
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="P(M \mid T) \approx 16{,}7\%" />. La précision du test seule ne suffit pas : la prévalence est cruciale dans l'interprétation d'un dépistage.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 6 — Formule des probabilités composées" />
+
+          <ExerciseCard
+            id="ex13"
+            title="Tirages sans remise — formule des probabilités composées"
+            difficulty="Niveau: Concours"
+            content={
+              <div className="space-y-2">
+                <p>Une urne contient 3 boules blanches et 5 boules noires. On tire successivement 3 boules sans remise.</p>
+                <p>Calculer la probabilité d'obtenir exactement 2 boules blanches.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour des tirages sans remise, on utilise la formule des probabilités composées <LatexRenderer latex="P(A_1 \cap \cdots \cap A_n) = P(A_1) P(A_2 \mid A_1) \cdots P(A_n \mid A_1 \cap \cdots \cap A_{n-1})" />. On somme ensuite sur tous les arrangements possibles donnant le résultat souhaité.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="B_i" /> = "la <LatexRenderer latex="i" />-ème boule est blanche" et <LatexRenderer latex="N_i" /> = "noire". On veut <LatexRenderer latex="P(\text{exactement 2 blanches sur 3})" />.</p>
+                <p className="mt-2">Cet événement correspond à 3 cas disjoints : <LatexRenderer latex="BBN" />, <LatexRenderer latex="BNB" />, <LatexRenderer latex="NBB" />.</p>
+                <p className="mt-2"><strong>Cas BBN.</strong> Par la formule des probabilités composées :</p>
+                <LatexRenderer latex="P(B_1 \cap B_2 \cap N_3) = P(B_1) P(B_2 \mid B_1) P(N_3 \mid B_1 \cap B_2) = \frac{3}{8} \cdot \frac{2}{7} \cdot \frac{5}{6} = \frac{30}{336}." />
+                <p className="mt-2"><strong>Symétrie des cas.</strong> Par calcul analogue, <LatexRenderer latex="P(BNB) = P(NBB) = 30/336" />. (Le numérateur reste <LatexRenderer latex="3 \cdot 2 \cdot 5 = 30" /> dans chaque cas.)</p>
+                <Astuce>
+                  C'est une caractéristique des tirages sans remise : la probabilité d'une séquence ne dépend que de la composition finale, pas de l'ordre. (En probabilité de séquence.)
+                </Astuce>
+                <p className="mt-2">D'où, par sommation :</p>
+                <LatexRenderer latex="P(\text{2 blanches}) = 3 \cdot \frac{30}{336} = \frac{90}{336} = \frac{15}{56}." />
+                <ConclusionBox>
+                  <LatexRenderer latex="P(\text{exactement 2 blanches sur 3 tirages sans remise}) = 15/56 \approx 26{,}8\%" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 7 — Limites de suites d'événements" />
+
+          <ExerciseCard
+            id="ex14"
+            title="Continuité monotone et limite d'événements"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-2">
+                <p>Soit <LatexRenderer latex="(A_n)_{n \in \mathbb{N}}" /> une suite croissante d'événements (i.e. <LatexRenderer latex="A_n \subset A_{n+1}" />). Posons <LatexRenderer latex="A = \bigcup_{n \in \mathbb{N}} A_n" />.</p>
+                <p>Démontrer que <LatexRenderer latex="P(A) = \lim_{n \to +\infty} P(A_n)" /> (continuité monotone de la probabilité).</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  La continuité monotone se démontre en décomposant <LatexRenderer latex="A" /> en une union disjointe de "couches" <LatexRenderer latex="B_n = A_n \setminus A_{n-1}" />, et en appliquant la sigma-additivité. C'est l'analogue probabiliste du théorème de convergence monotone.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="(A_n)" /> croissante. Posons <LatexRenderer latex="B_0 = A_0" /> et <LatexRenderer latex="B_n = A_n \setminus A_{n-1}" /> pour <LatexRenderer latex="n \ge 1" />.</p>
+                <p className="mt-2"><strong>Propriétés des <LatexRenderer latex="B_n" />.</strong> Or les <LatexRenderer latex="B_n" /> sont 2 à 2 disjoints (puisque <LatexRenderer latex="A_n" /> est croissante). De plus :</p>
+                <LatexRenderer latex="A_n = \bigsqcup_{k=0}^n B_k \quad \text{et} \quad A = \bigsqcup_{k=0}^{+\infty} B_k." />
+                <p className="mt-2"><strong>Application de la sigma-additivité.</strong> Par la sigma-additivité de <LatexRenderer latex="P" /> :</p>
+                <LatexRenderer latex="P(A) = \sum_{k=0}^{+\infty} P(B_k) = \lim_{n \to +\infty} \sum_{k=0}^n P(B_k) = \lim_{n \to +\infty} P(A_n)." />
+                <Astuce>
+                  L'analogue pour les suites décroissantes : si <LatexRenderer latex="A_n \supset A_{n+1}" />, alors <LatexRenderer latex="P(\bigcap_n A_n) = \lim_n P(A_n)" />. Cette propriété s'appelle la "continuité décroissante" de la probabilité.
+                </Astuce>
+                <ConclusionBox>
+                  Continuité monotone croissante : si <LatexRenderer latex="A_n \uparrow A" />, alors <LatexRenderer latex="P(A_n) \to P(A)" />. Ce résultat est crucial pour passer à la limite dans les calculs probabilistes.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
       </div>
     </MathChapterTemplate>
   );

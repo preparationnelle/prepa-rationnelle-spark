@@ -3,13 +3,13 @@ import { SchoolData } from "@/types/school";
 
 export const neomaData: SchoolData = {
   name: "NEOMA Business School",
-  shortDescription: "Entretien classique avec questionnaire (30 min), coefficient 12. Format structuré autour de la 'réussite responsable'.",
+  shortDescription: "Entretien classique avec questionnaire (25 min), coefficient 12. Format structuré autour de la 'réussite responsable'.",
   presentation: {
     title: "Présentation de l'entretien",
     content: [
-      "NEOMA (fusion Reims Management School et Rouen Business School) propose un entretien de personnalité classique d'environ 30 minutes (coefficient 12). Le format est très similaire à celui de l'ESCP: un questionnaire à remplir, que le jury lit et utilise comme base de discussion.",
+      "NEOMA (fusion Reims Management School et Rouen Business School) propose un entretien de personnalité classique de 25 minutes (coefficient 12). Le format est très similaire à celui de l'ESCP : un questionnaire à remplir, disponible sur le site des admissibles, que vous remettez en plusieurs exemplaires le jour J et que le jury utilise comme base de discussion.",
       "C'est un échange structuré autour de questions de motivation, de personnalité, de projet professionnel… Le questionnaire NEOMA est renouvelé chaque année mais change peu dans le fond.",
-      "Par exemple, le questionnaire 2024 pose des questions comme : « De quelle réalisation personnelle êtes-vous le(a) plus fier(e) ? Pourquoi ? », « Qu'attendez-vous du Programme Grande École de NEOMA ? », « Qu'appréciez-vous le plus et le moins dans le travail en équipe ? », « Avez-vous déjà fait preuve de créativité ? À quelle occasion ? », etc."
+      "Le questionnaire NEOMA comporte 9 questions, disponible sur le site des admissibles dès la publication des résultats d'admissibilité. Il porte sur des thèmes comme : vos réalisations dont vous êtes fier, ce que vous attendez du Programme Grande École de NEOMA, votre rapport au travail en équipe, vos expériences de créativité, vos engagements, votre projet professionnel. Le jury se sert de chaque réponse pour relancer l'échange et creuser."
     ],
     values: {
       title: "Valeurs et attentes de l'école",
@@ -23,7 +23,7 @@ export const neomaData: SchoolData = {
   keyPoints: [
     {
       title: "Format d'entretien",
-      description: "Entretien individuel de 30 minutes, coefficient 12"
+      description: "Entretien individuel de 25 minutes, coefficient 12"
     },
     {
       title: "Questionnaire préalable",
@@ -31,7 +31,7 @@ export const neomaData: SchoolData = {
     },
     {
       title: "Jury",
-      description: "Environ 3 personnes, ambiance cordiale et bienveillante"
+      description: "2 membres évaluateurs : 1 interne NEOMA + 1 externe (professionnel). Critères : motivation, ouverture d'esprit, écoute, qualité d'expression et d'argumentation"
     },
     {
       title: "Spécificité",
@@ -42,7 +42,7 @@ export const neomaData: SchoolData = {
     title: "Style de l'entretien",
     content: [
       "Le déroulement est bienveillant et sans surprise. Pas d'épreuves exotiques: c'est vous, trois jurés environ, et une discussion autour de votre parcours et de ce que vous avez écrit dans le questionnaire. L'ambiance peut varier légèrement selon le campus (Reims vs Rouen) mais en général les jurys NEOMA sont cordiaux.",
-      "Le temps étant standard (30 minutes), le jury prend le temps de creuser un peu chaque question du questionnaire. Par exemple, si vous avez écrit être fier d'une réalisation X, on va sûrement vous demander de la raconter en détail.",
+      "En 25 minutes, le jury (1 membre interne NEOMA + 1 externe) relance sur quasi chacune des 9 questions du questionnaire. Les critères d'évaluation officiels portent sur la motivation, l'ouverture d'esprit, la qualité d'écoute et la qualité d'expression et d'argumentation. Par exemple, si vous avez écrit être fier d'une réalisation X, on va vous demander de la raconter en détail avec la méthode STAR.",
       "S'il y a un point faible dans votre dossier, le jury peut l'aborder gentiment (« Pourquoi telle note en math un peu en dessous ? ») pour voir comment vous réagissez et si vous avez du recul.",
       "Globalement, c'est un entretien assez standard et positif. NEOMA n'est pas connue pour mettre une pression inutile. Ils savent qu'ils recrutent des personnalités qu'ils formeront pendant 3 ans sur deux campus où la cohésion est forte, donc ils cherchent des gens avec qui le courant passe bien."
     ]

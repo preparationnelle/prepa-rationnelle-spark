@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -8,7 +9,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import AnswerGeneratorPage from './AnswerGeneratorPage';
 import EMLyonGeneratorPage from './EMLyonGeneratorPage';
 import EDHECGeneratorPage from './EDHECGeneratorPage';
-import { Mic, MessageSquare, Target, ExternalLink, HelpCircle, PenTool, Shuffle, CheckCircle, Clock, RotateCcw, Play, Pause, Square, Volume2, ChevronDown, Loader2, VolumeX, Send, Award, AlertCircle, Lightbulb, TrendingUp } from 'lucide-react';
+import { Mic, MessageSquare, Target, ExternalLink, HelpCircle, PenTool, Shuffle, CheckCircle, Clock, RotateCcw, Play, Pause, Square, Volume2, ChevronDown, Loader2, VolumeX, Send, Award, AlertCircle, Lightbulb, TrendingUp, Home, ChevronRight } from 'lucide-react';
 import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -761,23 +762,38 @@ const UnifiedOralGeneratorPage = () => {
   const currentTool = tools.find(tool => tool.id === selectedTool);
 
   return (
-    <div className="min-h-screen bg-pr-gray-bg">
-      <div className="container mx-auto py-12 px-4 max-w-6xl">
-        {/* Hero charte PR avec bouton info */}
+    <div className="min-h-screen carnet-paper">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/generator" className="hover:text-carnet-red transition-colors">Générateurs</Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Oraux</span>
+          </div>
+        </div>
+      </nav>
+
+      <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-14 lg:py-16">
+        {/* Hero */}
         <div className="relative mb-12">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-pr-orange-pale text-pr-orange-dark px-3 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.08em] mb-6 font-dm-sans">
-              <Mic className="h-3.5 w-3.5" />
-              Oraux
+          <div className="max-w-[820px]">
+            <div className="carnet-eyebrow mb-5">Feedback IA · Oraux</div>
+            <div className="flex items-center gap-4 mb-5">
+              <div className="w-14 h-14 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                <Mic className="h-6 w-6 text-carnet-red" />
+              </div>
+              <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] text-carnet-ink tracking-tight">
+                Générateur <em className="font-lora italic text-carnet-red">Oraux</em>.
+              </h1>
             </div>
-            <h1 className="font-dm-serif text-4xl sm:text-5xl lg:text-6xl text-pr-black mb-5 leading-[1.05]">
-              Générateur <span className="text-pr-orange">Oraux</span>
-            </h1>
-            <div className="flex justify-center mb-6">
-              <div className="h-[3px] w-14 bg-pr-orange rounded-full" />
-            </div>
-            <p className="text-base sm:text-lg text-pr-gray-dark font-dm-sans leading-relaxed max-w-2xl mx-auto">
-              Génère tes réponses orales ou entraîne-toi avec des questions types.
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.6] text-carnet-ink-soft max-w-[640px]">
+              Génère tes réponses orales ou entraîne-toi avec des <span className="carnet-hl font-lora italic">questions types</span>.
             </p>
           </div>
 
@@ -787,19 +803,19 @@ const UnifiedOralGeneratorPage = () => {
               <Button
                 variant="outline"
                 size="icon"
-                className="absolute top-0 right-0 w-10 h-10 rounded-full border border-pr-orange/40 bg-white text-pr-orange-dark hover:bg-pr-orange hover:text-white hover:border-pr-orange transition-all duration-300"
+                className="absolute top-0 right-0 w-10 h-10 rounded-full border border-[rgba(193,68,58,0.25)] bg-carnet-paper-2 text-carnet-red hover:bg-carnet-red hover:text-carnet-paper hover:border-carnet-red transition-all duration-300"
               >
                 <HelpCircle className="h-5 w-5" />
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-md bg-white border border-pr-gray-light">
+            <DialogContent className="max-w-md bg-carnet-paper-2 border border-[rgba(78,55,30,0.18)]">
               <DialogHeader>
-                <DialogTitle className="font-dm-serif text-xl text-pr-black flex items-center gap-2">
-                  <HelpCircle className="h-5 w-5 text-pr-orange" />
-                  Comment ça marche ?
+                <DialogTitle className="font-lora text-[22px] text-carnet-ink flex items-center gap-2">
+                  <HelpCircle className="h-5 w-5 text-carnet-red" />
+                  Comment ça <em className="font-lora italic text-carnet-red">marche ?</em>
                 </DialogTitle>
               </DialogHeader>
-              <div className="space-y-4 font-dm-sans">
+              <div className="space-y-4 font-instrument">
                 <ol className="space-y-3">
                   {[
                     "Entre une question d'entretien classique comme « Parlez-moi de vous » ou « Quels sont vos défauts ? »",
@@ -808,14 +824,14 @@ const UnifiedOralGeneratorPage = () => {
                     'Utilise cette réponse comme base pour développer ta propre version personnalisée',
                   ].map((txt, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <span className="bg-pr-orange text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-semibold flex-shrink-0 mt-0.5">
+                      <span className="carnet-hand text-[22px] text-carnet-red leading-none font-semibold w-7 flex-shrink-0">
                         {i + 1}
                       </span>
-                      <span className="text-pr-gray-dark text-sm leading-relaxed">{txt}</span>
+                      <span className="text-carnet-ink-soft text-sm leading-relaxed">{txt}</span>
                     </li>
                   ))}
                 </ol>
-                <p className="text-xs text-pr-gray-mid italic border-t border-pr-gray-light pt-3">
+                <p className="text-xs text-carnet-ink-mute italic border-t border-dashed border-[rgba(78,55,30,0.18)] pt-3">
                   Note : toutes les anecdotes de storytelling seront mises en italique pour faciliter leur identification.
                 </p>
               </div>
@@ -825,18 +841,17 @@ const UnifiedOralGeneratorPage = () => {
 
         {/* Sélecteur d'outil */}
         <div className="mb-10">
-          <div className="max-w-2xl mx-auto bg-white rounded-2xl border border-pr-gray-light overflow-hidden">
-            <div className="h-[3px] w-full bg-pr-orange" />
+          <div className="max-w-2xl mx-auto carnet-card overflow-hidden">
             <div className="p-3">
               <Tabs
                 value={selectedTool}
                 onValueChange={(value: 'answer' | 'emlyon' | 'edhec' | 'practice') => setSelectedTool(value)}
                 className="w-full"
               >
-                <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 bg-pr-gray-bg border border-pr-gray-light p-1 rounded-xl h-auto">
+                <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] p-1 rounded-md h-auto">
                   <TabsTrigger
                     value="practice"
-                    className="flex items-center gap-2 data-[state=active]:bg-pr-orange data-[state=active]:text-white text-pr-gray-dark font-dm-sans text-sm rounded-lg transition-all py-2"
+                    className="flex items-center gap-2 data-[state=active]:bg-carnet-red data-[state=active]:text-carnet-paper text-carnet-ink-soft font-instrument text-sm rounded transition-all py-2"
                   >
                     <PenTool className="h-4 w-4" />
                     <span className="hidden sm:inline">Entraînement</span>
@@ -844,7 +859,7 @@ const UnifiedOralGeneratorPage = () => {
                   </TabsTrigger>
                   <TabsTrigger
                     value="answer"
-                    className="flex items-center gap-2 data-[state=active]:bg-pr-orange data-[state=active]:text-white text-pr-gray-dark font-dm-sans text-sm rounded-lg transition-all py-2"
+                    className="flex items-center gap-2 data-[state=active]:bg-carnet-red data-[state=active]:text-carnet-paper text-carnet-ink-soft font-instrument text-sm rounded transition-all py-2"
                   >
                     <MessageSquare className="h-4 w-4" />
                     <span className="hidden sm:inline">Entretien</span>
@@ -852,7 +867,7 @@ const UnifiedOralGeneratorPage = () => {
                   </TabsTrigger>
                   <TabsTrigger
                     value="emlyon"
-                    className="flex items-center gap-2 data-[state=active]:bg-pr-orange data-[state=active]:text-white text-pr-gray-dark font-dm-sans text-sm rounded-lg transition-all py-2"
+                    className="flex items-center gap-2 data-[state=active]:bg-carnet-red data-[state=active]:text-carnet-paper text-carnet-ink-soft font-instrument text-sm rounded transition-all py-2"
                   >
                     <Target className="h-4 w-4" />
                     <span className="hidden sm:inline">EM Lyon</span>
@@ -860,7 +875,7 @@ const UnifiedOralGeneratorPage = () => {
                   </TabsTrigger>
                   <TabsTrigger
                     value="edhec"
-                    className="flex items-center gap-2 data-[state=active]:bg-pr-orange data-[state=active]:text-white text-pr-gray-dark font-dm-sans text-sm rounded-lg transition-all py-2"
+                    className="flex items-center gap-2 data-[state=active]:bg-carnet-red data-[state=active]:text-carnet-paper text-carnet-ink-soft font-instrument text-sm rounded transition-all py-2"
                   >
                     <ExternalLink className="h-4 w-4" />
                     <span className="hidden sm:inline">EDHEC</span>

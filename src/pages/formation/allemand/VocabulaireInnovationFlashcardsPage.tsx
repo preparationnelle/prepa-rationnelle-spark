@@ -197,134 +197,134 @@ const VocabulaireInnovationFlashcardsPage = () => {
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      "Innovation générale": "bg-cyan-100 text-cyan-800",
-      "Technologie générale": "bg-teal-100 text-teal-800",
+      "Innovation générale": "bg-carnet-rule/30 text-carnet-ink",
+      "Technologie générale": "bg-carnet-rule/30 text-carnet-ink",
       "Souveraineté technologique": "bg-carnet-red/10 text-carnet-red-deep",
-      "Transformation numérique": "bg-sky-100 text-sky-800",
-      "Intelligence artificielle": "bg-purple-100 text-purple-800",
-      "Cybersécurité": "bg-red-100 text-red-800",
-      "Protection des données": "bg-emerald-100 text-emerald-800",
-      "Stratégies IA": "bg-violet-100 text-violet-800",
-      "Concurrence technologique": "bg-amber-100 text-orange-800",
-      "Défis numériques": "bg-yellow-100 text-yellow-800",
-      "Indicateurs numériques": "bg-lime-100 text-lime-800",
-      "Géopolitique technologique": "bg-indigo-100 text-indigo-800",
-      "Développement IA": "bg-purple-100 text-purple-800",
-      "Régulation des données": "bg-green-100 text-green-800",
+      "Transformation numérique": "bg-carnet-rule/30 text-carnet-ink",
+      "Intelligence artificielle": "bg-carnet-rule/30 text-carnet-ink",
+      "Cybersécurité": "bg-carnet-rule/30 text-carnet-ink",
+      "Protection des données": "bg-carnet-rule/30 text-carnet-ink",
+      "Stratégies IA": "bg-carnet-rule/30 text-carnet-ink",
+      "Concurrence technologique": "bg-carnet-rule/30 text-carnet-ink",
+      "Défis numériques": "bg-carnet-rule/30 text-carnet-ink",
+      "Indicateurs numériques": "bg-carnet-rule/30 text-carnet-ink",
+      "Géopolitique technologique": "bg-carnet-rule/30 text-carnet-ink",
+      "Développement IA": "bg-carnet-rule/30 text-carnet-ink",
+      "Régulation des données": "bg-carnet-rule/30 text-carnet-ink",
       "Souveraineté numérique": "bg-carnet-red/10 text-carnet-red-deep",
-      "Menaces cybernétiques": "bg-red-100 text-red-800",
-      "Sécurité des infrastructures": "bg-amber-100 text-orange-800",
-      "Éthique IA": "bg-pink-100 text-pink-800",
-      "Approches nationales": "bg-amber-100 text-amber-800",
-      "Données massives": "bg-cyan-100 text-cyan-800",
-      "Technologies IA": "bg-purple-100 text-purple-800",
-      "Technologies fondamentales": "bg-slate-100 text-slate-800",
-      "Automatisation": "bg-gray-100 text-gray-800",
-      "Robotique": "bg-zinc-100 text-zinc-800",
+      "Menaces cybernétiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Sécurité des infrastructures": "bg-carnet-rule/30 text-carnet-ink",
+      "Éthique IA": "bg-carnet-rule/30 text-carnet-ink",
+      "Approches nationales": "bg-carnet-rule/30 text-carnet-ink",
+      "Données massives": "bg-carnet-rule/30 text-carnet-ink",
+      "Technologies IA": "bg-carnet-rule/30 text-carnet-ink",
+      "Technologies fondamentales": "bg-carnet-paper-2 text-carnet-ink",
+      "Automatisation": "bg-carnet-paper-2 text-carnet-ink",
+      "Robotique": "bg-carnet-paper-2 text-carnet-ink",
       "Industrie 4.0": "bg-carnet-red/10 text-carnet-red-deep",
-      "Manufacturing intelligent": "bg-cyan-100 text-cyan-800",
-      "IoT et connectivité": "bg-teal-100 text-teal-800",
-      "Cloud et infrastructure": "bg-sky-100 text-sky-800",
-      "Technologies émergentes": "bg-violet-100 text-violet-800",
-      "Monnaies numériques": "bg-yellow-100 text-yellow-800",
-      "Réseaux télécoms": "bg-green-100 text-green-800",
-      "Infrastructure réseau": "bg-emerald-100 text-emerald-800",
+      "Manufacturing intelligent": "bg-carnet-rule/30 text-carnet-ink",
+      "IoT et connectivité": "bg-carnet-rule/30 text-carnet-ink",
+      "Cloud et infrastructure": "bg-carnet-rule/30 text-carnet-ink",
+      "Technologies émergentes": "bg-carnet-rule/30 text-carnet-ink",
+      "Monnaies numériques": "bg-carnet-rule/30 text-carnet-ink",
+      "Réseaux télécoms": "bg-carnet-rule/30 text-carnet-ink",
+      "Infrastructure réseau": "bg-carnet-rule/30 text-carnet-ink",
       "Stratégies numériques": "bg-carnet-red/10 text-carnet-red-deep",
-      "Politiques européennes": "bg-indigo-100 text-indigo-800",
-      "Projets européens": "bg-purple-100 text-purple-800",
-      "Développement logiciel": "bg-cyan-100 text-cyan-800",
-      "Matériel informatique": "bg-slate-100 text-slate-800",
-      "Technologies avancées": "bg-violet-100 text-violet-800",
-      "R&D": "bg-pink-100 text-pink-800",
-      "Propriété intellectuelle": "bg-amber-100 text-amber-800",
-      "Écosystème startup": "bg-lime-100 text-lime-800",
-      "Startups valorisées": "bg-green-100 text-green-800",
-      "Financement innovation": "bg-emerald-100 text-emerald-800",
-      "Hubs d'innovation": "bg-teal-100 text-teal-800",
+      "Politiques européennes": "bg-carnet-rule/30 text-carnet-ink",
+      "Projets européens": "bg-carnet-rule/30 text-carnet-ink",
+      "Développement logiciel": "bg-carnet-rule/30 text-carnet-ink",
+      "Matériel informatique": "bg-carnet-paper-2 text-carnet-ink",
+      "Technologies avancées": "bg-carnet-rule/30 text-carnet-ink",
+      "R&D": "bg-carnet-rule/30 text-carnet-ink",
+      "Propriété intellectuelle": "bg-carnet-rule/30 text-carnet-ink",
+      "Écosystème startup": "bg-carnet-rule/30 text-carnet-ink",
+      "Startups valorisées": "bg-carnet-rule/30 text-carnet-ink",
+      "Financement innovation": "bg-carnet-rule/30 text-carnet-ink",
+      "Hubs d'innovation": "bg-carnet-rule/30 text-carnet-ink",
       "Organismes de recherche": "bg-carnet-red/10 text-carnet-red-deep",
-      "Acteurs cybersécurité": "bg-red-100 text-red-800",
-      "Types d'attaques": "bg-amber-100 text-orange-800",
-      "Malwares": "bg-red-100 text-red-800",
-      "Protection cybernétique": "bg-green-100 text-green-800",
-      "Sécurité cryptographique": "bg-emerald-100 text-emerald-800",
-      "Authentification": "bg-cyan-100 text-cyan-800",
-      "Organismes sécuritaires": "bg-gray-100 text-gray-800",
-      "Infrastructures stratégiques": "bg-amber-100 text-orange-800",
-      "Secteurs critiques": "bg-yellow-100 text-yellow-800",
-      "Instances éthiques": "bg-pink-100 text-pink-800",
-      "Problèmes éthiques IA": "bg-rose-100 text-rose-800",
-      "Principes éthiques": "bg-purple-100 text-purple-800",
-      "Cadre réglementaire": "bg-indigo-100 text-indigo-800",
-      "Régulation IA": "bg-violet-100 text-violet-800",
+      "Acteurs cybersécurité": "bg-carnet-rule/30 text-carnet-ink",
+      "Types d'attaques": "bg-carnet-rule/30 text-carnet-ink",
+      "Malwares": "bg-carnet-rule/30 text-carnet-ink",
+      "Protection cybernétique": "bg-carnet-rule/30 text-carnet-ink",
+      "Sécurité cryptographique": "bg-carnet-rule/30 text-carnet-ink",
+      "Authentification": "bg-carnet-rule/30 text-carnet-ink",
+      "Organismes sécuritaires": "bg-carnet-paper-2 text-carnet-ink",
+      "Infrastructures stratégiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Secteurs critiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Instances éthiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Problèmes éthiques IA": "bg-carnet-rule/30 text-carnet-ink",
+      "Principes éthiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Cadre réglementaire": "bg-carnet-rule/30 text-carnet-ink",
+      "Régulation IA": "bg-carnet-rule/30 text-carnet-ink",
       "Classification IA": "bg-carnet-red/10 text-carnet-red-deep",
-      "Types d'IA": "bg-cyan-100 text-cyan-800",
-      "Applications IA": "bg-teal-100 text-teal-800",
-      "Technologies controversées": "bg-red-100 text-red-800",
-      "Risques sociétaux": "bg-amber-100 text-orange-800",
-      "Éthique numérique": "bg-pink-100 text-pink-800",
-      "Politiques publiques": "bg-amber-100 text-amber-800",
-      "Gouvernement actuel": "bg-lime-100 text-lime-800",
-      "Périodes politiques": "bg-yellow-100 text-yellow-800",
-      "Institutions gouvernementales": "bg-green-100 text-green-800",
-      "Performance numérique": "bg-sky-100 text-sky-800",
-      "Métriques numériques": "bg-cyan-100 text-cyan-800",
+      "Types d'IA": "bg-carnet-rule/30 text-carnet-ink",
+      "Applications IA": "bg-carnet-rule/30 text-carnet-ink",
+      "Technologies controversées": "bg-carnet-rule/30 text-carnet-ink",
+      "Risques sociétaux": "bg-carnet-rule/30 text-carnet-ink",
+      "Éthique numérique": "bg-carnet-rule/30 text-carnet-ink",
+      "Politiques publiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Gouvernement actuel": "bg-carnet-rule/30 text-carnet-ink",
+      "Périodes politiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Institutions gouvernementales": "bg-carnet-rule/30 text-carnet-ink",
+      "Performance numérique": "bg-carnet-rule/30 text-carnet-ink",
+      "Métriques numériques": "bg-carnet-rule/30 text-carnet-ink",
       "Administration numérique": "bg-carnet-red/10 text-carnet-red-deep",
-      "Services numériques": "bg-teal-100 text-teal-800",
-      "Inégalités numériques": "bg-red-100 text-red-800",
-      "Couverture réseau": "bg-emerald-100 text-emerald-800",
-      "Télécommunications": "bg-green-100 text-green-800",
-      "Technologies spatiales": "bg-violet-100 text-violet-800",
-      "Secteur spatial": "bg-purple-100 text-purple-800",
-      "Organisations spatiales": "bg-indigo-100 text-indigo-800",
-      "Dépendances stratégiques": "bg-amber-100 text-orange-800",
-      "Entreprises chinoises": "bg-red-100 text-red-800",
-      "Entreprises technologiques": "bg-slate-100 text-slate-800",
-      "Semiconducteurs": "bg-gray-100 text-gray-800",
-      "Politiques semiconducteurs": "bg-zinc-100 text-zinc-800",
-      "Soutien à l'innovation": "bg-lime-100 text-lime-800",
-      "Écosystèmes innovation": "bg-green-100 text-green-800",
-      "Références mondiales": "bg-amber-100 text-amber-800",
+      "Services numériques": "bg-carnet-rule/30 text-carnet-ink",
+      "Inégalités numériques": "bg-carnet-rule/30 text-carnet-ink",
+      "Couverture réseau": "bg-carnet-rule/30 text-carnet-ink",
+      "Télécommunications": "bg-carnet-rule/30 text-carnet-ink",
+      "Technologies spatiales": "bg-carnet-rule/30 text-carnet-ink",
+      "Secteur spatial": "bg-carnet-rule/30 text-carnet-ink",
+      "Organisations spatiales": "bg-carnet-rule/30 text-carnet-ink",
+      "Dépendances stratégiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Entreprises chinoises": "bg-carnet-rule/30 text-carnet-ink",
+      "Entreprises technologiques": "bg-carnet-paper-2 text-carnet-ink",
+      "Semiconducteurs": "bg-carnet-paper-2 text-carnet-ink",
+      "Politiques semiconducteurs": "bg-carnet-paper-2 text-carnet-ink",
+      "Soutien à l'innovation": "bg-carnet-rule/30 text-carnet-ink",
+      "Écosystèmes innovation": "bg-carnet-rule/30 text-carnet-ink",
+      "Références mondiales": "bg-carnet-rule/30 text-carnet-ink",
       "Initiatives nationales": "bg-carnet-red/10 text-carnet-red-deep"
     };
-    return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
+    return colors[category as keyof typeof colors] || "bg-carnet-paper-2 text-carnet-ink";
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-teal-50">
+    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale via-white to-pr-orange-soft">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-40 bg-carnet-paper-2/90 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper-2/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center text-xs font-medium text-carnet-ink-soft">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/allemand" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <Link to="/formation/allemand" className="hover:text-carnet-ink transition-colors">
               Formation Allemand
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/allemand/civilisation" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <Link to="/formation/allemand/civilisation" className="hover:text-carnet-ink transition-colors">
               Civilisation
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Vocabulaire Innovation</span>
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <span className="text-carnet-ink font-bold">Vocabulaire Innovation</span>
           </div>
         </div>
       </nav>
 
       {/* Arrière-plan animé */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -z-10 -top-40 -right-40 w-80 h-80 bg-cyan-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div className="absolute -z-10 -bottom-40 -left-40 w-80 h-80 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-sky-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
+        <div className="absolute -z-10 -top-40 -right-40 w-80 h-80 bg-carnet-rule/30 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+        <div className="absolute -z-10 -bottom-40 -left-40 w-80 h-80 bg-carnet-rule/30 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-carnet-rule/30 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
       </div>
 
       <div className="container mx-auto px-4 py-8 relative z-10">
         {/* En-tête */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-cyan-600 text-white">
+          <h1 className="text-4xl font-bold text-carnet-ink mb-4 flex items-center justify-center gap-3">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Vocabulaire Innovation et Technologie
@@ -335,19 +335,19 @@ const VocabulaireInnovationFlashcardsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">{cards.length} mots</Badge>
             <Badge variant="outline">Module 8 - Innovation und Technologie</Badge>
-            <Badge className="bg-cyan-600">Flashcards</Badge>
+            <Badge className="bg-pr-orange-dark">Flashcards</Badge>
           </div>
         </div>
 
         {/* Barre de progrès */}
         <div className="max-w-2xl mx-auto mb-6">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-700">Progression</span>
-            <span className="text-sm font-medium text-cyan-600">{currentIndex + 1} / {cards.length}</span>
+            <span className="text-sm font-medium text-carnet-ink-soft">Progression</span>
+            <span className="text-sm font-medium text-pr-orange-dark">{currentIndex + 1} / {cards.length}</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <div className="w-full bg-carnet-rule/40 rounded-full h-2.5">
             <div 
-              className="bg-gradient-to-r from-cyan-500 to-teal-500 h-2.5 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-pr-orange to-pr-orange-dark h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -359,7 +359,7 @@ const VocabulaireInnovationFlashcardsPage = () => {
             <Button
               onClick={shuffleCards}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <Shuffle className="h-4 w-4" />
               Mélanger (S)
@@ -367,7 +367,7 @@ const VocabulaireInnovationFlashcardsPage = () => {
             <Button
               onClick={resetCards}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <RotateCcw className="h-4 w-4" />
               Recommencer (R)
@@ -375,7 +375,7 @@ const VocabulaireInnovationFlashcardsPage = () => {
             <Button
               onClick={() => setShowHelp(!showHelp)}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <Lightbulb className="h-4 w-4" />
               Aide
@@ -384,14 +384,14 @@ const VocabulaireInnovationFlashcardsPage = () => {
 
           {/* Aide aux raccourcis */}
           {showHelp && (
-            <Card className="mb-4 bg-cyan-50 border-cyan-200">
+            <Card className="mb-4 bg-pr-orange-pale border-pr-orange-soft">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-cyan-900 mb-3">Raccourcis clavier :</h3>
-                <div className="grid grid-cols-2 gap-2 text-sm text-cyan-700">
-                  <div><kbd className="bg-cyan-100 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-cyan-100 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
-                  <div><kbd className="bg-cyan-100 px-2 py-1 rounded">←</kbd> <kbd className="bg-cyan-100 px-2 py-1 rounded">→</kbd> : Navigation</div>
-                  <div><kbd className="bg-cyan-100 px-2 py-1 rounded">S</kbd> : Mélanger</div>
-                  <div><kbd className="bg-cyan-100 px-2 py-1 rounded">R</kbd> : Recommencer</div>
+                <h3 className="font-semibold text-carnet-ink mb-3">Raccourcis clavier :</h3>
+                <div className="grid grid-cols-2 gap-2 text-sm text-pr-orange-dark">
+                  <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-carnet-rule/30 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
+                  <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">←</kbd> <kbd className="bg-carnet-rule/30 px-2 py-1 rounded">→</kbd> : Navigation</div>
+                  <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">S</kbd> : Mélanger</div>
+                  <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">R</kbd> : Recommencer</div>
                 </div>
               </CardContent>
             </Card>
@@ -401,7 +401,7 @@ const VocabulaireInnovationFlashcardsPage = () => {
         {/* Carte principale */}
         <div className="max-w-2xl mx-auto mb-6">
           <Card 
-            className="h-80 cursor-pointer transform transition-all duration-500 hover:scale-105 bg-white/90 backdrop-blur-sm shadow-xl"
+            className="h-80 cursor-pointer transform transition-all duration-500 hover:scale-105 bg-carnet-paper-2/90 backdrop-blur-sm shadow-xl"
             onClick={() => setIsFlipped(!isFlipped)}
           >
             <CardContent className="h-full flex flex-col justify-center items-center p-8 relative">
@@ -416,30 +416,30 @@ const VocabulaireInnovationFlashcardsPage = () => {
               <div className="absolute -z-10 top-4 left-4 flex items-center gap-2">
                 {isFlipped ? (
                   <>
-                    <Eye className="h-4 w-4 text-cyan-600" />
-                    <span className="text-sm font-medium text-cyan-600">Allemand</span>
+                    <Eye className="h-4 w-4 text-pr-orange-dark" />
+                    <span className="text-sm font-medium text-pr-orange-dark">Allemand</span>
                   </>
                 ) : (
                   <>
-                    <EyeOff className="h-4 w-4 text-cyan-600" />
-                    <span className="text-sm font-medium text-cyan-600">Français</span>
+                    <EyeOff className="h-4 w-4 text-pr-orange-dark" />
+                    <span className="text-sm font-medium text-pr-orange-dark">Français</span>
                   </>
                 )}
               </div>
 
               {/* Contenu de la carte */}
               <div className="text-center space-y-4">
-                <div className="text-3xl font-bold text-gray-900 mb-6">
+                <div className="text-3xl font-bold text-carnet-ink mb-6">
                   {isFlipped ? currentCard.german : currentCard.french}
                 </div>
                 
                 {isFlipped && (
-                  <div className="text-lg text-gray-600 bg-gray-50 rounded-lg p-4">
+                  <div className="text-lg text-carnet-ink-soft bg-carnet-paper-2 rounded-lg p-4">
                     <strong>Français :</strong> {currentCard.french}
                   </div>
                 )}
                 
-                <div className="text-sm text-gray-500 text-center">
+                <div className="text-sm text-carnet-ink-mute text-center">
                   Cliquez ou appuyez sur Espace pour retourner
                 </div>
               </div>
@@ -453,20 +453,20 @@ const VocabulaireInnovationFlashcardsPage = () => {
             <Button
               onClick={goToPrevious}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white px-6 py-3"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 px-6 py-3"
             >
               <ChevronLeft className="h-5 w-5" />
               Précédent
             </Button>
             
-            <div className="text-sm text-gray-600 bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2">
+            <div className="text-sm text-carnet-ink-soft bg-carnet-paper-2/80 backdrop-blur-sm rounded-lg px-4 py-2">
               {currentIndex + 1} sur {cards.length}
             </div>
             
             <Button
               onClick={goToNext}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white px-6 py-3"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 px-6 py-3"
             >
               Suivant
               <ChevronRightIcon className="h-5 w-5" />
@@ -476,13 +476,13 @@ const VocabulaireInnovationFlashcardsPage = () => {
 
         {/* Section informative */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-cyan-200 bg-gradient-to-r from-cyan-50 to-teal-50 shadow-lg">
+          <Card className="border-2 border-pr-orange-soft bg-gradient-to-r from-pr-orange-pale to-pr-orange-soft shadow-lg">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-cyan-900 mb-4">💡 Conseils pour l'apprentissage</h3>
+              <h3 className="text-xl font-bold text-carnet-ink mb-4">💡 Conseils pour l'apprentissage</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-cyan-800">Technique de révision :</h4>
-                  <ul className="text-sm text-cyan-700 space-y-1">
+                  <h4 className="font-semibold text-carnet-ink">Technique de révision :</h4>
+                  <ul className="text-sm text-pr-orange-dark space-y-1">
                     <li>• Commencez par le français (plus familier)</li>
                     <li>• Tentez de deviner l'allemand avant de retourner</li>
                     <li>• Répétez à voix haute pour la prononciation</li>
@@ -490,8 +490,8 @@ const VocabulaireInnovationFlashcardsPage = () => {
                   </ul>
                 </div>
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-cyan-800">Pour les concours :</h4>
-                  <ul className="text-sm text-cyan-700 space-y-1">
+                  <h4 className="font-semibold text-carnet-ink">Pour les concours :</h4>
+                  <ul className="text-sm text-pr-orange-dark space-y-1">
                     <li>• Vocabulaire essentiel pour l'IA et l'innovation</li>
                     <li>• Termes techniques de la cybersécurité</li>
                     <li>• Base indispensable pour Module 8 - Innovation und Technologie</li>

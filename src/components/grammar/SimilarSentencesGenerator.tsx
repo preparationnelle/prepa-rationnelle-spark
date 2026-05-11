@@ -95,7 +95,7 @@ export const SimilarSentencesGenerator: React.FC<SimilarSentencesGeneratorProps>
   };
 
   return (
-    <Card className="mt-6 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50">
+    <Card className="mt-6 border-amber-200 bg-gradient-to-br from-amber-50 to-[rgba(193,68,58,0.05)]">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-amber-800">
           <Target className="h-5 w-5" />

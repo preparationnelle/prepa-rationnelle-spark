@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { Home, ChevronRight, Layers3, ArrowRight } from 'lucide-react';
 
 const Block: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
-  <section className="bg-white rounded-xl shadow-sm border p-6 mb-6">
-    <h2 className="text-xl font-semibold text-gray-900 mb-2">{title}</h2>
-    <div className="prose prose-sm max-w-none text-gray-700">{children}</div>
+  <section className="bg-carnet-paper-2 rounded-xl shadow-sm border p-6 mb-6">
+    <h2 className="text-xl font-semibold text-carnet-ink mb-2">{title}</h2>
+    <div className="prose prose-sm max-w-none text-carnet-ink-soft">{children}</div>
   </section>
 );
 
@@ -13,19 +13,19 @@ const StructureDissertationPage: React.FC = () => {
   return (
     <div className="relative">
       {/* Breadcrumb */}
-      <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
+      <div className="sticky top-0 z-40 bg-carnet-paper/90 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-gray-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-800 transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/esh" className="hover:text-gray-800 transition-colors">Formation ESH ECG</Link>
+            <Link to="/formation/esh" className="hover:text-carnet-ink transition-colors">Formation ESH ECG</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/esh/methodologie" className="hover:text-gray-800 transition-colors">Méthodologie</Link>
+            <Link to="/formation/esh/methodologie" className="hover:text-carnet-ink transition-colors">Méthodologie</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <span className="text-gray-800 font-medium">Structure de la dissertation</span>
+            <span className="text-carnet-ink font-medium">Structure de la dissertation</span>
           </div>
         </div>
       </div>
@@ -34,12 +34,12 @@ const StructureDissertationPage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-pr-orange-pale rounded-full flex items-center justify-center border border-carnet-red/30">
+            <div className="w-12 h-12 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center border border-carnet-red/30">
               <Layers3 className="h-6 w-6 text-carnet-red" />
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">La structure d’une dissertation d’économie : du plan à la conclusion</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-carnet-ink">La structure d’une dissertation d’économie : du plan à la conclusion</h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="font-instrument text-[16px] text-carnet-ink-soft leading-[1.6] max-w-4xl mx-auto leading-relaxed">
             Rigueur et clarté: une méthode pas-à-pas pour annoncer le plan, construire trois parties solides, et conclure efficacement.
           </p>
         </div>

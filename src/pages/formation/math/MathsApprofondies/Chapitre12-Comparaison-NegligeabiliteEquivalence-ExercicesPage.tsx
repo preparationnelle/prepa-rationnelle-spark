@@ -348,6 +348,180 @@ const Chapitre12ComparaisonNegligeabiliteEquivalenceExercicesPage = () => {
           }
         />
 
+        <DifficultyHeader level="Niveau : Facile — Manipulation des notations o, O, ~" />
+
+        <ExerciseCard
+          id="12-7"
+          title="Croissances comparées classiques"
+          difficulty="Niveau: Facile"
+          content={
+            <div className="space-y-3">
+              <p>Démontrer les croissances comparées suivantes en <LatexRenderer latex="+\infty" /> :</p>
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li><LatexRenderer latex="\ln x = o(x^\alpha)" /> pour tout <LatexRenderer latex="\alpha > 0" /></li>
+                <li><LatexRenderer latex="x^\alpha = o(e^x)" /> pour tout <LatexRenderer latex="\alpha \in \mathbb{R}" /></li>
+              </ul>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Les croissances comparées sont les outils-clés pour majorer ou minorer les fonctions à l'infini. On les démontre via la méthode standard : étudier les variations de <LatexRenderer latex="f(x)/g(x)" /> ou utiliser la dérivée de la fonction quotient.
+              </PointMethodo>
+              <p><strong>1. <LatexRenderer latex="\ln x = o(x^\alpha)" />.</strong> Posons <LatexRenderer latex="f(x) = \ln x / x^\alpha" /> pour <LatexRenderer latex="x > 0" />. Or :</p>
+              <LatexRenderer latex="f'(x) = \frac{x^{\alpha - 1} - \alpha x^{\alpha - 1} \ln x}{x^{2\alpha}} = \frac{1 - \alpha \ln x}{x^{\alpha + 1}}." />
+              <p className="mt-2">D'où <LatexRenderer latex="f' < 0" /> pour <LatexRenderer latex="x > e^{1/\alpha}" />, donc <LatexRenderer latex="f" /> est décroissante au-delà. Sa limite est nécessairement <LatexRenderer latex="\ge 0" />. Pour montrer qu'elle est nulle :</p>
+              <p>Soit <LatexRenderer latex="x = e^t" /> avec <LatexRenderer latex="t \to +\infty" /> : <LatexRenderer latex="f(e^t) = t / e^{\alpha t} \to 0" /> par croissance exponentielle. D'où <LatexRenderer latex="f(x) \to 0" /> et <LatexRenderer latex="\ln x = o(x^\alpha)" />.</p>
+              <Astuce>
+                Méthode alternative : utiliser <LatexRenderer latex="\ln x \le 2(\sqrt{x} - 1) \le 2\sqrt{x}" /> pour <LatexRenderer latex="x \ge 1" /> (inégalité par <LatexRenderer latex="\ln' \le 1/2 \cdot t^{-1/2}" />), puis <LatexRenderer latex="2\sqrt{x}/x^\alpha = 2/x^{\alpha - 1/2} \to 0" /> pour <LatexRenderer latex="\alpha > 1/2" />.
+              </Astuce>
+              <p className="mt-2"><strong>2. <LatexRenderer latex="x^\alpha = o(e^x)" />.</strong> Posons <LatexRenderer latex="g(x) = x^\alpha / e^x" />. Par <LatexRenderer latex="e^x \ge \sum_{k=0}^n x^k/k!" />, en prenant <LatexRenderer latex="n = \lceil \alpha \rceil + 1" /> :</p>
+              <LatexRenderer latex="e^x \ge x^{n}/n! \quad \Rightarrow \quad x^\alpha/e^x \le x^\alpha \cdot n! / x^n \to 0" />
+              <p className="mt-2">car <LatexRenderer latex="\alpha < n" />.</p>
+              <ConclusionBox>
+                <LatexRenderer latex="\ln x = o(x^\alpha)" /> et <LatexRenderer latex="x^\alpha = o(e^x)" />. Ordre des croissances : <LatexRenderer latex="\ln \ll x^\alpha \ll e^x" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <DifficultyHeader level="Niveau : Intermédiaire — Équivalents et négligeabilité" />
+
+        <ExerciseCard
+          id="12-8"
+          title="Équivalents en 0 par DL"
+          difficulty="Niveau: Intermédiaire"
+          content={
+            <div className="space-y-3">
+              <p>Déterminer un équivalent simple en 0 pour chacune des fonctions :</p>
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li><LatexRenderer latex="f(x) = \tan x - \sin x" /></li>
+                <li><LatexRenderer latex="g(x) = (1 + x)^{1/x} - e" /></li>
+              </ul>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Pour trouver un équivalent en 0, on développe à un ordre suffisant pour faire apparaître le premier terme non nul. La règle : développer à l'ordre minimum où la différence ne s'annule pas.
+              </PointMethodo>
+              <p><strong>1. f(x) = tan x − sin x.</strong> Soit les DL à l'ordre 3 en 0 :</p>
+              <LatexRenderer latex="\tan x = x + x^3/3 + o(x^3), \quad \sin x = x - x^3/6 + o(x^3)." />
+              <p className="mt-2">D'où <LatexRenderer latex="f(x) = (x^3/3) - (-x^3/6) + o(x^3) = x^3/3 + x^3/6 + o(x^3) = x^3/2 + o(x^3)" />.</p>
+              <p className="mt-2">Ainsi <LatexRenderer latex="\tan x - \sin x \sim x^3/2" /> en 0.</p>
+              <Astuce>
+                Pour <LatexRenderer latex="(1+x)^{1/x}" /> en 0 : passer par l'exponentielle <LatexRenderer latex="(1+x)^{1/x} = e^{\ln(1+x)/x}" /> et utiliser <LatexRenderer latex="\ln(1+x)/x = 1 - x/2 + x^2/3 + o(x^2)" />.
+              </Astuce>
+              <p className="mt-2"><strong>2. g(x) = (1+x)^(1/x) - e.</strong> Or <LatexRenderer latex="(1+x)^{1/x} = \exp(\ln(1+x)/x) = \exp(1 - x/2 + x^2/3 + o(x^2))" />.</p>
+              <LatexRenderer latex="= e \cdot \exp(-x/2 + x^2/3 + o(x^2)) = e \cdot \left(1 - x/2 + x^2/3 + (x/2)^2/2 + o(x^2)\right) = e\left(1 - x/2 + 11x^2/24 + o(x^2)\right)." />
+              <p className="mt-2">D'où <LatexRenderer latex="g(x) = e \cdot (-x/2 + 11x^2/24 + o(x^2)) \sim -e x/2" /> en 0.</p>
+              <ConclusionBox>
+                <LatexRenderer latex="\tan x - \sin x \sim x^3/2" /> et <LatexRenderer latex="(1+x)^{1/x} - e \sim -ex/2" /> en 0.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <ExerciseCard
+          id="12-9"
+          title="Étude asymptotique d'une suite récurrente"
+          difficulty="Niveau: Intermédiaire"
+          content={
+            <div className="space-y-3">
+              <p>Soit <LatexRenderer latex="(u_n)" /> définie par <LatexRenderer latex="u_0 = 1" /> et <LatexRenderer latex="u_{n+1} = u_n + 1/u_n" />.</p>
+              <p>Déterminer un équivalent de <LatexRenderer latex="u_n" /> quand <LatexRenderer latex="n \to +\infty" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Pour étudier le comportement asymptotique d'une suite récurrente, on cherche d'abord la croissance "qualitative" (ex : polynomiale, exponentielle, log), puis on précise l'équivalent. L'idée est souvent de considérer <LatexRenderer latex="u_n^2" /> qui peut avoir une récurrence plus simple.
+              </PointMethodo>
+              <p>Soit <LatexRenderer latex="v_n = u_n^2" />. Or <LatexRenderer latex="u_{n+1}^2 = u_n^2 + 2 + 1/u_n^2" />, soit :</p>
+              <LatexRenderer latex="v_{n+1} = v_n + 2 + 1/v_n." />
+              <p className="mt-2"><strong>Étape 1 : v_n croît au moins comme 2n.</strong> Or <LatexRenderer latex="v_{n+1} \ge v_n + 2" />, donc <LatexRenderer latex="v_n \ge v_0 + 2n = 1 + 2n" />.</p>
+              <p className="mt-2"><strong>Étape 2 : Équivalent.</strong> Or <LatexRenderer latex="v_n \ge 1 + 2n \to +\infty" />, donc <LatexRenderer latex="1/v_n \to 0" />. D'où :</p>
+              <LatexRenderer latex="v_{n+1} - v_n = 2 + 1/v_n \to 2." />
+              <Astuce>
+                Si <LatexRenderer latex="a_{n+1} - a_n \to \ell" />, alors par sommation <LatexRenderer latex="a_n / n \to \ell" /> (théorème de Cesàro). Ici <LatexRenderer latex="v_n / n \to 2" />, soit <LatexRenderer latex="v_n \sim 2n" />.
+              </Astuce>
+              <p className="mt-2">Par Cesàro, <LatexRenderer latex="v_n / n \to 2" />, soit <LatexRenderer latex="v_n \sim 2n" />.</p>
+              <p className="mt-2">D'où <LatexRenderer latex="u_n = \sqrt{v_n} \sim \sqrt{2n}" />.</p>
+              <ConclusionBox>
+                <LatexRenderer latex="u_n \sim \sqrt{2n}" /> quand <LatexRenderer latex="n \to +\infty" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <DifficultyHeader level="Niveau : Concours — Précision asymptotique" />
+
+        <ExerciseCard
+          id="12-10"
+          title="Reste d'une série et équivalent du reste"
+          difficulty="Niveau: Concours"
+          content={
+            <div className="space-y-3">
+              <p>Soit <LatexRenderer latex="\zeta(s) = \sum_{n=1}^{+\infty} 1/n^s" /> pour <LatexRenderer latex="s > 1" />. On note <LatexRenderer latex="R_N(s) = \sum_{n=N+1}^{+\infty} 1/n^s" />.</p>
+              <p>Démontrer que <LatexRenderer latex="R_N(s) \sim 1/((s-1) N^{s-1})" /> quand <LatexRenderer latex="N \to +\infty" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Pour un équivalent du reste d'une série de Riemann, on compare aux intégrales encadrantes. La fonction <LatexRenderer latex="t \mapsto 1/t^s" /> étant décroissante, les sommes sont encadrées par des intégrales sur les segments adjacents.
+              </PointMethodo>
+              <p>Soit <LatexRenderer latex="s > 1" /> et <LatexRenderer latex="f(t) = 1/t^s" /> décroissante. Par comparaison série-intégrale :</p>
+              <LatexRenderer latex="\int_{n}^{n+1} \frac{dt}{t^s} \le \frac{1}{n^s} \le \int_{n-1}^{n} \frac{dt}{t^s}." />
+              <p className="mt-2">En sommant pour <LatexRenderer latex="n = N+1, N+2, \ldots" /> :</p>
+              <LatexRenderer latex="\int_{N+1}^{+\infty} \frac{dt}{t^s} \le R_N(s) \le \int_N^{+\infty} \frac{dt}{t^s}." />
+              <Astuce>
+                Le calcul des intégrales : <LatexRenderer latex="\int_a^{+\infty} dt/t^s = a^{1-s}/(s-1)" /> pour <LatexRenderer latex="s > 1" />.
+              </Astuce>
+              <p className="mt-2">D'où :</p>
+              <LatexRenderer latex="\frac{1}{(s-1)(N+1)^{s-1}} \le R_N(s) \le \frac{1}{(s-1) N^{s-1}}." />
+              <p className="mt-2">Or les deux bornes sont équivalentes à <LatexRenderer latex="1/((s-1) N^{s-1})" /> en <LatexRenderer latex="+\infty" /> (car <LatexRenderer latex="(N+1)^{s-1} \sim N^{s-1}" />).</p>
+              <ConclusionBox>
+                <LatexRenderer latex="R_N(s) \sim \dfrac{1}{(s-1) N^{s-1}}" /> quand <LatexRenderer latex="N \to +\infty" />. La vitesse de convergence est polynomiale, d'ordre <LatexRenderer latex="N^{-(s-1)}" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <DifficultyHeader level="Niveau : Difficile — Formule de Stirling" />
+
+        <ExerciseCard
+          id="12-11"
+          title="Formule de Stirling — équivalent de n!"
+          difficulty="Niveau: Difficile"
+          content={
+            <div className="space-y-3">
+              <p>1. Démontrer que <LatexRenderer latex="\ln(n!) = n \ln n - n + O(\ln n)" /> quand <LatexRenderer latex="n \to +\infty" />.</p>
+              <p>2. En admettant la formule précise de Stirling <LatexRenderer latex="n! \sim \sqrt{2\pi n} (n/e)^n" />, donner un équivalent de <LatexRenderer latex="\binom{2n}{n}" /> en <LatexRenderer latex="+\infty" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                La formule de Stirling caractérise la croissance asymptotique de la factorielle. La preuve élémentaire de la version logarithmique passe par la comparaison série-intégrale appliquée à <LatexRenderer latex="\ln" />. Pour les coefficients binomiaux centraux, Stirling donne un équivalent en <LatexRenderer latex="4^n / \sqrt{\pi n}" />.
+              </PointMethodo>
+              <p><strong>1. Équivalent logarithmique.</strong> Or <LatexRenderer latex="\ln(n!) = \sum_{k=1}^n \ln k" />. La fonction <LatexRenderer latex="t \mapsto \ln t" /> est croissante. Par comparaison série-intégrale :</p>
+              <LatexRenderer latex="\int_1^n \ln t\,dt \le \sum_{k=1}^n \ln k \le \ln n + \int_1^n \ln t\,dt." />
+              <p className="mt-2">Or <LatexRenderer latex="\int_1^n \ln t\,dt = [t \ln t - t]_1^n = n \ln n - n + 1" />. D'où :</p>
+              <LatexRenderer latex="n \ln n - n + 1 \le \ln(n!) \le n \ln n - n + 1 + \ln n." />
+              <Astuce>
+                La forme précise de Stirling <LatexRenderer latex="n! \sim \sqrt{2\pi n} (n/e)^n" /> nécessite l'intégrale de Wallis, hors programme à l'ECG mais admise.
+              </Astuce>
+              <p className="mt-2">Ainsi <LatexRenderer latex="\ln(n!) = n \ln n - n + O(\ln n)" />.</p>
+              <p className="mt-2"><strong>2. Équivalent de C(2n, n).</strong> Or <LatexRenderer latex="\binom{2n}{n} = (2n)!/(n!)^2" />. Par Stirling :</p>
+              <LatexRenderer latex="\binom{2n}{n} \sim \frac{\sqrt{4\pi n}(2n/e)^{2n}}{(\sqrt{2\pi n})^2 (n/e)^{2n}} = \frac{\sqrt{4\pi n} \cdot 4^n \cdot n^{2n} / e^{2n}}{2\pi n \cdot n^{2n}/e^{2n}} = \frac{4^n}{\sqrt{\pi n}}." />
+              <ConclusionBox>
+                Stirling logarithmique : <LatexRenderer latex="\ln(n!) = n\ln n - n + O(\ln n)" />. Application : <LatexRenderer latex="\binom{2n}{n} \sim 4^n / \sqrt{\pi n}" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
       </div>
     </MathChapterTemplate>
   );

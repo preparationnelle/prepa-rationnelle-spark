@@ -489,60 +489,52 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F7F6F3', color: '#1A1A18', fontFamily: "'DM Sans', sans-serif" }}>
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+    <div className="carnet-paper min-h-screen">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] px-6 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formations" className="hover:text-foreground transition-colors">
-              Toutes les formations
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formations" className="hover:text-carnet-red transition-colors">
+              Formations
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/espagnol" className="hover:text-foreground transition-colors">
-              Formation Espagnol ECG
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formation/espagnol" className="hover:text-carnet-red transition-colors">
+              Espagnol
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Méthodologie LV2 Espagnol</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Méthodologie</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
         {/* Header */}
-        <div className="mb-8">
-
-          <div className="text-center">
-            <div className="inline-block mb-6 px-3 py-1 rounded" style={{ backgroundColor: '#FDF0EC', color: '#C45A35', fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              Espagnol · Module 04
-            </div>
-            <h1 className="mb-6" style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 400, color: '#1A1A18', fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: 1.1, letterSpacing: '-0.01em' }}>
-              Méthodologie LV2 Espagnol
-            </h1>
-            <div className="flex justify-center mb-6">
-              <span style={{ display: 'inline-block', width: '56px', height: '3px', backgroundColor: '#F4845F' }} />
-            </div>
-            <p className="max-w-2xl mx-auto mb-4" style={{ color: '#3A3A38', fontSize: '16px', lineHeight: 1.65 }}>
-              De 4 à 18 en une année : la méthode complète pour maîtriser l'espagnol en classe préparatoire.
+        <div className="mb-12">
+          <div className="carnet-eyebrow mb-6">Espagnol · Module 04</div>
+          <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] text-carnet-ink tracking-tight mb-6">
+            Méthodologie <em className="font-lora italic text-carnet-red">LV2 Espagnol</em>.
+          </h1>
+          <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px] mb-4">
+            De 4 à 18 en une année : la méthode complète pour maîtriser l'espagnol en classe préparatoire.
+          </p>
+          <div>
+            <p className="font-instrument text-[14px] font-semibold text-carnet-ink">
+              Progression personnelle : 4/20 → 18/20
             </p>
-            <div className="text-center">
-              <p className="text-sm font-medium text-gray-700">
-                Progression personnelle : 4/20 → 18/20
-              </p>
-              <p className="text-sm text-gray-600">
-                Admission dans le TOP 5 : ESCP, EDHEC (17,5), EM Lyon (18), SKEMA (17,5)
-              </p>
-            </div>
+            <p className="font-instrument text-[14px] text-carnet-ink-soft">
+              Admission dans le TOP 5 : ESCP, EDHEC (17,5), EM Lyon (18), SKEMA (17,5)
+            </p>
           </div>
         </div>
 
         {/* Avant-propos détaillé */}
-        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-orange-400 pb-3">
+        <div className="carnet-card p-8 mb-8">
+          <h2 className="text-2xl font-lora text-carnet-ink mb-6 border-b-2 border-carnet-red/50 pb-3">
             Avant-propos : L'importance stratégique de l'espagnol
           </h2>
         {detailedSections.map((section, index) => (
@@ -550,49 +542,49 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
             <div className="space-y-6">
               {section.id === 1 ? (
                 <div className="space-y-6">
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-carnet-ink-soft leading-relaxed">
                     {section.content.main}
                   </p>
                   <div className="space-y-3">
                     {section.content.importance.map((item, idx) => (
                       <div key={idx} className="flex items-start gap-3">
-                        <div className="w-2 h-2 rounded-full bg-orange-400 mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-700">{item}</span>
+                        <div className="w-2 h-2 rounded-full bg-carnet-red mt-2 flex-shrink-0"></div>
+                        <span className="text-carnet-ink-soft">{item}</span>
                       </div>
                     ))}
               </div>
-                  <div className="border-l-4 border-red-400 pl-4 py-2">
-                    <p className="text-gray-800 font-medium text-sm">
+                  <div className="border-l-4 border-carnet-red pl-4 py-2">
+                    <p className="text-carnet-ink font-medium text-sm">
                       RÉALITÉ : {section.content.reality}
                     </p>
               </div>
-                  <div className="border-l-4 border-orange-400 pl-4 py-2">
-                    <p className="text-gray-800 font-medium text-sm">
+                  <div className="border-l-4 border-carnet-red pl-4 py-2">
+                    <p className="text-carnet-ink font-medium text-sm">
                       STRATÉGIE : {section.content.strategy}
                     </p>
               </div>
             </div>
               ) : (
                 <div className="space-y-6">
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-carnet-ink-soft leading-relaxed">
                     {section.content.overview}
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {section.content.structure.map((item, idx) => (
-                      <div key={idx} className="border border-gray-200 rounded-lg p-4">
-                        <h4 className="font-semibold text-gray-900 mb-2">{item.title}</h4>
-                        <p className="text-sm text-gray-700 mb-2">{item.details}</p>
-                        <p className="text-xs text-gray-600 font-medium">{item.importance}</p>
+                      <div key={idx} className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-lg p-4">
+                        <h4 className="font-lora text-carnet-ink mb-2">{item.title}</h4>
+                        <p className="text-sm text-carnet-ink-soft mb-2">{item.details}</p>
+                        <p className="text-xs text-carnet-ink-mute font-medium">{item.importance}</p>
                       </div>
                     ))}
                   </div>
-                  <div className="border-l-4 border-orange-400 pl-4 py-3">
-                    <h4 className="font-semibold text-gray-900 mb-2">Clé stratégique</h4>
-                    <p className="text-gray-700 text-sm">{section.content.key_insight}</p>
+                  <div className="border-l-4 border-carnet-red pl-4 py-3">
+                    <h4 className="font-lora text-carnet-ink mb-2">Clé stratégique</h4>
+                    <p className="text-carnet-ink-soft text-sm">{section.content.key_insight}</p>
                   </div>
-                  <div className="border-l-4 border-orange-400 pl-4 py-3">
-                    <h4 className="font-semibold text-gray-900 mb-2">Approche méthodologique</h4>
-                    <p className="text-gray-700 text-sm">{section.content.strategic_approach}</p>
+                  <div className="border-l-4 border-carnet-red pl-4 py-3">
+                    <h4 className="font-lora text-carnet-ink mb-2">Approche méthodologique</h4>
+                    <p className="text-carnet-ink-soft text-sm">{section.content.strategic_approach}</p>
                   </div>
                 </div>
               )}
@@ -602,8 +594,8 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         </div>
 
         {/* Organisation détaillée */}
-        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-orange-400 pb-3">
+        <div className="carnet-card p-8 mb-8">
+          <h2 className="text-2xl font-lora text-carnet-ink mb-6 border-b-2 border-carnet-red/50 pb-3">
             1) L'organisation
           </h2>
 
@@ -611,49 +603,49 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
             <div key={index} className="space-y-8">
               {strategy.sections.map((section, idx) => (
                 <div key={idx} className="space-y-4">
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-xl font-lora text-carnet-ink">
                     {section.title}
                   </h3>
 
                   {section.title.includes("bases linguistiques") && (
                     <div className="space-y-4">
-                      <p className="text-gray-700 leading-relaxed">{section.details}</p>
+                      <p className="text-carnet-ink-soft leading-relaxed">{section.details}</p>
                       <div className="space-y-2">
                         {section.specifics.map((spec, specIdx) => (
-                          <div key={specIdx} className="border-l-4 border-orange-400 pl-4 py-2">
-                            <p className="text-sm text-gray-700">{spec}</p>
+                          <div key={specIdx} className="border-l-4 border-carnet-red pl-4 py-2">
+                            <p className="text-sm text-carnet-ink-soft">{spec}</p>
                           </div>
                         ))}
                       </div>
-                      <div className="border-l-4 border-orange-400 pl-4 py-2">
-                        <p className="text-sm text-gray-800 font-medium">{section.method}</p>
+                      <div className="border-l-4 border-carnet-red pl-4 py-2">
+                        <p className="text-sm text-carnet-ink font-medium">{section.method}</p>
                       </div>
                     </div>
                   )}
 
                   {section.title.includes("priorisation stratégique") && (
                     <div className="space-y-4">
-                      <p className="text-gray-700 leading-relaxed">{section.details}</p>
+                      <p className="text-carnet-ink-soft leading-relaxed">{section.details}</p>
                       <div className="space-y-2">
                         {section.approach.map((item, itemIdx) => (
-                          <div key={itemIdx} className="border-l-4 border-orange-400 pl-4 py-2">
-                            <p className="text-sm text-gray-700">{item}</p>
+                          <div key={itemIdx} className="border-l-4 border-carnet-red pl-4 py-2">
+                            <p className="text-sm text-carnet-ink-soft">{item}</p>
                           </div>
                         ))}
                       </div>
-                      <div className="border-l-4 border-orange-400 pl-4 py-2">
-                        <p className="text-sm text-gray-800 font-medium">{section.time_allocation}</p>
+                      <div className="border-l-4 border-carnet-red pl-4 py-2">
+                        <p className="text-sm text-carnet-ink font-medium">{section.time_allocation}</p>
                     </div>
                   </div>
                 )}
 
                   {section.title.includes("vocabulaire spécifique") && (
                     <div className="space-y-4">
-                      <p className="text-gray-700 leading-relaxed">{section.details}</p>
+                      <p className="text-carnet-ink-soft leading-relaxed">{section.details}</p>
                       <div className="space-y-2">
                         {section.vocabulary_types.map((type, typeIdx) => (
-                          <div key={typeIdx} className="border-l-4 border-orange-400 pl-4 py-2">
-                            <p className="text-sm text-gray-700">{type}</p>
+                          <div key={typeIdx} className="border-l-4 border-carnet-red pl-4 py-2">
+                            <p className="text-sm text-carnet-ink-soft">{type}</p>
                           </div>
                         ))}
                       </div>
@@ -662,44 +654,44 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
 
                   {section.title.includes("ordre des exercices") && (
                     <div className="space-y-4">
-                      <p className="text-gray-700 leading-relaxed">{section.details}</p>
+                      <p className="text-carnet-ink-soft leading-relaxed">{section.details}</p>
                       <div className="space-y-2">
                         {section.personal_strategy.map((strat, stratIdx) => (
                           <div key={stratIdx} className="flex items-start gap-3">
                             <Badge variant="outline" className="mt-1 text-xs">{stratIdx + 1}</Badge>
-                            <span className="text-sm text-gray-700">{strat}</span>
+                            <span className="text-sm text-carnet-ink-soft">{strat}</span>
                           </div>
                         ))}
                       </div>
-                      <div className="border-l-4 border-orange-400 pl-4 py-2">
-                        <p className="text-sm text-gray-800 font-medium">{section.timing}</p>
+                      <div className="border-l-4 border-carnet-red pl-4 py-2">
+                        <p className="text-sm text-carnet-ink font-medium">{section.timing}</p>
                     </div>
                   </div>
                 )}
 
                   {section.title.includes("gestion temporelle") && (
                     <div className="space-y-4">
-                      <p className="text-gray-700 leading-relaxed">{section.details}</p>
+                      <p className="text-carnet-ink-soft leading-relaxed">{section.details}</p>
                       <div className="space-y-2">
                         {section.breakdown.map((item, itemIdx) => (
-                          <div key={itemIdx} className="border-l-4 border-red-400 pl-4 py-2">
-                            <p className="text-sm text-gray-700 font-medium">{item}</p>
+                          <div key={itemIdx} className="border-l-4 border-carnet-red pl-4 py-2">
+                            <p className="text-sm text-carnet-ink-soft font-medium">{item}</p>
                           </div>
                         ))}
                       </div>
-                      <div className="border-l-4 border-orange-400 pl-4 py-2">
-                        <p className="text-sm text-gray-800 font-medium">{section.buffer}</p>
+                      <div className="border-l-4 border-carnet-red pl-4 py-2">
+                        <p className="text-sm text-carnet-ink font-medium">{section.buffer}</p>
                       </div>
                     </div>
                   )}
 
                   {section.title.includes("tests en conditions réelles") && (
                     <div className="space-y-4">
-                      <p className="text-gray-700 leading-relaxed">{section.details}</p>
+                      <p className="text-carnet-ink-soft leading-relaxed">{section.details}</p>
                       <div className="space-y-2">
                         {section.methodology.map((method, methodIdx) => (
-                          <div key={methodIdx} className="border-l-4 border-orange-400 pl-4 py-2">
-                            <p className="text-sm text-gray-700">{method}</p>
+                          <div key={methodIdx} className="border-l-4 border-carnet-red pl-4 py-2">
+                            <p className="text-sm text-carnet-ink-soft">{method}</p>
                           </div>
                         ))}
                       </div>
@@ -712,40 +704,40 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         </div>
 
                 {/* Travail technique détaillé */}
-        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-green-400 pb-3">
+        <div className="carnet-card p-8 mb-8">
+          <h2 className="text-2xl font-lora text-carnet-ink mb-6 border-b-2 border-carnet-red/50 pb-3">
             2) Le travail technique détaillé
           </h2>
 
           <div className="space-y-12">
             {detailedWorkMethods.map((method, index) => (
-              <div key={index} className="border-l-4 border-orange-400 pl-6 space-y-6">
+              <div key={index} className="border-l-4 border-carnet-red pl-6 space-y-6">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-xl font-lora text-carnet-ink">
                     {method.title}
                   </h3>
-                  <Badge variant="outline" className="text-gray-600">
+                  <Badge variant="outline" className="text-carnet-ink-mute">
                     {method.title.split('-')[1]}
                   </Badge>
                 </div>
 
                 {/* Introduction */}
                 <div className="border-l-4 border-gray-300 pl-4 py-2">
-                  <p className="text-gray-700 leading-relaxed">{method.introduction}</p>
+                  <p className="text-carnet-ink-soft leading-relaxed">{method.introduction}</p>
                 </div>
 
                 {/* Structure détaillée */}
                 {method.structure && (
                   <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-gray-900">Structure recommandée</h4>
+                    <h4 className="text-lg font-lora text-carnet-ink">Structure recommandée</h4>
                     {Object.entries(method.structure).map(([key, value]) => (
-                      <div key={key} className="border border-gray-200 rounded-lg p-4">
-                        <h5 className="font-semibold text-gray-900 mb-2">{value.title}</h5>
-                        <p className="text-sm text-gray-700 mb-3">{value.content}</p>
+                      <div key={key} className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-lg p-4">
+                        <h5 className="font-lora text-carnet-ink mb-2">{value.title}</h5>
+                        <p className="text-sm text-carnet-ink-soft mb-3">{value.content}</p>
                         {value.example && (
-                          <div className="border-l-4 border-orange-400 pl-4 py-2">
-                            <p className="text-xs font-medium text-gray-700 mb-1">Exemple concret :</p>
-                            <p className="text-sm text-gray-800 italic">"{value.example}"</p>
+                          <div className="border-l-4 border-carnet-red pl-4 py-2">
+                            <p className="text-xs font-medium text-carnet-ink-soft mb-1">Exemple concret :</p>
+                            <p className="text-sm text-carnet-ink italic">"{value.example}"</p>
                           </div>
                         )}
                       </div>
@@ -756,13 +748,13 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
                 {/* Vocabulaire spécialisé */}
                 {method.vocabulary && (
                   <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-gray-900">Vocabulaire spécialisé</h4>
+                    <h4 className="text-lg font-lora text-carnet-ink">Vocabulaire spécialisé</h4>
                     {method.vocabulary.map((vocab, vocabIdx) => (
-                      <div key={vocabIdx} className="border border-gray-200 rounded-lg p-4">
-                        <h5 className="font-semibold text-gray-900 mb-3">{vocab.category}</h5>
+                      <div key={vocabIdx} className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-lg p-4">
+                        <h5 className="font-lora text-carnet-ink mb-3">{vocab.category}</h5>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                           {vocab.words.map((word, wordIdx) => (
-                            <div key={wordIdx} className="text-sm text-gray-700">
+                            <div key={wordIdx} className="text-sm text-carnet-ink-soft">
                               • {word}
                             </div>
                           ))}
@@ -775,14 +767,14 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
                 {/* Méthodes spécifiques pour la traduction */}
                 {method.methods && (
                   <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-gray-900">Méthodes de travail</h4>
+                    <h4 className="text-lg font-lora text-carnet-ink">Méthodes de travail</h4>
                     {method.methods.map((meth, methIdx) => (
-                      <div key={methIdx} className="border border-gray-200 rounded-lg p-4">
-                        <h5 className="font-semibold text-gray-900 mb-2">{meth.title}</h5>
-                        <p className="text-sm text-gray-700 mb-3">{meth.description}</p>
+                      <div key={methIdx} className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-lg p-4">
+                        <h5 className="font-lora text-carnet-ink mb-2">{meth.title}</h5>
+                        <p className="text-sm text-carnet-ink-soft mb-3">{meth.description}</p>
                         {meth.sources && (
                           <div className="mb-3">
-                            <p className="text-xs font-medium text-gray-700 mb-1">Sources recommandées :</p>
+                            <p className="text-xs font-medium text-carnet-ink-soft mb-1">Sources recommandées :</p>
                             <div className="flex flex-wrap gap-2">
                               {meth.sources.map((source, sourceIdx) => (
                                 <Badge key={sourceIdx} variant="outline" className="text-xs">
@@ -793,17 +785,17 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
                           </div>
                         )}
                         {meth.frequency && (
-                          <p className="text-xs text-gray-600 mb-2">Fréquence : {meth.frequency}</p>
+                          <p className="text-xs text-carnet-ink-mute mb-2">Fréquence : {meth.frequency}</p>
                         )}
                         {meth.approach && (
-                          <p className="text-xs text-gray-600 mb-2">Approche : {meth.approach}</p>
+                          <p className="text-xs text-carnet-ink-mute mb-2">Approche : {meth.approach}</p>
                         )}
                         {meth.categories && (
                           <div className="space-y-2">
                             {meth.categories.map((cat, catIdx) => (
-                              <div key={catIdx} className="border-l-4 border-orange-400 pl-4 py-2">
-                                <p className="text-sm font-medium text-gray-800 mb-1">{cat.title}</p>
-                                <p className="text-xs text-gray-600 mb-2">{cat.strategy}</p>
+                              <div key={catIdx} className="border-l-4 border-carnet-red pl-4 py-2">
+                                <p className="text-sm font-medium text-carnet-ink mb-1">{cat.title}</p>
+                                <p className="text-xs text-carnet-ink-mute mb-2">{cat.strategy}</p>
                                 <div className="flex flex-wrap gap-1">
                                   {cat.examples.map((ex, exIdx) => (
                                     <Badge key={exIdx} variant="outline" className="text-xs">
@@ -817,10 +809,10 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
                         )}
                         {meth.criteria && (
                           <div className="mt-3">
-                            <p className="text-xs font-medium text-gray-700 mb-2">Critères de qualité :</p>
+                            <p className="text-xs font-medium text-carnet-ink-soft mb-2">Critères de qualité :</p>
                             <div className="space-y-1">
                               {meth.criteria.map((crit, critIdx) => (
-                                <div key={critIdx} className="text-xs text-gray-600">
+                                <div key={critIdx} className="text-xs text-carnet-ink-mute">
                                   • {crit}
                                 </div>
                               ))}
@@ -834,21 +826,21 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
 
                 {/* Timing strategy pour la traduction */}
                 {method.timing_strategy && (
-                  <div className="border-l-4 border-red-400 pl-4 py-3">
-                    <p className="text-gray-800 font-medium">Stratégie temporelle : {method.timing_strategy}</p>
+                  <div className="border-l-4 border-carnet-red pl-4 py-3">
+                    <p className="text-carnet-ink font-medium">Stratégie temporelle : {method.timing_strategy}</p>
                   </div>
                 )}
 
                 {/* Exemples de vocabulaire pour la traduction */}
                 {method.vocabulary_examples && (
                   <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-gray-900">Exemples de vocabulaire</h4>
+                    <h4 className="text-lg font-lora text-carnet-ink">Exemples de vocabulaire</h4>
                     {method.vocabulary_examples.map((vocabEx, vocabExIdx) => (
-                      <div key={vocabExIdx} className="border border-gray-200 rounded-lg p-4">
-                        <h5 className="font-semibold text-gray-900 mb-3">{vocabEx.category}</h5>
+                      <div key={vocabExIdx} className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-lg p-4">
+                        <h5 className="font-lora text-carnet-ink mb-3">{vocabEx.category}</h5>
                         <div className="space-y-2">
                           {vocabEx.examples.map((ex, exIdx) => (
-                            <div key={exIdx} className="text-sm text-gray-700">
+                            <div key={exIdx} className="text-sm text-carnet-ink-soft">
                               • {ex}
                             </div>
                           ))}
@@ -861,11 +853,11 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
                 {/* Conseils pratiques */}
                 {method.tips && (
                   <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-gray-900">Conseils pratiques</h4>
+                    <h4 className="text-lg font-lora text-carnet-ink">Conseils pratiques</h4>
                     <div className="space-y-2">
                       {method.tips.map((tip, tipIdx) => (
-                        <div key={tipIdx} className="border-l-4 border-orange-400 pl-4 py-2">
-                          <p className="text-sm text-gray-700">{tip}</p>
+                        <div key={tipIdx} className="border-l-4 border-carnet-red pl-4 py-2">
+                          <p className="text-sm text-carnet-ink-soft">{tip}</p>
                         </div>
                       ))}
                     </div>
@@ -877,8 +869,8 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         </div>
 
                 {/* Outils avancés */}
-        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-purple-400 pb-3">
+        <div className="carnet-card p-8 mb-8">
+          <h2 className="text-2xl font-lora text-carnet-ink mb-6 border-b-2 border-carnet-red/50 pb-3">
             3) Les outils avancés
           </h2>
 
@@ -886,23 +878,23 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
             {advancedTools.map((tool, index) => (
               <div key={index} className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  <h3 className="text-xl font-lora text-carnet-ink mb-2">
                     {tool.title}
                   </h3>
-                  <p className="text-gray-700">{tool.description}</p>
+                  <p className="text-carnet-ink-soft">{tool.description}</p>
                 </div>
 
                 {tool.lists && (
                   <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-gray-900">Listes détaillées</h4>
+                    <h4 className="text-lg font-lora text-carnet-ink">Listes détaillées</h4>
                     <div className="space-y-4">
                       {tool.lists.map((list, listIdx) => (
-                        <div key={listIdx} className="border border-gray-200 rounded-lg p-4">
-                          <h5 className="font-semibold text-gray-900 mb-2">{list.title}</h5>
-                          <p className="text-sm text-gray-700 mb-3">{list.content}</p>
+                        <div key={listIdx} className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-lg p-4">
+                          <h5 className="font-lora text-carnet-ink mb-2">{list.title}</h5>
+                          <p className="text-sm text-carnet-ink-soft mb-3">{list.content}</p>
                           {list.examples && (
                             <div className="mb-3">
-                              <p className="text-xs font-medium text-gray-700 mb-2">Exemples :</p>
+                              <p className="text-xs font-medium text-carnet-ink-soft mb-2">Exemples :</p>
                               <div className="flex flex-wrap gap-2">
                                 {list.examples.map((ex, exIdx) => (
                                   <Badge key={exIdx} variant="outline" className="text-xs">
@@ -913,42 +905,42 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
                             </div>
                           )}
                           {list.frequency && (
-                            <p className="text-xs text-gray-600 mb-2">Fréquence : {list.frequency}</p>
+                            <p className="text-xs text-carnet-ink-mute mb-2">Fréquence : {list.frequency}</p>
                           )}
                           {list.categories && (
                             <div className="mb-3">
-                              <p className="text-xs font-medium text-gray-700 mb-1">Catégories :</p>
+                              <p className="text-xs font-medium text-carnet-ink-soft mb-1">Catégories :</p>
                               {list.categories.map((cat, catIdx) => (
-                                <p key={catIdx} className="text-xs text-gray-600">• {cat}</p>
+                                <p key={catIdx} className="text-xs text-carnet-ink-mute">• {cat}</p>
                               ))}
                             </div>
                           )}
                           {list.method && (
-                            <p className="text-xs text-gray-600 mb-2">Méthode : {list.method}</p>
+                            <p className="text-xs text-carnet-ink-mute mb-2">Méthode : {list.method}</p>
                           )}
                           {list.scope && (
-                            <p className="text-xs text-gray-600 mb-2">Étendue : {list.scope}</p>
+                            <p className="text-xs text-carnet-ink-mute mb-2">Étendue : {list.scope}</p>
                           )}
                         </div>
                       ))}
                     </div>
-                    <div className="border-l-4 border-orange-400 pl-4 py-3">
-                      <p className="text-gray-800 font-medium">{tool.methodology}</p>
+                    <div className="border-l-4 border-carnet-red pl-4 py-3">
+                      <p className="text-carnet-ink font-medium">{tool.methodology}</p>
                     </div>
                   </div>
                 )}
 
                 {tool.activities && (
                   <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-gray-900">Activités pratiques</h4>
+                    <h4 className="text-lg font-lora text-carnet-ink">Activités pratiques</h4>
                     <div className="space-y-4">
                       {tool.activities.map((activity, actIdx) => (
-                        <div key={actIdx} className="border border-gray-200 rounded-lg p-4">
-                          <h5 className="font-semibold text-gray-900 mb-2">{activity.title}</h5>
-                          <p className="text-sm text-gray-700 mb-3">{activity.description}</p>
+                        <div key={actIdx} className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-lg p-4">
+                          <h5 className="font-lora text-carnet-ink mb-2">{activity.title}</h5>
+                          <p className="text-sm text-carnet-ink-soft mb-3">{activity.description}</p>
                           {activity.sources && (
                             <div className="mb-3">
-                              <p className="text-xs font-medium text-gray-700 mb-2">Sources :</p>
+                              <p className="text-xs font-medium text-carnet-ink-soft mb-2">Sources :</p>
                               <div className="flex flex-wrap gap-2">
                                 {activity.sources.map((source, sourceIdx) => (
                                   <Badge key={sourceIdx} variant="outline" className="text-xs">
@@ -959,40 +951,40 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
                             </div>
                           )}
                           {activity.method && (
-                            <p className="text-xs text-gray-600 mb-2">Méthode : {activity.method}</p>
+                            <p className="text-xs text-carnet-ink-mute mb-2">Méthode : {activity.method}</p>
                           )}
                           {activity.frequency && (
-                            <p className="text-xs text-gray-600 mb-2">Fréquence : {activity.frequency}</p>
+                            <p className="text-xs text-carnet-ink-mute mb-2">Fréquence : {activity.frequency}</p>
                           )}
                           {activity.exercises && (
                             <div className="mb-3">
-                              <p className="text-xs font-medium text-gray-700 mb-2">Exercices :</p>
+                              <p className="text-xs font-medium text-carnet-ink-soft mb-2">Exercices :</p>
                               {activity.exercises.map((ex, exIdx) => (
-                                <p key={exIdx} className="text-xs text-gray-600">• {ex}</p>
+                                <p key={exIdx} className="text-xs text-carnet-ink-mute">• {ex}</p>
                               ))}
                             </div>
                           )}
                           {activity.correction && (
-                            <p className="text-xs text-gray-600 mb-2">Correction : {activity.correction}</p>
+                            <p className="text-xs text-carnet-ink-mute mb-2">Correction : {activity.correction}</p>
                           )}
                           {activity.process && (
                             <div className="mb-3">
-                              <p className="text-xs font-medium text-gray-700 mb-2">Processus :</p>
+                              <p className="text-xs font-medium text-carnet-ink-soft mb-2">Processus :</p>
                               {activity.process.map((proc, procIdx) => (
-                                <p key={procIdx} className="text-xs text-gray-600">{procIdx + 1}. {proc}</p>
+                                <p key={procIdx} className="text-xs text-carnet-ink-mute">{procIdx + 1}. {proc}</p>
                               ))}
                             </div>
                           )}
                           {activity.format && (
                             <div className="mb-3">
-                              <p className="text-xs font-medium text-gray-700 mb-2">Format :</p>
+                              <p className="text-xs font-medium text-carnet-ink-soft mb-2">Format :</p>
                               {activity.format.map((fmt, fmtIdx) => (
-                                <p key={fmtIdx} className="text-xs text-gray-600">• {fmt}</p>
+                                <p key={fmtIdx} className="text-xs text-carnet-ink-mute">• {fmt}</p>
                               ))}
                             </div>
                           )}
                           {activity.progression && (
-                            <p className="text-xs text-gray-600 mb-2">Progression : {activity.progression}</p>
+                            <p className="text-xs text-carnet-ink-mute mb-2">Progression : {activity.progression}</p>
                           )}
                         </div>
                       ))}
@@ -1005,21 +997,21 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         </div>
 
                 {/* Conseils finaux détaillés */}
-        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-red-400 pb-3">
+        <div className="carnet-card p-8 mb-8">
+          <h2 className="text-2xl font-lora text-carnet-ink mb-6 border-b-2 border-carnet-red/50 pb-3">
             4) Avant de partir : Conseils finaux pour l'excellence
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {finalTips.map((tip, idx) => (
-              <div key={idx} className="border border-gray-200 rounded-lg p-4">
+              <div key={idx} className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-lg p-4">
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0 mt-1">
                     {tip.icon}
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-semibold text-gray-900 mb-2">{tip.title}</h4>
-                    <p className="text-gray-700 text-sm leading-relaxed">{tip.description}</p>
+                    <h4 className="font-lora text-carnet-ink mb-2">{tip.title}</h4>
+                    <p className="text-carnet-ink-soft text-sm leading-relaxed">{tip.description}</p>
                   </div>
                 </div>
               </div>
@@ -1027,24 +1019,24 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
           </div>
 
           {/* Résultats et motivation */}
-          <div className="border-l-4 border-green-400 pl-4 py-6 mb-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">RÉSULTATS OBTENUS</h3>
-            <p className="text-lg font-semibold text-gray-800 mb-4">
+          <div className="border-l-4 border-carnet-red/60 pl-4 py-6 mb-6">
+            <h3 className="text-xl font-lora text-carnet-ink mb-3">RÉSULTATS OBTENUS</h3>
+            <p className="text-lg font-semibold text-carnet-ink mb-4">
               Progression exceptionnelle : 4/20 → 18/20 en première année de prépa
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="border border-gray-200 rounded-lg p-4">
-                <p className="font-medium text-gray-900 mb-2">Admission TOP 5 :</p>
-                <ul className="text-sm text-gray-700 space-y-1">
+              <div className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-lg p-4">
+                <p className="font-instrument font-semibold text-carnet-ink mb-2">Admission TOP 5 :</p>
+                <ul className="text-sm text-carnet-ink-soft space-y-1">
                   <li>• ESCP (admissible)</li>
                   <li>• EDHEC (17,5/20)</li>
                   <li>• EM Lyon (18/20)</li>
                   <li>• SKEMA (17,5/20)</li>
                 </ul>
               </div>
-              <div className="border border-gray-200 rounded-lg p-4">
-                <p className="font-medium text-gray-900 mb-2">Impact global :</p>
-                <ul className="text-sm text-gray-700 space-y-1">
+              <div className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-lg p-4">
+                <p className="font-instrument font-semibold text-carnet-ink mb-2">Impact global :</p>
+                <ul className="text-sm text-carnet-ink-soft space-y-1">
                   <li>• Meilleure école du classement</li>
                   <li>• Concurrentialité maximale</li>
                   <li>• Réussite aux oraux</li>
@@ -1053,8 +1045,8 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
             </div>
           </div>
 
-          <div className="border-l-4 border-orange-400 pl-4 py-4">
-            <p className="text-gray-800 font-medium">
+          <div className="border-l-4 border-carnet-red pl-4 py-4">
+            <p className="text-carnet-ink font-medium">
               Cette méthode a transformé l'espagnol de matière faible en matière d'excellence.
               Il ne reste plus qu'à l'appliquer avec rigueur et persévérance !
             </p>
@@ -1062,16 +1054,16 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         </div>
 
         {/* Anecdote finale */}
-        <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200 mb-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-orange-400 pb-3">
+        <div className="carnet-card p-8 mb-8">
+          <h2 className="text-xl font-lora text-carnet-ink mb-4 border-b-2 border-carnet-red/50 pb-3">
             Anecdote pour finir
           </h2>
-          <div className="border-l-4 border-orange-400 pl-4 py-4">
-            <p className="text-gray-700 leading-relaxed mb-3">
+          <div className="border-l-4 border-carnet-red pl-4 py-4">
+            <p className="text-carnet-ink-soft leading-relaxed mb-3">
               Le jour du concours BCE, j'avais su traduire le mot « amertume » dans la Q3 car je l'avais entendu à mainte reprise
               dans la chanson <strong>Adam y Eva</strong> de Paulo Londra (elle est pas mal d'ailleurs…).
             </p>
-            <p className="text-sm text-gray-600 italic">
+            <p className="text-sm text-carnet-ink-mute italic">
               Cette anecdote illustre l'importance de l'immersion culturelle et de la mémorisation passive
               à travers la musique, les séries et les réseaux sociaux en espagnol.
             </p>
@@ -1079,9 +1071,9 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         </div>
 
         {/* Call to action */}
-        <div className="bg-white border border-orange-200 rounded-xl p-6 mb-8 shadow-md">
-          <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Prêt à appliquer cette méthode ?</h3>
-          <p className="text-gray-700 mb-6 text-center">
+        <div className="carnet-card p-6 mb-8">
+          <h3 className="text-xl font-lora text-carnet-ink mb-4 text-center">Prêt à appliquer cette méthode ?</h3>
+          <p className="text-carnet-ink-soft mb-6 text-center">
             Cette méthodologie détaillée vous donne toutes les clés pour réussir brillamment l'épreuve d'espagnol BCE.
             Il ne reste plus qu'à l'appliquer avec rigueur et persévérance !
           </p>
@@ -1100,9 +1092,9 @@ const FormationEspagnolMethodologiePage: React.FC = () => {
         {/* Navigation */}
         <div className="flex justify-center">
           <Link to="/formation/espagnol">
-            <Button variant="outline" size="lg" className="flex items-center gap-2">
-              <ArrowLeft className="w-4 h-4" />
-              Retour à la formation espagnol
+            <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold rounded-full h-11 px-6 text-[14px] border-0 transition-colors">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Retour à la formation
             </Button>
           </Link>
         </div>

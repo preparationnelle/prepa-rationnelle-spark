@@ -1,359 +1,127 @@
 import React from 'react';
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import {
-  Globe,
-  Calendar,
-  Briefcase,
-  BookOpen,
-  Home,
-  ChevronRight
-} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Home, ChevronRight, ArrowRight, PenTool, BookOpen } from 'lucide-react';
+
+type Module = {
+  number: number;
+  title: string;
+  description: string;
+  to: string;
+  exercicesTo?: string;
+};
+
+const modules: Module[] = [
+  { number: 1, title: 'Conjugaison et Temps Verbaux', description: 'Temps complexes : subjonctif, conditionnel, impératif et tous les temps de l’indicatif', to: '/formation/espagnol/grammaire/conjugaison', exercicesTo: '/formation/espagnol/grammaire/conjugaison/exercices' },
+  { number: 2, title: 'Syntaxe et Structures Complexes', description: 'Structures syntaxiques sophistiquées pour enrichir l’expression écrite et orale', to: '/formation/espagnol/grammaire/syntaxe-structures-complexes', exercicesTo: '/formation/espagnol/grammaire/syntaxe-structures-complexes/exercices' },
+  { number: 3, title: 'Ser vs Estar et Constructions', description: 'Maîtrisez les nuances entre ser et estar, constructions spéciales et verbes d’état', to: '/formation/espagnol/grammaire/ser-estar', exercicesTo: '/formation/espagnol/grammaire/ser-estar/exercices' },
+  { number: 4, title: 'Prépositions et Locutions', description: 'Emploi précis des prépositions et locutions prépositionnelles en espagnol', to: '/formation/espagnol/grammaire/prepositions', exercicesTo: '/formation/espagnol/grammaire/prepositions/exercices' },
+  { number: 5, title: 'Questions et Interrogatifs', description: 'Maîtrisez la formulation des questions et l’usage des mots interrogatifs', to: '/formation/espagnol/grammaire/questions', exercicesTo: '/formation/espagnol/grammaire/questions/exercices' },
+  { number: 6, title: 'Négations', description: 'Maîtrisez les formes négatives et leurs emplois en espagnol', to: '/formation/espagnol/grammaire/negations', exercicesTo: '/formation/espagnol/grammaire/negations/exercices' },
+  { number: 7, title: 'Vocabulaire Temporel : Dates et Heures', description: 'Maîtrisez l’expression du temps, des dates et des heures en espagnol', to: '/formation/espagnol/grammaire/temporal', exercicesTo: '/formation/espagnol/grammaire/temporal/exercices' },
+  { number: 8, title: 'Pronoms', description: 'Maîtrisez l’usage des pronoms personnels, possessifs et démonstratifs', to: '/formation/espagnol/grammaire/pronouns', exercicesTo: '/formation/espagnol/grammaire/pronouns/exercices' },
+  { number: 9, title: 'Verbes Particuliers et Tournures Affectives', description: 'Maîtrisez les verbes comme gustar et les constructions affectives', to: '/formation/espagnol/grammaire/affective-verbs', exercicesTo: '/formation/espagnol/grammaire/affective-verbs/exercices' },
+  { number: 10, title: 'Adjectifs et Adverbes', description: 'Maîtrisez l’accord des adjectifs, les adverbes et leurs emplois', to: '/formation/espagnol/grammaire/adjectives-adverbs', exercicesTo: '/formation/espagnol/grammaire/adjectives-adverbs/exercices' },
+  { number: 11, title: 'Thème Grammatical', description: 'Techniques de traduction français → espagnol avec pièges classiques et méthodologie', to: '/formation/espagnol/grammaire/theme' },
+];
 
 const FormationEspagnolGrammairePage = () => {
-
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F7F6F3', color: '#1A1A18', fontFamily: "'DM Sans', sans-serif" }}>
-
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+    <div className="carnet-paper min-h-screen">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formations" className="hover:text-foreground transition-colors">
-              Toutes les formations
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formations" className="hover:text-carnet-red transition-colors">
+              Formations
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/espagnol" className="hover:text-foreground transition-colors">
-              Formation Espagnol ECG
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formation/espagnol" className="hover:text-carnet-red transition-colors">
+              Espagnol
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Grammaire Espagnole</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Grammaire</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-block mb-6 px-3 py-1 rounded" style={{ backgroundColor: '#FDF0EC', color: '#C45A35', fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-            Espagnol · Module 02
-          </div>
-          <h1 className="mb-6" style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 400, color: '#1A1A18', fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: 1.1, letterSpacing: '-0.01em' }}>
-            Grammaire Espagnole
-          </h1>
-          <div className="flex justify-center mb-6">
-            <span style={{ display: 'inline-block', width: '56px', height: '3px', backgroundColor: '#F4845F' }} />
-          </div>
-          <p className="max-w-2xl mx-auto" style={{ color: '#3A3A38', fontSize: '16px', lineHeight: 1.65 }}>
-            Maîtrisez les structures grammaticales complexes pour exceller aux épreuves d'espagnol ECG.
-          </p>
+      <section className="relative py-16 lg:py-20">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-[820px]">
+            <div className="carnet-eyebrow mb-6">Espagnol · Module 02</div>
+            <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] text-carnet-ink tracking-tight mb-6">
+              Grammaire <em className="font-lora italic text-carnet-red">espagnole</em>.
+            </h1>
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px]">
+              Maîtrisez les structures grammaticales complexes pour exceller aux épreuves d'espagnol ECG.
+            </p>
+          </motion.div>
         </div>
+      </section>
 
-        {/* SOMMAIRE DES CHAPITRES */}
-        <div className="max-w-4xl mx-auto">
+      <section className="relative pb-20">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
           <div className="space-y-4">
-            {/* Module 1 - Conjugaison et Temps Verbaux */}
-            <Link to="/formation/espagnol/grammaire/conjugaison" className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-pr-orange-dark text-lg">1</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Conjugaison et Temps Verbaux</h3>
-                    <p className="text-gray-600 mb-4">Temps complexes : subjonctif, conditionnel, impératif et tous les temps de l'indicatif</p>
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
-                      <Link to="/formation/espagnol/grammaire/conjugaison/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
+            {modules.map((m, idx) => {
+              const tilt = idx % 4 === 1 ? 'carnet-tilt-r' : idx % 4 === 3 ? 'carnet-tilt-l' : '';
+              return (
+                <motion.div
+                  key={m.number}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-30px' }}
+                  transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.3) }}
+                  className={tilt}
+                >
+                  <div className="carnet-card group p-6 sm:p-7 hover:shadow-[0_12px_32px_rgba(78,55,30,0.10)] transition-shadow">
+                    <div className="flex items-start gap-5">
+                      <span className="carnet-hand text-[42px] text-carnet-red leading-none font-semibold flex-shrink-0">
+                        {String(m.number).padStart(2, '0')}
+                      </span>
+                      <div className="flex-1">
+                        <h3 className="font-lora text-[22px] sm:text-[24px] leading-[1.2] text-carnet-ink mb-2 group-hover:text-carnet-red transition-colors">
+                          {m.title}
+                        </h3>
+                        <hr className="w-8 h-0.5 bg-carnet-ink border-0 mb-3" />
+                        <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.6] mb-4">
+                          {m.description}
+                        </p>
+                        <div className="flex flex-wrap gap-3">
+                          <Link to={m.to}>
+                            <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold rounded-full h-10 px-5 text-[13px] border-0 transition-colors">
+                              <BookOpen className="mr-2 h-4 w-4" />
+                              Accéder au module
+                              <ArrowRight className="ml-1 h-3 w-3" />
+                            </Button>
+                          </Link>
+                          {m.exercicesTo ? (
+                            <Link to={m.exercicesTo}>
+                              <Button variant="outline" className="bg-carnet-paper-2 border-dashed border-[rgba(78,55,30,0.25)] text-carnet-ink-soft hover:border-carnet-red hover:text-carnet-red font-instrument font-semibold rounded-full h-10 px-5 text-[13px]">
+                                <PenTool className="mr-2 h-4 w-4" />
+                                Exercices
+                              </Button>
+                            </Link>
+                          ) : (
+                            <Button variant="outline" className="bg-carnet-paper-2 border-dashed border-[rgba(78,55,30,0.18)] text-carnet-ink-mute font-instrument font-semibold rounded-full h-10 px-5 text-[13px] cursor-not-allowed opacity-70" disabled>
+                              <PenTool className="mr-2 h-4 w-4" />
+                              Exercices bientôt
+                            </Button>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Module 2 - Syntaxe et Structures Complexes */}
-            <Link to="/formation/espagnol/grammaire/syntaxe-structures-complexes" className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-pr-orange-dark text-lg">2</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Syntaxe et Structures Complexes</h3>
-                    <p className="text-gray-600 mb-4">Structures syntaxiques sophistiquées pour enrichir l'expression écrite et orale</p>
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
-                      <Link to="/formation/espagnol/grammaire/syntaxe-structures-complexes/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Module 3 - Ser vs Estar et Constructions */}
-            <Link to="/formation/espagnol/grammaire/ser-estar" className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-pr-orange-dark text-lg">3</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Ser vs Estar et Constructions</h3>
-                    <p className="text-gray-600 mb-4">Maîtrisez les nuances entre ser et estar, constructions spéciales et verbes d'état</p>
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
-                      <Link to="/formation/espagnol/grammaire/ser-estar/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Module 4 - Prépositions et Locutions */}
-            <Link to="/formation/espagnol/grammaire/prepositions" className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-pr-orange-dark text-lg">4</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Prépositions et Locutions</h3>
-                    <p className="text-gray-600 mb-4">Emploi précis des prépositions et locutions prépositionnelles en espagnol</p>
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
-                      <Link to="/formation/espagnol/grammaire/prepositions/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Module 5 - Questions et Interrogatifs */}
-            <Link to="/formation/espagnol/grammaire/questions" className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-pr-orange-dark text-lg">5</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Questions et Interrogatifs</h3>
-                    <p className="text-gray-600 mb-4">Maîtrisez la formulation des questions et l'usage des mots interrogatifs</p>
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
-                      <Link to="/formation/espagnol/grammaire/questions/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Module 6 - Négations */}
-            <Link to="/formation/espagnol/grammaire/negations" className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-pr-orange-dark text-lg">6</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Négations</h3>
-                    <p className="text-gray-600 mb-4">Maîtrisez les formes négatives et leurs emplois en espagnol</p>
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
-                      <Link to="/formation/espagnol/grammaire/negations/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Module 7 - Vocabulaire Temporel : Dates et Heures */}
-            <Link to="/formation/espagnol/grammaire/temporal" className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-pr-orange-dark text-lg">7</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Vocabulaire Temporel : Dates et Heures</h3>
-                    <p className="text-gray-600 mb-4">Maîtrisez l'expression du temps, des dates et des heures en espagnol</p>
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
-                      <Link to="/formation/espagnol/grammaire/temporal/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Module 8 - Pronoms */}
-            <Link to="/formation/espagnol/grammaire/pronouns" className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-pr-orange-dark text-lg">8</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Pronoms</h3>
-                    <p className="text-gray-600 mb-4">Maîtrisez l'usage des pronoms personnels, possessifs et démonstratifs</p>
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
-                      <Link to="/formation/espagnol/grammaire/pronouns/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Module 9 - Verbes Particuliers et Tournures Affectives */}
-            <Link to="/formation/espagnol/grammaire/affective-verbs" className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-pr-orange-dark text-lg">9</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Verbes Particuliers et Tournures Affectives</h3>
-                    <p className="text-gray-600 mb-4">Maîtrisez les verbes comme gustar et les constructions affectives</p>
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
-                      <Link to="/formation/espagnol/grammaire/affective-verbs/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Module 10 - Adjectifs et Adverbes */}
-            <Link to="/formation/espagnol/grammaire/adjectives-adverbs" className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-pr-orange-dark text-lg">10</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Adjectifs et Adverbes</h3>
-                    <p className="text-gray-600 mb-4">Maîtrisez l'accord des adjectifs, les adverbes et leurs emplois</p>
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
-                      <Link to="/formation/espagnol/grammaire/adjectives-adverbs/exercices">
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Exercices
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Module 11 - Thème Grammatical */}
-            <Link to="/formation/espagnol/grammaire/theme" className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-pr-orange-dark text-lg">11</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Thème Grammatical</h3>
-                    <p className="text-gray-600 mb-4">Techniques de traduction français → espagnol avec pièges classiques et méthodologie</p>
-                    <div className="flex gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
-                        <Calendar className="mr-2 h-4 w-4" />
-                        Accéder au module
-                      </Button>
-                      <Button variant="outline" className="border-gray-300 text-gray-500 cursor-not-allowed px-4 py-2 rounded-md" disabled>
-                        <Briefcase className="mr-2 h-4 w-4" />
-                        Exercices
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

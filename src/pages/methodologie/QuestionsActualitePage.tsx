@@ -59,7 +59,7 @@ const QuestionsActualitePage = () => (
         Les jurys testent votre curiosité intellectuelle, votre capacité à analyser et votre aptitude
         à prendre position de manière argumentée — des compétences essentielles pour un futur manager.
       </p>
-      <p className="font-medium text-pr-black mb-2">Ce que le jury évalue réellement :</p>
+      <p className="font-medium text-carnet-ink mb-2">Ce que le jury évalue réellement :</p>
       <ul className="space-y-2">
         {[
           ["Ouverture d'esprit", "s'intéresse-t-il au monde qui l'entoure ?"],
@@ -67,8 +67,8 @@ const QuestionsActualitePage = () => (
           ["Prise de position", "ose-t-il défendre un avis avec des arguments ?"],
         ].map(([k, v]) => (
           <li key={k} className="flex items-start gap-2">
-            <CheckCircle className="w-4 h-4 text-pr-orange mt-1 flex-shrink-0" strokeWidth={1.8} />
-            <span><strong className="text-pr-black">{k} :</strong> {v}</span>
+            <CheckCircle className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" strokeWidth={1.8} />
+            <span><strong className="text-carnet-ink">{k} :</strong> {v}</span>
           </li>
         ))}
       </ul>
@@ -77,10 +77,10 @@ const QuestionsActualitePage = () => (
     <MethodSection label="Section 01" title="Les 4 grands thèmes à maîtriser" icon={Globe}>
       <div className="grid md:grid-cols-2 gap-5">
         {themes.map((g) => (
-          <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-            <h4 className="font-dm-serif text-lg text-pr-black mb-2">{g.t}</h4>
-            <div className="h-px w-8 bg-pr-orange mb-4" />
-            <ul className="space-y-2 text-sm text-pr-gray-dark">
+          <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <h4 className="font-dm-serif text-lg text-carnet-ink mb-2">{g.t}</h4>
+            <div className="h-px w-8 bg-red-600 mb-4" />
+            <ul className="space-y-2 text-sm text-carnet-ink-soft">
               {g.l.map((item) => <li key={item}>— {item}</li>)}
             </ul>
           </div>
@@ -89,14 +89,14 @@ const QuestionsActualitePage = () => (
     </MethodSection>
 
     <MethodSection label="Section 02" title="Méthode en 5 étapes pour répondre" icon={Target}>
-      <p className="text-pr-gray-dark mb-6">Une structure adaptée à n'importe quelle question d'actualité, quel que soit le sujet.</p>
+      <p className="text-carnet-ink-soft mb-6">Une structure adaptée à n'importe quelle question d'actualité, quel que soit le sujet.</p>
       <div className="space-y-4">
         {methodSteps.map((s) => (
-          <div key={s.n} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-5 flex items-baseline gap-4">
-            <span className="font-dm-serif text-3xl text-pr-orange leading-none">{s.n}</span>
+          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+            <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
-              <h4 className="font-dm-serif text-lg text-pr-black mb-1">{s.t}</h4>
-              <p className="text-sm text-pr-gray-dark">{s.d}</p>
+              <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
+              <p className="text-sm text-carnet-ink-soft">{s.d}</p>
             </div>
           </div>
         ))}
@@ -106,10 +106,10 @@ const QuestionsActualitePage = () => (
     <MethodSection label="Section 03" title="Sources à suivre pour rester informé" icon={BookOpen}>
       <div className="grid md:grid-cols-3 gap-5">
         {sources.map((s) => (
-          <div key={s.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-            <h4 className="font-dm-serif text-lg text-pr-black mb-2">{s.t}</h4>
-            <div className="h-px w-8 bg-pr-orange mb-4" />
-            <ul className="space-y-2 text-sm text-pr-gray-dark">
+          <div key={s.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <h4 className="font-dm-serif text-lg text-carnet-ink mb-2">{s.t}</h4>
+            <div className="h-px w-8 bg-red-600 mb-4" />
+            <ul className="space-y-2 text-sm text-carnet-ink-soft">
               {s.l.map((item) => <li key={item}>— {item}</li>)}
             </ul>
           </div>
@@ -120,13 +120,13 @@ const QuestionsActualitePage = () => (
     <MethodSection label="Section 04" title="Pièges et erreurs fréquentes" icon={AlertTriangle}>
       <div className="space-y-3">
         {traps.map(({ t, d }, i) => (
-          <div key={i} className="bg-white border border-pr-gray-light rounded-lg p-4 flex items-start gap-4">
-            <div className="font-dm-serif text-3xl text-pr-orange leading-none flex-shrink-0 w-12 text-center">
+          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+            <div className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0 w-12 text-center">
               {String(i + 1).padStart(2, '0')}
             </div>
             <div className="flex-1">
-              <h5 className="font-medium text-pr-black mb-1">{t}</h5>
-              <p className="text-sm text-pr-gray-mid">{d}</p>
+              <h5 className="font-medium text-carnet-ink mb-1">{t}</h5>
+              <p className="text-sm text-carnet-ink-mute">{d}</p>
             </div>
           </div>
         ))}

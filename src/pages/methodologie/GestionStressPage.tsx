@@ -69,29 +69,29 @@ const GestionStressPage = () => (
         la réflexion et vous donne de l'énergie. Le problème n'est pas le stress lui-même,
         mais le stress non maîtrisé qui paralyse.
       </p>
-      <p className="font-medium text-pr-black mb-2">Les deux types de stress :</p>
+      <p className="font-medium text-carnet-ink mb-2">Les deux types de stress :</p>
       <ul className="space-y-2">
         {[
           ["Eustress (positif)", "vous motive, vous garde alerte et réactif — cultivez-le."],
           ["Distress (négatif)", "vous paralyse, brouille les idées, nuit à l'expression — apprenez à le maîtriser."],
         ].map(([k, v]) => (
           <li key={k} className="flex items-start gap-2">
-            <CheckCircle className="w-4 h-4 text-pr-orange mt-1 flex-shrink-0" strokeWidth={1.8} />
-            <span><strong className="text-pr-black">{k} :</strong> {v}</span>
+            <CheckCircle className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" strokeWidth={1.8} />
+            <span><strong className="text-carnet-ink">{k} :</strong> {v}</span>
           </li>
         ))}
       </ul>
     </MethodIntroCard>
 
     <MethodSection label="Section 01" title="Techniques anti-stress immédiates" icon={Wind}>
-      <p className="text-pr-gray-dark mb-6">Quatre techniques testées et approuvées par des coachs en performance mentale.</p>
+      <p className="text-carnet-ink-soft mb-6">Quatre techniques testées et approuvées par des coachs en performance mentale.</p>
       <div className="space-y-4">
         {techniques.map((s) => (
-          <div key={s.n} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-5 flex items-baseline gap-4">
-            <span className="font-dm-serif text-3xl text-pr-orange leading-none">{s.n}</span>
+          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+            <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
-              <h4 className="font-dm-serif text-lg text-pr-black mb-1">{s.t}</h4>
-              <p className="text-sm text-pr-gray-dark">{s.d}</p>
+              <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
+              <p className="text-sm text-carnet-ink-soft">{s.d}</p>
             </div>
           </div>
         ))}
@@ -101,15 +101,15 @@ const GestionStressPage = () => (
     <MethodSection label="Section 02" title="Préparation chronologique : J-7 au jour J" icon={Clock}>
       <div className="grid md:grid-cols-3 gap-5">
         {phases.map((p, i) => (
-          <div key={p.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-            <span className="font-dm-serif text-3xl text-pr-orange">{String(i + 1).padStart(2, '0')}</span>
-            <h4 className="font-dm-serif text-lg text-pr-black mt-1">{p.t}</h4>
-            <p className="text-xs uppercase tracking-wider text-pr-gray-mid mb-3">{p.sub}</p>
-            <div className="h-px w-8 bg-pr-orange mb-4" />
-            <ul className="space-y-2 text-sm text-pr-gray-dark">
+          <div key={p.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <span className="font-dm-serif text-3xl text-red-600">{String(i + 1).padStart(2, '0')}</span>
+            <h4 className="font-dm-serif text-lg text-carnet-ink mt-1">{p.t}</h4>
+            <p className="text-xs uppercase tracking-wider text-carnet-ink-mute mb-3">{p.sub}</p>
+            <div className="h-px w-8 bg-red-600 mb-4" />
+            <ul className="space-y-2 text-sm text-carnet-ink-soft">
               {p.l.map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-pr-orange mt-0.5 flex-shrink-0" strokeWidth={1.8} />
+                  <CheckCircle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" strokeWidth={1.8} />
                   {item}
                 </li>
               ))}
@@ -122,13 +122,13 @@ const GestionStressPage = () => (
     <MethodSection label="Section 03" title="Gérer les signes de stress pendant l'entretien" icon={Activity}>
       <div className="space-y-3">
         {signs.map(([signe, remede], i) => (
-          <div key={i} className="bg-white border border-pr-gray-light rounded-lg p-4 flex items-start gap-4">
-            <div className="font-dm-serif text-3xl text-pr-orange leading-none flex-shrink-0 w-12 text-center">
+          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+            <div className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0 w-12 text-center">
               {String(i + 1).padStart(2, '0')}
             </div>
             <div className="flex-1">
-              <h5 className="font-medium text-pr-black mb-1">{signe}</h5>
-              <p className="text-sm text-pr-gray-mid">{remede}</p>
+              <h5 className="font-medium text-carnet-ink mb-1">{signe}</h5>
+              <p className="text-sm text-carnet-ink-mute">{remede}</p>
             </div>
           </div>
         ))}
@@ -147,12 +147,12 @@ const GestionStressPage = () => (
             l: ["Surestimer le niveau des autres candidats", "Ruminer les entretiens précédents ratés", "S'imaginer le jury hostile ou partial", "Se persuader qu'on n'est pas légitime"],
           },
         ].map((g) => (
-          <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-            <h4 className="font-dm-serif text-lg text-pr-black mb-4 flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.8} />
+          <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <h4 className="font-dm-serif text-lg text-carnet-ink mb-4 flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5 text-red-700" strokeWidth={1.8} />
               {g.t}
             </h4>
-            <ul className="space-y-2 text-sm text-pr-gray-dark">
+            <ul className="space-y-2 text-sm text-carnet-ink-soft">
               {g.l.map((item) => <li key={item}>— {item}</li>)}
             </ul>
           </div>

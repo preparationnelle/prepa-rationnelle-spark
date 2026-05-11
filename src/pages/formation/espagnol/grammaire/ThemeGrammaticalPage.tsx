@@ -184,25 +184,25 @@ const ThemeGrammaticalPage = () => {
   ];
 
   return (
-    <div className="relative font-dm-sans text-pr-black">
+    <div className="carnet-paper min-h-screen font-instrument text-carnet-ink">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-pr-orange-dark">
-            <Link to="/" className="flex items-center gap-1 hover:text-pr-orange-dark transition-colors">
+          <div className="flex items-center text-xs font-medium text-carnet-red">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-orange-400 mx-1" />
-            <Link to="/formation/espagnol" className="hover:text-pr-orange-dark transition-colors">
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute opacity-50 mx-2" />
+            <Link to="/formation/espagnol" className="hover:text-carnet-red transition-colors">
               Formation Espagnol
             </Link>
-            <ChevronRight className="h-3 w-3 text-orange-400 mx-1" />
-            <Link to="/formation/espagnol/grammaire" className="hover:text-pr-orange-dark transition-colors">
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute opacity-50 mx-2" />
+            <Link to="/formation/espagnol/grammaire" className="hover:text-carnet-red transition-colors">
               Grammaire
             </Link>
-            <ChevronRight className="h-3 w-3 text-orange-400 mx-1" />
-            <span className="text-orange-800 font-bold">Thème Grammatical</span>
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute opacity-50 mx-2" />
+            <span className="text-carnet-red-deep font-bold">Thème Grammatical</span>
           </div>
         </div>
       </nav>
@@ -212,58 +212,58 @@ const ThemeGrammaticalPage = () => {
         <div className="text-center mb-10">
           <div className="flex justify-center mb-4">
             <Link to="/formation/espagnol/grammaire">
-              <Button variant="outline" className="flex items-center gap-2 border-orange-300 text-pr-orange-dark hover:bg-orange-50">
+              <Button variant="outline" className="flex items-center gap-2 border-[rgba(193,68,58,0.35)] text-carnet-red hover:bg-[rgba(193,68,58,0.05)]">
                 <ArrowLeft className="h-4 w-4" />
                 Retour à la grammaire
               </Button>
             </Link>
           </div>
           
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+          <h1 className="text-4xl font-lora text-carnet-ink mb-4 flex items-center justify-center gap-3">
+            <div className="p-3 rounded-lg bg-carnet-red text-carnet-paper">
               <BookOpen className="h-9 w-9" />
             </div>
             Entraînement au Thème Grammatical
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-carnet-ink-mute max-w-3xl mx-auto">
             Maîtrisez la traduction du français vers l'espagnol avec des exercices progressifs, des indices et des corrections détaillées
           </p>
           <div className="flex justify-center gap-2 mt-4">
-            <Badge variant="secondary" className="bg-orange-100 text-orange-800 border-orange-300">Niveau Prépa</Badge>
-            <Badge variant="outline" className="border-orange-300 text-pr-orange-dark bg-orange-50">10 exercices</Badge>
-            <Badge className="bg-pr-orange-dark">Grammaire avancée</Badge>
+            <Badge variant="secondary" className="bg-[rgba(193,68,58,0.08)] text-carnet-red-deep border-[rgba(193,68,58,0.35)]">Niveau Prépa</Badge>
+            <Badge variant="outline" className="border-[rgba(193,68,58,0.35)] text-carnet-red bg-[rgba(193,68,58,0.05)]">10 exercices</Badge>
+            <Badge className="bg-carnet-red">Grammaire avancée</Badge>
           </div>
         </div>
 
         {/* Instructions */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+        <Card className="mb-8 border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-carnet-red-deep">
               <Lightbulb className="h-6 w-6" />
               Comment utiliser cette section
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark">
+          <CardContent className="text-carnet-red">
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <FileText className="h-8 w-8 text-pr-orange-dark" />
+                <div className="w-16 h-16 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <FileText className="h-8 w-8 text-carnet-red" />
                 </div>
-                <h3 className="font-semibold text-orange-900 mb-2">1. Lisez la phrase</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-2">1. Lisez la phrase</h3>
                 <p className="text-sm">Commencez par analyser la phrase française et identifiez les structures grammaticales</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Eye className="h-8 w-8 text-pr-orange-dark" />
+                <div className="w-16 h-16 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Eye className="h-8 w-8 text-carnet-red" />
                 </div>
-                <h3 className="font-semibold text-orange-900 mb-2">2. Consultez les indices</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-2">2. Consultez les indices</h3>
                 <p className="text-sm">Utilisez les indices pour vous aider avec le vocabulaire et les structures difficiles</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <CheckCircle className="h-8 w-8 text-pr-orange-dark" />
+                <div className="w-16 h-16 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <CheckCircle className="h-8 w-8 text-carnet-red" />
                 </div>
-                <h3 className="font-semibold text-orange-900 mb-2">3. Vérifiez la correction</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-2">3. Vérifiez la correction</h3>
                 <p className="text-sm">Comparez votre traduction avec la solution proposée et analysez les différences</p>
               </div>
             </div>
@@ -272,28 +272,28 @@ const ThemeGrammaticalPage = () => {
 
         {/* Section Thème grammatical */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Target className="h-8 w-8 text-pr-orange-dark" />
+          <h2 className="text-3xl font-lora text-carnet-ink mb-6 flex items-center gap-3">
+            <Target className="h-8 w-8 text-carnet-red" />
             I. Thème grammatical
           </h2>
           
           <div className="space-y-6">
             {exercises.map((exercise) => (
-              <Card key={exercise.id} className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+              <Card key={exercise.id} className="border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
                 <CardHeader>
-                  <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
+                  <CardTitle className="text-xl flex items-center gap-2 text-carnet-red-deep">
                     <FileText className="h-5 w-5" />
                     {exercise.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {/* Phrase française */}
-                  <div className="bg-white/70 rounded-lg p-4 border-2 border-orange-200 shadow-sm">
-                    <h4 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-pr-orange"></span>
+                  <div className="bg-white/70 rounded-lg p-4 border-2 border-[rgba(193,68,58,0.25)] shadow-sm">
+                    <h4 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-carnet-red"></span>
                       🇫🇷 Phrase à traduire :
                     </h4>
-                    <p className="text-lg text-gray-800 italic">{exercise.french}</p>
+                    <p className="text-lg text-carnet-ink italic">{exercise.french}</p>
                   </div>
 
                   {/* Boutons d'action */}
@@ -336,12 +336,12 @@ const ThemeGrammaticalPage = () => {
 
                   {/* Correction */}
                   {showCorrections[exercise.id] && (
-                    <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                      <h4 className="font-semibold text-green-900 mb-3 flex items-center gap-2">
+                    <div className="bg-[rgba(193,68,58,0.05)] rounded-lg p-4 border border-[rgba(193,68,58,0.25)]">
+                      <h4 className="font-semibold text-carnet-red-deep mb-3 flex items-center gap-2">
                         <CheckCircle className="h-4 w-4" />
                         ✅ Correction :
                       </h4>
-                      <p className="text-lg text-green-800 font-medium">{exercise.correction}</p>
+                      <p className="text-lg text-carnet-red-deep font-medium">{exercise.correction}</p>
                     </div>
                   )}
                 </CardContent>
@@ -352,28 +352,28 @@ const ThemeGrammaticalPage = () => {
 
         {/* Section Thème suivi */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <MessageSquare className="h-8 w-8 text-pr-orange-dark" />
+          <h2 className="text-3xl font-lora text-carnet-ink mb-6 flex items-center gap-3">
+            <MessageSquare className="h-8 w-8 text-carnet-red" />
             II. Thème suivi
           </h2>
           
           <div className="space-y-6">
             {themeSuivi.map((exercise) => (
-              <Card key={exercise.id} className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+              <Card key={exercise.id} className="border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
                 <CardHeader>
-                  <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
+                  <CardTitle className="text-xl flex items-center gap-2 text-carnet-red-deep">
                     <MessageSquare className="h-5 w-5" />
                     {exercise.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {/* Phrase française */}
-                  <div className="bg-white/70 rounded-lg p-4 border-2 border-orange-200 shadow-sm">
-                    <h4 className="font-semibold text-orange-900 mb-2 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-pr-orange"></span>
+                  <div className="bg-white/70 rounded-lg p-4 border-2 border-[rgba(193,68,58,0.25)] shadow-sm">
+                    <h4 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-carnet-red"></span>
                       🇫🇷 Phrase à traduire :
                     </h4>
-                    <p className="text-lg text-gray-800 italic">{exercise.french}</p>
+                    <p className="text-lg text-carnet-ink italic">{exercise.french}</p>
                   </div>
 
                   {/* Boutons d'action */}
@@ -416,12 +416,12 @@ const ThemeGrammaticalPage = () => {
 
                   {/* Correction */}
                   {showCorrections[exercise.id] && (
-                    <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                      <h4 className="font-semibold text-green-900 mb-3 flex items-center gap-2">
+                    <div className="bg-[rgba(193,68,58,0.05)] rounded-lg p-4 border border-[rgba(193,68,58,0.25)]">
+                      <h4 className="font-semibold text-carnet-red-deep mb-3 flex items-center gap-2">
                         <CheckCircle className="h-4 w-4" />
                         ✅ Correction :
                       </h4>
-                      <p className="text-lg text-green-800 font-medium">{exercise.correction}</p>
+                      <p className="text-lg text-carnet-red-deep font-medium">{exercise.correction}</p>
                     </div>
                   )}
                 </CardContent>
@@ -431,54 +431,54 @@ const ThemeGrammaticalPage = () => {
         </div>
 
         {/* Conseils méthodologiques */}
-        <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+        <Card className="border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-carnet-red-deep">
               <Zap className="h-6 w-6" />
               Conseils pour réussir le thème grammatical
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark space-y-6">
+          <CardContent className="text-carnet-red space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold text-orange-900 mb-3">🎯 Stratégie de traduction :</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-3">🎯 Stratégie de traduction :</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pr-orange mt-1.5 flex-shrink-0 shadow-sm"></span>
-                    <span className="text-orange-900">Identifiez d'abord la structure principale</span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0 shadow-sm"></span>
+                    <span className="text-carnet-red-deep">Identifiez d'abord la structure principale</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pr-orange mt-1.5 flex-shrink-0 shadow-sm"></span>
-                    <span className="text-orange-900">Traduisez les éléments grammaticaux clés</span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0 shadow-sm"></span>
+                    <span className="text-carnet-red-deep">Traduisez les éléments grammaticaux clés</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pr-orange mt-1.5 flex-shrink-0 shadow-sm"></span>
-                    <span className="text-orange-900">Adaptez le vocabulaire au contexte</span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0 shadow-sm"></span>
+                    <span className="text-carnet-red-deep">Adaptez le vocabulaire au contexte</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pr-orange mt-1.5 flex-shrink-0 shadow-sm"></span>
-                    <span className="text-orange-900">Vérifiez la cohérence de l'ensemble</span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0 shadow-sm"></span>
+                    <span className="text-carnet-red-deep">Vérifiez la cohérence de l'ensemble</span>
                   </li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-orange-900 mb-3">📚 Points de grammaire essentiels :</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-3">📚 Points de grammaire essentiels :</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pr-orange mt-1.5 flex-shrink-0 shadow-sm"></span>
-                    <span className="text-orange-900">Subjonctif après les verbes d'opinion</span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0 shadow-sm"></span>
+                    <span className="text-carnet-red-deep">Subjonctif après les verbes d'opinion</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pr-orange mt-1.5 flex-shrink-0 shadow-sm"></span>
-                    <span className="text-orange-900">Concordance des temps</span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0 shadow-sm"></span>
+                    <span className="text-carnet-red-deep">Concordance des temps</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pr-orange mt-1.5 flex-shrink-0 shadow-sm"></span>
-                    <span className="text-orange-900">Structures emphatiques</span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0 shadow-sm"></span>
+                    <span className="text-carnet-red-deep">Structures emphatiques</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-pr-orange mt-1.5 flex-shrink-0 shadow-sm"></span>
-                    <span className="text-orange-900">Prépositions et locutions</span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0 shadow-sm"></span>
+                    <span className="text-carnet-red-deep">Prépositions et locutions</span>
                   </li>
                 </ul>
               </div>

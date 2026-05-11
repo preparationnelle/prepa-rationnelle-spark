@@ -6,19 +6,19 @@ const ParagrapheEfficacePage: React.FC = () => {
   return (
     <div className="relative">
       {/* Breadcrumb */}
-      <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
+      <div className="sticky top-0 z-40 bg-carnet-paper/90 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-gray-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-800 transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/esh" className="hover:text-gray-800 transition-colors">Formation ESH ECG</Link>
+            <Link to="/formation/esh" className="hover:text-carnet-ink transition-colors">Formation ESH ECG</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/esh/methodologie" className="hover:text-gray-800 transition-colors">Méthodologie</Link>
+            <Link to="/formation/esh/methodologie" className="hover:text-carnet-ink transition-colors">Méthodologie</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <span className="text-gray-800 font-medium">Rédiger efficacement un paragraphe</span>
+            <span className="text-carnet-ink font-medium">Rédiger efficacement un paragraphe</span>
           </div>
         </div>
       </div>
@@ -27,24 +27,24 @@ const ParagrapheEfficacePage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-pr-orange-pale rounded-full flex items-center justify-center border border-carnet-red/30">
+            <div className="w-12 h-12 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center border border-carnet-red/30">
               <Target className="h-6 w-6 text-carnet-red" />
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">Comment rédiger efficacement un paragraphe en ESH</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-carnet-ink">Comment rédiger efficacement un paragraphe en ESH</h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-instrument text-[16px] text-carnet-ink-soft leading-[1.6] max-w-3xl mx-auto leading-relaxed">
             En ESH, un bon paragraphe combine clarté, rigueur et concret. Utilisez la structure Idée – Argumentation – Appui concret pour éviter la récitation et organiser votre raisonnement.
           </p>
         </div>
 
         {/* Content */}
         <div className="max-w-3xl mx-auto">
-          <section className="bg-white rounded-xl shadow-sm border p-6 mb-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">1. L’Idée directrice</h2>
-            <p className="text-gray-700 mb-3">
+          <section className="bg-carnet-paper-2 rounded-xl shadow-sm border p-6 mb-6">
+            <h2 className="text-xl font-semibold text-carnet-ink mb-2">1. L’Idée directrice</h2>
+            <p className="text-carnet-ink-soft mb-3">
               La première phrase annonce l'idée principale. Formulez-la simplement, sans citation ni auteur, et reliez-la clairement au sujet.
             </p>
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep">
+            <div className="bg-[rgba(193,68,58,0.08)] border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep">
               <div className="font-medium mb-1">Exemple (sujet fictif : « La mondialisation favorise-t-elle la croissance économique ? »)</div>
               <p>
                 La mondialisation constitue un moteur de croissance en permettant une meilleure allocation des ressources et une ouverture des marchés.
@@ -52,12 +52,12 @@ const ParagrapheEfficacePage: React.FC = () => {
             </div>
           </section>
 
-          <section className="bg-white rounded-xl shadow-sm border p-6 mb-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">2. L’Argumentation</h2>
-            <p className="text-gray-700 mb-3">
+          <section className="bg-carnet-paper-2 rounded-xl shadow-sm border p-6 mb-6">
+            <h2 className="text-xl font-semibold text-carnet-ink mb-2">2. L’Argumentation</h2>
+            <p className="text-carnet-ink-soft mb-3">
               Développez le mécanisme économique ou social qui justifie l'idée. Ensuite seulement, mobilisez un auteur ou une théorie pour renforcer la démonstration.
             </p>
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep">
+            <div className="bg-[rgba(193,68,58,0.08)] border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep">
               <div className="font-medium mb-1">Exemple</div>
               <p>
                 En ouvrant les frontières, les pays peuvent se spécialiser dans les productions où ils sont les plus efficaces, ce qui accroît la productivité globale. Adam Smith soulignait déjà en 1776 que la division du travail et l’échange international favorisent l’enrichissement mutuel. Ainsi, la mondialisation stimule la croissance en exploitant les avantages comparatifs.
@@ -65,12 +65,12 @@ const ParagrapheEfficacePage: React.FC = () => {
             </div>
           </section>
 
-          <section className="bg-white rounded-xl shadow-sm border p-6 mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">3. L’Appui concret</h2>
-            <p className="text-gray-700 mb-3">
+          <section className="bg-carnet-paper-2 rounded-xl shadow-sm border p-6 mb-8">
+            <h2 className="text-xl font-semibold text-carnet-ink mb-2">3. L’Appui concret</h2>
+            <p className="text-carnet-ink-soft mb-3">
               Concluez avec un exemple précis, une donnée chiffrée ou un fait historique pour crédibiliser l'argument.
             </p>
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep">
+            <div className="bg-[rgba(193,68,58,0.08)] border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep">
               <div className="font-medium mb-1">Exemple</div>
               <p>
                 La Chine, en s’intégrant progressivement dans le commerce mondial depuis les années 1980, a vu son PIB multiplié par plus de 20 en quatre décennies.
@@ -78,9 +78,9 @@ const ParagrapheEfficacePage: React.FC = () => {
             </div>
           </section>
 
-          <section className="bg-white rounded-xl shadow-sm border p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Conclusion</h3>
-            <p className="text-gray-700">
+          <section className="bg-carnet-paper-2 rounded-xl shadow-sm border p-6">
+            <h3 className="text-lg font-semibold text-carnet-ink mb-2">Conclusion</h3>
+            <p className="text-carnet-ink-soft">
               La structure <span className="font-medium">Idée – Argumentation – Appui concret</span> est un outil simple et puissant pour donner de la force à vos copies d’ESH. Entraînez-vous à l’appliquer systématiquement : une idée claire, un raisonnement solide et une illustration pertinente suffisent à construire un paragraphe efficace.
             </p>
             <div className="mt-4 flex items-center gap-2 text-green-700">

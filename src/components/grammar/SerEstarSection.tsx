@@ -15,7 +15,7 @@ const SerEstarSectionComponent: React.FC<SerEstarSectionProps> = ({ section }) =
   const getIconForSection = (id: string) => {
     if (id.includes('nuances') || id.includes('regles')) return <Target className="h-5 w-5 text-green-600" />;
     if (id.includes('constructions') || id.includes('haber')) return <Code className="h-5 w-5 text-blue-600" />;
-    if (id.includes('verbes') || id.includes('changement')) return <Zap className="h-5 w-5 text-pr-orange-dark" />;
+    if (id.includes('verbes') || id.includes('changement')) return <Zap className="h-5 w-5 text-carnet-red" />;
     if (id.includes('passif') || id.includes('pronominale')) return <MessageSquare className="h-5 w-5 text-purple-600" />;
     if (id.includes('cours') || id.includes('basiques')) return <BookOpen className="h-5 w-5 text-indigo-600" />;
     if (id.includes('traduire') || id.includes('il-y-a')) return <Lightbulb className="h-5 w-5 text-yellow-600" />;
@@ -25,7 +25,7 @@ const SerEstarSectionComponent: React.FC<SerEstarSectionProps> = ({ section }) =
   const getColorForSection = (id: string) => {
     if (id.includes('nuances') || id.includes('regles')) return 'bg-green-100';
     if (id.includes('constructions') || id.includes('haber')) return 'bg-blue-100';
-    if (id.includes('verbes') || id.includes('changement')) return 'bg-orange-100';
+    if (id.includes('verbes') || id.includes('changement')) return 'bg-[rgba(193,68,58,0.08)]';
     if (id.includes('passif') || id.includes('pronominale')) return 'bg-purple-100';
     if (id.includes('cours') || id.includes('basiques')) return 'bg-indigo-100';
     if (id.includes('traduire') || id.includes('il-y-a')) return 'bg-yellow-100';
@@ -35,7 +35,7 @@ const SerEstarSectionComponent: React.FC<SerEstarSectionProps> = ({ section }) =
   const getBorderColorForSection = (id: string) => {
     if (id.includes('nuances') || id.includes('regles')) return 'border-green-200';
     if (id.includes('constructions') || id.includes('haber')) return 'border-blue-200';
-    if (id.includes('verbes') || id.includes('changement')) return 'border-orange-200';
+    if (id.includes('verbes') || id.includes('changement')) return 'border-[rgba(193,68,58,0.25)]';
     if (id.includes('passif') || id.includes('pronominale')) return 'border-purple-200';
     if (id.includes('cours') || id.includes('basiques')) return 'border-indigo-200';
     if (id.includes('traduire') || id.includes('il-y-a')) return 'border-yellow-200';
@@ -114,25 +114,25 @@ const SerEstarSectionComponent: React.FC<SerEstarSectionProps> = ({ section }) =
 
           {/* Points d'attention */}
           {section.content.irregularities && section.content.irregularities.length > 0 && (
-            <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
-              <h4 className="font-semibold text-orange-900 mb-3 flex items-center gap-2">
+            <div className="bg-[rgba(193,68,58,0.05)] rounded-lg p-4 border border-[rgba(193,68,58,0.25)]">
+              <h4 className="font-semibold text-carnet-red-deep mb-3 flex items-center gap-2">
                 <AlertTriangle className="h-4 w-4" />
                 Points d'attention et nuances
               </h4>
               <div className="space-y-3">
                 {section.content.irregularities.map((irregularity, index) => (
-                  <div key={index} className="bg-white rounded p-3 border border-orange-200">
+                  <div key={index} className="bg-white rounded p-3 border border-[rgba(193,68,58,0.25)]">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="font-medium text-orange-800">{irregularity.pattern}</span>
+                      <span className="font-medium text-carnet-red-deep">{irregularity.pattern}</span>
                     </div>
                     <div className="flex flex-wrap gap-1 mb-2">
                       {irregularity.examples.map((example, exIndex) => (
-                        <span key={exIndex} className="text-xs font-mono bg-orange-100 text-orange-800 px-2 py-1 rounded">
+                        <span key={exIndex} className="text-xs font-mono bg-[rgba(193,68,58,0.08)] text-carnet-red-deep px-2 py-1 rounded">
                           {example}
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-pr-orange-dark">{irregularity.notes}</p>
+                    <p className="text-xs text-carnet-red">{irregularity.notes}</p>
                   </div>
                 ))}
               </div>

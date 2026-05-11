@@ -21,27 +21,27 @@ import {
 
 const Module4MigracionesFronterasPage = () => {
   return (
-    <div className="relative relative overflow-hidden">
+    <div className="carnet-paper min-h-screen relative overflow-hidden font-instrument text-carnet-ink">
       {/* Floating elements - Bubbles like landing page */}
       
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol" className="hover:text-carnet-red transition-colors">
               Formation Espagnol
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol/civilisation" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol/civilisation" className="hover:text-carnet-red transition-colors">
               Civilisation
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Migraciones y Fronteras</span>
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <span className="text-carnet-ink font-semibold">Migraciones y Fronteras</span>
           </div>
         </div>
       </nav>
@@ -49,13 +49,13 @@ const Module4MigracionesFronterasPage = () => {
       <div className="container mx-auto px-4 py-8 relative z-10">
         {/* En-tête du module */}
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+          <h1 className="text-4xl font-lora text-carnet-ink mb-4 flex items-center justify-center gap-3">
+            <div className="p-3 rounded-lg bg-carnet-red text-carnet-paper">
               <Ship className="h-9 w-9" />
             </div>
             Migraciones y Fronteras
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-carnet-ink-mute max-w-3xl mx-auto">
             Flux migratoires, contrôle frontalier, Canarias, asile et intégration en Espagne
           </p>
         </div>
@@ -64,9 +64,9 @@ const Module4MigracionesFronterasPage = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Colonne de gauche - Navigation du module */}
           <div className="lg:col-span-1">
-            <Card className="sticky top-20 border-orange-200 shadow-sm">
-              <CardHeader className="bg-gradient-to-r from-orange-50 to-orange-100">
-                <CardTitle className="text-orange-900 flex items-center gap-2">
+            <Card className="sticky top-20 border-[rgba(193,68,58,0.25)] shadow-sm">
+              <CardHeader className="bg-gradient-to-r from-[rgba(193,68,58,0.05)] to-[rgba(193,68,58,0.08)]">
+                <CardTitle className="text-carnet-red-deep flex items-center gap-2">
                   <Target className="h-5 w-5" />
                   Navigation du module
                 </CardTitle>
@@ -74,37 +74,37 @@ const Module4MigracionesFronterasPage = () => {
               <CardContent className="pt-6">
                 <div className="space-y-3">
                   <Link to="/formation/espagnol/civilisation/module4/vocabulaire">
-                    <Button variant="outline" className="w-full justify-start border-orange-200 hover:bg-orange-50 text-pr-orange-dark">
+                    <Button variant="outline" className="w-full justify-start border-[rgba(193,68,58,0.25)] hover:bg-[rgba(193,68,58,0.05)] text-carnet-red">
                       <BookOpen className="mr-2 h-4 w-4" />
                       Vocabulaire thématique
                     </Button>
                   </Link>
-                  <Button variant="outline" className="w-full justify-start border-gray-200 hover:bg-gray-50">
+                  <Button variant="outline" className="w-full justify-start border-gray-200 hover:carnet-paper-plain">
                     <FileText className="mr-2 h-4 w-4" />
                     Fiches de révision
                   </Button>
-                  <Button variant="outline" className="w-full justify-start border-gray-200 hover:bg-gray-50">
+                  <Button variant="outline" className="w-full justify-start border-gray-200 hover:carnet-paper-plain">
                     <Calendar className="mr-2 h-4 w-4" />
                     Actualités clés
                   </Button>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h3 className="font-semibold text-orange-900 mb-3 flex items-center gap-2">
+                  <h3 className="font-semibold text-carnet-red-deep mb-3 flex items-center gap-2">
                     <Lightbulb className="h-4 w-4" />
                     Données clés 2024-2025
                   </h3>
-                  <div className="space-y-2 text-sm text-gray-600">
+                  <div className="space-y-2 text-sm text-carnet-ink-mute">
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-carnet-red mt-1.5"></div>
                       <span>+61 000 arrivées par mer (2024)</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-carnet-red mt-1.5"></div>
                       <span>47 000 débarquements aux Canaries</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-carnet-red mt-1.5"></div>
                       <span>+5 000 mineurs non accompagnés</span>
                     </div>
                     <div className="flex items-start gap-2">
@@ -120,29 +120,29 @@ const Module4MigracionesFronterasPage = () => {
           {/* Colonne centrale et droite - Contenu principal */}
           <div className="lg:col-span-2 space-y-6">
             {/* Section Problématique */}
-            <Card className="border-orange-200 shadow-md">
-              <CardHeader className="bg-gradient-to-r from-orange-50 to-white">
-                <CardTitle className="text-orange-900 flex items-center gap-2">
+            <Card className="border-[rgba(193,68,58,0.25)] shadow-md">
+              <CardHeader className="bg-gradient-to-r from-[rgba(193,68,58,0.05)] to-white">
+                <CardTitle className="text-carnet-red-deep flex items-center gap-2">
                   <Scale className="h-6 w-6" />
                   Problématique du module
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
                 <div className="prose max-w-none">
-                  <h3 className="text-lg font-semibold text-orange-800 mb-4">
+                  <h3 className="text-lg font-semibold text-carnet-red-deep mb-4">
                     ¿Cómo gestionar la presión migratoria sin sacrificar vidas ni soberanía?
                   </h3>
                   
-                  <div className="bg-orange-50 border-l-4 border-pr-orange p-4 my-4 rounded-r">
-                    <p className="text-sm text-orange-900 leading-relaxed">
+                  <div className="bg-[rgba(193,68,58,0.05)] border-l-4 border-carnet-red p-4 my-4 rounded-r">
+                    <p className="text-sm text-carnet-red-deep leading-relaxed">
                       <strong>Comment gérer la pression migratoire sans sacrifier des vies ni la souveraineté ?</strong>
                     </p>
                   </div>
 
-                  <div className="space-y-6 text-gray-700 leading-relaxed">
+                  <div className="space-y-6 text-carnet-ink-soft leading-relaxed">
                     <div>
-                      <h4 className="font-semibold text-pr-orange-dark mb-2 flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-pr-orange"></div>
+                      <h4 className="font-semibold text-carnet-red mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-carnet-red"></div>
                         1) Panorama 2015–2025 : magnitudes et tendances
                       </h4>
                       <p className="text-sm">
@@ -151,8 +151,8 @@ const Module4MigracionesFronterasPage = () => {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-pr-orange-dark mb-2 flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-pr-orange"></div>
+                      <h4 className="font-semibold text-carnet-red mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-carnet-red"></div>
                         2) Routes et contrôle frontalier : de l'Atlantique au Détroit
                       </h4>
                       <p className="text-sm">
@@ -164,8 +164,8 @@ const Module4MigracionesFronterasPage = () => {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-pr-orange-dark mb-2 flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-pr-orange"></div>
+                      <h4 className="font-semibold text-carnet-red mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-carnet-red"></div>
                         3) Asile et mineurs : protection effective
                       </h4>
                       <p className="text-sm">
@@ -177,8 +177,8 @@ const Module4MigracionesFronterasPage = () => {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-pr-orange-dark mb-2 flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-pr-orange"></div>
+                      <h4 className="font-semibold text-carnet-red mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-carnet-red"></div>
                         4) Marché du travail, enracinement et économie souterraine
                       </h4>
                       <p className="text-sm">
@@ -190,8 +190,8 @@ const Module4MigracionesFronterasPage = () => {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-pr-orange-dark mb-2 flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-pr-orange"></div>
+                      <h4 className="font-semibold text-carnet-red mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-carnet-red"></div>
                         5) Discours public et intégration : cohésion ou fracture
                       </h4>
                       <p className="text-sm">
@@ -207,30 +207,30 @@ const Module4MigracionesFronterasPage = () => {
             </Card>
 
             {/* Section Essai rédigé */}
-            <Card className="border-orange-200 shadow-md">
-              <CardHeader className="bg-gradient-to-r from-orange-50 to-white">
-                <CardTitle className="text-orange-900 flex items-center gap-2">
+            <Card className="border-[rgba(193,68,58,0.25)] shadow-md">
+              <CardHeader className="bg-gradient-to-r from-[rgba(193,68,58,0.05)] to-white">
+                <CardTitle className="text-carnet-red-deep flex items-center gap-2">
                   <FileText className="h-6 w-6" />
                   Essai rédigé - Exemple type concours
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
                 <div className="mb-4">
-                  <Badge className="bg-orange-100 text-orange-800 border-orange-300">
+                  <Badge className="bg-[rgba(193,68,58,0.08)] text-carnet-red-deep border-[rgba(193,68,58,0.35)]">
                     Sujet : Migración y control fronterizo en España
                   </Badge>
                 </div>
 
-                <div className="prose max-w-none text-gray-700 leading-relaxed space-y-4">
+                <div className="prose max-w-none text-carnet-ink-soft leading-relaxed space-y-4">
                   <div>
-                    <h4 className="font-semibold text-pr-orange-dark mb-2">Introducción</h4>
+                    <h4 className="font-semibold text-carnet-red mb-2">Introducción</h4>
                     <p className="text-sm">
                       En 2024 España registró más de <strong>61.000 llegadas por mar</strong>, de las cuales casi <strong>47.000 desembarcaron en Canarias</strong>; ese mismo año se estimaron más de <strong>10.000 personas muertas o desaparecidas en ruta</strong>. En 2025, las entradas por Canarias cayeron de forma notable en el primer semestre, pero el riesgo siguió siendo extremo. ¿Puede un país de frontera gestionar esta presión sin sacrificar vidas ni soberanía? Sostengo que sí, si la respuesta fuera corresponsable y ordenada: apoyo a las islas, vías legales y salvamento eficaz.
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-pr-orange-dark mb-2">Desarrollo I — Desproporción de la carga insular</h4>
+                    <h4 className="font-semibold text-carnet-red mb-2">Desarrollo I — Desproporción de la carga insular</h4>
                     <p className="text-sm">
                       Canarias concentra una carga desigual, especialmente con menores no acompañados (más de <strong>5.000 bajo tutela en 2025</strong>). Se anunció la redistribución de varios miles a la península, pero la aplicación tropieza con resistencias autonómicas y con una solidaridad intra-UE aún voluntaria. Además, entre enero y mayo de 2025 murieron o desaparecieron casi <strong>1.900 personas rumbo a España</strong>, la mayoría en la ruta atlántica; entre las víctimas hubo mujeres y menores. 
                     </p>
@@ -240,7 +240,7 @@ const Module4MigracionesFronterasPage = () => {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-pr-orange-dark mb-2">Desarrollo II — Regularización y gestión ordenada</h4>
+                    <h4 className="font-semibold text-carnet-red mb-2">Desarrollo II — Regularización y gestión ordenada</h4>
                     <p className="text-sm">
                       En 2025 entró en vigor la <strong>reforma del Reglamento de Extranjería</strong>, que refuerza vías de arraigo y empleo (formación, vacantes, reagrupación), para reducir la economía sumergida. Ahora bien, si no se reforzaran consulados y oficinas, los cuellos de botella se perpetuarían. 
                     </p>
@@ -250,59 +250,59 @@ const Module4MigracionesFronterasPage = () => {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-pr-orange-dark mb-2">Conclusión</h4>
+                    <h4 className="font-semibold text-carnet-red mb-2">Conclusión</h4>
                     <p className="text-sm">
                       La experiencia 2024–2025 demuestra que la respuesta aislada fracasa. Si se consolidaran salvamento robusto, vías seguras y cuotas solidarias bajo estándares comunes, España podría convertir su condición de frontera en un liderazgo europeo eficaz, evitando que los compromisos queden en papel mojado.
                     </p>
                   </div>
                 </div>
 
-                <div className="mt-6 p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <h4 className="font-semibold text-orange-900 mb-3 flex items-center gap-2">
+                <div className="mt-6 p-4 bg-[rgba(193,68,58,0.05)] rounded-lg border border-[rgba(193,68,58,0.25)]">
+                  <h4 className="font-semibold text-carnet-red-deep mb-3 flex items-center gap-2">
                     <TrendingUp className="h-5 w-5" />
                     Points clés de l'essai
                   </h4>
-                  <div className="space-y-2 text-sm text-orange-800">
+                  <div className="space-y-2 text-sm text-carnet-red-deep">
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-carnet-red mt-1.5"></div>
                       <span><strong>Introduction :</strong> 61 000 arrivées (2024), 10 000 morts → Gestion possible si coresponsable</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-carnet-red mt-1.5"></div>
                       <span><strong>§1 :</strong> Canaries surchargées (5 000 MENA), 1 900 morts (jan-mai 2025) → Besoin de quotas UE obligatoires</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-carnet-red mt-1.5"></div>
                       <span><strong>§2 :</strong> Réforme Règlement 2025 (arraigo + emploi) → Propositions : couloirs humanitaires, quotas, fonds UE</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-pr-orange-dark mt-1.5"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-carnet-red mt-1.5"></div>
                       <span><strong>Conclusion :</strong> Sauvetage robuste + voies sûres + quotas solidaires = Leadership européen</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 p-4 bg-orange-50 rounded-lg border border-orange-200">
-                  <h4 className="font-semibold text-orange-900 mb-3 flex items-center gap-2">
+                <div className="mt-6 p-4 bg-[rgba(193,68,58,0.05)] rounded-lg border border-[rgba(193,68,58,0.25)]">
+                  <h4 className="font-semibold text-carnet-red-deep mb-3 flex items-center gap-2">
                     <AlertTriangle className="h-5 w-5" />
                     🎯 Sujets probables
                   </h4>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
-                      <span className="text-sm text-pr-orange-dark">Crise migratoire aux Canaries : causes et solutions</span>
+                      <div className="w-2 h-2 rounded-full bg-carnet-red"></div>
+                      <span className="text-sm text-carnet-red">Crise migratoire aux Canaries : causes et solutions</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
-                      <span className="text-sm text-pr-orange-dark">Mineurs non accompagnés (MENA) : protection et intégration</span>
+                      <div className="w-2 h-2 rounded-full bg-carnet-red"></div>
+                      <span className="text-sm text-carnet-red">Mineurs non accompagnés (MENA) : protection et intégration</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
-                      <span className="text-sm text-pr-orange-dark">Régularisation vs économie souterraine en Espagne</span>
+                      <div className="w-2 h-2 rounded-full bg-carnet-red"></div>
+                      <span className="text-sm text-carnet-red">Régularisation vs économie souterraine en Espagne</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-pr-orange-dark"></div>
-                      <span className="text-sm text-pr-orange-dark">Solidarité européenne et quotas migratoires</span>
+                      <div className="w-2 h-2 rounded-full bg-carnet-red"></div>
+                      <span className="text-sm text-carnet-red">Solidarité européenne et quotas migratoires</span>
                     </div>
                   </div>
                 </div>
@@ -314,7 +314,7 @@ const Module4MigracionesFronterasPage = () => {
         {/* Bouton retour en bas de page */}
         <div className="flex justify-center mt-12 pb-8">
           <Link to="/formation/espagnol/civilisation">
-            <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-6 py-3 rounded-md font-medium">
+            <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper px-6 py-3 rounded-md font-medium">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Retour à la civilisation
             </Button>

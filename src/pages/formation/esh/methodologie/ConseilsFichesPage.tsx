@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { Home, ChevronRight, NotebookPen } from 'lucide-react';
 
 const Item: React.FC<{ index: number; title: string; children: React.ReactNode }> = ({ index, title, children }) => (
-  <section className="bg-white rounded-xl shadow-sm border p-6 mb-6">
+  <section className="bg-carnet-paper-2 rounded-xl shadow-sm border p-6 mb-6">
     <div className="flex items-start gap-4">
       <div className="w-10 h-10 rounded-full bg-carnet-red/10 text-carnet-red font-bold flex items-center justify-center flex-shrink-0">{index}</div>
       <div className="flex-1">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
-        <div className="prose prose-sm max-w-none text-gray-700">{children}</div>
+        <h3 className="text-lg font-semibold text-carnet-ink mb-2">{title}</h3>
+        <div className="prose prose-sm max-w-none text-carnet-ink-soft">{children}</div>
       </div>
     </div>
   </section>
@@ -18,19 +18,19 @@ const ConseilsFichesPage: React.FC = () => {
   return (
     <div className="relative">
       {/* Breadcrumb */}
-      <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
+      <div className="sticky top-0 z-40 bg-carnet-paper/90 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-gray-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-800 transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/esh" className="hover:text-gray-800 transition-colors">Formation ESH ECG</Link>
+            <Link to="/formation/esh" className="hover:text-carnet-ink transition-colors">Formation ESH ECG</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/esh/methodologie" className="hover:text-gray-800 transition-colors">Méthodologie</Link>
+            <Link to="/formation/esh/methodologie" className="hover:text-carnet-ink transition-colors">Méthodologie</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <span className="text-gray-800 font-medium">10 conseils pour mieux ficher ses cours d’ESH</span>
+            <span className="text-carnet-ink font-medium">10 conseils pour mieux ficher ses cours d’ESH</span>
           </div>
         </div>
       </div>
@@ -39,12 +39,12 @@ const ConseilsFichesPage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-pr-orange-pale rounded-full flex items-center justify-center border border-carnet-red/30">
+            <div className="w-12 h-12 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center border border-carnet-red/30">
               <NotebookPen className="h-6 w-6 text-carnet-red" />
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">10 conseils pour mieux ficher ses cours d’ESH</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-carnet-ink">10 conseils pour mieux ficher ses cours d’ESH</h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-instrument text-[16px] text-carnet-ink-soft leading-[1.6] max-w-3xl mx-auto leading-relaxed">
             L’ESH est vaste et exigeante. Des fiches bien conçues permettent d’aller à l’essentiel et de mobiliser efficacement ses connaissances en dissertation.
           </p>
         </div>
@@ -81,9 +81,9 @@ const ConseilsFichesPage: React.FC = () => {
             <p>Se tester: restitution masquée, mini-paragraphes, quiz rapides. Plus on manipule ses fiches, plus elles deviennent performantes.</p>
           </Item>
 
-          <section className="bg-white rounded-xl shadow-sm border p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-2">Conclusion</h2>
-            <p className="text-gray-700">
+          <section className="bg-carnet-paper-2 rounded-xl shadow-sm border p-6">
+            <h2 className="text-lg font-semibold text-carnet-ink mb-2">Conclusion</h2>
+            <p className="text-carnet-ink-soft">
               Une fiche réussie est courte, lisible et à jour: définitions, auteurs majeurs, chiffres-clés, exemples historiques et actualité. Ce n’est pas une fin en soi mais un outil pour être rapide, précis et pertinent le jour du concours.
             </p>
           </section>

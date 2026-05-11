@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { Dices } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Dices, Home, ChevronRight } from 'lucide-react';
 import { RandomWordGenerator } from '@/components/RandomWordGenerator';
-import { GeneratorHero } from '@/components/generator/GeneratorHero';
 import { useProgress } from '@/context/ProgressContext';
 
 const steps = [
@@ -25,51 +25,70 @@ const EDHECGeneratorPage = () => {
   }, [trackPageVisit]);
 
   return (
-    <div className="min-h-screen bg-pr-gray-bg">
-      <div className="container mx-auto py-12 px-4">
-        <div className="mb-10">
-          <GeneratorHero
-            badge="Oraux · EDHEC"
-            badgeIcon={Dices}
-            title="Mots"
-            highlight="EDHEC"
-            subtitle="Générateur de mots aléatoires pour ta présentation EDHEC."
-            breadcrumb="EDHEC"
-          />
+    <div className="min-h-screen carnet-paper">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/generator" className="hover:text-carnet-red transition-colors">Générateurs</Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">EDHEC</span>
+          </div>
         </div>
+      </nav>
 
-        {/* Mode d'emploi */}
-        <div className="max-w-4xl mx-auto mb-10 bg-white rounded-2xl border border-pr-gray-light overflow-hidden">
-          <div className="h-[3px] w-full bg-pr-orange" />
-          <div className="p-6 sm:p-8">
-            <h3 className="font-dm-serif text-xl text-pr-black mb-5">Mode d'emploi</h3>
-            <div className="space-y-4 font-dm-sans">
-              {steps.map((s) => (
-                <div key={s.n} className="flex items-start gap-4">
-                  <span className="flex-shrink-0 w-7 h-7 bg-pr-orange text-white text-xs font-bold rounded-full flex items-center justify-center mt-0.5 font-dm-sans">
-                    {s.n}
-                  </span>
-                  <div>
-                    <p className="font-semibold text-pr-black mb-1">{s.label}</p>
-                    <p className="text-sm text-pr-gray-dark leading-relaxed">{s.body}</p>
-                  </div>
-                </div>
-              ))}
+      <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-14 lg:py-16">
+        <header className="mb-12 max-w-[820px]">
+          <div className="carnet-eyebrow mb-5">Oraux · EDHEC</div>
+          <div className="flex items-center gap-4 mb-5">
+            <div className="w-14 h-14 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+              <Dices className="h-6 w-6 text-carnet-red" />
             </div>
+            <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] text-carnet-ink tracking-tight">
+              Mots <em className="font-lora italic text-carnet-red">EDHEC</em>.
+            </h1>
+          </div>
+          <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.6] text-carnet-ink-soft max-w-[640px]">
+            Générateur de <span className="carnet-hl font-lora italic">mots aléatoires</span> pour ta présentation EDHEC.
+          </p>
+        </header>
+
+        <div className="max-w-4xl mx-auto mb-10 carnet-card p-6 sm:p-8">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="carnet-hand text-[32px] text-carnet-red leading-none font-semibold">01</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <h3 className="font-lora text-[22px] text-carnet-ink leading-tight">
+              Mode <em className="font-lora italic text-carnet-red">d'emploi</em>
+            </h3>
+          </div>
+          <div className="space-y-4 font-instrument">
+            {steps.map((s) => (
+              <div key={s.n} className="flex items-start gap-4">
+                <span className="flex-shrink-0 w-8 h-8 carnet-hand text-[22px] text-carnet-red leading-none font-semibold flex items-center justify-center">
+                  {s.n}
+                </span>
+                <div>
+                  <p className="font-semibold text-carnet-ink mb-1 font-instrument">{s.label}</p>
+                  <p className="text-[14px] text-carnet-ink-soft leading-relaxed">{s.body}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Générateur */}
-        <div className="max-w-4xl mx-auto bg-white rounded-2xl border border-pr-gray-light overflow-hidden">
-          <div className="h-[3px] w-full bg-pr-orange" />
-          <div className="px-6 py-5 border-b border-pr-gray-light bg-pr-gray-bg">
+        <div className="max-w-4xl mx-auto carnet-card overflow-hidden">
+          <div className="px-6 py-5 border-b border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-pr-orange-pale rounded-xl flex items-center justify-center">
-                <Dices className="h-5 w-5 text-pr-orange-dark" />
+              <div className="w-10 h-10 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center">
+                <Dices className="h-5 w-5 text-carnet-red" />
               </div>
               <div>
-                <h2 className="font-dm-serif text-xl text-pr-black">Générateur de mots EDHEC</h2>
-                <p className="font-dm-sans text-xs text-pr-gray-mid mt-0.5">
+                <h2 className="font-lora text-[22px] text-carnet-ink">Générateur de mots EDHEC</h2>
+                <p className="font-instrument text-[12px] text-carnet-ink-mute mt-0.5">
                   Mots aléatoires pour ta présentation
                 </p>
               </div>

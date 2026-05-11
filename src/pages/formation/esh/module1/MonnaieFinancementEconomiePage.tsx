@@ -5,34 +5,34 @@ import { DollarSign, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle } from
 
 const MonnaieFinancementEconomiePage = () => {
   return (
-    <div className="relative">
-      <div className="container mx-auto px-4 pt-16 pb-8">
-        {/* Sticky Breadcrumb */}
-        <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
-          <div className="container mx-auto px-4 py-2">
-            <div className="flex items-center text-xs text-muted-foreground">
-              <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-                <Home className="h-3 w-3" />
+    <div className="carnet-paper min-h-screen">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+              <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+                <Home className="h-3.5 w-3.5" />
                 <span>Accueil</span>
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formations" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formations" className="hover:text-carnet-red transition-colors">
                 Toutes les formations
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formation/esh" className="hover:text-carnet-red transition-colors">
                 Formation ESH ECG
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh/premiere-annee" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formation/esh/premiere-annee" className="hover:text-carnet-red transition-colors">
                 Première année
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <span className="text-foreground font-medium">La monnaie et le financement de l'économie</span>
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <span className="carnet-eyebrow text-[11px]">La monnaie et le financement de l'économie</span>
             </div>
           </div>
         </nav>
 
+      <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-12 lg:py-16">
         <div className="max-w-4xl mx-auto">
           {/* Bouton retour */}
           <div className="mb-6">
@@ -51,13 +51,13 @@ const MonnaieFinancementEconomiePage = () => {
                 <DollarSign className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">
+                <h1 className="font-lora text-[32px] sm:text-[40px] text-carnet-ink leading-tight">
                   La monnaie et le financement de l'économie
                 </h1>
                 <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 1.2 - Module 1</div>
               </div>
             </div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-instrument text-[16px] lg:text-[18px] text-carnet-ink-soft max-w-2xl mx-auto leading-[1.65]">
               Comprendre le rôle de la monnaie et les mécanismes de financement dans l'économie
             </p>
           </div>
@@ -65,8 +65,8 @@ const MonnaieFinancementEconomiePage = () => {
           {/* Contenu principal */}
           <div className="space-y-8">
             {/* Section 1: Définition et fonctions de la monnaie */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
@@ -75,35 +75,35 @@ const MonnaieFinancementEconomiePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-3">Fonctions de la monnaie :</h3>
-                  <ul className="space-y-2 text-sm text-gray-700">
+                  <h3 className="font-semibold text-carnet-ink mb-3">Fonctions de la monnaie :</h3>
+                  <ul className="space-y-2 font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <div>
                         <strong className="text-carnet-red">Unité de compte</strong>
-                        <p className="text-xs text-gray-600">Mesure la valeur des biens et services</p>
+                        <p className="text-xs text-carnet-ink-soft">Mesure la valeur des biens et services</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <div>
                         <strong className="text-carnet-red">Intermédiaire d'échange</strong>
-                        <p className="text-xs text-gray-600">Facilite les transactions</p>
+                        <p className="text-xs text-carnet-ink-soft">Facilite les transactions</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <div>
                         <strong className="text-carnet-red">Réserve de valeur</strong>
-                        <p className="text-xs text-gray-600">Permet l'épargne et l'investissement</p>
+                        <p className="text-xs text-carnet-ink-soft">Permet l'épargne et l'investissement</p>
                       </div>
                     </li>
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-3">Formes de monnaie :</h3>
-                  <ul className="space-y-2 text-sm text-gray-700">
+                  <h3 className="font-semibold text-carnet-ink mb-3">Formes de monnaie :</h3>
+                  <ul className="space-y-2 font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Monnaie fiduciaire (billets, pièces)</span>
@@ -122,8 +122,8 @@ const MonnaieFinancementEconomiePage = () => {
             </div>
 
             {/* Section 2: Système bancaire et création monétaire */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
@@ -131,9 +131,9 @@ const MonnaieFinancementEconomiePage = () => {
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-pr-orange-pale rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Banque Centrale</h3>
-                  <ul className="text-sm space-y-1 text-gray-700">
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Banque Centrale</h3>
+                  <ul className="text-sm space-y-1 text-carnet-ink-soft">
                     <li>• Émet la monnaie et contrôle la masse monétaire</li>
                     <li>• Fixe les taux d'intérêt directeurs</li>
                     <li>• Gère les réserves de change</li>
@@ -141,9 +141,9 @@ const MonnaieFinancementEconomiePage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-pr-orange-pale rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Banques Commerciales</h3>
-                  <ul className="text-sm space-y-1 text-gray-700">
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Banques Commerciales</h3>
+                  <ul className="text-sm space-y-1 text-carnet-ink-soft">
                     <li>• Collectent l'épargne des ménages</li>
                     <li>• Accordent des crédits aux entreprises</li>
                     <li>• Participent à la création monétaire via le multiplicateur</li>
@@ -152,8 +152,8 @@ const MonnaieFinancementEconomiePage = () => {
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Multiplicateur de crédit</h3>
-                  <p className="text-sm text-gray-600">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Multiplicateur de crédit</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Mécanisme par lequel les banques commerciales créent de la monnaie en accordant des crédits.
                     Un euro déposé en banque peut générer plusieurs euros de crédit selon le taux de réserve obligatoire.
                   </p>
@@ -162,8 +162,8 @@ const MonnaieFinancementEconomiePage = () => {
             </div>
 
             {/* Section 3: Financement de l'économie */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
@@ -172,8 +172,8 @@ const MonnaieFinancementEconomiePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-3">Financement interne :</h3>
-                  <ul className="space-y-2 text-sm text-gray-700">
+                  <h3 className="font-semibold text-carnet-ink mb-3">Financement interne :</h3>
+                  <ul className="space-y-2 font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Autofinancement des entreprises (profits retenus)</span>
@@ -190,8 +190,8 @@ const MonnaieFinancementEconomiePage = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-3">Financement externe :</h3>
-                  <ul className="space-y-2 text-sm text-gray-700">
+                  <h3 className="font-semibold text-carnet-ink mb-3">Financement externe :</h3>
+                  <ul className="space-y-2 font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Émission d'actions et d'obligations</span>
@@ -211,7 +211,7 @@ const MonnaieFinancementEconomiePage = () => {
           </div>
 
           {/* Navigation entre chapitres */}
-          <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+          <div className="flex justify-between items-center mt-12 pt-8 border-t border-dashed border-[rgba(78,55,30,0.18)]">
             <Link to="/formation/esh/module1/acteurs-fonctions-economie">
               <Button variant="outline" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
@@ -224,7 +224,7 @@ const MonnaieFinancementEconomiePage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module1/courants-pensee-economique">
-                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
+                <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Calculator, Home, GraduationCap } from 'lucide-react';
 import { motion } from 'framer-motion';
-import MathsChapterListRow from '@/components/maths-appliquees/MathsChapterListRow';
+import FormationChapterListRow, { buildMathChapterActions } from '@/components/formation/shared/FormationChapterListRow';
 import { mathsAppliqueesData } from '@/data/maths-appliquees';
 import { SEOHead } from '@/components/SEOHead';
 
@@ -113,7 +113,13 @@ const MathsAppliqueesPage = () => {
                     transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.3) }}
                     className={tilt}
                   >
-                    <MathsChapterListRow chapter={chapter} />
+                    <FormationChapterListRow
+                      number={chapter.id}
+                      title={chapter.title}
+                      description={chapter.description}
+                      Icon={chapter.icon}
+                      actions={buildMathChapterActions(chapter.slug, chapter.customLink)}
+                    />
                   </motion.div>
                 );
               })}
@@ -156,7 +162,13 @@ const MathsAppliqueesPage = () => {
                     transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.3) }}
                     className={tilt}
                   >
-                    <MathsChapterListRow chapter={chapter} />
+                    <FormationChapterListRow
+                      number={chapter.id}
+                      title={chapter.title}
+                      description={chapter.description}
+                      Icon={chapter.icon}
+                      actions={buildMathChapterActions(chapter.slug, chapter.customLink)}
+                    />
                   </motion.div>
                 );
               })}

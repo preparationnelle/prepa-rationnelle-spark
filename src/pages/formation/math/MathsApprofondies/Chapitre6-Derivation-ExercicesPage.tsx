@@ -273,6 +273,175 @@ const Chapitre6DerivationExercicesPage = () => {
           />
         </div>
 
+        <div>
+          <DifficultyHeader level="Module 3 — Théorème de Rolle et applications" />
+
+          <ExerciseCard
+            id="ex5"
+            title="Application du théorème de Rolle"
+            difficulty="Niveau: Facile"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex={"P \\in \\mathbb{R}[X]"} /> un polynôme non constant ayant <LatexRenderer latex={"k"} /> racines distinctes dans <LatexRenderer latex={"\\mathbb{R}"} />.</p>
+                <p>Démontrer que <LatexRenderer latex={"P'"} /> a au moins <LatexRenderer latex={"k - 1"} /> racines distinctes dans <LatexRenderer latex={"\\mathbb{R}"} />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Le théorème de Rolle affirme que si <LatexRenderer latex={"f"} /> est continue sur <LatexRenderer latex={"[a, b]"} />, dérivable sur <LatexRenderer latex={"]a, b["} />, et que <LatexRenderer latex={"f(a) = f(b)"} />, alors il existe <LatexRenderer latex={"c \\in ]a, b["} /> tel que <LatexRenderer latex={"f'(c) = 0"} />. L'application au comptage de racines d'un polynôme repose sur le fait qu'entre deux racines de <LatexRenderer latex={"P"} />, il existe au moins une racine de <LatexRenderer latex={"P'"} />.
+                </PointMethodo>
+                <p>Soient <LatexRenderer latex={"\\alpha_1 < \\alpha_2 < \\cdots < \\alpha_k"} /> les <LatexRenderer latex={"k"} /> racines réelles distinctes de <LatexRenderer latex={"P"} />. Pour <LatexRenderer latex={"i \\in \\{1, \\ldots, k - 1\\}"} />, considérons <LatexRenderer latex={"P"} /> sur <LatexRenderer latex={"[\\alpha_i, \\alpha_{i+1}]"} />.</p>
+                <p className="mt-2">Or <LatexRenderer latex={"P"} /> est polynomial, donc continu sur <LatexRenderer latex={"[\\alpha_i, \\alpha_{i+1}]"} /> et dérivable sur <LatexRenderer latex={"]\\alpha_i, \\alpha_{i+1}["} />. De plus <LatexRenderer latex={"P(\\alpha_i) = P(\\alpha_{i+1}) = 0"} />. D'après le théorème de Rolle, il existe <LatexRenderer latex={"\\beta_i \\in ]\\alpha_i, \\alpha_{i+1}["} /> tel que <LatexRenderer latex={"P'(\\beta_i) = 0"} />.</p>
+                <Astuce>
+                  Les <LatexRenderer latex={"\\beta_i"} /> ainsi construits sont deux à deux distincts car ils appartiennent à des intervalles ouverts disjoints <LatexRenderer latex={"]\\alpha_i, \\alpha_{i+1}["} />.
+                </Astuce>
+                <p className="mt-2">D'où on obtient <LatexRenderer latex={"k - 1"} /> racines distinctes <LatexRenderer latex={"\\beta_1, \\ldots, \\beta_{k-1}"} /> de <LatexRenderer latex={"P'"} />.</p>
+                <ConclusionBox>
+                  Si <LatexRenderer latex={"P \\in \\mathbb{R}[X]"} /> a <LatexRenderer latex={"k"} /> racines réelles distinctes, alors <LatexRenderer latex={"P'"} /> a au moins <LatexRenderer latex={"k - 1"} /> racines réelles distinctes (théorème de Rolle).
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 4 — Formule de Leibniz" />
+
+          <ExerciseCard
+            id="ex6"
+            title="Calcul d'une dérivée n-ième par Leibniz"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex={"f : \\mathbb{R} \\to \\mathbb{R}"} /> définie par <LatexRenderer latex={"f(x) = x^2 e^x"} />.</p>
+                <p>Calculer <LatexRenderer latex={"f^{(n)}(x)"} /> pour tout <LatexRenderer latex={"n \\in \\mathbb{N}"} />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  La formule de Leibniz pour la dérivée n-ième d'un produit est <LatexRenderer latex={"(uv)^{(n)} = \\sum_{k=0}^n \\binom{n}{k} u^{(k)} v^{(n-k)}"} />. Elle est efficace quand un des deux facteurs a un nombre fini de dérivées non nulles (ici <LatexRenderer latex={"u(x) = x^2"} /> dont la dérivée 3-ième est nulle).
+                </PointMethodo>
+                <p>Posons <LatexRenderer latex={"u(x) = x^2"} /> et <LatexRenderer latex={"v(x) = e^x"} />. Or <LatexRenderer latex={"v^{(j)}(x) = e^x"} /> pour tout <LatexRenderer latex={"j \\ge 0"} />, et <LatexRenderer latex={"u'(x) = 2x"} />, <LatexRenderer latex={"u''(x) = 2"} />, <LatexRenderer latex={"u^{(k)}(x) = 0"} /> pour <LatexRenderer latex={"k \\ge 3"} />.</p>
+                <Astuce>
+                  Quand un facteur est polynomial de degré <LatexRenderer latex={"d"} />, ses dérivées d'ordre <LatexRenderer latex={"\\ge d+1"} /> sont nulles, donc la somme de Leibniz se réduit à au plus <LatexRenderer latex={"d+1"} /> termes.
+                </Astuce>
+                <p className="mt-2">D'où, par la formule de Leibniz :</p>
+                <LatexRenderer latex={"f^{(n)}(x) = \\sum_{k=0}^{2} \\binom{n}{k} u^{(k)}(x) v^{(n-k)}(x) = \\binom{n}{0} x^2 e^x + \\binom{n}{1} (2x) e^x + \\binom{n}{2} \\cdot 2 e^x."} />
+                <p className="mt-2">Soit, pour <LatexRenderer latex={"n \\ge 2"} /> :</p>
+                <LatexRenderer latex={"f^{(n)}(x) = e^x \\bigl(x^2 + 2nx + n(n-1)\\bigr)."} />
+                <p className="mt-2">Pour <LatexRenderer latex={"n = 0"} /> : <LatexRenderer latex={"f^{(0)}(x) = x^2 e^x"} />. Pour <LatexRenderer latex={"n = 1"} /> : <LatexRenderer latex={"f'(x) = (x^2 + 2x) e^x"} /> (cohérent avec la formule).</p>
+                <ConclusionBox>
+                  <LatexRenderer latex={"f^{(n)}(x) = e^x \\bigl(x^2 + 2nx + n(n-1)\\bigr)"} /> pour tout <LatexRenderer latex={"n \\in \\mathbb{N}"} />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex7"
+            title="Inégalité des accroissements finis — application"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex={"f : [0, 1] \\to \\mathbb{R}"} /> de classe <LatexRenderer latex={"\\mathcal{C}^1"} /> avec <LatexRenderer latex={"f(0) = 0"} /> et <LatexRenderer latex={"|f'(x)| \\le M"} /> pour tout <LatexRenderer latex={"x \\in [0, 1]"} />.</p>
+                <p>Démontrer que <LatexRenderer latex={"\\left|\\int_0^1 f(t)\\,dt\\right| \\le M/2"} />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  L'inégalité des accroissements finis donne <LatexRenderer latex={"|f(b) - f(a)| \\le M(b - a)"} /> dès que <LatexRenderer latex={"|f'| \\le M"} /> sur <LatexRenderer latex={"[a, b]"} />. Combinée à une intégration, elle donne des bornes précises sur des intégrales.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex={"t \\in [0, 1]"} />. Or <LatexRenderer latex={"f(0) = 0"} /> et <LatexRenderer latex={"|f'| \\le M"} /> sur <LatexRenderer latex={"[0, t]"} />. Par l'inégalité des accroissements finis :</p>
+                <LatexRenderer latex={"|f(t)| = |f(t) - f(0)| \\le M \\cdot t."} />
+                <p className="mt-2">D'où, par croissance de l'intégrale :</p>
+                <LatexRenderer latex={"\\left|\\int_0^1 f(t)\\,dt\\right| \\le \\int_0^1 |f(t)|\\,dt \\le \\int_0^1 M t\\,dt = M \\cdot \\frac{1}{2} = \\frac{M}{2}."} />
+                <Astuce>
+                  Cette estimation utilise deux outils : l'inégalité des accroissements finis (point ⇒ borne ponctuelle) et la croissance de l'intégrale (borne ponctuelle ⇒ borne intégrale).
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex={"\\left|\\int_0^1 f(t)\\,dt\\right| \\le M/2"} />, avec égalité ssi <LatexRenderer latex={"|f'(t)| = M"} /> p.p. sur <LatexRenderer latex={"[0, 1]"} />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 5 — Étude approfondie de fonctions" />
+
+          <ExerciseCard
+            id="ex8"
+            title="Théorème de la bijection et fonction réciproque"
+            difficulty="Niveau: Concours"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex={"f : \\mathbb{R} \\to \\mathbb{R}"} /> définie par <LatexRenderer latex={"f(x) = x + e^x"} />.</p>
+                <p>1. Démontrer que <LatexRenderer latex={"f"} /> est une bijection de <LatexRenderer latex={"\\mathbb{R}"} /> sur <LatexRenderer latex={"\\mathbb{R}"} />.</p>
+                <p>2. Soit <LatexRenderer latex={"g = f^{-1}"} />. Calculer <LatexRenderer latex={"g'(1)"} />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Le théorème de la bijection s'applique à une fonction continue strictement monotone sur un intervalle : elle réalise une bijection sur son image. La dérivée de la réciproque est donnée par <LatexRenderer latex={"g'(y) = 1/f'(g(y))"} />, valable là où <LatexRenderer latex={"f'(g(y)) \\ne 0"} />.
+                </PointMethodo>
+                <p><strong>1. Bijectivité.</strong> Soit <LatexRenderer latex={"f \\in \\mathcal{C}^\\infty(\\mathbb{R})"} />. Or <LatexRenderer latex={"f'(x) = 1 + e^x > 0"} /> pour tout <LatexRenderer latex={"x \\in \\mathbb{R}"} />, donc <LatexRenderer latex={"f"} /> est strictement croissante.</p>
+                <p className="mt-2">De plus, <LatexRenderer latex={"\\lim_{x \\to -\\infty} f(x) = -\\infty + 0 = -\\infty"} /> et <LatexRenderer latex={"\\lim_{x \\to +\\infty} f(x) = +\\infty"} />. Comme <LatexRenderer latex={"f"} /> est continue, par le théorème de la bijection, <LatexRenderer latex={"f"} /> réalise une bijection de <LatexRenderer latex={"\\mathbb{R}"} /> sur <LatexRenderer latex={"f(\\mathbb{R}) = \\mathbb{R}"} />.</p>
+                <p className="mt-2"><strong>2. Calcul de g'(1).</strong> On cherche <LatexRenderer latex={"x_0"} /> tel que <LatexRenderer latex={"f(x_0) = 1"} />, soit <LatexRenderer latex={"x_0 + e^{x_0} = 1"} />.</p>
+                <Astuce>
+                  Test rapide : <LatexRenderer latex={"f(0) = 0 + 1 = 1"} />. Donc <LatexRenderer latex={"x_0 = 0"} />.
+                </Astuce>
+                <p className="mt-2">D'où <LatexRenderer latex={"g(1) = 0"} />. Or <LatexRenderer latex={"f'(0) = 1 + e^0 = 2 \\ne 0"} />. Par le théorème de dérivation de la réciproque :</p>
+                <LatexRenderer latex={"g'(1) = \\frac{1}{f'(g(1))} = \\frac{1}{f'(0)} = \\frac{1}{2}."} />
+                <ConclusionBox>
+                  <LatexRenderer latex={"f"} /> est une bijection <LatexRenderer latex={"\\mathbb{R} \\to \\mathbb{R}"} /> ; <LatexRenderer latex={"g'(1) = 1/2"} />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 6 — Inégalité et convexité" />
+
+          <ExerciseCard
+            id="ex9"
+            title="Inégalité de Young par convexité"
+            difficulty="Niveau: Difficile"
+            content={
+              <div>
+                <p>Soient <LatexRenderer latex={"p, q > 1"} /> avec <LatexRenderer latex={"1/p + 1/q = 1"} /> (exposants conjugués).</p>
+                <p>Démontrer l'inégalité de Young : pour tous <LatexRenderer latex={"a, b \\ge 0"} />, <LatexRenderer latex={"ab \\le \\frac{a^p}{p} + \\frac{b^q}{q}"} />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  L'inégalité de Young se démontre par concavité de la fonction <LatexRenderer latex={"\\ln"} />. Plus généralement : si <LatexRenderer latex={"\\varphi"} /> est concave et <LatexRenderer latex={"\\lambda \\in [0, 1]"} />, alors <LatexRenderer latex={"\\varphi(\\lambda x + (1-\\lambda) y) \\ge \\lambda \\varphi(x) + (1-\\lambda) \\varphi(y)"} />.
+                </PointMethodo>
+                <p><strong>Cas trivial.</strong> Si <LatexRenderer latex={"a = 0"} /> ou <LatexRenderer latex={"b = 0"} />, l'inégalité est triviale (membre de gauche nul, membre de droite positif).</p>
+                <p className="mt-2"><strong>Cas <LatexRenderer latex={"a, b > 0"} />.</strong> Soit <LatexRenderer latex={"\\varphi : x \\mapsto \\ln(x)"} /> sur <LatexRenderer latex={"\\mathbb{R}_+^*"} />. Or <LatexRenderer latex={"\\varphi''(x) = -1/x^2 < 0"} />, donc <LatexRenderer latex={"\\varphi"} /> est strictement concave.</p>
+                <p className="mt-2">Posons <LatexRenderer latex={"\\lambda = 1/p"} />, donc <LatexRenderer latex={"1 - \\lambda = 1/q"} /> (par hypothèse <LatexRenderer latex={"1/p + 1/q = 1"} />). Soient <LatexRenderer latex={"x = a^p"} /> et <LatexRenderer latex={"y = b^q"} />.</p>
+                <p className="mt-2">Par concavité de <LatexRenderer latex={"\\ln"} /> :</p>
+                <LatexRenderer latex={"\\ln\\!\\left(\\frac{a^p}{p} + \\frac{b^q}{q}\\right) = \\ln\\!\\left(\\frac{1}{p} a^p + \\frac{1}{q} b^q\\right) \\ge \\frac{1}{p} \\ln(a^p) + \\frac{1}{q} \\ln(b^q)."} />
+                <Astuce>
+                  La convexité (ou concavité) appliquée à <LatexRenderer latex={"\\ln"} /> fournit des inégalités multiplicatives à partir de moyennes pondérées — c'est le principe-clé.
+                </Astuce>
+                <p className="mt-2">D'où, en simplifiant :</p>
+                <LatexRenderer latex={"\\ln\\!\\left(\\frac{a^p}{p} + \\frac{b^q}{q}\\right) \\ge \\ln(a) + \\ln(b) = \\ln(ab)."} />
+                <p className="mt-2">Or <LatexRenderer latex={"\\ln"} /> est strictement croissante, donc :</p>
+                <LatexRenderer latex={"\\frac{a^p}{p} + \\frac{b^q}{q} \\ge ab."} />
+                <ConclusionBox>
+                  Inégalité de Young : <LatexRenderer latex={"ab \\le \\frac{a^p}{p} + \\frac{b^q}{q}"} /> pour <LatexRenderer latex={"a, b \\ge 0"} /> et <LatexRenderer latex={"1/p + 1/q = 1"} /> avec <LatexRenderer latex={"p, q > 1"} />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
       </div>
     </MathChapterTemplate>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Layout, Target, Lightbulb } from 'lucide-react';
+import { BookOpen, Layout, Target, Lightbulb, Quote } from 'lucide-react';
 import { PRFormationLayout } from '@/components/formation/PRFormationLayout';
 import { PRHubCard } from '@/components/formation/PRHubCard';
 
@@ -21,6 +21,12 @@ const modules = [
     Icon: Lightbulb,
     title: 'Références',
     description: 'Banque de parapersos sur l’humanité, prêts à être mobilisés en dissertation',
+  },
+  {
+    to: '/formation/culture-generale/citations',
+    Icon: Quote,
+    title: 'Citations',
+    description: 'Banque de citations classées par sous-thème, avec glose et paraperso lié',
   },
   {
     to: '/formation/culture-generale/juger',
@@ -47,7 +53,7 @@ const FormationCultureGeneralePage = () => {
         { label: 'Nouveau', highlight: true },
       ]}
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
         {modules.map((m, idx) => (
           <PRHubCard key={m.to} number={idx + 1} {...m} />
         ))}

@@ -44,8 +44,8 @@ const EMLyonPage = () => {
             </p>
             <ol className="list-decimal pl-5 space-y-2 mb-4">
               <li>Présentation personnelle en 1 minute chrono ! (oui, seulement 60 secondes pour vous présenter, c'est très court)</li>
-              <li>Tirage de 4 cartes thématiques contenant chacune une question imprévue (une carte "expérience", une "projet", une "personnalité", une "créativité")</li>
-              <li>Quelques minutes de réflexion, puis vous devez répondre aux questions des 4 cartes dans l'ordre que vous voulez</li>
+              <li>Tirage de 4 cartes thématiques, une par thème : <span className="font-semibold">Expérience, Personnalité, Créativité, Projet</span>. Chaque carte contient une question imprévue liée à son thème.</li>
+              <li>Vous disposez de quelques minutes pour parcourir les 4 cartes et organiser votre réflexion, puis vous répondez dans l'ordre de votre choix</li>
               <li>Si du temps reste, l'entretien se poursuit de façon classique par quelques questions additionnelles du jury</li>
             </ol>
             <p>
@@ -112,7 +112,7 @@ const EMLyonPage = () => {
                 </div>
                 <div>
                   <p className="font-medium">4 cartes thématiques</p>
-                  <p className="text-sm text-muted-foreground">Questions originales</p>
+                  <p className="text-sm text-muted-foreground">Expérience · Personnalité · Créativité · Projet</p>
                 </div>
               </li>
               <li className="flex gap-2">

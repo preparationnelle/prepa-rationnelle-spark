@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { Home, ChevronRight, BookOpenCheck, Lightbulb, Quote } from 'lucide-react';
 
 const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
-  <section className="bg-white rounded-xl shadow-sm border p-6 mb-6">
-    <h2 className="text-xl font-semibold text-gray-900 mb-2">{title}</h2>
-    <div className="prose prose-sm max-w-none text-gray-700">{children}</div>
+  <section className="bg-carnet-paper-2 rounded-xl shadow-sm border p-6 mb-6">
+    <h2 className="text-xl font-semibold text-carnet-ink mb-2">{title}</h2>
+    <div className="prose prose-sm max-w-none text-carnet-ink-soft">{children}</div>
   </section>
 );
 
@@ -20,19 +20,19 @@ const IntroductionDissertationPage: React.FC = () => {
   return (
     <div className="relative">
       {/* Breadcrumb */}
-      <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
+      <div className="sticky top-0 z-40 bg-carnet-paper/90 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-gray-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-800 transition-colors">
-              <Home className="h-3 w-3" />
+          <div className="flex items-center text-xs text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/esh" className="hover:text-gray-800 transition-colors">Formation ESH ECG</Link>
+            <Link to="/formation/esh" className="hover:text-carnet-ink transition-colors">Formation ESH ECG</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/esh/methodologie" className="hover:text-gray-800 transition-colors">Méthodologie</Link>
+            <Link to="/formation/esh/methodologie" className="hover:text-carnet-ink transition-colors">Méthodologie</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <span className="text-gray-800 font-medium">Réussir l’introduction de dissertation</span>
+            <span className="text-carnet-ink font-medium">Réussir l’introduction de dissertation</span>
           </div>
         </div>
       </div>
@@ -41,12 +41,12 @@ const IntroductionDissertationPage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-pr-orange-pale rounded-full flex items-center justify-center border border-carnet-red/30">
+            <div className="w-12 h-12 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center border border-carnet-red/30">
               <BookOpenCheck className="h-6 w-6 text-carnet-red" />
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">Réussir l’introduction d’une dissertation en économie</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold text-carnet-ink">Réussir l’introduction d’une dissertation en économie</h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="font-instrument text-[16px] text-carnet-ink-soft leading-[1.6] max-w-4xl mx-auto leading-relaxed">
             L’introduction donne la première impression au correcteur et structure ta réflexion. Elle suit quatre étapes: accroche, analyse du sujet, problématique, annonce du plan.
           </p>
         </div>
@@ -63,7 +63,7 @@ const IntroductionDissertationPage: React.FC = () => {
               <li><strong>Identifier les ambiguïtés</strong> de termes polysémiques (ex: « prix », « concentration »…).</li>
               <li><strong>Préciser le cadre</strong> temporel, spatial et les acteurs concernés, avec justification.</li>
             </ul>
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep mt-3">
+            <div className="bg-[rgba(193,68,58,0.08)] border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep mt-3">
               <div className="font-medium mb-1">Exemple – Sujet: « La concurrence doit-elle être stimulée ? »</div>
               <p>On étudie la concurrence entre entreprises (champ pertinent pour l’action publique) et l’on situe l’analyse de la fin du XIXe siècle à aujourd’hui.</p>
             </div>
@@ -71,7 +71,7 @@ const IntroductionDissertationPage: React.FC = () => {
 
           <Section title="3. L’analyse du sujet et les questions clés">
             <p>Formule 2 à 3 questions directrices issues de ton analyse. Elles guident le devoir et ouvrent sur les parties.</p>
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep mt-3">
+            <div className="bg-[rgba(193,68,58,0.08)] border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep mt-3">
               <p>La concurrence est-elle toujours bénéfique ? Dans quelles conditions peut-elle être nocive ? Quel rôle doit jouer l’État pour en stimuler ou en limiter les effets ?</p>
             </div>
             <Tip>Utilise des connecteurs logiques clairs: « or », « cependant », « dès lors », etc.</Tip>
@@ -88,7 +88,7 @@ const IntroductionDissertationPage: React.FC = () => {
 
           <Section title="5. La problématique">
             <p>Colonne vertébrale de la dissertation, concise (1–2 lignes), assez large pour nourrir trois parties.</p>
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep mt-3">
+            <div className="bg-[rgba(193,68,58,0.08)] border border-carnet-red/30 rounded-lg p-4 text-sm text-carnet-red-deep mt-3">
               <div className="font-medium mb-1">Exemple</div>
               <p>Dans quelle mesure la stimulation de la concurrence contribue-t-elle à la croissance et au bien-être collectif, et quelles limites peut-elle rencontrer ?</p>
             </div>
@@ -104,9 +104,9 @@ const IntroductionDissertationPage: React.FC = () => {
             <Tip>La troisième partie doit être solide. Si elle est artificielle, mieux vaut trois parties avec deux sous-parties chacune que deux grandes parties.</Tip>
           </Section>
 
-          <section className="bg-white rounded-xl shadow-sm border p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2"><Quote className="h-5 w-5 text-carnet-red" />Modèle ultra-synthétique</h3>
-            <ol className="list-decimal pl-6 text-gray-700 space-y-1">
+          <section className="bg-carnet-paper-2 rounded-xl shadow-sm border p-6">
+            <h3 className="text-lg font-semibold text-carnet-ink mb-2 flex items-center gap-2"><Quote className="h-5 w-5 text-carnet-red" />Modèle ultra-synthétique</h3>
+            <ol className="list-decimal pl-6 text-carnet-ink-soft space-y-1">
               <li>Accroche pertinente et factuelle</li>
               <li>Définition précise des termes + cadrage</li>
               <li>2–3 questions clés guidant l’analyse</li>

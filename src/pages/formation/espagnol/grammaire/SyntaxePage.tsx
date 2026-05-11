@@ -38,25 +38,25 @@ const SyntaxePage = () => {
   };
 
   return (
-    <div className="relative font-dm-sans text-pr-black">
+    <div className="carnet-paper min-h-screen font-instrument text-carnet-ink">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol" className="hover:text-carnet-red transition-colors">
               Formation Espagnol
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol/grammaire" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol/grammaire" className="hover:text-carnet-red transition-colors">
               Grammaire
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Syntaxe et Structures Complexes</span>
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <span className="text-carnet-ink font-semibold">Syntaxe et Structures Complexes</span>
           </div>
         </div>
       </nav>
@@ -73,51 +73,51 @@ const SyntaxePage = () => {
             </Link>
           </div>
           
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+          <h1 className="text-4xl font-lora text-carnet-ink mb-4 flex items-center justify-center gap-3">
+            <div className="p-3 rounded-lg bg-carnet-red text-carnet-paper">
               <BookOpen className="h-9 w-9" />
             </div>
             Syntaxe et Structures Complexes
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-carnet-ink-mute max-w-3xl mx-auto">
             Structures syntaxiques sophistiquées pour enrichir l'expression écrite et orale
           </p>
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">Niveau Avancé</Badge>
             <Badge variant="outline">2-3 heures</Badge>
-            <Badge className="bg-pr-orange-dark">Module essentiel</Badge>
+            <Badge className="bg-carnet-red">Module essentiel</Badge>
           </div>
         </div>
 
         {/* Instructions */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+        <Card className="mb-8 border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-carnet-red-deep">
               <Lightbulb className="h-6 w-6" />
               Comment utiliser ce module
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark">
+          <CardContent className="text-carnet-red">
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <BookOpenIcon className="h-8 w-8 text-pr-orange-dark" />
+                <div className="w-16 h-16 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <BookOpenIcon className="h-8 w-8 text-carnet-red" />
                 </div>
-                <h3 className="font-semibold text-orange-900 mb-2">1. Étudiez la théorie</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-2">1. Étudiez la théorie</h3>
                 <p className="text-sm">Lisez les règles et exemples de chaque section</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Table className="h-8 w-8 text-pr-orange-dark" />
+                <div className="w-16 h-16 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Table className="h-8 w-8 text-carnet-red" />
                 </div>
-                <h3 className="font-semibold text-orange-900 mb-2">2. Consultez les tableaux</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-2">2. Consultez les tableaux</h3>
                 <p className="text-sm">Mémorisez les structures et tournures idiomatiques</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <CheckCircle className="h-8 w-8 text-pr-orange-dark" />
+                <div className="w-16 h-16 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <CheckCircle className="h-8 w-8 text-carnet-red" />
                 </div>
-                <h3 className="font-semibold text-orange-900 mb-2">3. Pratiquez les exercices</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-2">3. Pratiquez les exercices</h3>
                 <p className="text-sm">Appliquez vos connaissances avec les exercices</p>
               </div>
             </div>
@@ -126,15 +126,15 @@ const SyntaxePage = () => {
 
         {/* Sections théoriques (Points essentiels) */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <BookOpenIcon className="h-8 w-8 text-pr-orange-dark" />
+          <h2 className="text-3xl font-lora text-carnet-ink mb-6 flex items-center gap-3">
+            <BookOpenIcon className="h-8 w-8 text-carnet-red" />
             Points Essentiels
           </h2>
           
           <div className="space-y-6">
-            <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+            <Card className="border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
               <CardContent className="p-6">
-                <ul className="list-disc list-inside space-y-2 text-lg text-orange-800">
+                <ul className="list-disc list-inside space-y-2 text-lg text-carnet-red-deep">
                   <li>Propositions relatives complexes</li>
                   <li>Discours rapporté</li>
                   <li>Expression de l'opinion</li>
@@ -149,15 +149,15 @@ const SyntaxePage = () => {
 
         {/* Sections d'approfondissement */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Zap className="h-8 w-8 text-pr-orange-dark" />
+          <h2 className="text-3xl font-lora text-carnet-ink mb-6 flex items-center gap-3">
+            <Zap className="h-8 w-8 text-carnet-red" />
             Approfondissements
           </h2>
           
           <div className="space-y-6">
-            <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+            <Card className="border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
               <CardContent className="p-6">
-                <ul className="list-disc list-inside space-y-2 text-lg text-orange-800">
+                <ul className="list-disc list-inside space-y-2 text-lg text-carnet-red-deep">
                   <li>Relatifs : que, quien, cuyo, donde</li>
                   <li>Style direct → style indirect</li>
                   <li>Verbes d'opinion et subjonctif</li>
@@ -172,15 +172,15 @@ const SyntaxePage = () => {
 
         {/* Exercices pratiques */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Target className="h-8 w-8 text-pr-orange-dark" />
+          <h2 className="text-3xl font-lora text-carnet-ink mb-6 flex items-center gap-3">
+            <Target className="h-8 w-8 text-carnet-red" />
             Exercices Proposés
           </h2>
           
           <div className="space-y-6">
-            <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+            <Card className="border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
               <CardContent className="p-6">
-                <ul className="list-disc list-inside space-y-2 text-lg text-orange-800">
+                <ul className="list-disc list-inside space-y-2 text-lg text-carnet-red-deep">
                   <li>Transformer en discours rapporté</li>
                   <li>Construire des phrases complexes</li>
                   <li>Utiliser les structures emphatiques</li>
@@ -192,19 +192,19 @@ const SyntaxePage = () => {
         </div>
 
         {/* Bouton vers les exercices */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+        <Card className="mb-8 border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-carnet-red-deep">
               <Target className="h-6 w-6" />
               Prêt à tester vos connaissances ?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-pr-orange-dark mb-6">
+            <p className="text-lg text-carnet-red mb-6">
               Maintenant que vous avez étudié la théorie, mettez vos connaissances en pratique avec nos exercices interactifs !
             </p>
             <Link to="/formation/espagnol/grammaire/syntaxe-structures-complexes/exercices">
-              <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg">
+              <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper px-8 py-3 text-lg">
                 <Target className="h-5 w-5 mr-2" />
                 Commencer les exercices
               </Button>
@@ -213,53 +213,53 @@ const SyntaxePage = () => {
         </Card>
 
         {/* Conseils méthodologiques */}
-        <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+        <Card className="border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-carnet-red-deep">
               <Zap className="h-6 w-6" />
               Conseils pour maîtriser la syntaxe et les structures complexes
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark space-y-6">
+          <CardContent className="text-carnet-red space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold text-orange-900 mb-3">🎯 Stratégie d'apprentissage :</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-3">🎯 Stratégie d'apprentissage :</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Identifiez les types de propositions (relatives, complétives)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Maîtrisez la concordance des temps au subjonctif</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Entraînez-vous au passage du style direct à indirect</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Intégrez les tournures idiomatiques dans votre expression</span>
                   </li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-orange-900 mb-3">📚 Points de grammaire essentiels :</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-3">📚 Points de grammaire essentiels :</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Usage des pronoms relatifs : que, quien, cuyo, donde</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Verbes d'opinion et le subjonctif/indicatif</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Structures de mise en relief : es que, lo que</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Expressions figées et idiotismes courants</span>
                   </li>
                 </ul>

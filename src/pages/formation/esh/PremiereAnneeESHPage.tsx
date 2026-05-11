@@ -1,588 +1,378 @@
 import React from 'react';
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { BookOpen, Home, ChevronRight, TrendingUp, Users, Target, DollarSign, PieChart, Building, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { BookOpen, Home, ChevronRight, ArrowLeft, ArrowRight } from 'lucide-react';
+
+type Chapter = {
+  number: string;
+  title: string;
+  description: string;
+  introTo?: string;
+  moduleTo?: string;
+};
+
+type Section = {
+  title: string;
+  description: string;
+  chapters: Chapter[];
+};
+
+type Module = {
+  number: string;
+  title: string;
+  description: string;
+  sections: Section[];
+};
+
+const modules: Module[] = [
+  {
+    number: '01',
+    title: "Les fondements de l'économie et de la sociologie",
+    description: "Comprendre les bases théoriques et méthodologiques de l'économie et de la sociologie",
+    sections: [
+      {
+        title: "Les fondements de l'économie",
+        description: "Découvrir les principes fondamentaux de l'économie et comprendre son rôle dans la société",
+        chapters: [
+          {
+            number: '1.1',
+            title: "Les acteurs et les grandes fonctions de l'économie",
+            description: "Comprendre les différents acteurs économiques",
+            introTo: '/formation/esh/module1/acteurs-fonctions-economie',
+            moduleTo: '/formation/esh/module1/acteurs-fonctions-economie/module',
+          },
+          {
+            number: '1.2',
+            title: "La monnaie et le financement de l'économie",
+            description: "Explorer le rôle de la monnaie et les mécanismes de financement",
+            introTo: '/formation/esh/module1/monnaie-financement-economie',
+            moduleTo: '/formation/esh/module1/monnaie-financement-economie/module',
+          },
+          {
+            number: '1.3',
+            title: "Les grands courants de la pensée économique depuis le XVIe siècle",
+            description: "Découvrir l'évolution historique de la pensée économique",
+            introTo: '/formation/esh/module1/courants-economiques',
+            moduleTo: '/formation/esh/module1/courants-economiques/module',
+          },
+        ],
+      },
+      {
+        title: 'Le comportement des agents et le fonctionnement du marché',
+        description: 'Analyser les comportements économiques et les mécanismes de marché',
+        chapters: [
+          {
+            number: '1.4',
+            title: "L'équilibre micro-économique du producteur et du consommateur",
+            description: 'Étudier les équilibres individuels et leurs interactions',
+            introTo: '/formation/esh/module1/equilibre-micro',
+            moduleTo: '/formation/esh/module1/equilibre-micro/module',
+          },
+          {
+            number: '1.5',
+            title: "L'offre, la demande et l'équilibre du marché en concurrence parfaite",
+            description: "Comprendre les mécanismes d'équilibre en concurrence parfaite",
+            introTo: '/formation/esh/module1/offre-demande',
+            moduleTo: '/formation/esh/module1/offre-demande/module',
+          },
+          {
+            number: '1.6',
+            title: 'Les défaillances de marché',
+            description: 'Analyser les situations où le marché ne fonctionne pas de manière optimale',
+            introTo: '/formation/esh/module1/defaillances-marche',
+            moduleTo: '/formation/esh/module1/defaillances-marche/module',
+          },
+        ],
+      },
+      {
+        title: 'Les fondements de la sociologie',
+        description: 'Découvrir les origines et les principes fondamentaux de la sociologie',
+        chapters: [
+          {
+            number: '1.7',
+            title: 'Les grands courants de la pensée sociologique depuis le XIXe siècle',
+            description: "Explorer l'évolution historique de la pensée sociologique",
+            introTo: '/formation/esh/module1/courants-sociologiques',
+          },
+          {
+            number: '1.8',
+            title: 'La pluralité des méthodes sociologiques',
+            description: 'Découvrir les différentes approches méthodologiques en sociologie',
+            introTo: '/formation/esh/module1/methodes-sociologiques',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: '02',
+    title: 'La croissance et le développement depuis le XIXe siècle',
+    description: 'Analyser les transformations économiques, sociales et démographiques modernes',
+    sections: [
+      {
+        title: 'La croissance et le développement depuis le XIXe siècle',
+        description: 'Analyser les transformations économiques, sociales et démographiques modernes',
+        chapters: [
+          {
+            number: '2.1',
+            title: 'La croissance économique',
+            description: 'Comprendre les mécanismes et les facteurs de la croissance économique',
+            introTo: '/formation/esh/module2/croissance-economique',
+          },
+          {
+            number: '2.2',
+            title: 'Inégalités et stratégies de développement',
+            description: 'Analyser les inégalités économiques et les politiques de développement',
+            introTo: '/formation/esh/module2/inegalites-developpement',
+          },
+          {
+            number: '2.3',
+            title: 'La soutenabilité de la croissance et du développement',
+            description: 'Étudier les enjeux environnementaux et sociaux du développement durable',
+            introTo: '/formation/esh/module2/soutenabilite-croissance',
+            moduleTo: '/formation/esh/module2/soutenabilite-croissance/module',
+          },
+        ],
+      },
+      {
+        title: 'Les transformations des structures économiques, sociales et démographiques',
+        description: 'Explorer les grandes mutations structurelles de la société moderne',
+        chapters: [
+          {
+            number: '2.4',
+            title: 'Les transformations des structures économiques et financières',
+            description: "Analyser l'évolution des systèmes économiques et financiers modernes",
+            introTo: '/formation/esh/module2/transformations-economiques-financieres',
+            moduleTo: '/formation/esh/module2/transformations-economiques-financieres/module',
+          },
+          {
+            number: '2.5',
+            title: 'Mobilité sociale et transformations des structures sociales',
+            description: "Étudier l'évolution des classes sociales et de la mobilité sociale",
+            introTo: '/formation/esh/module2/mobilite-sociale',
+          },
+          {
+            number: '2.6',
+            title: 'Transformations démographiques et évolution des modes de vie',
+            description: 'Comprendre les changements démographiques et leurs impacts sur la société',
+            introTo: '/formation/esh/module2/transformations-demographiques',
+          },
+        ],
+      },
+      {
+        title: 'Entreprise et organisations',
+        description: "Explorer l'évolution des formes d'organisation du travail et de l'entreprise",
+        chapters: [
+          {
+            number: '2.7',
+            title: "Les transformations de l'entreprise et de sa gouvernance depuis le XIXe siècle",
+            description: "Évolution des formes d'organisation et de management des entreprises",
+            introTo: '/formation/esh/module2/transformations-entreprise',
+            moduleTo: '/formation/esh/module2/transformations-entreprise/module',
+          },
+          {
+            number: '2.8',
+            title: 'Concurrence imparfaite et stratégies des firmes',
+            description: 'Analyser les stratégies des entreprises dans un contexte de concurrence imparfaite',
+            introTo: '/formation/esh/module2/concurrence-imparfaite',
+            moduleTo: '/formation/esh/module2/concurrence-imparfaite/module',
+          },
+          {
+            number: '2.9',
+            title: 'Éléments de sociologie du travail et des organisations',
+            description: 'Comprendre les dynamiques sociales au sein des organisations de travail',
+            introTo: '/formation/esh/module2/sociologie-travail',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const ChapterCard: React.FC<{ chapter: Chapter; tilt?: string }> = ({ chapter, tilt }) => (
+  <div
+    className={`group bg-carnet-paper-2 rounded-xl p-5 border border-dashed border-[rgba(78,55,30,0.18)] hover:border-carnet-red/40 hover:-translate-y-0.5 transition-all duration-300 shadow-[0_1px_2px_rgba(78,55,30,0.04)] hover:shadow-[0_6px_18px_rgba(78,55,30,0.08)] ${tilt || ''}`}
+  >
+    <div className="flex items-start gap-4">
+      <div className="w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+        <span className="font-lora text-[15px] font-semibold text-carnet-red">{chapter.number}</span>
+      </div>
+      <div className="flex-1 min-w-0">
+        <h4 className="font-lora text-[17px] leading-snug text-carnet-ink group-hover:text-carnet-red transition-colors mb-1.5">
+          {chapter.title}
+        </h4>
+        <p className="font-instrument text-[13px] leading-[1.55] text-carnet-ink-soft mb-4">
+          {chapter.description}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {chapter.introTo && (
+            <Link
+              to={chapter.introTo}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-carnet-red hover:bg-carnet-red-deep text-white font-instrument text-[12px] font-semibold transition-colors"
+            >
+              Introduction
+              <ArrowRight className="h-3 w-3" />
+            </Link>
+          )}
+          {chapter.moduleTo ? (
+            <Link
+              to={chapter.moduleTo}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.25)] text-carnet-ink-soft hover:text-carnet-red hover:border-carnet-red/40 font-instrument text-[12px] font-semibold transition-colors"
+            >
+              Accéder au module
+            </Link>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] text-carnet-ink-mute font-instrument text-[12px] opacity-70">
+              Bientôt disponible
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 const PremiereAnneeESHPage = () => {
   return (
-    <div className="relative">
-      <div className="container mx-auto px-4 pt-16 pb-8">
-        {/* Sticky Breadcrumb */}
-        <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
-          <div className="container mx-auto px-4 py-2">
-            <div className="flex items-center text-xs text-muted-foreground">
-              <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-                <Home className="h-3 w-3" />
-                <span>Accueil</span>
-              </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formations" className="hover:text-foreground transition-colors">
-                Toutes les formations
-              </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh" className="hover:text-foreground transition-colors">
-                Formation ESH ECG
-              </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <span className="text-foreground font-medium">Première année</span>
-            </div>
-          </div>
-        </nav>
-
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center border border-orange-200">
-              <BookOpen className="h-6 w-6 text-pr-orange-dark" />
-            </div>
-            <h1 className="text-4xl font-bold text-gray-900">
-              Première année ESH
-            </h1>
-          </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Maîtrisez les fondements de l'économie et de la sociologie pour réussir vos épreuves ESH
-          </p>
-        </div>
-
-        {/* MODULES */}
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-4">
-
-            {/* Module 1 - Les fondements de l'économie et de la sociologie */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-carnet-red/30 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-carnet-red/20 transition-colors flex-shrink-0">
-                  <span className="font-bold text-carnet-red text-lg">1</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Les fondements de l'économie et de la sociologie
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Comprendre les bases théoriques et méthodologiques de l'économie et de la sociologie
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Chapitres du Module 1 */}
-            <div className="space-y-3 ml-8">
-              {/* Section principale - Les fondements de l'économie */}
-              <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
-                <div className="flex items-start gap-4">
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Les fondements de l'économie</h4>
-                    <p className="text-gray-700 mb-4 text-base">Découvrir les principes fondamentaux de l'économie et comprendre son rôle dans la société</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 1.1 Les acteurs et les grandes fonctions de l'économie */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">1.1</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Les acteurs et les grandes fonctions de l'économie</h4>
-                    <p className="text-sm text-gray-600 mb-3">Comprendre les différents acteurs économiques</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module1/acteurs-fonctions-economie">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Link to="/formation/esh/module1/acteurs-fonctions-economie/module">
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                          Accéder au module
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 1.2 La monnaie et le financement de l'économie */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">1.2</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">La monnaie et le financement de l'économie</h4>
-                    <p className="text-sm text-gray-600 mb-3">Explorer le rôle de la monnaie et les mécanismes de financement</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module1/monnaie-financement-economie">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Link to="/formation/esh/module1/monnaie-financement-economie/module">
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                          Accéder au module
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 1.3 Les grands courants de la pensée économique */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">1.3</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Les grands courants de la pensée économique depuis le XVIe siècle</h4>
-                    <p className="text-sm text-gray-600 mb-3">Découvrir l'évolution historique de la pensée économique</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module1/courants-economiques">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Link to="/formation/esh/module1/courants-economiques/module">
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                          Accéder au module
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Section principale - Le comportement des agents et le fonctionnement du marché */}
-              <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
-                <div className="flex items-start gap-4">
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Le comportement des agents et le fonctionnement du marché</h4>
-                    <p className="text-gray-700 mb-4 text-base">Analyser les comportements économiques et les mécanismes de marché</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 1.4 L'équilibre micro-économique */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">1.4</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">L'équilibre micro-économique du producteur et du consommateur</h4>
-                    <p className="text-sm text-gray-600 mb-3">Étudier les équilibres individuels et leurs interactions</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module1/equilibre-micro">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Link to="/formation/esh/module1/equilibre-micro/module">
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                          Accéder au module
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 1.5 L'offre, la demande et l'équilibre du marché */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">1.5</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">L'offre, la demande et l'équilibre du marché en concurrence parfaite</h4>
-                    <p className="text-sm text-gray-600 mb-3">Comprendre les mécanismes d'équilibre en concurrence parfaite</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module1/offre-demande">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Link to="/formation/esh/module1/offre-demande/module">
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                          Accéder au module
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 1.6 Les défaillances de marché */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">1.6</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Les défaillances de marché</h4>
-                    <p className="text-sm text-gray-600 mb-3">Analyser les situations où le marché ne fonctionne pas de manière optimale</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module1/defaillances-marche">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Link to="/formation/esh/module1/defaillances-marche/module">
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                          Accéder au module
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Section principale - Les fondements de la sociologie */}
-              <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
-                <div className="flex items-start gap-4">
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Les fondements de la sociologie</h4>
-                    <p className="text-gray-700 mb-4 text-base">Découvrir les origines et les principes fondamentaux de la sociologie</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 1.7 Les grands courants de la pensée sociologique */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">1.7</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Les grands courants de la pensée sociologique depuis le XIXe siècle</h4>
-                    <p className="text-sm text-gray-600 mb-3">Explorer l'évolution historique de la pensée sociologique</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module1/courants-sociologiques">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Link to="/formation/esh/module1/courants-sociologiques">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 1.8 La pluralité des méthodes sociologiques */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">1.8</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">La pluralité des méthodes sociologiques</h4>
-                    <p className="text-sm text-gray-600 mb-3">Découvrir les différentes approches méthodologiques en sociologie</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module1/methodes-sociologiques">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Module 2 - La croissance et le développement depuis le XIXe siècle */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-carnet-red/30 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-carnet-red/20 transition-colors flex-shrink-0">
-                  <span className="font-bold text-carnet-red text-lg">2</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    La croissance et le développement depuis le XIXe siècle
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Analyser les transformations économiques, sociales et démographiques modernes
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Section principale - La croissance et le développement depuis le XIXe siècle */}
-            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h4 className="text-xl font-bold text-carnet-red-deep mb-2">La croissance et le développement depuis le XIXe siècle</h4>
-                  <p className="text-gray-700 mb-4 text-base">Analyser les transformations économiques, sociales et démographiques modernes</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Chapitres du Module 2 */}
-            <div className="space-y-3 ml-8">
-              {/* 2.1 La croissance économique */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">2.1</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">La croissance économique</h4>
-                    <p className="text-sm text-gray-600 mb-3">Comprendre les mécanismes et les facteurs de la croissance économique</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module2/croissance-economique">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                        Accéder au module
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2.2 Inégalités et stratégies de développement */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">2.2</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Inégalités et stratégies de développement</h4>
-                    <p className="text-sm text-gray-600 mb-3">Analyser les inégalités économiques et les politiques de développement</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module2/inegalites-developpement">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2.3 La soutenabilité de la croissance et du développement */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">2.3</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">La soutenabilité de la croissance et du développement</h4>
-                    <p className="text-sm text-gray-600 mb-3">Étudier les enjeux environnementaux et sociaux du développement durable</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module2/soutenabilite-croissance">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Link to="/formation/esh/module2/soutenabilite-croissance/module">
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                          Accéder au module
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Section principale - Les transformations des structures économiques, sociales et démographiques depuis le XIXe siècle */}
-            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Les transformations des structures économiques, sociales et démographiques depuis le XIXe siècle</h4>
-                  <p className="text-gray-700 mb-4 text-base">Explorer les grandes mutations structurelles de la société moderne</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Sous-chapitres du Module 2 */}
-            <div className="space-y-3 ml-8">
-              {/* 2.4 Les transformations des structures économiques et financières */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">2.4</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Les transformations des structures économiques et financières</h4>
-                    <p className="text-sm text-gray-600 mb-3">Analyser l'évolution des systèmes économiques et financiers modernes</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module2/transformations-economiques-financieres">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Link to="/formation/esh/module2/transformations-economiques-financieres/module">
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                          Accéder au module
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2.5 Mobilité sociale et transformations des structures sociales */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">2.5</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Mobilité sociale et transformations des structures sociales</h4>
-                    <p className="text-sm text-gray-600 mb-3">Étudier l'évolution des classes sociales et de la mobilité sociale</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module2/mobilite-sociale">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2.6 Transformations démographiques et évolution des modes de vie */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">2.6</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Transformations démographiques et évolution des modes de vie</h4>
-                    <p className="text-sm text-gray-600 mb-3">Comprendre les changements démographiques et leurs impacts sur la société</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module2/transformations-demographiques">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Section principale - Entreprise et organisations */}
-            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Entreprise et organisations</h4>
-                  <p className="text-gray-700 mb-4 text-base">Explorer l'évolution des formes d'organisation du travail et de l'entreprise</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Sous-chapitres du Module 2 - Entreprise et organisations */}
-            <div className="space-y-3 ml-8">
-              {/* 2.7 Les transformations de l'entreprise et de sa gouvernance */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">2.7</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Les transformations de l'entreprise et de sa gouvernance depuis le XIXe siècle</h4>
-                    <p className="text-sm text-gray-600 mb-3">Évolution des formes d'organisation et de management des entreprises</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module2/transformations-entreprise">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Link to="/formation/esh/module2/transformations-entreprise/module">
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                          Accéder au module
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2.8 Concurrence imparfaite et stratégies des firmes */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">2.8</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Concurrence imparfaite et stratégies des firmes</h4>
-                    <p className="text-sm text-gray-600 mb-3">Analyser les stratégies des entreprises dans un contexte de concurrence imparfaite</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module2/concurrence-imparfaite">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Link to="/formation/esh/module2/concurrence-imparfaite/module">
-                        <Button variant="outline" size="sm" className="border-gray-300 text-gray-600 hover:bg-gray-50 text-xs py-1 px-3 h-7">
-                          Accéder au module
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2.9 Éléments de sociologie du travail et des organisations */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">2.9</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Éléments de sociologie du travail et des organisations</h4>
-                    <p className="text-sm text-gray-600 mb-3">Comprendre les dynamiques sociales au sein des organisations de travail</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module2/sociologie-travail">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+    <div className="carnet-paper min-h-screen">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formations" className="hover:text-carnet-red transition-colors">
+              Formations
+            </Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formation/esh" className="hover:text-carnet-red transition-colors">
+              ESH ECG
+            </Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Première année</span>
           </div>
         </div>
+      </nav>
 
-        {/* Call to action */}
-        <div className="text-center mt-12">
-          <Link to="/formation/esh/deuxieme-annee">
-            <Button size="lg" className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg">
-              Passer à la deuxième année
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </Button>
+      {/* Hero */}
+      <section className="relative py-16 lg:py-20">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <Link
+            to="/formation/esh"
+            className="inline-flex items-center gap-2 mb-8 font-instrument text-[13px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Retour à la formation ESH
           </Link>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[820px]"
+          >
+            <div className="carnet-eyebrow mb-6">ESH · 1ère année ECG</div>
+
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                <BookOpen className="h-6 w-6 text-carnet-red" />
+              </div>
+              <h1 className="font-lora text-[40px] sm:text-[48px] lg:text-[56px] leading-[1.05] text-carnet-ink tracking-tight">
+                Première{' '}
+                <em className="font-lora italic text-carnet-red">année</em>.
+              </h1>
+            </div>
+
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px]">
+              Maîtrise les fondements de l'<span className="carnet-hl font-lora italic">économie et de la sociologie</span> pour réussir tes épreuves ESH.
+            </p>
+
+            <div className="carnet-hand text-[24px] mt-8 hidden md:block" style={{ transform: 'rotate(-2deg)' }}>
+              ↓ programme par module
+            </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
+
+      {/* Modules */}
+      {modules.map((mod, modIdx) => (
+        <section key={mod.number} className="relative pb-12">
+          <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="flex items-baseline gap-4 mb-8">
+                <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">{mod.number}</span>
+                <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+                <div>
+                  <h2 className="font-lora text-[28px] sm:text-[34px] text-carnet-ink leading-tight">
+                    {mod.title}
+                  </h2>
+                  <p className="font-instrument text-[14px] text-carnet-ink-soft mt-1">
+                    {mod.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-10">
+                {mod.sections.map((section, secIdx) => (
+                  <div key={`${modIdx}-${secIdx}`}>
+                    <div className="mb-5 pl-5 border-l-2 border-carnet-red/40">
+                      <h3 className="font-lora italic text-[20px] text-carnet-ink-soft leading-snug mb-1">
+                        {section.title}
+                      </h3>
+                      <p className="font-instrument text-[13px] text-carnet-ink-mute">
+                        {section.description}
+                      </p>
+                    </div>
+                    <div className="space-y-3">
+                      {section.chapters.map((ch, chIdx) => {
+                        const tilt = chIdx % 4 === 1 ? 'carnet-tilt-r' : chIdx % 4 === 3 ? 'carnet-tilt-l' : '';
+                        return (
+                          <motion.div
+                            key={ch.number}
+                            initial={{ opacity: 0, y: 12 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-20px' }}
+                            transition={{ duration: 0.3, delay: Math.min(chIdx * 0.04, 0.25) }}
+                          >
+                            <ChapterCard chapter={ch} tilt={tilt} />
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      ))}
+
+      {/* Next CTA */}
+      <section className="relative pb-24 pt-4">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="rounded-2xl border border-dashed border-[rgba(78,55,30,0.25)] bg-carnet-paper-2 p-8 sm:p-10 text-center">
+            <div className="carnet-eyebrow mb-3">Prêt pour la suite ?</div>
+            <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight mb-5">
+              Passe à la <em className="font-lora italic text-carnet-red">deuxième année</em>
+            </h2>
+            <Link
+              to="/formation/esh/deuxieme-annee"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-carnet-red hover:bg-carnet-red-deep text-white font-instrument font-semibold text-[14px] transition-all duration-300 hover:-translate-y-0.5 shadow-[0_2px_8px_rgba(193,68,58,0.25)]"
+            >
+              Accéder à la deuxième année
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

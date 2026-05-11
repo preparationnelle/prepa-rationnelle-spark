@@ -5,34 +5,34 @@ import { Scale, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle, Users } fr
 
 const JusticeSocialePage = () => {
   return (
-    <div className="relative">
-      <div className="container mx-auto px-4 pt-16 pb-8">
-        {/* Sticky Breadcrumb */}
-        <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
-          <div className="container mx-auto px-4 py-2">
-            <div className="flex items-center text-xs text-muted-foreground">
-              <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-                <Home className="h-3 w-3" />
+    <div className="carnet-paper min-h-screen">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+              <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+                <Home className="h-3.5 w-3.5" />
                 <span>Accueil</span>
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formations" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formations" className="hover:text-carnet-red transition-colors">
                 Toutes les formations
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formation/esh" className="hover:text-carnet-red transition-colors">
                 Formation ESH ECG
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh/deuxieme-annee" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formation/esh/deuxieme-annee" className="hover:text-carnet-red transition-colors">
                 Deuxième année
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <span className="text-foreground font-medium">Justice sociale et intervention publique</span>
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <span className="carnet-eyebrow text-[11px]">Justice sociale et intervention publique</span>
             </div>
           </div>
         </nav>
 
+      <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-12 lg:py-16">
         <div className="max-w-4xl mx-auto">
           {/* Bouton retour */}
           <div className="mb-6">
@@ -51,13 +51,13 @@ const JusticeSocialePage = () => {
                 <Scale className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">
+                <h1 className="font-lora text-[32px] sm:text-[40px] text-carnet-ink leading-tight">
                   Justice sociale et légitimation de l'intervention publique
                 </h1>
                 <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 4.6 - Module 4</div>
               </div>
             </div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-instrument text-[16px] lg:text-[18px] text-carnet-ink-soft max-w-2xl mx-auto leading-[1.65]">
               Analyser la légitimité des interventions publiques pour la justice sociale
             </p>
           </div>
@@ -65,8 +65,8 @@ const JusticeSocialePage = () => {
           {/* Contenu principal */}
           <div className="space-y-8">
             {/* Section 1: Concepts de justice sociale */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
@@ -74,17 +74,17 @@ const JusticeSocialePage = () => {
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-pr-orange-pale rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Définition de la justice sociale</h3>
-                  <p className="text-sm text-gray-600">
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Définition de la justice sociale</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     La justice sociale désigne l'équité dans la répartition des ressources, des opportunités et des avantages dans la société.
                   </p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="border-l-4 border-carnet-red/40 pl-4">
-                    <h3 className="font-semibold text-gray-800 mb-2">Justice commutative</h3>
-                    <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                    <h3 className="font-semibold text-carnet-ink mb-2">Justice commutative</h3>
+                    <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Échange équivalent entre individus</span>
@@ -101,8 +101,8 @@ const JusticeSocialePage = () => {
                   </div>
 
                   <div className="border-l-4 border-carnet-red/40 pl-4">
-                    <h3 className="font-semibold text-gray-800 mb-2">Justice distributive</h3>
-                    <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                    <h3 className="font-semibold text-carnet-ink mb-2">Justice distributive</h3>
+                    <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Répartition équitable des richesses</span>
@@ -120,8 +120,8 @@ const JusticeSocialePage = () => {
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Théories de la justice</h3>
-                  <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Théories de la justice</h3>
+                  <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span><strong>Utilitarisme :</strong> Le bien-être collectif prime</span>
@@ -144,8 +144,8 @@ const JusticeSocialePage = () => {
             </div>
 
             {/* Section 2: Légitimation de l'intervention publique */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
@@ -153,17 +153,17 @@ const JusticeSocialePage = () => {
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-pr-orange-pale rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Arguments en faveur de l'intervention</h3>
-                  <p className="text-sm text-gray-600">
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Arguments en faveur de l'intervention</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     L'intervention publique est légitimée par des arguments économiques, sociaux et démocratiques.
                   </p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="border-l-4 border-carnet-red/40 pl-4">
-                    <h3 className="font-semibold text-gray-800 mb-2">Arguments économiques</h3>
-                    <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                    <h3 className="font-semibold text-carnet-ink mb-2">Arguments économiques</h3>
+                    <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Correction des défaillances de marché</span>
@@ -184,8 +184,8 @@ const JusticeSocialePage = () => {
                   </div>
 
                   <div className="border-l-4 border-carnet-red/40 pl-4">
-                    <h3 className="font-semibold text-gray-800 mb-2">Arguments démocratiques</h3>
-                    <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                    <h3 className="font-semibold text-carnet-ink mb-2">Arguments démocratiques</h3>
+                    <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Souveraineté populaire</span>
@@ -207,8 +207,8 @@ const JusticeSocialePage = () => {
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Arguments philosophiques</h3>
-                  <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Arguments philosophiques</h3>
+                  <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span><strong>Contrat social :</strong> Rousseau, Hobbes</span>
@@ -231,8 +231,8 @@ const JusticeSocialePage = () => {
             </div>
 
             {/* Section 3: Limites et critiques de l'intervention publique */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
@@ -241,18 +241,18 @@ const JusticeSocialePage = () => {
 
               <div className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-pr-orange-pale rounded-lg p-4">
-                    <h3 className="font-semibold text-gray-800 mb-2">Critiques libertariennes</h3>
-                    <ul className="text-sm text-gray-600 space-y-1">
+                  <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                    <h3 className="font-semibold text-carnet-ink mb-2">Critiques libertariennes</h3>
+                    <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li>• Atteinte aux libertés individuelles</li>
                       <li>• Baisse de l'efficacité économique</li>
                       <li>• Effets d'éviction du secteur privé</li>
                       <li>• Risque de corruption et de rente</li>
                     </ul>
                   </div>
-                  <div className="bg-pr-orange-pale rounded-lg p-4">
-                    <h3 className="font-semibold text-gray-800 mb-2">Critiques technocratiques</h3>
-                    <ul className="text-sm text-gray-600 space-y-1">
+                  <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                    <h3 className="font-semibold text-carnet-ink mb-2">Critiques technocratiques</h3>
+                    <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li>• Complexité des problèmes sociaux</li>
                       <li>• Limites de l'expertise étatique</li>
                       <li>• Effets pervers des politiques</li>
@@ -262,8 +262,8 @@ const JusticeSocialePage = () => {
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Le problème de la légitimité démocratique</h3>
-                  <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Le problème de la légitimité démocratique</h3>
+                  <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Représentativité des décisions collectives</span>
@@ -286,8 +286,8 @@ const JusticeSocialePage = () => {
             </div>
 
             {/* Section 4: Les politiques sociales modernes */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">4</span>
                 </div>
@@ -295,17 +295,17 @@ const JusticeSocialePage = () => {
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-pr-orange-pale rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Légitimité renouvelée de l'intervention</h3>
-                  <p className="text-sm text-gray-600">
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Légitimité renouvelée de l'intervention</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Dans un contexte de globalisation et de révolution technologique, l'intervention publique retrouve une légitimité renouvelée.
                   </p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="border-l-4 border-carnet-red/40 pl-4">
-                    <h3 className="font-semibold text-gray-800 mb-2">Nouveaux défis sociaux</h3>
-                    <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                    <h3 className="font-semibold text-carnet-ink mb-2">Nouveaux défis sociaux</h3>
+                    <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Inégalités croissantes dues à la numérisation</span>
@@ -326,8 +326,8 @@ const JusticeSocialePage = () => {
                   </div>
 
                   <div className="border-l-4 border-carnet-red/40 pl-4">
-                    <h3 className="font-semibold text-gray-800 mb-2">Nouvelles formes d'intervention</h3>
-                    <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                    <h3 className="font-semibold text-carnet-ink mb-2">Nouvelles formes d'intervention</h3>
+                    <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                         <span>Politiques actives du marché du travail</span>
@@ -349,8 +349,8 @@ const JusticeSocialePage = () => {
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Le revenu universel d'activité</h3>
-                  <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Le revenu universel d'activité</h3>
+                  <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Alternative au revenu de base universel</span>
@@ -374,7 +374,7 @@ const JusticeSocialePage = () => {
           </div>
 
           {/* Navigation entre chapitres */}
-          <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+          <div className="flex justify-between items-center mt-12 pt-8 border-t border-dashed border-[rgba(78,55,30,0.18)]">
             <Link to="/formation/esh/module4/contraintes-politiques">
               <Button variant="outline" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
@@ -387,7 +387,7 @@ const JusticeSocialePage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module4/lutte-inegalites">
-                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
+                <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

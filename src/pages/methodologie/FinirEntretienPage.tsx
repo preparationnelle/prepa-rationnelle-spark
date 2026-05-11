@@ -44,13 +44,13 @@ const FinirEntretienPage = () => {
       <MethodSection label="Section 01" title="Les 4 phases d'une conclusion réussie" icon={Target}>
         <div className="grid md:grid-cols-2 gap-5">
           {phases.map((p) => (
-            <div key={p.n} className="bg-white border border-pr-gray-light rounded-lg p-6 hover:border-pr-orange transition-colors">
+            <div key={p.n} className="bg-white border border-carnet-rule/30 rounded-lg p-6 hover:border-red-600 transition-colors">
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="font-dm-serif text-3xl text-pr-orange">{p.n}</span>
-                <h4 className="font-dm-serif text-lg text-pr-black">{p.t}</h4>
+                <span className="font-dm-serif text-3xl text-red-600">{p.n}</span>
+                <h4 className="font-dm-serif text-lg text-carnet-ink">{p.t}</h4>
               </div>
-              <div className="h-px w-8 bg-pr-orange mb-3" />
-              <p className="text-sm text-pr-gray-dark leading-relaxed">{p.d}</p>
+              <div className="h-px w-8 bg-red-600 mb-3" />
+              <p className="text-sm text-carnet-ink-soft leading-relaxed">{p.d}</p>
             </div>
           ))}
         </div>
@@ -61,14 +61,14 @@ const FinirEntretienPage = () => {
         <div className="grid md:grid-cols-2 gap-5">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <CheckCircle className="w-5 h-5 text-pr-orange" strokeWidth={1.8} />
-              <h4 className="font-dm-serif text-lg text-pr-black">Questions recommandées</h4>
+              <CheckCircle className="w-5 h-5 text-red-600" strokeWidth={1.8} />
+              <h4 className="font-dm-serif text-lg text-carnet-ink">Questions recommandées</h4>
             </div>
             <div className="space-y-3">
               {goodQs.map((g) => (
-                <div key={g.t} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r p-4">
-                  <h5 className="font-medium text-pr-black mb-2 text-sm">{g.t}</h5>
-                  <ul className="text-sm text-pr-gray-dark space-y-1">
+                <div key={g.t} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r p-4">
+                  <h5 className="font-medium text-carnet-ink mb-2 text-sm">{g.t}</h5>
+                  <ul className="text-sm text-carnet-ink-soft space-y-1">
                     {g.l.map((q) => <li key={q}>— {q}</li>)}
                   </ul>
                 </div>
@@ -78,14 +78,14 @@ const FinirEntretienPage = () => {
 
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <AlertCircle className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.8} />
-              <h4 className="font-dm-serif text-lg text-pr-black">Questions à éviter</h4>
+              <AlertCircle className="w-5 h-5 text-red-700" strokeWidth={1.8} />
+              <h4 className="font-dm-serif text-lg text-carnet-ink">Questions à éviter</h4>
             </div>
             <div className="space-y-3">
               {badQs.map((g) => (
-                <div key={g.t} className="bg-pr-gray-bg rounded p-4">
-                  <h5 className="font-medium text-pr-black mb-2 text-sm">{g.t}</h5>
-                  <ul className="text-sm text-pr-gray-dark space-y-1">
+                <div key={g.t} className="bg-carnet-paper rounded p-4">
+                  <h5 className="font-medium text-carnet-ink mb-2 text-sm">{g.t}</h5>
+                  <ul className="text-sm text-carnet-ink-soft space-y-1">
                     {g.l.map((q) => <li key={q}>— {q}</li>)}
                   </ul>
                 </div>
@@ -103,21 +103,21 @@ const FinirEntretienPage = () => {
             { t: "3 min restantes", d: "Posez votre première question au jury. Adaptez le nombre selon le temps disponible." },
             { t: "1 min restante", d: "Réaffirmez votre motivation et remerciez chaleureusement le jury." },
           ].map((c) => (
-            <div key={c.t} className="bg-white border border-pr-gray-light rounded-lg p-6 text-center">
-              <div className="font-dm-serif text-2xl text-pr-orange mb-1">{c.t}</div>
-              <div className="h-px w-6 bg-pr-orange mx-auto mb-3" />
-              <p className="text-sm text-pr-gray-dark">{c.d}</p>
+            <div key={c.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6 text-center">
+              <div className="font-dm-serif text-2xl text-red-600 mb-1">{c.t}</div>
+              <div className="h-px w-6 bg-red-600 mx-auto mb-3" />
+              <p className="text-sm text-carnet-ink-soft">{c.d}</p>
             </div>
           ))}
         </div>
 
-        <div className="bg-pr-orange-pale border-l-4 border-pr-orange rounded-r-lg p-6">
-          <h4 className="font-dm-serif text-lg text-pr-black mb-3">Attention aux signaux du jury</h4>
-          <ul className="space-y-2 text-sm text-pr-gray-dark">
-            <li>— <strong className="text-pr-black">Regarde sa montre :</strong> accélérez votre conclusion.</li>
-            <li>— <strong className="text-pr-black">Commence à ranger :</strong> terminez rapidement.</li>
-            <li>— <strong className="text-pr-black">Dit « Bien » :</strong> souvent signal de transition vers la fin.</li>
-            <li>— <strong className="text-pr-black">Vous demande vos questions :</strong> c'est le moment parfait.</li>
+        <div className="bg-red-50 border-l-4 border-red-600 rounded-r-lg p-6">
+          <h4 className="font-dm-serif text-lg text-carnet-ink mb-3">Attention aux signaux du jury</h4>
+          <ul className="space-y-2 text-sm text-carnet-ink-soft">
+            <li>— <strong className="text-carnet-ink">Regarde sa montre :</strong> accélérez votre conclusion.</li>
+            <li>— <strong className="text-carnet-ink">Commence à ranger :</strong> terminez rapidement.</li>
+            <li>— <strong className="text-carnet-ink">Dit « Bien » :</strong> souvent signal de transition vers la fin.</li>
+            <li>— <strong className="text-carnet-ink">Vous demande vos questions :</strong> c'est le moment parfait.</li>
           </ul>
         </div>
       </MethodSection>
@@ -130,14 +130,14 @@ const FinirEntretienPage = () => {
             { t: "Réaffirmation de motivation", q: "Cet échange renforce ma conviction que [École] est l'environnement idéal pour développer mon projet. L'opportunité de [élément spécifique mentionné pendant l'entretien] correspond exactement à ce que je recherche. J'ai vraiment hâte de contribuer à la communauté [École] et d'apprendre aux côtés d'étudiants aussi motivés." },
             { t: "Remerciements finaux", q: "Je vous remercie sincèrement pour cet échange enrichissant. Vous avez confirmé mon impression très positive sur [École] et j'espère avoir l'opportunité de rejoindre votre communauté. Je vous souhaite une excellente continuation de jurys." },
           ].map((ex) => (
-            <div key={ex.t} className="bg-pr-orange-pale border-l-4 border-pr-orange rounded-r-lg p-6">
+            <div key={ex.t} className="bg-red-50 border-l-4 border-red-600 rounded-r-lg p-6">
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-white px-2 py-1 rounded">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-white px-2 py-1 rounded">
                   Exemple
                 </span>
-                <h4 className="font-dm-serif text-lg text-pr-black">{ex.t}</h4>
+                <h4 className="font-dm-serif text-lg text-carnet-ink">{ex.t}</h4>
               </div>
-              <p className="text-sm text-pr-gray-dark italic leading-relaxed">« {ex.q} »</p>
+              <p className="text-sm text-carnet-ink-soft italic leading-relaxed">« {ex.q} »</p>
             </div>
           ))}
         </div>
@@ -166,15 +166,15 @@ const FinirEntretienPage = () => {
               ],
             },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-              <h4 className="font-dm-serif text-lg text-pr-black mb-4 flex items-center gap-2">
-                <AlertCircle className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.8} />
+            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+              <h4 className="font-dm-serif text-lg text-carnet-ink mb-4 flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-red-700" strokeWidth={1.8} />
                 {g.t}
               </h4>
               <ul className="space-y-3">
                 {g.l.map(([s, d]) => (
-                  <li key={s} className="bg-pr-gray-bg border-l-4 border-pr-orange rounded-r p-3 text-sm text-pr-gray-dark">
-                    <strong className="text-pr-black">{s} :</strong> {d}
+                  <li key={s} className="bg-carnet-paper border-l-4 border-red-600 rounded-r p-3 text-sm text-carnet-ink-soft">
+                    <strong className="text-carnet-ink">{s} :</strong> {d}
                   </li>
                 ))}
               </ul>
@@ -190,13 +190,13 @@ const FinirEntretienPage = () => {
             { t: "Contenu", l: ["J'ai synthétisé mes points forts", "J'ai posé 2-3 questions pertinentes", "J'ai réaffirmé ma motivation", "J'ai remercié chaleureusement"] },
             { t: "Attitude", l: ["J'ai gardé un ton positif et énergique", "J'ai respecté le timing du jury", "J'ai maintenu le contact visuel", "J'ai serré la main avec confiance"] },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-              <h4 className="font-dm-serif text-lg text-pr-black mb-2">{g.t}</h4>
-              <div className="h-px w-8 bg-pr-orange mb-4" />
+            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+              <h4 className="font-dm-serif text-lg text-carnet-ink mb-2">{g.t}</h4>
+              <div className="h-px w-8 bg-red-600 mb-4" />
               <ul className="space-y-3">
                 {g.l.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-pr-gray-dark">
-                    <CheckCircle className="w-4 h-4 text-pr-orange mt-0.5 flex-shrink-0" strokeWidth={1.8} />
+                  <li key={item} className="flex items-start gap-2 text-sm text-carnet-ink-soft">
+                    <CheckCircle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" strokeWidth={1.8} />
                     {item}
                   </li>
                 ))}

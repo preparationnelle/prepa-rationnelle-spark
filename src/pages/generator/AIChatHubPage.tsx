@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Bot, Calculator, Globe, Sparkles, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Bot, Calculator, Globe, Sparkles, ChevronRight, Home } from 'lucide-react';
 import { PrepaChatbotGenerator } from '@/components/generator/PrepaChatbotGenerator';
 import { MathGenerator } from '@/components/generator/MathGenerator';
 import { AtlasECGChatbot } from '@/components/generator/AtlasECGChatbot';
@@ -50,15 +51,17 @@ export const AIChatHubPage = () => {
     const selectedAgent = agents.find(a => a.id === selectedAgentId) || agents[0];
 
     return (
-        <div className="h-[calc(100vh-4rem)] flex flex-col bg-pr-gray-bg overflow-hidden">
+        <div className="h-[calc(100vh-4rem)] flex flex-col carnet-paper overflow-hidden">
             {/* Mobile : Tab bar horizontale */}
-            <div className="md:hidden flex-shrink-0 bg-white border-b border-pr-gray-light">
+            <div className="md:hidden flex-shrink-0 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
                 <div className="px-4 pt-4 pb-3">
                     <div className="flex items-center gap-2 mb-3">
-                        <div className="h-7 w-7 bg-pr-orange rounded-lg flex items-center justify-center">
-                            <Sparkles className="h-3.5 w-3.5 text-white" />
+                        <div className="h-8 w-8 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center">
+                            <Sparkles className="h-4 w-4 text-carnet-red" />
                         </div>
-                        <h2 className="font-dm-serif text-lg text-pr-black">AI Chat Hub</h2>
+                        <h2 className="font-lora text-[20px] text-carnet-ink">
+                            AI Chat <em className="font-lora italic text-carnet-red">Hub</em>
+                        </h2>
                     </div>
                     <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
                         {agents.map((agent) => {
@@ -68,10 +71,10 @@ export const AIChatHubPage = () => {
                                     key={agent.id}
                                     onClick={() => setSelectedAgentId(agent.id)}
                                     className={cn(
-                                        'flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 shrink-0 font-dm-sans uppercase tracking-[0.05em]',
+                                        'flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 shrink-0 font-instrument uppercase tracking-[0.1em]',
                                         isSelected
-                                            ? 'bg-pr-orange text-white'
-                                            : 'bg-pr-orange-pale text-pr-orange-dark hover:bg-pr-orange-soft'
+                                            ? 'bg-carnet-red text-carnet-paper'
+                                            : 'bg-[rgba(193,68,58,0.06)] text-carnet-red border border-[rgba(193,68,58,0.25)] hover:bg-[rgba(193,68,58,0.12)]'
                                     )}
                                 >
                                     <agent.icon className="h-3.5 w-3.5" />
@@ -86,17 +89,28 @@ export const AIChatHubPage = () => {
             {/* Desktop layout */}
             <div className="flex-1 flex flex-row overflow-hidden">
                 {/* Sidebar desktop */}
-                <div className="hidden md:flex w-80 flex-col bg-white border-r border-pr-gray-light shrink-0">
+                <div className="hidden md:flex w-80 flex-col carnet-paper-plain border-r border-dashed border-[rgba(78,55,30,0.18)] shrink-0">
                     {/* Header sidebar */}
-                    <div className="p-6 border-b border-pr-gray-light">
+                    <div className="p-6 border-b border-dashed border-[rgba(78,55,30,0.18)]">
+                        <nav className="flex items-center font-instrument text-[11px] text-carnet-ink-mute mb-3 flex-wrap">
+                            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+                                <Home className="h-3 w-3" />
+                                <span>Accueil</span>
+                            </Link>
+                            <ChevronRight className="h-3 w-3 mx-1.5 opacity-50" />
+                            <Link to="/generator" className="hover:text-carnet-red transition-colors">Générateurs</Link>
+                        </nav>
+                        <div className="carnet-eyebrow text-[11px] mb-3">AI Chat Hub</div>
                         <div className="flex items-center gap-2.5 mb-2">
-                            <div className="h-8 w-8 bg-pr-orange rounded-lg flex items-center justify-center">
-                                <Sparkles className="h-4 w-4 text-white" />
+                            <div className="h-10 w-10 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center">
+                                <Sparkles className="h-5 w-5 text-carnet-red" />
                             </div>
-                            <h2 className="font-dm-serif text-xl text-pr-black">AI Chat Hub</h2>
+                            <h2 className="font-lora text-[24px] text-carnet-ink leading-tight">
+                                Assistants <em className="font-lora italic text-carnet-red">IA</em>
+                            </h2>
                         </div>
-                        <div className="h-[2px] w-10 bg-pr-orange rounded-full mb-3" />
-                        <p className="text-xs text-pr-gray-mid leading-relaxed font-dm-sans">
+                        <div className="h-[2px] w-10 bg-carnet-ink rounded-full mb-3" />
+                        <p className="font-instrument text-[13px] text-carnet-ink-soft leading-relaxed">
                             Tes assistants spécialisés, au même endroit.
                         </p>
                     </div>
@@ -110,39 +124,36 @@ export const AIChatHubPage = () => {
                                     key={agent.id}
                                     onClick={() => setSelectedAgentId(agent.id)}
                                     className={cn(
-                                        'w-full text-left p-3.5 rounded-xl transition-all duration-200 flex items-center gap-3 group relative overflow-hidden font-dm-sans',
+                                        'w-full text-left p-3.5 rounded-md transition-all duration-200 flex items-center gap-3 group relative overflow-hidden font-instrument',
                                         isSelected
-                                            ? 'bg-pr-orange-pale border border-pr-orange/40'
-                                            : 'hover:bg-pr-gray-bg border border-transparent'
+                                            ? 'bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.25)]'
+                                            : 'hover:bg-carnet-paper-2 border border-transparent'
                                     )}
                                 >
-                                    {/* Indicateur actif — trait orange */}
                                     {isSelected && (
                                         <motion.div
                                             layoutId="activeAgent"
-                                            className="absolute left-0 top-2 bottom-2 w-[3px] rounded-r-full bg-pr-orange"
+                                            className="absolute left-0 top-2 bottom-2 w-[3px] rounded-r-full bg-carnet-red"
                                             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                                         />
                                     )}
 
-                                    {/* Icône */}
                                     <div
                                         className={cn(
-                                            'h-11 w-11 rounded-xl flex items-center justify-center shrink-0 transition-colors',
+                                            'h-11 w-11 rounded-full flex items-center justify-center shrink-0 transition-colors border',
                                             isSelected
-                                                ? 'bg-pr-orange text-white'
-                                                : 'bg-pr-orange-pale text-pr-orange-dark group-hover:bg-pr-orange-soft'
+                                                ? 'bg-carnet-red text-carnet-paper border-carnet-red'
+                                                : 'bg-[rgba(193,68,58,0.08)] text-carnet-red border-[rgba(193,68,58,0.2)] group-hover:bg-[rgba(193,68,58,0.12)]'
                                         )}
                                     >
                                         <agent.icon className="h-5 w-5" />
                                     </div>
 
-                                    {/* Texte */}
                                     <div className="flex-1 min-w-0">
                                         <h3
                                             className={cn(
-                                                'font-semibold text-sm truncate transition-colors',
-                                                isSelected ? 'text-pr-black' : 'text-pr-gray-dark group-hover:text-pr-black'
+                                                'font-semibold text-sm truncate transition-colors font-instrument',
+                                                isSelected ? 'text-carnet-ink' : 'text-carnet-ink-soft group-hover:text-carnet-ink'
                                             )}
                                         >
                                             {agent.name}
@@ -150,7 +161,7 @@ export const AIChatHubPage = () => {
                                         <p
                                             className={cn(
                                                 'text-xs truncate mt-0.5',
-                                                isSelected ? 'text-pr-orange-dark' : 'text-pr-gray-mid'
+                                                isSelected ? 'text-carnet-red' : 'text-carnet-ink-mute'
                                             )}
                                         >
                                             {agent.description}
@@ -161,8 +172,8 @@ export const AIChatHubPage = () => {
                                         className={cn(
                                             'h-4 w-4 shrink-0 transition-all duration-200',
                                             isSelected
-                                                ? 'text-pr-orange translate-x-0'
-                                                : 'text-pr-gray-mid/0 -translate-x-2 group-hover:text-pr-gray-mid group-hover:translate-x-0'
+                                                ? 'text-carnet-red translate-x-0'
+                                                : 'text-carnet-ink-mute/0 -translate-x-2 group-hover:text-carnet-ink-mute group-hover:translate-x-0'
                                         )}
                                     />
                                 </button>
@@ -171,11 +182,11 @@ export const AIChatHubPage = () => {
                     </div>
 
                     {/* Info bas */}
-                    <div className="p-4 border-t border-pr-gray-light">
-                        <div className="bg-pr-orange-pale border border-pr-orange/20 rounded-xl p-3 text-xs text-pr-gray-dark leading-relaxed font-dm-sans">
+                    <div className="p-4 border-t border-dashed border-[rgba(78,55,30,0.18)]">
+                        <div className="bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.2)] rounded-md p-3 text-xs text-carnet-ink-soft leading-relaxed font-instrument">
                             <p className="flex items-center gap-1.5 mb-1">
-                                <Sparkles className="h-3 w-3 text-pr-orange" />
-                                <span className="font-semibold uppercase tracking-[0.06em] text-pr-orange-dark text-[10px]">
+                                <Sparkles className="h-3 w-3 text-carnet-red" />
+                                <span className="carnet-eyebrow text-[10px]">
                                     Bientôt
                                 </span>
                             </p>
@@ -185,7 +196,7 @@ export const AIChatHubPage = () => {
                 </div>
 
                 {/* Zone chat principale */}
-                <div className="flex-1 flex flex-col overflow-hidden relative bg-white">
+                <div className="flex-1 flex flex-col overflow-hidden relative bg-carnet-paper-2">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={selectedAgentId}

@@ -107,8 +107,8 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 8) return 'text-pr-orange-dark';
-    if (score >= 6) return 'text-pr-orange';
+    if (score >= 8) return 'text-carnet-red';
+    if (score >= 6) return 'text-carnet-red';
     return 'text-pr-gray-mid';
   };
 
@@ -128,14 +128,14 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
 
   const getCategoryColor = (category: string) => {
     const colorMap: Record<string, string> = {
-      'Géopolitique': 'bg-pr-orange-pale text-pr-orange-dark border-pr-orange-soft',
+      'Géopolitique': 'bg-carnet-red-pale text-carnet-red border-carnet-red-soft',
       'Commerce international': 'bg-pr-gray-bg text-pr-gray-dark border-pr-gray-light',
-      'Union européenne': 'bg-pr-orange-pale/60 text-pr-orange-dark border-pr-orange-pale',
-      'Ressources stratégiques': 'bg-pr-orange-pale text-pr-orange-dark border-pr-orange-soft',
-      'Continent africain': 'bg-pr-orange-pale text-pr-orange-dark border-pr-orange-soft',
+      'Union européenne': 'bg-carnet-red-pale/60 text-carnet-red border-carnet-red-pale',
+      'Ressources stratégiques': 'bg-carnet-red-pale text-carnet-red border-carnet-red-soft',
+      'Continent africain': 'bg-carnet-red-pale text-carnet-red border-carnet-red-soft',
       'Amérique latine': 'bg-pr-gray-bg text-pr-gray-dark border-pr-gray-light',
       'Asie': 'bg-pr-gray-bg text-pr-gray-dark border-pr-gray-light',
-      'Relations internationales': 'bg-pr-orange-pale/60 text-pr-orange-dark border-pr-orange-pale'
+      'Relations internationales': 'bg-carnet-red-pale/60 text-carnet-red border-carnet-red-pale'
     };
     return colorMap[category] || 'bg-pr-gray-bg text-pr-gray-dark border-pr-gray-light';
   };
@@ -2684,7 +2684,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
             {/* Contrôles à droite */}
             <div className="flex items-center gap-3">
               {examMode && (
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-pr-orange-pale text-pr-orange-dark rounded-lg text-sm font-mono border border-pr-orange-soft">
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-carnet-red-pale text-carnet-red rounded-lg text-sm font-mono border border-carnet-red-soft">
                   <Clock className="h-4 w-4" />
                   {formatTime(timer)}
                 </div>
@@ -2695,7 +2695,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                 className={
                   examMode
                     ? "bg-pr-black hover:bg-pr-gray-dark text-white rounded-lg flex items-center gap-2"
-                    : "bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-lg flex items-center gap-2"
+                    : "bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-carnet-red-pale hover:text-carnet-red hover:border-carnet-red-soft rounded-lg flex items-center gap-2"
                 }
               >
                 {examMode ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
@@ -2711,15 +2711,15 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
 
         {/* Section de sélection de phrase */}
         <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-          <div className="h-[3px] w-full bg-pr-orange" />
+          <div className="h-[3px] w-full bg-carnet-red" />
           <CardContent className="p-6">
             <div className="flex items-center gap-4 flex-wrap">
               {/* Catalogue complet des phrases */}
               <Select value={selectedPredefinedId} onValueChange={loadPredefinedSentence}>
-                <SelectTrigger className="flex-1 h-14 bg-white border border-pr-gray-light hover:border-pr-orange-soft transition-colors rounded-xl px-4 text-base">
+                <SelectTrigger className="flex-1 h-14 bg-white border border-pr-gray-light hover:border-carnet-red-soft transition-colors rounded-xl px-4 text-base">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 bg-pr-orange-pale rounded-lg flex items-center justify-center">
-                      <BookMarked className="h-4 w-4 text-pr-orange-dark" />
+                    <div className="w-9 h-9 bg-carnet-red-pale rounded-lg flex items-center justify-center">
+                      <BookMarked className="h-4 w-4 text-carnet-red" />
                     </div>
                     <SelectValue placeholder="Choisir une phrase du catalogue…" />
                   </div>
@@ -2750,12 +2750,12 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                           <SelectItem
                             key={sentence.id}
                             value={sentence.id}
-                            className="mx-2 px-4 py-3 cursor-pointer hover:bg-pr-orange-pale focus:bg-pr-orange-pale transition-colors rounded-lg"
+                            className="mx-2 px-4 py-3 cursor-pointer hover:bg-carnet-red-pale focus:bg-carnet-red-pale transition-colors rounded-lg"
                           >
                             <div className="flex items-start gap-3 w-full">
                               <div className="flex-shrink-0 mt-0.5">
                                 {sentence.specialized ? (
-                                  <Star className="h-4 w-4 text-pr-orange" />
+                                  <Star className="h-4 w-4 text-carnet-red" />
                                 ) : (
                                   <BookOpen className="h-4 w-4 text-pr-gray-mid" />
                                 )}
@@ -2789,7 +2789,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                       .sort((a, b) => b.createdAt - a.createdAt)
                       .slice(0, 10)
                       .map((sentence) => (
-                        <SelectItem key={sentence.id} value={sentence.id} className="hover:bg-pr-orange-pale focus:bg-pr-orange-pale rounded-md">
+                        <SelectItem key={sentence.id} value={sentence.id} className="hover:bg-carnet-red-pale focus:bg-carnet-red-pale rounded-md">
                           <span className="text-sm text-pr-black truncate">{sentence.french.substring(0, 40)}...</span>
                         </SelectItem>
                       ))}
@@ -2804,7 +2804,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         {currentSentence ? (
           <>
             <Card
-              className="relative bg-white rounded-2xl border border-pr-gray-light hover:border-pr-orange-soft transition-colors overflow-hidden group cursor-pointer shadow-[0_2px_12px_rgba(26,26,24,0.04)]"
+              className="relative bg-white rounded-2xl border border-pr-gray-light hover:border-carnet-red-soft transition-colors overflow-hidden group cursor-pointer shadow-[0_2px_12px_rgba(26,26,24,0.04)]"
               onClick={() => {
                 if (!isEvaluating) {
                   if (studentAnswer.trim()) {
@@ -2823,15 +2823,15 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
               }}
               title={studentAnswer.trim() ? "Cliquez pour corriger" : "Cliquez pour voir la réponse"}
             >
-              <div className="absolute top-0 left-0 w-full h-[3px] bg-pr-orange"></div>
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-carnet-red"></div>
               <CardContent className="p-8 sm:p-10">
                 <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-pr-orange-pale rounded-xl flex items-center justify-center">
-                      <Languages className="h-5 w-5 text-pr-orange-dark" />
+                    <div className="w-10 h-10 bg-carnet-red-pale rounded-xl flex items-center justify-center">
+                      <Languages className="h-5 w-5 text-carnet-red" />
                     </div>
                     <div>
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark">
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-carnet-red">
                         {showPerfectAnswer ? "Traduction correcte" : "Phrase à traduire"}
                       </div>
                       <div className="text-[12px] text-pr-gray-mid mt-0.5">
@@ -2841,7 +2841,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                   </div>
                   <div className="flex gap-2">
                     {currentSentence.specialized && (
-                      <Badge className="bg-pr-orange-pale text-pr-orange-dark border border-pr-orange-soft hover:bg-pr-orange-pale rounded-full px-3 py-1 font-semibold text-[11px] uppercase tracking-wider">Spécialisé</Badge>
+                      <Badge className="bg-carnet-red-pale text-carnet-red border border-carnet-red-soft hover:bg-carnet-red-pale rounded-full px-3 py-1 font-semibold text-[11px] uppercase tracking-wider">Spécialisé</Badge>
                     )}
                     {currentSentence.difficulty_level && (
                       <Badge className={`${currentSentence.difficulty_level === 'advanced' ? 'bg-pr-black text-white border-pr-black' : 'bg-pr-gray-bg text-pr-gray-dark border-pr-gray-light'} border rounded-full px-3 py-1 font-semibold text-[11px] uppercase tracking-wider`}>
@@ -2864,7 +2864,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                     onClick={goToPreviousSentence}
                     size="sm"
                     disabled={!selectedPredefinedId || predefinedSentences.filter(s => s.language === language).findIndex(s => s.id === selectedPredefinedId) === 0}
-                    className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-lg flex items-center gap-2 disabled:opacity-40"
+                    className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-carnet-red-pale hover:text-carnet-red hover:border-carnet-red-soft rounded-lg flex items-center gap-2 disabled:opacity-40"
                   >
                     <ChevronLeft className="h-4 w-4" />
                     Précédent
@@ -2884,7 +2884,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                     onClick={goToNextSentence}
                     size="sm"
                     disabled={!selectedPredefinedId || predefinedSentences.filter(s => s.language === language).findIndex(s => s.id === selectedPredefinedId) === predefinedSentences.filter(s => s.language === language).length - 1}
-                    className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-lg flex items-center gap-2 disabled:opacity-40"
+                    className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-carnet-red-pale hover:text-carnet-red hover:border-carnet-red-soft rounded-lg flex items-center gap-2 disabled:opacity-40"
                   >
                     Suivant
                     <ChevronRight className="h-4 w-4" />
@@ -2902,8 +2902,8 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
               <CardContent className="p-6 sm:p-8">
                 <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
                   <label className="text-[15px] font-semibold text-pr-black flex items-center gap-3">
-                    <div className="w-9 h-9 bg-pr-orange-pale rounded-lg flex items-center justify-center">
-                      <Code className="h-4 w-4 text-pr-orange-dark" />
+                    <div className="w-9 h-9 bg-carnet-red-pale rounded-lg flex items-center justify-center">
+                      <Code className="h-4 w-4 text-carnet-red" />
                     </div>
                     Votre traduction en {language === 'de' ? 'allemand' : language === 'en' ? 'anglais' : 'espagnol'}
                   </label>
@@ -2943,7 +2943,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                       value={studentAnswer}
                       onChange={(e) => setStudentAnswer(e.target.value)}
                       placeholder={`Écrivez votre traduction en ${language === 'de' ? 'allemand' : language === 'en' ? 'anglais' : 'espagnol'}…`}
-                      className="min-h-[150px] text-xl resize-none p-5 rounded-xl border border-pr-gray-light focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 transition-colors bg-pr-gray-bg/50 text-pr-black placeholder:text-pr-gray-mid"
+                      className="min-h-[150px] text-xl resize-none p-5 rounded-xl border border-pr-gray-light focus:border-carnet-red focus:ring-2 focus:ring-carnet-red/20 transition-colors bg-pr-gray-bg/50 text-pr-black placeholder:text-pr-gray-mid"
                       disabled={isEvaluating}
                     />
                   ) : (
@@ -2961,7 +2961,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                             <label className="text-sm font-medium text-pr-gray-dark">
                               Texte transcrit
                             </label>
-                            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark bg-pr-orange-pale px-2.5 py-1 rounded-full">
+                            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-red bg-carnet-red-pale px-2.5 py-1 rounded-full">
                               Éditable
                             </span>
                           </div>
@@ -2969,7 +2969,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                             value={studentAnswer}
                             onChange={(e) => setStudentAnswer(e.target.value)}
                             placeholder="Le texte transcrit apparaîtra ici et sera modifiable…"
-                            className="min-h-[80px] text-base resize-none p-3 rounded-xl border border-pr-gray-light focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 transition-colors bg-white text-pr-black placeholder:text-pr-gray-mid"
+                            className="min-h-[80px] text-base resize-none p-3 rounded-xl border border-pr-gray-light focus:border-carnet-red focus:ring-2 focus:ring-carnet-red/20 transition-colors bg-white text-pr-black placeholder:text-pr-gray-mid"
                             disabled={isEvaluating}
                           />
                           <p className="text-[12px] text-pr-gray-mid mt-2">
@@ -2985,7 +2985,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                 <Button
                   onClick={evaluateAnswer}
                   disabled={!studentAnswer.trim() || isEvaluating}
-                  className="w-full mt-6 h-14 text-[16px] font-semibold text-white rounded-xl bg-pr-orange hover:bg-pr-orange-dark shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
+                  className="w-full mt-6 h-14 text-[16px] font-semibold text-white rounded-xl bg-carnet-red hover:bg-carnet-red shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
                 >
                   {isEvaluating ? (
                     <>
@@ -3006,8 +3006,8 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
           <Card className="border border-dashed border-pr-gray-light bg-white rounded-2xl">
             <CardContent className="p-12">
               <div className="flex flex-col items-center justify-center text-pr-gray-mid">
-                <div className="w-16 h-16 rounded-2xl bg-pr-orange-pale flex items-center justify-center mb-4">
-                  <Languages className="h-8 w-8 text-pr-orange-dark" />
+                <div className="w-16 h-16 rounded-2xl bg-carnet-red-pale flex items-center justify-center mb-4">
+                  <Languages className="h-8 w-8 text-carnet-red" />
                 </div>
                 <p className="font-dm-serif text-2xl text-pr-black mb-2">Aucune phrase sélectionnée</p>
                 <p className="text-pr-gray-mid text-[14px]">Cliquez sur « Nouvelle phrase » ou choisissez dans le catalogue ci-dessus.</p>
@@ -3019,16 +3019,16 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         {/* Section correction - Affichage immédiat de la réponse */}
         {showPerfectAnswer && currentSentence && (
           <Card className="border border-pr-gray-light bg-white shadow-[0_2px_12px_rgba(26,26,24,0.04)] mt-8 overflow-hidden rounded-2xl">
-            <div className="h-[3px] w-full bg-pr-orange" />
+            <div className="h-[3px] w-full bg-carnet-red" />
             <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
               <div className="flex items-center justify-between gap-3 flex-wrap">
                 <CardTitle className="font-dm-serif text-xl flex items-center gap-3 text-pr-black">
-                  <div className="w-9 h-9 bg-white rounded-lg border border-pr-orange-soft flex items-center justify-center">
-                    <BookOpen className="h-4 w-4 text-pr-orange-dark" />
+                  <div className="w-9 h-9 bg-white rounded-lg border border-carnet-red-soft flex items-center justify-center">
+                    <BookOpen className="h-4 w-4 text-carnet-red" />
                   </div>
                   Correction et analyse
                 </CardTitle>
-                <span className="text-[10px] font-semibold text-pr-orange-dark bg-pr-orange-pale border border-pr-orange-soft px-2.5 py-1 rounded-full uppercase tracking-[0.12em]">
+                <span className="text-[10px] font-semibold text-carnet-red bg-carnet-red-pale border border-carnet-red-soft px-2.5 py-1 rounded-full uppercase tracking-[0.12em]">
                   Référence
                 </span>
               </div>
@@ -3038,7 +3038,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                 {/* Colonne Gauche : La Phrase Correcte */}
                 <div className="p-6 md:p-8 bg-pr-gray-bg/40">
                   <h3 className="text-[11px] font-semibold text-pr-gray-mid mb-4 uppercase tracking-[0.14em]">Traduction correcte</h3>
-                  <div className="relative pl-4 border-l-[3px] border-pr-orange">
+                  <div className="relative pl-4 border-l-[3px] border-carnet-red">
                     <p className="font-lora text-2xl text-pr-black leading-[1.5]">
                       {currentSentence.reference}
                     </p>
@@ -3047,7 +3047,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                   {currentSentence.glossary && Object.keys(currentSentence.glossary).length > 0 && (
                     <div className="mt-8 pt-6 border-t border-pr-gray-light">
                       <h4 className="flex items-center gap-2 text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] mb-3">
-                        <BookMarked className="h-3.5 w-3.5 text-pr-orange" />
+                        <BookMarked className="h-3.5 w-3.5 text-carnet-red" />
                         Vocabulaire clé
                       </h4>
                       <div className="grid gap-1">
@@ -3068,7 +3068,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                   {currentSentence.grammar_points && currentSentence.grammar_points.length > 0 && (
                     <div className="mb-8">
                       <h3 className="text-[11px] font-semibold text-pr-gray-mid mb-4 uppercase tracking-[0.14em] flex items-center gap-2">
-                        <Target className="h-3.5 w-3.5 text-pr-orange" />
+                        <Target className="h-3.5 w-3.5 text-carnet-red" />
                         Points de grammaire
                       </h3>
                       <div className="flex flex-wrap gap-2">
@@ -3084,13 +3084,13 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                   {currentSentence.notes && currentSentence.notes.length > 0 && (
                     <div>
                       <h3 className="text-[11px] font-semibold text-pr-gray-mid mb-4 uppercase tracking-[0.14em] flex items-center gap-2">
-                        <AlertCircle className="h-3.5 w-3.5 text-pr-orange" />
+                        <AlertCircle className="h-3.5 w-3.5 text-carnet-red" />
                         Points de vigilance
                       </h3>
                       <ul className="space-y-2.5">
                         {currentSentence.notes.map((note, index) => (
-                          <li key={index} className="flex items-start gap-3 text-sm text-pr-gray-dark bg-pr-orange-pale/60 p-3 rounded-lg border border-pr-orange-pale">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-pr-orange flex-shrink-0"></span>
+                          <li key={index} className="flex items-start gap-3 text-sm text-pr-gray-dark bg-carnet-red-pale/60 p-3 rounded-lg border border-carnet-red-pale">
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-carnet-red flex-shrink-0"></span>
                             <span className="leading-relaxed">{note}</span>
                           </li>
                         ))}
@@ -3104,8 +3104,8 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
               {isLoadingFeedback && (
                 <div className="p-4 border-t border-pr-gray-light bg-pr-gray-bg flex items-center justify-center gap-3">
                   <div className="relative">
-                    <div className="h-3 w-3 rounded-full bg-pr-orange animate-ping absolute"></div>
-                    <div className="h-3 w-3 rounded-full bg-pr-orange relative"></div>
+                    <div className="h-3 w-3 rounded-full bg-carnet-red animate-ping absolute"></div>
+                    <div className="h-3 w-3 rounded-full bg-carnet-red relative"></div>
                   </div>
                   <span className="text-sm font-medium text-pr-gray-dark animate-pulse">
                     L'IA analyse votre réponse en détail…
@@ -3121,10 +3121,10 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
           <div className="mt-8 space-y-6 animate-in slide-in-from-bottom-4 duration-700">
             {/* Résumé du score */}
             <Card className="border border-pr-gray-light bg-white overflow-hidden rounded-2xl shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-              <div className={`h-[3px] w-full ${evaluation.score >= 8 ? 'bg-pr-orange' : evaluation.score >= 5 ? 'bg-pr-orange-soft' : 'bg-pr-black'}`} />
+              <div className={`h-[3px] w-full ${evaluation.score >= 8 ? 'bg-carnet-red' : evaluation.score >= 5 ? 'bg-carnet-red-soft' : 'bg-pr-black'}`} />
               <div className="flex flex-col md:flex-row">
                 {/* Score Panel */}
-                <div className={`p-8 flex flex-col items-center justify-center min-w-[220px] border-b md:border-b-0 md:border-r border-pr-gray-light ${evaluation.score >= 8 ? 'bg-pr-orange-pale/60' : evaluation.score >= 5 ? 'bg-pr-orange-pale/30' : 'bg-pr-gray-bg'
+                <div className={`p-8 flex flex-col items-center justify-center min-w-[220px] border-b md:border-b-0 md:border-r border-pr-gray-light ${evaluation.score >= 8 ? 'bg-carnet-red-pale/60' : evaluation.score >= 5 ? 'bg-carnet-red-pale/30' : 'bg-pr-gray-bg'
                   }`}>
                   <div className="relative mb-3">
                     <svg className="w-24 h-24 transform -rotate-90">
@@ -3147,7 +3147,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                         strokeDasharray={251.2}
                         strokeDashoffset={251.2 - (251.2 * evaluation.score) / 10}
                         strokeLinecap="round"
-                        className={`${evaluation.score >= 8 ? 'text-pr-orange' : evaluation.score >= 5 ? 'text-pr-orange-soft' : 'text-pr-gray-mid'
+                        className={`${evaluation.score >= 8 ? 'text-carnet-red' : evaluation.score >= 5 ? 'text-carnet-red-soft' : 'text-pr-gray-mid'
                           } transition-all duration-1000 ease-out`}
                       />
                     </svg>
@@ -3159,9 +3159,9 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                     </div>
                   </div>
                   <div className={`px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.12em] ${evaluation.score >= 8
-                    ? 'bg-pr-orange-pale text-pr-orange-dark border border-pr-orange-soft'
+                    ? 'bg-carnet-red-pale text-carnet-red border border-carnet-red-soft'
                     : evaluation.score >= 5
-                      ? 'bg-white text-pr-orange-dark border border-pr-orange-pale'
+                      ? 'bg-white text-carnet-red border border-carnet-red-pale'
                       : 'bg-pr-black text-white border border-pr-black'
                     }`}>
                     {evaluation.score >= 9 ? 'Excellent' : evaluation.score >= 7 ? 'Très bien' : evaluation.score >= 5 ? 'Correct' : 'À travailler'}
@@ -3174,7 +3174,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                     {/* Correction */}
                     <div>
                       <h3 className="text-[11px] font-semibold text-pr-gray-mid mb-3 uppercase tracking-[0.14em] flex items-center gap-2">
-                        <PenTool className="h-3.5 w-3.5 text-pr-orange" />
+                        <PenTool className="h-3.5 w-3.5 text-carnet-red" />
                         Votre correction
                       </h3>
                       <div className="bg-pr-gray-bg rounded-xl p-4 border border-pr-gray-light text-pr-black italic leading-relaxed font-lora text-[15px]">
@@ -3185,12 +3185,12 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                     {/* Analyse */}
                     <div>
                       <h3 className="text-[11px] font-semibold text-pr-gray-mid mb-3 uppercase tracking-[0.14em] flex items-center gap-2">
-                        <Star className="h-3.5 w-3.5 text-pr-orange" />
+                        <Star className="h-3.5 w-3.5 text-carnet-red" />
                         Analyse rapide
                       </h3>
                       <div className="space-y-2">
                         {evaluation.severity.major_errors.length === 0 && evaluation.severity.minor_errors.length === 0 ? (
-                          <div className="flex items-start gap-3 text-pr-orange-dark bg-pr-orange-pale border border-pr-orange-soft p-3 rounded-lg text-sm">
+                          <div className="flex items-start gap-3 text-carnet-red bg-carnet-red-pale border border-carnet-red-soft p-3 rounded-lg text-sm">
                             <CheckCircle className="h-5 w-5 flex-shrink-0" />
                             <p>Aucune erreur détectée. Bravo pour cette performance !</p>
                           </div>
@@ -3203,7 +3203,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                               </div>
                             )}
                             {evaluation.severity.minor_errors.length > 0 && (
-                              <div className="flex items-center gap-2 text-pr-orange-dark bg-pr-orange-pale border border-pr-orange-soft px-3 py-2 rounded-lg text-sm font-medium">
+                              <div className="flex items-center gap-2 text-carnet-red bg-carnet-red-pale border border-carnet-red-soft px-3 py-2 rounded-lg text-sm font-medium">
                                 <AlertCircle className="h-4 w-4" />
                                 {evaluation.severity.minor_errors.length} erreur(s) mineure(s)
                               </div>
@@ -3224,7 +3224,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                           ...evaluation.severity.minor_errors.map(e => typeof e === 'string' ? { error: e, type: 'minor' } : { ...e, type: 'minor' })
                         ].map((error: any, index) => (
                           <div key={index} className="flex gap-4 group">
-                            <div className={`mt-1.5 h-2 w-2 rounded-full flex-shrink-0 ${error.type === 'major' ? 'bg-pr-black' : 'bg-pr-orange'}`}></div>
+                            <div className={`mt-1.5 h-2 w-2 rounded-full flex-shrink-0 ${error.type === 'major' ? 'bg-pr-black' : 'bg-carnet-red'}`}></div>
                             <div className="flex-1">
                               {typeof error === 'string' ? (
                                 <p className="text-pr-gray-dark text-sm">{error}</p>
@@ -3232,7 +3232,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                                 <div className="text-sm space-y-1.5">
                                   <div className="flex items-baseline justify-between flex-wrap gap-2">
                                     <p className="font-medium text-pr-black inline-block">
-                                      <span className="border-b-2 border-pr-orange-soft pb-0.5">{error.error}</span>
+                                      <span className="border-b-2 border-carnet-red-soft pb-0.5">{error.error}</span>
                                     </p>
                                     {error.rule && (
                                       <span className="text-[11px] text-pr-gray-mid font-mono bg-pr-gray-bg px-2 py-0.5 rounded border border-pr-gray-light">{error.rule}</span>
@@ -3242,7 +3242,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                                     <span className="text-pr-gray-mid mr-2">Why?</span>
                                     {error.explanation}
                                   </p>
-                                  <p className="text-pr-orange-dark font-semibold bg-pr-orange-pale inline-block px-2.5 py-1 rounded text-xs mt-1 border border-pr-orange-soft">
+                                  <p className="text-carnet-red font-semibold bg-carnet-red-pale inline-block px-2.5 py-1 rounded text-xs mt-1 border border-carnet-red-soft">
                                     Correct : {error.correction}
                                   </p>
                                 </div>
@@ -3265,7 +3265,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                       <ul className="space-y-2">
                         {evaluation.grammar_rules.map((rule, idx) => (
                           <li key={idx} className="text-sm text-pr-gray-dark flex items-start gap-2">
-                            <div className="h-1.5 w-1.5 rounded-full bg-pr-orange mt-1.5 flex-shrink-0"></div>
+                            <div className="h-1.5 w-1.5 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></div>
                             {rule}
                           </li>
                         ))}
@@ -3279,7 +3279,7 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                       <ul className="space-y-2">
                         {evaluation.tips.map((tip, idx) => (
                           <li key={idx} className="text-sm text-pr-gray-dark flex items-start gap-2">
-                            <div className="h-1.5 w-1.5 rounded-full bg-pr-orange-soft mt-1.5 flex-shrink-0"></div>
+                            <div className="h-1.5 w-1.5 rounded-full bg-carnet-red-soft mt-1.5 flex-shrink-0"></div>
                             {tip}
                           </li>
                         ))}

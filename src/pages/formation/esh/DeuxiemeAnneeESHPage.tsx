@@ -1,616 +1,415 @@
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { TrendingUp, Home, ChevronRight, BarChart3, Globe, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { TrendingUp, Home, ChevronRight, ArrowLeft, ArrowRight, BarChart3, Globe } from 'lucide-react';
 import ESHModuleNavigation from '@/components/formation/ESHModuleNavigation';
+
+type Chapter = {
+  number: string;
+  title: string;
+  description: string;
+  introTo?: string;
+  moduleTo?: string;
+};
+
+type Section = {
+  title: string;
+  description: string;
+  chapters: Chapter[];
+};
+
+type Module = {
+  number: string;
+  title: string;
+  description: string;
+  sections: Section[];
+};
+
+const modules: Module[] = [
+  {
+    number: '03',
+    title: 'La mondialisation économique et financière',
+    description: 'Analyser les mécanismes et les enjeux de la mondialisation économique et financière moderne',
+    sections: [
+      {
+        title: 'La dynamique de la mondialisation économique',
+        description: "Étudier l'ouverture des économies et les échanges internationaux",
+        chapters: [
+          {
+            number: '3.1',
+            title: "L'ouverture des économies depuis le XIXe siècle : évolution et acteurs",
+            description: "Analyser l'évolution historique de l'ouverture économique et ses acteurs",
+            introTo: '/formation/esh/module3/ouverture-economies',
+          },
+          {
+            number: '3.2',
+            title: "L'analyse économique des échanges internationaux",
+            description: 'Comprendre les théories et les mécanismes des échanges commerciaux',
+            introTo: '/formation/esh/module3/analyse-echanges',
+          },
+          {
+            number: '3.3',
+            title: 'Régionalisation, gouvernance et régulations internationales',
+            description: 'Étudier les accords régionaux et les institutions internationales',
+            introTo: '/formation/esh/module3/regionalisation-gouvernance',
+          },
+        ],
+      },
+      {
+        title: 'La dynamique de la mondialisation financière',
+        description: 'Explorer les mécanismes financiers internationaux et leur évolution',
+        chapters: [
+          {
+            number: '3.4',
+            title: 'Balance des paiements, cours de change et systèmes de change',
+            description: 'Analyser les mécanismes de change et la balance des paiements',
+            introTo: '/formation/esh/module3/balance-paiements',
+          },
+          {
+            number: '3.5',
+            title: "L'évolution du système monétaire international depuis le XIXe siècle",
+            description: "Comprendre l'histoire des systèmes monétaires internationaux",
+            introTo: '/formation/esh/module3/evolution-systeme-monetaires',
+          },
+          {
+            number: '3.6',
+            title: 'Constitution et fonctionnement du marché international des capitaux',
+            description: 'Étudier les marchés financiers internationaux et leur fonctionnement',
+            introTo: '/formation/esh/module3/marche-capitaux',
+          },
+        ],
+      },
+      {
+        title: "L'intégration européenne",
+        description: "Analyser la construction et les défis de l'intégration européenne",
+        chapters: [
+          {
+            number: '3.7',
+            title: 'La dynamique de la construction européenne',
+            description: "Étudier l'histoire et les enjeux de la construction européenne",
+            introTo: '/formation/esh/module3/construction-europeenne',
+          },
+          {
+            number: '3.8',
+            title: "L'Europe économique et monétaire",
+            description: "Comprendre l'union économique et monétaire européenne",
+            introTo: '/formation/esh/module3/europe-economique-monetaires',
+          },
+          {
+            number: '3.9',
+            title: "L'Europe sociale",
+            description: 'Analyser les politiques sociales européennes et leurs enjeux',
+            introTo: '/formation/esh/module3/europe-sociale',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: '04',
+    title: 'Déséquilibres, régulation et action publique',
+    description: "Analyser les mécanismes de régulation économique et l'intervention publique face aux déséquilibres",
+    sections: [
+      {
+        title: 'Équilibres et déséquilibres macroéconomiques',
+        description: "Comprendre les mécanismes d'équilibre et de déséquilibre dans l'économie",
+        chapters: [
+          {
+            number: '4.1',
+            title: "L'inflation et le chômage",
+            description: "Analyser les relations entre inflation et chômage dans l'économie",
+            introTo: '/formation/esh/module4/inflation-chomage',
+          },
+          {
+            number: '4.2',
+            title: "L'équilibre macroéconomique à travers les modèles : IS-LM / IS-LM-BP / OGDG",
+            description: "Maîtriser les modèles d'équilibre macroéconomique et leurs applications",
+            introTo: '/formation/esh/module4/equilibre-macro',
+          },
+        ],
+      },
+      {
+        title: "L'intervention économique des pouvoirs publics",
+        description: 'Explorer les politiques publiques de régulation économique',
+        chapters: [
+          {
+            number: '4.3',
+            title: 'Fluctuations économiques et politiques de régulation des cycles',
+            description: 'Comprendre les cycles économiques et les politiques de régulation',
+            introTo: '/formation/esh/module4/fluctuations-economiques',
+          },
+          {
+            number: '4.4',
+            title: "Politiques structurelles et interventions de l'État face aux défaillances de marché",
+            description: 'Analyser les interventions publiques face aux défaillances du marché',
+            introTo: '/formation/esh/module4/politiques-structurelles',
+          },
+          {
+            number: '4.5',
+            title: 'Les contraintes auxquelles se heurtent les politiques économiques',
+            description: 'Comprendre les limites et contraintes des politiques économiques',
+            introTo: '/formation/esh/module4/contraintes-politiques',
+          },
+        ],
+      },
+      {
+        title: 'Les politiques sociales',
+        description: 'Explorer les politiques sociales et la justice sociale',
+        chapters: [
+          {
+            number: '4.6',
+            title: "Justice sociale et légitimation de l'intervention publique",
+            description: 'Analyser la légitimité des interventions publiques pour la justice sociale',
+            introTo: '/formation/esh/module4/justice-sociale',
+          },
+          {
+            number: '4.7',
+            title: 'Les politiques de lutte contre les inégalités',
+            description: "Étudier les politiques publiques de réduction des inégalités",
+            introTo: '/formation/esh/module4/lutte-inegalites',
+          },
+          {
+            number: '4.8',
+            title: 'Etat-providence et protection sociale',
+            description: "Analyser le rôle de l'Etat-providence dans la protection sociale",
+            introTo: '/formation/esh/module4/etat-providence',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const ChapterCard: React.FC<{ chapter: Chapter; tilt?: string }> = ({ chapter, tilt }) => (
+  <div
+    className={`group bg-carnet-paper-2 rounded-xl p-5 border border-dashed border-[rgba(78,55,30,0.18)] hover:border-carnet-red/40 hover:-translate-y-0.5 transition-all duration-300 shadow-[0_1px_2px_rgba(78,55,30,0.04)] hover:shadow-[0_6px_18px_rgba(78,55,30,0.08)] ${tilt || ''}`}
+  >
+    <div className="flex items-start gap-4">
+      <div className="w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+        <span className="font-lora text-[15px] font-semibold text-carnet-red">{chapter.number}</span>
+      </div>
+      <div className="flex-1 min-w-0">
+        <h4 className="font-lora text-[17px] leading-snug text-carnet-ink group-hover:text-carnet-red transition-colors mb-1.5">
+          {chapter.title}
+        </h4>
+        <p className="font-instrument text-[13px] leading-[1.55] text-carnet-ink-soft mb-4">
+          {chapter.description}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {chapter.introTo && (
+            <Link
+              to={chapter.introTo}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-carnet-red hover:bg-carnet-red-deep text-white font-instrument text-[12px] font-semibold transition-colors"
+            >
+              Introduction
+              <ArrowRight className="h-3 w-3" />
+            </Link>
+          )}
+          {chapter.moduleTo ? (
+            <Link
+              to={chapter.moduleTo}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.25)] text-carnet-ink-soft hover:text-carnet-red hover:border-carnet-red/40 font-instrument text-[12px] font-semibold transition-colors"
+            >
+              Accéder au module
+            </Link>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] text-carnet-ink-mute font-instrument text-[12px] opacity-70">
+              Bientôt disponible
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 const DeuxiemeAnneeESHPage = () => {
   return (
-    <div className="relative">
-      {/* Floating elements - Blue bubbles */}
-
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-carnet-paper/95 backdrop-blur-sm/95 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper/95 backdrop-blur-sm/60 border-b border-border/40 relative z-10">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+    <div className="carnet-paper min-h-screen">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formations" className="hover:text-foreground transition-colors">
-              Toutes les formations
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formations" className="hover:text-carnet-red transition-colors">
+              Formations
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/esh" className="hover:text-foreground transition-colors">
-              Formation ESH ECG
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formation/esh" className="hover:text-carnet-red transition-colors">
+              ESH ECG
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Deuxième année</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Deuxième année</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto py-8 px-4 relative z-10">
-        {/* Module Navigation */}
-        <div className="mb-8">
-          <ESHModuleNavigation />
-        </div>
+      {/* Hero */}
+      <section className="relative py-16 lg:py-20">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <Link
+            to="/formation/esh"
+            className="inline-flex items-center gap-2 mb-8 font-instrument text-[13px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Retour à la formation ESH
+          </Link>
 
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <div className="flex justify-center mb-6">
-            <div className="p-4 rounded-2xl bg-carnet-red text-white shadow-lg">
-              <TrendingUp className="h-12 w-12" />
-            </div>
+          <div className="mb-10">
+            <ESHModuleNavigation />
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-carnet-red to-pr-orange-dark bg-clip-text text-transparent">
-              Deuxième année ESH
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-4xl mx-auto">
-            Approfondissez vos connaissances en macroéconomie et analyse critique pour maîtriser les enjeux contemporains.
-          </p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[820px]"
+          >
+            <div className="carnet-eyebrow mb-6">ESH · 2ème année ECG</div>
+
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                <TrendingUp className="h-6 w-6 text-carnet-red" />
+              </div>
+              <h1 className="font-lora text-[40px] sm:text-[48px] lg:text-[56px] leading-[1.05] text-carnet-ink tracking-tight">
+                Deuxième{' '}
+                <em className="font-lora italic text-carnet-red">année</em>.
+              </h1>
+            </div>
+
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px]">
+              Approfondis tes connaissances en <span className="carnet-hl font-lora italic">macroéconomie et analyse critique</span> pour maîtriser les enjeux contemporains.
+            </p>
+
+            <div className="carnet-hand text-[24px] mt-8 hidden md:block" style={{ transform: 'rotate(-2deg)' }}>
+              ↓ programme par module
+            </div>
+          </motion.div>
         </div>
+      </section>
 
-        {/* Contenu principal */}
-        <div className="max-w-4xl mx-auto">
-
-          {/* Module 3 détaillé */}
-          <div className="space-y-6">
-            {/* Module 3 - la mondialisation économique et financière */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-carnet-red/30 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-carnet-red/20 transition-colors flex-shrink-0">
-                  <span className="font-bold text-carnet-red text-lg">3</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    La mondialisation économique et financière
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Analyser les mécanismes et les enjeux de la mondialisation économique et financière moderne
+      {/* Modules */}
+      {modules.map((mod, modIdx) => (
+        <section key={mod.number} className="relative pb-12">
+          <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="flex items-baseline gap-4 mb-8">
+                <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">{mod.number}</span>
+                <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+                <div>
+                  <h2 className="font-lora text-[28px] sm:text-[34px] text-carnet-ink leading-tight">
+                    {mod.title}
+                  </h2>
+                  <p className="font-instrument text-[14px] text-carnet-ink-soft mt-1">
+                    {mod.description}
                   </p>
                 </div>
               </div>
-            </div>
 
-            {/* Section principale - La dynamique de la mondialisation économique */}
-            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h4 className="text-xl font-bold text-carnet-red-deep mb-2">La dynamique de la mondialisation économique</h4>
-                  <p className="text-gray-700 mb-4 text-base">Étudier l'ouverture des économies et les échanges internationaux</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Chapitres du Module 3 - La dynamique de la mondialisation économique */}
-            <div className="space-y-3 ml-8">
-              {/* 3.1 L'ouverture des économies depuis le XIXe siècle : évolution et acteurs */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">3.1</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">L'ouverture des économies depuis le XIXe siècle : évolution et acteurs</h4>
-                    <p className="text-sm text-gray-600 mb-3">Analyser l'évolution historique de l'ouverture économique et ses acteurs</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module3/ouverture-economies">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
+              <div className="space-y-10">
+                {mod.sections.map((section, secIdx) => (
+                  <div key={`${modIdx}-${secIdx}`}>
+                    <div className="mb-5 pl-5 border-l-2 border-carnet-red/40">
+                      <h3 className="font-lora italic text-[20px] text-carnet-ink-soft leading-snug mb-1">
+                        {section.title}
+                      </h3>
+                      <p className="font-instrument text-[13px] text-carnet-ink-mute">
+                        {section.description}
+                      </p>
+                    </div>
+                    <div className="space-y-3">
+                      {section.chapters.map((ch, chIdx) => {
+                        const tilt = chIdx % 4 === 1 ? 'carnet-tilt-r' : chIdx % 4 === 3 ? 'carnet-tilt-l' : '';
+                        return (
+                          <motion.div
+                            key={ch.number}
+                            initial={{ opacity: 0, y: 12 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-20px' }}
+                            transition={{ duration: 0.3, delay: Math.min(chIdx * 0.04, 0.25) }}
+                          >
+                            <ChapterCard chapter={ch} tilt={tilt} />
+                          </motion.div>
+                        );
+                      })}
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
+            </motion.div>
+          </div>
+        </section>
+      ))}
 
-              {/* 3.2 L'analyse économique des échanges internationaux */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">3.2</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">L'analyse économique des échanges internationaux</h4>
-                    <p className="text-sm text-gray-600 mb-3">Comprendre les théories et les mécanismes des échanges commerciaux</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module3/analyse-echanges">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
+      {/* Méthodologie d'analyse */}
+      <section className="relative pb-12">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="rounded-2xl border border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2 p-8 sm:p-10">
+            <div className="carnet-eyebrow mb-3">Méthodologie · 2ème année</div>
+            <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight mb-8">
+              Trois <em className="font-lora italic text-carnet-red">axes d'analyse</em> pour réussir.
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <div className="w-12 h-12 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center mb-4">
+                  <BarChart3 className="h-5 w-5 text-carnet-red" />
                 </div>
+                <h4 className="font-lora text-[18px] text-carnet-ink mb-2">Analyse quantitative</h4>
+                <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.6]">
+                  Maîtrise des indicateurs économiques et interprétation des données statistiques.
+                </p>
               </div>
-
-              {/* 3.3 Régionalisation, gouvernance et régulations internationales */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">3.3</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Régionalisation, gouvernance et régulations internationales</h4>
-                    <p className="text-sm text-gray-600 mb-3">Étudier les accords régionaux et les institutions internationales</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module3/regionalisation-gouvernance">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
+              <div>
+                <div className="w-12 h-12 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center mb-4">
+                  <Globe className="h-5 w-5 text-carnet-red" />
                 </div>
+                <h4 className="font-lora text-[18px] text-carnet-ink mb-2">Perspective historique</h4>
+                <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.6]">
+                  Compréhension des évolutions longues et des ruptures économiques.
+                </p>
               </div>
-            </div>
-
-            {/* Section principale - La dynamique de la mondialisation financière */}
-            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h4 className="text-xl font-bold text-carnet-red-deep mb-2">La dynamique de la mondialisation financière</h4>
-                  <p className="text-gray-700 mb-4 text-base">Explorer les mécanismes financiers internationaux et leur évolution</p>
+              <div>
+                <div className="w-12 h-12 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center mb-4">
+                  <TrendingUp className="h-5 w-5 text-carnet-red" />
                 </div>
-              </div>
-            </div>
-
-            {/* Chapitres du Module 3 - La dynamique de la mondialisation financière */}
-            <div className="space-y-3 ml-8">
-              {/* 3.4 Balance des paiements, cours de change et systèmes de change */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">3.4</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Balance des paiements, cours de change et systèmes de change</h4>
-                    <p className="text-sm text-gray-600 mb-3">Analyser les mécanismes de change et la balance des paiements</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module3/balance-paiements">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 3.5 L'évolution du système monétaire international depuis le XIXe siècle */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">3.5</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">L'évolution du système monétaire international depuis le XIXe siècle</h4>
-                    <p className="text-sm text-gray-600 mb-3">Comprendre l'histoire des systèmes monétaires internationaux</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module3/evolution-systeme-monetaires">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 3.6 Constitution et fonctionnement du marché international des capitaux */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">3.6</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Constitution et fonctionnement du marché international des capitaux</h4>
-                    <p className="text-sm text-gray-600 mb-3">Étudier les marchés financiers internationaux et leurs mécanismes</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module3/marche-capitaux">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Section principale - L'intégration européenne */}
-            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h4 className="text-xl font-bold text-carnet-red-deep mb-2">L'intégration européenne</h4>
-                  <p className="text-gray-700 mb-4 text-base">Comprendre la construction et le fonctionnement de l'Union européenne</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Chapitres du Module 3 - L'intégration européenne */}
-            <div className="space-y-3 ml-8">
-              {/* 3.7 La dynamique de la construction européenne */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">3.7</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">La dynamique de la construction européenne</h4>
-                    <p className="text-sm text-gray-600 mb-3">Analyser le processus historique d'intégration européenne</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module3/construction-europeenne">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 3.8 L'Europe économique et monétaire */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">3.8</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">L'Europe économique et monétaire</h4>
-                    <p className="text-sm text-gray-600 mb-3">Comprendre l'Union économique et monétaire et ses institutions</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module3/europe-economique-monetaires">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 3.9 L'Europe sociale */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">3.9</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">L'Europe sociale</h4>
-                    <p className="text-sm text-gray-600 mb-3">Étudier les politiques sociales européennes et leurs enjeux</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module3/europe-sociale">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
+                <h4 className="font-lora text-[18px] text-carnet-ink mb-2">Analyse critique</h4>
+                <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.6]">
+                  Évaluation des politiques publiques et de leurs impacts sociaux.
+                </p>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Module 4 détaillé */}
-          <div className="space-y-6">
-            {/* Module 4 - déséquilibres, régulation et action publique */}
-            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-carnet-red/30 group">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-carnet-red/20 transition-colors flex-shrink-0">
-                  <span className="font-bold text-carnet-red text-lg">4</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    Déséquilibres, régulation et action publique
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Analyser les mécanismes de régulation économique et l'intervention publique face aux déséquilibres
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Section principale - Équilibres et déséquilibres macroéconomiques */}
-            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30">
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Équilibres et déséquilibres macroéconomiques</h4>
-                  <p className="text-gray-700 mb-4 text-base">Comprendre les mécanismes d'équilibre et de déséquilibre dans l'économie</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Chapitres du Module 4 - Équilibres et déséquilibres macroéconomiques */}
-            <div className="space-y-3 ml-8">
-              {/* 4.1 L'inflation et le chômage */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">4.1</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">L'inflation et le chômage</h4>
-                    <p className="text-sm text-gray-600 mb-3">Analyser les relations entre inflation et chômage dans l'économie</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module4/inflation-chomage">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 4.2 L'équilibre macroéconomique à travers les modèles : IS-LM / IS-LM-BP / OGDG */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">4.2</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">L'équilibre macroéconomique à travers les modèles : IS-LM / IS-LM-BP / OGDG</h4>
-                    <p className="text-sm text-gray-600 mb-3">Maîtriser les modèles d'équilibre macroéconomique et leurs applications</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module4/equilibre-macro">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Section principale - L'intervention économique des pouvoirs publics */}
-            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h4 className="text-xl font-bold text-carnet-red-deep mb-2">L'intervention économique des pouvoirs publics</h4>
-                  <p className="text-gray-700 mb-4 text-base">Explorer les politiques publiques de régulation économique</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Chapitres du Module 4 - L'intervention économique des pouvoirs publics */}
-            <div className="space-y-3 ml-8">
-              {/* 4.3 Fluctuations économiques et politiques de régulation des cycles */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">4.3</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Fluctuations économiques et politiques de régulation des cycles</h4>
-                    <p className="text-sm text-gray-600 mb-3">Comprendre les cycles économiques et les politiques de régulation</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module4/fluctuations-economiques">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 4.4 Politiques structurelles et interventions de l'État face aux défaillances de marché */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">4.4</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Politiques structurelles et interventions de l'État face aux défaillances de marché</h4>
-                    <p className="text-sm text-gray-600 mb-3">Analyser les interventions publiques face aux défaillances du marché</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module4/politiques-structurelles">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 4.5 Les contraintes auxquelles se heurtent les politiques économiques */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">4.5</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Les contraintes auxquelles se heurtent les politiques économiques</h4>
-                    <p className="text-sm text-gray-600 mb-3">Comprendre les limites et contraintes des politiques économiques</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module4/contraintes-politiques">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Section principale - Les politiques sociales */}
-            <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 border border-carnet-red/30 mt-6">
-              <div className="flex items-start gap-4">
-                <div className="flex-1">
-                  <h4 className="text-xl font-bold text-carnet-red-deep mb-2">Les politiques sociales</h4>
-                  <p className="text-gray-700 mb-4 text-base">Explorer les politiques sociales et la justice sociale</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Chapitres du Module 4 - Les politiques sociales */}
-            <div className="space-y-3 ml-8">
-              {/* 4.6 Justice sociale et légitimation de l'intervention publique */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">4.6</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Justice sociale et légitimation de l'intervention publique</h4>
-                    <p className="text-sm text-gray-600 mb-3">Analyser la légitimité des interventions publiques pour la justice sociale</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module4/justice-sociale">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 4.7 Les politiques de lutte contre les inégalités */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">4.7</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Les politiques de lutte contre les inégalités</h4>
-                    <p className="text-sm text-gray-600 mb-3">Comprendre les politiques publiques de réduction des inégalités</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module4/lutte-inegalites">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 4.8 Etat-providence et protection sociale */}
-              <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md hover:scale-102 transition-all duration-300 border border-transparent hover:border-carnet-red/20">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-pr-orange-pale rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="font-bold text-carnet-red text-sm">4.8</span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-base font-semibold text-gray-800 mb-1">Etat-providence et protection sociale</h4>
-                    <p className="text-sm text-gray-600 mb-3">Analyser le rôle de l'Etat-providence dans la protection sociale</p>
-                    <div className="flex gap-2">
-                      <Link to="/formation/esh/module4/etat-providence">
-                        <Button size="sm" className="bg-pr-orange hover:bg-pr-orange-dark text-white text-xs py-1 px-3 h-7">
-                          Introduction
-                        </Button>
-                      </Link>
-                      <Button variant="outline" size="sm" disabled className="border-gray-200 text-gray-400 bg-gray-50 cursor-not-allowed text-xs py-1 px-3 h-7 opacity-70">
-                        Bientôt disponible
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Section méthodologie avancée */}
-          <Card className="mb-8 hover:shadow-xl transition-all duration-300">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">Méthodologie d'analyse pour la deuxième année</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-carnet-red/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <BarChart3 className="h-6 w-6 text-carnet-red" />
-                  </div>
-                  <h4 className="font-semibold mb-2">Analyse quantitative</h4>
-                  <p className="text-sm text-gray-600">Maîtrise des indicateurs économiques et interprétation des données statistiques</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-carnet-red/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <Globe className="h-6 w-6 text-carnet-red" />
-                  </div>
-                  <h4 className="font-semibold mb-2">Perspective historique</h4>
-                  <p className="text-sm text-gray-600">Compréhension des évolutions longues et des ruptures économiques</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-carnet-red/10 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <TrendingUp className="h-6 w-6 text-carnet-red" />
-                  </div>
-                  <h4 className="font-semibold mb-2">Analyse critique</h4>
-                  <p className="text-sm text-gray-600">Évaluation des politiques publiques et de leurs impacts sociaux</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Call to action */}
-          <div className="text-center">
-            <Link to="/formation/esh/methodologie">
-              <Button size="lg" className="bg-gradient-to-r from-carnet-red to-pr-orange hover:from-carnet-red hover:to-pr-orange-dark text-white px-8 py-3 text-lg">
-                Découvrir la méthodologie
-                <ChevronRight className="ml-2 h-5 w-5" />
-              </Button>
+      {/* Next CTA */}
+      <section className="relative pb-24 pt-4">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="rounded-2xl border border-dashed border-[rgba(78,55,30,0.25)] bg-carnet-paper-2 p-8 sm:p-10 text-center">
+            <div className="carnet-eyebrow mb-3">Prêt pour la méthode ?</div>
+            <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight mb-5">
+              Découvre la <em className="font-lora italic text-carnet-red">méthodologie ESH</em>
+            </h2>
+            <Link
+              to="/formation/esh/methodologie"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-carnet-red hover:bg-carnet-red-deep text-white font-instrument font-semibold text-[14px] transition-all duration-300 hover:-translate-y-0.5 shadow-[0_2px_8px_rgba(193,68,58,0.25)]"
+            >
+              Accéder à la méthodologie
+              <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

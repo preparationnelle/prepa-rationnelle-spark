@@ -16,7 +16,7 @@ const SyntaxSectionComponent: React.FC<SyntaxSectionProps> = ({ section }) => {
     if (id.includes('structures') || id.includes('relatives')) return <Code className="h-5 w-5 text-blue-600" />;
     if (id.includes('discours') || id.includes('opinion')) return <MessageSquare className="h-5 w-5 text-green-600" />;
     if (id.includes('emphatiques') || id.includes('accords')) return <Lightbulb className="h-5 w-5 text-purple-600" />;
-    if (id.includes('liaison') || id.includes('obligation')) return <BookOpen className="h-5 w-5 text-pr-orange-dark" />;
+    if (id.includes('liaison') || id.includes('obligation')) return <BookOpen className="h-5 w-5 text-carnet-red" />;
     return <BookOpen className="h-5 w-5 text-blue-600" />;
   };
 
@@ -24,7 +24,7 @@ const SyntaxSectionComponent: React.FC<SyntaxSectionProps> = ({ section }) => {
     if (id.includes('structures') || id.includes('relatives')) return 'bg-blue-100';
     if (id.includes('discours') || id.includes('opinion')) return 'bg-green-100';
     if (id.includes('emphatiques') || id.includes('accords')) return 'bg-purple-100';
-    if (id.includes('liaison') || id.includes('obligation')) return 'bg-orange-100';
+    if (id.includes('liaison') || id.includes('obligation')) return 'bg-[rgba(193,68,58,0.08)]';
     return 'bg-blue-100';
   };
 
@@ -32,7 +32,7 @@ const SyntaxSectionComponent: React.FC<SyntaxSectionProps> = ({ section }) => {
     if (id.includes('structures') || id.includes('relatives')) return 'border-blue-200';
     if (id.includes('discours') || id.includes('opinion')) return 'border-green-200';
     if (id.includes('emphatiques') || id.includes('accords')) return 'border-purple-200';
-    if (id.includes('liaison') || id.includes('obligation')) return 'border-orange-200';
+    if (id.includes('liaison') || id.includes('obligation')) return 'border-[rgba(193,68,58,0.25)]';
     return 'border-blue-200';
   };
 
@@ -108,25 +108,25 @@ const SyntaxSectionComponent: React.FC<SyntaxSectionProps> = ({ section }) => {
 
           {/* Irrégularités */}
           {section.content.irregularities && section.content.irregularities.length > 0 && (
-            <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
-              <h4 className="font-semibold text-orange-900 mb-3 flex items-center gap-2">
+            <div className="bg-[rgba(193,68,58,0.05)] rounded-lg p-4 border border-[rgba(193,68,58,0.25)]">
+              <h4 className="font-semibold text-carnet-red-deep mb-3 flex items-center gap-2">
                 <AlertTriangle className="h-4 w-4" />
                 Points d'attention et nuances
               </h4>
               <div className="space-y-3">
                 {section.content.irregularities.map((irregularity, index) => (
-                  <div key={index} className="bg-white rounded p-3 border border-orange-200">
+                  <div key={index} className="bg-white rounded p-3 border border-[rgba(193,68,58,0.25)]">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="font-medium text-orange-800">{irregularity.pattern}</span>
+                      <span className="font-medium text-carnet-red-deep">{irregularity.pattern}</span>
                     </div>
                     <div className="flex flex-wrap gap-1 mb-2">
                       {irregularity.examples.map((example, exIndex) => (
-                        <span key={exIndex} className="text-xs font-mono bg-orange-100 text-orange-800 px-2 py-1 rounded">
+                        <span key={exIndex} className="text-xs font-mono bg-[rgba(193,68,58,0.08)] text-carnet-red-deep px-2 py-1 rounded">
                           {example}
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-pr-orange-dark">{irregularity.notes}</p>
+                    <p className="text-xs text-carnet-red">{irregularity.notes}</p>
                   </div>
                 ))}
               </div>

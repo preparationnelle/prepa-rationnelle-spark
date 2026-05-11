@@ -1,339 +1,342 @@
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { MessageSquare, Home, ChevronRight, Building, TrendingUp, Globe, Users, Factory, Heart, Leaf, Brain } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { MessageSquare, Home, ChevronRight, ArrowLeft, ArrowRight, Building, TrendingUp, Globe, Users, Brain } from 'lucide-react';
 import ESHModuleNavigation from '@/components/formation/ESHModuleNavigation';
+
+const intro = [
+  { Icon: TrendingUp, title: 'Application pratique', desc: 'Transposer la théorie dans des situations réelles complexes' },
+  { Icon: Brain, title: 'Analyse critique', desc: "Développer l'esprit d'analyse et la prise de recul" },
+  { Icon: MessageSquare, title: 'Argumentation', desc: 'Construire des raisonnements solides et nuancés' },
+];
+
+type CaseStudy = {
+  Icon: typeof Building;
+  title: string;
+  badge: string;
+  description: string;
+  examples: Array<{ title: string; sub: string; bullets: string[] }>;
+};
+
+const cases: CaseStudy[] = [
+  {
+    Icon: Building,
+    title: "Cas d'entreprises",
+    badge: "Économie d'entreprise",
+    description: "Analyse les stratégies d'entreprises, décisions d'investissement et adaptations aux marchés.",
+    examples: [
+      {
+        title: 'Relocalisation industrielle',
+        sub: "Une entreprise automobile face à la mondialisation",
+        bullets: ['Analyse coûts de production', "Impact sur l'emploi local", 'Stratégies de transition'],
+      },
+      {
+        title: 'Innovation disruptive',
+        sub: "Transformation digitale d'une entreprise traditionnelle",
+        bullets: ['Adoption de nouvelles technologies', 'Changement de modèle économique', 'Gestion des résistances internes'],
+      },
+    ],
+  },
+  {
+    Icon: TrendingUp,
+    title: 'Études de marché',
+    badge: 'Microéconomie appliquée',
+    description: 'Étudie le fonctionnement des marchés, les comportements des consommateurs et les stratégies concurrentielles.',
+    examples: [
+      {
+        title: 'Marché des smartphones',
+        sub: 'Concurrence oligopolistique et innovation',
+        bullets: ['Structure de marché', 'Stratégies de différenciation', "Impact des barrières à l'entrée"],
+      },
+      {
+        title: 'Crise énergétique',
+        sub: 'Fluctuations des prix et adaptation des acteurs',
+        bullets: ['Élasticité-prix de la demande', 'Politiques de substitution', "Impact sur l'inflation"],
+      },
+    ],
+  },
+  {
+    Icon: Globe,
+    title: 'Politiques publiques',
+    badge: 'Macroéconomie appliquée',
+    description: "Évalue l'efficacité des interventions publiques et leurs impacts socio-économiques.",
+    examples: [
+      {
+        title: "Revenu minimum d'insertion",
+        sub: 'Politique sociale et incitations au travail',
+        bullets: ["Effets sur l'emploi", 'Coûts budgétaires', 'Redistribution des revenus'],
+      },
+      {
+        title: 'Transition énergétique',
+        sub: 'Politiques environnementales et développement durable',
+        bullets: ['Externalités environnementales', 'Instruments économiques', 'Acceptabilité sociale'],
+      },
+    ],
+  },
+  {
+    Icon: Users,
+    title: 'Questions sociales',
+    badge: 'Sociologie appliquée',
+    description: 'Explore les dynamiques sociales, les inégalités et les changements sociétaux.',
+    examples: [
+      {
+        title: 'Travail et numérique',
+        sub: 'Transformation du monde du travail',
+        bullets: ['Évolution des qualifications', "Nouvelles formes d'emploi", 'Inégalités numériques'],
+      },
+      {
+        title: 'Vieillissement démographique',
+        sub: 'Enjeux sociaux et économiques du vieillissement',
+        bullets: ['Systèmes de retraite', 'Marché du travail', 'Cohésion sociale'],
+      },
+    ],
+  },
+];
+
+const phases = [
+  {
+    title: 'Phase de compréhension',
+    steps: [
+      { n: '1', title: 'Lecture active', desc: 'Identifier les acteurs, enjeux et contexte' },
+      { n: '2', title: 'Problématique', desc: 'Formuler clairement la question centrale' },
+      { n: '3', title: 'Décomposition', desc: 'Isoler les dimensions économiques/sociologiques' },
+    ],
+  },
+  {
+    title: "Phase d'analyse",
+    steps: [
+      { n: '4', title: 'Mobilisation théorique', desc: 'Appliquer concepts et théories appropriés' },
+      { n: '5', title: 'Analyse critique', desc: 'Évaluer limites et implications' },
+      { n: '6', title: 'Synthèse', desc: 'Construire réponse argumentée' },
+    ],
+  },
+];
 
 const EtudesCasESHPage = () => {
   return (
-    <div className="relative">
-      {/* Floating elements - Blue bubbles */}
-
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-carnet-paper/95 backdrop-blur-sm/95 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper/95 backdrop-blur-sm/60 border-b border-border/40 relative z-10">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+    <div className="carnet-paper min-h-screen">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formations" className="hover:text-foreground transition-colors">
-              Toutes les formations
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formations" className="hover:text-carnet-red transition-colors">
+              Formations
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/esh" className="hover:text-foreground transition-colors">
-              Formation ESH ECG
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formation/esh" className="hover:text-carnet-red transition-colors">
+              ESH ECG
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Études de cas</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Études de cas</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto py-8 px-4 relative z-10">
-        {/* Module Navigation */}
-        <div className="mb-8">
-          <ESHModuleNavigation />
-        </div>
+      {/* Hero */}
+      <section className="relative py-16 lg:py-20">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <Link
+            to="/formation/esh"
+            className="inline-flex items-center gap-2 mb-8 font-instrument text-[13px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Retour à la formation ESH
+          </Link>
 
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <div className="flex justify-center mb-6">
-            <div className="p-4 rounded-2xl bg-carnet-red text-white shadow-lg">
-              <MessageSquare className="h-12 w-12" />
+          <div className="mb-10">
+            <ESHModuleNavigation />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[820px]"
+          >
+            <div className="carnet-eyebrow mb-6">ESH · Études de cas</div>
+
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                <MessageSquare className="h-6 w-6 text-carnet-red" />
+              </div>
+              <h1 className="font-lora text-[40px] sm:text-[48px] lg:text-[56px] leading-[1.05] text-carnet-ink tracking-tight">
+                Études de <em className="font-lora italic text-carnet-red">cas</em>.
+              </h1>
+            </div>
+
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px]">
+              Applique tes connaissances théoriques à des <span className="carnet-hl font-lora italic">situations concrètes</span> et développe ta capacité d'analyse.
+            </p>
+
+            <div className="carnet-hand text-[24px] mt-8 hidden md:block" style={{ transform: 'rotate(-2deg)' }}>
+              ↓ quatre familles d'études
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Introduction */}
+      <section className="relative pb-12">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="rounded-2xl border border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2 p-8 sm:p-10">
+            <div className="carnet-eyebrow mb-3">Pourquoi les études de cas ?</div>
+            <h2 className="font-lora text-[24px] sm:text-[28px] text-carnet-ink leading-tight mb-3">
+              Un outil pour développer <em className="font-lora italic text-carnet-red">l'esprit critique</em>.
+            </h2>
+            <p className="font-instrument text-[15px] text-carnet-ink-soft max-w-3xl leading-[1.65] mb-8">
+              Les études de cas constituent un outil pédagogique essentiel pour développer l'esprit critique et l'application pratique des concepts économiques et sociologiques.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {intro.map((it) => (
+                <div key={it.title}>
+                  <div className="w-12 h-12 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center mb-3">
+                    <it.Icon className="h-5 w-5 text-carnet-red" />
+                  </div>
+                  <h4 className="font-lora text-[17px] text-carnet-ink mb-1.5">{it.title}</h4>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">{it.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-carnet-red to-pr-orange-dark bg-clip-text text-transparent">
-              Ressources ESH
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-4xl mx-auto">
-            Appliquez vos connaissances théoriques à des situations concrètes et développez votre capacité d'analyse.
-          </p>
         </div>
+      </section>
 
-        {/* Contenu principal */}
-        <div className="max-w-6xl mx-auto">
-          {/* Introduction méthodologique */}
-          <Card className="mb-8 hover:shadow-xl transition-all duration-300">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">Pourquoi les études de cas en ESH ?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 mb-6 text-center max-w-4xl mx-auto">
-                Les études de cas constituent un outil pédagogique essentiel pour développer l'esprit critique et l'application pratique des concepts économiques et sociologiques.
+      {/* Cas par domaine */}
+      <section className="relative pb-16">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="flex items-baseline gap-4 mb-8">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">01</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <div>
+              <h2 className="font-lora text-[28px] sm:text-[34px] text-carnet-ink leading-tight">
+                Études de cas par domaine
+              </h2>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft mt-1">
+                Quatre familles d'analyse pour s'entraîner.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <TrendingUp className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <h4 className="font-semibold mb-2">Application pratique</h4>
-                  <p className="text-sm text-gray-600">Transposer la théorie dans des situations réelles complexes</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <Brain className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <h4 className="font-semibold mb-2">Analyse critique</h4>
-                  <p className="text-sm text-gray-600">Développer l'esprit d'analyse et la prise de recul</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <MessageSquare className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <h4 className="font-semibold mb-2">Argumentation</h4>
-                  <p className="text-sm text-gray-600">Construire des raisonnements solides et nuancés</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Études de cas par domaine */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            {/* Cas d'entreprises */}
-            <Card className="hover:shadow-xl transition-all duration-300 border-l-4 border-l-purple-500">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <Building className="h-5 w-5 text-purple-600" />
-                  </div>
-                  <CardTitle className="text-xl">Cas d'entreprises</CardTitle>
-                </div>
-                <Badge variant="secondary" className="w-fit">Économie d'entreprise</Badge>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Analysez des stratégies d'entreprises, décisions d'investissement et adaptations aux marchés.
-                </p>
-                <div className="space-y-3">
-                  <div className="border-l-2 border-purple-200 pl-4">
-                    <h5 className="font-semibold text-purple-700">Exemple : Relocalisation industrielle</h5>
-                    <p className="text-sm text-gray-600 mb-2">Une entreprise automobile face à la mondialisation</p>
-                    <ul className="text-xs text-gray-500 space-y-1">
-                      <li>• Analyse coûts de production</li>
-                      <li>• Impact sur l'emploi local</li>
-                      <li>• Stratégies de transition</li>
-                    </ul>
-                  </div>
-                  <div className="border-l-2 border-purple-200 pl-4">
-                    <h5 className="font-semibold text-purple-700">Exemple : Innovation disruptive</h5>
-                    <p className="text-sm text-gray-600 mb-2">Transformation digitale d'une entreprise traditionnelle</p>
-                    <ul className="text-xs text-gray-500 space-y-1">
-                      <li>• Adoption de nouvelles technologies</li>
-                      <li>• Changement de modèle économique</li>
-                      <li>• Gestion des résistances internes</li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Études de marché */}
-            <Card className="hover:shadow-xl transition-all duration-300 border-l-4 border-l-purple-500">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <TrendingUp className="h-5 w-5 text-purple-600" />
-                  </div>
-                  <CardTitle className="text-xl">Études de marché</CardTitle>
-                </div>
-                <Badge variant="secondary" className="w-fit">Microéconomie appliquée</Badge>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Étudiez le fonctionnement des marchés, les comportements des consommateurs et les stratégies concurrentielles.
-                </p>
-                <div className="space-y-3">
-                  <div className="border-l-2 border-purple-200 pl-4">
-                    <h5 className="font-semibold text-purple-700">Exemple : Marché des smartphones</h5>
-                    <p className="text-sm text-gray-600 mb-2">Concurrence oligopolistique et innovation</p>
-                    <ul className="text-xs text-gray-500 space-y-1">
-                      <li>• Structure de marché</li>
-                      <li>• Stratégies de différenciation</li>
-                      <li>• Impact des barrières à l'entrée</li>
-                    </ul>
-                  </div>
-                  <div className="border-l-2 border-purple-200 pl-4">
-                    <h5 className="font-semibold text-purple-700">Exemple : Crise énergétique</h5>
-                    <p className="text-sm text-gray-600 mb-2">Fluctuations des prix et adaptation des acteurs</p>
-                    <ul className="text-xs text-gray-500 space-y-1">
-                      <li>• Élasticité-prix de la demande</li>
-                      <li>• Politiques de substitution</li>
-                      <li>• Impact sur l'inflation</li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Politiques publiques */}
-            <Card className="hover:shadow-xl transition-all duration-300 border-l-4 border-l-purple-500">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <Globe className="h-5 w-5 text-purple-600" />
-                  </div>
-                  <CardTitle className="text-xl">Politiques publiques</CardTitle>
-                </div>
-                <Badge variant="secondary" className="w-fit">Macroéconomie appliquée</Badge>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Évaluez l'efficacité des interventions publiques et leurs impacts socio-économiques.
-                </p>
-                <div className="space-y-3">
-                  <div className="border-l-2 border-purple-200 pl-4">
-                    <h5 className="font-semibold text-purple-700">Exemple : Revenu minimum d'insertion</h5>
-                    <p className="text-sm text-gray-600 mb-2">Politique sociale et incitations au travail</p>
-                    <ul className="text-xs text-gray-500 space-y-1">
-                      <li>• Effets sur l'emploi</li>
-                      <li>• Coûts budgétaires</li>
-                      <li>• Redistribution des revenus</li>
-                    </ul>
-                  </div>
-                  <div className="border-l-2 border-purple-200 pl-4">
-                    <h5 className="font-semibold text-purple-700">Exemple : Transition énergétique</h5>
-                    <p className="text-sm text-gray-600 mb-2">Politiques environnementales et développement durable</p>
-                    <ul className="text-xs text-gray-500 space-y-1">
-                      <li>• Externalités environnementales</li>
-                      <li>• Instruments économiques</li>
-                      <li>• Acceptabilité sociale</li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Questions sociales */}
-            <Card className="hover:shadow-xl transition-all duration-300 border-l-4 border-l-purple-500">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <Users className="h-5 w-5 text-purple-600" />
-                  </div>
-                  <CardTitle className="text-xl">Questions sociales</CardTitle>
-                </div>
-                <Badge variant="secondary" className="w-fit">Sociologie appliquée</Badge>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Explorez les dynamiques sociales, les inégalités et les changements sociétaux.
-                </p>
-                <div className="space-y-3">
-                  <div className="border-l-2 border-purple-200 pl-4">
-                    <h5 className="font-semibold text-purple-700">Exemple : Travail et numérique</h5>
-                    <p className="text-sm text-gray-600 mb-2">Transformation du monde du travail</p>
-                    <ul className="text-xs text-gray-500 space-y-1">
-                      <li>• Évolution des qualifications</li>
-                      <li>• Nouvelles formes d'emploi</li>
-                      <li>• Inégalités numériques</li>
-                    </ul>
-                  </div>
-                  <div className="border-l-2 border-purple-200 pl-4">
-                    <h5 className="font-semibold text-purple-700">Exemple : Vieillissement démographique</h5>
-                    <p className="text-sm text-gray-600 mb-2">Enjeux sociaux et économiques du vieillissement</p>
-                    <ul className="text-xs text-gray-500 space-y-1">
-                      <li>• Systèmes de retraite</li>
-                      <li>• Marché du travail</li>
-                      <li>• Cohésion sociale</li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            </div>
           </div>
 
-          {/* Méthode d'analyse des études de cas */}
-          <Card className="mb-8 hover:shadow-xl transition-all duration-300">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">Méthode d'analyse des études de cas</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-semibold text-lg mb-4 text-purple-700">Phase de compréhension</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-purple-600 font-bold text-xs">1</span>
-                      </div>
-                      <div>
-                        <strong className="text-purple-700">Lecture active</strong>
-                        <p className="text-sm text-gray-600">Identifier les acteurs, enjeux et contexte</p>
-                      </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {cases.map((c, idx) => {
+              const tilt = idx % 2 === 1 ? 'carnet-tilt-r' : '';
+              return (
+                <motion.div
+                  key={c.title}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-30px' }}
+                  transition={{ duration: 0.35, delay: idx * 0.06 }}
+                  className={`bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)] ${tilt}`}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center">
+                      <c.Icon className="h-5 w-5 text-carnet-red" />
                     </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-purple-600 font-bold text-xs">2</span>
-                      </div>
-                      <div>
-                        <strong className="text-purple-700">Problématique</strong>
-                        <p className="text-sm text-gray-600">Formuler clairement la question centrale</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-purple-600 font-bold text-xs">3</span>
-                      </div>
-                      <div>
-                        <strong className="text-purple-700">Décomposition</strong>
-                        <p className="text-sm text-gray-600">Isoler les dimensions économiques/sociologiques</p>
-                      </div>
-                    </div>
+                    <span className="font-instrument text-[10px] uppercase tracking-[0.12em] text-carnet-ink-mute px-2.5 py-1 rounded-full bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)]">
+                      {c.badge}
+                    </span>
                   </div>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-4 text-purple-700">Phase d'analyse</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-purple-600 font-bold text-xs">4</span>
+                  <h3 className="font-lora text-[22px] text-carnet-ink mb-3 leading-tight">{c.title}</h3>
+                  <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.6] mb-5">
+                    {c.description}
+                  </p>
+                  <div className="space-y-4">
+                    {c.examples.map((ex) => (
+                      <div key={ex.title} className="border-l-2 border-carnet-red/40 pl-4">
+                        <h5 className="font-lora text-[15px] text-carnet-ink font-semibold mb-1">
+                          {ex.title}
+                        </h5>
+                        <p className="font-instrument text-[13px] text-carnet-ink-soft mb-2">{ex.sub}</p>
+                        <ul className="space-y-0.5">
+                          {ex.bullets.map((b) => (
+                            <li key={b} className="font-instrument text-[12px] text-carnet-ink-mute">
+                              <span className="text-carnet-red mr-2">·</span>
+                              {b}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <div>
-                        <strong className="text-purple-700">Mobilisation théorique</strong>
-                        <p className="text-sm text-gray-600">Appliquer concepts et théories appropriés</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-purple-600 font-bold text-xs">5</span>
-                      </div>
-                      <div>
-                        <strong className="text-purple-700">Analyse critique</strong>
-                        <p className="text-sm text-gray-600">Évaluer limites et implications</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-purple-600 font-bold text-xs">6</span>
-                      </div>
-                      <div>
-                        <strong className="text-purple-700">Synthèse</strong>
-                        <p className="text-sm text-gray-600">Construire réponse argumentée</p>
-                      </div>
-                    </div>
+                    ))}
                   </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Méthode d'analyse */}
+      <section className="relative pb-16">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="flex items-baseline gap-4 mb-8">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">02</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <div>
+              <h2 className="font-lora text-[28px] sm:text-[34px] text-carnet-ink leading-tight">
+                Méthode d'analyse des études de cas
+              </h2>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft mt-1">
+                De la lecture à la synthèse argumentée.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {phases.map((phase) => (
+              <div
+                key={phase.title}
+                className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]"
+              >
+                <h4 className="font-lora italic text-[20px] text-carnet-ink-soft mb-5 leading-snug">
+                  {phase.title}
+                </h4>
+                <div className="space-y-4">
+                  {phase.steps.map((s) => (
+                    <div key={s.n} className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                        <span className="font-lora text-[13px] font-semibold text-carnet-red">{s.n}</span>
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-lora text-[15px] text-carnet-ink font-semibold mb-0.5">
+                          {s.title}
+                        </div>
+                        <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
+                          {s.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          {/* Call to action */}
-          <div className="text-center">
-            <Link to="/formation/esh">
-              <Button size="lg" className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white px-8 py-3 text-lg">
-                Retour à la formation ESH
-                <ChevronRight className="ml-2 h-5 w-5" />
-              </Button>
+      {/* CTA */}
+      <section className="relative pb-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="rounded-2xl border border-dashed border-[rgba(78,55,30,0.25)] bg-carnet-paper-2 p-8 sm:p-10 text-center">
+            <div className="carnet-eyebrow mb-3">Continue ta progression</div>
+            <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight mb-5">
+              Retour à la <em className="font-lora italic text-carnet-red">formation ESH</em>
+            </h2>
+            <Link
+              to="/formation/esh"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-carnet-red hover:bg-carnet-red-deep text-white font-instrument font-semibold text-[14px] transition-all duration-300 hover:-translate-y-0.5 shadow-[0_2px_8px_rgba(193,68,58,0.25)]"
+            >
+              Retour à la formation ESH
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

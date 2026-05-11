@@ -143,7 +143,7 @@ export const GrammarErrorMemory: React.FC<GrammarErrorMemoryProps> = ({
     <Card className="mt-6">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Brain className="h-5 w-5 text-pr-orange" />
+          <Brain className="h-5 w-5 text-carnet-red" />
           Mémoire des erreurs grammaticales
         </CardTitle>
       </CardHeader>
@@ -158,7 +158,7 @@ export const GrammarErrorMemory: React.FC<GrammarErrorMemoryProps> = ({
               <div
                 key={error.id}
                 className={`p-4 rounded-lg border ${
-                  error.reviewed ? 'bg-green-50 border-green-200' : 'bg-orange-50 border-orange-200'
+                  error.reviewed ? 'bg-green-50 border-green-200' : 'bg-[rgba(193,68,58,0.05)] border-[rgba(193,68,58,0.25)]'
                 }`}
               >
                 <div className="flex items-start justify-between gap-4">
@@ -173,7 +173,7 @@ export const GrammarErrorMemory: React.FC<GrammarErrorMemoryProps> = ({
                       <p><strong>Phrase:</strong> {error.french_sentence}</p>
                       <p className="text-red-600"><strong>Votre réponse:</strong> {error.student_answer}</p>
                       <p className="text-green-600"><strong>Correction:</strong> {error.correct_answer}</p>
-                      <p className="text-pr-orange-dark"><strong>Règle :</strong> {error.rule}</p>
+                      <p className="text-carnet-red"><strong>Règle :</strong> {error.rule}</p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2">

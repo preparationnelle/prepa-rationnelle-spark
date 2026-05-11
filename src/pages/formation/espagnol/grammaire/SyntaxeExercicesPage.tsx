@@ -7,28 +7,28 @@ import { Home, ChevronRight, ArrowLeft, Target } from 'lucide-react';
 
 const SyntaxeExercicesPage = () => {
   return (
-    <div className="relative font-dm-sans text-pr-black">
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+    <div className="carnet-paper min-h-screen font-instrument text-carnet-ink">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol" className="hover:text-carnet-red transition-colors">
               Formation Espagnol
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol/grammaire" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol/grammaire" className="hover:text-carnet-red transition-colors">
               Grammaire
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol/grammaire/syntaxe-structures-complexes" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol/grammaire/syntaxe-structures-complexes" className="hover:text-carnet-red transition-colors">
               Syntaxe et Structures Complexes
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Exercices</span>
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <span className="text-carnet-ink font-semibold">Exercices</span>
           </div>
         </div>
       </nav>
@@ -44,31 +44,31 @@ const SyntaxeExercicesPage = () => {
             </Link>
           </div>
           
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+          <h1 className="text-4xl font-lora text-carnet-ink mb-4 flex items-center justify-center gap-3">
+            <div className="p-3 rounded-lg bg-carnet-red text-carnet-paper">
               <Target className="h-9 w-9" />
             </div>
             Exercices Syntaxe et Structures Complexes
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-carnet-ink-mute max-w-3xl mx-auto">
             Testez vos connaissances avec ces exercices de niveau prépa ECG sur la syntaxe espagnole
           </p>
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">Niveau Prépa ECG</Badge>
             <Badge variant="outline">60 exercices</Badge>
-            <Badge className="bg-pr-orange-dark">Module essentiel</Badge>
+            <Badge className="bg-carnet-red">Module essentiel</Badge>
           </div>
         </div>
 
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mb-8 border-2 border-[rgba(193,68,58,0.25)] bg-gradient-to-r from-[rgba(193,68,58,0.05)] to-amber-50">
           <CardHeader>
-            <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-xl flex items-center gap-2 text-carnet-red-deep">
               <Target className="h-5 w-5" />
               Page d'exercices en cours de chargement
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-pr-orange-dark">
+            <p className="text-carnet-red">
               🚧 Cette page est temporairement simplifiée le temps de résoudre un problème technique. 
               Elle sera restaurée sous peu avec toutes les fonctionnalités.
             </p>

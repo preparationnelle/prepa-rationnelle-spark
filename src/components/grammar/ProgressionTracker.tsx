@@ -88,9 +88,9 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
   };
 
   return (
-    <Card className="border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50">
+    <Card className="border-[rgba(193,68,58,0.25)] bg-gradient-to-br from-[rgba(193,68,58,0.05)] to-amber-50">
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-orange-800">
+        <CardTitle className="flex items-center gap-2 text-carnet-red-deep">
           <TrendingUp className="h-5 w-5" />
           Progression - {language.toUpperCase()}
         </CardTitle>
@@ -121,8 +121,8 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
         {/* Progress bar */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="text-pr-orange-dark">Objectif session</span>
-            <span className="text-pr-orange-dark">{Math.min(progressPercentage, 100).toFixed(0)}%</span>
+            <span className="text-carnet-red">Objectif session</span>
+            <span className="text-carnet-red">{Math.min(progressPercentage, 100).toFixed(0)}%</span>
           </div>
           <Progress value={progressPercentage} className="h-2" />
         </div>
@@ -130,10 +130,10 @@ export const ProgressionTracker: React.FC<ProgressionTrackerProps> = ({
         {/* Weak points */}
         {progression.weakPoints.length > 0 && (
           <div>
-            <div className="text-sm font-medium text-pr-orange-dark mb-2">Points à travailler :</div>
+            <div className="text-sm font-medium text-carnet-red mb-2">Points à travailler :</div>
             <div className="flex flex-wrap gap-1">
               {progression.weakPoints.slice(0, 3).map((point, index) => (
-                <Badge key={index} variant="outline" className="text-xs border-orange-300 text-pr-orange-dark">
+                <Badge key={index} variant="outline" className="text-xs border-[rgba(193,68,58,0.35)] text-carnet-red">
                   {point}
                 </Badge>
               ))}

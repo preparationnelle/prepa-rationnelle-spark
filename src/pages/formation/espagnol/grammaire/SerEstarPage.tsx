@@ -45,25 +45,25 @@ const SerEstarPage = () => {
   };
 
   return (
-    <div className="relative font-dm-sans text-pr-black">
+    <div className="carnet-paper min-h-screen font-instrument text-carnet-ink">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol" className="hover:text-carnet-red transition-colors">
               Formation Espagnol
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol/grammaire" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol/grammaire" className="hover:text-carnet-red transition-colors">
               Grammaire
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Ser vs Estar</span>
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <span className="text-carnet-ink font-semibold">Ser vs Estar</span>
           </div>
         </div>
       </nav>
@@ -80,51 +80,51 @@ const SerEstarPage = () => {
             </Link>
           </div>
           
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+          <h1 className="text-4xl font-lora text-carnet-ink mb-4 flex items-center justify-center gap-3">
+            <div className="p-3 rounded-lg bg-carnet-red text-carnet-paper">
               <Target className="h-9 w-9" />
             </div>
             Ser vs Estar et Constructions
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-carnet-ink-mute max-w-3xl mx-auto">
             Module 3 : Maîtrisez les nuances entre ser et estar, constructions spéciales
           </p>
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">Niveau Intermédiaire</Badge>
             <Badge variant="outline">1-2 heures</Badge>
-            <Badge className="bg-pr-orange-dark">Module essentiel</Badge>
+            <Badge className="bg-carnet-red">Module essentiel</Badge>
           </div>
         </div>
 
         {/* Instructions */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+        <Card className="mb-8 border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-carnet-red-deep">
               <Brain className="h-6 w-6" />
               Comment utiliser ce module
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark">
+          <CardContent className="text-carnet-red">
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <BookOpenIcon className="h-8 w-8 text-pr-orange-dark" />
+                <div className="w-16 h-16 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <BookOpenIcon className="h-8 w-8 text-carnet-red" />
                 </div>
-                <h3 className="font-semibold text-orange-900 mb-2">1. Étudiez la théorie</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-2">1. Étudiez la théorie</h3>
                 <p className="text-sm">Lisez les règles et exemples de chaque section</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Table className="h-8 w-8 text-pr-orange-dark" />
+                <div className="w-16 h-16 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Table className="h-8 w-8 text-carnet-red" />
                 </div>
-                <h3 className="font-semibold text-orange-900 mb-2">2. Consultez les tableaux</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-2">2. Consultez les tableaux</h3>
                 <p className="text-sm">Mémorisez les règles et usages</p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <CheckCircle className="h-8 w-8 text-pr-orange-dark" />
+                <div className="w-16 h-16 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center mx-auto mb-3">
+                  <CheckCircle className="h-8 w-8 text-carnet-red" />
                 </div>
-                <h3 className="font-semibold text-orange-900 mb-2">3. Pratiquez les exercices</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-2">3. Pratiquez les exercices</h3>
                 <p className="text-sm">Appliquez vos connaissances avec les exercices</p>
               </div>
             </div>
@@ -133,8 +133,8 @@ const SerEstarPage = () => {
 
         {/* Tableaux de référence */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <Table className="h-8 w-8 text-pr-orange-dark" />
+          <h2 className="text-3xl font-lora text-carnet-ink mb-6 flex items-center gap-3">
+            <Table className="h-8 w-8 text-carnet-red" />
             Tableaux de Référence
           </h2>
           
@@ -161,8 +161,8 @@ const SerEstarPage = () => {
 
         {/* Sections théoriques */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <BookOpenIcon className="h-8 w-8 text-pr-orange-dark" />
+          <h2 className="text-3xl font-lora text-carnet-ink mb-6 flex items-center gap-3">
+            <BookOpenIcon className="h-8 w-8 text-carnet-red" />
             Théorie et Règles
           </h2>
           
@@ -175,21 +175,21 @@ const SerEstarPage = () => {
 
         {/* Exercices pratiques */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <TargetIcon className="h-8 w-8 text-pr-orange-dark" />
+          <h2 className="text-3xl font-lora text-carnet-ink mb-6 flex items-center gap-3">
+            <TargetIcon className="h-8 w-8 text-carnet-red" />
             Exercices Pratiques
           </h2>
           
           <div className="space-y-6">
             {serEstarExercises.map((exercise) => (
-              <Card key={exercise.id} className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+              <Card key={exercise.id} className="border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
                 <CardHeader>
-                  <CardTitle className="text-xl flex items-center gap-2 text-orange-800">
+                  <CardTitle className="text-xl flex items-center gap-2 text-carnet-red-deep">
                     <FileText className="h-5 w-5" />
                     {exercise.title}
                   </CardTitle>
                   <div className="flex gap-2">
-                    <Badge variant="outline" className="text-pr-orange-dark">
+                    <Badge variant="outline" className="text-carnet-red">
                       {exercise.level}
                     </Badge>
                     <Badge variant="secondary">
@@ -199,15 +199,15 @@ const SerEstarPage = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {/* Instruction */}
-                  <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
-                    <h4 className="font-semibold text-orange-900 mb-2">📝 Instruction :</h4>
-                    <p className="text-lg text-gray-800">{exercise.instruction}</p>
+                  <div className="bg-white/70 rounded-lg p-4 border border-[rgba(193,68,58,0.25)]">
+                    <h4 className="font-semibold text-carnet-red-deep mb-2">📝 Instruction :</h4>
+                    <p className="text-lg text-carnet-ink">{exercise.instruction}</p>
                   </div>
 
                   {/* Question */}
-                  <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
-                    <h4 className="font-semibold text-orange-900 mb-2">Question :</h4>
-                    <p className="text-lg text-gray-800 font-mono">{exercise.content.question}</p>
+                  <div className="bg-[rgba(193,68,58,0.05)] rounded-lg p-4 border border-[rgba(193,68,58,0.25)]">
+                    <h4 className="font-semibold text-carnet-red-deep mb-2">Question :</h4>
+                    <p className="text-lg text-carnet-ink font-mono">{exercise.content.question}</p>
                   </div>
 
                   {/* Boutons d'action */}
@@ -250,13 +250,13 @@ const SerEstarPage = () => {
 
                   {/* Correction */}
                   {showCorrections[exercise.id] && (
-                    <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
-                      <h4 className="font-semibold text-orange-900 mb-3 flex items-center gap-2">
+                    <div className="bg-[rgba(193,68,58,0.05)] rounded-lg p-4 border border-[rgba(193,68,58,0.25)]">
+                      <h4 className="font-semibold text-carnet-red-deep mb-3 flex items-center gap-2">
                         <CheckCircle className="h-4 w-4" />
                         ✅ Correction et explication :
                       </h4>
-                      <p className="text-lg text-orange-800 font-medium mb-2">{exercise.content.correction}</p>
-                      <p className="text-sm text-pr-orange-dark">{exercise.content.explanation}</p>
+                      <p className="text-lg text-carnet-red-deep font-medium mb-2">{exercise.content.correction}</p>
+                      <p className="text-sm text-carnet-red">{exercise.content.explanation}</p>
                     </div>
                   )}
                 </CardContent>
@@ -266,53 +266,53 @@ const SerEstarPage = () => {
         </div>
 
         {/* Conseils méthodologiques */}
-        <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+        <Card className="border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-carnet-red-deep">
               <Zap className="h-6 w-6" />
               Conseils pour maîtriser Ser vs Estar
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark space-y-6">
+          <CardContent className="text-carnet-red space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold text-orange-900 mb-3">🎯 Stratégie d'apprentissage :</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-3">🎯 Stratégie d'apprentissage :</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Mémorisez les acronymes DOCTOR et PLACE</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Pratiquez avec des contextes variés</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Testez : 'toujours vrai ?' vs 'maintenant ?'</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Révisez régulièrement les exceptions</span>
                   </li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-orange-900 mb-3">📚 Points de grammaire essentiels :</h3>
+                <h3 className="font-semibold text-carnet-red-deep mb-3">📚 Points de grammaire essentiels :</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Distinction essence vs état</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Constructions avec haber</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Verbes de changement d'état</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 mt-1.5 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></span>
                     <span>Voix passive et pronominale</span>
                   </li>
                 </ul>
@@ -322,19 +322,19 @@ const SerEstarPage = () => {
         </Card>
 
         {/* Bouton vers les exercices */}
-        <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+        <Card className="border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-carnet-red-deep">
               <Target className="h-6 w-6" />
               Prêt à tester vos connaissances ?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-pr-orange-dark mb-6">
+            <p className="text-lg text-carnet-red mb-6">
               Maintenant que vous avez étudié la théorie, mettez vos connaissances en pratique avec nos exercices interactifs !
             </p>
             <Link to="/formation/espagnol/grammaire/ser-estar/exercices">
-              <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg">
+              <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper px-8 py-3 text-lg">
                 <Target className="h-5 w-5 mr-2" />
                 Commencer les exercices
               </Button>

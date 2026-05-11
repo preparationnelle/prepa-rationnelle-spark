@@ -62,16 +62,16 @@ const PitchIntroPage = () => {
       <MethodSection label="Section 01" title="Structure PASS pour un pitch efficace" icon={Target}>
         <div className="grid md:grid-cols-2 gap-5">
           {passSteps.map((s, i) => (
-            <div key={i} className="bg-white border border-pr-gray-light rounded-lg p-6 hover:border-pr-orange transition-colors">
+            <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-6 hover:border-red-600 transition-colors">
               <div className="flex items-baseline gap-3 mb-1">
-                <span className="font-dm-serif text-5xl text-pr-orange leading-none">{s.l}</span>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+                <span className="font-dm-serif text-5xl text-red-600 leading-none">{s.l}</span>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
                   {s.time}
                 </span>
               </div>
-              <h4 className="font-dm-serif text-xl text-pr-black mt-3 mb-2">{s.t}</h4>
-              <div className="h-px w-8 bg-pr-orange mb-3" />
-              <p className="text-sm text-pr-gray-dark leading-relaxed">{s.d}</p>
+              <h4 className="font-dm-serif text-xl text-carnet-ink mt-3 mb-2">{s.t}</h4>
+              <div className="h-px w-8 bg-red-600 mb-3" />
+              <p className="text-sm text-carnet-ink-soft leading-relaxed">{s.d}</p>
             </div>
           ))}
         </div>
@@ -86,25 +86,25 @@ const PitchIntroPage = () => {
             { t: "1m30-2m", k: "Spécificité", d: "Élément différenciant unique" },
             { t: "2m-2m30", k: "Suite", d: "Projet et motivation école" },
           ].map((c) => (
-            <div key={c.t} className="bg-white border border-pr-gray-light rounded-lg p-5 text-center">
-              <div className="font-dm-serif text-2xl text-pr-orange mb-1">{c.t}</div>
-              <div className="h-px w-6 bg-pr-orange mx-auto mb-3" />
-              <div className="font-medium text-pr-black mb-1">{c.k}</div>
-              <p className="text-xs text-pr-gray-mid">{c.d}</p>
+            <div key={c.t} className="bg-white border border-carnet-rule/30 rounded-lg p-5 text-center">
+              <div className="font-dm-serif text-2xl text-red-600 mb-1">{c.t}</div>
+              <div className="h-px w-6 bg-red-600 mx-auto mb-3" />
+              <div className="font-medium text-carnet-ink mb-1">{c.k}</div>
+              <p className="text-xs text-carnet-ink-mute">{c.d}</p>
             </div>
           ))}
         </div>
 
-        <div className="bg-pr-orange-pale border-l-4 border-pr-orange rounded-r-lg p-6">
+        <div className="bg-red-50 border-l-4 border-red-600 rounded-r-lg p-6">
           <div className="flex items-center gap-2 mb-3">
-            <Clock className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.6} />
-            <h4 className="font-dm-serif text-lg text-pr-black">Règles de timing</h4>
+            <Clock className="w-5 h-5 text-red-700" strokeWidth={1.6} />
+            <h4 className="font-dm-serif text-lg text-carnet-ink">Règles de timing</h4>
           </div>
-          <ul className="space-y-2 text-sm text-pr-gray-dark">
-            <li>— <strong className="text-pr-black">Minimum 1m30 :</strong> sinon vous paraissez trop concis et peu développé.</li>
-            <li>— <strong className="text-pr-black">Maximum 3 minutes :</strong> au-delà, vous monopolisez trop la parole.</li>
-            <li>— <strong className="text-pr-black">Optimal 2-2m30 :</strong> temps parfait pour un contenu riche sans lassitude.</li>
-            <li>— <strong className="text-pr-black">Adaptabilité :</strong> préparez des versions courte (1m30) et longue (3m).</li>
+          <ul className="space-y-2 text-sm text-carnet-ink-soft">
+            <li>— <strong className="text-carnet-ink">Minimum 1m30 :</strong> sinon vous paraissez trop concis et peu développé.</li>
+            <li>— <strong className="text-carnet-ink">Maximum 3 minutes :</strong> au-delà, vous monopolisez trop la parole.</li>
+            <li>— <strong className="text-carnet-ink">Optimal 2-2m30 :</strong> temps parfait pour un contenu riche sans lassitude.</li>
+            <li>— <strong className="text-carnet-ink">Adaptabilité :</strong> préparez des versions courte (1m30) et longue (3m).</li>
           </ul>
         </div>
       </MethodSection>
@@ -113,17 +113,17 @@ const PitchIntroPage = () => {
       <MethodSection label="Section 03" title="Exemples de pitch d'introduction réussis" icon={Star}>
         <div className="space-y-5">
           {examples.map((ex, i) => (
-            <div key={i} className="bg-white border border-pr-gray-light rounded-lg p-6">
+            <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
                   Exemple {i + 1}
                 </span>
-                <h4 className="font-dm-serif text-lg text-pr-black">{ex.label}</h4>
+                <h4 className="font-dm-serif text-lg text-carnet-ink">{ex.label}</h4>
               </div>
               <div className="space-y-3">
                 {ex.parts.map(([k, v]) => (
-                  <p key={k} className="text-sm text-pr-gray-dark leading-relaxed">
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-pr-orange-dark mr-2">[{k}]</span>
+                  <p key={k} className="text-sm text-carnet-ink-soft leading-relaxed">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-red-700 mr-2">[{k}]</span>
                     {v}
                   </p>
                 ))}
@@ -156,15 +156,15 @@ const PitchIntroPage = () => {
               ],
             },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-              <h4 className="font-dm-serif text-lg text-pr-black mb-4 flex items-center gap-2">
-                <AlertCircle className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.8} />
+            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+              <h4 className="font-dm-serif text-lg text-carnet-ink mb-4 flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-red-700" strokeWidth={1.8} />
                 {g.t}
               </h4>
               <ul className="space-y-3">
                 {g.l.map(([s, d]) => (
-                  <li key={s} className="bg-pr-gray-bg border-l-4 border-pr-orange rounded-r p-3 text-sm text-pr-gray-dark">
-                    <strong className="text-pr-black">{s} :</strong> {d}
+                  <li key={s} className="bg-carnet-paper border-l-4 border-red-600 rounded-r p-3 text-sm text-carnet-ink-soft">
+                    <strong className="text-carnet-ink">{s} :</strong> {d}
                   </li>
                 ))}
               </ul>
@@ -181,14 +181,14 @@ const PitchIntroPage = () => {
             { t: "Répétition", l: ["Répétez devant un miroir", "Enregistrez-vous en vidéo", "Testez avec vos proches", "Travaillez la gestuelle"] },
             { t: "Naturalisation", l: ["Intériorisez sans réciter", "Préparez des variantes", "Adaptez selon l'école", "Restez spontané"] },
           ].map((step, i) => (
-            <div key={step.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-              <span className="font-dm-serif text-3xl text-pr-orange">{String(i + 1).padStart(2, '0')}</span>
-              <h4 className="font-dm-serif text-lg text-pr-black mt-1">Étape — {step.t}</h4>
-              <div className="h-px w-8 bg-pr-orange mb-4 mt-2" />
-              <ul className="space-y-2 text-sm text-pr-gray-dark">
+            <div key={step.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+              <span className="font-dm-serif text-3xl text-red-600">{String(i + 1).padStart(2, '0')}</span>
+              <h4 className="font-dm-serif text-lg text-carnet-ink mt-1">Étape — {step.t}</h4>
+              <div className="h-px w-8 bg-red-600 mb-4 mt-2" />
+              <ul className="space-y-2 text-sm text-carnet-ink-soft">
                 {step.l.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-pr-orange mt-0.5 flex-shrink-0" strokeWidth={1.8} />
+                    <CheckCircle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" strokeWidth={1.8} />
                     {item}
                   </li>
                 ))}
@@ -205,13 +205,13 @@ const PitchIntroPage = () => {
             { t: "Contenu validé", l: ["Structure PASS respectée", "Timing entre 2 et 3 minutes", "Élément différenciant mis en avant", "Lien clair avec le projet professionnel", "Cohérence avec le CV"] },
             { t: "Présentation maîtrisée", l: ["Ton naturel et enthousiaste", "Contact visuel maintenu", "Gestuelle appropriée", "Débit adapté et articulé", "Conclusion qui ouvre sur la suite"] },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-              <h4 className="font-dm-serif text-lg text-pr-black mb-2">{g.t}</h4>
-              <div className="h-px w-8 bg-pr-orange mb-4" />
+            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+              <h4 className="font-dm-serif text-lg text-carnet-ink mb-2">{g.t}</h4>
+              <div className="h-px w-8 bg-red-600 mb-4" />
               <ul className="space-y-3">
                 {g.l.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-pr-gray-dark">
-                    <CheckCircle className="w-4 h-4 text-pr-orange mt-0.5 flex-shrink-0" strokeWidth={1.8} />
+                  <li key={item} className="flex items-start gap-2 text-sm text-carnet-ink-soft">
+                    <CheckCircle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" strokeWidth={1.8} />
                     {item}
                   </li>
                 ))}

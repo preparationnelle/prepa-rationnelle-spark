@@ -57,7 +57,7 @@ const QuestionsDestabilisantesPage = () => (
         votre gestion émotionnelle, votre confiance en vous et votre capacité à rester cohérent sous pression.
         Un futur manager doit savoir gérer des interlocuteurs difficiles.
       </p>
-      <p className="font-medium text-pr-black mb-2">Ce que le jury observe :</p>
+      <p className="font-medium text-carnet-ink mb-2">Ce que le jury observe :</p>
       <ul className="space-y-2">
         {[
           ["Résilience émotionnelle", "gardez-vous votre calme face à l'inconfort ?"],
@@ -65,8 +65,8 @@ const QuestionsDestabilisantesPage = () => (
           ["Agilité cognitive", "pouvez-vous rebondir vite avec des arguments structurés ?"],
         ].map(([k, v]) => (
           <li key={k} className="flex items-start gap-2">
-            <CheckCircle className="w-4 h-4 text-pr-orange mt-1 flex-shrink-0" strokeWidth={1.8} />
-            <span><strong className="text-pr-black">{k} :</strong> {v}</span>
+            <CheckCircle className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" strokeWidth={1.8} />
+            <span><strong className="text-carnet-ink">{k} :</strong> {v}</span>
           </li>
         ))}
       </ul>
@@ -75,11 +75,11 @@ const QuestionsDestabilisantesPage = () => (
     <MethodSection label="Section 01" title="Les 4 types de questions déstabilisantes" icon={Target}>
       <div className="space-y-4">
         {types.map((s) => (
-          <div key={s.n} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-5 flex items-baseline gap-4">
-            <span className="font-dm-serif text-3xl text-pr-orange leading-none">{s.n}</span>
+          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+            <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
-              <h4 className="font-dm-serif text-lg text-pr-black mb-1">{s.t}</h4>
-              <p className="text-sm text-pr-gray-dark">{s.d}</p>
+              <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
+              <p className="text-sm text-carnet-ink-soft">{s.d}</p>
             </div>
           </div>
         ))}
@@ -89,11 +89,11 @@ const QuestionsDestabilisantesPage = () => (
     <MethodSection label="Section 02" title="Méthode en 4 étapes pour désamorcer" icon={Shield}>
       <div className="space-y-4">
         {method.map((s) => (
-          <div key={s.n} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-5 flex items-baseline gap-4">
-            <span className="font-dm-serif text-3xl text-pr-orange leading-none">{s.n}</span>
+          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+            <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
-              <h4 className="font-dm-serif text-lg text-pr-black mb-1">{s.t}</h4>
-              <p className="text-sm text-pr-gray-dark">{s.d}</p>
+              <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
+              <p className="text-sm text-carnet-ink-soft">{s.d}</p>
             </div>
           </div>
         ))}
@@ -103,22 +103,22 @@ const QuestionsDestabilisantesPage = () => (
     <MethodSection label="Section 03" title="Exemples de réponses réussies" icon={MessageSquare}>
       <div className="space-y-5">
         {exemples.map((ex, i) => (
-          <div key={i} className="bg-white border border-pr-gray-light rounded-lg p-6">
+          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
                 Exemple {i + 1}
               </span>
             </div>
-            <p className="text-sm text-pr-gray-mid mb-1 italic">— Question du jury :</p>
-            <p className="font-dm-serif text-lg text-pr-black mb-5">{ex.q}</p>
+            <p className="text-sm text-carnet-ink-mute mb-1 italic">— Question du jury :</p>
+            <p className="font-dm-serif text-lg text-carnet-ink mb-5">{ex.q}</p>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-pr-gray-bg rounded p-4">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark">À éviter</span>
-                <p className="mt-2 text-sm text-pr-gray-dark">{ex.bad}</p>
+              <div className="bg-carnet-paper rounded p-4">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700">À éviter</span>
+                <p className="mt-2 text-sm text-carnet-ink-soft">{ex.bad}</p>
               </div>
-              <div className="bg-pr-orange-pale border-l-4 border-pr-orange rounded-r p-4">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark">Bonne réponse</span>
-                <p className="mt-2 text-sm text-pr-gray-dark">{ex.good}</p>
+              <div className="bg-red-50 border-l-4 border-red-600 rounded-r p-4">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700">Bonne réponse</span>
+                <p className="mt-2 text-sm text-carnet-ink-soft">{ex.good}</p>
               </div>
             </div>
           </div>
@@ -148,12 +148,12 @@ const QuestionsDestabilisantesPage = () => (
             ],
           },
         ].map((g) => (
-          <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-            <h4 className="font-dm-serif text-lg text-pr-black mb-4 flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.8} />
+          <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <h4 className="font-dm-serif text-lg text-carnet-ink mb-4 flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5 text-red-700" strokeWidth={1.8} />
               {g.t}
             </h4>
-            <ul className="space-y-2 text-sm text-pr-gray-dark">
+            <ul className="space-y-2 text-sm text-carnet-ink-soft">
               {g.l.map((item) => <li key={item}>— {item}</li>)}
             </ul>
           </div>

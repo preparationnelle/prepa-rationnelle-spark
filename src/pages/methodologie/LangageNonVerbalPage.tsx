@@ -42,7 +42,7 @@ const LangageNonVerbalPage = () => (
         et seulement 7% par les mots. En entretien, votre langage corporel peut valider — ou contredire —
         chacune de vos réponses.
       </p>
-      <p className="font-medium text-pr-black mb-2">Ce que le jury lit dans votre corps :</p>
+      <p className="font-medium text-carnet-ink mb-2">Ce que le jury lit dans votre corps :</p>
       <ul className="space-y-2">
         {[
           ["Confiance en soi", "posture droite, gestes ouverts, regard direct et stable."],
@@ -50,22 +50,22 @@ const LangageNonVerbalPage = () => (
           ["Écoute active", "hochements de tête, contact visuel, légère inclinaison du buste vers l'avant."],
         ].map(([k, v]) => (
           <li key={k} className="flex items-start gap-2">
-            <CheckCircle className="w-4 h-4 text-pr-orange mt-1 flex-shrink-0" strokeWidth={1.8} />
-            <span><strong className="text-pr-black">{k} :</strong> {v}</span>
+            <CheckCircle className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" strokeWidth={1.8} />
+            <span><strong className="text-carnet-ink">{k} :</strong> {v}</span>
           </li>
         ))}
       </ul>
     </MethodIntroCard>
 
     <MethodSection label="Section 01" title="Les 4 piliers du langage non-verbal" icon={Target}>
-      <p className="text-pr-gray-dark mb-6">Les quatre dimensions corporelles à maîtriser absolument avant votre entretien.</p>
+      <p className="text-carnet-ink-soft mb-6">Les quatre dimensions corporelles à maîtriser absolument avant votre entretien.</p>
       <div className="space-y-4">
         {pillars.map((s) => (
-          <div key={s.n} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-5 flex items-baseline gap-4">
-            <span className="font-dm-serif text-3xl text-pr-orange leading-none">{s.n}</span>
+          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+            <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
-              <h4 className="font-dm-serif text-lg text-pr-black mb-1">{s.t}</h4>
-              <p className="text-sm text-pr-gray-dark">{s.d}</p>
+              <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
+              <p className="text-sm text-carnet-ink-soft">{s.d}</p>
             </div>
           </div>
         ))}
@@ -75,11 +75,11 @@ const LangageNonVerbalPage = () => (
     <MethodSection label="Section 02" title="Les premiers instants : entrée et installation" icon={UserCheck}>
       <div className="grid md:grid-cols-3 gap-5">
         {entree.map((e, i) => (
-          <div key={e.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-            <span className="font-dm-serif text-3xl text-pr-orange">{String(i + 1).padStart(2, '0')}</span>
-            <h4 className="font-dm-serif text-lg text-pr-black mt-1 mb-1">{e.t}</h4>
-            <div className="h-px w-8 bg-pr-orange mb-4" />
-            <p className="text-sm text-pr-gray-dark">{e.d}</p>
+          <div key={e.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <span className="font-dm-serif text-3xl text-red-600">{String(i + 1).padStart(2, '0')}</span>
+            <h4 className="font-dm-serif text-lg text-carnet-ink mt-1 mb-1">{e.t}</h4>
+            <div className="h-px w-8 bg-red-600 mb-4" />
+            <p className="text-sm text-carnet-ink-soft">{e.d}</p>
           </div>
         ))}
       </div>
@@ -88,13 +88,13 @@ const LangageNonVerbalPage = () => (
     <MethodSection label="Section 03" title="Erreurs corporelles à éviter absolument" icon={AlertTriangle}>
       <div className="space-y-3">
         {erreurs.map(({ bad, cons }, i) => (
-          <div key={i} className="bg-white border border-pr-gray-light rounded-lg p-4 flex items-start gap-4">
-            <div className="font-dm-serif text-3xl text-pr-orange leading-none flex-shrink-0 w-12 text-center">
+          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+            <div className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0 w-12 text-center">
               {String(i + 1).padStart(2, '0')}
             </div>
             <div className="flex-1">
-              <h5 className="font-medium text-pr-black mb-1">{bad}</h5>
-              <p className="text-sm text-pr-gray-mid">{cons}</p>
+              <h5 className="font-medium text-carnet-ink mb-1">{bad}</h5>
+              <p className="text-sm text-carnet-ink-mute">{cons}</p>
             </div>
           </div>
         ))}
@@ -102,9 +102,9 @@ const LangageNonVerbalPage = () => (
     </MethodSection>
 
     <MethodSection label="Section 04" title="Plan d'entraînement sur 2 semaines" icon={Smile}>
-      <div className="bg-white border border-pr-gray-light rounded-lg p-7">
-        <h4 className="font-dm-serif text-xl text-pr-black mb-2">Développez votre présence corporelle</h4>
-        <div className="h-px w-12 bg-pr-orange mb-6" />
+      <div className="bg-white border border-carnet-rule/30 rounded-lg p-7">
+        <h4 className="font-dm-serif text-xl text-carnet-ink mb-2">Développez votre présence corporelle</h4>
+        <div className="h-px w-12 bg-red-600 mb-6" />
         <div className="grid md:grid-cols-2 gap-6">
           {[
             {
@@ -127,13 +127,13 @@ const LangageNonVerbalPage = () => (
             },
           ].map((s) => (
             <div key={s.t}>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
                 {s.t}
               </span>
-              <ul className="mt-3 space-y-2 text-sm text-pr-gray-dark">
+              <ul className="mt-3 space-y-2 text-sm text-carnet-ink-soft">
                 {s.l.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-pr-orange mt-0.5 flex-shrink-0" strokeWidth={1.8} />
+                    <CheckCircle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" strokeWidth={1.8} />
                     {item}
                   </li>
                 ))}

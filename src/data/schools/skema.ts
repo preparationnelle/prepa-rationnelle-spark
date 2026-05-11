@@ -2,13 +2,13 @@ import { SchoolData } from "@/types/school";
 
 export const skemaData: SchoolData = {
   name: "SKEMA Business School",
-  shortDescription: "Entretien projectif (25 min), coefficient 20. CV fictif à 10 ans.",
+  shortDescription: "Entretien projectif (20-30 min), coefficient 20. CV fictif à 10 ans.",
   presentation: {
     title: "L'épreuve du CV projectif à 10 ans",
     content: [
       "SKEMA se démarque par un format d'entretien très orienté projection dans l'avenir. Ici, on vous demande en amont de construire un CV fictif vous représentant dans 10 ans (soit 10 ans après votre entrée à SKEMA).",
       "Ce \"CV projectif\" détaille les études et postes que vous envisagez d'occuper pendant et après l'école, jusqu'à ce 10ème anniversaire. Le jour de l'oral, un membre du jury récupère votre CV avant de vous faire entrer.",
-      "Puis l'entretien (25 min, coef. 20) s'engage quasi exclusivement sur la base de ce CV du futur : « Pourquoi avoir choisi de travailler chez X en sortie d'école ? Pourquoi tel master spécialisé ? Pourquoi passer de telle entreprise à telle autre ? » etc.",
+      "Puis l'entretien (20 à 30 min, coef. 20) s'engage quasi exclusivement sur la base de ce CV du futur : « Pourquoi avoir choisi de travailler chez X en sortie d'école ? Pourquoi tel master spécialisé ? Pourquoi passer de telle entreprise à telle autre ? » etc.",
       "Bien sûr, on aborde aussi vos motivations plus globales pour SKEMA, mais le fil rouge reste votre plan de carrière simulé. C'est donc un entretien très orienté projet professionnel et cohérence du parcours.",
       "[Découvrez notre guide complet pour préparer votre CV projectif](/questions/cv-projectif)"
     ],
@@ -24,7 +24,7 @@ export const skemaData: SchoolData = {
   },
   keyPoints: [
     {
-      title: "Durée : 25 minutes",
+      title: "Durée : 20 à 30 minutes",
       description: "Coefficient 20"
     },
     {
@@ -37,13 +37,13 @@ export const skemaData: SchoolData = {
     },
     {
       title: "Jury de 2-3 personnes",
-      description: "Style entretien d'embauche"
+      description: "Président obligatoirement du corps professoral/administratif SKEMA ; autres membres : monde professionnel ou associatif"
     }
   ],
   interviewStyle: {
     title: "Style de l'entretien",
     content: [
-      "Le jury (2 ou 3 personnes) aura lu votre CV fictif de 1-2 pages et commence souvent en vous demandant de vous présenter brièvement (~2 minutes), puis d'expliquer la logique de votre CV. L'atmosphère est professionnelle et rythmée comme un entretien d'embauche.",
+      "Le jury est composé de 2 ou 3 personnes : le président est nécessairement un membre du corps professoral ou administratif de SKEMA, les autres membres viennent du monde professionnel ou associatif. Avant de vous faire entrer, un juré récupère votre CV projectif. L'entretien commence souvent par une brève présentation (~2 minutes), puis par l'explication de la logique de votre CV. L'atmosphère est professionnelle et rythmée comme un entretien d'embauche.",
       "Attendez-vous à des questions très précises : « Pourquoi avoir choisi de débuter chez L'Oréal et non pas LVMH ? » ou « Vous indiquez un MBA à 30 ans – comment comptez-vous le financer ? ».",
       "Les jurés SKEMA peuvent être un peu tatillons sur les détails : ils traqueront la moindre incohérence temporelle ou géographique dans votre CV (par ex., un poste dans tel pays alors que le master que vous voulez faire se passe ailleurs la même année…). Mais ce n'est pas pour vous embêter gratuitement : c'est pour voir si vous avez construit un plan solide.",
       "Par ailleurs, ils évaluent votre réactivité et votre répartie face à leurs questions, comme dans un entretien pro. Il peut y avoir un peu de stress si vous n'êtes pas sûr de votre coup, car vous êtes sur le terrain qu'vous avez défini (votre projet).",

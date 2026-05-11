@@ -315,6 +315,161 @@ const Chapitre7NupletsVariablesAleatoiresExercicesPage = () => {
           />
         </section>
 
+        <section id="approfondissements">
+          <DifficultyHeader level="Niveau : Facile — Linéarité et indépendance" />
+
+          <ExerciseCard
+            id="ex-06"
+            title="Espérance et variance d'une somme de n VA iid"
+            difficulty="Niveau: Facile"
+            content={
+              <div className="space-y-2">
+                <p>Soient <LatexRenderer latex="X_1, \ldots, X_n" /> des VA iid d'espérance <LatexRenderer latex="m" /> et de variance <LatexRenderer latex="\sigma^2" />. Calculer <LatexRenderer latex="E(S_n)" /> et <LatexRenderer latex="V(S_n)" /> où <LatexRenderer latex="S_n = X_1 + \ldots + X_n" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  La linéarité de l'espérance est universelle (vraie sans hypothèse d'indépendance). Pour la variance d'une somme, l'indépendance permet d'annuler les covariances : <LatexRenderer latex="V(\sum X_i) = \sum V(X_i) + 2 \sum_{i<j} \mathrm{Cov}(X_i, X_j)" />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="(X_i)" /> iid avec <LatexRenderer latex="E(X_i) = m" />, <LatexRenderer latex="V(X_i) = \sigma^2" />.</p>
+                <p className="mt-2">Or, par linéarité : <LatexRenderer latex="E(S_n) = \sum_{i=1}^n E(X_i) = nm" />.</p>
+                <p className="mt-2">Par indépendance, <LatexRenderer latex="\mathrm{Cov}(X_i, X_j) = 0" /> pour <LatexRenderer latex="i \ne j" />. D'où :</p>
+                <LatexRenderer latex="V(S_n) = \sum_{i=1}^n V(X_i) = n\sigma^2." />
+                <ConclusionBox>
+                  <LatexRenderer latex="E(S_n) = nm" />, <LatexRenderer latex="V(S_n) = n\sigma^2" />. La variance croît linéairement avec <LatexRenderer latex="n" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <DifficultyHeader level="Niveau : Intermédiaire — Stabilité par addition" />
+
+          <ExerciseCard
+            id="ex-07"
+            title="Somme de n VA binomiales indépendantes"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-2">
+                <p>Soient <LatexRenderer latex="X_1, \ldots, X_n" /> indépendantes avec <LatexRenderer latex="X_i \sim \mathcal{B}(m_i, p)" /> (même paramètre <LatexRenderer latex="p" />).</p>
+                <p>Démontrer que <LatexRenderer latex="S = X_1 + \ldots + X_n \sim \mathcal{B}(m_1 + \ldots + m_n,\, p)" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  La stabilité de la loi binomiale par addition (sous indépendance et même paramètre <LatexRenderer latex="p" />) se démontre par récurrence sur <LatexRenderer latex="n" />, en utilisant la formule de convolution discrète.
+                </PointMethodo>
+                <p><strong>Récurrence sur n.</strong> Pour <LatexRenderer latex="n = 1" /> : <LatexRenderer latex="S_1 = X_1 \sim \mathcal{B}(m_1, p)" />. ✓</p>
+                <p className="mt-2"><strong>Hérédité.</strong> Supposons <LatexRenderer latex="S_n \sim \mathcal{B}(M_n, p)" /> avec <LatexRenderer latex="M_n = m_1 + \ldots + m_n" />. Soit <LatexRenderer latex="X_{n+1} \sim \mathcal{B}(m_{n+1}, p)" /> indépendante de <LatexRenderer latex="S_n" />.</p>
+                <p className="mt-2">Or pour <LatexRenderer latex="k \in \{0, \ldots, M_n + m_{n+1}\}" />, par convolution :</p>
+                <LatexRenderer latex="P(S_{n+1} = k) = \sum_{j=0}^k P(S_n = j) P(X_{n+1} = k - j) = \sum_{j=0}^k \binom{M_n}{j} \binom{m_{n+1}}{k-j} p^k (1-p)^{M_n + m_{n+1} - k}." />
+                <Astuce>
+                  La somme <LatexRenderer latex="\sum_j \binom{M_n}{j}\binom{m_{n+1}}{k-j}" /> est exactement l'identité de Vandermonde, qui vaut <LatexRenderer latex="\binom{M_n + m_{n+1}}{k}" />.
+                </Astuce>
+                <p className="mt-2">D'où <LatexRenderer latex="P(S_{n+1} = k) = \binom{M_n + m_{n+1}}{k} p^k (1-p)^{M_n + m_{n+1} - k}" />, soit <LatexRenderer latex="S_{n+1} \sim \mathcal{B}(M_n + m_{n+1}, p)" />.</p>
+                <ConclusionBox>
+                  Stabilité : <LatexRenderer latex="X_i \sim \mathcal{B}(m_i, p)" /> indépendantes <LatexRenderer latex="\Rightarrow S = \sum X_i \sim \mathcal{B}(\sum m_i, p)" />. Cette propriété définit la loi binomiale comme somme de Bernoulli indépendantes.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-08"
+            title="Inégalité de Bienaymé-Tchebychev pour une moyenne"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-2">
+                <p>Soient <LatexRenderer latex="X_1, \ldots, X_n" /> iid d'espérance <LatexRenderer latex="\mu" /> et de variance <LatexRenderer latex="\sigma^2" /> finies. Soit <LatexRenderer latex="\overline{X}_n = S_n / n" />.</p>
+                <p>Montrer que pour tout <LatexRenderer latex="\varepsilon > 0" />, <LatexRenderer latex="P(|\overline{X}_n - \mu| \ge \varepsilon) \le \sigma^2 / (n \varepsilon^2)" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  L'inégalité de Bienaymé-Tchebychev : pour <LatexRenderer latex="Y" /> de variance finie, <LatexRenderer latex="P(|Y - E(Y)| \ge \varepsilon) \le V(Y) / \varepsilon^2" />. Pour la moyenne empirique, on calcule d'abord <LatexRenderer latex="E(\overline{X}_n)" /> et <LatexRenderer latex="V(\overline{X}_n)" /> par linéarité et indépendance.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="(X_i)" /> iid. Or, par linéarité et indépendance :</p>
+                <LatexRenderer latex="E(\overline{X}_n) = \mu, \quad V(\overline{X}_n) = \sigma^2 / n." />
+                <p className="mt-2">D'où, par Bienaymé-Tchebychev appliquée à <LatexRenderer latex="\overline{X}_n" /> :</p>
+                <LatexRenderer latex="P(|\overline{X}_n - \mu| \ge \varepsilon) \le \frac{V(\overline{X}_n)}{\varepsilon^2} = \frac{\sigma^2}{n \varepsilon^2}." />
+                <Astuce>
+                  C'est l'inégalité-clé qui démontre la loi faible des grands nombres : la borne tend vers 0 quand <LatexRenderer latex="n \to +\infty" />.
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="P(|\overline{X}_n - \mu| \ge \varepsilon) \le \sigma^2 / (n\varepsilon^2)" />. La vitesse de concentration est en <LatexRenderer latex="1/n" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <DifficultyHeader level="Niveau : Difficile — Variance d'une somme dépendante" />
+
+          <ExerciseCard
+            id="ex-09"
+            title="Variance d'une moyenne sans indépendance"
+            difficulty="Niveau: Concours"
+            content={
+              <div className="space-y-2">
+                <p>Soient <LatexRenderer latex="X_1, \ldots, X_n" /> des VA non nécessairement indépendantes, de variance commune <LatexRenderer latex="\sigma^2" /> et de covariance commune <LatexRenderer latex="\mathrm{Cov}(X_i, X_j) = c" /> pour <LatexRenderer latex="i \ne j" />.</p>
+                <p>1. Calculer <LatexRenderer latex="V(\overline{X}_n)" />.</p>
+                <p>2. À quelle condition <LatexRenderer latex="V(\overline{X}_n) \to 0" /> quand <LatexRenderer latex="n \to +\infty" /> ?</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour une somme de variables corrélées, utiliser la formule générale <LatexRenderer latex="V(\sum X_i) = \sum V(X_i) + 2 \sum_{i < j} \mathrm{Cov}(X_i, X_j)" />. Le nombre de paires <LatexRenderer latex="(i, j)" /> avec <LatexRenderer latex="i < j" /> est <LatexRenderer latex="n(n-1)/2" />.
+                </PointMethodo>
+                <p><strong>1. Calcul.</strong> Or :</p>
+                <LatexRenderer latex="V(S_n) = \sum_{i=1}^n V(X_i) + 2 \sum_{1 \le i < j \le n} \mathrm{Cov}(X_i, X_j) = n \sigma^2 + 2 \cdot \binom{n}{2} c = n\sigma^2 + n(n-1) c." />
+                <p className="mt-2">D'où :</p>
+                <LatexRenderer latex="V(\overline{X}_n) = \frac{V(S_n)}{n^2} = \frac{\sigma^2}{n} + \frac{(n-1)c}{n}." />
+                <p className="mt-2"><strong>2. Limite.</strong> Or <LatexRenderer latex="\sigma^2/n \to 0" /> et <LatexRenderer latex="(n-1)c/n \to c" />. Donc <LatexRenderer latex="V(\overline{X}_n) \to c" />.</p>
+                <Astuce>
+                  La variance asymptotique vaut <LatexRenderer latex="c" /> (la covariance commune). Si <LatexRenderer latex="c > 0" /> (corrélation positive), la moyenne empirique ne se concentre pas : pas de "loi des grands nombres" dans ce cas.
+                </Astuce>
+                <p className="mt-2"><strong>Condition.</strong> <LatexRenderer latex="V(\overline{X}_n) \to 0 \iff c = 0" />. C'est-à-dire que les variables doivent être non corrélées 2 à 2.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="V(\overline{X}_n) = \sigma^2/n + (n-1)c/n \to c" /> quand <LatexRenderer latex="n \to +\infty" />. La concentration vers la moyenne nécessite <LatexRenderer latex="c = 0" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-10"
+            title="Loi du minimum de n VA exponentielles indépendantes"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-2">
+                <p>Soient <LatexRenderer latex="X_1, \ldots, X_n" /> indépendantes avec <LatexRenderer latex="X_i \sim \mathcal{E}(\lambda_i)" /> (paramètres positifs).</p>
+                <p>Déterminer la loi de <LatexRenderer latex="M = \min(X_1, \ldots, X_n)" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour la loi d'un minimum (ou maximum) de VA indépendantes, calculer la fonction de répartition via l'événement complémentaire : <LatexRenderer latex="\{M > t\} = \{X_1 > t, \ldots, X_n > t\}" />, qui par indépendance se factorise en produit de probabilités.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="t \ge 0" />. Or :</p>
+                <LatexRenderer latex="P(M > t) = P(X_1 > t, \ldots, X_n > t) = \prod_{i=1}^n P(X_i > t)" />
+                <p className="mt-2">par indépendance des <LatexRenderer latex="X_i" />.</p>
+                <p className="mt-2">Or pour <LatexRenderer latex="X_i \sim \mathcal{E}(\lambda_i)" />, <LatexRenderer latex="P(X_i > t) = e^{-\lambda_i t}" />. D'où :</p>
+                <LatexRenderer latex="P(M > t) = \prod_{i=1}^n e^{-\lambda_i t} = e^{-(\lambda_1 + \ldots + \lambda_n) t}." />
+                <Astuce>
+                  Cette propriété est caractéristique de la loi exponentielle : le minimum de exponentielles indépendantes est encore exponentiel, avec paramètre la somme.
+                </Astuce>
+                <p className="mt-2">Ainsi <LatexRenderer latex="P(M \le t) = 1 - e^{-\Lambda t}" /> avec <LatexRenderer latex="\Lambda = \sum_{i=1}^n \lambda_i" />, ce qui est la FdR de <LatexRenderer latex="\mathcal{E}(\Lambda)" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="M = \min(X_1, \ldots, X_n) \sim \mathcal{E}(\lambda_1 + \ldots + \lambda_n)" />. Application : c'est le temps de la première occurrence parmi plusieurs processus de Poisson indépendants.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </section>
+
       </div>
     </MathChapterTemplate>
   );

@@ -74,7 +74,7 @@ const QuestionsComportementalesPage = () => (
         prédire vos comportements futurs. Le principe : « le passé prédit l'avenir ». Le jury
         cherche des preuves concrètes, pas des déclarations d'intention.
       </p>
-      <p className="font-medium text-pr-black mb-2">Reconnaître une question comportementale :</p>
+      <p className="font-medium text-carnet-ink mb-2">Reconnaître une question comportementale :</p>
       <ul className="space-y-2">
         {[
           ['"Parlez-moi d\'une situation où…"', "vous devez raconter un fait réel vécu."],
@@ -82,22 +82,22 @@ const QuestionsComportementalesPage = () => (
           ['"Comment avez-vous géré…"', "vous devez décrire une action concrète passée."],
         ].map(([k, v]) => (
           <li key={k} className="flex items-start gap-2">
-            <CheckCircle className="w-4 h-4 text-pr-orange mt-1 flex-shrink-0" strokeWidth={1.8} />
-            <span><strong className="text-pr-black">{k}</strong> {v}</span>
+            <CheckCircle className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" strokeWidth={1.8} />
+            <span><strong className="text-carnet-ink">{k}</strong> {v}</span>
           </li>
         ))}
       </ul>
     </MethodIntroCard>
 
     <MethodSection label="Section 01" title="La méthode STAR : votre structure universelle" icon={Target}>
-      <p className="text-pr-gray-dark mb-6">Une grille en 4 étapes pour structurer n'importe quelle réponse comportementale en moins de 3 minutes.</p>
+      <p className="text-carnet-ink-soft mb-6">Une grille en 4 étapes pour structurer n'importe quelle réponse comportementale en moins de 3 minutes.</p>
       <div className="space-y-4">
         {starSteps.map((s) => (
-          <div key={s.n} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-5 flex items-baseline gap-4">
-            <span className="font-dm-serif text-3xl text-pr-orange leading-none w-8">{s.n}</span>
+          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+            <span className="font-dm-serif text-3xl text-red-600 leading-none w-8">{s.n}</span>
             <div>
-              <h4 className="font-dm-serif text-lg text-pr-black mb-1">{s.t}</h4>
-              <p className="text-sm text-pr-gray-dark">{s.d}</p>
+              <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
+              <p className="text-sm text-carnet-ink-soft">{s.d}</p>
             </div>
           </div>
         ))}
@@ -107,25 +107,25 @@ const QuestionsComportementalesPage = () => (
     <MethodSection label="Section 02" title="Les 4 grandes catégories de questions" icon={Users}>
       <div className="space-y-5">
         {categories.map((cat) => (
-          <div key={cat.t} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-6">
-            <h4 className="font-dm-serif text-xl text-pr-black mb-5">{cat.t}</h4>
+          <div key={cat.t} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6">
+            <h4 className="font-dm-serif text-xl text-carnet-ink mb-5">{cat.t}</h4>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
                   Questions types
                 </span>
-                <ul className="mt-3 space-y-2 text-sm text-pr-gray-dark">
+                <ul className="mt-3 space-y-2 text-sm text-carnet-ink-soft">
                   {cat.qs.map((q) => <li key={q}>— {q}</li>)}
                 </ul>
               </div>
               <div>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
                   Points clés à valoriser
                 </span>
-                <ul className="mt-3 space-y-2 text-sm text-pr-gray-dark">
+                <ul className="mt-3 space-y-2 text-sm text-carnet-ink-soft">
                   {cat.keys.map((k) => (
                     <li key={k} className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-pr-orange mt-0.5 flex-shrink-0" strokeWidth={1.8} />
+                      <CheckCircle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" strokeWidth={1.8} />
                       {k}
                     </li>
                   ))}
@@ -138,14 +138,14 @@ const QuestionsComportementalesPage = () => (
     </MethodSection>
 
     <MethodSection label="Section 03" title="Exemple complet de réponse STAR" icon={Zap}>
-      <div className="bg-white border border-pr-gray-light rounded-lg p-7">
+      <div className="bg-white border border-carnet-rule/30 rounded-lg p-7">
         <div className="flex items-center gap-2 mb-5">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
             Exemple Leadership
           </span>
         </div>
-        <p className="text-sm text-pr-gray-mid mb-1 italic">— Question du jury :</p>
-        <p className="font-dm-serif text-lg text-pr-black mb-6">{exempleSTAR.q}</p>
+        <p className="text-sm text-carnet-ink-mute mb-1 italic">— Question du jury :</p>
+        <p className="font-dm-serif text-lg text-carnet-ink mb-6">{exempleSTAR.q}</p>
         <div className="space-y-4">
           {[
             { l: "S — Situation", c: exempleSTAR.s },
@@ -153,9 +153,9 @@ const QuestionsComportementalesPage = () => (
             { l: "A — Actions", c: exempleSTAR.a },
             { l: "R — Résultats", c: exempleSTAR.r },
           ].map(({ l, c }) => (
-            <div key={l} className="bg-pr-orange-pale border-l-4 border-pr-orange rounded-r p-4">
-              <p className="text-xs font-semibold uppercase tracking-wider text-pr-orange-dark mb-1">{l}</p>
-              <p className="text-sm text-pr-gray-dark italic leading-relaxed">{c}</p>
+            <div key={l} className="bg-red-50 border-l-4 border-red-600 rounded-r p-4">
+              <p className="text-xs font-semibold uppercase tracking-wider text-red-700 mb-1">{l}</p>
+              <p className="text-sm text-carnet-ink-soft italic leading-relaxed">{c}</p>
             </div>
           ))}
         </div>
@@ -184,12 +184,12 @@ const QuestionsComportementalesPage = () => (
             ],
           },
         ].map((g) => (
-          <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-            <h4 className="font-dm-serif text-lg text-pr-black mb-4 flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.8} />
+          <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <h4 className="font-dm-serif text-lg text-carnet-ink mb-4 flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5 text-red-700" strokeWidth={1.8} />
               {g.t}
             </h4>
-            <ul className="space-y-2 text-sm text-pr-gray-dark">
+            <ul className="space-y-2 text-sm text-carnet-ink-soft">
               {g.l.map((item) => <li key={item}>— {item}</li>)}
             </ul>
           </div>

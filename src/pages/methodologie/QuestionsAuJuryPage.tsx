@@ -78,7 +78,7 @@ const QuestionsAuJuryPage = () => (
         des erreurs les plus fréquentes et les plus préjudiciables. Vos questions montrent votre
         curiosité, votre préparation et votre envie réelle d'intégrer l'école.
       </p>
-      <p className="font-medium text-pr-black mb-2">Une bonne question démontre :</p>
+      <p className="font-medium text-carnet-ink mb-2">Une bonne question démontre :</p>
       <ul className="space-y-2">
         {[
           ["Préparation sérieuse", "vous avez travaillé au-delà des brochures officielles."],
@@ -86,8 +86,8 @@ const QuestionsAuJuryPage = () => (
           ["Vision à long terme", "vous vous projetez déjà comme étudiant dans cette école."],
         ].map(([k, v]) => (
           <li key={k} className="flex items-start gap-2">
-            <CheckCircle className="w-4 h-4 text-pr-orange mt-1 flex-shrink-0" strokeWidth={1.8} />
-            <span><strong className="text-pr-black">{k} :</strong> {v}</span>
+            <CheckCircle className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" strokeWidth={1.8} />
+            <span><strong className="text-carnet-ink">{k} :</strong> {v}</span>
           </li>
         ))}
       </ul>
@@ -96,12 +96,12 @@ const QuestionsAuJuryPage = () => (
     <MethodSection label="Section 01" title="4 catégories de questions à préparer" icon={Target}>
       <div className="space-y-5">
         {categories.map((cat) => (
-          <div key={cat.t} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-6">
-            <h4 className="font-dm-serif text-xl text-pr-black mb-4">{cat.t}</h4>
-            <ul className="space-y-2 text-sm text-pr-gray-dark">
+          <div key={cat.t} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6">
+            <h4 className="font-dm-serif text-xl text-carnet-ink mb-4">{cat.t}</h4>
+            <ul className="space-y-2 text-sm text-carnet-ink-soft">
               {cat.qs.map((q) => (
                 <li key={q} className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-pr-orange mt-0.5 flex-shrink-0" strokeWidth={1.8} />
+                  <CheckCircle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" strokeWidth={1.8} />
                   {q}
                 </li>
               ))}
@@ -112,14 +112,14 @@ const QuestionsAuJuryPage = () => (
     </MethodSection>
 
     <MethodSection label="Section 02" title="Comment bien poser ses questions" icon={Sparkles}>
-      <p className="text-pr-gray-dark mb-6">Quatre principes pour transformer cette étape en avantage concurrentiel.</p>
+      <p className="text-carnet-ink-soft mb-6">Quatre principes pour transformer cette étape en avantage concurrentiel.</p>
       <div className="space-y-4">
         {structure.map((s) => (
-          <div key={s.n} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-5 flex items-baseline gap-4">
-            <span className="font-dm-serif text-3xl text-pr-orange leading-none">{s.n}</span>
+          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+            <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
-              <h4 className="font-dm-serif text-lg text-pr-black mb-1">{s.t}</h4>
-              <p className="text-sm text-pr-gray-dark">{s.d}</p>
+              <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
+              <p className="text-sm text-carnet-ink-soft">{s.d}</p>
             </div>
           </div>
         ))}
@@ -129,13 +129,13 @@ const QuestionsAuJuryPage = () => (
     <MethodSection label="Section 03" title="Questions à bannir absolument" icon={XCircle}>
       <div className="space-y-3">
         {bans.map(([question, raison], i) => (
-          <div key={i} className="bg-white border border-pr-gray-light rounded-lg p-4 flex items-start gap-4">
-            <div className="font-dm-serif text-3xl text-pr-orange leading-none flex-shrink-0 w-12 text-center">
+          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+            <div className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0 w-12 text-center">
               {String(i + 1).padStart(2, '0')}
             </div>
             <div className="flex-1">
-              <h5 className="font-medium text-pr-black mb-1">{question}</h5>
-              <p className="text-sm text-pr-gray-mid">{raison}</p>
+              <h5 className="font-medium text-carnet-ink mb-1">{question}</h5>
+              <p className="text-sm text-carnet-ink-mute">{raison}</p>
             </div>
           </div>
         ))}
@@ -164,13 +164,13 @@ const QuestionsAuJuryPage = () => (
             d: "Prouve que vous vous projetez déjà comme futur étudiant et valorise l'expertise du jury.",
           },
         ].map((item) => (
-          <div key={item.n} className="bg-white border border-pr-gray-light rounded-lg p-6">
-            <span className="font-dm-serif text-3xl text-pr-orange">{item.n}</span>
-            <h4 className="font-dm-serif text-lg text-pr-black mt-1 mb-3">{item.t}</h4>
-            <div className="bg-pr-orange-pale border-l-4 border-pr-orange rounded-r p-3 mb-3">
-              <p className="text-sm text-pr-gray-dark italic">{item.q}</p>
+          <div key={item.n} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <span className="font-dm-serif text-3xl text-red-600">{item.n}</span>
+            <h4 className="font-dm-serif text-lg text-carnet-ink mt-1 mb-3">{item.t}</h4>
+            <div className="bg-red-50 border-l-4 border-red-600 rounded-r p-3 mb-3">
+              <p className="text-sm text-carnet-ink-soft italic">{item.q}</p>
             </div>
-            <p className="text-sm text-pr-gray-dark">{item.d}</p>
+            <p className="text-sm text-carnet-ink-soft">{item.d}</p>
           </div>
         ))}
       </div>

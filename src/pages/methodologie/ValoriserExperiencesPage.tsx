@@ -59,7 +59,7 @@ const ValoriserExperiencesPage = () => (
         Un job dans un fast-food bien raconté vaut parfois mieux qu'un stage en cabinet mal présenté.
         C'est la narration qui fait la différence.
       </p>
-      <p className="font-medium text-pr-black mb-2">Les critères de sélection :</p>
+      <p className="font-medium text-carnet-ink mb-2">Les critères de sélection :</p>
       <ul className="space-y-2">
         {[
           ["Pertinence", "en quoi cette expérience soutient-elle votre projet ou votre candidature ?"],
@@ -67,8 +67,8 @@ const ValoriserExperiencesPage = () => (
           ["Résultat mesurable", "y a-t-il un impact concret que vous pouvez chiffrer ?"],
         ].map(([k, v]) => (
           <li key={k} className="flex items-start gap-2">
-            <CheckCircle className="w-4 h-4 text-pr-orange mt-1 flex-shrink-0" strokeWidth={1.8} />
-            <span><strong className="text-pr-black">{k} :</strong> {v}</span>
+            <CheckCircle className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" strokeWidth={1.8} />
+            <span><strong className="text-carnet-ink">{k} :</strong> {v}</span>
           </li>
         ))}
       </ul>
@@ -77,10 +77,10 @@ const ValoriserExperiencesPage = () => (
     <MethodSection label="Section 01" title="Les 4 types d'expériences valorisables" icon={Award}>
       <div className="grid md:grid-cols-2 gap-5">
         {categories.map((g) => (
-          <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-            <h4 className="font-dm-serif text-lg text-pr-black mb-2">{g.t}</h4>
-            <div className="h-px w-8 bg-pr-orange mb-4" />
-            <ul className="space-y-2 text-sm text-pr-gray-dark">
+          <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <h4 className="font-dm-serif text-lg text-carnet-ink mb-2">{g.t}</h4>
+            <div className="h-px w-8 bg-red-600 mb-4" />
+            <ul className="space-y-2 text-sm text-carnet-ink-soft">
               {g.l.map((item) => <li key={item}>— {item}</li>)}
             </ul>
           </div>
@@ -89,14 +89,14 @@ const ValoriserExperiencesPage = () => (
     </MethodSection>
 
     <MethodSection label="Section 02" title="Méthode VALO : structurer en 4 étapes" icon={Target}>
-      <p className="text-pr-gray-dark mb-6">Une structure universelle pour présenter n'importe quelle expérience en moins de 2 minutes.</p>
+      <p className="text-carnet-ink-soft mb-6">Une structure universelle pour présenter n'importe quelle expérience en moins de 2 minutes.</p>
       <div className="space-y-4">
         {methodeVALO.map((s) => (
-          <div key={s.n} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-5 flex items-baseline gap-4">
-            <span className="font-dm-serif text-3xl text-pr-orange leading-none">{s.n}</span>
+          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+            <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
-              <h4 className="font-dm-serif text-lg text-pr-black mb-1">{s.t}</h4>
-              <p className="text-sm text-pr-gray-dark">{s.d}</p>
+              <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
+              <p className="text-sm text-carnet-ink-soft">{s.d}</p>
             </div>
           </div>
         ))}
@@ -104,20 +104,20 @@ const ValoriserExperiencesPage = () => (
     </MethodSection>
 
     <MethodSection label="Section 03" title="Avant / après : l'impact de la narration" icon={TrendingUp}>
-      <div className="bg-white border border-pr-gray-light rounded-lg p-7">
+      <div className="bg-white border border-carnet-rule/30 rounded-lg p-7">
         <div className="flex items-center gap-2 mb-5">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
             Même expérience, deux présentations
           </span>
         </div>
         <div className="grid md:grid-cols-2 gap-5">
-          <div className="bg-pr-gray-bg rounded p-5">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark">Version faible</span>
-            <p className="mt-3 text-sm text-pr-gray-dark italic leading-relaxed">{exemple.mauvais}</p>
+          <div className="bg-carnet-paper rounded p-5">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700">Version faible</span>
+            <p className="mt-3 text-sm text-carnet-ink-soft italic leading-relaxed">{exemple.mauvais}</p>
           </div>
-          <div className="bg-pr-orange-pale border-l-4 border-pr-orange rounded-r p-5">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark">Version percutante</span>
-            <p className="mt-3 text-sm text-pr-gray-dark italic leading-relaxed">{exemple.bon}</p>
+          <div className="bg-red-50 border-l-4 border-red-600 rounded-r p-5">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700">Version percutante</span>
+            <p className="mt-3 text-sm text-carnet-ink-soft italic leading-relaxed">{exemple.bon}</p>
           </div>
         </div>
       </div>
@@ -126,13 +126,13 @@ const ValoriserExperiencesPage = () => (
     <MethodSection label="Section 04" title="Les 5 poncifs à éviter" icon={AlertTriangle}>
       <div className="space-y-3">
         {poncifs.map(([err, explication], i) => (
-          <div key={i} className="bg-white border border-pr-gray-light rounded-lg p-4 flex items-start gap-4">
-            <div className="font-dm-serif text-3xl text-pr-orange leading-none flex-shrink-0 w-12 text-center">
+          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+            <div className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0 w-12 text-center">
               {String(i + 1).padStart(2, '0')}
             </div>
             <div className="flex-1">
-              <h5 className="font-medium text-pr-black mb-1">{err}</h5>
-              <p className="text-sm text-pr-gray-mid">{explication}</p>
+              <h5 className="font-medium text-carnet-ink mb-1">{err}</h5>
+              <p className="text-sm text-carnet-ink-mute">{explication}</p>
             </div>
           </div>
         ))}

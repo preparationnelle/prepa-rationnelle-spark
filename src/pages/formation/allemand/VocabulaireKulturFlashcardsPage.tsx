@@ -197,114 +197,114 @@ const VocabulaireKulturFlashcardsPage = () => {
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      "Culture générale": "bg-pink-100 text-pink-800",
-      "Identité": "bg-rose-100 text-rose-800",
-      "Multiculturalisme": "bg-purple-100 text-purple-800",
-      "Défis culturels": "bg-red-100 text-red-800",
-      "Allemagne contemporaine": "bg-amber-100 text-amber-800",
+      "Culture générale": "bg-carnet-rule/30 text-carnet-ink",
+      "Identité": "bg-carnet-rule/30 text-carnet-ink",
+      "Multiculturalisme": "bg-carnet-rule/30 text-carnet-ink",
+      "Défis culturels": "bg-carnet-rule/30 text-carnet-ink",
+      "Allemagne contemporaine": "bg-carnet-rule/30 text-carnet-ink",
       "Laïcité et religion": "bg-carnet-red/10 text-carnet-red-deep",
-      "Mémoire historique": "bg-slate-100 text-slate-800",
-      "Culture numérique": "bg-cyan-100 text-cyan-800",
-      "Islam en Allemagne": "bg-green-100 text-green-800",
-      "Système religieux": "bg-indigo-100 text-indigo-800",
-      "Intégration religieuse": "bg-teal-100 text-teal-800",
-      "Passé nazi": "bg-gray-100 text-gray-800",
-      "Mémoire de l'Holocauste": "bg-yellow-100 text-yellow-800",
-      "Fractures numériques": "bg-amber-100 text-orange-800",
-      "Protection des données": "bg-emerald-100 text-emerald-800",
-      "Diversité": "bg-violet-100 text-violet-800",
-      "Immigration": "bg-lime-100 text-lime-800",
-      "Intégration": "bg-sky-100 text-sky-800",
-      "Défis de l'intégration": "bg-red-100 text-red-800",
+      "Mémoire historique": "bg-carnet-paper-2 text-carnet-ink",
+      "Culture numérique": "bg-carnet-rule/30 text-carnet-ink",
+      "Islam en Allemagne": "bg-carnet-rule/30 text-carnet-ink",
+      "Système religieux": "bg-carnet-rule/30 text-carnet-ink",
+      "Intégration religieuse": "bg-carnet-rule/30 text-carnet-ink",
+      "Passé nazi": "bg-carnet-paper-2 text-carnet-ink",
+      "Mémoire de l'Holocauste": "bg-carnet-rule/30 text-carnet-ink",
+      "Fractures numériques": "bg-carnet-rule/30 text-carnet-ink",
+      "Protection des données": "bg-carnet-rule/30 text-carnet-ink",
+      "Diversité": "bg-carnet-rule/30 text-carnet-ink",
+      "Immigration": "bg-carnet-rule/30 text-carnet-ink",
+      "Intégration": "bg-carnet-rule/30 text-carnet-ink",
+      "Défis de l'intégration": "bg-carnet-rule/30 text-carnet-ink",
       "Sécularisation": "bg-carnet-red/10 text-carnet-red-deep",
-      "Droits religieux": "bg-green-100 text-green-800",
-      "Institutions religieuses": "bg-purple-100 text-purple-800",
-      "Discriminations religieuses": "bg-red-100 text-red-800",
-      "Discriminations": "bg-amber-100 text-orange-800",
-      "Valeurs": "bg-emerald-100 text-emerald-800",
-      "Lieux de mémoire": "bg-slate-100 text-slate-800",
-      "Politique mémorielle": "bg-amber-100 text-amber-800",
-      "Médias": "bg-cyan-100 text-cyan-800",
-      "Transformation numérique": "bg-indigo-100 text-indigo-800",
-      "Réseaux sociaux": "bg-pink-100 text-pink-800",
-      "Désinformation": "bg-red-100 text-red-800",
+      "Droits religieux": "bg-carnet-rule/30 text-carnet-ink",
+      "Institutions religieuses": "bg-carnet-rule/30 text-carnet-ink",
+      "Discriminations religieuses": "bg-carnet-rule/30 text-carnet-ink",
+      "Discriminations": "bg-carnet-rule/30 text-carnet-ink",
+      "Valeurs": "bg-carnet-rule/30 text-carnet-ink",
+      "Lieux de mémoire": "bg-carnet-paper-2 text-carnet-ink",
+      "Politique mémorielle": "bg-carnet-rule/30 text-carnet-ink",
+      "Médias": "bg-carnet-rule/30 text-carnet-ink",
+      "Transformation numérique": "bg-carnet-rule/30 text-carnet-ink",
+      "Réseaux sociaux": "bg-carnet-rule/30 text-carnet-ink",
+      "Désinformation": "bg-carnet-rule/30 text-carnet-ink",
       "Éducation aux médias": "bg-carnet-red/10 text-carnet-red-deep",
-      "Libertés médiatiques": "bg-green-100 text-green-800",
-      "Médias publics": "bg-teal-100 text-teal-800",
-      "Culture dominante": "bg-yellow-100 text-yellow-800",
-      "Identités plurielles": "bg-purple-100 text-purple-800",
-      "Communautés": "bg-lime-100 text-lime-800",
-      "Migration récente": "bg-amber-100 text-orange-800",
-      "Accueil des migrants": "bg-emerald-100 text-emerald-800",
-      "Partis politiques": "bg-rose-100 text-rose-800",
-      "Mouvements politiques": "bg-red-100 text-red-800",
-      "Débats sociaux": "bg-violet-100 text-violet-800",
+      "Libertés médiatiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Médias publics": "bg-carnet-rule/30 text-carnet-ink",
+      "Culture dominante": "bg-carnet-rule/30 text-carnet-ink",
+      "Identités plurielles": "bg-carnet-rule/30 text-carnet-ink",
+      "Communautés": "bg-carnet-rule/30 text-carnet-ink",
+      "Migration récente": "bg-carnet-rule/30 text-carnet-ink",
+      "Accueil des migrants": "bg-carnet-rule/30 text-carnet-ink",
+      "Partis politiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Mouvements politiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Débats sociaux": "bg-carnet-rule/30 text-carnet-ink",
       "Débats religieux": "bg-carnet-red/10 text-carnet-red-deep",
-      "Pratiques religieuses": "bg-green-100 text-green-800",
-      "Éducation religieuse": "bg-indigo-100 text-indigo-800",
-      "Critique religieuse": "bg-gray-100 text-gray-800",
-      "Histoire du nazisme": "bg-slate-100 text-slate-800",
-      "Réparations historiques": "bg-amber-100 text-amber-800",
-      "Dénazification": "bg-yellow-100 text-yellow-800",
-      "Politique historique": "bg-amber-100 text-orange-800",
-      "Réunification": "bg-cyan-100 text-cyan-800",
-      "Souveraineté numérique": "bg-purple-100 text-purple-800",
+      "Pratiques religieuses": "bg-carnet-rule/30 text-carnet-ink",
+      "Éducation religieuse": "bg-carnet-rule/30 text-carnet-ink",
+      "Critique religieuse": "bg-carnet-paper-2 text-carnet-ink",
+      "Histoire du nazisme": "bg-carnet-paper-2 text-carnet-ink",
+      "Réparations historiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Dénazification": "bg-carnet-rule/30 text-carnet-ink",
+      "Politique historique": "bg-carnet-rule/30 text-carnet-ink",
+      "Réunification": "bg-carnet-rule/30 text-carnet-ink",
+      "Souveraineté numérique": "bg-carnet-rule/30 text-carnet-ink",
       "Technologies numériques": "bg-carnet-red/10 text-carnet-red-deep",
-      "Vie privée numérique": "bg-pink-100 text-pink-800",
-      "Surveillance numérique": "bg-red-100 text-red-800",
-      "Politiques numériques": "bg-indigo-100 text-indigo-800",
-      "Cybersécurité": "bg-slate-100 text-slate-800",
-      "Éducation": "bg-emerald-100 text-emerald-800",
-      "Éducation culturelle": "bg-teal-100 text-teal-800",
-      "Institutions culturelles": "bg-violet-100 text-violet-800",
-      "Arts et lettres": "bg-rose-100 text-rose-800",
-      "Figures littéraires": "bg-amber-100 text-amber-800",
-      "Cinéma": "bg-purple-100 text-purple-800",
-      "Musique": "bg-pink-100 text-pink-800",
-      "Culture urbaine": "bg-lime-100 text-lime-800",
-      "Cultures alternatives": "bg-amber-100 text-orange-800",
-      "Culture jeune": "bg-cyan-100 text-cyan-800",
-      "Culture populaire": "bg-yellow-100 text-yellow-800"
+      "Vie privée numérique": "bg-carnet-rule/30 text-carnet-ink",
+      "Surveillance numérique": "bg-carnet-rule/30 text-carnet-ink",
+      "Politiques numériques": "bg-carnet-rule/30 text-carnet-ink",
+      "Cybersécurité": "bg-carnet-paper-2 text-carnet-ink",
+      "Éducation": "bg-carnet-rule/30 text-carnet-ink",
+      "Éducation culturelle": "bg-carnet-rule/30 text-carnet-ink",
+      "Institutions culturelles": "bg-carnet-rule/30 text-carnet-ink",
+      "Arts et lettres": "bg-carnet-rule/30 text-carnet-ink",
+      "Figures littéraires": "bg-carnet-rule/30 text-carnet-ink",
+      "Cinéma": "bg-carnet-rule/30 text-carnet-ink",
+      "Musique": "bg-carnet-rule/30 text-carnet-ink",
+      "Culture urbaine": "bg-carnet-rule/30 text-carnet-ink",
+      "Cultures alternatives": "bg-carnet-rule/30 text-carnet-ink",
+      "Culture jeune": "bg-carnet-rule/30 text-carnet-ink",
+      "Culture populaire": "bg-carnet-rule/30 text-carnet-ink"
     };
-    return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
+    return colors[category as keyof typeof colors] || "bg-carnet-paper-2 text-carnet-ink";
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-rose-50">
+    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale via-white to-pr-orange-soft">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-40 bg-carnet-paper-2/90 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper-2/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center text-xs font-medium text-carnet-ink-soft">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/allemand" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <Link to="/formation/allemand" className="hover:text-carnet-ink transition-colors">
               Formation Allemand
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/allemand/civilisation" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <Link to="/formation/allemand/civilisation" className="hover:text-carnet-ink transition-colors">
               Civilisation
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Vocabulaire Culture</span>
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <span className="text-carnet-ink font-bold">Vocabulaire Culture</span>
           </div>
         </div>
       </nav>
 
       {/* Arrière-plan animé */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -z-10 -top-40 -right-40 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div className="absolute -z-10 -bottom-40 -left-40 w-80 h-80 bg-rose-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
+        <div className="absolute -z-10 -top-40 -right-40 w-80 h-80 bg-carnet-rule/30 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+        <div className="absolute -z-10 -bottom-40 -left-40 w-80 h-80 bg-carnet-rule/30 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-carnet-rule/30 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
       </div>
 
       <div className="container mx-auto px-4 py-8 relative z-10">
         {/* En-tête */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pink-600 text-white">
+          <h1 className="text-4xl font-bold text-carnet-ink mb-4 flex items-center justify-center gap-3">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Vocabulaire Culture et Identité
@@ -315,19 +315,19 @@ const VocabulaireKulturFlashcardsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">{cards.length} mots</Badge>
             <Badge variant="outline">Module 6 - Kultur und Identität</Badge>
-            <Badge className="bg-pink-600">Flashcards</Badge>
+            <Badge className="bg-pr-orange-dark">Flashcards</Badge>
           </div>
         </div>
 
         {/* Barre de progrès */}
         <div className="max-w-2xl mx-auto mb-6">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-700">Progression</span>
-            <span className="text-sm font-medium text-pink-600">{currentIndex + 1} / {cards.length}</span>
+            <span className="text-sm font-medium text-carnet-ink-soft">Progression</span>
+            <span className="text-sm font-medium text-pr-orange-dark">{currentIndex + 1} / {cards.length}</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <div className="w-full bg-carnet-rule/40 rounded-full h-2.5">
             <div 
-              className="bg-gradient-to-r from-pink-500 to-rose-500 h-2.5 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-pr-orange to-pr-orange-dark h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -339,7 +339,7 @@ const VocabulaireKulturFlashcardsPage = () => {
             <Button
               onClick={shuffleCards}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <Shuffle className="h-4 w-4" />
               Mélanger (S)
@@ -347,7 +347,7 @@ const VocabulaireKulturFlashcardsPage = () => {
             <Button
               onClick={resetCards}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <RotateCcw className="h-4 w-4" />
               Recommencer (R)
@@ -355,7 +355,7 @@ const VocabulaireKulturFlashcardsPage = () => {
             <Button
               onClick={() => setShowHelp(!showHelp)}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <Lightbulb className="h-4 w-4" />
               Aide
@@ -364,14 +364,14 @@ const VocabulaireKulturFlashcardsPage = () => {
 
           {/* Aide aux raccourcis */}
           {showHelp && (
-            <Card className="mb-4 bg-pink-50 border-pink-200">
+            <Card className="mb-4 bg-pr-orange-pale border-pr-orange-soft">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-pink-900 mb-3">Raccourcis clavier :</h3>
-                <div className="grid grid-cols-2 gap-2 text-sm text-pink-700">
-                  <div><kbd className="bg-pink-100 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-pink-100 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
-                  <div><kbd className="bg-pink-100 px-2 py-1 rounded">←</kbd> <kbd className="bg-pink-100 px-2 py-1 rounded">→</kbd> : Navigation</div>
-                  <div><kbd className="bg-pink-100 px-2 py-1 rounded">S</kbd> : Mélanger</div>
-                  <div><kbd className="bg-pink-100 px-2 py-1 rounded">R</kbd> : Recommencer</div>
+                <h3 className="font-semibold text-carnet-ink mb-3">Raccourcis clavier :</h3>
+                <div className="grid grid-cols-2 gap-2 text-sm text-pr-orange-dark">
+                  <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-carnet-rule/30 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
+                  <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">←</kbd> <kbd className="bg-carnet-rule/30 px-2 py-1 rounded">→</kbd> : Navigation</div>
+                  <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">S</kbd> : Mélanger</div>
+                  <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">R</kbd> : Recommencer</div>
                 </div>
               </CardContent>
             </Card>
@@ -381,7 +381,7 @@ const VocabulaireKulturFlashcardsPage = () => {
         {/* Carte principale */}
         <div className="max-w-2xl mx-auto mb-6">
           <Card 
-            className="h-80 cursor-pointer transform transition-all duration-500 hover:scale-105 bg-white/90 backdrop-blur-sm shadow-xl"
+            className="h-80 cursor-pointer transform transition-all duration-500 hover:scale-105 bg-carnet-paper-2/90 backdrop-blur-sm shadow-xl"
             onClick={() => setIsFlipped(!isFlipped)}
           >
             <CardContent className="h-full flex flex-col justify-center items-center p-8 relative">
@@ -396,30 +396,30 @@ const VocabulaireKulturFlashcardsPage = () => {
               <div className="absolute -z-10 top-4 left-4 flex items-center gap-2">
                 {isFlipped ? (
                   <>
-                    <Eye className="h-4 w-4 text-pink-600" />
-                    <span className="text-sm font-medium text-pink-600">Allemand</span>
+                    <Eye className="h-4 w-4 text-pr-orange-dark" />
+                    <span className="text-sm font-medium text-pr-orange-dark">Allemand</span>
                   </>
                 ) : (
                   <>
-                    <EyeOff className="h-4 w-4 text-pink-600" />
-                    <span className="text-sm font-medium text-pink-600">Français</span>
+                    <EyeOff className="h-4 w-4 text-pr-orange-dark" />
+                    <span className="text-sm font-medium text-pr-orange-dark">Français</span>
                   </>
                 )}
               </div>
 
               {/* Contenu de la carte */}
               <div className="text-center space-y-4">
-                <div className="text-3xl font-bold text-gray-900 mb-6">
+                <div className="text-3xl font-bold text-carnet-ink mb-6">
                   {isFlipped ? currentCard.german : currentCard.french}
                 </div>
                 
                 {isFlipped && (
-                  <div className="text-lg text-gray-600 bg-gray-50 rounded-lg p-4">
+                  <div className="text-lg text-carnet-ink-soft bg-carnet-paper-2 rounded-lg p-4">
                     <strong>Français :</strong> {currentCard.french}
                   </div>
                 )}
                 
-                <div className="text-sm text-gray-500 text-center">
+                <div className="text-sm text-carnet-ink-mute text-center">
                   Cliquez ou appuyez sur Espace pour retourner
                 </div>
               </div>
@@ -433,20 +433,20 @@ const VocabulaireKulturFlashcardsPage = () => {
             <Button
               onClick={goToPrevious}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white px-6 py-3"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 px-6 py-3"
             >
               <ChevronLeft className="h-5 w-5" />
               Précédent
             </Button>
             
-            <div className="text-sm text-gray-600 bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2">
+            <div className="text-sm text-carnet-ink-soft bg-carnet-paper-2/80 backdrop-blur-sm rounded-lg px-4 py-2">
               {currentIndex + 1} sur {cards.length}
             </div>
             
             <Button
               onClick={goToNext}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white px-6 py-3"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 px-6 py-3"
             >
               Suivant
               <ChevronRightIcon className="h-5 w-5" />
@@ -456,13 +456,13 @@ const VocabulaireKulturFlashcardsPage = () => {
 
         {/* Section informative */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-pink-200 bg-gradient-to-r from-pink-50 to-rose-50 shadow-lg">
+          <Card className="border-2 border-pr-orange-soft bg-gradient-to-r from-pr-orange-pale to-pr-orange-soft shadow-lg">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-pink-900 mb-4">🎭 Conseils pour l'apprentissage</h3>
+              <h3 className="text-xl font-bold text-carnet-ink mb-4">🎭 Conseils pour l'apprentissage</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-pink-800">Technique de révision :</h4>
-                  <ul className="text-sm text-pink-700 space-y-1">
+                  <h4 className="font-semibold text-carnet-ink">Technique de révision :</h4>
+                  <ul className="text-sm text-pr-orange-dark space-y-1">
                     <li>• Commencez par le français (plus familier)</li>
                     <li>• Tentez de deviner l'allemand avant de retourner</li>
                     <li>• Répétez à voix haute pour la prononciation</li>
@@ -470,8 +470,8 @@ const VocabulaireKulturFlashcardsPage = () => {
                   </ul>
                 </div>
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-pink-800">Pour les concours :</h4>
-                  <ul className="text-sm text-pink-700 space-y-1">
+                  <h4 className="font-semibold text-carnet-ink">Pour les concours :</h4>
+                  <ul className="text-sm text-pr-orange-dark space-y-1">
                     <li>• Vocabulaire essentiel pour les questions d'identité</li>
                     <li>• Termes techniques du multiculturalisme allemand</li>
                     <li>• Base indispensable pour Module 6 - Kultur und Identität</li>

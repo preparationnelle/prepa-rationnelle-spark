@@ -197,128 +197,128 @@ const VocabulaireFrauenFlashcardsPage = () => {
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      "Égalité des genres": "bg-lime-100 text-lime-800",
-      "Femmes et société": "bg-green-100 text-green-800",
-      "Participation politique": "bg-emerald-100 text-emerald-800",
-      "Leadership féminin": "bg-teal-100 text-teal-800",
-      "Femmes en politique": "bg-cyan-100 text-cyan-800",
-      "Femmes dans l'économie": "bg-sky-100 text-sky-800",
+      "Égalité des genres": "bg-carnet-rule/30 text-carnet-ink",
+      "Femmes et société": "bg-carnet-rule/30 text-carnet-ink",
+      "Participation politique": "bg-carnet-rule/30 text-carnet-ink",
+      "Leadership féminin": "bg-carnet-rule/30 text-carnet-ink",
+      "Femmes en politique": "bg-carnet-rule/30 text-carnet-ink",
+      "Femmes dans l'économie": "bg-carnet-rule/30 text-carnet-ink",
       "Positions de direction": "bg-carnet-red/10 text-carnet-red-deep",
-      "Conciliation vie-travail": "bg-indigo-100 text-indigo-800",
-      "Évolution sociale": "bg-purple-100 text-purple-800",
-      "Transformation sociale": "bg-violet-100 text-violet-800",
-      "Héritage politique": "bg-pink-100 text-pink-800",
-      "Leadership politique": "bg-rose-100 text-rose-800",
-      "Quotas et parité": "bg-amber-100 text-amber-800",
-      "Gouvernance d'entreprise": "bg-amber-100 text-orange-800",
-      "Grandes entreprises": "bg-red-100 text-red-800",
-      "Politiques familiales": "bg-lime-100 text-lime-800",
-      "Garde d'enfants": "bg-green-100 text-green-800",
-      "Écarts salariaux": "bg-yellow-100 text-yellow-800",
-      "Inégalités structurelles": "bg-amber-100 text-orange-800",
-      "Mouvements féministes": "bg-pink-100 text-pink-800",
-      "Droits des femmes": "bg-rose-100 text-rose-800",
-      "Égalité juridique": "bg-purple-100 text-purple-800",
-      "Structures sociales": "bg-violet-100 text-violet-800",
-      "Rôles de genre": "bg-indigo-100 text-indigo-800",
+      "Conciliation vie-travail": "bg-carnet-rule/30 text-carnet-ink",
+      "Évolution sociale": "bg-carnet-rule/30 text-carnet-ink",
+      "Transformation sociale": "bg-carnet-rule/30 text-carnet-ink",
+      "Héritage politique": "bg-carnet-rule/30 text-carnet-ink",
+      "Leadership politique": "bg-carnet-rule/30 text-carnet-ink",
+      "Quotas et parité": "bg-carnet-rule/30 text-carnet-ink",
+      "Gouvernance d'entreprise": "bg-carnet-rule/30 text-carnet-ink",
+      "Grandes entreprises": "bg-carnet-rule/30 text-carnet-ink",
+      "Politiques familiales": "bg-carnet-rule/30 text-carnet-ink",
+      "Garde d'enfants": "bg-carnet-rule/30 text-carnet-ink",
+      "Écarts salariaux": "bg-carnet-rule/30 text-carnet-ink",
+      "Inégalités structurelles": "bg-carnet-rule/30 text-carnet-ink",
+      "Mouvements féministes": "bg-carnet-rule/30 text-carnet-ink",
+      "Droits des femmes": "bg-carnet-rule/30 text-carnet-ink",
+      "Égalité juridique": "bg-carnet-rule/30 text-carnet-ink",
+      "Structures sociales": "bg-carnet-rule/30 text-carnet-ink",
+      "Rôles de genre": "bg-carnet-rule/30 text-carnet-ink",
       "Stéréotypes de genre": "bg-carnet-red/10 text-carnet-red-deep",
-      "Discriminations": "bg-red-100 text-red-800",
-      "Sexisme": "bg-amber-100 text-orange-800",
-      "Histoire féministe": "bg-amber-100 text-amber-800",
-      "Obstacles professionnels": "bg-yellow-100 text-yellow-800",
-      "Carrières professionnelles": "bg-lime-100 text-lime-800",
-      "Évolution professionnelle": "bg-green-100 text-green-800",
-      "Parlement": "bg-emerald-100 text-emerald-800",
-      "Haute fonction politique": "bg-teal-100 text-teal-800",
-      "Figures politiques": "bg-cyan-100 text-cyan-800",
-      "Partis politiques": "bg-sky-100 text-sky-800",
+      "Discriminations": "bg-carnet-rule/30 text-carnet-ink",
+      "Sexisme": "bg-carnet-rule/30 text-carnet-ink",
+      "Histoire féministe": "bg-carnet-rule/30 text-carnet-ink",
+      "Obstacles professionnels": "bg-carnet-rule/30 text-carnet-ink",
+      "Carrières professionnelles": "bg-carnet-rule/30 text-carnet-ink",
+      "Évolution professionnelle": "bg-carnet-rule/30 text-carnet-ink",
+      "Parlement": "bg-carnet-rule/30 text-carnet-ink",
+      "Haute fonction politique": "bg-carnet-rule/30 text-carnet-ink",
+      "Figures politiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Partis politiques": "bg-carnet-rule/30 text-carnet-ink",
       "Gouvernement": "bg-carnet-red/10 text-carnet-red-deep",
-      "Leadership économique": "bg-indigo-100 text-indigo-800",
-      "Entreprises emblématiques": "bg-purple-100 text-purple-800",
-      "Statistiques de genre": "bg-violet-100 text-violet-800",
-      "Parentalité": "bg-pink-100 text-pink-800",
-      "Maternité": "bg-rose-100 text-rose-800",
+      "Leadership économique": "bg-carnet-rule/30 text-carnet-ink",
+      "Entreprises emblématiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Statistiques de genre": "bg-carnet-rule/30 text-carnet-ink",
+      "Parentalité": "bg-carnet-rule/30 text-carnet-ink",
+      "Maternité": "bg-carnet-rule/30 text-carnet-ink",
       "Paternité": "bg-carnet-red/10 text-carnet-red-deep",
-      "Aides familiales": "bg-green-100 text-green-800",
-      "Modes de garde": "bg-emerald-100 text-emerald-800",
-      "Soutien familial": "bg-lime-100 text-lime-800",
-      "Équilibre vie-travail": "bg-teal-100 text-teal-800",
-      "Inégalités salariales": "bg-red-100 text-red-800",
-      "Égalité salariale": "bg-amber-100 text-orange-800",
-      "Relations sociales": "bg-amber-100 text-amber-800",
-      "Rémunération": "bg-yellow-100 text-yellow-800",
-      "Modalités de travail": "bg-cyan-100 text-cyan-800",
-      "Travail de care": "bg-sky-100 text-sky-800",
-      "Travail domestique": "bg-indigo-100 text-indigo-800",
-      "Justice de genre": "bg-purple-100 text-purple-800",
-      "Théories féministes": "bg-violet-100 text-violet-800",
-      "Diversité et inclusion": "bg-pink-100 text-pink-800",
-      "Promotion professionnelle": "bg-rose-100 text-rose-800",
-      "Accompagnement professionnel": "bg-lime-100 text-lime-800",
-      "Réseaux professionnels": "bg-green-100 text-green-800",
-      "Réseaux féminins": "bg-emerald-100 text-emerald-800",
-      "Mouvements contemporains": "bg-teal-100 text-teal-800",
-      "Violences sexuelles": "bg-red-100 text-red-800",
-      "Violences de genre": "bg-amber-100 text-orange-800",
-      "Violences domestiques": "bg-red-100 text-red-800",
+      "Aides familiales": "bg-carnet-rule/30 text-carnet-ink",
+      "Modes de garde": "bg-carnet-rule/30 text-carnet-ink",
+      "Soutien familial": "bg-carnet-rule/30 text-carnet-ink",
+      "Équilibre vie-travail": "bg-carnet-rule/30 text-carnet-ink",
+      "Inégalités salariales": "bg-carnet-rule/30 text-carnet-ink",
+      "Égalité salariale": "bg-carnet-rule/30 text-carnet-ink",
+      "Relations sociales": "bg-carnet-rule/30 text-carnet-ink",
+      "Rémunération": "bg-carnet-rule/30 text-carnet-ink",
+      "Modalités de travail": "bg-carnet-rule/30 text-carnet-ink",
+      "Travail de care": "bg-carnet-rule/30 text-carnet-ink",
+      "Travail domestique": "bg-carnet-rule/30 text-carnet-ink",
+      "Justice de genre": "bg-carnet-rule/30 text-carnet-ink",
+      "Théories féministes": "bg-carnet-rule/30 text-carnet-ink",
+      "Diversité et inclusion": "bg-carnet-rule/30 text-carnet-ink",
+      "Promotion professionnelle": "bg-carnet-rule/30 text-carnet-ink",
+      "Accompagnement professionnel": "bg-carnet-rule/30 text-carnet-ink",
+      "Réseaux professionnels": "bg-carnet-rule/30 text-carnet-ink",
+      "Réseaux féminins": "bg-carnet-rule/30 text-carnet-ink",
+      "Mouvements contemporains": "bg-carnet-rule/30 text-carnet-ink",
+      "Violences sexuelles": "bg-carnet-rule/30 text-carnet-ink",
+      "Violences de genre": "bg-carnet-rule/30 text-carnet-ink",
+      "Violences domestiques": "bg-carnet-rule/30 text-carnet-ink",
       "Structures d'aide": "bg-carnet-red/10 text-carnet-red-deep",
-      "Politiques d'égalité": "bg-cyan-100 text-cyan-800",
-      "Institutions spécialisées": "bg-sky-100 text-sky-800",
-      "Niveau européen": "bg-indigo-100 text-indigo-800",
-      "Conventions internationales": "bg-purple-100 text-purple-800",
-      "Recherche académique": "bg-violet-100 text-violet-800",
-      "Approches transversales": "bg-pink-100 text-pink-800",
-      "Régulation légale": "bg-amber-100 text-amber-800",
-      "Organisations spécialisées": "bg-yellow-100 text-yellow-800",
-      "STEM et sciences": "bg-lime-100 text-lime-800",
-      "Éducation STEM": "bg-green-100 text-green-800",
-      "Éducation et formation": "bg-emerald-100 text-emerald-800",
-      "Famille monoparentale": "bg-teal-100 text-teal-800",
-      "Pauvreté familiale": "bg-amber-100 text-orange-800",
-      "Politiques sociales": "bg-cyan-100 text-cyan-800",
-      "Inégalités de retraite": "bg-red-100 text-red-800",
-      "Précarité âgée": "bg-amber-100 text-orange-800",
-      "Perspectives d'avenir": "bg-lime-100 text-lime-800"
+      "Politiques d'égalité": "bg-carnet-rule/30 text-carnet-ink",
+      "Institutions spécialisées": "bg-carnet-rule/30 text-carnet-ink",
+      "Niveau européen": "bg-carnet-rule/30 text-carnet-ink",
+      "Conventions internationales": "bg-carnet-rule/30 text-carnet-ink",
+      "Recherche académique": "bg-carnet-rule/30 text-carnet-ink",
+      "Approches transversales": "bg-carnet-rule/30 text-carnet-ink",
+      "Régulation légale": "bg-carnet-rule/30 text-carnet-ink",
+      "Organisations spécialisées": "bg-carnet-rule/30 text-carnet-ink",
+      "STEM et sciences": "bg-carnet-rule/30 text-carnet-ink",
+      "Éducation STEM": "bg-carnet-rule/30 text-carnet-ink",
+      "Éducation et formation": "bg-carnet-rule/30 text-carnet-ink",
+      "Famille monoparentale": "bg-carnet-rule/30 text-carnet-ink",
+      "Pauvreté familiale": "bg-carnet-rule/30 text-carnet-ink",
+      "Politiques sociales": "bg-carnet-rule/30 text-carnet-ink",
+      "Inégalités de retraite": "bg-carnet-rule/30 text-carnet-ink",
+      "Précarité âgée": "bg-carnet-rule/30 text-carnet-ink",
+      "Perspectives d'avenir": "bg-carnet-rule/30 text-carnet-ink"
     };
-    return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
+    return colors[category as keyof typeof colors] || "bg-carnet-paper-2 text-carnet-ink";
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-lime-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale via-white to-pr-orange-soft">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-40 bg-carnet-paper-2/90 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper-2/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center text-xs font-medium text-carnet-ink-soft">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/allemand" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <Link to="/formation/allemand" className="hover:text-carnet-ink transition-colors">
               Formation Allemand
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/allemand/civilisation" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <Link to="/formation/allemand/civilisation" className="hover:text-carnet-ink transition-colors">
               Civilisation
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Vocabulaire Femmes</span>
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <span className="text-carnet-ink font-bold">Vocabulaire Femmes</span>
           </div>
         </div>
       </nav>
 
       {/* Arrière-plan animé */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -z-10 -top-40 -right-40 w-80 h-80 bg-lime-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div className="absolute -z-10 -bottom-40 -left-40 w-80 h-80 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
+        <div className="absolute -z-10 -top-40 -right-40 w-80 h-80 bg-carnet-rule/30 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+        <div className="absolute -z-10 -bottom-40 -left-40 w-80 h-80 bg-carnet-rule/30 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-carnet-rule/30 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
       </div>
 
       <div className="container mx-auto px-4 py-8 relative z-10">
         {/* En-tête */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-lime-600 text-white">
+          <h1 className="text-4xl font-bold text-carnet-ink mb-4 flex items-center justify-center gap-3">
+            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Vocabulaire Femmes dans la Société
@@ -329,19 +329,19 @@ const VocabulaireFrauenFlashcardsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">{cards.length} mots</Badge>
             <Badge variant="outline">Module 9 - Frauen in der deutschen Gesellschaft</Badge>
-            <Badge className="bg-lime-600">Flashcards</Badge>
+            <Badge className="bg-pr-orange-dark">Flashcards</Badge>
           </div>
         </div>
 
         {/* Barre de progrès */}
         <div className="max-w-2xl mx-auto mb-6">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-700">Progression</span>
-            <span className="text-sm font-medium text-lime-600">{currentIndex + 1} / {cards.length}</span>
+            <span className="text-sm font-medium text-carnet-ink-soft">Progression</span>
+            <span className="text-sm font-medium text-pr-orange-dark">{currentIndex + 1} / {cards.length}</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <div className="w-full bg-carnet-rule/40 rounded-full h-2.5">
             <div 
-              className="bg-gradient-to-r from-lime-500 to-green-500 h-2.5 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-pr-orange to-pr-orange-dark h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -353,7 +353,7 @@ const VocabulaireFrauenFlashcardsPage = () => {
             <Button
               onClick={shuffleCards}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <Shuffle className="h-4 w-4" />
               Mélanger (S)
@@ -361,7 +361,7 @@ const VocabulaireFrauenFlashcardsPage = () => {
             <Button
               onClick={resetCards}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <RotateCcw className="h-4 w-4" />
               Recommencer (R)
@@ -369,7 +369,7 @@ const VocabulaireFrauenFlashcardsPage = () => {
             <Button
               onClick={() => setShowHelp(!showHelp)}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <Lightbulb className="h-4 w-4" />
               Aide
@@ -378,14 +378,14 @@ const VocabulaireFrauenFlashcardsPage = () => {
 
           {/* Aide aux raccourcis */}
           {showHelp && (
-            <Card className="mb-4 bg-lime-50 border-lime-200">
+            <Card className="mb-4 bg-pr-orange-pale border-pr-orange-soft">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-lime-900 mb-3">Raccourcis clavier :</h3>
-                <div className="grid grid-cols-2 gap-2 text-sm text-lime-700">
-                  <div><kbd className="bg-lime-100 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-lime-100 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
-                  <div><kbd className="bg-lime-100 px-2 py-1 rounded">←</kbd> <kbd className="bg-lime-100 px-2 py-1 rounded">→</kbd> : Navigation</div>
-                  <div><kbd className="bg-lime-100 px-2 py-1 rounded">S</kbd> : Mélanger</div>
-                  <div><kbd className="bg-lime-100 px-2 py-1 rounded">R</kbd> : Recommencer</div>
+                <h3 className="font-semibold text-carnet-ink mb-3">Raccourcis clavier :</h3>
+                <div className="grid grid-cols-2 gap-2 text-sm text-pr-orange-dark">
+                  <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-carnet-rule/30 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
+                  <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">←</kbd> <kbd className="bg-carnet-rule/30 px-2 py-1 rounded">→</kbd> : Navigation</div>
+                  <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">S</kbd> : Mélanger</div>
+                  <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">R</kbd> : Recommencer</div>
                 </div>
               </CardContent>
             </Card>
@@ -395,7 +395,7 @@ const VocabulaireFrauenFlashcardsPage = () => {
         {/* Carte principale */}
         <div className="max-w-2xl mx-auto mb-6">
           <Card 
-            className="h-80 cursor-pointer transform transition-all duration-500 hover:scale-105 bg-white/90 backdrop-blur-sm shadow-xl"
+            className="h-80 cursor-pointer transform transition-all duration-500 hover:scale-105 bg-carnet-paper-2/90 backdrop-blur-sm shadow-xl"
             onClick={() => setIsFlipped(!isFlipped)}
           >
             <CardContent className="h-full flex flex-col justify-center items-center p-8 relative">
@@ -410,30 +410,30 @@ const VocabulaireFrauenFlashcardsPage = () => {
               <div className="absolute -z-10 top-4 left-4 flex items-center gap-2">
                 {isFlipped ? (
                   <>
-                    <Eye className="h-4 w-4 text-lime-600" />
-                    <span className="text-sm font-medium text-lime-600">Allemand</span>
+                    <Eye className="h-4 w-4 text-pr-orange-dark" />
+                    <span className="text-sm font-medium text-pr-orange-dark">Allemand</span>
                   </>
                 ) : (
                   <>
-                    <EyeOff className="h-4 w-4 text-lime-600" />
-                    <span className="text-sm font-medium text-lime-600">Français</span>
+                    <EyeOff className="h-4 w-4 text-pr-orange-dark" />
+                    <span className="text-sm font-medium text-pr-orange-dark">Français</span>
                   </>
                 )}
               </div>
 
               {/* Contenu de la carte */}
               <div className="text-center space-y-4">
-                <div className="text-3xl font-bold text-gray-900 mb-6">
+                <div className="text-3xl font-bold text-carnet-ink mb-6">
                   {isFlipped ? currentCard.german : currentCard.french}
                 </div>
                 
                 {isFlipped && (
-                  <div className="text-lg text-gray-600 bg-gray-50 rounded-lg p-4">
+                  <div className="text-lg text-carnet-ink-soft bg-carnet-paper-2 rounded-lg p-4">
                     <strong>Français :</strong> {currentCard.french}
                   </div>
                 )}
                 
-                <div className="text-sm text-gray-500 text-center">
+                <div className="text-sm text-carnet-ink-mute text-center">
                   Cliquez ou appuyez sur Espace pour retourner
                 </div>
               </div>
@@ -447,20 +447,20 @@ const VocabulaireFrauenFlashcardsPage = () => {
             <Button
               onClick={goToPrevious}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white px-6 py-3"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 px-6 py-3"
             >
               <ChevronLeft className="h-5 w-5" />
               Précédent
             </Button>
             
-            <div className="text-sm text-gray-600 bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2">
+            <div className="text-sm text-carnet-ink-soft bg-carnet-paper-2/80 backdrop-blur-sm rounded-lg px-4 py-2">
               {currentIndex + 1} sur {cards.length}
             </div>
             
             <Button
               onClick={goToNext}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white px-6 py-3"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 px-6 py-3"
             >
               Suivant
               <ChevronRightIcon className="h-5 w-5" />
@@ -470,13 +470,13 @@ const VocabulaireFrauenFlashcardsPage = () => {
 
         {/* Section informative */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-lime-200 bg-gradient-to-r from-lime-50 to-green-50 shadow-lg">
+          <Card className="border-2 border-pr-orange-soft bg-gradient-to-r from-pr-orange-pale to-pr-orange-soft shadow-lg">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-lime-900 mb-4">♀️ Conseils pour l'apprentissage</h3>
+              <h3 className="text-xl font-bold text-carnet-ink mb-4">♀️ Conseils pour l'apprentissage</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-lime-800">Technique de révision :</h4>
-                  <ul className="text-sm text-lime-700 space-y-1">
+                  <h4 className="font-semibold text-carnet-ink">Technique de révision :</h4>
+                  <ul className="text-sm text-pr-orange-dark space-y-1">
                     <li>• Commencez par le français (plus familier)</li>
                     <li>• Tentez de deviner l'allemand avant de retourner</li>
                     <li>• Répétez à voix haute pour la prononciation</li>
@@ -484,8 +484,8 @@ const VocabulaireFrauenFlashcardsPage = () => {
                   </ul>
                 </div>
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-lime-800">Pour les concours :</h4>
-                  <ul className="text-sm text-lime-700 space-y-1">
+                  <h4 className="font-semibold text-carnet-ink">Pour les concours :</h4>
+                  <ul className="text-sm text-pr-orange-dark space-y-1">
                     <li>• Vocabulaire essentiel pour l'égalité des genres</li>
                     <li>• Termes techniques de la parité en Allemagne</li>
                     <li>• Base indispensable pour Module 9 - Frauen in der deutschen Gesellschaft</li>

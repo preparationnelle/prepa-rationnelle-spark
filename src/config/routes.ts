@@ -376,6 +376,7 @@ const TransitionsJugerPage = lazy(() => import('../pages/formation/culture-gener
 const ConclusionJugerPage = lazy(() => import('../pages/formation/culture-generale/methodes/ConclusionJugerPage'));
 const ReferencesParapersosPage = lazy(() => import('../pages/formation/culture-generale/ReferencesParapersosPage'));
 const ParapersoDetailPage = lazy(() => import('../pages/formation/culture-generale/references/ParapersoDetailPage'));
+const CitationsHumanitePage = lazy(() => import('../pages/formation/culture-generale/CitationsHumanitePage'));
 const NosOffresPage = lazy(() => import('../pages/NosOffresPage'));
 const AproposPage = lazy(() => import('../pages/AproposPage'));
 const DesignSystemPage = lazy(() => import('../pages/DesignSystemPage'));
@@ -1262,6 +1263,7 @@ export const routes: RouteConfig[] = [
   { path: '/formation/culture-generale/programme', component: ProgrammeCultureGeneralePage, title: 'CG — Programme' },
   { path: '/formation/culture-generale/references', component: ReferencesParapersosPage, title: 'CG — Références' },
   { path: '/formation/culture-generale/references/:slug', component: ParapersoDetailPage, title: 'CG — Paraperso' },
+  { path: '/formation/culture-generale/citations', component: CitationsHumanitePage, title: 'CG — Banque de citations' },
   { path: '/formation/culture-generale/juger', component: JugerTermesConnexesPage, title: 'L\'humanité — termes et définitions' },
   { path: '/formation/geopolitique', component: FormationGeopolitiquePage, title: 'Formation Géopolitique' },
   { path: '/formation/geopolitique/premiere-annee', component: GeopolitiquePremiereAnneePage, title: 'Géopolitique - Première Année' },

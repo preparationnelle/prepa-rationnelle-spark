@@ -295,6 +295,173 @@ const Chapitre13SeriesNumeriquesExercicesPage = () => {
           }
         />
 
+        <DifficultyHeader level="Niveau : Facile — Convergence et reste d'une série" />
+
+        <ExerciseCard
+          id="13-6"
+          title="Reste d'une série géométrique"
+          difficulty="Niveau: Facile"
+          content={
+            <div className="space-y-3">
+              <p>Soit la série géométrique <LatexRenderer latex="\sum_{n=0}^{+\infty} q^n" /> avec <LatexRenderer latex="|q| < 1" />.</p>
+              <p>Donner l'expression explicite du reste <LatexRenderer latex="R_N = \sum_{n=N+1}^{+\infty} q^n" /> et estimer son comportement quand <LatexRenderer latex="N \to +\infty" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Le reste d'une série convergente est <LatexRenderer latex="R_N = S - S_N" /> où <LatexRenderer latex="S = \sum_{n \ge 0} u_n" /> et <LatexRenderer latex="S_N = \sum_{n=0}^N u_n" />. Pour une série géométrique, on peut sommer directement le reste.
+              </PointMethodo>
+              <p>Soit <LatexRenderer latex="N \in \mathbb{N}" />. Or, par sommation géométrique :</p>
+              <LatexRenderer latex="R_N = \sum_{n=N+1}^{+\infty} q^n = q^{N+1} \sum_{k=0}^{+\infty} q^k = \frac{q^{N+1}}{1 - q}." />
+              <p className="mt-2"><strong>Comportement asymptotique.</strong> Or <LatexRenderer latex="|q| < 1" />, donc <LatexRenderer latex="q^{N+1} \to 0" /> géométriquement. D'où :</p>
+              <LatexRenderer latex="R_N \sim \frac{q^{N+1}}{1 - q} \xrightarrow[N\to+\infty]{} 0." />
+              <Astuce>
+                La vitesse de décroissance du reste est <em>géométrique</em> (en <LatexRenderer latex="|q|^N" />), beaucoup plus rapide que pour une série de Riemann <LatexRenderer latex="\sum 1/n^\alpha" /> dont le reste décroît seulement comme <LatexRenderer latex="1/N^{\alpha - 1}" />.
+              </Astuce>
+              <ConclusionBox>
+                <LatexRenderer latex="R_N = \dfrac{q^{N+1}}{1 - q}" />, avec décroissance géométrique <LatexRenderer latex="O(|q|^N)" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <DifficultyHeader level="Niveau : Intermédiaire — Critères de comparaison fins" />
+
+        <ExerciseCard
+          id="13-7"
+          title="Règle de Cauchy"
+          difficulty="Niveau: Intermédiaire"
+          content={
+            <div className="space-y-3">
+              <p>Étudier la convergence de <LatexRenderer latex="\sum_{n=1}^{+\infty} \left(\dfrac{n}{n+1}\right)^{n^2}" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                La règle de Cauchy : si <LatexRenderer latex="\sqrt[n]{u_n} \to \ell" />, alors <LatexRenderer latex="\sum u_n" /> converge si <LatexRenderer latex="\ell < 1" /> et diverge si <LatexRenderer latex="\ell > 1" />. Elle est particulièrement adaptée aux séries dont le terme général comporte une puissance n-ième.
+              </PointMethodo>
+              <p>Soit <LatexRenderer latex="u_n = \left(\dfrac{n}{n+1}\right)^{n^2}" />. Or :</p>
+              <LatexRenderer latex="\sqrt[n]{u_n} = \left(\frac{n}{n+1}\right)^n = \left(1 - \frac{1}{n+1}\right)^n." />
+              <Astuce>
+                Le passage en exponentielle : <LatexRenderer latex="\left(1 - \frac{1}{n+1}\right)^n = e^{n \ln(1 - 1/(n+1))}" />. Pour <LatexRenderer latex="n" /> grand, <LatexRenderer latex="\ln(1 - 1/(n+1)) \sim -1/(n+1) \sim -1/n" />, donc l'exposant tend vers <LatexRenderer latex="-1" />.
+              </Astuce>
+              <p className="mt-2">D'où <LatexRenderer latex="\sqrt[n]{u_n} \to e^{-1} = 1/e < 1" />.</p>
+              <p>Par la règle de Cauchy, la série <LatexRenderer latex="\sum u_n" /> <strong>converge</strong>.</p>
+              <ConclusionBox>
+                <LatexRenderer latex="\sum_{n=1}^{+\infty} \left(\frac{n}{n+1}\right)^{n^2}" /> converge par la règle de Cauchy avec <LatexRenderer latex="\ell = 1/e < 1" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <ExerciseCard
+          id="13-8"
+          title="Critère intégral de Cauchy"
+          difficulty="Niveau: Intermédiaire"
+          content={
+            <div className="space-y-3">
+              <p>Soit <LatexRenderer latex="f : [1, +\infty[ \to \mathbb{R}_+" /> continue, positive et décroissante.</p>
+              <p>Démontrer que <LatexRenderer latex="\sum f(n)" /> et <LatexRenderer latex="\int_1^{+\infty} f(t)\,dt" /> sont de même nature.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Le critère intégral repose sur l'encadrement <LatexRenderer latex="f(n+1) \le \int_n^{n+1} f(t)\,dt \le f(n)" /> (vrai car <LatexRenderer latex="f" /> décroissante). En sommant et en intégrant, on obtient un encadrement entre la somme partielle de la série et l'intégrale, qui transmet la nature.
+              </PointMethodo>
+              <p>Soit <LatexRenderer latex="n \in \mathbb{N}^*" />. Or, par décroissance de <LatexRenderer latex="f" /> sur <LatexRenderer latex="[n, n+1]" /> :</p>
+              <LatexRenderer latex="f(n+1) \le \int_n^{n+1} f(t)\,dt \le f(n)." />
+              <p className="mt-2"><strong>Sommation.</strong> En sommant pour <LatexRenderer latex="n = 1, \ldots, N" /> :</p>
+              <LatexRenderer latex="\sum_{n=1}^N f(n+1) \le \int_1^{N+1} f(t)\,dt \le \sum_{n=1}^N f(n)." />
+              <p className="mt-2">Soit, en posant <LatexRenderer latex="S_N = \sum_{n=1}^N f(n)" /> et <LatexRenderer latex="I_N = \int_1^{N+1} f(t)\,dt" /> :</p>
+              <LatexRenderer latex="S_{N+1} - f(1) \le I_N \le S_N." />
+              <Astuce>
+                Cet encadrement montre que <LatexRenderer latex="(S_N)" /> et <LatexRenderer latex="(I_N)" /> sont bornées (ou non) simultanément. Comme <LatexRenderer latex="(S_N)" /> et <LatexRenderer latex="(I_N)" /> sont croissantes (termes positifs), elles convergent ssi elles sont bornées.
+              </Astuce>
+              <p className="mt-2">Ainsi <LatexRenderer latex="(S_N)" /> est bornée <LatexRenderer latex="\iff (I_N)" /> est bornée. D'où la série et l'intégrale sont de même nature.</p>
+              <ConclusionBox>
+                Critère intégral : <LatexRenderer latex="\sum f(n)" /> converge <LatexRenderer latex="\iff \int_1^{+\infty} f(t)\,dt" /> converge (pour <LatexRenderer latex="f \ge 0" /> décroissante continue).
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <DifficultyHeader level="Niveau : Concours — Sommation par paquets et regroupement" />
+
+        <ExerciseCard
+          id="13-9"
+          title="Somme exacte d'une série télescopique logarithmique"
+          difficulty="Niveau: Concours"
+          content={
+            <div className="space-y-3">
+              <p>Calculer <LatexRenderer latex="\sum_{n=2}^{+\infty} \ln\!\left(1 - \dfrac{1}{n^2}\right)" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Pour sommer une série de logarithmes, exploiter la factorisation puis transformer en somme télescopique en utilisant <LatexRenderer latex="\ln(ab) = \ln a + \ln b" />. Les termes intermédiaires se compensent dans la somme partielle.
+              </PointMethodo>
+              <p>Soit <LatexRenderer latex="u_n = \ln(1 - 1/n^2)" /> pour <LatexRenderer latex="n \ge 2" />. Or :</p>
+              <LatexRenderer latex="1 - \frac{1}{n^2} = \frac{n^2 - 1}{n^2} = \frac{(n-1)(n+1)}{n^2}." />
+              <Astuce>
+                La factorisation <LatexRenderer latex="n^2 - 1 = (n-1)(n+1)" /> est la clé pour faire apparaître un télescopage à deux pas.
+              </Astuce>
+              <p className="mt-2">D'où <LatexRenderer latex="u_n = \ln(n-1) + \ln(n+1) - 2\ln n" />. La somme partielle :</p>
+              <LatexRenderer latex="S_N = \sum_{n=2}^N u_n = \sum_{n=2}^N \bigl(\ln(n-1) + \ln(n+1) - 2 \ln n\bigr)." />
+              <p className="mt-2">Réécrivons en regroupant :</p>
+              <LatexRenderer latex="S_N = \sum_{n=2}^N \ln(n-1) + \sum_{n=2}^N \ln(n+1) - 2 \sum_{n=2}^N \ln n." />
+              <p className="mt-2">Par changement d'indice (<LatexRenderer latex="k = n - 1" /> dans la première, <LatexRenderer latex="k = n + 1" /> dans la deuxième) :</p>
+              <LatexRenderer latex="S_N = \sum_{k=1}^{N-1} \ln k + \sum_{k=3}^{N+1} \ln k - 2 \sum_{k=2}^N \ln k." />
+              <p className="mt-2">Calcul direct (les termes intermédiaires se compensent) :</p>
+              <LatexRenderer latex="S_N = -\ln 2 + \ln(N+1) - \ln N = \ln\!\left(\frac{N+1}{2N}\right)." />
+              <p className="mt-2">Or <LatexRenderer latex="(N+1)/(2N) \to 1/2" /> quand <LatexRenderer latex="N \to +\infty" />.</p>
+              <ConclusionBox>
+                <LatexRenderer latex="\sum_{n=2}^{+\infty} \ln(1 - 1/n^2) = \ln(1/2) = -\ln 2" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <DifficultyHeader level="Niveau : Difficile — Constante d'Euler-Mascheroni" />
+
+        <ExerciseCard
+          id="13-10"
+          title="Constante d'Euler-Mascheroni"
+          difficulty="Niveau: Difficile"
+          content={
+            <div className="space-y-3">
+              <p>Soit <LatexRenderer latex="u_n = \sum_{k=1}^n \frac{1}{k} - \ln n" /> pour <LatexRenderer latex="n \ge 1" />.</p>
+              <p>1. Démontrer que <LatexRenderer latex="(u_n)" /> est décroissante et minorée.</p>
+              <p>2. En déduire l'existence d'une constante <LatexRenderer latex="\gamma" /> (constante d'Euler-Mascheroni) telle que <LatexRenderer latex="\sum_{k=1}^n 1/k = \ln n + \gamma + o(1)" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Pour démontrer la convergence d'une suite, le théorème de la limite monotone est l'outil idéal : une suite décroissante et minorée converge. La démonstration repose sur des comparaisons série-intégrale fines pour la monotonie et la minoration.
+              </PointMethodo>
+              <p><strong>1. Monotonie.</strong> Soit <LatexRenderer latex="u_{n+1} - u_n = \frac{1}{n+1} - \ln(n+1) + \ln n = \frac{1}{n+1} - \ln\!\left(1 + \frac{1}{n}\right)" />.</p>
+              <p className="mt-2">Or pour <LatexRenderer latex="x > 0" />, <LatexRenderer latex="\ln(1 + x) > x/(1 + x)" /> (inégalité classique, par étude de la fonction <LatexRenderer latex="x \mapsto \ln(1+x) - x/(1+x)" />, qui est positive et nulle en 0).</p>
+              <p className="mt-2">Avec <LatexRenderer latex="x = 1/n" /> : <LatexRenderer latex="\ln(1 + 1/n) > (1/n)/(1 + 1/n) = 1/(n+1)" />.</p>
+              <p className="mt-2">D'où <LatexRenderer latex="u_{n+1} - u_n < 0" />, donc <LatexRenderer latex="(u_n)" /> est strictement décroissante.</p>
+              <Astuce>
+                Pour la minoration, comparer la somme à l'intégrale <LatexRenderer latex="\int_1^{n+1} dt/t" /> : la décroissance de <LatexRenderer latex="t \mapsto 1/t" /> donne <LatexRenderer latex="\sum_{k=1}^n 1/k \ge \int_1^{n+1} dt/t = \ln(n+1) > \ln n" />.
+              </Astuce>
+              <p className="mt-2"><strong>Minoration.</strong> Or par comparaison série-intégrale (avec <LatexRenderer latex="f(t) = 1/t" /> décroissante sur <LatexRenderer latex="[k, k+1]" />) :</p>
+              <LatexRenderer latex="\frac{1}{k} \ge \int_k^{k+1} \frac{dt}{t} \quad\Rightarrow\quad \sum_{k=1}^n \frac{1}{k} \ge \int_1^{n+1} \frac{dt}{t} = \ln(n + 1)." />
+              <p className="mt-2">D'où <LatexRenderer latex="u_n = \sum_{k=1}^n 1/k - \ln n \ge \ln(n+1) - \ln n = \ln(1 + 1/n) > 0" />.</p>
+              <p className="mt-2"><strong>2. Conclusion.</strong> <LatexRenderer latex="(u_n)" /> est décroissante et minorée par 0. Par le théorème de la limite monotone, <LatexRenderer latex="u_n \to \gamma \in \mathbb{R}_+" />.</p>
+              <p className="mt-2">D'où <LatexRenderer latex="\sum_{k=1}^n 1/k = \ln n + \gamma + o(1)" /> quand <LatexRenderer latex="n \to +\infty" />.</p>
+              <ConclusionBox>
+                La constante d'Euler-Mascheroni <LatexRenderer latex="\gamma = \lim_{n \to +\infty} \left(\sum_{k=1}^n 1/k - \ln n\right) \approx 0{,}577" /> existe. Elle apparaît dans de nombreuses formules d'analyse, mais on ne sait toujours pas si elle est rationnelle ou irrationnelle.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
       </div>
     </MathChapterTemplate>
   );

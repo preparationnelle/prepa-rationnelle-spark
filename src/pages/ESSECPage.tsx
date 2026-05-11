@@ -36,23 +36,22 @@ const ESSECPage = () => {
           </CardHeader>
           <CardContent>
             <p className="mb-4">
-              <span className="font-semibold">L'entretien le plus long et approfondi :</span> L'ESSEC est réputée 
-              pour son entretien de personnalité fleuve, durant 30 à 45 minutes, avec un coefficient élevé (coef. 10). 
-              C'est un face-à-face individuel avec un jury généralement composé de 3 personnes (un professeur, un 
-              diplômé, parfois un RH).
+              <span className="font-semibold">L'entretien le plus long et exigeant :</span> L'ESSEC propose un entretien
+              de personnalité de <span className="font-semibold">45 minutes</span>, avec un coefficient élevé (coef. 10).
+              C'est un face-à-face individuel avec un jury d'au moins 3 personnes : 2 représentants du corps professoral
+              ou cadres ESSEC, et 1 représentant du monde économique.
             </p>
             <p className="mb-4">
-              Le passage obligé avant l'entretien est un questionnaire de personnalité à remplir juste avant d'entrer : 
-              une fiche comportant des questions personnelles que le jury lira et utilisera durant l'oral. Particularité 
-              ESSEC, le jury ne se contente pas du questionnaire : il creuse au-delà de ce qui est écrit, dans les 
-              moindres détails.
-            </p>
-            <p className="mb-4">
-              
+              <span className="font-semibold">Nouveau format depuis 2025 :</span> le questionnaire de personnalité préalable
+              a été supprimé. L'entretien débute désormais par un <span className="font-semibold">pitch personnel libre de 3 à 5 minutes</span> dans
+              lequel vous vous présentez sans support ni guide. C'est vous qui choisissez ce que vous mettez en avant —
+              une liberté totale qui demande une préparation approfondie et une vraie réflexion sur votre identité.
             </p>
             <p>
-              Au début de l'entretien, il y a souvent une mise en situation de 5 minutes : le jury vous expose un cas 
-              d'entreprise ou un dilemme et vous pose quelques questions pour évaluer votre réflexion à chaud.
+              L'entretien inclut également une <span className="font-semibold">mise en situation</span> : le jury vous expose
+              un cas d'entreprise ou un dilemme éthique/managérial et vous pose des questions pour évaluer votre raisonnement
+              à chaud. Le reste de l'entretien est une libre conversation où le jury creuse votre personnalité, vos
+              expériences et vos motivations dans le moindre détail.
             </p>
 
             <Separator className="my-6" />
@@ -67,15 +66,15 @@ Lead. Change", l'ESSEC cherche des étudiants à fort potentiel de croissance,
               capables d'analyse poussée et dotés d'ouverture d'esprit.
             </p>
             <p className="mb-4">
-              À travers son entretien exhaustif, l'ESSEC valorise la profondeur : profondeur dans la connaissance de soi 
-              (le questionnaire vous pousse à l'introspection sur vos centres d'intérêt, vos valeurs, vos expériences), 
-              profondeur dans vos réflexions (capacité à analyser une situation complexe en mise en situation), et 
-              profondeur dans vos motivations (ils vont vérifier la sincérité et la solidité de votre projet).
+              À travers son entretien exhaustif, l'ESSEC valorise la profondeur : profondeur dans la connaissance de soi
+              (le pitch vous pousse à choisir ce qui vous définit vraiment, sans filet), profondeur dans vos réflexions
+              (capacité à analyser une situation complexe en mise en situation), et profondeur dans vos motivations
+              (ils vont vérifier la sincérité et la solidité de votre projet professionnel).
             </p>
             <p className="mb-4">
-              L'ESSEC attend aussi de voir de la créativité et de la souplesse d'esprit, car l'entretien peut partir 
-              dans des directions inattendues. La composante internationale est un plus (beaucoup de questions du 
-              questionnaire portent sur vos séjours à l'étranger, vos langues, etc., signe que l'ESSEC valorise ce vécu).
+              L'ESSEC attend aussi de la créativité et de la souplesse d'esprit : le jury peut rebondir sur n'importe
+              quel élément de votre pitch et partir dans des directions inattendues. La composante internationale est un
+              plus (séjours à l'étranger, langues pratiquées, curiosité pour d'autres cultures).
             </p>
             <p>
               Enfin, l'ESSEC aime les candidats engagés et polyvalents, qui pourront tirer parti de son parcours flexible.
@@ -97,7 +96,7 @@ Lead. Change", l'ESSEC cherche des étudiants à fort potentiel de croissance,
                   <span className="text-sm font-semibold text-primary">1</span>
                 </div>
                 <div>
-                  <p className="font-medium">Durée : 30-45 minutes</p>
+                  <p className="font-medium">Durée : 45 minutes</p>
                   <p className="text-sm text-muted-foreground">Coefficient 10</p>
                 </div>
               </li>
@@ -106,8 +105,8 @@ Lead. Change", l'ESSEC cherche des étudiants à fort potentiel de croissance,
                   <span className="text-sm font-semibold text-primary">2</span>
                 </div>
                 <div>
-                  <p className="font-medium">Questionnaire détaillé</p>
-                  <p className="text-sm text-muted-foreground">Sert de base approfondie</p>
+                  <p className="font-medium">Pitch personnel 3-5 min</p>
+                  <p className="text-sm text-muted-foreground">Libre, sans support (remplace le questionnaire supprimé en 2025)</p>
                 </div>
               </li>
               <li className="flex gap-2">
@@ -143,28 +142,25 @@ Lead. Change", l'ESSEC cherche des étudiants à fort potentiel de croissance,
           </CardHeader>
           <CardContent>
             <p className="mb-4">
-              Attendez-vous à un entretien très complet et parfois déstabilisant par sa durée. Les jurys ESSEC sont 
-              bienveillants mais exigeants : ils lisent attentivement votre questionnaire pendant quelques minutes au 
-              début, puis démarrent l'échange.
+              Attendez-vous à un entretien très complet et parfois déstabilisant par sa durée. Les jurys ESSEC sont
+              bienveillants mais exigeants : ils écoutent attentivement votre pitch d'ouverture, puis ils rebondissent
+              sur chaque élément que vous avez mentionné — préparez-vous à tout défendre.
             </p>
             <p className="mb-4">
-              Ils vont rebondir sur le moindre détail que vous avez mentionné. Par exemple, si vous avez indiqué faire 
-              du piano, préparez-vous à des questions du type « Quelles œuvres préférez-vous jouer ? »; si vous mentionnez 
-              un échange à l'étranger, ils pourraient creuser sur la culture du pays, etc.
+              Ils creusent dans le moindre détail. Si vous parlez de piano, attendez-vous à « Quelles œuvres préférez-vous
+              jouer ? » ; si vous mentionnez un séjour à l'étranger, ils pourraient creuser la culture du pays, votre
+              ressenti, ce que ça a changé en vous. Le jury veut vérifier la sincérité et la profondeur de ce que vous
+              dites.
             </p>
             <p className="mb-4">
-              Le but n'est pas de vous piéger, mais de vérifier la sincérité de ce que vous dites et de voir jusqu'où vous 
-              pouvez réfléchir. Le format long permet aussi aux jurés de tester votre endurance et votre résistance au stress.
-            </p>
-            <p className="mb-4">
-              Certains jurys peuvent adopter un ton un peu sec ou insister lourdement sur un point pour vous challenger – 
-              tenez bon, restez poli et constant, c'est souvent un jeu de rôle de leur part.
+              Certains jurys adoptent un ton sec ou insistent sur un point pour vous challenger — tenez bon, restez poli
+              et constant, c'est souvent un test de résistance délibéré de leur part.
             </p>
             <p>
-              La mise en situation initiale, elle, donne le ton : un problème d'entreprise à résoudre, c'est un clin d'œil 
-              à des exercices de cas, et ça permet de vous évaluer sur votre logique et votre sang-froid dès le début. 
-              Globalement, l'entretien ESSEC est perçu comme le plus exigeant des écoles, mais aussi une chance de vraiment 
-              vous exprimer : 40 minutes, c'est assez long pour montrer toute votre personnalité.
+              La mise en situation donne le ton dès le début : un problème d'entreprise ou un dilemme à résoudre à chaud,
+              qui permet d'évaluer votre logique et votre sang-froid. Globalement, l'entretien ESSEC reste le plus
+              exigeant de toutes les grandes écoles, mais aussi une vraie chance de vous exprimer : 45 minutes permettent
+              de montrer toute l'étendue de votre personnalité.
             </p>
           </CardContent>
         </Card>
@@ -177,21 +173,20 @@ Lead. Change", l'ESSEC cherche des étudiants à fort potentiel de croissance,
           <CardContent>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
-                <AccordionTrigger>Soignez le questionnaire</AccordionTrigger>
+                <AccordionTrigger>Construisez votre pitch de 5 minutes</AccordionTrigger>
                 <AccordionContent>
-                  Soignez le questionnaire ESSEC : c'est votre carte de visite. Il comporte des questions type « De quels 
-                  sujets ne souhaiteriez-vous pas parler ? », « Quelle est la valeur à laquelle vous croyez le plus ? », 
-                  « Avez-vous déjà travaillé ? ». Remplissez-le avec honnêteté et précision. Ne laissez pas de blancs, 
-                  évitez les banalités, et relisez-vous pour éliminer toute faute.
+                  Le questionnaire ayant été supprimé, le pitch d'ouverture est désormais votre seule carte de visite.
+                  Rédigez-le comme un récit cohérent : qui êtes-vous, ce qui vous a construit, ce qui vous anime, et
+                  pourquoi l'ESSEC. Chronométrez-vous : 3 à 5 minutes, c'est très court. Chaque mot doit être choisi,
+                  car le jury va rebondir sur tout ce que vous dites.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>Préparez-vous sur tout votre questionnaire</AccordionTrigger>
+                <AccordionTrigger>Préparez chaque détail de votre pitch</AccordionTrigger>
                 <AccordionContent>
-                  Pour l'oral en lui-même : entraînez-vous à parler de chaque élément de votre questionnaire. Si vous 
-                  indiquez un hobby, soyez incollable dessus (histoire, actualité liée, etc.). Si vous citez une valeur 
-                  importante pour vous, préparez un petit argumentaire qui la justifie. En somme, aucun mot de votre 
-                  questionnaire ne doit vous prendre en défaut.
+                  Entraînez-vous à développer chaque élément que vous mentionnez dans votre pitch. Si vous parlez d'un
+                  hobby, d'un voyage, d'un engagement ou d'une valeur, préparez une version longue et une version courte
+                  de chaque. Le jury ESSEC creuse tout : aucun mot de votre pitch ne doit vous surprendre en défaut.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
@@ -214,9 +209,9 @@ Lead. Change", l'ESSEC cherche des étudiants à fort potentiel de croissance,
               <AccordionItem value="item-5">
                 <AccordionTrigger>Tenez la distance</AccordionTrigger>
                 <AccordionContent>
-                  Tenez la durée : ne montrez pas de signe de découragement ou de fatigue, restez enthousiaste jusqu'au 
-                  bout (vous pouvez tout à fait continuer d'être souriant et dynamique à la 40e minute !). Si vous avez 
-                  bien préparé du contenu et que vous êtes vous-même, l'entretien ESSEC peut même devenir un plaisir 
+                  Tenez la durée : ne montrez pas de signe de découragement ou de fatigue, restez enthousiaste jusqu'au
+                  bout (vous pouvez tout à fait continuer d'être souriant et dynamique à la 45e minute !). Si vous avez
+                  bien préparé votre pitch et que vous êtes vous-même, l'entretien ESSEC peut même devenir un plaisir
                   plus qu'une épreuve.
                 </AccordionContent>
               </AccordionItem>

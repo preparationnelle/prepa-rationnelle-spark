@@ -16,7 +16,7 @@ const QuestionSectionComponent: React.FC<QuestionSectionProps> = ({ section }) =
     if (id.includes('poser') || id.includes('question')) return <HelpCircle className="h-5 w-5 text-blue-600" />;
     if (id.includes('mots') || id.includes('questionnement')) return <Brain className="h-5 w-5 text-green-600" />;
     if (id.includes('retrouver') || id.includes('question')) return <Target className="h-5 w-5 text-purple-600" />;
-    if (id.includes('dialogue') || id.includes('renseignements')) return <MessageSquare className="h-5 w-5 text-pr-orange-dark" />;
+    if (id.includes('dialogue') || id.includes('renseignements')) return <MessageSquare className="h-5 w-5 text-carnet-red" />;
     if (id.includes('structures') || id.includes('verbes')) return <Code className="h-5 w-5 text-indigo-600" />;
     if (id.includes('ouvertes') || id.includes('fermees')) return <Zap className="h-5 w-5 text-yellow-600" />;
     if (id.includes('interrogatifs') || id.includes('dialogues')) return <Users className="h-5 w-5 text-pink-600" />;
@@ -32,7 +32,7 @@ const QuestionSectionComponent: React.FC<QuestionSectionProps> = ({ section }) =
     if (id.includes('poser') || id.includes('question')) return 'bg-blue-100';
     if (id.includes('mots') || id.includes('questionnement')) return 'bg-green-100';
     if (id.includes('retrouver') || id.includes('question')) return 'bg-purple-100';
-    if (id.includes('dialogue') || id.includes('renseignements')) return 'bg-orange-100';
+    if (id.includes('dialogue') || id.includes('renseignements')) return 'bg-[rgba(193,68,58,0.08)]';
     if (id.includes('structures') || id.includes('verbes')) return 'bg-indigo-100';
     if (id.includes('ouvertes') || id.includes('fermees')) return 'bg-yellow-100';
     if (id.includes('interrogatifs') || id.includes('dialogues')) return 'bg-pink-100';
@@ -48,7 +48,7 @@ const QuestionSectionComponent: React.FC<QuestionSectionProps> = ({ section }) =
     if (id.includes('poser') || id.includes('question')) return 'border-blue-200';
     if (id.includes('mots') || id.includes('questionnement')) return 'border-green-200';
     if (id.includes('retrouver') || id.includes('question')) return 'border-purple-200';
-    if (id.includes('dialogue') || id.includes('renseignements')) return 'border-orange-200';
+    if (id.includes('dialogue') || id.includes('renseignements')) return 'border-[rgba(193,68,58,0.25)]';
     if (id.includes('structures') || id.includes('verbes')) return 'border-indigo-200';
     if (id.includes('ouvertes') || id.includes('fermees')) return 'border-yellow-200';
     if (id.includes('interrogatifs') || id.includes('dialogues')) return 'border-pink-200';
@@ -132,25 +132,25 @@ const QuestionSectionComponent: React.FC<QuestionSectionProps> = ({ section }) =
 
           {/* Points d'attention */}
           {section.content.irregularities && section.content.irregularities.length > 0 && (
-            <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
-              <h4 className="font-semibold text-orange-900 mb-3 flex items-center gap-2">
+            <div className="bg-[rgba(193,68,58,0.05)] rounded-lg p-4 border border-[rgba(193,68,58,0.25)]">
+              <h4 className="font-semibold text-carnet-red-deep mb-3 flex items-center gap-2">
                 <AlertTriangle className="h-4 w-4" />
                 Points d'attention et nuances
               </h4>
               <div className="space-y-3">
                 {section.content.irregularities.map((irregularity, index) => (
-                  <div key={index} className="bg-white rounded p-3 border border-orange-200">
+                  <div key={index} className="bg-white rounded p-3 border border-[rgba(193,68,58,0.25)]">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="font-medium text-orange-800">{irregularity.pattern}</span>
+                      <span className="font-medium text-carnet-red-deep">{irregularity.pattern}</span>
                     </div>
                     <div className="flex flex-wrap gap-1 mb-2">
                       {irregularity.examples.map((example, exIndex) => (
-                        <span key={exIndex} className="text-xs font-mono bg-orange-100 text-orange-800 px-2 py-1 rounded">
+                        <span key={exIndex} className="text-xs font-mono bg-[rgba(193,68,58,0.08)] text-carnet-red-deep px-2 py-1 rounded">
                           {example}
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs text-pr-orange-dark">{irregularity.notes}</p>
+                    <p className="text-xs text-carnet-red">{irregularity.notes}</p>
                   </div>
                 ))}
               </div>

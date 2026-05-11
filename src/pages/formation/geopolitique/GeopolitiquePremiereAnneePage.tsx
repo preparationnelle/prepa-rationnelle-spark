@@ -1,144 +1,158 @@
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { ChevronRight, Home, FileText, BookOpen, Globe } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import {
+  BookOpen,
+  Ship,
+  Anchor,
+  Zap,
+  Globe,
+  Swords,
+  Users,
+  Crown,
+  Layers,
+  GraduationCap,
+} from 'lucide-react';
+import FormationLayout from '@/components/formation/shared/FormationLayout';
+import FormationHero from '@/components/formation/shared/FormationHero';
+import FormationSectionHeader from '@/components/formation/shared/FormationSectionHeader';
+import FormationChapterListRow, {
+  buildGeopoModuleActions,
+} from '@/components/formation/shared/FormationChapterListRow';
+
+const modules = [
+  {
+    id: 1,
+    slug: 'espaces-maritimes',
+    title: 'Les espaces maritimes',
+    description:
+      "Territorialisation, maritimisation de l'économie mondiale et nouveaux rapports de puissance.",
+    icon: Ship,
+  },
+  {
+    id: 2,
+    slug: 'espaces-maritimes-tensions',
+    title: 'Espaces maritimes — tensions et conflits',
+    description: 'Puissance, conflits historiques, renouveau juridique et militarisation.',
+    icon: Anchor,
+  },
+  {
+    id: 3,
+    slug: 'energies',
+    title: 'Géopolitique des énergies',
+    description: 'Dépendances, matières premières critiques et transition énergétique européenne.',
+    icon: Zap,
+  },
+  {
+    id: 4,
+    slug: 'gouvernance-mondiale',
+    title: 'Gouvernance mondiale',
+    description: 'Institutions, limites, réussites et nouveaux défis de la régulation globale.',
+    icon: Globe,
+  },
+  {
+    id: 5,
+    slug: 'guerres',
+    title: 'Les guerres',
+    description: 'Évolutions des formes de guerre, cyberconflits et résurgence des rivalités.',
+    icon: Swords,
+  },
+  {
+    id: 6,
+    slug: 'migrations',
+    title: 'Les migrations',
+    description: 'Causes, gouvernance, effets contrastés et migrations climatiques/démographiques.',
+    icon: Users,
+  },
+  {
+    id: 7,
+    slug: 'puissance',
+    title: 'La puissance',
+    description: 'Définitions, critères (hard/soft/smart/sharp), ressources et technologies.',
+    icon: Crown,
+  },
+  {
+    id: 8,
+    slug: 'ressources-strategiques',
+    title: 'Ressources stratégiques',
+    description: 'Typologie, rivalités/coopérations, métaux rares et études de cas.',
+    icon: Layers,
+  },
+];
 
 const GeopolitiquePremiereAnneePage = () => {
-  const sujets = [
-    {
-      id: 1,
-      title: 'Les espaces maritimes',
-      description:
-        "Territorialisation, maritimisation de l'économie mondiale et nouveaux rapports de puissance",
-      to: '/formation/geopolitique/premiere-annee/espaces-maritimes'
-    },
-    {
-      id: 2,
-      title: 'Espaces maritimes — tensions et conflits',
-      description: "Puissance, conflits historiques, renouveau juridique et militarisation",
-      to: '/formation/geopolitique/premiere-annee/espaces-maritimes-tensions'
-    },
-    {
-      id: 3,
-      title: 'Géopolitique des énergies',
-      description: "Dépendances, matières premières critiques et transition énergétique européenne",
-      to: '/formation/geopolitique/premiere-annee/energies'
-    },
-    {
-      id: 4,
-      title: 'Gouvernance mondiale',
-      description: "Institutions, limites, réussites et nouveaux défis de la régulation globale",
-      to: '/formation/geopolitique/premiere-annee/gouvernance-mondiale'
-    },
-    {
-      id: 5,
-      title: 'Les guerres',
-      description: "Évolutions des formes de guerre, cyberconflits et résurgence des rivalités",
-      to: '/formation/geopolitique/premiere-annee/guerres'
-    },
-    {
-      id: 6,
-      title: 'Les migrations',
-      description: "Causes, gouvernance, effets contrastés et migrations climatiques/démographiques",
-      to: '/formation/geopolitique/premiere-annee/migrations'
-    },
-    {
-      id: 7,
-      title: 'La puissance',
-      description: "Définitions, critères (hard/soft/smart/sharp), ressources et technologies",
-      to: '/formation/geopolitique/premiere-annee/puissance'
-    },
-    {
-      id: 8,
-      title: 'Ressources stratégiques',
-      description: "Typologie, rivalités/cooperations, métaux rares et études de cas",
-      to: '/formation/geopolitique/premiere-annee/ressources-strategiques'
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
-              <Home className="h-3 w-3" />
-              <span>Accueil</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formations" className="hover:text-gray-900 transition-colors">
-              Toutes les formations
-            </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/geopolitique" className="hover:text-gray-900 transition-colors">
-              Formation Géopolitique
-            </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Première Année</span>
-          </div>
+    <FormationLayout
+      seo={{
+        title: 'Géopolitique · Première année ECG',
+        description:
+          'Programme complet de géopolitique 1ʳᵉ année ECG : 8 modules thématiques (espaces maritimes, énergies, gouvernance, guerres, migrations, puissance, ressources stratégiques) avec cours, chronologies et flashcards.',
+        canonical: '/formation/geopolitique/premiere-annee',
+      }}
+      crumbs={[
+        { label: 'Accueil', to: '/' },
+        { label: 'Formations', to: '/formations' },
+        { label: 'Géopolitique', to: '/formation/geopolitique' },
+        { label: 'Première année' },
+      ]}
+    >
+      <FormationHero
+        eyebrow="Géopolitique · Première année ECG"
+        Icon={BookOpen}
+        title="Première"
+        titleAccent="année."
+        subtitle={
+          <>
+            8 modules thématiques pour bâtir vos <span className="carnet-hl font-lora italic">fondamentaux</span> en géopolitique : maritimes, énergies, puissance, guerres, migrations, gouvernance, ressources stratégiques.
+          </>
+        }
+        tags={[
+          { label: '1ʳᵉ année ECG', icon: GraduationCap },
+          { label: '8 modules thématiques', variant: 'outline' },
+        ]}
+        annotation="↓ programme par module"
+      />
+
+      <section className="relative pb-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5 }}
+          >
+            <FormationSectionHeader
+              number={1}
+              title="Modules thématiques"
+              description="Chaque module : cours synthétique, chronologie associée et flashcards de révision."
+            />
+
+            <div className="space-y-4">
+              {modules.map((m, idx) => {
+                const tilt = idx % 4 === 1 ? 'carnet-tilt-r' : idx % 4 === 3 ? 'carnet-tilt-l' : '';
+                return (
+                  <motion.div
+                    key={m.slug}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-30px' }}
+                    transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.3) }}
+                    className={tilt}
+                  >
+                    <FormationChapterListRow
+                      number={m.id}
+                      title={m.title}
+                      description={m.description}
+                      Icon={m.icon}
+                      actions={buildGeopoModuleActions(m.slug)}
+                    />
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
         </div>
-      </nav>
-
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center mb-8">Géopolitique - Première Année</h1>
-        <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
-          Sélection de sujets clés du programme. Commencez par les espaces maritimes.
-        </p>
-
-        <div className="max-w-5xl mx-auto space-y-4">
-          {sujets.map((sujet, idx) => (
-            <Link key={sujet.id} to={sujet.to} className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-carnet-red/10 rounded-full flex items-center justify-center text-carnet-red font-bold text-lg group-hover:bg-carnet-red/20 transition-colors">{idx + 1}</div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-carnet-red transition-colors">{sujet.title}</h3>
-                    <p className="text-gray-600 mb-4">{sujet.description}</p>
-                    <div className="flex flex-wrap gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Link to={sujet.to} className="inline-flex items-center gap-2 bg-carnet-red hover:bg-carnet-red-deep text-white px-4 py-2 rounded-md">
-                        <BookOpen className="w-4 h-4" />
-                        Accéder au cours
-                      </Link>
-                      <Link to={
-                        sujet.id === 1 ? "/formation/geopolitique/premiere-annee/espaces-maritimes/chronologie" :
-                        sujet.id === 2 ? "/formation/geopolitique/premiere-annee/espaces-maritimes-tensions/chronologie" :
-                        sujet.id === 3 ? "/formation/geopolitique/premiere-annee/energies/chronologie" :
-                        sujet.id === 4 ? "/formation/geopolitique/premiere-annee/gouvernance-mondiale/chronologie" :
-                        sujet.id === 5 ? "/formation/geopolitique/premiere-annee/guerres/chronologie" :
-                        sujet.id === 6 ? "/formation/geopolitique/premiere-annee/migrations/chronologie" :
-                        sujet.id === 7 ? "/formation/geopolitique/premiere-annee/puissance/chronologie" :
-                        sujet.id === 8 ? "/formation/geopolitique/premiere-annee/ressources-strategiques/chronologie" :
-                        "/formation/geopolitique/chronologie"
-                      } className="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md">
-                        <Globe className="w-4 h-4" />
-                        Chronologie
-                      </Link>
-                      <Link to={
-                        sujet.id === 1 ? "/formation/geopolitique/premiere-annee/espaces-maritimes/flashcards" :
-                        sujet.id === 2 ? "/formation/geopolitique/premiere-annee/espaces-maritimes-tensions/flashcards" :
-                        sujet.id === 3 ? "/formation/geopolitique/premiere-annee/energies/flashcards" :
-                        sujet.id === 4 ? "/formation/geopolitique/premiere-annee/gouvernance-mondiale/flashcards" :
-                        sujet.id === 5 ? "/formation/geopolitique/premiere-annee/guerres/flashcards" :
-                        sujet.id === 6 ? "/formation/geopolitique/premiere-annee/migrations/flashcards" :
-                        sujet.id === 7 ? "/formation/geopolitique/premiere-annee/puissance/flashcards" :
-                        sujet.id === 8 ? "/formation/geopolitique/premiere-annee/ressources-strategiques/flashcards" :
-                        "/formation/geopolitique/flashcards"
-                      } className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md">
-                        <FileText className="w-4 h-4" />
-                        Flash cards
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* (Outils et ressources supprimés pour une page plus simple axée sur la liste de sujets) */}
-      </div>
-    </div>
+      </section>
+    </FormationLayout>
   );
 };
 

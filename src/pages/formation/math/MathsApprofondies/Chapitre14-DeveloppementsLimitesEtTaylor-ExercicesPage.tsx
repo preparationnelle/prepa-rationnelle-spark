@@ -319,6 +319,153 @@ const Chapitre14DeveloppementsLimitesEtTaylorExercicesPage = () => {
           }
         />
 
+        <DifficultyHeader level="Niveau : Facile — DL à partir des fonctions usuelles" />
+
+        <ExerciseCard
+          id="14-6"
+          title="DL d'une racine cubique en 0"
+          difficulty="Niveau: Facile"
+          content={
+            <div className="space-y-3">
+              <p>Calculer le DL en 0 à l'ordre 2 de <LatexRenderer latex="f(x) = \sqrt[3]{1 + x}" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Pour <LatexRenderer latex="(1+x)^\alpha" /> en 0, on applique le DL usuel avec coefficients <LatexRenderer latex="\binom{\alpha}{k}" />. Ici <LatexRenderer latex="\alpha = 1/3" />.
+              </PointMethodo>
+              <p>Soit <LatexRenderer latex="f(x) = (1 + x)^{1/3}" />. Avec <LatexRenderer latex="\alpha = 1/3" /> :</p>
+              <p>Coefficient d'ordre 1 : <LatexRenderer latex="\alpha = 1/3" />. Coefficient d'ordre 2 : <LatexRenderer latex="\alpha(\alpha - 1)/2 = (1/3)(-2/3)/2 = -1/9" />.</p>
+              <p className="mt-2">D'où :</p>
+              <LatexRenderer latex="\sqrt[3]{1 + x} = 1 + \frac{x}{3} - \frac{x^2}{9} + o(x^2)." />
+              <ConclusionBox>
+                <LatexRenderer latex="\sqrt[3]{1+x} = 1 + x/3 - x^2/9 + o(x^2)" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <DifficultyHeader level="Niveau : Intermédiaire — Étude asymptotique de fonctions" />
+
+        <ExerciseCard
+          id="14-7"
+          title="DL d'un quotient — limite indéterminée"
+          difficulty="Niveau: Intermédiaire"
+          content={
+            <div className="space-y-3">
+              <p>Calculer <LatexRenderer latex="\displaystyle\lim_{x \to 0} \frac{e^x - 1 - x}{x^2}" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Pour une forme indéterminée <LatexRenderer latex="0/0" /> avec dénominateur en <LatexRenderer latex="x^k" />, développer le numérateur à l'ordre <LatexRenderer latex="k" /> au moins pour identifier le terme dominant.
+              </PointMethodo>
+              <p>Soit le DL de <LatexRenderer latex="e^x" /> en 0 à l'ordre 2 : <LatexRenderer latex="e^x = 1 + x + x^2/2 + o(x^2)" />.</p>
+              <p className="mt-2">D'où <LatexRenderer latex="e^x - 1 - x = x^2/2 + o(x^2)" />. Ainsi :</p>
+              <LatexRenderer latex="\frac{e^x - 1 - x}{x^2} = \frac{x^2/2 + o(x^2)}{x^2} = \frac{1}{2} + o(1) \xrightarrow[x\to 0]{} \frac{1}{2}." />
+              <ConclusionBox>
+                <LatexRenderer latex="\displaystyle\lim_{x \to 0} \frac{e^x - 1 - x}{x^2} = \frac{1}{2}" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <ExerciseCard
+          id="14-8"
+          title="DL généralisé en l'infini"
+          difficulty="Niveau: Intermédiaire"
+          content={
+            <div className="space-y-3">
+              <p>Donner un développement asymptotique de <LatexRenderer latex="f(x) = \sqrt{x^2 + x} - x" /> quand <LatexRenderer latex="x \to +\infty" />, à l'ordre <LatexRenderer latex="o(1/x)" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Pour un développement en <LatexRenderer latex="+\infty" />, le changement de variable <LatexRenderer latex="u = 1/x" /> (avec <LatexRenderer latex="u \to 0^+" />) ramène à un DL classique en 0. Sinon, on factorise par la puissance dominante pour faire apparaître un <LatexRenderer latex="(1 + u)^\alpha" /> avec <LatexRenderer latex="u" /> petit.
+                </PointMethodo>
+              <p>Soit <LatexRenderer latex="x > 0" /> grand. On factorise par <LatexRenderer latex="x" /> :</p>
+              <LatexRenderer latex="\sqrt{x^2 + x} = x\sqrt{1 + 1/x}." />
+              <p className="mt-2">Posons <LatexRenderer latex="u = 1/x \to 0^+" />. Or, par le DL de <LatexRenderer latex="(1 + u)^{1/2}" /> en 0 :</p>
+              <LatexRenderer latex="\sqrt{1 + u} = 1 + \frac{u}{2} - \frac{u^2}{8} + o(u^2)." />
+              <Astuce>
+                Pour aller à l'ordre <LatexRenderer latex="o(1/x)" /> dans <LatexRenderer latex="f(x)" />, on a besoin du DL de <LatexRenderer latex="\sqrt{1+u}" /> à l'ordre 2 en <LatexRenderer latex="u" /> (car <LatexRenderer latex="x u^2 = 1/x" />, qui contribue à l'ordre <LatexRenderer latex="1/x" />).
+              </Astuce>
+              <p className="mt-2">D'où :</p>
+              <LatexRenderer latex="\sqrt{x^2 + x} = x \cdot \left(1 + \frac{1}{2x} - \frac{1}{8x^2} + o(1/x^2)\right) = x + \frac{1}{2} - \frac{1}{8x} + o(1/x)." />
+              <p className="mt-2">Ainsi <LatexRenderer latex="f(x) = \sqrt{x^2 + x} - x = \frac{1}{2} - \frac{1}{8x} + o(1/x)" />.</p>
+              <ConclusionBox>
+                <LatexRenderer latex="\sqrt{x^2 + x} - x = \dfrac{1}{2} - \dfrac{1}{8x} + o(1/x)" /> en <LatexRenderer latex="+\infty" />. Asymptote horizontale à <LatexRenderer latex="y = x + 1/2" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <DifficultyHeader level="Niveau : Concours — Calcul de limites par DL combinés" />
+
+        <ExerciseCard
+          id="14-9"
+          title="Limite de (sin x / x)^(1/x²)"
+          difficulty="Niveau: Concours"
+          content={
+            <div className="space-y-3">
+              <p>Calculer <LatexRenderer latex="\displaystyle\lim_{x \to 0} \left(\frac{\sin x}{x}\right)^{1/x^2}" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Pour une limite de la forme <LatexRenderer latex="f(x)^{g(x)}" /> avec <LatexRenderer latex="f \to 1" /> et <LatexRenderer latex="g \to +\infty" /> (forme <LatexRenderer latex="1^\infty" />), passer par l'exponentielle : <LatexRenderer latex="f^g = e^{g \ln f}" />, puis développer <LatexRenderer latex="\ln f" /> en utilisant <LatexRenderer latex="\ln(1 + u) = u + O(u^2)" />.
+              </PointMethodo>
+              <p>Soit <LatexRenderer latex="f(x) = \sin x / x" /> et <LatexRenderer latex="g(x) = 1/x^2" />.</p>
+              <p className="mt-2"><strong>DL de f(x).</strong> Or <LatexRenderer latex="\sin x = x - x^3/6 + o(x^3)" />, donc <LatexRenderer latex="\sin x / x = 1 - x^2/6 + o(x^2)" />.</p>
+              <p className="mt-2"><strong>DL du logarithme.</strong> Posons <LatexRenderer latex="u = -x^2/6 + o(x^2)" />, qui tend vers 0. Or <LatexRenderer latex="\ln(1 + u) = u + o(u)" />, donc :</p>
+              <LatexRenderer latex="\ln\!\left(\frac{\sin x}{x}\right) = -\frac{x^2}{6} + o(x^2)." />
+              <Astuce>
+                Le terme dominant dans <LatexRenderer latex="\ln f" /> doit être de l'ordre <LatexRenderer latex="x^2" /> pour que <LatexRenderer latex="g(x) \ln f(x) = \ln f / x^2" /> ait une limite finie non nulle.
+              </Astuce>
+              <p className="mt-2"><strong>Forme exponentielle.</strong> D'où :</p>
+              <LatexRenderer latex="\left(\frac{\sin x}{x}\right)^{1/x^2} = \exp\!\left(\frac{1}{x^2} \cdot \ln\!\frac{\sin x}{x}\right) = \exp\!\left(-\frac{1}{6} + o(1)\right) \xrightarrow[x\to 0]{} e^{-1/6}." />
+              <ConclusionBox>
+                <LatexRenderer latex="\displaystyle\lim_{x \to 0} \left(\frac{\sin x}{x}\right)^{1/x^2} = e^{-1/6}" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <DifficultyHeader level="Niveau : Difficile — DL et inégalité par Taylor-Lagrange" />
+
+        <ExerciseCard
+          id="14-10"
+          title="Inégalité par DL de l'exponentielle"
+          difficulty="Niveau: Difficile"
+          content={
+            <div className="space-y-3">
+              <p>Démontrer que pour tout <LatexRenderer latex="x \ge 0" /> : <LatexRenderer latex="e^x \ge 1 + x + \dfrac{x^2}{2} + \dfrac{x^3}{6}" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                L'inégalité de Taylor-Lagrange affirme que pour <LatexRenderer latex="f" /> de classe <LatexRenderer latex="\mathcal{C}^{n+1}" /> sur <LatexRenderer latex="[0, x]" /> avec <LatexRenderer latex="f^{(n+1)} \ge 0" />, on a <LatexRenderer latex="f(x) \ge \sum_{k=0}^n f^{(k)}(0) x^k / k!" />. C'est le procédé standard pour comparer une fonction à son DL de Taylor.
+              </PointMethodo>
+              <p>Soit <LatexRenderer latex="f(t) = e^t" />. <LatexRenderer latex="f \in \mathcal{C}^\infty(\mathbb{R})" />, avec <LatexRenderer latex="f^{(k)}(t) = e^t" /> pour tout <LatexRenderer latex="k" />.</p>
+              <p className="mt-2"><strong>Formule de Taylor avec reste intégral.</strong> Pour <LatexRenderer latex="x \ge 0" />, en appliquant à l'ordre 3 :</p>
+              <LatexRenderer latex="e^x = \sum_{k=0}^3 \frac{x^k}{k!} + \int_0^x \frac{(x-t)^3}{3!} e^t\,dt = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + R_3(x)." />
+              <p className="mt-2">Or pour <LatexRenderer latex="t \in [0, x]" /> et <LatexRenderer latex="x \ge 0" /> : <LatexRenderer latex="(x - t)^3 \ge 0" /> et <LatexRenderer latex="e^t > 0" />. D'où <LatexRenderer latex="R_3(x) = \frac{1}{6}\int_0^x (x-t)^3 e^t\,dt \ge 0" />.</p>
+              <Astuce>
+                On peut généraliser : pour tout <LatexRenderer latex="n \in \mathbb{N}" /> et <LatexRenderer latex="x \ge 0" />, <LatexRenderer latex="e^x \ge \sum_{k=0}^n x^k/k!" />. La démonstration est identique avec le reste de Taylor d'ordre <LatexRenderer latex="n" />.
+              </Astuce>
+              <p className="mt-2">Ainsi <LatexRenderer latex="e^x \ge 1 + x + x^2/2 + x^3/6" />, avec égalité ssi <LatexRenderer latex="x = 0" />.</p>
+              <ConclusionBox>
+                Pour tout <LatexRenderer latex="x \ge 0" /> : <LatexRenderer latex="e^x \ge 1 + x + \dfrac{x^2}{2} + \dfrac{x^3}{6}" />, avec égalité uniquement en <LatexRenderer latex="x = 0" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
       </div>
     </MathChapterTemplate>
   );

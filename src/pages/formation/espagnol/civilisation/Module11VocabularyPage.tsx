@@ -14,34 +14,34 @@ const Module11VocabularyPage = () => {
   const [language] = useState<'fr' | 'en'>('fr');
 
   return (
-    <div className="relative relative overflow-hidden">
+    <div className="carnet-paper min-h-screen relative overflow-hidden font-instrument text-carnet-ink">
       {/* Floating elements - Subtle bubbles */}
 
       {/* Sticky Breadcrumb */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
+          <div className="flex items-center text-xs text-carnet-ink-mute">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute/50 mx-1" />
             <Link to="/formations" className="hover:text-foreground transition-colors">
               Toutes les formations
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute/50 mx-1" />
             <Link to="/formation/espagnol" className="hover:text-foreground transition-colors">
               Formation Espagnol ECG
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute/50 mx-1" />
             <Link to="/formation/espagnol/civilisation" className="hover:text-foreground transition-colors">
               Civilisation Hispanique
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute/50 mx-1" />
             <Link to="/formation/espagnol/civilisation/module11" className="hover:text-foreground transition-colors">
               Transición Energética Española
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute/50 mx-1" />
             <span className="text-foreground font-medium">Vocabulaire Énergétique Espagnol</span>
           </div>
         </div>
@@ -51,11 +51,11 @@ const Module11VocabularyPage = () => {
         {/* Header Section */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="p-4 rounded-2xl bg-pr-orange-dark text-white shadow-lg">
+            <div className="p-4 rounded-2xl bg-carnet-red text-carnet-paper shadow-lg">
               <BookOpen className="h-12 w-12" />
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
-              <span className="text-pr-orange-dark font-bold">
+              <span className="text-carnet-red font-bold">
                 Vocabulaire Énergétique Espagnol
               </span>
             </h1>
@@ -659,7 +659,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
   if (!currentCard) {
     return (
       <div className="max-w-4xl mx-auto p-4 text-center">
-        <p className="text-gray-600">Aucune carte disponible pour cette catégorie.</p>
+        <p className="text-carnet-ink-mute">Aucune carte disponible pour cette catégorie.</p>
       </div>
     );
   }
@@ -673,7 +673,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold flex items-center gap-2">
-            <BookOpen className="h-6 w-6 text-pr-orange-dark" />
+            <BookOpen className="h-6 w-6 text-carnet-red" />
             Vocabulaire énergétique espagnol-français
             {isReviewMode && <span className="text-red-600 text-lg">🔄 Mode révision</span>}
           </h2>
@@ -684,7 +684,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
                 className={`px-3 py-1 text-sm rounded-md transition-colors ${
                   isReviewMode
                     ? 'bg-red-100 hover:bg-red-200 text-red-700'
-                    : 'bg-orange-100 hover:bg-orange-200 text-pr-orange-dark'
+                    : 'bg-[rgba(193,68,58,0.08)] hover:bg-[rgba(193,68,58,0.15)] text-carnet-red'
                 }`}
               >
                 {isReviewMode ? 'Quitter révision' : `À revoir (${reviewCards.size})`}
@@ -699,12 +699,12 @@ const EnergyVocabularyFlashcards: React.FC = () => {
         {/* Filtres par catégorie */}
         <div className="mb-4">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-sm font-medium text-gray-700">Filtrer par catégorie :</span>
+            <span className="text-sm font-medium text-carnet-ink-soft">Filtrer par catégorie :</span>
           </div>
           <div className="flex flex-wrap gap-2">
             <Badge
               variant={selectedCategory === 'all' ? 'default' : 'secondary'}
-              className={`cursor-pointer hover:bg-orange-100 ${selectedCategory === 'all' ? 'bg-pr-orange-dark text-white' : ''}`}
+              className={`cursor-pointer hover:bg-[rgba(193,68,58,0.08)] ${selectedCategory === 'all' ? 'bg-carnet-red text-carnet-paper' : ''}`}
               onClick={() => handleCategoryChange('all')}
             >
               Toutes ({energyVocabularyData.length})
@@ -713,7 +713,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
               <Badge
                 key={cat.category}
                 variant={selectedCategory === cat.category ? 'default' : 'secondary'}
-                className={`cursor-pointer hover:bg-orange-100 ${selectedCategory === cat.category ? 'bg-pr-orange-dark text-white' : ''}`}
+                className={`cursor-pointer hover:bg-[rgba(193,68,58,0.08)] ${selectedCategory === cat.category ? 'bg-carnet-red text-carnet-paper' : ''}`}
                 onClick={() => handleCategoryChange(cat.category)}
               >
                 {cat.category} ({cat.items.length})
@@ -734,7 +734,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
         {/* Barre de progression */}
         <div className="w-full bg-gray-200 rounded-full h-3 mb-6">
           <div
-            className="bg-pr-orange-dark h-3 rounded-full transition-all duration-300"
+            className="bg-carnet-red h-3 rounded-full transition-all duration-300"
             style={{ width: `${progressPercentage}%` }}
           />
         </div>
@@ -748,7 +748,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
       >
         <Card
           className={`w-full max-w-lg h-80 cursor-pointer transition-all duration-300 hover:shadow-xl border-2 ${
-            showAnswer ? 'border-orange-300 bg-orange-50' : 'border-orange-300 bg-orange-50'
+            showAnswer ? 'border-[rgba(193,68,58,0.35)] bg-[rgba(193,68,58,0.05)]' : 'border-[rgba(193,68,58,0.35)] bg-[rgba(193,68,58,0.05)]'
           }`}
           onClick={toggleAnswer}
         >
@@ -758,16 +758,16 @@ const EnergyVocabularyFlashcards: React.FC = () => {
             </Badge>
 
             <h2 className={`text-4xl font-bold mb-6 transition-colors ${
-              showAnswer ? 'text-pr-orange-dark' : 'text-pr-orange-dark'
+              showAnswer ? 'text-carnet-red' : 'text-carnet-red'
             }`}>
               {showAnswer ? currentCard.french : currentCard.spanish}
             </h2>
 
-            <p className="text-gray-600 mb-6 text-lg">
+            <p className="text-carnet-ink-mute mb-6 text-lg">
               {showAnswer ? 'Français' : 'Espagnol'}
             </p>
 
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-carnet-ink-mute">
               {showAnswer ? 'Cliquez pour retourner la carte' : 'Cliquez pour voir la traduction française'}
             </p>
           </CardContent>
@@ -778,7 +778,7 @@ const EnergyVocabularyFlashcards: React.FC = () => {
       <div className="flex justify-center gap-4 mb-6">
         <button
           onClick={prevCard}
-          className="flex items-center gap-2 px-6 py-3 bg-white rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+          className="flex items-center gap-2 px-6 py-3 bg-white rounded-lg border border-dashed border-[rgba(78,55,30,0.18)] hover:carnet-paper-plain transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
           Précédent
@@ -786,14 +786,14 @@ const EnergyVocabularyFlashcards: React.FC = () => {
 
         <button
           onClick={toggleAnswer}
-          className="px-6 py-3 bg-pr-orange-dark text-white rounded-lg hover:bg-pr-orange-dark transition-colors font-medium"
+          className="px-6 py-3 bg-carnet-red text-carnet-paper rounded-lg hover:bg-carnet-red transition-colors font-medium"
         >
           {showAnswer ? 'Masquer la traduction' : 'Voir la traduction'}
         </button>
 
         <button
           onClick={nextCard}
-          className="flex items-center gap-2 px-6 py-3 bg-white rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+          className="flex items-center gap-2 px-6 py-3 bg-white rounded-lg border border-dashed border-[rgba(78,55,30,0.18)] hover:carnet-paper-plain transition-colors"
         >
           Suivant
           <ChevronRight className="h-4 w-4" />
@@ -806,8 +806,8 @@ const EnergyVocabularyFlashcards: React.FC = () => {
           onClick={markAsStudied}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors ${
             studiedCards.has(currentIndex)
-              ? 'bg-green-100 border-green-300 text-green-700'
-              : 'bg-white border-gray-200 hover:bg-gray-50'
+              ? 'bg-green-100 border-green-300 text-carnet-ink-soft'
+              : 'bg-white border-gray-200 hover:carnet-paper-plain'
           }`}
         >
           {studiedCards.has(currentIndex) ? '✓ Étudié' : 'Marquer comme étudié'}
@@ -815,14 +815,14 @@ const EnergyVocabularyFlashcards: React.FC = () => {
 
         <button
           onClick={markForReview}
-          className="flex items-center gap-2 px-4 py-2 bg-orange-100 border border-orange-300 text-pr-orange-dark rounded-lg hover:bg-orange-200 transition-colors"
+          className="flex items-center gap-2 px-4 py-2 bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.35)] text-carnet-red rounded-lg hover:bg-[rgba(193,68,58,0.15)] transition-colors"
         >
           À revoir plus tard
         </button>
       </div>
 
       {/* Raccourcis clavier */}
-      <div className="text-center text-xs text-gray-500 mt-6">
+      <div className="text-center text-xs text-carnet-ink-mute mt-6">
         <p>Raccourcis clavier : ← → pour naviguer, Entrée/Espace pour retourner la carte, R pour marquer à revoir</p>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Eye, EyeOff, Lightbulb } from 'lucide-react';
@@ -33,6 +34,23 @@ interface FlashcardDisplayProps {
   onFlip: () => void;
 }
 
+const statusLabel = (status: ReviewData['status'], language: 'fr' | 'en') => {
+  if (language === 'fr') {
+    switch (status) {
+      case 'mastered': return 'Maîtrisée';
+      case 'learning': return 'Apprentissage';
+      case 'review':   return 'Révision';
+      default:         return 'Nouveau';
+    }
+  }
+  switch (status) {
+    case 'mastered': return 'Mastered';
+    case 'learning': return 'Learning';
+    case 'review':   return 'Reviewing';
+    default:         return 'New';
+  }
+};
+
 export const FlashcardDisplay = ({
   language,
   card,
@@ -46,55 +64,82 @@ export const FlashcardDisplay = ({
   const isLegacyFormat = !card.front && card.word_fr;
 
   return (
-    <div
-      className="min-h-[400px] cursor-pointer bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)] transition-all hover:shadow-[0_8px_30px_rgba(26,26,24,0.08)]"
+    <Card
       onClick={onFlip}
+      className="min-h-[400px] bg-white border-slate-200 shadow-sm transition-all duration-300 relative overflow-hidden group cursor-pointer hover:shadow-md"
     >
-      <div className="h-[3px] w-full bg-pr-orange" />
-      <div className="p-8">
-        <div className="text-center space-y-6">
-          {/* Card status info */}
-          {reviewData && (
-            <div className="flex justify-center gap-2 mb-4 flex-wrap">
-              <Badge
-                className={
-                  reviewData.status === 'mastered'
-                    ? 'bg-pr-orange text-white border-0'
-                    : 'bg-pr-orange-pale text-pr-orange-dark border border-pr-orange/20'
-                }
-              >
-                {reviewData.status === 'mastered' ? '🏆 Maîtrisé' :
-                  reviewData.status === 'learning' ? '📚 Apprentissage' :
-                    reviewData.status === 'review' ? '🔄 Révision' : '🆕 Nouveau'}
-              </Badge>
-              <Badge variant="outline" className="border-pr-gray-light text-pr-gray-dark font-dm-sans">
-                {language === 'fr' ? 'Difficulté' : 'Difficulty'} : {reviewData.difficulty}/5
-              </Badge>
-              <Badge variant="outline" className="border-pr-gray-light text-pr-gray-dark font-dm-sans">
-                {language === 'fr' ? 'Révisions' : 'Reviews'} : {reviewData.review_count}
-              </Badge>
-              <Badge
-                className={
-                  reviewData.correct_count / Math.max(1, reviewData.review_count) >= 0.8
-                    ? 'bg-pr-orange text-white border-0'
-                    : 'bg-pr-gray-bg text-pr-gray-dark border border-pr-gray-light'
-                }
-              >
-                {language === 'fr' ? 'Réussite' : 'Success'} : {Math.round((reviewData.correct_count / Math.max(1, reviewData.review_count)) * 100)}%
-              </Badge>
+      <CardContent className="h-full p-8 sm:p-12 flex flex-col items-center justify-center text-center">
+        {card.category && (
+          <Badge
+            variant="outline"
+            className="absolute top-6 left-6 px-2.5 py-0.5 text-[10px] uppercase tracking-wider border-slate-200 text-slate-500 font-normal"
+          >
+            {card.category}
+          </Badge>
+        )}
+
+        {reviewData && (
+          <div className="absolute top-6 right-6 flex items-center gap-2">
+            <span
+              className={`text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                reviewData.status === 'mastered'
+                  ? 'bg-emerald-50 text-emerald-700'
+                  : reviewData.status === 'learning'
+                  ? 'bg-amber-50 text-amber-700'
+                  : reviewData.status === 'review'
+                  ? 'bg-slate-100 text-slate-600'
+                  : 'bg-pr-orange-pale text-pr-orange-dark'
+              }`}
+            >
+              {statusLabel(reviewData.status, language)}
+            </span>
+          </div>
+        )}
+
+        <div className="flex-1 flex flex-col justify-center items-center w-full max-w-2xl pt-6">
+          {!isFlipped ? (
+            <div className="animate-in fade-in zoom-in-95 duration-300 w-full">
+              <div className="text-xs uppercase tracking-wider text-slate-400 mb-4">
+                {isLegacyFormat
+                  ? (language === 'fr' ? 'Mot français' : 'French word')
+                  : (language === 'fr' ? 'Question' : 'Question')}
+              </div>
+              <h2 className="font-serif text-3xl sm:text-4xl text-slate-900 leading-relaxed">
+                {frontContent}
+              </h2>
+              {isLegacyFormat && card.sentence_fr && (
+                <p className="text-base text-slate-500 italic mt-6 leading-relaxed">
+                  « {card.sentence_fr} »
+                </p>
+              )}
+            </div>
+          ) : (
+            <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 w-full">
+              <div className="text-xs uppercase tracking-wider text-slate-400 mb-4">
+                {isLegacyFormat
+                  ? (language === 'fr' ? 'Mot anglais' : 'English word')
+                  : (language === 'fr' ? 'Réponse' : 'Answer')}
+              </div>
+              <h2 className="font-serif text-3xl sm:text-4xl text-slate-900 leading-relaxed">
+                {backContent}
+              </h2>
+
+              {isLegacyFormat && card.sentence_en && (
+                <p className="text-base text-slate-500 italic mt-6 leading-relaxed">
+                  « {card.sentence_en} »
+                </p>
+              )}
+
+              {!isLegacyFormat && hintContent && (
+                <div className="mt-6 flex items-start gap-3 text-left p-4 rounded-lg bg-pr-orange-pale border border-pr-orange-soft/40">
+                  <Lightbulb className="w-4 h-4 text-pr-orange-dark shrink-0 mt-0.5" />
+                  <span className="text-sm text-pr-orange-dark italic leading-relaxed">{hintContent}</span>
+                </div>
+              )}
             </div>
           )}
 
-          {/* Category badge */}
-          {card.category && (
-            <div className="flex justify-center">
-              <Badge variant="outline" className="text-xs bg-pr-gray-bg border-pr-gray-light text-pr-gray-dark font-dm-sans">
-                {card.category}
-              </Badge>
-            </div>
-          )}
-
-          <div className="flex justify-center mb-4">
+          <div className="mt-10">
             <Button
               variant="ghost"
               size="sm"
@@ -102,61 +147,31 @@ export const FlashcardDisplay = ({
                 e.stopPropagation();
                 onFlip();
               }}
-              className="flex items-center gap-2 text-pr-gray-mid hover:text-pr-orange-dark hover:bg-pr-orange-pale"
+              className="text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-full"
             >
-              {isFlipped ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+              {isFlipped ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
               {language === 'fr' ? 'Retourner' : 'Flip'}
             </Button>
           </div>
-
-          {!isFlipped ? (
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pr-orange-pale text-pr-orange-dark text-sm font-medium font-dm-sans">
-                <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-xs font-bold">Q</span>
-                {isLegacyFormat
-                  ? (language === 'fr' ? 'Mot Français' : 'French Word')
-                  : (language === 'fr' ? 'Question' : 'Question')
-                }
-              </div>
-              <h2 className="font-dm-serif text-4xl text-pr-black leading-relaxed">{frontContent}</h2>
-
-              {isLegacyFormat && card.sentence_fr && (
-                <p className="text-xl text-pr-gray-dark italic bg-pr-gray-bg p-4 rounded-xl border border-pr-gray-light font-dm-sans">
-                  « {card.sentence_fr} »
-                </p>
-              )}
-            </div>
-          ) : (
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pr-orange-pale text-pr-orange-dark text-sm font-medium font-dm-sans">
-                <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-xs font-bold">R</span>
-                {isLegacyFormat
-                  ? (language === 'fr' ? 'Mot Anglais' : 'English Word')
-                  : (language === 'fr' ? 'Réponse' : 'Answer')
-                }
-              </div>
-              <h2 className="font-dm-serif text-4xl text-pr-black leading-relaxed">{backContent}</h2>
-
-              {isLegacyFormat && card.sentence_en && (
-                <p className="text-xl text-pr-gray-dark italic bg-pr-gray-bg p-4 rounded-xl border border-pr-gray-light font-dm-sans">
-                  « {card.sentence_en} »
-                </p>
-              )}
-
-              {!isLegacyFormat && hintContent && (
-                <div className="flex items-center justify-center gap-2 text-pr-gray-dark bg-pr-orange-pale/40 p-4 rounded-xl border border-pr-orange/20 font-dm-sans">
-                  <Lightbulb className="w-5 h-5 text-pr-orange shrink-0" />
-                  <span className="italic">{hintContent}</span>
-                </div>
-              )}
-            </div>
-          )}
-
-          <div className="pt-4 text-sm text-pr-gray-mid font-dm-sans">
-            {language === 'fr' ? 'Clique pour retourner la carte' : 'Click to flip the card'}
-          </div>
         </div>
-      </div>
-    </div>
+
+        {reviewData && (
+          <div className="mt-8 pt-6 border-t border-slate-100 w-full flex justify-center gap-6 text-[11px] uppercase tracking-wider text-slate-400 font-mono">
+            <span>
+              {language === 'fr' ? 'Difficulté' : 'Difficulty'} · {reviewData.difficulty}/5
+            </span>
+            <span>
+              {language === 'fr' ? 'Révisions' : 'Reviews'} · {reviewData.review_count}
+            </span>
+            <span>
+              {language === 'fr' ? 'Réussite' : 'Success'} ·{' '}
+              {Math.round((reviewData.correct_count / Math.max(1, reviewData.review_count)) * 100)}%
+            </span>
+          </div>
+        )}
+      </CardContent>
+    </Card>
   );
 };
+
+export default FlashcardDisplay;

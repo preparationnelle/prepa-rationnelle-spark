@@ -246,6 +246,176 @@ const Chapitre11OptimisationMultivarieeAvanceeExercicesPage = () => {
           />
         </div>
 
+        <div>
+          <DifficultyHeader level="Module 3 — Convexité et minimum global" />
+
+          <ExerciseCard
+            id="ex17-9"
+            title="Convexité d'une fonction quadratique de deux variables"
+            difficulty="Niveau: Facile"
+            content={
+              <div className="space-y-2">
+                <p>Soit <LatexRenderer latex="f(x, y) = x^2 + 2xy + 3y^2 - 4x + 6y" /> définie sur <LatexRenderer latex="\mathbb{R}^2" />.</p>
+                <p>Démontrer que <LatexRenderer latex="f" /> admet un unique minimum global et le déterminer.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Une fonction <LatexRenderer latex="\mathcal{C}^2" /> dont la hessienne est définie positive en tout point est strictement convexe. Tout point critique d'une fonction strictement convexe est l'unique minimum global. On combine donc l'analyse de la hessienne et l'annulation du gradient.
+                </PointMethodo>
+                <p><strong>Hessienne.</strong> Soit <LatexRenderer latex="(x, y) \in \mathbb{R}^2" />. Calculer :</p>
+                <LatexRenderer latex="\partial_x^2 f = 2, \quad \partial_y^2 f = 6, \quad \partial_{xy}^2 f = 2 \quad\Rightarrow\quad H = \begin{pmatrix} 2 & 2 \\ 2 & 6 \end{pmatrix}." />
+                <p className="mt-2">Or <LatexRenderer latex="\det(H) = 12 - 4 = 8 > 0" /> et <LatexRenderer latex="\mathrm{tr}(H) = 8 > 0" />, donc les deux valeurs propres sont strictement positives. <LatexRenderer latex="H" /> est définie positive en tout point.</p>
+                <p className="mt-2">D'où <LatexRenderer latex="f" /> est strictement convexe sur <LatexRenderer latex="\mathbb{R}^2" />.</p>
+                <p className="mt-2"><strong>Point critique.</strong> Soit <LatexRenderer latex="\nabla f = (2x + 2y - 4,\; 2x + 6y + 6) = 0" />. Le système :</p>
+                <LatexRenderer latex="\begin{cases} x + y = 2 \\ x + 3y = -3 \end{cases} \Rightarrow 2y = -5 \Rightarrow y = -5/2,\ x = 9/2." />
+                <p className="mt-2">D'où l'unique point critique est <LatexRenderer latex="(9/2, -5/2)" />.</p>
+                <Astuce>
+                  Quand la fonction est strictement convexe sur un ouvert convexe, l'existence d'un point critique est équivalente à celle d'un minimum global unique.
+                </Astuce>
+                <p className="mt-2">Ainsi <LatexRenderer latex="(9/2, -5/2)" /> est l'unique minimum global. La valeur minimale est <LatexRenderer latex="f(9/2, -5/2) = 81/4 - 45/2 + 75/4 - 18 - 15 = -33/4" /> (calcul direct).</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="f" /> est strictement convexe (hessienne définie positive en tout point). Unique minimum global en <LatexRenderer latex="(9/2, -5/2)" /> de valeur <LatexRenderer latex="-33/4" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 4 — Optimisation par paramétrage" />
+
+          <ExerciseCard
+            id="ex17-10"
+            title="Maximum d'une fonction sur le triangle plein"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-2">
+                <p>Soit <LatexRenderer latex="T = \{(x, y) \in \mathbb{R}^2 : x \ge 0, y \ge 0, x + y \le 1\}" /> (triangle fermé).</p>
+                <p>Déterminer le maximum de <LatexRenderer latex="f(x, y) = xy(1 - x - y)" /> sur <LatexRenderer latex="T" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour optimiser sur un compact, on combine deux études : (1) recherche des points critiques à l'intérieur (gradient nul, classification par hessienne), (2) étude des bords (paramétrer chaque arête, ramener à 1 variable). Le théorème des bornes atteintes garantit l'existence du maximum.
+                </PointMethodo>
+                <p><strong>Existence.</strong> Soit <LatexRenderer latex="T" /> un fermé borné de <LatexRenderer latex="\mathbb{R}^2" />, donc compact. Or <LatexRenderer latex="f" /> est continue. Donc <LatexRenderer latex="f" /> atteint son maximum sur <LatexRenderer latex="T" /> par le théorème des bornes atteintes.</p>
+                <p className="mt-2"><strong>Étude intérieure.</strong> Soit <LatexRenderer latex="\nabla f = (y(1 - 2x - y),\; x(1 - x - 2y))" />. À l'intérieur (<LatexRenderer latex="x, y > 0" /> et <LatexRenderer latex="x + y < 1" />), <LatexRenderer latex="\nabla f = 0" /> donne :</p>
+                <LatexRenderer latex="\begin{cases} 1 - 2x - y = 0 \\ 1 - x - 2y = 0 \end{cases} \Rightarrow x = y = 1/3." />
+                <p className="mt-2">D'où le point critique <LatexRenderer latex="(1/3, 1/3)" /> est dans l'intérieur. Or <LatexRenderer latex="f(1/3, 1/3) = (1/3)(1/3)(1 - 2/3) = 1/27" />.</p>
+                <p className="mt-2"><strong>Étude des bords.</strong> Sur les arêtes <LatexRenderer latex="x = 0" />, <LatexRenderer latex="y = 0" /> ou <LatexRenderer latex="x + y = 1" />, le facteur correspondant s'annule, donc <LatexRenderer latex="f \equiv 0" /> sur les bords.</p>
+                <Astuce>
+                  L'astuce ici : la fonction <LatexRenderer latex="f = xy(1-x-y)" /> est nulle sur le bord du triangle, donc le maximum se trouve nécessairement à l'intérieur.
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="\max_T f = 1/27" />, atteint en <LatexRenderer latex="(1/3, 1/3)" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex17-11"
+            title="Minimisation d'une distance au plan"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-2">
+                <p>Trouver le point de la surface <LatexRenderer latex="z = xy" /> le plus proche de l'origine.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour minimiser la distance d'un point variable à l'origine, on minimise le carré de la distance (qui est <LatexRenderer latex="\mathcal{C}^\infty" /> et atteint son minimum aux mêmes points). Cela évite la racine carrée et simplifie les calculs.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="P = (x, y, xy)" /> un point sur la surface. Le carré de la distance à l'origine est :</p>
+                <LatexRenderer latex="g(x, y) = x^2 + y^2 + x^2 y^2." />
+                <p className="mt-2"><strong>Points critiques.</strong> Or :</p>
+                <LatexRenderer latex="\partial_x g = 2x + 2x y^2 = 2x(1 + y^2), \quad \partial_y g = 2y + 2x^2 y = 2y(1 + x^2)." />
+                <p className="mt-2">D'où <LatexRenderer latex="\nabla g = 0 \iff x = 0 \text{ et } y = 0" /> (car <LatexRenderer latex="1 + y^2 > 0" /> et <LatexRenderer latex="1 + x^2 > 0" />).</p>
+                <p className="mt-2"><strong>Vérification.</strong> En <LatexRenderer latex="(0, 0)" /> : <LatexRenderer latex="g(0, 0) = 0" />. Or <LatexRenderer latex="g(x, y) = x^2 + y^2 + x^2 y^2 \ge 0" />, avec égalité ssi <LatexRenderer latex="x = y = 0" />.</p>
+                <p className="mt-2">D'où <LatexRenderer latex="(0, 0)" /> est le minimum global de <LatexRenderer latex="g" />. Le point de la surface est <LatexRenderer latex="P = (0, 0, 0)" />, l'origine elle-même.</p>
+                <Astuce>
+                  Vérification cohérente : la surface <LatexRenderer latex="z = xy" /> contient l'origine, donc la distance minimale est trivialement 0.
+                </Astuce>
+                <ConclusionBox>
+                  Le point de la surface <LatexRenderer latex="z = xy" /> le plus proche de l'origine est <LatexRenderer latex="(0, 0, 0)" /> lui-même, à distance nulle.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 5 — Optimisation à 3 variables" />
+
+          <ExerciseCard
+            id="ex17-12"
+            title="Boîte de volume maximum à surface fixée"
+            difficulty="Niveau: Concours"
+            content={
+              <div className="space-y-2">
+                <p>Une boîte rectangulaire fermée a une surface totale de <LatexRenderer latex="S = 600" /> cm². Quelles dimensions <LatexRenderer latex="(x, y, z)" /> maximisent le volume <LatexRenderer latex="V = xyz" /> ?</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour optimiser à 3 variables sous contrainte linéaire, on peut procéder par symétrie ou par substitution. Si la fonction est symétrique en les variables et la contrainte aussi, la solution optimale est généralement obtenue avec <LatexRenderer latex="x = y = z" /> (cube). On vérifie ensuite par la hessienne.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="(x, y, z) > 0" /> avec <LatexRenderer latex="2(xy + yz + zx) = 600" />, soit <LatexRenderer latex="xy + yz + zx = 300" />.</p>
+                <p className="mt-2"><strong>Argument de symétrie.</strong> Le problème est symétrique en <LatexRenderer latex="(x, y, z)" /> (les rôles sont interchangeables). Si l'optimum est unique, il est nécessairement symétrique : <LatexRenderer latex="x = y = z" />.</p>
+                <p className="mt-2">Sous cette hypothèse, la contrainte donne <LatexRenderer latex="3x^2 = 300" />, soit <LatexRenderer latex="x = 10" />.</p>
+                <p className="mt-2">D'où <LatexRenderer latex="V = 10^3 = 1000" /> cm³.</p>
+                <Astuce>
+                  Pour démontrer rigoureusement : utiliser la moyenne arithmétique-géométrique <LatexRenderer latex="(xy + yz + zx)/3 \ge \sqrt[3]{(xyz)^2}" />, soit <LatexRenderer latex="100 \ge V^{2/3}" />, donc <LatexRenderer latex="V \le 1000" />, avec égalité ssi <LatexRenderer latex="xy = yz = zx" />, c'est-à-dire <LatexRenderer latex="x = y = z" />.
+                </Astuce>
+                <ConclusionBox>
+                  Volume maximal <LatexRenderer latex="V_{\max} = 1000" /> cm³, atteint pour le cube de côté <LatexRenderer latex="x = y = z = 10" /> cm.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 6 — Optimisation et fonction implicite" />
+
+          <ExerciseCard
+            id="ex17-13"
+            title="Optimisation d'une forme quadratique sur la sphère"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-2">
+                <p>Soit <LatexRenderer latex="A \in \mathcal{S}_n(\mathbb{R})" /> une matrice symétrique réelle.</p>
+                <p>Démontrer que <LatexRenderer latex="\max_{\|x\|^2 = 1} \langle Ax, x\rangle = \lambda_{\max}(A)" />, atteint en tout vecteur propre unitaire associé à <LatexRenderer latex="\lambda_{\max}" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Le quotient de Rayleigh sur la sphère unité est l'outil-clé pour caractériser variationnellement les valeurs propres extrémales d'une matrice symétrique. La démonstration utilise la diagonalisation orthogonale (théorème spectral) qui transforme la forme quadratique en somme pondérée par les valeurs propres.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="A = P D P^T" /> avec <LatexRenderer latex="P \in \mathcal{O}_n(\mathbb{R})" /> et <LatexRenderer latex="D = \mathrm{diag}(\lambda_1, \ldots, \lambda_n)" /> avec <LatexRenderer latex="\lambda_1 \le \cdots \le \lambda_n" /> (par théorème spectral).</p>
+                <p className="mt-2">Soit <LatexRenderer latex="x \in \mathbb{R}^n" /> avec <LatexRenderer latex="\|x\| = 1" />, et <LatexRenderer latex="y = P^T x = (y_1, \ldots, y_n)^T" />. Comme <LatexRenderer latex="P" /> orthogonale, <LatexRenderer latex="\|y\| = \|x\| = 1" />, soit <LatexRenderer latex="\sum_{i=1}^n y_i^2 = 1" />.</p>
+                <p className="mt-2">Or :</p>
+                <LatexRenderer latex="\langle Ax, x\rangle = x^T A x = x^T P D P^T x = y^T D y = \sum_{i=1}^n \lambda_i y_i^2." />
+                <p className="mt-2"><strong>Majoration.</strong> Comme <LatexRenderer latex="\lambda_i \le \lambda_n" /> pour tout <LatexRenderer latex="i" /> :</p>
+                <LatexRenderer latex="\langle Ax, x\rangle = \sum_{i=1}^n \lambda_i y_i^2 \le \lambda_n \sum_{i=1}^n y_i^2 = \lambda_n." />
+                <p className="mt-2"><strong>Atteinte.</strong> En prenant <LatexRenderer latex="x = P\,e_n" /> (la <LatexRenderer latex="n" />-ième colonne de <LatexRenderer latex="P" />, vecteur propre unitaire pour <LatexRenderer latex="\lambda_n" />), on a <LatexRenderer latex="y = e_n" /> et <LatexRenderer latex="\langle Ax, x\rangle = \lambda_n" />.</p>
+                <Astuce>
+                  Ce résultat est le <strong>principe de Rayleigh-Ritz</strong>. Analoguement, <LatexRenderer latex="\min_{\|x\| = 1} \langle Ax, x\rangle = \lambda_{\min}(A)" />.
+                </Astuce>
+                <ConclusionBox>
+                  Pour <LatexRenderer latex="A \in \mathcal{S}_n(\mathbb{R})" /> : <LatexRenderer latex="\max_{\|x\| = 1} \langle Ax, x\rangle = \lambda_{\max}(A)" />, atteint sur le sous-espace propre associé à <LatexRenderer latex="\lambda_{\max}" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
       </div>
     </MathChapterTemplate>
   );

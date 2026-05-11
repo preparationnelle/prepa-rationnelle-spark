@@ -5,34 +5,34 @@ import { DollarSign, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle } from
 
 const BalancePaiementsChangePage = () => {
   return (
-    <div className="relative">
-      <div className="container mx-auto px-4 pt-16 pb-8">
-        {/* Sticky Breadcrumb */}
-        <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
-          <div className="container mx-auto px-4 py-2">
-            <div className="flex items-center text-xs text-muted-foreground">
-              <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-                <Home className="h-3 w-3" />
+    <div className="carnet-paper min-h-screen">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+              <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+                <Home className="h-3.5 w-3.5" />
                 <span>Accueil</span>
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formations" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formations" className="hover:text-carnet-red transition-colors">
                 Toutes les formations
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formation/esh" className="hover:text-carnet-red transition-colors">
                 Formation ESH ECG
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh/deuxieme-annee" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formation/esh/deuxieme-annee" className="hover:text-carnet-red transition-colors">
                 Deuxième année
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <span className="text-foreground font-medium">Balance des paiements, cours de change et systèmes de change</span>
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <span className="carnet-eyebrow text-[11px]">Balance des paiements, cours de change et systèmes de change</span>
             </div>
           </div>
         </nav>
 
+      <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-12 lg:py-16">
         <div className="max-w-4xl mx-auto">
           {/* Bouton retour */}
           <div className="mb-6">
@@ -51,13 +51,13 @@ const BalancePaiementsChangePage = () => {
                 <DollarSign className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">
+                <h1 className="font-lora text-[32px] sm:text-[40px] text-carnet-ink leading-tight">
                   Balance des paiements, cours de change et systèmes de change
                 </h1>
                 <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 3.4 - Module 3</div>
               </div>
             </div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-instrument text-[16px] lg:text-[18px] text-carnet-ink-soft max-w-2xl mx-auto leading-[1.65]">
               Analyser les mécanismes de change et la balance des paiements dans l'économie mondiale
             </p>
           </div>
@@ -65,8 +65,8 @@ const BalancePaiementsChangePage = () => {
           {/* Contenu principal */}
           <div className="space-y-8">
             {/* Section 1: La balance des paiements */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
@@ -75,30 +75,30 @@ const BalancePaiementsChangePage = () => {
 
               <div className="space-y-4">
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Balance commerciale</h3>
-                  <p className="text-sm text-gray-600">Échanges de biens : exportations - importations de marchandises</p>
+                  <h3 className="font-semibold text-carnet-ink mb-2">Balance commerciale</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">Échanges de biens : exportations - importations de marchandises</p>
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Balance des services</h3>
-                  <p className="text-sm text-gray-600">Tourisme, transports, services financiers, royalties</p>
+                  <h3 className="font-semibold text-carnet-ink mb-2">Balance des services</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">Tourisme, transports, services financiers, royalties</p>
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Balance des revenus</h3>
-                  <p className="text-sm text-gray-600">Revenus du travail et du capital (dividendes, intérêts)</p>
+                  <h3 className="font-semibold text-carnet-ink mb-2">Balance des revenus</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">Revenus du travail et du capital (dividendes, intérêts)</p>
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Balance des transferts courants</h3>
-                  <p className="text-sm text-gray-600">Aides, dons, transferts migrants</p>
+                  <h3 className="font-semibold text-carnet-ink mb-2">Balance des transferts courants</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">Aides, dons, transferts migrants</p>
                 </div>
               </div>
             </div>
 
             {/* Section 2: Les systèmes de change */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
@@ -107,8 +107,8 @@ const BalancePaiementsChangePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <h3 className="font-semibold text-gray-800">Taux de change fixe :</h3>
-                  <ul className="space-y-2 text-sm text-gray-700">
+                  <h3 className="font-semibold text-carnet-ink">Taux de change fixe :</h3>
+                  <ul className="space-y-2 font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Ancrage à une monnaie de référence</span>
@@ -125,8 +125,8 @@ const BalancePaiementsChangePage = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <h3 className="font-semibold text-gray-800">Taux de change flottant :</h3>
-                  <ul className="space-y-2 text-sm text-gray-700">
+                  <h3 className="font-semibold text-carnet-ink">Taux de change flottant :</h3>
+                  <ul className="space-y-2 font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Détermination par l'offre et la demande</span>
@@ -145,45 +145,45 @@ const BalancePaiementsChangePage = () => {
             </div>
 
             {/* Section 3: Déterminants du taux de change */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
                 Déterminants du taux de change
               </h2>
 
-              <div className="bg-pr-orange-pale rounded-lg p-4 mb-4">
-                <h3 className="font-semibold text-gray-800 mb-2">Facteurs fondamentaux</h3>
-                <p className="text-sm text-gray-600">
+              <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4 mb-4">
+                <h3 className="font-semibold text-carnet-ink mb-2">Facteurs fondamentaux</h3>
+                <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                   Différentiels d'inflation, de taux d'intérêt, croissance économique,
                   balance commerciale, politiques monétaires
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-pr-orange-pale rounded-lg p-3">
-                  <h4 className="font-semibold text-gray-800 text-sm mb-1">Parité des pouvoirs d'achat (PPA)</h4>
-                  <p className="text-xs text-gray-600">Taux d'équilibre à long terme basé sur les prix relatifs</p>
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-3">
+                  <h4 className="font-semibold text-carnet-ink text-sm mb-1">Parité des pouvoirs d'achat (PPA)</h4>
+                  <p className="text-xs text-carnet-ink-soft">Taux d'équilibre à long terme basé sur les prix relatifs</p>
                 </div>
-                <div className="bg-pr-orange-pale rounded-lg p-3">
-                  <h4 className="font-semibold text-gray-800 text-sm mb-1">Parité des taux d'intérêt</h4>
-                  <p className="text-xs text-gray-600">Relation entre taux de change et différentiels de taux</p>
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-3">
+                  <h4 className="font-semibold text-carnet-ink text-sm mb-1">Parité des taux d'intérêt</h4>
+                  <p className="text-xs text-carnet-ink-soft">Relation entre taux de change et différentiels de taux</p>
                 </div>
-                <div className="bg-pr-orange-pale rounded-lg p-3">
-                  <h4 className="font-semibold text-gray-800 text-sm mb-1">Spéculation</h4>
-                  <p className="text-xs text-gray-600">Attentes des opérateurs sur les évolutions futures</p>
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-3">
+                  <h4 className="font-semibold text-carnet-ink text-sm mb-1">Spéculation</h4>
+                  <p className="text-xs text-carnet-ink-soft">Attentes des opérateurs sur les évolutions futures</p>
                 </div>
-                <div className="bg-pr-orange-pale rounded-lg p-3">
-                  <h4 className="font-semibold text-gray-800 text-sm mb-1">Interventions officielles</h4>
-                  <p className="text-xs text-gray-600">Actions des banques centrales sur le marché des changes</p>
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-3">
+                  <h4 className="font-semibold text-carnet-ink text-sm mb-1">Interventions officielles</h4>
+                  <p className="text-xs text-carnet-ink-soft">Actions des banques centrales sur le marché des changes</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Navigation entre chapitres */}
-          <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+          <div className="flex justify-between items-center mt-12 pt-8 border-t border-dashed border-[rgba(78,55,30,0.18)]">
             <Link to="/formation/esh/module3/regionalisation-gouvernance">
               <Button variant="outline" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
@@ -196,7 +196,7 @@ const BalancePaiementsChangePage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module3/evolution-systeme-monetaires">
-                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
+                <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

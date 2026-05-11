@@ -223,6 +223,182 @@ const Chapitre13EstimationStatistiqueAvanceeExercicesPage = () => {
           />
         </div>
 
+        <div>
+          <DifficultyHeader level="Module 4 — Convergence en probabilité d'un estimateur" />
+
+          <ExerciseCard
+            id="28.4"
+            title="Consistance de la moyenne empirique"
+            difficulty="Niveau: Facile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X_1, \ldots, X_n" /> iid d'espérance <LatexRenderer latex="\mu" /> et de variance <LatexRenderer latex="\sigma^2 < +\infty" />.</p>
+                <p>Démontrer que la moyenne empirique <LatexRenderer latex="\overline{X}_n" /> est un estimateur consistant de <LatexRenderer latex="\mu" />, c'est-à-dire <LatexRenderer latex="\overline{X}_n \xrightarrow{P} \mu" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  La consistance (convergence en probabilité vers le paramètre estimé) s'établit en majorant <LatexRenderer latex="P(|\hat{\theta}_n - \theta| \ge \varepsilon)" /> par une suite tendant vers 0. L'inégalité de Bienaymé-Tchebychev est l'outil naturel quand l'estimateur admet une variance qui tend vers 0.
+                </PointMethodo>
+                <p>Soient <LatexRenderer latex="X_i" /> iid avec <LatexRenderer latex="E(X_i) = \mu" /> et <LatexRenderer latex="V(X_i) = \sigma^2" />. Or, par linéarité et indépendance :</p>
+                <LatexRenderer latex="E(\overline{X}_n) = \mu, \quad V(\overline{X}_n) = \sigma^2 / n." />
+                <p className="mt-2">D'où, par Bienaymé-Tchebychev appliquée à <LatexRenderer latex="\overline{X}_n" /> : pour tout <LatexRenderer latex="\varepsilon > 0" />,</p>
+                <LatexRenderer latex="P(|\overline{X}_n - \mu| \ge \varepsilon) \le \frac{\sigma^2}{n\,\varepsilon^2} \xrightarrow[n\to+\infty]{} 0." />
+                <p className="mt-2">Ainsi <LatexRenderer latex="\overline{X}_n \xrightarrow{P} \mu" />, donc <LatexRenderer latex="\overline{X}_n" /> est un estimateur consistant de <LatexRenderer latex="\mu" />.</p>
+                <Astuce>
+                  La consistance est une propriété asymptotique cruciale : sans elle, augmenter la taille d'échantillon ne fait pas converger l'estimateur vers la vraie valeur. C'est le critère minimum pour qu'un estimateur soit "utile".
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="\overline{X}_n" /> est consistant pour <LatexRenderer latex="\mu" /> : <LatexRenderer latex="\overline{X}_n \xrightarrow{P} \mu" />. Vitesse de convergence : <LatexRenderer latex="O(1/\sqrt{n})" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 5 — Estimation par moments" />
+
+          <ExerciseCard
+            id="28.5"
+            title="Méthode des moments — loi exponentielle"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X_1, \ldots, X_n" /> iid de loi <LatexRenderer latex="\mathcal{E}(\lambda)" />, <LatexRenderer latex="\lambda > 0" /> inconnu.</p>
+                <p>1. Construire un estimateur de <LatexRenderer latex="\lambda" /> par la méthode des moments.</p>
+                <p>2. Étudier sa consistance.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  La méthode des moments consiste à égaler les moments théoriques aux moments empiriques. Pour la loi exponentielle, <LatexRenderer latex="E(X) = 1/\lambda" />, donc en remplaçant par la moyenne empirique <LatexRenderer latex="\overline{X}_n" />, on obtient <LatexRenderer latex="\hat{\lambda}_n = 1/\overline{X}_n" />.
+                </PointMethodo>
+                <p><strong>1. Construction.</strong> Soit <LatexRenderer latex="X_i \sim \mathcal{E}(\lambda)" />, donc <LatexRenderer latex="E(X_i) = 1/\lambda" />. D'où l'estimateur des moments :</p>
+                <LatexRenderer latex="\hat{\lambda}_n = \frac{1}{\overline{X}_n}." />
+                <p className="mt-2"><strong>2. Consistance.</strong> Or par la loi faible des grands nombres, <LatexRenderer latex="\overline{X}_n \xrightarrow{P} 1/\lambda" />. La fonction <LatexRenderer latex="g : x \mapsto 1/x" /> est continue sur <LatexRenderer latex="\mathbb{R}_+^*" />. Par le théorème de continuité (théorème de continuité pour la convergence en probabilité) :</p>
+                <LatexRenderer latex="\hat{\lambda}_n = g(\overline{X}_n) \xrightarrow{P} g(1/\lambda) = \lambda." />
+                <Astuce>
+                  Le théorème de continuité (continuous mapping theorem) est l'outil-clé : si <LatexRenderer latex="Y_n \xrightarrow{P} c" /> et <LatexRenderer latex="g" /> continue en <LatexRenderer latex="c" />, alors <LatexRenderer latex="g(Y_n) \xrightarrow{P} g(c)" />.
+                </Astuce>
+                <ConclusionBox>
+                  Estimateur des moments : <LatexRenderer latex="\hat{\lambda}_n = 1/\overline{X}_n" />, consistant pour <LatexRenderer latex="\lambda" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="28.6"
+            title="Estimation de la variance — biais corrigé"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X_1, \ldots, X_n" /> iid d'espérance <LatexRenderer latex="\mu" /> et de variance <LatexRenderer latex="\sigma^2" /> finies. On considère l'estimateur naïf de la variance :</p>
+                <LatexRenderer latex="V_n = \frac{1}{n}\sum_{i=1}^n (X_i - \overline{X}_n)^2." />
+                <p>Démontrer que <LatexRenderer latex="V_n" /> est biaisé, calculer son biais, et en déduire un estimateur sans biais.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Calculer <LatexRenderer latex="E(V_n)" /> en passant par l'identité <LatexRenderer latex="\sum (X_i - \overline{X}_n)^2 = \sum X_i^2 - n \overline{X}_n^2" /> et en utilisant <LatexRenderer latex="E(X_i^2) = V(X_i) + E(X_i)^2" />. La correction du biais consiste à multiplier par <LatexRenderer latex="n/(n-1)" />.
+                </PointMethodo>
+                <p><strong>Calcul de <LatexRenderer latex="E(V_n)" />.</strong> On a l'identité :</p>
+                <LatexRenderer latex="n V_n = \sum_{i=1}^n (X_i - \overline{X}_n)^2 = \sum_{i=1}^n X_i^2 - n \overline{X}_n^2." />
+                <p className="mt-2">Or <LatexRenderer latex="E(X_i^2) = \sigma^2 + \mu^2" /> et <LatexRenderer latex="E(\overline{X}_n^2) = V(\overline{X}_n) + E(\overline{X}_n)^2 = \sigma^2/n + \mu^2" />. D'où :</p>
+                <LatexRenderer latex="E(n V_n) = n(\sigma^2 + \mu^2) - n(\sigma^2/n + \mu^2) = (n - 1)\sigma^2." />
+                <p className="mt-2">Donc <LatexRenderer latex="E(V_n) = \frac{n-1}{n}\sigma^2" />, et le biais est :</p>
+                <LatexRenderer latex="b(V_n) = E(V_n) - \sigma^2 = -\frac{\sigma^2}{n} < 0." />
+                <p className="mt-2"><strong>Correction.</strong> Posons <LatexRenderer latex="S_n^2 = \frac{n}{n-1} V_n = \frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X}_n)^2" />. Alors :</p>
+                <LatexRenderer latex="E(S_n^2) = \frac{n}{n-1} \cdot \frac{n-1}{n} \sigma^2 = \sigma^2." />
+                <Astuce>
+                  Cette correction <strong>(n-1)/n</strong> s'appelle la correction de Bessel. Elle compense la perte d'un "degré de liberté" causée par l'utilisation de <LatexRenderer latex="\overline{X}_n" /> à la place de <LatexRenderer latex="\mu" /> inconnu.
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="V_n" /> est biaisé : <LatexRenderer latex="b(V_n) = -\sigma^2/n" />. L'estimateur sans biais est la <strong>variance empirique corrigée</strong> <LatexRenderer latex="S_n^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \overline{X}_n)^2" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 6 — IC avec variance inconnue" />
+
+          <ExerciseCard
+            id="28.7"
+            title="IC asymptotique pour la moyenne — variance inconnue"
+            difficulty="Niveau: Concours"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X_1, \ldots, X_n" /> iid d'espérance <LatexRenderer latex="\mu" /> inconnue et de variance <LatexRenderer latex="\sigma^2 > 0" /> inconnue. On note <LatexRenderer latex="S_n^2" /> la variance empirique corrigée.</p>
+                <p>1. Démontrer que <LatexRenderer latex="\sqrt{n}(\overline{X}_n - \mu)/S_n \xrightarrow{\mathcal{L}} \mathcal{N}(0, 1)" /> (en admettant <LatexRenderer latex="S_n^2 \xrightarrow{P} \sigma^2" />).</p>
+                <p>2. En déduire un IC asymptotique pour <LatexRenderer latex="\mu" /> au niveau 95%.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Quand la variance est inconnue, on la remplace par son estimateur consistant <LatexRenderer latex="S_n^2" />. Le théorème de Slutsky combine la convergence en loi du TCL avec la convergence en probabilité de <LatexRenderer latex="S_n^2/\sigma^2" /> vers 1, ce qui permet de "substituer" l'écart-type estimé sans changer la loi limite.
+                </PointMethodo>
+                <p><strong>1. Convergence en loi.</strong> Soit <LatexRenderer latex="Z_n = \sqrt{n}(\overline{X}_n - \mu)/\sigma \xrightarrow{\mathcal{L}} \mathcal{N}(0, 1)" /> (par le TCL). Or <LatexRenderer latex="S_n^2 \xrightarrow{P} \sigma^2" />, donc par continuité de <LatexRenderer latex="x \mapsto \sqrt{x}" /> sur <LatexRenderer latex="\mathbb{R}_+^*" /> :</p>
+                <LatexRenderer latex="\frac{\sigma}{S_n} \xrightarrow{P} 1." />
+                <p className="mt-2">D'où, par le théorème de Slutsky :</p>
+                <LatexRenderer latex="\sqrt{n}\,\frac{\overline{X}_n - \mu}{S_n} = Z_n \cdot \frac{\sigma}{S_n} \xrightarrow{\mathcal{L}} \mathcal{N}(0, 1) \cdot 1 = \mathcal{N}(0, 1)." />
+                <Astuce>
+                  Le théorème de Slutsky stipule : si <LatexRenderer latex="X_n \xrightarrow{\mathcal{L}} X" /> et <LatexRenderer latex="Y_n \xrightarrow{P} c" /> (constante), alors <LatexRenderer latex="X_n Y_n \xrightarrow{\mathcal{L}} cX" />.
+                </Astuce>
+                <p className="mt-2"><strong>2. Intervalle de confiance.</strong> Soit <LatexRenderer latex="z_{0{,}975} = 1{,}96" />, quantile d'ordre 0,975 de <LatexRenderer latex="\mathcal{N}(0, 1)" />. Alors asymptotiquement :</p>
+                <LatexRenderer latex="P\!\left(|\overline{X}_n - \mu| \le \frac{1{,}96\,S_n}{\sqrt{n}}\right) \to 0{,}95." />
+                <p className="mt-2">D'où l'IC asymptotique : <LatexRenderer latex="\mathrm{IC}_{95\%}(\mu) = \left[\overline{X}_n \pm 1{,}96\,S_n/\sqrt{n}\right]" />.</p>
+                <ConclusionBox>
+                  IC asymptotique de niveau 95% avec variance inconnue : <LatexRenderer latex="\overline{X}_n \pm 1{,}96\,S_n/\sqrt{n}" />. C'est l'IC standard utilisé en pratique.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 7 — Estimateur du maximum de vraisemblance" />
+
+          <ExerciseCard
+            id="28.8"
+            title="EMV pour la loi normale — biais sur la variance"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X_1, \ldots, X_n" /> iid de loi <LatexRenderer latex="\mathcal{N}(\mu, \sigma^2)" /> avec <LatexRenderer latex="(\mu, \sigma^2) \in \mathbb{R} \times \mathbb{R}_+^*" /> inconnus.</p>
+                <p>1. Déterminer l'estimateur du maximum de vraisemblance <LatexRenderer latex="(\hat{\mu}_n, \hat{\sigma}_n^2)" />.</p>
+                <p>2. Étudier le biais de <LatexRenderer latex="\hat{\sigma}_n^2" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour un paramètre vectoriel <LatexRenderer latex="(\mu, \sigma^2)" />, l'EMV se trouve en annulant les deux dérivées partielles de la log-vraisemblance. On obtient un système qui se résout étape par étape : d'abord <LatexRenderer latex="\hat{\mu}_n" /> (indépendant de <LatexRenderer latex="\sigma^2" />), puis <LatexRenderer latex="\hat{\sigma}_n^2" /> en fonction de <LatexRenderer latex="\hat{\mu}_n" />.
+                </PointMethodo>
+                <p><strong>1. EMV.</strong> La log-vraisemblance pour <LatexRenderer latex="(x_1, \ldots, x_n)" /> est :</p>
+                <LatexRenderer latex="\ell_n(\mu, \sigma^2) = -\frac{n}{2}\ln(2\pi) - \frac{n}{2}\ln(\sigma^2) - \frac{1}{2\sigma^2}\sum_{i=1}^n (x_i - \mu)^2." />
+                <p className="mt-2"><strong>Annulation par rapport à <LatexRenderer latex="\mu" />.</strong> <LatexRenderer latex="\partial_\mu \ell_n = \frac{1}{\sigma^2}\sum_{i=1}^n (x_i - \mu) = 0" />, soit <LatexRenderer latex="\hat{\mu}_n = \overline{X}_n" />.</p>
+                <p className="mt-2"><strong>Annulation par rapport à <LatexRenderer latex="\sigma^2" />.</strong> Posons <LatexRenderer latex="\tau = \sigma^2" /> pour simplifier. <LatexRenderer latex="\partial_\tau \ell_n = -\frac{n}{2\tau} + \frac{1}{2\tau^2}\sum (x_i - \mu)^2 = 0" />, soit :</p>
+                <LatexRenderer latex="\hat{\sigma}_n^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \overline{X}_n)^2." />
+                <p className="mt-2"><strong>2. Biais.</strong> D'après l'exercice 28.6, <LatexRenderer latex="E(\hat{\sigma}_n^2) = \frac{n-1}{n}\sigma^2" />, donc :</p>
+                <LatexRenderer latex="b(\hat{\sigma}_n^2) = -\frac{\sigma^2}{n}." />
+                <Astuce>
+                  L'EMV n'est pas toujours sans biais. Ici, l'EMV de la variance sous-estime systématiquement <LatexRenderer latex="\sigma^2" />, contrairement à <LatexRenderer latex="S_n^2" />. Cependant, le biais tend vers 0, donc l'EMV est asymptotiquement sans biais.
+                </Astuce>
+                <ConclusionBox>
+                  EMV : <LatexRenderer latex="(\hat{\mu}_n, \hat{\sigma}_n^2) = (\overline{X}_n,\, V_n)" />. <LatexRenderer latex="\hat{\mu}_n" /> est sans biais, mais <LatexRenderer latex="\hat{\sigma}_n^2" /> a un biais de <LatexRenderer latex="-\sigma^2/n" />. Asymptotiquement sans biais.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
       </div>
     </MathChapterTemplate>
   );

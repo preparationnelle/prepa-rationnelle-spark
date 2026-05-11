@@ -5,34 +5,34 @@ import { BookOpen, Home, ChevronRight, ArrowLeft, Users, CheckCircle, TrendingUp
 
 const CourantsSociologiquesPage = () => {
   return (
-    <div className="relative">
-      <div className="container mx-auto px-4 pt-16 pb-8">
-        {/* Sticky Breadcrumb */}
-        <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
-          <div className="container mx-auto px-4 py-2">
-            <div className="flex items-center text-xs text-muted-foreground">
-              <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-                <Home className="h-3 w-3" />
+    <div className="carnet-paper min-h-screen">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+              <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+                <Home className="h-3.5 w-3.5" />
                 <span>Accueil</span>
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formations" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formations" className="hover:text-carnet-red transition-colors">
                 Toutes les formations
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formation/esh" className="hover:text-carnet-red transition-colors">
                 Formation ESH ECG
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh/premiere-annee" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formation/esh/premiere-annee" className="hover:text-carnet-red transition-colors">
                 Première année
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <span className="text-foreground font-medium">Les grands courants de la pensée sociologique depuis le XIXe siècle</span>
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <span className="carnet-eyebrow text-[11px]">Les grands courants de la pensée sociologique depuis le XIXe siècle</span>
             </div>
           </div>
         </nav>
 
+      <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-12 lg:py-16">
         <div className="max-w-4xl mx-auto">
           {/* Bouton retour */}
           <div className="mb-6">
@@ -51,13 +51,13 @@ const CourantsSociologiquesPage = () => {
                 <BookOpen className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">
+                <h1 className="font-lora text-[32px] sm:text-[40px] text-carnet-ink leading-tight">
                   Les grands courants de la pensée sociologique depuis le XIXe siècle
                 </h1>
                 <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 1.9 - Module 1</div>
               </div>
             </div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-instrument text-[16px] lg:text-[18px] text-carnet-ink-soft max-w-2xl mx-auto leading-[1.65]">
               Explorer l'évolution historique de la pensée sociologique et ses principales écoles de pensée
             </p>
           </div>
@@ -65,8 +65,8 @@ const CourantsSociologiquesPage = () => {
           {/* Contenu principal */}
           <div className="space-y-8">
             {/* Section 1: La sociologie naissante (XIXe siècle) */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red font-bold text-sm">1</span>
                 </div>
@@ -76,7 +76,7 @@ const CourantsSociologiquesPage = () => {
               <div className="space-y-4">
                 <div className="border-l-4 border-carnet-red/30 pl-4">
                   <h3 className="font-semibold text-carnet-red mb-2">Contexte historique</h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     La sociologie émerge au XIXe siècle dans un contexte de profondes transformations sociales :
                     Révolution industrielle, urbanisation massive, constitution des États-nations,
                     développement du capitalisme et apparition du prolétariat.
@@ -85,11 +85,11 @@ const CourantsSociologiquesPage = () => {
 
                 <div className="border-l-4 border-carnet-red/30 pl-4">
                   <h3 className="font-semibold text-carnet-red mb-2">Auguste Comte (1798-1857)</h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Père fondateur de la sociologie. Il forge le terme "sociologie" (1838) et propose
                     la loi des trois états : théologique, métaphysique et positif (scientifique).
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Méthode positive : observation, expérimentation, comparaison</li>
                     <li>• Statique sociale : étude des conditions d'équilibre social</li>
                     <li>• Dynamique sociale : étude des lois de l'évolution sociale</li>
@@ -97,13 +97,13 @@ const CourantsSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-pr-orange-pale rounded-lg p-4">
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
                   <h4 className="font-semibold text-carnet-red mb-2">Herbert Spencer (1820-1903)</h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Penseur évolutionniste britannique. Applique la théorie darwinienne à la société.
                     Développe l'idée d'évolution sociale progressive et défend le laissez-faire.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• "Survival of the fittest" appliqué à la société</li>
                     <li>• Opposition à l'intervention étatique</li>
                     <li>• Critique du socialisme et des politiques sociales</li>
@@ -113,8 +113,8 @@ const CourantsSociologiquesPage = () => {
             </div>
 
             {/* Section 2: Le fonctionnalisme (début XXe siècle) */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red font-bold text-sm">2</span>
                 </div>
@@ -123,12 +123,12 @@ const CourantsSociologiquesPage = () => {
 
               <div className="space-y-4">
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Émile Durkheim (1858-1917)</h3>
-                  <p className="text-sm text-gray-600">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Émile Durkheim (1858-1917)</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Figure majeure de la sociologie française. Étudie les faits sociaux comme des réalités
                     objectives, extérieures aux individus et contraignantes.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Méthode : observation objective, rejet de l'introspection</li>
                     <li>• Division du travail social : source de solidarité organique</li>
                     <li>• Suicide : phénomène social, non individuel</li>
@@ -137,26 +137,26 @@ const CourantsSociologiquesPage = () => {
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Talcott Parsons (1902-1979)</h3>
-                  <p className="text-sm text-gray-600">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Talcott Parsons (1902-1979)</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Sociologue américain. Développe une théorie fonctionnaliste systémique.
                     Analyse la société comme un système en équilibre où chaque institution
                     remplit des fonctions essentielles.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Système social : AGIL (Adaptation, Goal-attainment, Integration, Latency)</li>
                     <li>• Équilibre social : autorégulation par des mécanismes de contrôle</li>
                     <li>• Changement social : évolution progressive et fonctionnelle</li>
                   </ul>
                 </div>
 
-                <div className="bg-pr-orange-pale rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-800 mb-2">Robert Merton (1910-2003)</h4>
-                  <p className="text-sm text-gray-600">
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                  <h4 className="font-semibold text-carnet-ink mb-2">Robert Merton (1910-2003)</h4>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Élève de Parsons, critique le fonctionnalisme excessif. Introduit les concepts
                     de fonctions manifestes/latentes et de dysfonctions.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Fonctions manifestes : conséquences voulues et reconnues</li>
                     <li>• Fonctions latentes : conséquences non voulues</li>
                     <li>• Dysfonctions : effets négatifs sur le système social</li>
@@ -166,8 +166,8 @@ const CourantsSociologiquesPage = () => {
             </div>
 
             {/* Section 3: Le conflit social (XIXe-XXe siècles) */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red font-bold text-sm">3</span>
                 </div>
@@ -177,11 +177,11 @@ const CourantsSociologiquesPage = () => {
               <div className="space-y-4">
                 <div className="border-l-4 border-red-200 pl-4">
                   <h3 className="font-semibold text-red-700 mb-2">Karl Marx (1818-1883)</h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Philosophe et économiste allemand. Analyse la société capitaliste comme un système
                     de classes antagonistes. Le conflit entre bourgeoisie et prolétariat est le moteur de l'histoire.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Matérialisme historique : infrastructure économique détermine superstructure</li>
                     <li>• Lutte des classes : bourgeoisie vs prolétariat</li>
                     <li>• Aliénation : séparation de l'homme de son travail</li>
@@ -191,11 +191,11 @@ const CourantsSociologiquesPage = () => {
 
                 <div className="border-l-4 border-red-200 pl-4">
                   <h3 className="font-semibold text-red-700 mb-2">Max Weber (1864-1920)</h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Sociologue allemand. Critique de Marx, insiste sur le rôle des idées et des valeurs
                     dans l'explication des phénomènes sociaux. Développe une sociologie compréhensive.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Action sociale : orientée par le sens subjectif des acteurs</li>
                     <li>• Types d'action : traditionnelle, affective, rationnelle en valeur, rationnelle en finalité</li>
                     <li>• Bureaucratie : forme rationnelle d'organisation moderne</li>
@@ -205,7 +205,7 @@ const CourantsSociologiquesPage = () => {
 
                 <div className="bg-red-50 rounded-lg p-4">
                   <h4 className="font-semibold text-red-700 mb-2">Georg Wilhelm Friedrich Hegel (1770-1831)</h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Philosophe allemand dont l'influence se retrouve dans les théories du conflit.
                     Dialectique : thèse → antithèse → synthèse comme moteur du progrès historique.
                   </p>
@@ -214,8 +214,8 @@ const CourantsSociologiquesPage = () => {
             </div>
 
             {/* Section 4: L'interactionnisme symbolique (XXe siècle) */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red font-bold text-sm">4</span>
                 </div>
@@ -224,12 +224,12 @@ const CourantsSociologiquesPage = () => {
 
               <div className="space-y-4">
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">George Herbert Mead (1863-1931)</h3>
-                  <p className="text-sm text-gray-600">
+                  <h3 className="font-semibold text-carnet-ink mb-2">George Herbert Mead (1863-1931)</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Psychologue et sociologue américain. Fondateur de l'interactionnisme symbolique.
                     Étudie comment les individus construisent leur identité à travers les interactions sociales.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Self : distinction entre "I" (soi spontané) et "Me" (soi social)</li>
                     <li>• Autrui significatif : rôle des proches dans la formation de l'identité</li>
                     <li>• Autrui généralisé : intériorisation des normes sociales</li>
@@ -238,12 +238,12 @@ const CourantsSociologiquesPage = () => {
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Herbert Blumer (1900-1987)</h3>
-                  <p className="text-sm text-gray-600">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Herbert Blumer (1900-1987)</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Élève de Mead. Formalise l'interactionnisme symbolique comme approche sociologique.
                     Insiste sur l'importance des significations subjectives dans l'action sociale.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Signification subjective des objets sociaux</li>
                     <li>• Processus d'interprétation continu</li>
                     <li>• Construction sociale de la réalité</li>
@@ -251,13 +251,13 @@ const CourantsSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-pr-orange-pale rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-800 mb-2">Erving Goffman (1922-1982)</h4>
-                  <p className="text-sm text-gray-600">
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                  <h4 className="font-semibold text-carnet-ink mb-2">Erving Goffman (1922-1982)</h4>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Sociologue canadien. Analyse la vie quotidienne comme un théâtre où les individus
                     jouent des rôles et gèrent leur image sociale.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Théorie dramaturgique : société = théâtre</li>
                     <li>• Face-work : gestion de l'image de soi</li>
                     <li>• Stigmate : déviance et discrimination sociale</li>
@@ -268,8 +268,8 @@ const CourantsSociologiquesPage = () => {
             </div>
 
             {/* Section 5: Le structuralisme fonctionnaliste (milieu XXe siècle) */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red font-bold text-sm">5</span>
                 </div>
@@ -278,12 +278,12 @@ const CourantsSociologiquesPage = () => {
 
               <div className="space-y-4">
                 <div className="border-l-4 border-orange-200 pl-4">
-                  <h3 className="font-semibold text-pr-orange-dark mb-2">Claude Lévi-Strauss (1908-2009)</h3>
-                  <p className="text-sm text-gray-600">
+                  <h3 className="font-semibold text-carnet-red mb-2">Claude Lévi-Strauss (1908-2009)</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Anthropologue français. Applique le structuralisme à l'étude des sociétés primitives.
                     Recherche les structures inconscientes qui organisent la pensée et les sociétés humaines.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Structures inconscientes de l'esprit humain</li>
                     <li>• Analyse structurale des mythes et des systèmes de parenté</li>
                     <li>• Universalisme culturel malgré la diversité apparente</li>
@@ -292,12 +292,12 @@ const CourantsSociologiquesPage = () => {
                 </div>
 
                 <div className="border-l-4 border-orange-200 pl-4">
-                  <h3 className="font-semibold text-pr-orange-dark mb-2">Pierre Bourdieu (1930-2002)</h3>
-                  <p className="text-sm text-gray-600">
+                  <h3 className="font-semibold text-carnet-red mb-2">Pierre Bourdieu (1930-2002)</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Sociologue français. Théorie de la reproduction sociale et du capital culturel.
                     Analyse les mécanismes de domination symbolique et de reproduction des inégalités.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Habitus : dispositions durables acquises par socialisation</li>
                     <li>• Capital : économique, culturel, social, symbolique</li>
                     <li>• Champ : espace de luttes pour la domination</li>
@@ -306,12 +306,12 @@ const CourantsSociologiquesPage = () => {
                 </div>
 
                 <div className="bg-orange-50 rounded-lg p-4">
-                  <h4 className="font-semibold text-pr-orange-dark mb-2">Fernand Braudel (1902-1985)</h4>
-                  <p className="text-sm text-gray-600">
+                  <h4 className="font-semibold text-carnet-red mb-2">Fernand Braudel (1902-1985)</h4>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Historien français. Introduit la longue durée en sciences sociales.
                     Distingue trois temporalités : événementielle, conjoncturelle, structurelle.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Histoire immobile : structures géographiques et mentales</li>
                     <li>• Histoire lentement rythmée : cycles économiques</li>
                     <li>• Histoire événementielle : faits ponctuels</li>
@@ -321,8 +321,8 @@ const CourantsSociologiquesPage = () => {
             </div>
 
             {/* Section 6: Les théories contemporaines (fin XXe-XXIe siècles) */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red font-bold text-sm">6</span>
                 </div>
@@ -332,11 +332,11 @@ const CourantsSociologiquesPage = () => {
               <div className="space-y-4">
                 <div className="border-l-4 border-indigo-200 pl-4">
                   <h3 className="font-semibold text-indigo-700 mb-2">La théorie des choix rationnels</h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Approche micro-économique appliquée à la sociologie. Les individus sont des acteurs
                     rationnels qui maximisent leur utilité dans leurs décisions sociales.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Modèle de l'homo oeconomicus étendu à la sociologie</li>
                     <li>• Analyse coûts/avantages des comportements sociaux</li>
                     <li>• Théorie des jeux appliquée aux interactions sociales</li>
@@ -345,11 +345,11 @@ const CourantsSociologiquesPage = () => {
 
                 <div className="border-l-4 border-indigo-200 pl-4">
                   <h3 className="font-semibold text-indigo-700 mb-2">Le constructivisme social</h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     La réalité sociale est construite par les acteurs à travers leurs interactions
                     et leurs interprétations. Le savoir scientifique lui-même est une construction sociale.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Réalité sociale comme construction intersubjective</li>
                     <li>• Rôle des institutions dans la définition de la réalité</li>
                     <li>• Déconstruction des catégories sociales naturalisées</li>
@@ -359,7 +359,7 @@ const CourantsSociologiquesPage = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-indigo-50 rounded-lg p-4">
                     <h4 className="font-semibold text-indigo-700 mb-2">Féminisme sociologique</h4>
-                    <ul className="text-sm text-gray-600 space-y-1">
+                    <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li>• Genre comme construction sociale</li>
                       <li>• Patriarcat et domination masculine</li>
                       <li>• Intersectionnalité (race/classe/genre)</li>
@@ -369,7 +369,7 @@ const CourantsSociologiquesPage = () => {
 
                   <div className="bg-indigo-50 rounded-lg p-4">
                     <h4 className="font-semibold text-indigo-700 mb-2">Sociologie postmoderne</h4>
-                    <ul className="text-sm text-gray-600 space-y-1">
+                    <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li>• Fragmentation sociale</li>
                       <li>• Diversité et pluralisme</li>
                       <li>• Subjectivité et relativisme</li>
@@ -380,11 +380,11 @@ const CourantsSociologiquesPage = () => {
 
                 <div className="bg-indigo-50 rounded-lg p-4">
                   <h4 className="font-semibold text-indigo-700 mb-2">Globalisation et transnationalisme</h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Étude des phénomènes sociaux à l'échelle mondiale. Transformations des identités,
                     migrations internationales, interdépendances économiques et culturelles.
                   </p>
-                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                  <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1 mt-2">
                     <li>• Sociétés en réseaux (Manuel Castells)</li>
                     <li>• Mondes multiples (Arjun Appadurai)</li>
                     <li>• Cosmopolitisme et multiculturalisme</li>
@@ -396,7 +396,7 @@ const CourantsSociologiquesPage = () => {
           </div>
 
           {/* Navigation entre chapitres */}
-          <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+          <div className="flex justify-between items-center mt-12 pt-8 border-t border-dashed border-[rgba(78,55,30,0.18)]">
             <Link to="/formation/esh/premiere-annee">
               <Button variant="outline" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
@@ -409,7 +409,7 @@ const CourantsSociologiquesPage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module1/methodes-sociologiques">
-                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
+                <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

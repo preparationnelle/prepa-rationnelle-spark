@@ -305,6 +305,171 @@ const Chapitre16EspacesProbabilisesEtConditionnementExercicesPage = () => {
           />
         </section>
 
+        <section id="approfondissements">
+          <DifficultyHeader level="Niveau : Facile — Propriétés de la probabilité" />
+
+          <ExerciseCard
+            id="ex-07"
+            title="Formule de Poincaré pour 3 événements"
+            difficulty="Niveau: Facile"
+            content={
+              <div className="space-y-3">
+                <p>Soient <LatexRenderer latex="A, B, C" /> trois événements d'un espace probabilisé.</p>
+                <p>Démontrer la formule de Poincaré (crible) : <LatexRenderer latex="P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A\cap B) - P(A\cap C) - P(B\cap C) + P(A\cap B\cap C)" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  La formule de Poincaré généralise <LatexRenderer latex="P(A \cup B) = P(A) + P(B) - P(A \cap B)" />. On l'obtient en appliquant deux fois cette dernière formule, ou par récurrence sur le nombre d'événements.
+                </PointMethodo>
+                <p>Or <LatexRenderer latex="A \cup B \cup C = (A \cup B) \cup C" />. Par la formule à 2 événements :</p>
+                <LatexRenderer latex="P(A \cup B \cup C) = P(A \cup B) + P(C) - P((A \cup B) \cap C)." />
+                <p className="mt-2">D'où :</p>
+                <LatexRenderer latex="P((A \cup B) \cap C) = P((A \cap C) \cup (B \cap C)) = P(A \cap C) + P(B \cap C) - P(A \cap B \cap C)" />
+                <p className="mt-2">(distributivité et formule à 2 événements appliquée à <LatexRenderer latex="A \cap C" /> et <LatexRenderer latex="B \cap C" />).</p>
+                <p className="mt-2">De même <LatexRenderer latex="P(A \cup B) = P(A) + P(B) - P(A \cap B)" />. En combinant :</p>
+                <LatexRenderer latex="P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A\cap B) - P(A\cap C) - P(B\cap C) + P(A\cap B\cap C)." />
+                <Astuce>
+                  Formule générale (Poincaré pour <LatexRenderer latex="n" /> événements) : <LatexRenderer latex="P(\bigcup_{i=1}^n A_i) = \sum_{k=1}^n (-1)^{k-1} \sum_{|I|=k} P(\bigcap_{i \in I} A_i)" />.
+                </Astuce>
+                <ConclusionBox>
+                  Formule de Poincaré (crible) à 3 événements démontrée. Méthode : récurrence ou applications successives de la formule à 2 événements.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <DifficultyHeader level="Niveau : Intermédiaire — Indépendance et conditionnement" />
+
+          <ExerciseCard
+            id="ex-08"
+            title="Lemme de Borel-Cantelli (sens facile)"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="(A_n)" /> une suite d'événements tels que <LatexRenderer latex="\sum_{n \ge 1} P(A_n) < +\infty" />.</p>
+                <p>Démontrer que <LatexRenderer latex="P(A_n \text{ réalisé une infinité de fois}) = 0" />, soit <LatexRenderer latex="P(\limsup_n A_n) = 0" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Le lemme de Borel-Cantelli est l'outil-clé pour démontrer qu'un événement aléatoire ne se produit qu'un nombre fini de fois presque sûrement. La démonstration utilise la sous-additivité de la probabilité et le critère de Cauchy pour la convergence des séries.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="B_N = \bigcup_{n \ge N} A_n" />. Alors <LatexRenderer latex="\limsup_n A_n = \bigcap_{N \ge 1} B_N" />.</p>
+                <p className="mt-2"><strong>Sous-additivité.</strong> Or <LatexRenderer latex="P(B_N) = P\bigl(\bigcup_{n \ge N} A_n\bigr) \le \sum_{n \ge N} P(A_n)" /> par sous-additivité.</p>
+                <p className="mt-2">Or la série <LatexRenderer latex="\sum P(A_n)" /> converge, donc le reste tend vers 0 : <LatexRenderer latex="\sum_{n \ge N} P(A_n) \to 0" /> quand <LatexRenderer latex="N \to +\infty" />.</p>
+                <Astuce>
+                  La suite <LatexRenderer latex="(B_N)" /> est décroissante. Par continuité décroissante de la probabilité, <LatexRenderer latex="P(\bigcap_N B_N) = \lim_N P(B_N)" />.
+                </Astuce>
+                <p className="mt-2">D'où :</p>
+                <LatexRenderer latex="P(\limsup_n A_n) = \lim_{N \to +\infty} P(B_N) \le \lim_{N \to +\infty} \sum_{n \ge N} P(A_n) = 0." />
+                <ConclusionBox>
+                  Lemme de Borel-Cantelli (sens facile) : <LatexRenderer latex="\sum P(A_n) < +\infty \Rightarrow P(\text{infinité de A_n}) = 0" />. Donc presque sûrement, seuls un nombre fini d'événements se réalisent.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-09"
+            title="Évènement de probabilité 1 - 1/n indéfiniment"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="A_n" /> une suite d'événements indépendants avec <LatexRenderer latex="P(A_n) = 1 - 1/n^2" /> pour <LatexRenderer latex="n \ge 1" />.</p>
+                <p>Démontrer que <LatexRenderer latex="P(\bigcap_{n \ge 1} A_n) > 0" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour une intersection infinie d'événements indépendants, on calcule <LatexRenderer latex="P(\bigcap A_n) = \prod P(A_n)" /> et on étudie la convergence de ce produit infini. Le critère : le produit converge vers une valeur non nulle ssi la série des <LatexRenderer latex="\ln P(A_n)" /> converge.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="(A_n)" /> indépendants avec <LatexRenderer latex="P(A_n) = 1 - 1/n^2" />. Par indépendance :</p>
+                <LatexRenderer latex="P\Bigl(\bigcap_{n=1}^N A_n\Bigr) = \prod_{n=1}^N P(A_n) = \prod_{n=1}^N \Bigl(1 - \frac{1}{n^2}\Bigr)." />
+                <Astuce>
+                  Or <LatexRenderer latex="1 - 1/n^2 = (n-1)(n+1)/n^2" />. Le produit télescope : <LatexRenderer latex="\prod_{n=2}^N (n-1)(n+1)/n^2 = (N+1)/(2N) \to 1/2" />.
+                </Astuce>
+                <p className="mt-2">Pour <LatexRenderer latex="N \to +\infty" /> :</p>
+                <LatexRenderer latex="\prod_{n=2}^N \Bigl(1 - \frac{1}{n^2}\Bigr) = \frac{N+1}{2N} \to \frac{1}{2}." />
+                <p className="mt-2">D'où, par continuité décroissante de la probabilité :</p>
+                <LatexRenderer latex="P\Bigl(\bigcap_{n \ge 2} A_n\Bigr) = \frac{1}{2}." />
+                <p className="mt-2">Or <LatexRenderer latex="A_1" /> a probabilité <LatexRenderer latex="1 - 1 = 0" />, donc <LatexRenderer latex="P(\bigcap_{n \ge 1} A_n) = 0" />.</p>
+                <p className="mt-2"><strong>Correction.</strong> Soit donc <LatexRenderer latex="P(\bigcap_{n \ge 2} A_n) = 1/2 > 0" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="P\bigl(\bigcap_{n \ge 2}(1 - 1/n^2)\bigr) = 1/2" /> par télescopage. Illustration que la probabilité d'une intersection infinie n'est pas nécessairement nulle.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <DifficultyHeader level="Niveau : Difficile — Système complet infini" />
+
+          <ExerciseCard
+            id="ex-10"
+            title="Probabilités totales avec système infini"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>On effectue une suite de lancers indépendants d'une pièce équilibrée. Soit <LatexRenderer latex="A" /> = "obtenir un nombre pair de piles parmi les <LatexRenderer latex="n" /> premiers lancers".</p>
+                <p>Démontrer que <LatexRenderer latex="P(A) = (1 + (1 - 2p)^n)/2" /> où <LatexRenderer latex="p = P(\text{pile})" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour calculer la probabilité d'un nombre pair de succès parmi <LatexRenderer latex="n" /> essais indépendants, on utilise une astuce de combinaison : <LatexRenderer latex="P(\text{pair}) = (1 + (1 - 2p)^n)/2" />. La démonstration passe par l'identité binomiale appliquée à <LatexRenderer latex="(p + q)^n" /> et <LatexRenderer latex="(q - p)^n" /> avec <LatexRenderer latex="q = 1 - p" />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="X" /> le nombre de piles parmi <LatexRenderer latex="n" /> lancers indépendants, <LatexRenderer latex="X \sim \mathcal{B}(n, p)" />.</p>
+                <p className="mt-2">Or, par la formule du binôme :</p>
+                <LatexRenderer latex="(p + q)^n = \sum_{k=0}^n \binom{n}{k} p^k q^{n-k} = 1," />
+                <LatexRenderer latex="(q - p)^n = \sum_{k=0}^n \binom{n}{k} (-p)^k q^{n-k} = \sum_{k=0}^n \binom{n}{k} p^k q^{n-k} (-1)^k = (1 - 2p)^n." />
+                <Astuce>
+                  En sommant les deux identités, les termes pairs sont multipliés par 2, et les termes impairs s'annulent. Cela isole exactement <LatexRenderer latex="\sum_{k \text{ pair}} \binom{n}{k} p^k q^{n-k}" />.
+                </Astuce>
+                <p className="mt-2">En sommant : <LatexRenderer latex="1 + (1 - 2p)^n = 2 \sum_{k \text{ pair}} \binom{n}{k} p^k q^{n-k} = 2\,P(X \text{ pair})" />.</p>
+                <p className="mt-2">D'où :</p>
+                <LatexRenderer latex="P(A) = P(X \text{ pair}) = \frac{1 + (1 - 2p)^n}{2}." />
+                <p className="mt-2"><strong>Limite.</strong> Pour <LatexRenderer latex="p = 1/2" />, <LatexRenderer latex="1 - 2p = 0" />, donc <LatexRenderer latex="P(A) = 1/2" />. Pour <LatexRenderer latex="p \ne 1/2" />, <LatexRenderer latex="(1-2p)^n \to 0" /> et <LatexRenderer latex="P(A) \to 1/2" /> aussi.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="P(\text{nombre pair de piles}) = (1 + (1-2p)^n)/2" />, qui tend vers 1/2 pour <LatexRenderer latex="n" /> grand.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-11"
+            title="Loi du tout ou rien (Kolmogorov)"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="(X_n)_{n \ge 1}" /> une suite de VA indépendantes. On admet que pour tout événement <LatexRenderer latex="A" /> de la tribu "asymptotique" (i.e. ne dépendant que des <LatexRenderer latex="X_n" /> pour <LatexRenderer latex="n" /> grand), <LatexRenderer latex="P(A) \in \{0, 1\}" /> (loi du 0-1 de Kolmogorov).</p>
+                <p>Soit <LatexRenderer latex="L = \limsup_n X_n" />. Démontrer que <LatexRenderer latex="L" /> est presque sûrement constante (i.e. il existe <LatexRenderer latex="\ell" /> tel que <LatexRenderer latex="P(L = \ell) = 1" />).</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  La loi du 0-1 de Kolmogorov stipule que tout événement asymptotique a une probabilité dans <LatexRenderer latex="\{0, 1\}" />. Conséquence : toute variable aléatoire mesurable par rapport à la tribu asymptotique est presque sûrement constante. C'est un résultat de "rigidité" fondamental en théorie des probabilités.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="L = \limsup_n X_n = \inf_N \sup_{n \ge N} X_n" />. Cette limite ne dépend que des valeurs des <LatexRenderer latex="X_n" /> pour <LatexRenderer latex="n" /> arbitrairement grand, donc <LatexRenderer latex="L" /> est mesurable par rapport à la tribu asymptotique.</p>
+                <p className="mt-2"><strong>Fonction de répartition.</strong> Soit <LatexRenderer latex="F_L(\ell) = P(L \le \ell)" />. L'événement <LatexRenderer latex="\{L \le \ell\}" /> est asymptotique. D'où, par la loi du 0-1, <LatexRenderer latex="F_L(\ell) \in \{0, 1\}" /> pour tout <LatexRenderer latex="\ell" />.</p>
+                <Astuce>
+                  Une FdR ne prenant que les valeurs 0 et 1, croissante et continue à droite, est nécessairement de la forme <LatexRenderer latex="F(\ell) = 0" /> si <LatexRenderer latex="\ell < \ell_0" /> et <LatexRenderer latex="F(\ell) = 1" /> si <LatexRenderer latex="\ell \ge \ell_0" /> — c'est la FdR d'une masse de Dirac.
+                </Astuce>
+                <p className="mt-2"><strong>Caractérisation.</strong> Or <LatexRenderer latex="F_L" /> est croissante, à valeurs dans <LatexRenderer latex="\{0, 1\}" />, et continue à droite. Donc il existe un seuil <LatexRenderer latex="\ell_0 = \sup\{\ell : F_L(\ell) = 0\}" /> tel que <LatexRenderer latex="F_L(\ell) = 0" /> pour <LatexRenderer latex="\ell < \ell_0" /> et <LatexRenderer latex="F_L(\ell) = 1" /> pour <LatexRenderer latex="\ell \ge \ell_0" />.</p>
+                <p className="mt-2">Ainsi <LatexRenderer latex="P(L = \ell_0) = F_L(\ell_0) - F_L(\ell_0^-) = 1 - 0 = 1" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="\limsup_n X_n" /> est presque sûrement constante. Conséquence remarquable de la loi du 0-1 de Kolmogorov.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </section>
+
       </div>
     </MathChapterTemplate>
   );

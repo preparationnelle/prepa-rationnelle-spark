@@ -5,30 +5,29 @@ import { Home, ChevronRight, BarChart3, Heart } from 'lucide-react';
 
 const TransformationsDemographiquesPage = () => {
   return (
-    <div className="relative">
-      <div className="container mx-auto px-4 pt-16 pb-8">
-        {/* Sticky Breadcrumb */}
-        <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
-          <div className="container mx-auto px-4 py-2">
-            <div className="flex items-center text-xs text-muted-foreground">
-              <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-                <Home className="h-3 w-3" />
+    <div className="carnet-paper min-h-screen">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+              <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+                <Home className="h-3.5 w-3.5" />
                 <span>Accueil</span>
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formations" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formations" className="hover:text-carnet-red transition-colors">
                 Toutes les formations
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formation/esh" className="hover:text-carnet-red transition-colors">
                 Formation ESH ECG
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh/premiere-annee" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formation/esh/premiere-annee" className="hover:text-carnet-red transition-colors">
                 Première année
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <span className="text-foreground font-medium">Transformations démographiques</span>
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <span className="carnet-eyebrow text-[11px]">Transformations démographiques</span>
             </div>
           </div>
         </nav>
@@ -39,25 +38,25 @@ const TransformationsDemographiquesPage = () => {
             <div className="w-12 h-12 bg-carnet-red/10 rounded-full flex items-center justify-center border border-carnet-red/40">
               <BarChart3 className="h-6 w-6 text-carnet-red" />
             </div>
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-4xl font-bold text-carnet-ink">
               Transformations démographiques et évolution des modes de vie
             </h1>
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-carnet-ink-soft max-w-3xl mx-auto leading-relaxed">
             Comprendre les changements démographiques et leurs impacts profonds sur la société et les modes de vie
           </p>
         </div>
 
         {/* Content */}
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-xl p-8 shadow-sm">
+          <div className="bg-carnet-paper-2 rounded-xl p-8 shadow-sm">
             <div className="space-y-8">
 
               {/* Introduction */}
               <section>
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Les grandes mutations démographiques</h2>
+                <h2 className="text-2xl font-bold text-carnet-ink mb-4">Les grandes mutations démographiques</h2>
                 <div className="prose prose-gray max-w-none">
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-carnet-ink-soft leading-relaxed mb-4">
                     Depuis le XIXe siècle, les sociétés occidentales ont connu des transformations démographiques
                     majeures qui ont profondément modifié les structures familiales, les modes de vie et
                     l'organisation sociale.
@@ -67,22 +66,22 @@ const TransformationsDemographiquesPage = () => {
 
               {/* Transition démographique */}
               <section>
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">La transition démographique</h2>
+                <h2 className="text-2xl font-bold text-carnet-ink mb-4">La transition démographique</h2>
                 <div className="grid md:grid-cols-3 gap-6">
-                  <div className="bg-pr-orange-pale p-6 rounded-lg text-center">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Phase 1</h3>
+                  <div className="bg-[rgba(193,68,58,0.08)] p-6 rounded-lg text-center">
+                    <h3 className="text-lg font-semibold text-carnet-ink mb-3">Phase 1</h3>
                     <p className="text-carnet-red text-sm">
                       Haute natalité et mortalité. Société à dominante rurale avec familles nombreuses.
                     </p>
                   </div>
-                  <div className="bg-pr-orange-pale p-6 rounded-lg text-center">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Phase 2</h3>
+                  <div className="bg-[rgba(193,68,58,0.08)] p-6 rounded-lg text-center">
+                    <h3 className="text-lg font-semibold text-carnet-ink mb-3">Phase 2</h3>
                     <p className="text-carnet-red text-sm">
                       Baisse de la mortalité, natalité élevée. Croissance démographique rapide et exode rural.
                     </p>
                   </div>
-                  <div className="bg-pr-orange-pale p-6 rounded-lg text-center">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Phase 3</h3>
+                  <div className="bg-[rgba(193,68,58,0.08)] p-6 rounded-lg text-center">
+                    <h3 className="text-lg font-semibold text-carnet-ink mb-3">Phase 3</h3>
                     <p className="text-carnet-red text-sm">
                       Baisse de la natalité. Vieillissement de la population et société urbaine.
                     </p>
@@ -92,10 +91,10 @@ const TransformationsDemographiquesPage = () => {
 
               {/* Vieillissement de la population */}
               <section>
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Le vieillissement démographique</h2>
+                <h2 className="text-2xl font-bold text-carnet-ink mb-4">Le vieillissement démographique</h2>
                 <div className="space-y-6">
-                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Causes du vieillissement</h3>
+                  <div className="bg-[rgba(193,68,58,0.08)] p-6 rounded-lg border-l-4 border-carnet-red/40">
+                    <h3 className="text-lg font-semibold text-carnet-ink mb-3">Causes du vieillissement</h3>
                     <ul className="space-y-2 text-carnet-red">
                       <li>• Allongement de l'espérance de vie</li>
                       <li>• Baisse de la fécondité</li>
@@ -103,8 +102,8 @@ const TransformationsDemographiquesPage = () => {
                       <li>• Amélioration des conditions de vie</li>
                     </ul>
                   </div>
-                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Conséquences socio-économiques</h3>
+                  <div className="bg-[rgba(193,68,58,0.08)] p-6 rounded-lg border-l-4 border-carnet-red/40">
+                    <h3 className="text-lg font-semibold text-carnet-ink mb-3">Conséquences socio-économiques</h3>
                     <ul className="space-y-2 text-carnet-red">
                       <li>• Pression sur les systèmes de retraite</li>
                       <li>• Réduction de la population active</li>
@@ -117,10 +116,10 @@ const TransformationsDemographiquesPage = () => {
 
               {/* Évolution des structures familiales */}
               <section>
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Évolution des structures familiales</h2>
+                <h2 className="text-2xl font-bold text-carnet-ink mb-4">Évolution des structures familiales</h2>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-pr-orange-pale p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Famille traditionnelle</h3>
+                  <div className="bg-[rgba(193,68,58,0.08)] p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-carnet-ink mb-3">Famille traditionnelle</h3>
                     <ul className="space-y-2 text-carnet-red">
                       <li>• Familles nombreuses et étendues</li>
                       <li>• Autorité patriarcale</li>
@@ -128,8 +127,8 @@ const TransformationsDemographiquesPage = () => {
                       <li>• Solidarité intergénérationnelle</li>
                     </ul>
                   </div>
-                  <div className="bg-pr-orange-pale p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Famille contemporaine</h3>
+                  <div className="bg-[rgba(193,68,58,0.08)] p-6 rounded-lg">
+                    <h3 className="text-lg font-semibold text-carnet-ink mb-3">Famille contemporaine</h3>
                     <ul className="space-y-2 text-carnet-red">
                       <li>• Familles nucléaires réduites</li>
                       <li>• Égalité homme-femme</li>
@@ -142,7 +141,7 @@ const TransformationsDemographiquesPage = () => {
 
               {/* Changements dans les modes de vie */}
               <section>
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Évolution des modes de vie</h2>
+                <h2 className="text-2xl font-bold text-carnet-ink mb-4">Évolution des modes de vie</h2>
                 <div className="space-y-4">
                   <div className="bg-teal-50 p-6 rounded-lg border-l-4 border-teal-400">
                     <h3 className="text-lg font-semibold text-teal-800 mb-3">Urbanisation et mobilité</h3>
@@ -151,16 +150,16 @@ const TransformationsDemographiquesPage = () => {
                       développement des transports, évolution des rythmes de vie et des pratiques sociales.
                     </p>
                   </div>
-                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Numérisation et nouvelles technologies</h3>
+                  <div className="bg-[rgba(193,68,58,0.08)] p-6 rounded-lg border-l-4 border-carnet-red/40">
+                    <h3 className="text-lg font-semibold text-carnet-ink mb-3">Numérisation et nouvelles technologies</h3>
                     <p className="text-carnet-red">
                       La révolution digitale transforme les relations sociales, le travail,
                       les loisirs et les modes de consommation avec l'essor des réseaux sociaux
                       et du commerce en ligne.
                     </p>
                   </div>
-                  <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Évolution des valeurs et aspirations</h3>
+                  <div className="bg-[rgba(193,68,58,0.08)] p-6 rounded-lg border-l-4 border-carnet-red/40">
+                    <h3 className="text-lg font-semibold text-carnet-ink mb-3">Évolution des valeurs et aspirations</h3>
                     <p className="text-carnet-red">
                       Changement des priorités individuelles : quête de bien-être, développement personnel,
                       conscience environnementale, diversité culturelle et ouverture internationale.
@@ -171,10 +170,10 @@ const TransformationsDemographiquesPage = () => {
 
               {/* Défis démographiques contemporains */}
               <section>
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Défis démographiques contemporains</h2>
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-3">Enjeux majeurs pour les sociétés modernes</h3>
-                  <ul className="space-y-2 text-gray-700">
+                <h2 className="text-2xl font-bold text-carnet-ink mb-4">Défis démographiques contemporains</h2>
+                <div className="bg-carnet-paper p-6 rounded-lg">
+                  <h3 className="text-lg font-semibold text-carnet-ink mb-3">Enjeux majeurs pour les sociétés modernes</h3>
+                  <ul className="space-y-2 text-carnet-ink-soft">
                     <li>• Gestion du vieillissement et politiques familiales</li>
                     <li>• Intégration des migrants et diversité culturelle</li>
                     <li>• Équilibre entre vie professionnelle et vie privée</li>
@@ -202,7 +201,6 @@ const TransformationsDemographiquesPage = () => {
             </Button>
           </Link>
         </div>
-      </div>
     </div>
   );
 };

@@ -5,34 +5,34 @@ import { TrendingUp, Home, ChevronRight, ArrowLeft, BookOpen, CheckCircle, Activ
 
 const FluctuationsEconomiquesPage = () => {
   return (
-    <div className="relative">
-      <div className="container mx-auto px-4 pt-16 pb-8">
-        {/* Sticky Breadcrumb */}
-        <nav className="sticky top-0 z-50 bg-gray-50/95 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-border/40 relative z-10">
-          <div className="container mx-auto px-4 py-2">
-            <div className="flex items-center text-xs text-muted-foreground">
-              <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-                <Home className="h-3 w-3" />
+    <div className="carnet-paper min-h-screen">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+              <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+                <Home className="h-3.5 w-3.5" />
                 <span>Accueil</span>
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formations" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formations" className="hover:text-carnet-red transition-colors">
                 Toutes les formations
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formation/esh" className="hover:text-carnet-red transition-colors">
                 Formation ESH ECG
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <Link to="/formation/esh/deuxieme-annee" className="hover:text-foreground transition-colors">
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <Link to="/formation/esh/deuxieme-annee" className="hover:text-carnet-red transition-colors">
                 Deuxième année
               </Link>
-              <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-              <span className="text-foreground font-medium">Fluctuations économiques</span>
+              <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+              <span className="carnet-eyebrow text-[11px]">Fluctuations économiques</span>
             </div>
           </div>
         </nav>
 
+      <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-12 lg:py-16">
         <div className="max-w-4xl mx-auto">
           {/* Bouton retour */}
           <div className="mb-6">
@@ -51,13 +51,13 @@ const FluctuationsEconomiquesPage = () => {
                 <Activity className="h-8 w-8 text-carnet-red" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">
+                <h1 className="font-lora text-[32px] sm:text-[40px] text-carnet-ink leading-tight">
                   Fluctuations économiques et politiques de régulation des cycles
                 </h1>
                 <div className="text-sm text-carnet-red font-medium mt-1">Chapitre 4.3 - Module 4</div>
               </div>
             </div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="font-instrument text-[16px] lg:text-[18px] text-carnet-ink-soft max-w-2xl mx-auto leading-[1.65]">
               Comprendre les cycles économiques et les politiques de régulation
             </p>
           </div>
@@ -65,8 +65,8 @@ const FluctuationsEconomiquesPage = () => {
           {/* Contenu principal */}
           <div className="space-y-8">
             {/* Section 1: Les cycles économiques */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">1</span>
                 </div>
@@ -74,9 +74,9 @@ const FluctuationsEconomiquesPage = () => {
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-pr-orange-pale rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Définition du cycle économique</h3>
-                  <p className="text-sm text-gray-600">
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Définition du cycle économique</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Alternance régulière de phases d'expansion et de contraction de l'activité économique autour d'une tendance de long terme.
                   </p>
                 </div>
@@ -106,7 +106,7 @@ const FluctuationsEconomiquesPage = () => {
                       <li>• Déflation possible</li>
                     </ul>
                   </div>
-                  <div className="bg-pr-orange-pale rounded-lg p-3 text-center">
+                  <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-3 text-center">
                     <h4 className="font-semibold text-carnet-red-deep mb-1">Creux</h4>
                     <ul className="text-xs text-carnet-red space-y-1">
                       <li>• Minimum Y</li>
@@ -119,8 +119,8 @@ const FluctuationsEconomiquesPage = () => {
             </div>
 
             {/* Section 2: Les théories des cycles économiques */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">2</span>
                 </div>
@@ -129,8 +129,8 @@ const FluctuationsEconomiquesPage = () => {
 
               <div className="space-y-4">
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Théorie keynésienne</h3>
-                  <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Théorie keynésienne</h3>
+                  <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Cycles dus aux variations de la demande effective</span>
@@ -147,8 +147,8 @@ const FluctuationsEconomiquesPage = () => {
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Théorie monétariste</h3>
-                  <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Théorie monétariste</h3>
+                  <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Cycles dus aux variations de la masse monétaire</span>
@@ -165,8 +165,8 @@ const FluctuationsEconomiquesPage = () => {
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Théorie des cycles réels (RBC)</h3>
-                  <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Théorie des cycles réels (RBC)</h3>
+                  <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Cycles dus aux chocs technologiques et d'offre</span>
@@ -185,8 +185,8 @@ const FluctuationsEconomiquesPage = () => {
             </div>
 
             {/* Section 3: Les politiques de régulation */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">3</span>
                 </div>
@@ -195,18 +195,18 @@ const FluctuationsEconomiquesPage = () => {
 
               <div className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-pr-orange-pale rounded-lg p-4">
-                    <h3 className="font-semibold text-gray-800 mb-2">Politique budgétaire</h3>
-                    <ul className="text-sm text-gray-600 space-y-1">
+                  <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                    <h3 className="font-semibold text-carnet-ink mb-2">Politique budgétaire</h3>
+                    <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li>• Stabilisation automatique (impôts progressifs)</li>
                       <li>• Relance budgétaire en récession</li>
                       <li>• Freinage budgétaire en surchauffe</li>
                       <li>• Multiplicateur des dépenses publiques</li>
                     </ul>
                   </div>
-                  <div className="bg-pr-orange-pale rounded-lg p-4">
-                    <h3 className="font-semibold text-gray-800 mb-2">Politique monétaire</h3>
-                    <ul className="text-sm text-gray-600 space-y-1">
+                  <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                    <h3 className="font-semibold text-carnet-ink mb-2">Politique monétaire</h3>
+                    <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li>• Ajustement des taux directeurs</li>
                       <li>• Contrôle de la masse monétaire</li>
                       <li>• Politique de quantitative easing</li>
@@ -216,8 +216,8 @@ const FluctuationsEconomiquesPage = () => {
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Politiques structurelles</h3>
-                  <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Politiques structurelles</h3>
+                  <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Flexibilité du marché du travail</span>
@@ -236,8 +236,8 @@ const FluctuationsEconomiquesPage = () => {
             </div>
 
             {/* Section 4: Limites et contraintes */}
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h2 className="font-lora text-[20px] text-carnet-ink leading-tight mb-4 flex items-center gap-2">
                 <div className="w-8 h-8 bg-carnet-red/20 rounded-full flex items-center justify-center">
                   <span className="text-carnet-red-deep font-bold text-sm">4</span>
                 </div>
@@ -245,25 +245,25 @@ const FluctuationsEconomiquesPage = () => {
               </h2>
 
               <div className="space-y-4">
-                <div className="bg-pr-orange-pale rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Le problème du délai (Inside lag)</h3>
-                  <p className="text-sm text-gray-600">
+                <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Le problème du délai (Inside lag)</h3>
+                  <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Temps nécessaire au diagnostic de la situation économique et à la mise en œuvre des politiques.
                   </p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-pr-orange-pale rounded-lg p-4">
-                    <h3 className="font-semibold text-gray-800 mb-2">Contraintes institutionnelles</h3>
-                    <ul className="text-sm text-gray-600 space-y-1">
+                  <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                    <h3 className="font-semibold text-carnet-ink mb-2">Contraintes institutionnelles</h3>
+                    <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li>• Règles budgétaires européennes</li>
                       <li>• Indépendance des banques centrales</li>
                       <li>• Coordination internationale</li>
                     </ul>
                   </div>
-                  <div className="bg-pr-orange-pale rounded-lg p-4">
-                    <h3 className="font-semibold text-gray-800 mb-2">Contraintes économiques</h3>
-                    <ul className="text-sm text-gray-600 space-y-1">
+                  <div className="bg-[rgba(193,68,58,0.08)] rounded-lg p-4">
+                    <h3 className="font-semibold text-carnet-ink mb-2">Contraintes économiques</h3>
+                    <ul className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                       <li>• Rigidités structurelles</li>
                       <li>• Anticipations des agents</li>
                       <li>• Effets d'éviction</li>
@@ -272,8 +272,8 @@ const FluctuationsEconomiquesPage = () => {
                 </div>
 
                 <div className="border-l-4 border-carnet-red/40 pl-4">
-                  <h3 className="font-semibold text-gray-800 mb-2">Le dilemme de la politique économique</h3>
-                  <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                  <h3 className="font-semibold text-carnet-ink mb-2">Le dilemme de la politique économique</h3>
+                  <ul className="list-disc list-inside font-instrument text-[13px] text-carnet-ink-soft leading-[1.55] space-y-1">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-carnet-red mt-0.5 flex-shrink-0" />
                       <span>Trade-off entre inflation et chômage (courbe de Phillips)</span>
@@ -293,7 +293,7 @@ const FluctuationsEconomiquesPage = () => {
           </div>
 
           {/* Navigation entre chapitres */}
-          <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+          <div className="flex justify-between items-center mt-12 pt-8 border-t border-dashed border-[rgba(78,55,30,0.18)]">
             <Link to="/formation/esh/module4/equilibre-macro">
               <Button variant="outline" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
@@ -306,7 +306,7 @@ const FluctuationsEconomiquesPage = () => {
                 Exercices
               </Button>
               <Link to="/formation/esh/module4/politiques-structurelles">
-                <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
+                <Button className="bg-carnet-red hover:bg-carnet-red-deep text-white">
                   Chapitre suivant
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

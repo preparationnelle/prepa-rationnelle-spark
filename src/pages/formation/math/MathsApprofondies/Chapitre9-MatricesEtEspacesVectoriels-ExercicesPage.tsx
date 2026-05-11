@@ -374,6 +374,174 @@ const Chapitre9MatricesEtEspacesVectorielsExercicesPage = () => {
           />
         </div>
 
+        <div>
+          <DifficultyHeader level="Module 4 — Trace et propriétés algébriques" />
+
+          <ExerciseCard
+            id="ex10"
+            title="Trace d'une matrice nilpotente"
+            difficulty="Niveau: Facile"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex="A \in \mathcal{M}_n(\mathbb{R})" /> nilpotente (i.e. <LatexRenderer latex="A^k = 0" /> pour un certain <LatexRenderer latex="k \ge 1" />).</p>
+                <p>Démontrer que <LatexRenderer latex="\mathrm{Tr}(A) = 0" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour une matrice nilpotente, le polynôme caractéristique est nécessairement <LatexRenderer latex="\chi_A(X) = X^n" /> (toutes les valeurs propres sont nulles). Or la somme des valeurs propres (avec multiplicité) est la trace.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="A" /> nilpotente avec <LatexRenderer latex="A^k = 0" />. Or si <LatexRenderer latex="\lambda" /> est une valeur propre complexe de <LatexRenderer latex="A" /> avec vecteur propre <LatexRenderer latex="x \ne 0" />, alors <LatexRenderer latex="A^k x = \lambda^k x" />.</p>
+                <p className="mt-2">Comme <LatexRenderer latex="A^k = 0" />, on a <LatexRenderer latex="\lambda^k x = 0" />, donc <LatexRenderer latex="\lambda^k = 0" /> (car <LatexRenderer latex="x \ne 0" />), soit <LatexRenderer latex="\lambda = 0" />.</p>
+                <p className="mt-2">D'où toutes les valeurs propres de <LatexRenderer latex="A" /> sont nulles. Le polynôme caractéristique <LatexRenderer latex="\chi_A(X) = X^n" />.</p>
+                <Astuce>
+                  La trace est la somme des valeurs propres comptées avec multiplicité. Pour une matrice nilpotente, toutes les valeurs propres sont 0, donc la trace est 0.
+                </Astuce>
+                <p className="mt-2">Or <LatexRenderer latex="\mathrm{Tr}(A) = \sum_i \lambda_i = 0" />.</p>
+                <ConclusionBox>
+                  Pour <LatexRenderer latex="A" /> nilpotente : <LatexRenderer latex="\mathrm{Tr}(A) = 0" />. Plus généralement <LatexRenderer latex="\mathrm{Tr}(A^k) = 0" /> pour tout <LatexRenderer latex="k \ge 1" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 5 — Calcul d'inverse" />
+
+          <ExerciseCard
+            id="ex11"
+            title="Inverse par polynôme annulateur"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex="A \in \mathcal{M}_n(\mathbb{R})" /> telle que <LatexRenderer latex="A^2 - 3A + 2I_n = 0" />.</p>
+                <p>1. Démontrer que <LatexRenderer latex="A" /> est inversible.</p>
+                <p>2. Calculer <LatexRenderer latex="A^{-1}" /> en fonction de <LatexRenderer latex="A" /> et <LatexRenderer latex="I_n" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Un polynôme annulateur <LatexRenderer latex="P(A) = 0" /> avec <LatexRenderer latex="P(0) \ne 0" /> permet d'isoler <LatexRenderer latex="I_n" /> dans une combinaison de puissances de <LatexRenderer latex="A" />, donnant directement <LatexRenderer latex="A^{-1}" />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="A^2 - 3A + 2I_n = 0" />, soit <LatexRenderer latex="A^2 - 3A = -2 I_n" />.</p>
+                <p className="mt-2"><strong>1. Inversibilité.</strong> Factorisons : <LatexRenderer latex="A(A - 3I_n) = -2 I_n" />, soit <LatexRenderer latex="A \cdot \left[-\frac{1}{2}(A - 3I_n)\right] = I_n" />.</p>
+                <p className="mt-2">D'où <LatexRenderer latex="A" /> est inversible (car elle admet un inverse à droite), et :</p>
+                <LatexRenderer latex="A^{-1} = -\frac{1}{2}(A - 3I_n) = \frac{3 I_n - A}{2}." />
+                <Astuce>
+                  Vérification : <LatexRenderer latex="A \cdot A^{-1} = -\frac{1}{2}(A^2 - 3A) = -\frac{1}{2}(-2 I_n) = I_n" />. ✓
+                </Astuce>
+                <p className="mt-2">Cette méthode généralise : si <LatexRenderer latex="P(A) = 0" /> avec <LatexRenderer latex="P(X) = \sum a_k X^k" />, alors <LatexRenderer latex="A^{-1} = -(1/a_0) \sum_{k \ge 1} a_k A^{k-1}" /> (sous condition <LatexRenderer latex="a_0 \ne 0" />).</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="A^{-1} = (3 I_n - A)/2" />. Méthode-clé : un polynôme annulateur avec <LatexRenderer latex="P(0) \ne 0" /> donne directement <LatexRenderer latex="A^{-1}" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex12"
+            title="Rang d'une matrice par opérations élémentaires"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div>
+                <p>Calculer le rang de <LatexRenderer latex="A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 1 & 1 & 1 \end{pmatrix}" /> par échelonnement.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Le rang d'une matrice est invariant par opérations élémentaires sur les lignes (ou colonnes). On échelonne la matrice par pivot de Gauss : le rang est le nombre de pivots non nuls (ou de lignes non nulles dans la forme échelonnée).
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="A" />. Effectuons les opérations élémentaires sur les lignes.</p>
+                <p className="mt-2"><LatexRenderer latex="L_2 \leftarrow L_2 - 2 L_1" /> : <LatexRenderer latex="(2, 4, 6) - 2(1, 2, 3) = (0, 0, 0)" />. La 2e ligne devient nulle.</p>
+                <p className="mt-2"><LatexRenderer latex="L_3 \leftarrow L_3 - L_1" /> : <LatexRenderer latex="(1, 1, 1) - (1, 2, 3) = (0, -1, -2)" />.</p>
+                <p className="mt-2">Matrice échelonnée :</p>
+                <LatexRenderer latex="\begin{pmatrix} 1 & 2 & 3 \\ 0 & 0 & 0 \\ 0 & -1 & -2 \end{pmatrix} \to \begin{pmatrix} 1 & 2 & 3 \\ 0 & -1 & -2 \\ 0 & 0 & 0 \end{pmatrix}" />
+                <p className="mt-2">(après réordonnement). Il y a <strong>2 lignes non nulles</strong>, donc <LatexRenderer latex="\mathrm{rg}(A) = 2" />.</p>
+                <Astuce>
+                  Vérification directe : la 2e ligne est <LatexRenderer latex="2 \times" /> la 1re. Donc les lignes sont liées, et le rang est au plus 2. Les lignes 1 et 3 ne sont pas colinéaires, donc le rang est au moins 2.
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="\mathrm{rg}(A) = 2" />. La matrice <LatexRenderer latex="A" /> n'est pas inversible (<LatexRenderer latex="\mathrm{rg} < n = 3" />).
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 6 — Théorème du rang matriciel" />
+
+          <ExerciseCard
+            id="ex13"
+            title="Inégalité de rang et théorème du rang"
+            difficulty="Niveau: Concours"
+            content={
+              <div>
+                <p>Soient <LatexRenderer latex="A \in \mathcal{M}_{n, p}(\mathbb{R})" /> et <LatexRenderer latex="B \in \mathcal{M}_{p, q}(\mathbb{R})" />.</p>
+                <p>Démontrer que <LatexRenderer latex="\mathrm{rg}(AB) \le \min(\mathrm{rg}\,A, \mathrm{rg}\,B)" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Le rang d'un produit est borné par les rangs individuels. Les deux inégalités <LatexRenderer latex="\mathrm{rg}(AB) \le \mathrm{rg}\,A" /> et <LatexRenderer latex="\mathrm{rg}(AB) \le \mathrm{rg}\,B" /> se démontrent géométriquement via les images de matrices.
+                </PointMethodo>
+                <p><strong>Inégalité <LatexRenderer latex="\mathrm{rg}(AB) \le \mathrm{rg}\,A" />.</strong> Soit <LatexRenderer latex="x \in \mathbb{R}^q" />. Alors <LatexRenderer latex="ABx = A(Bx)" />, donc <LatexRenderer latex="\mathrm{Im}(AB) = A(\mathrm{Im}\,B) \subset \mathrm{Im}\,A" />.</p>
+                <p className="mt-2">D'où <LatexRenderer latex="\mathrm{rg}(AB) = \dim \mathrm{Im}(AB) \le \dim \mathrm{Im}\,A = \mathrm{rg}\,A" />.</p>
+                <p className="mt-2"><strong>Inégalité <LatexRenderer latex="\mathrm{rg}(AB) \le \mathrm{rg}\,B" />.</strong> Or <LatexRenderer latex="\mathrm{Im}(AB) = A(\mathrm{Im}\,B)" />. Soit <LatexRenderer latex="A_{|\mathrm{Im}\,B}" /> la restriction de <LatexRenderer latex="A" /> à <LatexRenderer latex="\mathrm{Im}\,B" />. Alors :</p>
+                <LatexRenderer latex="\mathrm{rg}(AB) = \dim A(\mathrm{Im}\,B) \le \dim \mathrm{Im}\,B = \mathrm{rg}\,B," />
+                <p className="mt-2">car une application linéaire ne peut pas augmenter la dimension de l'image.</p>
+                <Astuce>
+                  L'inégalité réciproque (Sylvester) est <LatexRenderer latex="\mathrm{rg}(AB) \ge \mathrm{rg}\,A + \mathrm{rg}\,B - p" /> (déjà vue au chapitre 1 dans cet exemple) — ce qui borne par le bas.
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="\mathrm{rg}(AB) \le \min(\mathrm{rg}\,A, \mathrm{rg}\,B)" />. La multiplication ne peut qu'éroder le rang.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 7 — Matrices et systèmes" />
+
+          <ExerciseCard
+            id="ex14"
+            title="Calcul de A^n pour une matrice diagonalisable 2×2"
+            difficulty="Niveau: Difficile"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex="A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}" /> (matrice de la suite de Fibonacci).</p>
+                <p>1. Diagonaliser <LatexRenderer latex="A" />.</p>
+                <p>2. En déduire l'expression explicite de la suite de Fibonacci <LatexRenderer latex="F_n" /> définie par <LatexRenderer latex="F_0 = 0, F_1 = 1, F_{n+2} = F_{n+1} + F_n" /> (formule de Binet).</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour une suite récurrente linéaire d'ordre 2, on peut l'écrire matriciellement <LatexRenderer latex="(F_{n+1}, F_n)^T = A^n (F_1, F_0)^T" />. La diagonalisation de <LatexRenderer latex="A" /> donne ensuite l'expression explicite des <LatexRenderer latex="A^n" />, donc des <LatexRenderer latex="F_n" />.
+                </PointMethodo>
+                <p><strong>1. Diagonalisation.</strong> Le polynôme caractéristique : <LatexRenderer latex="\chi_A(\lambda) = \lambda^2 - \lambda - 1" />, de racines <LatexRenderer latex="\varphi = (1 + \sqrt{5})/2" /> (nombre d'or) et <LatexRenderer latex="\psi = (1 - \sqrt{5})/2" />.</p>
+                <p className="mt-2">Vecteurs propres : pour <LatexRenderer latex="\varphi" />, résoudre <LatexRenderer latex="(A - \varphi I) X = 0" /> donne <LatexRenderer latex="X = (\varphi, 1)^T" />. Pour <LatexRenderer latex="\psi" /> : <LatexRenderer latex="(\psi, 1)^T" />.</p>
+                <Astuce>
+                  Le nombre d'or vérifie <LatexRenderer latex="\varphi^2 = \varphi + 1" /> ; c'est exactement le polynôme caractéristique annulé en <LatexRenderer latex="\varphi" />.
+                </Astuce>
+                <p className="mt-2">Soit <LatexRenderer latex="P = \begin{pmatrix} \varphi & \psi \\ 1 & 1 \end{pmatrix}" />, <LatexRenderer latex="D = \mathrm{diag}(\varphi, \psi)" />. Alors <LatexRenderer latex="A = P D P^{-1}" />.</p>
+                <p className="mt-2"><strong>2. Formule de Binet.</strong> Or <LatexRenderer latex="\binom{F_{n+1}}{F_n} = A^n \binom{F_1}{F_0} = P D^n P^{-1} \binom{1}{0}" />.</p>
+                <p className="mt-2">Le calcul donne, après simplification :</p>
+                <LatexRenderer latex="F_n = \frac{\varphi^n - \psi^n}{\varphi - \psi} = \frac{1}{\sqrt{5}}\left(\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{2}\right)^n\right)." />
+                <ConclusionBox>
+                  Formule de Binet : <LatexRenderer latex="F_n = (\varphi^n - \psi^n)/\sqrt{5}" /> où <LatexRenderer latex="\varphi = (1+\sqrt{5})/2" /> (nombre d'or). Méthode-clé pour résoudre toute récurrence linéaire d'ordre constant.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
       </div>
     </MathChapterTemplate>
   );

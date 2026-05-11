@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
-import { FileText, Target, Save, Zap, Languages } from 'lucide-react';
+import { FileText, Target, Save, Zap, Languages, Home, ChevronRight } from 'lucide-react';
 import { LanguageParagraphGenerator } from '@/components/generator/LanguageParagraphGenerator';
 import { ThemeGrammaticalGenerator } from '@/components/grammar/ThemeGrammaticalGenerator';
-import { GeneratorHero } from '@/components/generator/GeneratorHero';
 
 const LanguagesGeneratorPage = () => {
   const [selectedTool, setSelectedTool] = useState<'paragraph' | 'grammar'>('grammar');
@@ -35,35 +35,53 @@ const LanguagesGeneratorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-pr-gray-bg">
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="mb-12">
-          <GeneratorHero
-            badge="Langues · Avancé"
-            badgeIcon={Languages}
-            title="Générateur"
-            highlight="Langues"
-            subtitle="Génère des paragraphes ou corrige tes thèmes grammaticaux avec l'IA."
-            breadcrumb="Langues"
-          />
+    <div className="min-h-screen carnet-paper">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/generator" className="hover:text-carnet-red transition-colors">Générateurs</Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Langues</span>
+          </div>
         </div>
+      </nav>
 
-        {/* Barre d'outils sticky */}
-        <div className="sticky top-0 z-20 bg-pr-gray-bg/95 backdrop-blur supports-[backdrop-filter]:bg-pr-gray-bg/70 border-b border-pr-gray-light mb-6 -mx-4 px-4">
-          <div className="flex items-center justify-between py-4 flex-wrap gap-4">
-            {/* Tabs outils */}
+      <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-14 lg:py-16">
+        <header className="mb-12 max-w-[820px]">
+          <div className="carnet-eyebrow mb-5">Langues · Avancé</div>
+          <div className="flex items-center gap-4 mb-5">
+            <div className="w-14 h-14 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+              <Languages className="h-6 w-6 text-carnet-red" />
+            </div>
+            <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] text-carnet-ink tracking-tight">
+              Générateur <em className="font-lora italic text-carnet-red">Langues</em>.
+            </h1>
+          </div>
+          <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.6] text-carnet-ink-soft max-w-[640px]">
+            Génère des paragraphes ou corrige tes <span className="carnet-hl font-lora italic">thèmes grammaticaux</span> avec l'IA.
+          </p>
+        </header>
+
+        {/* Barre d'outils */}
+        <div className="mb-6 carnet-card p-4">
+          <div className="flex items-center justify-between flex-wrap gap-4">
             <Tabs value={selectedTool} onValueChange={(v) => setSelectedTool(v as 'paragraph' | 'grammar')}>
-              <TabsList className="grid w-auto grid-cols-2 bg-white border border-pr-gray-light p-1 rounded-xl h-auto">
+              <TabsList className="grid w-auto grid-cols-2 bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] p-1 rounded-md h-auto">
                 <TabsTrigger
                   value="paragraph"
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg font-dm-sans text-sm data-[state=active]:bg-pr-orange data-[state=active]:text-white text-pr-gray-dark transition-all"
+                  className="flex items-center gap-2 px-4 py-2 rounded font-instrument text-sm font-semibold data-[state=active]:bg-carnet-red data-[state=active]:text-carnet-paper text-carnet-ink-soft transition-all"
                 >
                   <FileText className="w-4 h-4" />
                   Paragraphe
                 </TabsTrigger>
                 <TabsTrigger
                   value="grammar"
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg font-dm-sans text-sm data-[state=active]:bg-pr-orange data-[state=active]:text-white text-pr-gray-dark transition-all"
+                  className="flex items-center gap-2 px-4 py-2 rounded font-instrument text-sm font-semibold data-[state=active]:bg-carnet-red data-[state=active]:text-carnet-paper text-carnet-ink-soft transition-all"
                 >
                   <Target className="w-4 h-4" />
                   Thème grammatical
@@ -71,18 +89,16 @@ const LanguagesGeneratorPage = () => {
               </TabsList>
             </Tabs>
 
-            {/* Contrôles */}
             <div className="flex items-center gap-4 flex-wrap">
-              {/* Sélecteur langue */}
-              <div className="flex bg-white border border-pr-gray-light rounded-lg p-1">
+              <div className="flex bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] rounded-md p-1">
                 {(['allemand', 'anglais', 'espagnol'] as const).map((lang) => (
                   <button
                     key={lang}
                     onClick={() => setSelectedLanguage(lang)}
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium font-dm-sans transition-colors ${
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded text-sm font-semibold font-instrument transition-colors ${
                       selectedLanguage === lang
-                        ? 'bg-pr-orange-pale text-pr-orange-dark'
-                        : 'text-pr-gray-mid hover:text-pr-black'
+                        ? 'bg-[rgba(193,68,58,0.08)] text-carnet-red'
+                        : 'text-carnet-ink-mute hover:text-carnet-ink'
                     }`}
                   >
                     <span className="text-base">{getLanguageFlag(lang)}</span>
@@ -91,21 +107,21 @@ const LanguagesGeneratorPage = () => {
                 ))}
               </div>
 
-              {/* Mode examen */}
               <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-pr-gray-mid" />
+                <Zap className="w-4 h-4 text-carnet-ink-mute" />
                 <Switch
                   checked={examMode}
                   onCheckedChange={setExamMode}
-                  className="data-[state=checked]:bg-pr-orange"
+                  className="data-[state=checked]:bg-carnet-red"
                 />
-                <span className="text-sm text-pr-gray-dark font-dm-sans">Mode examen</span>
+                <span className="text-sm text-carnet-ink-soft font-instrument">Mode examen</span>
               </div>
 
-              {/* Auto-save */}
               <span
-                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-[0.08em] font-dm-sans ${
-                  autoSave ? 'bg-pr-orange-pale text-pr-orange-dark' : 'bg-pr-gray-bg text-pr-gray-mid'
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-[0.12em] font-instrument border ${
+                  autoSave
+                    ? 'bg-[rgba(193,68,58,0.06)] text-carnet-red border-[rgba(193,68,58,0.2)]'
+                    : 'bg-carnet-paper-2 text-carnet-ink-mute border-dashed border-[rgba(78,55,30,0.18)]'
                 }`}
               >
                 <Save className="w-3 h-3" />
@@ -115,12 +131,10 @@ const LanguagesGeneratorPage = () => {
           </div>
         </div>
 
-        {/* Contenu principal */}
         {selectedTool === 'paragraph' ? (
-          <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden mb-6">
-            <div className="h-[3px] w-full bg-pr-orange" />
-            <div className="px-6 py-5 border-b border-pr-gray-light bg-pr-gray-bg">
-              <h2 className="font-dm-serif text-xl text-pr-black">Sujet de paragraphe</h2>
+          <div className="carnet-card overflow-hidden mb-6">
+            <div className="px-6 py-5 border-b border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2">
+              <h2 className="font-lora text-[22px] text-carnet-ink">Sujet de paragraphe</h2>
             </div>
             <div className="p-6 sm:p-8">
               <LanguageParagraphGenerator language="fr" selectedLanguage={selectedLanguage} />
@@ -131,32 +145,32 @@ const LanguagesGeneratorPage = () => {
         )}
 
         {/* Section explicative */}
-        <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden">
-          <div className="h-[3px] w-full bg-pr-orange" />
-          <div className="p-6 sm:p-8 text-center">
-            <h2 className="font-dm-serif text-2xl text-pr-black mb-2">
-              Pourquoi travailler le thème grammatical ?
+        <div className="carnet-card p-6 sm:p-8 text-center">
+          <div className="flex items-baseline justify-center gap-4 mb-3">
+            <span className="carnet-hand text-[36px] text-carnet-red leading-none font-semibold">?</span>
+            <h2 className="font-lora text-[26px] text-carnet-ink leading-tight">
+              Pourquoi travailler le <em className="font-lora italic text-carnet-red">thème grammatical</em> ?
             </h2>
-            <div className="flex justify-center mb-5">
-              <div className="h-[2px] w-10 bg-pr-orange rounded-full" />
-            </div>
-            <p className="text-base text-pr-gray-dark font-dm-sans leading-relaxed mb-6 max-w-3xl mx-auto">
-              <span className="font-semibold text-pr-black">C'est capital pour les concours.</span> Le thème grammatical tombe régulièrement aux épreuves écrites et orales des Grandes Écoles de Commerce.
-            </p>
+          </div>
+          <div className="flex justify-center mb-5">
+            <div className="h-[2px] w-12 bg-carnet-ink rounded-full" />
+          </div>
+          <p className="text-base text-carnet-ink-soft font-instrument leading-[1.65] mb-6 max-w-3xl mx-auto">
+            <span className="font-semibold text-carnet-ink">C'est capital pour les concours.</span> Le thème grammatical tombe régulièrement aux épreuves écrites et orales des Grandes Écoles de Commerce.
+          </p>
 
-            <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto text-left">
-              <div className="bg-pr-gray-bg rounded-xl p-5 border border-pr-gray-light">
-                <h3 className="font-semibold text-pr-black mb-2 font-dm-sans">Apprentissage structuré</h3>
-                <p className="text-sm leading-relaxed text-pr-gray-dark font-dm-sans">
-                  Maîtrise les constructions grammaticales complexes et les règles essentielles pour une expression parfaite.
-                </p>
-              </div>
-              <div className="bg-pr-gray-bg rounded-xl p-5 border border-pr-gray-light">
-                <h3 className="font-semibold text-pr-black mb-2 font-dm-sans">Phrases idiomatiques</h3>
-                <p className="text-sm leading-relaxed text-pr-gray-dark font-dm-sans">
-                  Découvre des tournures idiomatiques naturelles pour enrichir ton vocabulaire et ton style.
-                </p>
-              </div>
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto text-left">
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] rounded-md p-5">
+              <h3 className="font-semibold text-carnet-ink mb-2 font-instrument">Apprentissage structuré</h3>
+              <p className="text-sm leading-[1.65] text-carnet-ink-soft font-instrument">
+                Maîtrise les constructions grammaticales complexes et les règles essentielles pour une expression parfaite.
+              </p>
+            </div>
+            <div className="bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] rounded-md p-5">
+              <h3 className="font-semibold text-carnet-ink mb-2 font-instrument">Phrases idiomatiques</h3>
+              <p className="text-sm leading-[1.65] text-carnet-ink-soft font-instrument">
+                Découvre des tournures idiomatiques naturelles pour enrichir ton vocabulaire et ton style.
+              </p>
             </div>
           </div>
         </div>

@@ -269,6 +269,187 @@ const Chapitre1ComplementsAlgebreLineaireExercicesPage = () => {
           />
         </div>
 
+        {/* Module 4 */}
+        <div>
+          <DifficultyHeader level="Module 4 — Supplémentarité et somme directe" />
+
+          <ExerciseCard
+            id="ex4"
+            title="Supplémentarité dans ℝ³"
+            difficulty="Niveau: Facile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="H = \{(x, y, z) \in \mathbb{R}^3 : x + y + z = 0\}" /> et <LatexRenderer latex="D = \mathrm{Vect}((1, 1, 1))" />.</p>
+                <p>Démontrer que <LatexRenderer latex="\mathbb{R}^3 = H \oplus D" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour démontrer une somme directe <LatexRenderer latex="E = F \oplus G" /> via la dimension, on vérifie : (i) <LatexRenderer latex="F \cap G = \{0\}" />, et (ii) <LatexRenderer latex="\dim F + \dim G = \dim E" />. La formule de Grassmann donne alors <LatexRenderer latex="\dim(F + G) = \dim F + \dim G - \dim(F \cap G) = \dim E" />, donc <LatexRenderer latex="F + G = E" />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="H" /> un hyperplan de <LatexRenderer latex="\mathbb{R}^3" /> (équation linéaire non triviale), donc <LatexRenderer latex="\dim H = 2" />. Et <LatexRenderer latex="D = \mathrm{Vect}((1, 1, 1))" /> est une droite (vecteur non nul), donc <LatexRenderer latex="\dim D = 1" />.</p>
+                <p className="mt-2"><strong>Intersection.</strong> Soit <LatexRenderer latex="v \in H \cap D" />. Alors <LatexRenderer latex="v = t(1, 1, 1)" /> pour un <LatexRenderer latex="t \in \mathbb{R}" />, et <LatexRenderer latex="t + t + t = 3t = 0" />. D'où <LatexRenderer latex="t = 0" /> et <LatexRenderer latex="v = 0" />. Donc <LatexRenderer latex="H \cap D = \{0\}" />.</p>
+                <Astuce>
+                  Méthode équivalente : le vecteur <LatexRenderer latex="(1, 1, 1)" /> ne vérifie pas l'équation <LatexRenderer latex="x + y + z = 0" /> (somme = 3 ≠ 0), donc <LatexRenderer latex="(1, 1, 1) \notin H" />. Ceci suffit pour conclure que <LatexRenderer latex="H \cap D = \{0\}" />.
+                </Astuce>
+                <p className="mt-2"><strong>Dimensions.</strong> Or <LatexRenderer latex="\dim H + \dim D = 2 + 1 = 3 = \dim \mathbb{R}^3" />.</p>
+                <p className="mt-2">D'où, par caractérisation : <LatexRenderer latex="\mathbb{R}^3 = H \oplus D" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="\mathbb{R}^3 = H \oplus D" />. Tout vecteur de <LatexRenderer latex="\mathbb{R}^3" /> s'écrit de manière unique comme somme d'un élément de <LatexRenderer latex="H" /> et d'un multiple de <LatexRenderer latex="(1, 1, 1)" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        {/* Module 5 */}
+        <div>
+          <DifficultyHeader level="Module 5 — Théorème du rang et applications" />
+
+          <ExerciseCard
+            id="ex5"
+            title="Théorème du rang sur une application R⁴ → R³"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="u : \mathbb{R}^4 \to \mathbb{R}^3" /> définie par <LatexRenderer latex="u(x_1, x_2, x_3, x_4) = (x_1 + x_2,\; x_2 + x_3,\; x_3 + x_4)" />.</p>
+                <p>1. Déterminer <LatexRenderer latex="\ker(u)" /> et sa dimension.</p>
+                <p>2. En déduire le rang de <LatexRenderer latex="u" /> par le théorème du rang. <LatexRenderer latex="u" /> est-elle surjective ?</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Le théorème du rang stipule <LatexRenderer latex="\dim \ker(u) + \mathrm{rg}(u) = \dim E" /> pour <LatexRenderer latex="u : E \to F" /> linéaire. On calcule d'abord <LatexRenderer latex="\dim \ker u" /> en résolvant <LatexRenderer latex="u(x) = 0" />, puis on en déduit le rang. <LatexRenderer latex="u" /> est surjective ssi <LatexRenderer latex="\mathrm{rg}(u) = \dim F" />.
+                </PointMethodo>
+                <p><strong>1. Noyau.</strong> Soit <LatexRenderer latex="x = (x_1, x_2, x_3, x_4) \in \ker u" />, soit :</p>
+                <LatexRenderer latex="x_1 + x_2 = 0, \quad x_2 + x_3 = 0, \quad x_3 + x_4 = 0." />
+                <p className="mt-2">D'où <LatexRenderer latex="x_2 = -x_1" />, <LatexRenderer latex="x_3 = -x_2 = x_1" />, <LatexRenderer latex="x_4 = -x_3 = -x_1" />. Ainsi <LatexRenderer latex="x = x_1(1, -1, 1, -1)" />.</p>
+                <p className="mt-2">Donc <LatexRenderer latex="\ker u = \mathrm{Vect}((1, -1, 1, -1))" />, soit <LatexRenderer latex="\dim \ker u = 1" />.</p>
+                <p className="mt-2"><strong>2. Rang.</strong> Par le théorème du rang :</p>
+                <LatexRenderer latex="\mathrm{rg}(u) = \dim \mathbb{R}^4 - \dim \ker u = 4 - 1 = 3." />
+                <p className="mt-2">Or <LatexRenderer latex="\mathrm{rg}(u) = 3 = \dim \mathbb{R}^3" />, donc <LatexRenderer latex="\mathrm{Im}(u) = \mathbb{R}^3" /> et <LatexRenderer latex="u" /> est surjective.</p>
+                <Astuce>
+                  Pour une application linéaire <LatexRenderer latex="u : E \to F" /> avec <LatexRenderer latex="\dim E > \dim F" />, <LatexRenderer latex="u" /> ne peut pas être injective (par le théorème du rang) ; mais elle peut être surjective.
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="\dim \ker u = 1" />, <LatexRenderer latex="\mathrm{rg}(u) = 3" /> : <LatexRenderer latex="u" /> est surjective mais non injective.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex6"
+            title="Formule de Grassmann"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soient <LatexRenderer latex="F" /> et <LatexRenderer latex="G" /> deux sous-espaces de <LatexRenderer latex="\mathbb{R}^n" /> de dimensions respectives <LatexRenderer latex="p" /> et <LatexRenderer latex="q" />.</p>
+                <p>1. Démontrer que si <LatexRenderer latex="p + q > n" />, alors <LatexRenderer latex="F \cap G \ne \{0\}" />.</p>
+                <p>2. Application : montrer que dans <LatexRenderer latex="\mathbb{R}^5" />, deux sous-espaces de dimension 3 ont une intersection de dimension au moins 1.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  La formule de Grassmann : <LatexRenderer latex="\dim(F + G) = \dim F + \dim G - \dim(F \cap G)" />. Combinée à <LatexRenderer latex="\dim(F + G) \le \dim E" />, on obtient une minoration de <LatexRenderer latex="\dim(F \cap G)" />.
+                </PointMethodo>
+                <p><strong>1. Démonstration.</strong> Soit <LatexRenderer latex="F, G \subset \mathbb{R}^n" /> avec <LatexRenderer latex="\dim F = p" />, <LatexRenderer latex="\dim G = q" />. Or par la formule de Grassmann :</p>
+                <LatexRenderer latex="\dim(F + G) = \dim F + \dim G - \dim(F \cap G) = p + q - \dim(F \cap G)." />
+                <p className="mt-2">Or <LatexRenderer latex="F + G \subset \mathbb{R}^n" />, donc <LatexRenderer latex="\dim(F + G) \le n" />. D'où :</p>
+                <LatexRenderer latex="p + q - \dim(F \cap G) \le n \iff \dim(F \cap G) \ge p + q - n." />
+                <p className="mt-2">Si <LatexRenderer latex="p + q > n" />, alors <LatexRenderer latex="\dim(F \cap G) \ge p + q - n \ge 1 > 0" />, donc <LatexRenderer latex="F \cap G \ne \{0\}" />.</p>
+                <Astuce>
+                  Ce résultat est le <strong>principe des tiroirs vectoriel</strong> : "trop de dimensions" implique l'existence d'une direction commune.
+                </Astuce>
+                <p className="mt-2"><strong>2. Application.</strong> Dans <LatexRenderer latex="\mathbb{R}^5" />, soient <LatexRenderer latex="F, G" /> avec <LatexRenderer latex="\dim F = \dim G = 3" />. Alors <LatexRenderer latex="p + q = 6 > 5 = n" />. D'où <LatexRenderer latex="\dim(F \cap G) \ge 6 - 5 = 1" />.</p>
+                <ConclusionBox>
+                  Formule de Grassmann : <LatexRenderer latex="\dim(F \cap G) \ge p + q - n" />, donc <LatexRenderer latex="p + q > n \Rightarrow F \cap G \ne \{0\}" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        {/* Module 6 */}
+        <div>
+          <DifficultyHeader level="Module 6 — Caractérisation d'un projecteur" />
+
+          <ExerciseCard
+            id="ex7"
+            title="Projecteur — caractérisation par image et noyau"
+            difficulty="Niveau: Concours"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="E" /> un espace vectoriel de dimension finie et <LatexRenderer latex="p \in \mathcal{L}(E)" />.</p>
+                <p>Démontrer que <LatexRenderer latex="p" /> est un projecteur (i.e. <LatexRenderer latex="p \circ p = p" />) si et seulement si <LatexRenderer latex="E = \ker p \oplus \mathrm{Im}\,p" /> et <LatexRenderer latex="p" /> est l'identité sur <LatexRenderer latex="\mathrm{Im}\,p" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  La caractérisation des projecteurs combine deux propriétés algébriques (idempotence <LatexRenderer latex="p^2 = p" />) et géométrique (décomposition de l'espace en noyau et image, avec <LatexRenderer latex="p" /> identité sur l'image). L'équivalence se démontre par double implication.
+                </PointMethodo>
+                <p><strong>Sens 1 : <LatexRenderer latex="p^2 = p \Rightarrow" /> décomposition.</strong> Soit <LatexRenderer latex="x \in E" />. Écrivons <LatexRenderer latex="x = (x - p(x)) + p(x)" />.</p>
+                <p className="mt-2">Or <LatexRenderer latex="p(x - p(x)) = p(x) - p^2(x) = p(x) - p(x) = 0" />, donc <LatexRenderer latex="x - p(x) \in \ker p" />. Et trivialement <LatexRenderer latex="p(x) \in \mathrm{Im}\,p" />.</p>
+                <p className="mt-2"><strong>Intersection nulle.</strong> Soit <LatexRenderer latex="y \in \ker p \cap \mathrm{Im}\,p" />. Alors <LatexRenderer latex="p(y) = 0" /> et <LatexRenderer latex="y = p(z)" /> pour un <LatexRenderer latex="z \in E" />. Or :</p>
+                <LatexRenderer latex="y = p(z) = p^2(z) = p(p(z)) = p(y) = 0." />
+                <p className="mt-2">D'où <LatexRenderer latex="\ker p \cap \mathrm{Im}\,p = \{0\}" />, et la décomposition <LatexRenderer latex="E = \ker p \oplus \mathrm{Im}\,p" />.</p>
+                <Astuce>
+                  L'identité <LatexRenderer latex="y = p(z) \Rightarrow p(y) = p^2(z) = p(z) = y" /> est la clé : pour un projecteur, <LatexRenderer latex="p" /> agit comme l'identité sur son image.
+                </Astuce>
+                <p className="mt-2"><strong>Identité sur Im p.</strong> Soit <LatexRenderer latex="y \in \mathrm{Im}\,p" />, donc <LatexRenderer latex="y = p(z)" />. Alors <LatexRenderer latex="p(y) = p^2(z) = p(z) = y" />.</p>
+                <p className="mt-2"><strong>Sens 2 : décomposition + identité <LatexRenderer latex="\Rightarrow p^2 = p" />.</strong> Soit <LatexRenderer latex="x \in E" />, écrit comme <LatexRenderer latex="x = k + y" /> avec <LatexRenderer latex="k \in \ker p" /> et <LatexRenderer latex="y \in \mathrm{Im}\,p" />.</p>
+                <p>Alors <LatexRenderer latex="p(x) = p(k) + p(y) = 0 + y = y" />, et <LatexRenderer latex="p^2(x) = p(y) = y = p(x)" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="p" /> projecteur <LatexRenderer latex="\iff E = \ker p \oplus \mathrm{Im}\,p" /> avec <LatexRenderer latex="p_{|\mathrm{Im}\,p} = \mathrm{id}" />. <LatexRenderer latex="p" /> est alors la projection sur <LatexRenderer latex="\mathrm{Im}\,p" /> parallèlement à <LatexRenderer latex="\ker p" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        {/* Module 7 */}
+        <div>
+          <DifficultyHeader level="Module 7 — Inégalité de Sylvester sur le rang" />
+
+          <ExerciseCard
+            id="ex8"
+            title="Inégalité de Sylvester sur le rang d'un produit"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soient <LatexRenderer latex="u : E \to F" /> et <LatexRenderer latex="v : F \to G" /> deux applications linéaires entre espaces de dimensions finies.</p>
+                <p>Démontrer l'inégalité de Sylvester : <LatexRenderer latex="\mathrm{rg}(v \circ u) \ge \mathrm{rg}(u) + \mathrm{rg}(v) - \dim F" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Cette inégalité s'obtient en restreignant <LatexRenderer latex="v" /> à <LatexRenderer latex="\mathrm{Im}\,u" /> et en appliquant le théorème du rang sur la restriction. L'argument-clé est que <LatexRenderer latex="\ker(v_{|\mathrm{Im}\,u}) \subset \ker v" />, ce qui donne une majoration de la dimension du noyau de la restriction.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="v_1 : \mathrm{Im}\,u \to G" /> la restriction de <LatexRenderer latex="v" /> à <LatexRenderer latex="\mathrm{Im}\,u" />. Par construction :</p>
+                <LatexRenderer latex="\mathrm{Im}(v_1) = v(\mathrm{Im}\,u) = \mathrm{Im}(v \circ u)." />
+                <p className="mt-2"><strong>Théorème du rang appliqué à <LatexRenderer latex="v_1" />.</strong> Or :</p>
+                <LatexRenderer latex="\dim \ker v_1 + \mathrm{rg}\,v_1 = \dim(\mathrm{Im}\,u) = \mathrm{rg}\,u." />
+                <p className="mt-2">D'où <LatexRenderer latex="\mathrm{rg}(v \circ u) = \mathrm{rg}\,u - \dim \ker v_1" />.</p>
+                <p className="mt-2"><strong>Majoration de <LatexRenderer latex="\dim \ker v_1" />.</strong> Or <LatexRenderer latex="\ker v_1 = \ker v \cap \mathrm{Im}\,u \subset \ker v" />, donc :</p>
+                <LatexRenderer latex="\dim \ker v_1 \le \dim \ker v = \dim F - \mathrm{rg}\,v." />
+                <Astuce>
+                  L'argument géométrique sous-jacent : la dimension de l'image du composé est égale à la dimension de l'image de <LatexRenderer latex="u" />, moins ce qui se fait "tuer" par <LatexRenderer latex="v" /> dans <LatexRenderer latex="\mathrm{Im}\,u" />.
+                </Astuce>
+                <p className="mt-2">D'où :</p>
+                <LatexRenderer latex="\mathrm{rg}(v \circ u) \ge \mathrm{rg}\,u - (\dim F - \mathrm{rg}\,v) = \mathrm{rg}\,u + \mathrm{rg}\,v - \dim F." />
+                <ConclusionBox>
+                  Inégalité de Sylvester : <LatexRenderer latex="\mathrm{rg}(v \circ u) \ge \mathrm{rg}\,u + \mathrm{rg}\,v - \dim F" />. Conséquence : <LatexRenderer latex="\mathrm{rg}(AB) \ge \mathrm{rg}\,A + \mathrm{rg}\,B - n" /> pour <LatexRenderer latex="A, B \in \mathcal{M}_n(\mathbb{R})" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
       </div>
     </MathChapterTemplate>
   );

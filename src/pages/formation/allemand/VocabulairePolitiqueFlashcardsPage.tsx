@@ -156,45 +156,45 @@ const VocabulairePolitiqueFlashcardsPage = () => {
   const getCategoryColor = (category: string) => {
     const colors = {
       "Institutions": "bg-carnet-red/10 text-carnet-red-deep",
-      "Système politique": "bg-purple-100 text-purple-800",
-      "Relations": "bg-green-100 text-green-800",
-      "Élections": "bg-red-100 text-red-800",
-      "Économie": "bg-yellow-100 text-yellow-800",
-      "Politique": "bg-indigo-100 text-indigo-800",
+      "Système politique": "bg-carnet-rule/30 text-carnet-ink",
+      "Relations": "bg-carnet-rule/30 text-carnet-ink",
+      "Élections": "bg-carnet-rule/30 text-carnet-ink",
+      "Économie": "bg-carnet-rule/30 text-carnet-ink",
+      "Politique": "bg-carnet-rule/30 text-carnet-ink",
       "Gouvernement": "bg-carnet-red/10 text-carnet-red-deep",
-      "Société": "bg-gray-100 text-gray-800",
-      "Droits": "bg-emerald-100 text-emerald-800",
-      "Droit": "bg-emerald-100 text-emerald-800",
-      "Relations internationales": "bg-teal-100 text-teal-800",
-      "Idéologies": "bg-amber-100 text-orange-800",
-      "Acteurs politiques": "bg-pink-100 text-pink-800",
-      "Partis": "bg-violet-100 text-violet-800",
-      "Opinion": "bg-cyan-100 text-cyan-800",
-      "Actions politiques": "bg-lime-100 text-lime-800"
+      "Société": "bg-carnet-paper-2 text-carnet-ink",
+      "Droits": "bg-carnet-rule/30 text-carnet-ink",
+      "Droit": "bg-carnet-rule/30 text-carnet-ink",
+      "Relations internationales": "bg-carnet-rule/30 text-carnet-ink",
+      "Idéologies": "bg-carnet-rule/30 text-carnet-ink",
+      "Acteurs politiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Partis": "bg-carnet-rule/30 text-carnet-ink",
+      "Opinion": "bg-carnet-rule/30 text-carnet-ink",
+      "Actions politiques": "bg-carnet-rule/30 text-carnet-ink"
     };
-    return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
+    return colors[category as keyof typeof colors] || "bg-carnet-paper-2 text-carnet-ink";
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale via-white to-pr-orange-soft">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-40 bg-carnet-paper-2/90 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper-2/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center text-xs font-medium text-carnet-ink-soft">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/allemand" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <Link to="/formation/allemand" className="hover:text-carnet-ink transition-colors">
               Formation Allemand
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/allemand/civilisation" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <Link to="/formation/allemand/civilisation" className="hover:text-carnet-ink transition-colors">
               Civilisation
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Vocabulaire Politique</span>
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <span className="text-carnet-ink font-bold">Vocabulaire Politique</span>
           </div>
         </div>
       </nav>
@@ -202,14 +202,14 @@ const VocabulairePolitiqueFlashcardsPage = () => {
       {/* Arrière-plan animé */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -z-10 -top-40 -right-40 w-80 h-80 bg-carnet-red/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-        <div className="absolute -z-10 -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
+        <div className="absolute -z-10 -bottom-40 -left-40 w-80 h-80 bg-carnet-rule/30 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-carnet-rule/30 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '4s'}}></div>
       </div>
 
       <div className="container mx-auto px-4 py-8 relative z-10">
         {/* En-tête */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
+          <h1 className="text-4xl font-bold text-carnet-ink mb-4 flex items-center justify-center gap-3">
             <div className="p-3 rounded-lg bg-carnet-red text-white">
               <BookOpen className="h-9 w-9" />
             </div>
@@ -228,12 +228,12 @@ const VocabulairePolitiqueFlashcardsPage = () => {
         {/* Barre de progrès */}
         <div className="max-w-2xl mx-auto mb-6">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-700">Progression</span>
-            <span className="text-sm font-medium text-orange-800">{currentIndex + 1} / {cards.length}</span>
+            <span className="text-sm font-medium text-carnet-ink-soft">Progression</span>
+            <span className="text-sm font-medium text-carnet-ink">{currentIndex + 1} / {cards.length}</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <div className="w-full bg-carnet-rule/40 rounded-full h-2.5">
             <div 
-              className="bg-gradient-to-r from-carnet-red to-purple-500 h-2.5 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-carnet-red to-pr-orange-dark h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -245,7 +245,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
             <Button
               onClick={shuffleCards}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <Shuffle className="h-4 w-4" />
               Mélanger (S)
@@ -253,7 +253,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
             <Button
               onClick={resetCards}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <RotateCcw className="h-4 w-4" />
               Recommencer (R)
@@ -261,7 +261,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
             <Button
               onClick={() => setShowHelp(!showHelp)}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <Lightbulb className="h-4 w-4" />
               Aide
@@ -287,7 +287,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
         {/* Carte principale */}
         <div className="max-w-2xl mx-auto mb-6">
           <Card 
-            className="h-80 cursor-pointer transform transition-all duration-500 hover:scale-105 bg-white/90 backdrop-blur-sm shadow-xl"
+            className="h-80 cursor-pointer transform transition-all duration-500 hover:scale-105 bg-carnet-paper-2/90 backdrop-blur-sm shadow-xl"
             onClick={() => setIsFlipped(!isFlipped)}
           >
             <CardContent className="h-full flex flex-col justify-center items-center p-8 relative">
@@ -302,30 +302,30 @@ const VocabulairePolitiqueFlashcardsPage = () => {
               <div className="absolute -z-10 top-4 left-4 flex items-center gap-2">
                 {isFlipped ? (
                   <>
-                    <Eye className="h-4 w-4 text-green-600" />
-                    <span className="text-sm font-medium text-green-600">Allemand</span>
+                    <Eye className="h-4 w-4 text-pr-orange-dark" />
+                    <span className="text-sm font-medium text-pr-orange-dark">Allemand</span>
                   </>
                 ) : (
                   <>
-                    <EyeOff className="h-4 w-4 text-orange-800" />
-                    <span className="text-sm font-medium text-orange-800">Français</span>
+                    <EyeOff className="h-4 w-4 text-carnet-ink" />
+                    <span className="text-sm font-medium text-carnet-ink">Français</span>
                   </>
                 )}
               </div>
 
               {/* Contenu de la carte */}
               <div className="text-center space-y-4">
-                <div className="text-3xl font-bold text-gray-900 mb-6">
+                <div className="text-3xl font-bold text-carnet-ink mb-6">
                   {isFlipped ? currentCard.german : currentCard.french}
                 </div>
                 
                 {isFlipped && (
-                  <div className="text-lg text-gray-600 bg-gray-50 rounded-lg p-4">
+                  <div className="text-lg text-carnet-ink-soft bg-carnet-paper-2 rounded-lg p-4">
                     <strong>Français :</strong> {currentCard.french}
                   </div>
                 )}
                 
-                <div className="text-sm text-gray-500 text-center">
+                <div className="text-sm text-carnet-ink-mute text-center">
                   Cliquez ou appuyez sur Espace pour retourner
                 </div>
               </div>
@@ -339,20 +339,20 @@ const VocabulairePolitiqueFlashcardsPage = () => {
             <Button
               onClick={goToPrevious}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white px-6 py-3"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 px-6 py-3"
             >
               <ChevronLeft className="h-5 w-5" />
               Précédent
             </Button>
             
-            <div className="text-sm text-gray-600 bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2">
+            <div className="text-sm text-carnet-ink-soft bg-carnet-paper-2/80 backdrop-blur-sm rounded-lg px-4 py-2">
               {currentIndex + 1} sur {cards.length}
             </div>
             
             <Button
               onClick={goToNext}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white px-6 py-3"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 px-6 py-3"
             >
               Suivant
               <ChevronRightIcon className="h-5 w-5" />
@@ -362,7 +362,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
 
         {/* Section informative */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-purple-50 shadow-lg">
+          <Card className="border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-pr-orange-soft shadow-lg">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-carnet-red-deep mb-4">💡 Conseils pour l'apprentissage</h3>
               <div className="grid md:grid-cols-2 gap-6">

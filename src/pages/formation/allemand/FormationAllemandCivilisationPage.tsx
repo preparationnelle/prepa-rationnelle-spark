@@ -1,7 +1,23 @@
 import React from 'react';
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Globe, Calendar, Briefcase, Home, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import {
+  ChevronRight,
+  Home,
+  Globe,
+  Landmark,
+  Users,
+  GraduationCap,
+  Theater,
+  Compass,
+  Cpu,
+  Leaf,
+  Factory,
+  Scale,
+  Scroll,
+  LucideIcon,
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { SEOHead } from '@/components/SEOHead';
 
 type ModuleItem = {
   number: number;
@@ -10,301 +26,156 @@ type ModuleItem = {
   modulePath: string;
   vocabPath: string;
   essaysPath?: string;
+  Icon: LucideIcon;
 };
 
 const modules: ModuleItem[] = [
-  { number: 1, title: 'Politik', description: 'Système politique, élections, partis et gouvernements', modulePath: '/formation/allemand/politik', vocabPath: '/formation/allemand/vocabulaire-politique', essaysPath: '/formation/allemand/civilisation/politik-essays' },
-  { number: 2, title: 'Démographie', description: 'Évolution, vieillissement, migrations et société', modulePath: '/formation/allemand/demographie', vocabPath: '/formation/allemand/vocabulaire-demographie', essaysPath: '/formation/allemand/civilisation/demographie-essays' },
-  { number: 3, title: 'Éducation', description: 'Système éducatif et formation professionnelle', modulePath: '/formation/allemand/education', vocabPath: '/formation/allemand/vocabulaire-bildung', essaysPath: '/formation/allemand/civilisation/education-essays' },
-  { number: 4, title: 'Culture', description: 'Identité, société moderne et enjeux sociaux', modulePath: '/formation/allemand/culture', vocabPath: '/formation/allemand/vocabulaire-kultur', essaysPath: '/formation/allemand/civilisation/culture-essays' },
-  { number: 5, title: 'Géopolitique', description: 'UE, relations internationales et sécurité', modulePath: '/formation/allemand/geopolitique', vocabPath: '/formation/allemand/vocabulaire-geopolitique', essaysPath: '/formation/allemand/civilisation/geopolitique-essays' },
-  { number: 6, title: 'Technologie & Innovation', description: 'Industrie 4.0, IA et recherche', modulePath: '/formation/allemand/technologie', vocabPath: '/formation/allemand/vocabulaire-innovation', essaysPath: '/formation/allemand/civilisation/technologie-essays' },
-  { number: 7, title: 'Écologie', description: 'Transition énergétique et environnement', modulePath: '/formation/allemand/ecologie', vocabPath: '/formation/allemand/vocabulaire-ecologie', essaysPath: '/formation/allemand/civilisation/ecologie-essays' },
-  { number: 8, title: 'Économie', description: 'Wirtschaft, commerce extérieur, innovation', modulePath: '/formation/allemand/industrie', vocabPath: '/formation/allemand/vocabulaire-wirtschaft', essaysPath: '/formation/allemand/civilisation/economie-essays' },
-  { number: 9, title: 'Femmes et Égalité', description: 'Droits, politiques publiques et société', modulePath: '/formation/allemand/femmes', vocabPath: '/formation/allemand/vocabulaire-frauen', essaysPath: '/formation/allemand/civilisation/femmes-essays' },
-  { number: 10, title: 'Histoire et Mémoire', description: 'Mémoire collective et histoire contemporaine', modulePath: '/formation/allemand/geschichte', vocabPath: '/formation/allemand/vocabulaire-geschichte', essaysPath: '/formation/allemand/civilisation/histoire-essays' },
+  { number: 1, title: 'Politik', description: 'Système politique, élections, partis et gouvernements', modulePath: '/formation/allemand/politik', vocabPath: '/formation/allemand/vocabulaire-politique', essaysPath: '/formation/allemand/civilisation/politik-essays', Icon: Landmark },
+  { number: 2, title: 'Démographie', description: 'Évolution, vieillissement, migrations et société', modulePath: '/formation/allemand/demographie', vocabPath: '/formation/allemand/vocabulaire-demographie', essaysPath: '/formation/allemand/civilisation/demographie-essays', Icon: Users },
+  { number: 3, title: 'Éducation', description: 'Système éducatif et formation professionnelle', modulePath: '/formation/allemand/education', vocabPath: '/formation/allemand/vocabulaire-bildung', essaysPath: '/formation/allemand/civilisation/education-essays', Icon: GraduationCap },
+  { number: 4, title: 'Culture', description: 'Identité, société moderne et enjeux sociaux', modulePath: '/formation/allemand/culture', vocabPath: '/formation/allemand/vocabulaire-kultur', essaysPath: '/formation/allemand/civilisation/culture-essays', Icon: Theater },
+  { number: 5, title: 'Géopolitique', description: 'UE, relations internationales et sécurité', modulePath: '/formation/allemand/geopolitique', vocabPath: '/formation/allemand/vocabulaire-geopolitique', essaysPath: '/formation/allemand/civilisation/geopolitique-essays', Icon: Compass },
+  { number: 6, title: 'Technologie & Innovation', description: 'Industrie 4.0, IA et recherche', modulePath: '/formation/allemand/technologie', vocabPath: '/formation/allemand/vocabulaire-innovation', essaysPath: '/formation/allemand/civilisation/technologie-essays', Icon: Cpu },
+  { number: 7, title: 'Écologie', description: 'Transition énergétique et environnement', modulePath: '/formation/allemand/ecologie', vocabPath: '/formation/allemand/vocabulaire-ecologie', essaysPath: '/formation/allemand/civilisation/ecologie-essays', Icon: Leaf },
+  { number: 8, title: 'Économie', description: 'Wirtschaft, commerce extérieur, innovation', modulePath: '/formation/allemand/industrie', vocabPath: '/formation/allemand/vocabulaire-wirtschaft', essaysPath: '/formation/allemand/civilisation/economie-essays', Icon: Factory },
+  { number: 9, title: 'Femmes et Égalité', description: 'Droits, politiques publiques et société', modulePath: '/formation/allemand/femmes', vocabPath: '/formation/allemand/vocabulaire-frauen', essaysPath: '/formation/allemand/civilisation/femmes-essays', Icon: Scale },
+  { number: 10, title: 'Histoire et Mémoire', description: 'Mémoire collective et histoire contemporaine', modulePath: '/formation/allemand/geschichte', vocabPath: '/formation/allemand/vocabulaire-geschichte', essaysPath: '/formation/allemand/civilisation/histoire-essays', Icon: Scroll },
 ];
 
 const FormationAllemandCivilisationPage = () => {
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
-      {/* Floating elements - Blue and orange bubbles */}
-      <div className="absolute -z-10 top-20 left-10 w-32 h-32 bg-orange-200 rounded-full opacity-10 animate-pulse -z-10"></div>
-      <div className="absolute -z-10 bottom-20 right-10 w-28 h-28 bg-carnet-red/20 rounded-full opacity-10 animate-pulse-slow -z-10"></div>
-      <div className="absolute -z-10 top-40 right-20 w-48 h-48 bg-orange-100 rounded-full opacity-10 animate-pulse-slow -z-10"></div>
-      <div className="absolute -z-10 bottom-40 left-20 w-56 h-56 bg-carnet-red/20 rounded-full opacity-5 animate-pulse -z-10"></div>
-      <div className="absolute -z-10 top-1/4 left-1/3 w-64 h-64 bg-orange-50 rounded-full opacity-10 animate-pulse-slow -z-10"></div>
-      <div className="absolute -z-10 top-3/4 right-1/4 w-40 h-40 bg-carnet-red/10 rounded-full opacity-5 animate-pulse -z-10"></div>
+    <div className="carnet-paper min-h-screen">
+      <SEOHead
+        canonical="/formation/allemand/civilisation"
+        title="Civilisation Allemande ECG · Prépa Rationnelle"
+        description="Les enjeux contemporains de l'Allemagne et de l'espace germanophone pour les concours ECG : politique, économie, société, géopolitique."
+      />
 
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formations" className="hover:text-foreground transition-colors">
-              Toutes les formations
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formation/allemand" className="hover:text-carnet-red transition-colors">
+              Allemand
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/allemand" className="hover:text-foreground transition-colors">
-              Formation Allemand ECG
-            </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground">Civilisation</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Civilisation</span>
           </div>
         </div>
       </nav>
 
-      {/* Contenu unifié */}
-      <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
-              <Globe className="h-6 w-6 text-pr-orange-dark" />
-            </div>
-            <h1 className="text-4xl font-bold text-gray-900">Civilisation Allemande</h1>
-          </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Découvrez l'Allemagne contemporaine et ses enjeux sociétaux
-          </p>
-          <div className="flex justify-center gap-3 mt-6">
-            <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">10 thématiques essentielles</span>
-            <span className="px-4 py-2 border border-gray-200 text-gray-700 rounded-full text-sm font-medium">Actualisé 2025</span>
-            <span className="px-4 py-2 bg-pr-orange-dark text-white rounded-full text-sm font-medium">Niveau Prépa</span>
-          </div>
-        </div>
+      <section className="relative py-20 lg:py-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[820px]"
+          >
+            <div className="carnet-eyebrow mb-6">Allemand · Module 03</div>
 
-        {/* Liste verticale sobre */}
-        <div className="max-w-4xl mx-auto space-y-4">
-          {modules.map((m) => (
-            <Link key={m.number} to={m.modulePath} className="block">
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-orange-200 group cursor-pointer">
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors flex-shrink-0">
-                    <span className="font-bold text-pr-orange-dark text-lg">{m.number}</span>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{m.title}</h3>
-                    <p className="text-gray-600 mb-4">{m.description}</p>
-                    <div className="flex flex-col sm:flex-row gap-3" onClick={(e) => e.stopPropagation()}>
-                      <Link to={m.modulePath}>
-                        <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium w-full sm:w-auto">
-                          <Calendar className="mr-2 h-4 w-4" />
-                          Accéder au module
-                        </Button>
-                      </Link>
-                      <Link to={m.vocabPath}>
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md w-full sm:w-auto">
-                          <Briefcase className="mr-2 h-4 w-4" />
-                          Vocabulaire
-                        </Button>
-                      </Link>
-                      {m.essaysPath ? (
-                        <Link to={m.essaysPath}>
-                          <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md w-full sm:w-auto">
-                            Sujets rédigés
-                          </Button>
-                        </Link>
-                      ) : (
-                        <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-md w-full sm:w-auto" disabled>
-                          Sujets rédigés
-                        </Button>
-                      )}
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                <Globe className="h-6 w-6 text-carnet-red" />
+              </div>
+              <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[64px] leading-[1.05] text-carnet-ink tracking-tight">
+                <em className="font-lora italic text-carnet-red">Civilisation</em>.
+              </h1>
+            </div>
+
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px] mb-8">
+              Découvrez l'Allemagne contemporaine et ses <span className="carnet-hl font-lora italic">enjeux sociétaux</span> — chaque thématique avec module, vocabulaire et sujets rédigés.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.25)]">
+                <Globe className="h-4 w-4 text-carnet-red" />
+                <span className="font-instrument text-[13px] font-semibold text-carnet-ink">10 thématiques</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)]">
+                <span className="carnet-eyebrow text-[11px]">Actualisé 2025</span>
+              </div>
+            </div>
+
+            <div className="carnet-hand text-[24px] mt-8 hidden md:block" style={{ transform: 'rotate(-2deg)' }}>
+              ↓ explore les thématiques
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="relative pb-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="space-y-4 max-w-4xl">
+            {modules.map((m, idx) => {
+              const tilt = idx % 4 === 1 ? 'carnet-tilt-r' : idx % 4 === 3 ? 'carnet-tilt-l' : '';
+              return (
+                <motion.div
+                  key={m.number}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-30px' }}
+                  transition={{ duration: 0.35, delay: Math.min(idx * 0.03, 0.25) }}
+                  className={tilt}
+                >
+                  <div className="carnet-card group p-6 sm:p-7 hover:shadow-[0_10px_24px_rgba(78,55,30,0.10)] transition-shadow">
+                    <div className="flex items-start gap-5">
+                      <div className="flex-shrink-0">
+                        <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">
+                          {String(m.number).padStart(2, '0')}
+                        </span>
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="w-9 h-9 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                            <m.Icon className="h-4 w-4 text-carnet-red" />
+                          </div>
+                          <Link to={m.modulePath} className="block">
+                            <h3 className="font-lora text-[22px] sm:text-[24px] text-carnet-ink leading-tight group-hover:text-carnet-red transition-colors">
+                              {m.title}
+                            </h3>
+                          </Link>
+                        </div>
+                        <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.6] mb-4 ml-12">
+                          {m.description}
+                        </p>
+
+                        <div className="flex flex-wrap gap-2 items-center ml-12">
+                          <Link
+                            to={m.modulePath}
+                            className="inline-flex items-center gap-1.5 bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument text-[12px] font-semibold uppercase tracking-[0.08em] px-4 py-2 rounded-full transition-colors"
+                          >
+                            Module
+                          </Link>
+                          <Link
+                            to={m.vocabPath}
+                            className="inline-flex items-center gap-1.5 bg-[rgba(193,68,58,0.06)] hover:bg-[rgba(193,68,58,0.12)] text-carnet-red border border-[rgba(193,68,58,0.25)] font-instrument text-[12px] font-semibold uppercase tracking-[0.08em] px-4 py-2 rounded-full transition-colors"
+                          >
+                            Vocabulaire
+                          </Link>
+                          {m.essaysPath && (
+                            <Link
+                              to={m.essaysPath}
+                              className="inline-flex items-center gap-1.5 bg-[rgba(193,68,58,0.06)] hover:bg-[rgba(193,68,58,0.12)] text-carnet-red border border-[rgba(193,68,58,0.25)] font-instrument text-[12px] font-semibold uppercase tracking-[0.08em] px-4 py-2 rounded-full transition-colors"
+                            >
+                              Sujets rédigés
+                            </Link>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </Link>
-          ))}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
-
-        {/* Ancien grid masqué */}
-        <div className="hidden">
-          {/* Politique */}
-          <Link
-            to="/formation/allemand/politik"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
-                <span className="text-2xl">🏛️</span>
-              </div>
-              <h3 className="font-bold text-xl mb-4 text-center text-pr-orange-dark group-hover:text-orange-800 transition-colors">Politik</h3>
-              <p className="text-sm text-pr-orange-dark mb-6 text-center leading-relaxed">Système politique allemand, élections, partis politiques et gouvernements</p>
-            </div>
-            <Button className="w-full bg-gradient-to-r from-pr-orange to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange text-white font-medium transition-all duration-300">
-              Explorer la politique
-            </Button>
-          </Link>
-
-          {/* Démographie */}
-          <Link
-            to="/formation/allemand/demographie"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
-                <span className="text-2xl">👥</span>
-              </div>
-              <h3 className="font-bold text-xl mb-4 text-center text-pr-orange-dark group-hover:text-orange-800 transition-colors">Démographie</h3>
-              <p className="text-sm text-pr-orange-dark mb-6 text-center leading-relaxed">Évolution démographique, vieillissement, migration et société allemande</p>
-            </div>
-            <Button className="w-full bg-gradient-to-r from-pr-orange to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange text-white font-medium transition-all duration-300">
-              Explorer la démographie
-            </Button>
-          </Link>
-
-          {/* Écologie */}
-          <Link
-            to="/formation/allemand/ecologie"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
-                <span className="text-2xl">🌱</span>
-              </div>
-              <h3 className="font-bold text-xl mb-4 text-center text-pr-orange-dark group-hover:text-orange-800 transition-colors">Écologie</h3>
-              <p className="text-sm text-pr-orange-dark mb-6 text-center leading-relaxed">Transition énergétique, protection de l'environnement et développement durable</p>
-            </div>
-            <Button className="w-full bg-gradient-to-r from-pr-orange to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange text-white font-medium transition-all duration-300">
-              Explorer l'écologie
-            </Button>
-          </Link>
-
-          {/* Économie et Industrie */}
-          <Link
-            to="/formation/allemand/industrie"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
-                <span className="text-2xl">🏭</span>
-              </div>
-              <h3 className="font-bold text-xl mb-4 text-center text-pr-orange-dark group-hover:text-orange-800 transition-colors">Économie</h3>
-              <p className="text-sm text-pr-orange-dark mb-6 text-center leading-relaxed">Industrie 4.0, économie allemande, commerce international et innovation</p>
-            </div>
-            <Button className="w-full bg-gradient-to-r from-pr-orange to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange text-white font-medium transition-all duration-300">
-              Explorer l'économie
-            </Button>
-          </Link>
-
-          {/* Géopolitique */}
-          <Link
-            to="/formation/allemand/geopolitique"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
-                <span className="text-2xl">🌍</span>
-              </div>
-              <h3 className="font-bold text-xl mb-4 text-center text-pr-orange-dark group-hover:text-orange-800 transition-colors">Géopolitique</h3>
-              <p className="text-sm text-pr-orange-dark mb-6 text-center leading-relaxed">Union européenne, relations internationales et sécurité allemande</p>
-            </div>
-            <Button className="w-full bg-gradient-to-r from-pr-orange to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange text-white font-medium transition-all duration-300">
-              Explorer la géopolitique
-            </Button>
-          </Link>
-
-          {/* Culture et Société */}
-          <Link
-            to="/formation/allemand/culture"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
-                <span className="text-2xl">🎭</span>
-              </div>
-              <h3 className="font-bold text-xl mb-4 text-center text-pr-orange-dark group-hover:text-orange-800 transition-colors">Culture</h3>
-              <p className="text-sm text-pr-orange-dark mb-6 text-center leading-relaxed">Identité culturelle, diversité, histoire et mémoire collective allemande</p>
-            </div>
-            <Button className="w-full bg-gradient-to-r from-pr-orange to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange text-white font-medium transition-all duration-300">
-              Explorer la culture
-            </Button>
-          </Link>
-
-          {/* Éducation */}
-          <Link
-            to="/formation/allemand/education"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
-                <span className="text-2xl">🎓</span>
-              </div>
-              <h3 className="font-bold text-xl mb-4 text-center text-pr-orange-dark group-hover:text-orange-800 transition-colors">Éducation</h3>
-              <p className="text-sm text-pr-orange-dark mb-6 text-center leading-relaxed">Système éducatif allemand, formation professionnelle et excellence académique</p>
-            </div>
-            <Button className="w-full bg-gradient-to-r from-pr-orange to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange text-white font-medium transition-all duration-300">
-              Explorer l'éducation
-            </Button>
-          </Link>
-
-          {/* Technologie */}
-          <Link
-            to="/formation/allemand/technologie"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
-                <span className="text-2xl">🔬</span>
-              </div>
-              <h3 className="font-bold text-xl mb-4 text-center text-pr-orange-dark group-hover:text-orange-800 transition-colors">Technologie</h3>
-              <p className="text-sm text-pr-orange-dark mb-6 text-center leading-relaxed">Innovation technologique, recherche scientifique et start-ups allemandes</p>
-            </div>
-            <Button className="w-full bg-gradient-to-r from-pr-orange to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange text-white font-medium transition-all duration-300">
-              Explorer la technologie
-            </Button>
-          </Link>
-
-          {/* Femmes et Égalité */}
-          <Link
-            to="/formation/allemand/femmes"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
-                <span className="text-2xl">⚖️</span>
-              </div>
-              <h3 className="font-bold text-xl mb-4 text-center text-pr-orange-dark group-hover:text-orange-800 transition-colors">Égalité</h3>
-              <p className="text-sm text-pr-orange-dark mb-6 text-center leading-relaxed">Droits des femmes, égalité des genres et politiques sociales en Allemagne</p>
-            </div>
-            <Button className="w-full bg-gradient-to-r from-pr-orange to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange text-white font-medium transition-all duration-300">
-              Explorer l'égalité
-            </Button>
-          </Link>
-
-          {/* Histoire et Mémoire */}
-          <Link
-            to="/formation/allemand/geschichte"
-            className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-all duration-500 group flex flex-col items-center text-center min-h-[280px] justify-between hover:scale-[1.02] transform"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pr-orange-pale/60 rounded-2xl flex items-center justify-center mb-6 group-hover:from-orange-200 group-hover:to-carnet-red/20 transition-all duration-300">
-                <span className="text-2xl">📜</span>
-              </div>
-              <h3 className="font-bold text-xl mb-4 text-center text-pr-orange-dark group-hover:text-orange-800 transition-colors">Histoire</h3>
-              <p className="text-sm text-pr-orange-dark mb-6 text-center leading-relaxed">Mémoire collective, travail de mémoire et histoire contemporaine allemande</p>
-            </div>
-            <Button className="w-full bg-gradient-to-r from-pr-orange to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange text-white font-medium transition-all duration-300">
-              Explorer l'histoire
-            </Button>
-          </Link>
-        </div>
-
-        {/* Bouton retour */}
-        <div className="text-center mt-12">
-          <Link
-            to="/formation/allemand"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pr-orange to-pr-orange hover:from-pr-orange-dark hover:to-pr-orange text-white font-medium rounded-lg transition-all duration-300"
-          >
-            Retour à la formation Allemand
-          </Link>
-        </div>
-      </div>
+      </section>
     </div>
   );
 };

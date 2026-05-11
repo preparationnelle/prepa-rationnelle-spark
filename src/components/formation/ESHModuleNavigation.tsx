@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
 import {
   ChevronLeft,
   ChevronRight,
@@ -49,25 +48,22 @@ const ESHModuleNavigation: React.FC = () => {
   const Icon = currentModule.icon;
 
   return (
-    <div className="space-y-5 font-dm-sans">
+    <div className="space-y-4">
       {/* Barre de progression entre modules */}
-      <div className="relative bg-white rounded-2xl p-5 border border-pr-gray-light shadow-sm overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-pr-orange" />
+      <div className="relative bg-carnet-paper-2 rounded-2xl p-5 border border-dashed border-[rgba(78,55,30,0.18)] overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-carnet-red" />
         <div className="flex items-center justify-between gap-4">
           {/* Précédent */}
           <div className="flex-1">
             {previousModule ? (
-              <Link to={`/formation/esh/${previousModule.slug}`}>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex items-center gap-2 border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft transition-colors"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                  <previousModule.icon className="h-4 w-4" />
-                  <span className="hidden sm:inline">{previousModule.title}</span>
-                  <span className="sm:hidden">Précédent</span>
-                </Button>
+              <Link
+                to={`/formation/esh/${previousModule.slug}`}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-dashed border-[rgba(78,55,30,0.25)] bg-carnet-paper text-carnet-ink-soft hover:text-carnet-red hover:border-carnet-red/40 font-instrument text-[12px] font-semibold transition-colors"
+              >
+                <ChevronLeft className="h-3.5 w-3.5" />
+                <previousModule.icon className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">{previousModule.title}</span>
+                <span className="sm:hidden">Précédent</span>
               </Link>
             ) : (
               <div />
@@ -81,10 +77,10 @@ const ESHModuleNavigation: React.FC = () => {
                 key={mod.id}
                 className={`h-1.5 rounded-full transition-all ${
                   index === currentIndex
-                    ? 'w-8 bg-pr-orange'
+                    ? 'w-8 bg-carnet-red'
                     : index < currentIndex
-                    ? 'w-2 bg-pr-orange-soft'
-                    : 'w-2 bg-pr-gray-light'
+                    ? 'w-2 bg-carnet-red/40'
+                    : 'w-2 bg-[rgba(78,55,30,0.18)]'
                 }`}
               />
             ))}
@@ -93,20 +89,18 @@ const ESHModuleNavigation: React.FC = () => {
           {/* Suivant */}
           <div className="flex-1 flex justify-end">
             {nextModule ? (
-              <Link to={`/formation/esh/${nextModule.slug}`}>
-                <Button
-                  size="sm"
-                  className="bg-pr-orange hover:bg-pr-orange-dark text-white flex items-center gap-2"
-                >
-                  <span className="hidden sm:inline">{nextModule.title}</span>
-                  <span className="sm:hidden">Suivant</span>
-                  <nextModule.icon className="h-4 w-4" />
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
+              <Link
+                to={`/formation/esh/${nextModule.slug}`}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-carnet-red hover:bg-carnet-red-deep text-white font-instrument text-[12px] font-semibold transition-colors"
+              >
+                <span className="hidden sm:inline">{nextModule.title}</span>
+                <span className="sm:hidden">Suivant</span>
+                <nextModule.icon className="h-3.5 w-3.5" />
+                <ChevronRight className="h-3.5 w-3.5" />
               </Link>
             ) : (
-              <div className="flex items-center gap-2 text-pr-orange-dark text-sm font-semibold uppercase tracking-[0.08em]">
-                <CheckCircle className="h-4 w-4" />
+              <div className="flex items-center gap-2 text-carnet-red font-instrument text-[12px] font-semibold uppercase tracking-[0.08em]">
+                <CheckCircle className="h-3.5 w-3.5" />
                 <span>Formation terminée</span>
               </div>
             )}
@@ -115,17 +109,17 @@ const ESHModuleNavigation: React.FC = () => {
       </div>
 
       {/* Bandeau du module courant */}
-      <div className="relative bg-white rounded-2xl p-5 border border-pr-gray-light shadow-sm overflow-hidden">
-        <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-pr-orange" />
+      <div className="relative bg-carnet-paper-2 rounded-2xl p-5 border border-dashed border-[rgba(78,55,30,0.18)] overflow-hidden">
+        <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-carnet-red" />
         <div className="flex items-center gap-4 pl-2">
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-pr-orange-pale border border-pr-orange-soft/40">
-            <Icon className="h-5 w-5 text-pr-orange-dark" />
+          <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)]">
+            <Icon className="h-5 w-5 text-carnet-red" />
           </div>
           <div className="flex-1 min-w-0">
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark mb-1">
+            <span className="carnet-eyebrow text-[10px] mb-1 block">
               Module {currentIndex + 1} / {modules.length}
             </span>
-            <h3 className="font-dm-serif text-xl md:text-2xl text-pr-black leading-tight">
+            <h3 className="font-lora text-[20px] md:text-[22px] text-carnet-ink leading-tight">
               {currentModule.title}
             </h3>
           </div>

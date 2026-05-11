@@ -198,78 +198,78 @@ const VocabulaireBildungFlashcardsPage = () => {
   const getCategoryColor = (category: string) => {
     const colors = {
       "Éducation générale": "bg-carnet-red/10 text-carnet-red-deep",
-      "Formation": "bg-indigo-100 text-indigo-800",
-      "Système éducatif": "bg-sky-100 text-sky-800",
-      "Formation professionnelle": "bg-cyan-100 text-cyan-800",
+      "Formation": "bg-carnet-rule/30 text-carnet-ink",
+      "Système éducatif": "bg-carnet-rule/30 text-carnet-ink",
+      "Formation professionnelle": "bg-carnet-rule/30 text-carnet-ink",
       "Enseignement supérieur": "bg-carnet-red/10 text-carnet-red-deep",
-      "Orientation scolaire": "bg-violet-100 text-violet-800",
-      "Système dual": "bg-teal-100 text-teal-800",
-      "Recherche": "bg-purple-100 text-purple-800",
-      "Équité éducative": "bg-emerald-100 text-emerald-800",
-      "Système scolaire secondaire": "bg-indigo-100 text-indigo-800",
-      "Défis du système dual": "bg-red-100 text-red-800",
-      "Excellence académique": "bg-amber-100 text-amber-800",
-      "Attractivité internationale": "bg-green-100 text-green-800",
-      "Concurrence éducative": "bg-amber-100 text-orange-800",
+      "Orientation scolaire": "bg-carnet-rule/30 text-carnet-ink",
+      "Système dual": "bg-carnet-rule/30 text-carnet-ink",
+      "Recherche": "bg-carnet-rule/30 text-carnet-ink",
+      "Équité éducative": "bg-carnet-rule/30 text-carnet-ink",
+      "Système scolaire secondaire": "bg-carnet-rule/30 text-carnet-ink",
+      "Défis du système dual": "bg-carnet-rule/30 text-carnet-ink",
+      "Excellence académique": "bg-carnet-rule/30 text-carnet-ink",
+      "Attractivité internationale": "bg-carnet-rule/30 text-carnet-ink",
+      "Concurrence éducative": "bg-carnet-rule/30 text-carnet-ink",
       "Formation scolaire": "bg-carnet-rule/30 text-carnet-ink",
-      "Éducation précoce": "bg-pink-100 text-pink-800",
-      "Enseignement primaire": "bg-lime-100 text-lime-800",
+      "Éducation précoce": "bg-carnet-rule/30 text-carnet-ink",
+      "Enseignement primaire": "bg-carnet-rule/30 text-carnet-ink",
       "Enseignement secondaire": "bg-carnet-red/10 text-carnet-red-deep",
-      "Diplômes": "bg-yellow-100 text-yellow-800",
-      "Apprentissage": "bg-cyan-100 text-cyan-800",
-      "Personnel de formation": "bg-rose-100 text-rose-800",
-      "Établissements supérieurs": "bg-indigo-100 text-indigo-800",
-      "Diplômes supérieurs": "bg-purple-100 text-purple-800",
-      "Doctorat": "bg-violet-100 text-violet-800",
-      "Programmes d'excellence": "bg-amber-100 text-amber-800",
-      "Organismes de recherche": "bg-emerald-100 text-emerald-800",
-      "Échanges internationaux": "bg-sky-100 text-sky-800",
-      "Opportunités éducatives": "bg-green-100 text-green-800",
-      "Facteurs sociaux": "bg-gray-100 text-gray-800",
-      "Évaluations internationales": "bg-amber-100 text-orange-800",
-      "Inclusion scolaire": "bg-teal-100 text-teal-800",
+      "Diplômes": "bg-carnet-rule/30 text-carnet-ink",
+      "Apprentissage": "bg-carnet-rule/30 text-carnet-ink",
+      "Personnel de formation": "bg-carnet-rule/30 text-carnet-ink",
+      "Établissements supérieurs": "bg-carnet-rule/30 text-carnet-ink",
+      "Diplômes supérieurs": "bg-carnet-rule/30 text-carnet-ink",
+      "Doctorat": "bg-carnet-rule/30 text-carnet-ink",
+      "Programmes d'excellence": "bg-carnet-rule/30 text-carnet-ink",
+      "Organismes de recherche": "bg-carnet-rule/30 text-carnet-ink",
+      "Échanges internationaux": "bg-carnet-rule/30 text-carnet-ink",
+      "Opportunités éducatives": "bg-carnet-rule/30 text-carnet-ink",
+      "Facteurs sociaux": "bg-carnet-paper-2 text-carnet-ink",
+      "Évaluations internationales": "bg-carnet-rule/30 text-carnet-ink",
+      "Inclusion scolaire": "bg-carnet-rule/30 text-carnet-ink",
       "Organisation scolaire": "bg-carnet-red/10 text-carnet-red-deep",
-      "Obligations légales": "bg-red-100 text-red-800",
-      "Personnel éducatif": "bg-indigo-100 text-indigo-800",
-      "Apprenants": "bg-pink-100 text-pink-800",
-      "Évaluation": "bg-yellow-100 text-yellow-800",
-      "Organismes de formation": "bg-cyan-100 text-cyan-800",
-      "Expérience pratique": "bg-lime-100 text-lime-800",
-      "Méthodes pédagogiques": "bg-purple-100 text-purple-800",
-      "Qualifications": "bg-amber-100 text-amber-800",
-      "Réformes éducatives": "bg-rose-100 text-rose-800",
-      "Système universitaire européen": "bg-violet-100 text-violet-800",
-      "Qualité éducative": "bg-emerald-100 text-emerald-800",
+      "Obligations légales": "bg-carnet-rule/30 text-carnet-ink",
+      "Personnel éducatif": "bg-carnet-rule/30 text-carnet-ink",
+      "Apprenants": "bg-carnet-rule/30 text-carnet-ink",
+      "Évaluation": "bg-carnet-rule/30 text-carnet-ink",
+      "Organismes de formation": "bg-carnet-rule/30 text-carnet-ink",
+      "Expérience pratique": "bg-carnet-rule/30 text-carnet-ink",
+      "Méthodes pédagogiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Qualifications": "bg-carnet-rule/30 text-carnet-ink",
+      "Réformes éducatives": "bg-carnet-rule/30 text-carnet-ink",
+      "Système universitaire européen": "bg-carnet-rule/30 text-carnet-ink",
+      "Qualité éducative": "bg-carnet-rule/30 text-carnet-ink",
       "Étudiants universitaires": "bg-carnet-red/10 text-carnet-red-deep",
-      "Enseignement universitaire": "bg-indigo-100 text-indigo-800",
+      "Enseignement universitaire": "bg-carnet-rule/30 text-carnet-ink",
       "Infrastructure universitaire": "bg-carnet-rule/30 text-carnet-ink",
-      "Financement recherche": "bg-green-100 text-green-800",
-      "Politique éducative": "bg-amber-100 text-orange-800",
-      "Institutions politiques": "bg-red-100 text-red-800",
-      "Standards éducatifs": "bg-yellow-100 text-yellow-800",
-      "Transformation numérique": "bg-cyan-100 text-cyan-800",
-      "Enseignement numérique": "bg-sky-100 text-sky-800",
-      "Inégalités éducatives": "bg-red-100 text-red-800",
-      "Soutien scolaire": "bg-emerald-100 text-emerald-800",
-      "Échec scolaire": "bg-amber-100 text-orange-800",
-      "Rattrapage scolaire": "bg-lime-100 text-lime-800",
-      "Formation continue": "bg-teal-100 text-teal-800",
-      "Tendances éducatives": "bg-purple-100 text-purple-800",
-      "Défis du marché du travail": "bg-amber-100 text-amber-800",
-      "Statistiques étudiantes": "bg-gray-100 text-gray-800",
+      "Financement recherche": "bg-carnet-rule/30 text-carnet-ink",
+      "Politique éducative": "bg-carnet-rule/30 text-carnet-ink",
+      "Institutions politiques": "bg-carnet-rule/30 text-carnet-ink",
+      "Standards éducatifs": "bg-carnet-rule/30 text-carnet-ink",
+      "Transformation numérique": "bg-carnet-rule/30 text-carnet-ink",
+      "Enseignement numérique": "bg-carnet-rule/30 text-carnet-ink",
+      "Inégalités éducatives": "bg-carnet-rule/30 text-carnet-ink",
+      "Soutien scolaire": "bg-carnet-rule/30 text-carnet-ink",
+      "Échec scolaire": "bg-carnet-rule/30 text-carnet-ink",
+      "Rattrapage scolaire": "bg-carnet-rule/30 text-carnet-ink",
+      "Formation continue": "bg-carnet-rule/30 text-carnet-ink",
+      "Tendances éducatives": "bg-carnet-rule/30 text-carnet-ink",
+      "Défis du marché du travail": "bg-carnet-rule/30 text-carnet-ink",
+      "Statistiques étudiantes": "bg-carnet-paper-2 text-carnet-ink",
       "Étudiants internationaux": "bg-carnet-red/10 text-carnet-red-deep",
-      "Programmes d'échange": "bg-violet-100 text-violet-800",
-      "Mobilité étudiante": "bg-indigo-100 text-indigo-800",
-      "Financement éducatif": "bg-green-100 text-green-800",
-      "Aides financières": "bg-emerald-100 text-emerald-800",
-      "Coûts éducatifs": "bg-yellow-100 text-yellow-800",
-      "Types d'établissements": "bg-pink-100 text-pink-800",
-      "Éducation spécialisée": "bg-rose-100 text-rose-800",
-      "Égalité des genres": "bg-purple-100 text-purple-800",
-      "Disciplines scientifiques": "bg-cyan-100 text-cyan-800",
+      "Programmes d'échange": "bg-carnet-rule/30 text-carnet-ink",
+      "Mobilité étudiante": "bg-carnet-rule/30 text-carnet-ink",
+      "Financement éducatif": "bg-carnet-rule/30 text-carnet-ink",
+      "Aides financières": "bg-carnet-rule/30 text-carnet-ink",
+      "Coûts éducatifs": "bg-carnet-rule/30 text-carnet-ink",
+      "Types d'établissements": "bg-carnet-rule/30 text-carnet-ink",
+      "Éducation spécialisée": "bg-carnet-rule/30 text-carnet-ink",
+      "Égalité des genres": "bg-carnet-rule/30 text-carnet-ink",
+      "Disciplines scientifiques": "bg-carnet-rule/30 text-carnet-ink",
       "Formation du personnel": "bg-carnet-rule/30 text-carnet-ink"
     };
-    return colors[category as keyof typeof colors] || "bg-gray-100 text-gray-800";
+    return colors[category as keyof typeof colors] || "bg-carnet-paper-2 text-carnet-ink";
   };
 
   return (
@@ -279,21 +279,21 @@ const VocabulaireBildungFlashcardsPage = () => {
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-carnet-paper/95 backdrop-blur-sm/95 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper/95 backdrop-blur-sm/60 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center text-xs font-medium text-carnet-ink-soft">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/allemand" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <Link to="/formation/allemand" className="hover:text-carnet-ink transition-colors">
               Formation Allemand
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/allemand/civilisation" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <Link to="/formation/allemand/civilisation" className="hover:text-carnet-ink transition-colors">
               Civilisation
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Vocabulaire Éducation</span>
+            <ChevronRight className="h-3 w-3 text-carnet-ink-mute mx-1" />
+            <span className="text-carnet-ink font-bold">Vocabulaire Éducation</span>
           </div>
         </div>
       </nav>
@@ -301,7 +301,7 @@ const VocabulaireBildungFlashcardsPage = () => {
       <div className="container mx-auto px-4 py-8 relative z-10">
         {/* En-tête */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
+          <h1 className="text-4xl font-bold text-carnet-ink mb-4 flex items-center justify-center gap-3">
             <div className="p-3 rounded-lg bg-gradient-to-br from-pr-orange to-pr-orange text-white">
               <BookOpen className="h-9 w-9" />
             </div>
@@ -320,10 +320,10 @@ const VocabulaireBildungFlashcardsPage = () => {
         {/* Barre de progrès */}
         <div className="max-w-2xl mx-auto mb-6">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-700">Progression</span>
+            <span className="text-sm font-medium text-carnet-ink-soft">Progression</span>
             <span className="text-sm font-medium text-pr-orange-dark">{currentIndex + 1} / {cards.length}</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <div className="w-full bg-carnet-rule/40 rounded-full h-2.5">
             <div
               className="bg-gradient-to-r from-pr-orange to-pr-orange h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
@@ -337,7 +337,7 @@ const VocabulaireBildungFlashcardsPage = () => {
             <Button
               onClick={shuffleCards}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <Shuffle className="h-4 w-4" />
               Mélanger (S)
@@ -345,7 +345,7 @@ const VocabulaireBildungFlashcardsPage = () => {
             <Button
               onClick={resetCards}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <RotateCcw className="h-4 w-4" />
               Recommencer (R)
@@ -353,7 +353,7 @@ const VocabulaireBildungFlashcardsPage = () => {
             <Button
               onClick={() => setShowHelp(!showHelp)}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 hover:scale-105 transition-all duration-200"
             >
               <Lightbulb className="h-4 w-4" />
               Aide
@@ -362,14 +362,14 @@ const VocabulaireBildungFlashcardsPage = () => {
 
           {/* Aide aux raccourcis */}
           {showHelp && (
-            <Card className="mb-4 bg-orange-50 border-orange-200">
+            <Card className="mb-4 bg-pr-orange-pale border-pr-orange-soft">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-orange-900 mb-3">Raccourcis clavier :</h3>
+                <h3 className="font-semibold text-carnet-ink mb-3">Raccourcis clavier :</h3>
                 <div className="grid grid-cols-2 gap-2 text-sm text-pr-orange-dark">
-                  <div><kbd className="bg-orange-100 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-orange-100 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
-                  <div><kbd className="bg-orange-100 px-2 py-1 rounded">←</kbd> <kbd className="bg-orange-100 px-2 py-1 rounded">→</kbd> : Navigation</div>
-                  <div><kbd className="bg-orange-100 px-2 py-1 rounded">S</kbd> : Mélanger</div>
-                  <div><kbd className="bg-orange-100 px-2 py-1 rounded">R</kbd> : Recommencer</div>
+                  <div><kbd className="bg-pr-orange-pale px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-pr-orange-pale px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
+                  <div><kbd className="bg-pr-orange-pale px-2 py-1 rounded">←</kbd> <kbd className="bg-pr-orange-pale px-2 py-1 rounded">→</kbd> : Navigation</div>
+                  <div><kbd className="bg-pr-orange-pale px-2 py-1 rounded">S</kbd> : Mélanger</div>
+                  <div><kbd className="bg-pr-orange-pale px-2 py-1 rounded">R</kbd> : Recommencer</div>
                 </div>
               </CardContent>
             </Card>
@@ -379,7 +379,7 @@ const VocabulaireBildungFlashcardsPage = () => {
         {/* Carte principale */}
         <div className="max-w-2xl mx-auto mb-6">
           <Card 
-            className="h-80 cursor-pointer transform transition-all duration-500 hover:scale-105 bg-white/90 backdrop-blur-sm shadow-xl"
+            className="h-80 cursor-pointer transform transition-all duration-500 hover:scale-105 bg-carnet-paper-2/90 backdrop-blur-sm shadow-xl"
             onClick={() => setIsFlipped(!isFlipped)}
           >
             <CardContent className="h-full flex flex-col justify-center items-center p-8 relative">
@@ -407,17 +407,17 @@ const VocabulaireBildungFlashcardsPage = () => {
 
               {/* Contenu de la carte */}
               <div className="text-center space-y-4">
-                <div className="text-3xl font-bold text-gray-900 mb-6">
+                <div className="text-3xl font-bold text-carnet-ink mb-6">
                   {isFlipped ? currentCard.german : currentCard.french}
                 </div>
                 
                 {isFlipped && (
-                  <div className="text-lg text-gray-600 bg-gray-50 rounded-lg p-4">
+                  <div className="text-lg text-carnet-ink-soft bg-carnet-paper-2 rounded-lg p-4">
                     <strong>Français :</strong> {currentCard.french}
                   </div>
                 )}
                 
-                <div className="text-sm text-gray-500 text-center">
+                <div className="text-sm text-carnet-ink-mute text-center">
                   Cliquez ou appuyez sur Espace pour retourner
                 </div>
               </div>
@@ -430,20 +430,20 @@ const VocabulaireBildungFlashcardsPage = () => {
             <Button
               onClick={goToPrevious}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white px-6 py-3"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 px-6 py-3"
             >
               <ChevronLeft className="h-5 w-5" />
               Précédent
             </Button>
             
-            <div className="text-sm text-gray-600 bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2">
+            <div className="text-sm text-carnet-ink-soft bg-carnet-paper-2/80 backdrop-blur-sm rounded-lg px-4 py-2">
               {currentIndex + 1} sur {cards.length}
             </div>
             
             <Button
               onClick={goToNext}
               variant="outline"
-              className="flex items-center gap-2 bg-white/80 backdrop-blur-sm hover:bg-white px-6 py-3"
+              className="flex items-center gap-2 bg-carnet-paper-2/80 backdrop-blur-sm hover:bg-carnet-paper-2 px-6 py-3"
             >
               Suivant
               <ChevronRightIcon className="h-5 w-5" />
@@ -453,12 +453,12 @@ const VocabulaireBildungFlashcardsPage = () => {
 
         {/* Section informative */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale shadow-lg">
+          <Card className="border-2 border-pr-orange-soft bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale shadow-lg">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-orange-900 mb-4">🎓 Conseils pour l'apprentissage</h3>
+              <h3 className="text-xl font-bold text-carnet-ink mb-4">🎓 Conseils pour l'apprentissage</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-orange-800">Technique de révision :</h4>
+                  <h4 className="font-semibold text-carnet-ink">Technique de révision :</h4>
                   <ul className="text-sm text-pr-orange-dark space-y-1">
                     <li>• Commencez par le français (plus familier)</li>
                     <li>• Tentez de deviner l'allemand avant de retourner</li>
@@ -467,7 +467,7 @@ const VocabulaireBildungFlashcardsPage = () => {
                   </ul>
                 </div>
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-orange-800">Pour les concours :</h4>
+                  <h4 className="font-semibold text-carnet-ink">Pour les concours :</h4>
                   <ul className="text-sm text-pr-orange-dark space-y-1">
                     <li>• Vocabulaire essentiel pour le système dual allemand</li>
                     <li>• Termes techniques de l'enseignement supérieur</li>

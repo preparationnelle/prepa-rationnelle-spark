@@ -1,314 +1,445 @@
 import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useProgress } from '@/context/ProgressContext';
-import { SchoolCard } from '@/components/SchoolCard';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { PodcastSection } from '@/components/sections/PodcastSection';
-import { Bot, Users, Puzzle, HelpCircle, Target, FileText, MessageSquare, School, Heart, CheckCircle, AlertTriangle, HandHeart, Presentation, Brain, Newspaper, Eye, Star, Zap, ThumbsDown, Briefcase } from 'lucide-react';
+import { SEOHead } from '@/components/SEOHead';
+import {
+  Award,
+  Bot,
+  Users,
+  Puzzle,
+  HelpCircle,
+  Target,
+  FileText,
+  MessageSquare,
+  School,
+  Heart,
+  CheckCircle,
+  AlertTriangle,
+  HandHeart,
+  Presentation,
+  Brain,
+  Newspaper,
+  Eye,
+  Star,
+  Zap,
+  ThumbsDown,
+  Briefcase,
+  GraduationCap,
+  ArrowRight,
+  ArrowLeft,
+  Home,
+  ChevronRight,
+  Sparkles,
+  type LucideIcon,
+} from 'lucide-react';
+
+type MethodModule = { to: string; icon: LucideIcon; label: string; description: string };
+
+const methodModules: MethodModule[] = [
+  { to: '/methodologie/storytelling',                icon: MessageSquare, label: 'Storytelling',               description: 'Structurez vos récits pour marquer le jury.' },
+  { to: '/methodologie/motivation-ecole',            icon: School,        label: 'Motivation école',           description: 'Démontrez une motivation sincère et documentée.' },
+  { to: '/methodologie/projet-professionnel',        icon: Target,        label: 'Projet professionnel',       description: 'Articulez un projet cohérent et ambitieux.' },
+  { to: '/methodologie/personnalite',                icon: Heart,         label: 'Questions personnalité',     description: 'Révélez votre authenticité de manière stratégique.' },
+  { to: '/methodologie/finir-entretien',             icon: CheckCircle,   label: 'Finir un entretien',         description: 'Laissez une dernière impression mémorable.' },
+  { to: '/methodologie/erreur-entretien',            icon: AlertTriangle, label: 'Erreurs à éviter',           description: 'Connaissez les pièges classiques.' },
+  { to: '/methodologie/tendre-perches',              icon: HandHeart,     label: 'Tendre des perches',         description: 'Orientez le jury vers vos points forts.' },
+  { to: '/methodologie/pitch-intro',                 icon: Presentation,  label: "Pitch d'introduction",       description: 'Ouvrez fort en 60 secondes.' },
+  { to: '/methodologie/gestion-stress',              icon: Brain,         label: 'Gestion du stress',          description: 'Restez maître de vous le jour J.' },
+  { to: '/methodologie/questions-actualite',         icon: Newspaper,     label: "Questions d'actualité",      description: 'Construisez une culture générale activable.' },
+  { to: '/methodologie/langage-non-verbal',          icon: Eye,           label: 'Langage non-verbal',         description: 'Ce que votre corps dit vraiment.' },
+  { to: '/methodologie/questions-comportementales',  icon: Star,          label: 'Questions comportementales', description: 'Méthode STAR pour les questions situationnelles.' },
+  { to: '/methodologie/questions-destabilisantes',   icon: Zap,           label: 'Questions déstabilisantes',  description: 'Transformez les pièges en opportunités.' },
+  { to: '/methodologie/parler-defauts',              icon: ThumbsDown,    label: 'Parler de ses défauts',      description: 'Faites de vos faiblesses un atout.' },
+  { to: '/methodologie/valoriser-experiences',       icon: Briefcase,     label: 'Valoriser ses expériences',  description: 'Donnez du sens à chaque ligne de votre CV.' },
+  { to: '/methodologie/questions-au-jury',           icon: HelpCircle,    label: 'Questions au jury',          description: 'Marquez des points avec vos propres questions.' },
+];
+
+type SpecialFormat = { to: string; badge: string; title: string; description: string; icon: LucideIcon };
+
+const specialFormats: SpecialFormat[] = [
+  {
+    to: '/entretien-inverse-gem',
+    badge: 'GEM',
+    title: 'Entretien inversé GEM',
+    description: "Guide complet pour réussir la partie unique de l'oral de GEM où c'est vous qui menez l'entretien.",
+    icon: Users,
+  },
+  {
+    to: '/cv-projectif',
+    badge: 'SKEMA',
+    title: 'CV projectif',
+    description: 'Construisez un CV projectif convaincant pour SKEMA et les écoles qui demandent ce format unique.',
+    icon: FileText,
+  },
+];
+
+type Tool = { to: string; icon: LucideIcon; title: string; desc: string; cta: string };
+
+const tools: Tool[] = [
+  { to: '/generator/answer', icon: Bot,         title: 'Générateur de réponses', desc: "Générez des réponses structurées pour toutes vos questions d'entretien avec l'IA.", cta: 'Utiliser le générateur' },
+  { to: '/generator/emlyon', icon: HelpCircle,  title: 'Questions EM Lyon',      desc: 'Entraînez-vous avec des questions aléatoires format EM Lyon (cartes thématiques).',                cta: 'Questions aléatoires'     },
+  { to: '/generator/edhec',  icon: Puzzle,      title: 'Mots EDHEC',             desc: "Générateur de mots aléatoires pour préparer votre présentation EDHEC.",                          cta: 'Mots aléatoires'          },
+];
+
+type SchoolEntry = { name: string; duration: string; feature: string; link: string; coef: string };
+
+const schools: SchoolEntry[] = [
+  { name: 'ESSEC',    duration: 'Entretien 30-45 min',  feature: 'Format approfondi avec mise en situation initiale.',           link: '/essec',    coef: 'Coef. 10' },
+  { name: 'ESCP',     duration: 'Entretien 30 min',     feature: 'Structuré autour d\'un questionnaire préalable.',              link: '/escp',     coef: 'Coef. 12' },
+  { name: 'EDHEC',    duration: 'Entretien 1h30',       feature: 'Tripartite : présentation, travail de groupe, entretien.',     link: '/edhec',    coef: 'Coef. 15' },
+  { name: 'EM Lyon',  duration: 'Entretien 25 min',     feature: 'Format ludique avec cartes thématiques + pitch 1 minute.',     link: '/emlyon',   coef: 'Coef. 9'  },
+  { name: 'SKEMA',    duration: 'Entretien 25 min',     feature: 'CV fictif à 10 ans : projection professionnelle exigée.',      link: '/skema',    coef: 'Coef. 20' },
+  { name: 'Audencia', duration: 'Entretien 30 min',     feature: 'Forte dimension RSE, partie en anglais.',                      link: '/audencia', coef: 'Coef. 10' },
+  { name: 'GEM',      duration: 'Entretien 30 min',     feature: "Format original avec partie d'entretien inversé.",             link: '/gem',      coef: 'Coef. 10' },
+  { name: 'KEDGE',    duration: 'Entretien 30 min',     feature: "Approche \"Grow by Doing\" et questionnaire maison.",          link: '/kedge',    coef: 'Coef. 14' },
+  { name: 'NEOMA',    duration: 'Entretien 30 min',     feature: 'Structuré autour de la « réussite responsable ».',             link: '/neoma',    coef: 'Coef. 12' },
+];
 
 const MethodEntretiensPersonnalitePage = () => {
   const { trackPageVisit } = useProgress();
+  const navigate = useNavigate();
+
   useEffect(() => {
     trackPageVisit('method');
   }, [trackPageVisit]);
 
-  const schools = [
-    { name: "ESSEC Business School", duration: "Entretien de 30-45 minutes, coefficient 10.", feature: "Format approfondi avec mise en situation initiale.", link: "/essec" },
-    { name: "ESCP Business School", duration: "Entretien de 30 minutes, coefficient 12.", feature: "Entretien structuré autour d'un questionnaire préalable.", link: "/escp" },
-    { name: "EDHEC Business School", duration: "Entretien de 1h30, coefficient 15.", feature: "Format tripartite avec présentation, travail de groupe et entretien.", link: "/edhec" },
-    { name: "EM Lyon Business School", duration: "Entretien de 25 minutes, coefficient 9.", feature: "Format ludique avec cartes thématiques et présentation en 1 minute.", link: "/emlyon" },
-    { name: "SKEMA Business School", duration: "Entretien de 25 minutes, coefficient 20.", feature: "CV fictif à 10 ans.", link: "/skema" },
-    { name: "Audencia Business School", duration: "Entretien de 30 minutes, coefficient 10.", feature: "Forte dimension responsabilité sociétale avec partie en anglais.", link: "/audencia" },
-    { name: "Grenoble École de Management", duration: "Entretien de 30 minutes, coefficient 10.", feature: "Format original avec entretien inversé.", link: "/gem" },
-    { name: "KEDGE Business School", duration: "Entretien de 30 minutes, coefficient 14.", feature: "Approche 'Grow by Doing' et questionnaire 'maison'.", link: "/kedge" },
-    { name: "NEOMA Business School", duration: "Entretien de 30 minutes, coefficient 12.", feature: "Format structuré autour de la 'réussite responsable'.", link: "/neoma" },
-  ];
-
-  const methodModules = [
-    { to: "/methodologie/storytelling", icon: MessageSquare, label: "Storytelling" },
-    { to: "/methodologie/motivation-ecole", icon: School, label: "Motivation école" },
-    { to: "/methodologie/projet-professionnel", icon: Target, label: "Projet professionnel" },
-    { to: "/methodologie/personnalite", icon: Heart, label: "Questions personnalité" },
-    { to: "/methodologie/finir-entretien", icon: CheckCircle, label: "Finir un entretien" },
-    { to: "/methodologie/erreur-entretien", icon: AlertTriangle, label: "Erreurs à éviter" },
-    { to: "/methodologie/tendre-perches", icon: HandHeart, label: "Tendre des perches" },
-    { to: "/methodologie/pitch-intro", icon: Presentation, label: "Pitch d'introduction" },
-    { to: "/methodologie/gestion-stress", icon: Brain, label: "Gestion du stress" },
-    { to: "/methodologie/questions-actualite", icon: Newspaper, label: "Questions d'actualité" },
-    { to: "/methodologie/langage-non-verbal", icon: Eye, label: "Langage non-verbal" },
-    { to: "/methodologie/questions-comportementales", icon: Star, label: "Questions comportementales" },
-    { to: "/methodologie/questions-destabilisantes", icon: Zap, label: "Questions déstabilisantes" },
-    { to: "/methodologie/parler-defauts", icon: ThumbsDown, label: "Parler de ses défauts" },
-    { to: "/methodologie/valoriser-experiences", icon: Briefcase, label: "Valoriser ses expériences" },
-    { to: "/methodologie/questions-au-jury", icon: HelpCircle, label: "Questions au jury" },
-  ];
-
   return (
-    <div className="min-h-screen bg-pr-gray-bg font-dm-sans">
-      <div className="container mx-auto px-4 py-12 sm:py-16">
-        <div className="max-w-6xl mx-auto">
+    <div className="carnet-paper-plain min-h-screen">
+      <SEOHead
+        canonical="/methodologie/entretiens-personnalite"
+        title="Méthodologie des entretiens de personnalité — Prépa Rationnelle"
+        description="16 techniques essentielles pour réussir vos entretiens de personnalité aux concours BCE et Ecricome. Méthode, outils IA et fiches écoles."
+      />
 
-          {/* HERO */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 mb-6">
-              <span className="h-px w-8 bg-pr-orange" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
-                Oraux · Concours BCE & Ecricome
-              </span>
-              <span className="h-px w-8 bg-pr-orange" />
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
+              <span>Accueil</span>
+            </Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/methodologie" className="hover:text-carnet-red transition-colors">
+              Méthodologie
+            </Link>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Entretiens de personnalité</span>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <section className="relative py-16 lg:py-20">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-[820px]"
+          >
+            <div className="carnet-eyebrow mb-5 flex items-center gap-2">
+              <Award className="h-3.5 w-3.5" />
+              <span>Oraux · Concours BCE & Ecricome</span>
             </div>
 
-            <h1 className="font-dm-serif text-4xl sm:text-5xl md:text-6xl text-pr-black leading-tight mb-6">
-              Entretiens de <span className="text-pr-orange">Personnalité</span>
+            <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.08] text-carnet-ink tracking-tight mb-5">
+              Entretiens de{' '}
+              <em className="font-lora italic text-carnet-red">personnalité</em>.
             </h1>
 
-            <p className="text-lg sm:text-xl text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
-              Toutes les ressources pour réussir vos entretiens : méthodologie structurée,
-              outils de préparation et fiches écoles détaillées.
+            <p className="font-instrument text-[16px] lg:text-[18px] leading-[1.65] text-carnet-ink-soft max-w-[640px] mb-6">
+              Toutes les ressources pour réussir vos entretiens : méthodologie structurée, outils de préparation et fiches écoles détaillées.
             </p>
 
-            {/* Stats */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-3xl mx-auto mt-12">
-              {[
-                { num: "9", label: "Écoles détaillées" },
-                { num: "16", label: "Modules méthodologie" },
-                { num: "∞", label: "Questions générées par IA" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="bg-white border border-pr-gray-light rounded-lg px-6 py-7 hover:border-pr-orange transition-colors duration-300"
-                >
-                  <div className="font-dm-serif text-4xl text-pr-orange mb-1">{stat.num}</div>
-                  <div className="h-px w-6 bg-pr-orange mb-3 mx-auto" />
-                  <div className="text-sm text-pr-gray-mid">{stat.label}</div>
-                </div>
-              ))}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-instrument text-[13px] text-carnet-ink-soft">
+              <span className="inline-flex items-center gap-1.5">
+                <Target className="h-3.5 w-3.5 text-carnet-red" strokeWidth={1.8} />
+                16 techniques clés
+              </span>
+              <span className="h-3 w-px bg-carnet-rule hidden sm:block" />
+              <span className="inline-flex items-center gap-1.5">
+                <GraduationCap className="h-3.5 w-3.5 text-carnet-ink-mute" strokeWidth={1.8} />
+                9 fiches écoles
+              </span>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTION 01 — MÉTHODOLOGIE GÉNÉRALE */}
+      <section className="relative pb-16">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="max-w-[820px] mb-8">
+            <div className="carnet-eyebrow mb-3">Section 01 · Méthodologie</div>
+            <h2 className="font-lora text-[28px] sm:text-[34px] lg:text-[40px] leading-[1.15] text-carnet-ink tracking-tight">
+              Méthodologie générale.
+            </h2>
+            <p className="font-instrument text-[15px] lg:text-[16px] leading-[1.65] text-carnet-ink-soft mt-3 max-w-[640px]">
+              Maîtrisez les 16 techniques essentielles pour briller lors de vos entretiens.
+            </p>
           </div>
 
-          {/* MÉTHODOLOGIE */}
-          <section className="mb-20">
-            <div className="mb-10">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="h-7 w-1 bg-pr-orange rounded-full" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
-                  Section 01
-                </span>
-              </div>
-              <h2 className="font-dm-serif text-3xl sm:text-4xl text-pr-black mb-3">
-                Méthodologie générale
-              </h2>
-              <p className="text-base text-pr-gray-mid max-w-2xl">
-                Maîtrisez les techniques essentielles pour briller lors de vos entretiens.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-              {methodModules.map(({ to, icon: Icon, label }) => (
-                <Link
-                  key={to}
-                  to={to}
-                  className="group bg-white border border-pr-gray-light rounded-lg p-5 flex flex-col items-center gap-3 text-center hover:border-pr-orange hover:bg-pr-orange-pale transition-all duration-300"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {methodModules.map((mod, idx) => {
+              const Icon = mod.icon;
+              return (
+                <motion.div
+                  key={mod.to}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.35, delay: Math.min(idx * 0.02, 0.25) }}
                 >
-                  <Icon className="h-7 w-7 text-pr-gray-dark group-hover:text-pr-orange transition-colors duration-300" strokeWidth={1.5} />
-                  <span className="text-sm font-medium text-pr-gray-dark group-hover:text-pr-orange-dark transition-colors duration-300">
-                    {label}
-                  </span>
-                </Link>
-              ))}
-            </div>
+                  <div
+                    onClick={() => navigate(mod.to)}
+                    className="group cursor-pointer bg-carnet-paper-2 border border-carnet-rule/60 rounded-md p-4 sm:p-5 hover:border-carnet-red transition-colors h-full"
+                  >
+                    <div className="flex items-start gap-4">
+                      <span className="font-lora text-[22px] text-carnet-red leading-none flex-shrink-0 pt-0.5 tabular-nums">
+                        {String(idx + 1).padStart(2, '0')}
+                      </span>
 
-            {/* Formats spécialisés */}
-            <div className="mb-8">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="h-7 w-1 bg-pr-orange rounded-full" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
-                  Formats spécialisés
-                </span>
-              </div>
-              <h3 className="font-dm-serif text-2xl sm:text-3xl text-pr-black mb-2">
-                Pour les écoles à formats uniques
-              </h3>
-              <p className="text-base text-pr-gray-mid max-w-2xl">
-                Guides détaillés pour les épreuves singulières de certaines écoles.
-              </p>
-            </div>
+                      <Icon className="hidden sm:block h-4 w-4 text-carnet-red mt-1.5 flex-shrink-0" strokeWidth={1.8} />
 
-            <div className="grid md:grid-cols-2 gap-5">
-              <Card className="border-pr-gray-light hover:border-pr-orange transition-colors duration-300 group">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="h-10 w-10 rounded-md bg-pr-orange-pale flex items-center justify-center">
-                      <Users className="h-5 w-5 text-pr-orange-dark" strokeWidth={1.6} />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-lora text-[17px] sm:text-[18px] leading-[1.3] text-carnet-ink mb-1 group-hover:text-carnet-red transition-colors">
+                          {mod.label}
+                        </h3>
+                        <p className="font-instrument text-[13.5px] text-carnet-ink-soft leading-[1.55]">
+                          {mod.description}
+                        </p>
+                      </div>
+
+                      <ArrowRight className="hidden sm:block h-4 w-4 text-carnet-ink-mute mt-1.5 flex-shrink-0 group-hover:text-carnet-red group-hover:translate-x-0.5 transition-all" strokeWidth={1.8} />
                     </div>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
-                      GEM
-                    </span>
                   </div>
-                  <CardTitle className="font-dm-serif text-xl text-pr-black">
-                    Entretien inversé GEM
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-pr-gray-dark leading-relaxed mb-5">
-                    Guide complet pour réussir cette partie unique de l'oral de GEM
-                    où vous menez l'entretien.
-                  </p>
-                  <Link to="/entretien-inverse-gem">
-                    <Button variant="outline" className="w-full border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange">
-                      Voir le guide
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-              <Card className="border-pr-gray-light hover:border-pr-orange transition-colors duration-300 group">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="h-10 w-10 rounded-md bg-pr-orange-pale flex items-center justify-center">
-                      <FileText className="h-5 w-5 text-pr-orange-dark" strokeWidth={1.6} />
+      {/* FORMATS SPÉCIALISÉS */}
+      <section className="relative pb-16">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="max-w-[820px] mb-8">
+            <div className="carnet-eyebrow mb-3">Formats spécialisés</div>
+            <h2 className="font-lora text-[26px] sm:text-[32px] lg:text-[36px] leading-[1.15] text-carnet-ink tracking-tight">
+              Pour les écoles à formats uniques.
+            </h2>
+            <p className="font-instrument text-[15px] lg:text-[16px] leading-[1.65] text-carnet-ink-soft mt-3 max-w-[600px]">
+              Guides détaillés pour les épreuves singulières de certaines écoles.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {specialFormats.map((fmt, idx) => {
+              const Icon = fmt.icon;
+              return (
+                <motion.div
+                  key={fmt.to}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.4, delay: idx * 0.06 }}
+                >
+                  <Link to={fmt.to} className="block h-full group">
+                    <div className="bg-carnet-paper-2 border border-carnet-rule/60 rounded-md p-6 sm:p-7 h-full hover:border-carnet-red transition-colors">
+                      <div className="flex items-center justify-between mb-4">
+                        <Icon className="h-5 w-5 text-carnet-red" strokeWidth={1.8} />
+                        <span className="font-instrument text-[10px] font-semibold uppercase tracking-[0.18em] text-carnet-red">
+                          {fmt.badge}
+                        </span>
+                      </div>
+
+                      <h3 className="font-lora text-[20px] sm:text-[22px] leading-[1.25] text-carnet-ink mb-2 group-hover:text-carnet-red transition-colors">
+                        {fmt.title}
+                      </h3>
+                      <div className="h-px w-8 bg-carnet-red mb-3" />
+                      <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.6] mb-4">
+                        {fmt.description}
+                      </p>
+
+                      <div className="inline-flex items-center gap-1.5 font-instrument text-[13px] font-semibold text-carnet-red group-hover:gap-2.5 transition-all">
+                        Voir le guide
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </div>
                     </div>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
-                      SKEMA
-                    </span>
-                  </div>
-                  <CardTitle className="font-dm-serif text-xl text-pr-black">
-                    CV Projectif
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-pr-gray-dark leading-relaxed mb-5">
-                    Tout savoir pour créer un CV projectif convaincant pour SKEMA
-                    et autres écoles.
-                  </p>
-                  <Link to="/cv-projectif">
-                    <Button variant="outline" className="w-full border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange">
-                      Voir le guide
-                    </Button>
                   </Link>
-                </CardContent>
-              </Card>
-            </div>
-          </section>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-          {/* OUTILS IA */}
-          <section className="mb-20">
-            <div className="mb-10">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="h-7 w-1 bg-pr-orange rounded-full" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
-                  Section 02
-                </span>
-              </div>
-              <h2 className="font-dm-serif text-3xl sm:text-4xl text-pr-black mb-3">
-                Outils IA
-              </h2>
-              <p className="text-base text-pr-gray-mid max-w-2xl">
-                Préparez-vous avec nos générateurs intelligents personnalisés pour chaque école.
-              </p>
-            </div>
+      {/* SECTION 02 — OUTILS IA */}
+      <section className="relative pb-16">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="max-w-[820px] mb-8">
+            <div className="carnet-eyebrow mb-3">Section 02 · Outils</div>
+            <h2 className="font-lora text-[28px] sm:text-[34px] lg:text-[40px] leading-[1.15] text-carnet-ink tracking-tight">
+              Outils IA.
+            </h2>
+            <p className="font-instrument text-[15px] lg:text-[16px] leading-[1.65] text-carnet-ink-soft mt-3 max-w-[640px]">
+              Préparez-vous avec nos générateurs intelligents personnalisés pour chaque école.
+            </p>
+          </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {[
-                {
-                  icon: Bot,
-                  title: "Générateur de réponses",
-                  desc: "Générez des réponses structurées pour toutes vos questions d'entretien avec l'IA.",
-                  to: "/generator/answer",
-                  cta: "Utiliser le générateur",
-                },
-                {
-                  icon: HelpCircle,
-                  title: "Questions EM Lyon",
-                  desc: "Entraînez-vous avec des questions aléatoires format EM Lyon avec cartes thématiques.",
-                  to: "/generator/emlyon",
-                  cta: "Questions aléatoires",
-                },
-                {
-                  icon: Puzzle,
-                  title: "Mots EDHEC",
-                  desc: "Générateur de mots aléatoires pour préparer votre présentation EDHEC.",
-                  to: "/generator/edhec",
-                  cta: "Mots aléatoires",
-                },
-              ].map((tool) => (
-                <Card key={tool.to} className="border-pr-gray-light hover:border-pr-orange transition-colors duration-300 bg-white">
-                  <CardHeader>
-                    <div className="h-10 w-10 rounded-md bg-pr-orange-pale flex items-center justify-center mb-3">
-                      <tool.icon className="h-5 w-5 text-pr-orange-dark" strokeWidth={1.6} />
-                    </div>
-                    <CardTitle className="font-dm-serif text-lg text-pr-black">
-                      {tool.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-pr-gray-dark leading-relaxed mb-5">
-                      {tool.desc}
-                    </p>
-                    <Link to={tool.to}>
-                      <Button variant="outline" className="w-full border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {tools.map((tool, idx) => {
+              const Icon = tool.icon;
+              return (
+                <motion.div
+                  key={tool.to}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.4, delay: idx * 0.06 }}
+                >
+                  <Link to={tool.to} className="block h-full group">
+                    <div className="bg-carnet-paper-2 border border-carnet-rule/60 rounded-md p-5 sm:p-6 h-full flex flex-col hover:border-carnet-red transition-colors">
+                      <Icon className="h-5 w-5 text-carnet-red mb-4" strokeWidth={1.8} />
+                      <h3 className="font-lora text-[19px] leading-[1.25] text-carnet-ink mb-2 group-hover:text-carnet-red transition-colors">
+                        {tool.title}
+                      </h3>
+                      <div className="h-px w-8 bg-carnet-red mb-3" />
+                      <p className="font-instrument text-[13.5px] text-carnet-ink-soft leading-[1.6] flex-1 mb-4">
+                        {tool.desc}
+                      </p>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full border-carnet-rule/60 text-carnet-ink-soft hover:text-carnet-red hover:border-carnet-red font-instrument rounded-md h-9 bg-transparent"
+                      >
                         {tool.cta}
                       </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </section>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-          {/* FICHES ÉCOLES */}
-          <section className="mb-20">
-            <div className="mb-10">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="h-7 w-1 bg-pr-orange rounded-full" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
-                  Section 03
-                </span>
-              </div>
-              <h2 className="font-dm-serif text-3xl sm:text-4xl text-pr-black mb-3">
-                Fiches écoles
-              </h2>
-              <p className="text-base text-pr-gray-mid max-w-2xl">
-                Découvrez les spécificités de chaque école et leurs attentes pour les entretiens.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {schools.map((school, index) => (
-                <SchoolCard
-                  key={index}
-                  name={school.name}
-                  duration={school.duration}
-                  feature={school.feature}
-                  link={school.link}
-                />
-              ))}
-            </div>
-          </section>
-
-          <PodcastSection />
-          <TestimonialsSection />
-
-          {/* CTA final */}
-          <div className="mt-20 text-center bg-white border border-pr-gray-light rounded-xl px-8 py-12">
-            <div className="h-1 w-12 bg-pr-orange mx-auto mb-6 rounded-full" />
-            <h3 className="font-dm-serif text-2xl sm:text-3xl text-pr-black mb-3">
-              Prêt à préparer vos oraux ?
-            </h3>
-            <p className="text-base text-pr-gray-mid max-w-xl mx-auto mb-8">
-              Découvrez l'accompagnement Prépa Rationnelle pour structurer
-              votre préparation aux entretiens de personnalité.
+      {/* SECTION 03 — FICHES ÉCOLES */}
+      <section className="relative pb-16">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="max-w-[820px] mb-8">
+            <div className="carnet-eyebrow mb-3">Section 03 · Écoles</div>
+            <h2 className="font-lora text-[28px] sm:text-[34px] lg:text-[40px] leading-[1.15] text-carnet-ink tracking-tight">
+              Fiches écoles.
+            </h2>
+            <p className="font-instrument text-[15px] lg:text-[16px] leading-[1.65] text-carnet-ink-soft mt-3 max-w-[640px]">
+              Découvrez les spécificités de chaque école et leurs attentes pour les entretiens.
             </p>
-            <Link to="/nos-offres">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-8 py-6 text-base">
-                Découvrir nos offres
-              </Button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {schools.map((school, idx) => (
+              <motion.div
+                key={school.name}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.35, delay: Math.min(idx * 0.03, 0.25) }}
+              >
+                <Link to={school.link} className="block h-full group">
+                  <div className="bg-carnet-paper-2 border border-carnet-rule/60 rounded-md p-5 h-full hover:border-carnet-red transition-colors">
+                    <div className="flex items-baseline justify-between mb-2">
+                      <h3 className="font-lora text-[22px] leading-[1.2] text-carnet-ink group-hover:text-carnet-red transition-colors">
+                        {school.name}
+                      </h3>
+                      <span className="font-instrument text-[10px] font-semibold uppercase tracking-[0.14em] text-carnet-ink-mute">
+                        {school.coef}
+                      </span>
+                    </div>
+                    <p className="font-instrument text-[12px] text-carnet-ink-mute mb-3">{school.duration}</p>
+                    <div className="h-px w-8 bg-carnet-red mb-3" />
+                    <p className="font-instrument text-[13.5px] text-carnet-ink-soft leading-[1.55]">
+                      {school.feature}
+                    </p>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Podcast + Témoignages */}
+      <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+        <PodcastSection />
+        <TestimonialsSection />
+      </div>
+
+      {/* CTA bas de page */}
+      <section className="relative pb-20">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.4 }}
+            className="mt-12 bg-carnet-paper-2 border border-carnet-rule/60 rounded-md p-8 sm:p-10"
+          >
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="max-w-2xl">
+                <div className="carnet-eyebrow mb-3 flex items-center gap-2">
+                  <Sparkles className="h-3.5 w-3.5" />
+                  <span>Accompagnement Prépa Rationnelle</span>
+                </div>
+                <h3 className="font-lora text-[24px] sm:text-[28px] text-carnet-ink leading-[1.2] mb-2">
+                  Prêt à préparer vos oraux ?
+                </h3>
+                <p className="font-instrument text-[14.5px] text-carnet-ink-soft leading-[1.65]">
+                  Coaching individuel, simulations et travail sur le storytelling pour structurer votre préparation aux entretiens de personnalité.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+                <Link to="/nos-offres">
+                  <Button className="bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper font-instrument font-semibold py-5 px-6 rounded-md border-0">
+                    Découvrir nos offres
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button
+                    variant="outline"
+                    className="border-carnet-rule/60 bg-transparent text-carnet-ink-soft hover:bg-transparent hover:text-carnet-red hover:border-carnet-red font-instrument font-semibold py-5 px-6 rounded-md"
+                  >
+                    Coaching personnalisé
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Retour */}
+          <div className="mt-8 flex items-center gap-3">
+            <Link
+              to="/methodologie"
+              className="inline-flex items-center gap-1.5 font-instrument text-[13.5px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Retour à la méthodologie
+            </Link>
+            <span className="text-carnet-ink-mute text-xs">·</span>
+            <Link
+              to="/"
+              className="font-instrument text-[13.5px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+            >
+              Accueil
             </Link>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

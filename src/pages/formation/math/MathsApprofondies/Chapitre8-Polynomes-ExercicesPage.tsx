@@ -329,6 +329,178 @@ const Chapitre8PolynomesExercicesPage = () => {
           />
         </div>
 
+        <div>
+          <DifficultyHeader level="Module 4 — Racines et factorisation" />
+
+          <ExerciseCard
+            id="ex7"
+            title="Multiplicité d'une racine par les dérivées"
+            difficulty="Niveau: Facile"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex="P(X) = X^3 - 3X + 2" />.</p>
+                <p>Déterminer la multiplicité de la racine <LatexRenderer latex="1" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Une racine <LatexRenderer latex="\alpha" /> est de multiplicité <LatexRenderer latex="m" /> ssi <LatexRenderer latex="P(\alpha) = P'(\alpha) = \ldots = P^{(m-1)}(\alpha) = 0" /> et <LatexRenderer latex="P^{(m)}(\alpha) \ne 0" />. On dérive successivement et on évalue jusqu'à trouver une dérivée non nulle.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="P(X) = X^3 - 3X + 2" />. Or <LatexRenderer latex="P(1) = 1 - 3 + 2 = 0" />. Donc 1 est racine.</p>
+                <p className="mt-2">Calcul de <LatexRenderer latex="P'(X) = 3X^2 - 3" />. <LatexRenderer latex="P'(1) = 0" />. La racine 1 est donc d'ordre au moins 2.</p>
+                <p className="mt-2">Calcul de <LatexRenderer latex="P''(X) = 6X" />. <LatexRenderer latex="P''(1) = 6 \ne 0" />. La racine 1 est donc d'ordre exactement 2.</p>
+                <p className="mt-2"><strong>Vérification par factorisation.</strong> <LatexRenderer latex="P(X) = (X - 1)^2 (X + 2)" /> (division euclidienne).</p>
+                <Astuce>
+                  Vérification : <LatexRenderer latex="(X-1)^2(X+2) = (X^2 - 2X + 1)(X + 2) = X^3 + 2X^2 - 2X^2 - 4X + X + 2 = X^3 - 3X + 2" />. ✓
+                </Astuce>
+                <ConclusionBox>
+                  La racine 1 est de multiplicité 2 dans <LatexRenderer latex="P" />. Factorisation : <LatexRenderer latex="P(X) = (X-1)^2 (X+2)" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 5 — Formule de Taylor pour les polynômes" />
+
+          <ExerciseCard
+            id="ex8"
+            title="Développement par Taylor d'un polynôme en a"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex="P(X) = X^4 - 3X^3 + 2X^2 + X - 1" />.</p>
+                <p>Déterminer l'écriture de <LatexRenderer latex="P" /> selon les puissances de <LatexRenderer latex="(X - 1)" /> (formule de Taylor en 1).</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  La formule de Taylor pour un polynôme <LatexRenderer latex="P" /> de degré <LatexRenderer latex="n" /> est exacte : <LatexRenderer latex="P(X) = \sum_{k=0}^n \frac{P^{(k)}(a)}{k!} (X - a)^k" />. Cette formule donne le développement de <LatexRenderer latex="P" /> en puissances de <LatexRenderer latex="(X - a)" /> à partir des dérivées successives en <LatexRenderer latex="a" />.
+                </PointMethodo>
+                <p>Calcul des dérivées en <LatexRenderer latex="a = 1" /> :</p>
+                <LatexRenderer latex="P(X) = X^4 - 3X^3 + 2X^2 + X - 1, \quad P(1) = 1 - 3 + 2 + 1 - 1 = 0." />
+                <LatexRenderer latex="P'(X) = 4X^3 - 9X^2 + 4X + 1, \quad P'(1) = 4 - 9 + 4 + 1 = 0." />
+                <LatexRenderer latex="P''(X) = 12X^2 - 18X + 4, \quad P''(1) = 12 - 18 + 4 = -2." />
+                <LatexRenderer latex="P^{(3)}(X) = 24X - 18, \quad P^{(3)}(1) = 6." />
+                <LatexRenderer latex="P^{(4)}(X) = 24, \quad P^{(4)}(1) = 24." />
+                <Astuce>
+                  Comme <LatexRenderer latex="P(1) = P'(1) = 0" />, 1 est racine double de <LatexRenderer latex="P" />, donc <LatexRenderer latex="P" /> est divisible par <LatexRenderer latex="(X-1)^2" />.
+                </Astuce>
+                <p className="mt-2">Par la formule de Taylor :</p>
+                <LatexRenderer latex="P(X) = 0 + 0 + \frac{-2}{2}(X-1)^2 + \frac{6}{6}(X-1)^3 + \frac{24}{24}(X-1)^4." />
+                <LatexRenderer latex="P(X) = -(X-1)^2 + (X-1)^3 + (X-1)^4." />
+                <ConclusionBox>
+                  <LatexRenderer latex="P(X) = -(X-1)^2 + (X-1)^3 + (X-1)^4" />, montrant que 1 est racine double.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex9"
+            title="Polynômes scindés à racines simples"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex="P \in \mathbb{R}[X]" /> de degré <LatexRenderer latex="n" />.</p>
+                <p>Démontrer que <LatexRenderer latex="P" /> est scindé à racines simples sur <LatexRenderer latex="\mathbb{R}" /> si et seulement si <LatexRenderer latex="\mathrm{pgcd}(P, P') = 1" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Une racine est multiple ssi elle est racine commune à <LatexRenderer latex="P" /> et <LatexRenderer latex="P'" />. La caractérisation par PGCD utilise le fait que les racines communes correspondent au PGCD.
+                </PointMethodo>
+                <p><strong>Sens 1 : scindé à racines simples ⇒ pgcd = 1.</strong> Soit <LatexRenderer latex="P = c \prod_{i=1}^n (X - \alpha_i)" /> avec les <LatexRenderer latex="\alpha_i" /> deux à deux distincts.</p>
+                <p>Or pour chaque <LatexRenderer latex="\alpha_i" />, <LatexRenderer latex="P(\alpha_i) = 0" /> mais <LatexRenderer latex="P'(\alpha_i) = c \prod_{j \ne i} (\alpha_i - \alpha_j) \ne 0" /> (car les <LatexRenderer latex="\alpha_j" /> sont distincts). Donc <LatexRenderer latex="P" /> et <LatexRenderer latex="P'" /> n'ont aucune racine commune.</p>
+                <p className="mt-2">D'où <LatexRenderer latex="\mathrm{pgcd}(P, P') = 1" />.</p>
+                <Astuce>
+                  Le PGCD de deux polynômes capture leurs racines communes (avec multiplicités). PGCD = 1 signifie "aucune racine commune".
+                </Astuce>
+                <p className="mt-2"><strong>Sens 2 : pgcd = 1 ⇒ racines simples.</strong> Par contraposée : supposons que <LatexRenderer latex="P" /> ait une racine multiple <LatexRenderer latex="\alpha" /> de multiplicité <LatexRenderer latex="m \ge 2" />. Alors <LatexRenderer latex="(X - \alpha)" /> divise <LatexRenderer latex="P" /> et <LatexRenderer latex="P'" /> (car <LatexRenderer latex="P'(\alpha) = 0" />).</p>
+                <p>D'où <LatexRenderer latex="(X - \alpha)" /> divise <LatexRenderer latex="\mathrm{pgcd}(P, P')" />, donc <LatexRenderer latex="\mathrm{pgcd}(P, P') \ne 1" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="P" /> à racines simples <LatexRenderer latex="\iff \mathrm{pgcd}(P, P') = 1" />. Critère algorithmique fondamental.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 6 — Division euclidienne" />
+
+          <ExerciseCard
+            id="ex10"
+            title="Reste de la division par (X-a)(X-b)"
+            difficulty="Niveau: Concours"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex="P \in \mathbb{R}[X]" /> et <LatexRenderer latex="a \ne b \in \mathbb{R}" />.</p>
+                <p>Déterminer le reste de la division euclidienne de <LatexRenderer latex="P" /> par <LatexRenderer latex="(X - a)(X - b)" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Le reste de la division par un polynôme de degré 2 est de degré <LatexRenderer latex="\le 1" />, soit de la forme <LatexRenderer latex="R(X) = \alpha X + \beta" />. On détermine <LatexRenderer latex="\alpha" /> et <LatexRenderer latex="\beta" /> en évaluant l'identité <LatexRenderer latex="P = Q \cdot D + R" /> aux racines de <LatexRenderer latex="D" />.
+                </PointMethodo>
+                <p>Soit la division euclidienne : <LatexRenderer latex="P(X) = Q(X)(X-a)(X-b) + R(X)" /> avec <LatexRenderer latex="\deg R \le 1" />, soit <LatexRenderer latex="R(X) = \alpha X + \beta" />.</p>
+                <p className="mt-2"><strong>Évaluation en <LatexRenderer latex="X = a" /> et <LatexRenderer latex="X = b" />.</strong> Or <LatexRenderer latex="(a-a)(a-b) = 0" /> et <LatexRenderer latex="(b-a)(b-b) = 0" />, donc :</p>
+                <LatexRenderer latex="P(a) = \alpha a + \beta, \quad P(b) = \alpha b + \beta." />
+                <p className="mt-2"><strong>Résolution.</strong> En soustrayant : <LatexRenderer latex="P(a) - P(b) = \alpha(a - b)" />, soit <LatexRenderer latex="\alpha = (P(a) - P(b))/(a - b)" />.</p>
+                <p>Et <LatexRenderer latex="\beta = P(a) - \alpha a = (a P(b) - b P(a))/(a - b)" />.</p>
+                <Astuce>
+                  Cette formule est l'analogue de l'interpolation de Lagrange pour 2 points : <LatexRenderer latex="R(X) = P(a) \cdot \frac{X - b}{a - b} + P(b) \cdot \frac{X - a}{b - a}" />.
+                </Astuce>
+                <ConclusionBox>
+                  Reste : <LatexRenderer latex="R(X) = \dfrac{P(a) - P(b)}{a - b} X + \dfrac{a P(b) - b P(a)}{a - b}" />. C'est aussi le polynôme d'interpolation de Lagrange en <LatexRenderer latex="(a, P(a))" /> et <LatexRenderer latex="(b, P(b))" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 7 — Polynôme caractéristique" />
+
+          <ExerciseCard
+            id="ex11"
+            title="Identité de Newton — somme des puissances de racines"
+            difficulty="Niveau: Difficile"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex="P(X) = X^2 - 3X + 1" /> de racines <LatexRenderer latex="\alpha, \beta" />.</p>
+                <p>1. Calculer <LatexRenderer latex="S_n = \alpha^n + \beta^n" /> pour <LatexRenderer latex="n = 1, 2, 3, 4" />.</p>
+                <p>2. Établir une relation de récurrence pour <LatexRenderer latex="(S_n)_{n \ge 0}" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Les sommes <LatexRenderer latex="S_n = \alpha^n + \beta^n" /> où <LatexRenderer latex="\alpha, \beta" /> sont racines de <LatexRenderer latex="P(X) = X^2 - sX + p" /> vérifient la récurrence <LatexRenderer latex="S_{n+2} = s\,S_{n+1} - p\,S_n" /> (identité de Newton). C'est l'analogue pour les sommes des puissances de racines.
+                </PointMethodo>
+                <p><strong>1. Calculs.</strong> Soit <LatexRenderer latex="P(X) = X^2 - 3X + 1" />. Par les relations entre coefficients et racines : <LatexRenderer latex="\alpha + \beta = 3" />, <LatexRenderer latex="\alpha\beta = 1" />.</p>
+                <p className="mt-2"><LatexRenderer latex="S_0 = 2" />, <LatexRenderer latex="S_1 = \alpha + \beta = 3" />.</p>
+                <p className="mt-2"><LatexRenderer latex="S_2 = \alpha^2 + \beta^2 = (\alpha + \beta)^2 - 2\alpha\beta = 9 - 2 = 7" />.</p>
+                <Astuce>
+                  Identité utile : <LatexRenderer latex="(\alpha + \beta)^n = \sum_k \binom{n}{k} \alpha^k \beta^{n-k}" />, mais c'est plus direct de passer par la récurrence.
+                </Astuce>
+                <p className="mt-2"><strong>2. Récurrence.</strong> Or <LatexRenderer latex="\alpha^2 = 3\alpha - 1" /> et <LatexRenderer latex="\beta^2 = 3\beta - 1" /> (par <LatexRenderer latex="P(\alpha) = P(\beta) = 0" />). En multipliant par <LatexRenderer latex="\alpha^n" /> et <LatexRenderer latex="\beta^n" /> et sommant :</p>
+                <LatexRenderer latex="\alpha^{n+2} + \beta^{n+2} = 3(\alpha^{n+1} + \beta^{n+1}) - (\alpha^n + \beta^n)," />
+                <p>soit <LatexRenderer latex="S_{n+2} = 3 S_{n+1} - S_n" />.</p>
+                <p className="mt-2"><strong>Application.</strong> <LatexRenderer latex="S_3 = 3 \cdot 7 - 3 = 18" /> et <LatexRenderer latex="S_4 = 3 \cdot 18 - 7 = 47" />.</p>
+                <ConclusionBox>
+                  Récurrence : <LatexRenderer latex="S_{n+2} = 3 S_{n+1} - S_n" />. Valeurs : <LatexRenderer latex="S_1 = 3, S_2 = 7, S_3 = 18, S_4 = 47" />. Cette technique est utilisée en algèbre linéaire pour calculer la trace des puissances d'une matrice diagonalisable.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
       </div>
     </MathChapterTemplate>
   );

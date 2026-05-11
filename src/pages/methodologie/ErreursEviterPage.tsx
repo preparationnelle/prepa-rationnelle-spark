@@ -125,24 +125,24 @@ const ErreursEviterPage = () => {
       <MethodSection label="Section 01" title="Les erreurs fatales par catégorie" icon={XCircle}>
         <div className="space-y-5">
           {errorCategories.map((cat) => (
-            <div key={cat.title} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-6">
-              <h4 className="font-dm-serif text-xl text-pr-black mb-5 flex items-center gap-2">
-                <cat.icon className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.6} />
+            <div key={cat.title} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6">
+              <h4 className="font-dm-serif text-xl text-carnet-ink mb-5 flex items-center gap-2">
+                <cat.icon className="w-5 h-5 text-red-700" strokeWidth={1.6} />
                 {cat.title}
               </h4>
               <div className="grid md:grid-cols-2 gap-5">
                 {cat.items.map((it) => (
-                  <div key={it.bad} className="bg-pr-gray-bg rounded-lg p-5">
+                  <div key={it.bad} className="bg-carnet-paper rounded-lg p-5">
                     <div className="flex items-center gap-2 mb-3">
-                      <XCircle className="w-4 h-4 text-pr-orange-dark" strokeWidth={1.8} />
-                      <h5 className="font-medium text-pr-black">{it.bad}</h5>
+                      <XCircle className="w-4 h-4 text-red-700" strokeWidth={1.8} />
+                      <h5 className="font-medium text-carnet-ink">{it.bad}</h5>
                     </div>
-                    <ul className="space-y-1 text-sm text-pr-gray-dark mb-4">
+                    <ul className="space-y-1 text-sm text-carnet-ink-soft mb-4">
                       {it.list.map((l) => <li key={l}>— {l}</li>)}
                     </ul>
-                    <div className="bg-white border-l-4 border-pr-orange rounded-r p-3">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-pr-orange-dark mb-1">Solution</p>
-                      <p className="text-sm text-pr-gray-dark">{it.sol}</p>
+                    <div className="bg-white border-l-4 border-red-600 rounded-r p-3">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-red-700 mb-1">Solution</p>
+                      <p className="text-sm text-carnet-ink-soft">{it.sol}</p>
                     </div>
                   </div>
                 ))}
@@ -156,13 +156,13 @@ const ErreursEviterPage = () => {
       <MethodSection label="Section 02" title="Top 10 des erreurs qui éliminent instantanément" icon={AlertTriangle}>
         <div className="space-y-3">
           {top10.map(([err, cons], i) => (
-            <div key={i} className="bg-white border border-pr-gray-light rounded-lg p-4 flex items-start gap-4">
-              <div className="font-dm-serif text-3xl text-pr-orange leading-none flex-shrink-0 w-12 text-center">
+            <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+              <div className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0 w-12 text-center">
                 {String(i + 1).padStart(2, '0')}
               </div>
               <div className="flex-1">
-                <h5 className="font-medium text-pr-black mb-1">{err}</h5>
-                <p className="text-sm text-pr-gray-mid">{cons}</p>
+                <h5 className="font-medium text-carnet-ink mb-1">{err}</h5>
+                <p className="text-sm text-carnet-ink-mute">{cons}</p>
               </div>
             </div>
           ))}
@@ -173,22 +173,22 @@ const ErreursEviterPage = () => {
       <MethodSection label="Section 03" title="Situations pièges et comment les éviter" icon={Shield}>
         <div className="space-y-5">
           {traps.map((tr) => (
-            <div key={tr.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-              <h4 className="font-dm-serif text-xl text-pr-black mb-5">{tr.t}</h4>
+            <div key={tr.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+              <h4 className="font-dm-serif text-xl text-carnet-ink mb-5">{tr.t}</h4>
               <div className="grid md:grid-cols-2 gap-5">
-                <div className="bg-pr-gray-bg rounded p-4">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+                <div className="bg-carnet-paper rounded p-4">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
                     À éviter
                   </span>
-                  <ul className="mt-3 space-y-1.5 text-sm text-pr-gray-dark">
+                  <ul className="mt-3 space-y-1.5 text-sm text-carnet-ink-soft">
                     {tr.bad.map((b) => <li key={b}>— {b}</li>)}
                   </ul>
                 </div>
-                <div className="bg-pr-orange-pale rounded p-4">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-white px-2 py-1 rounded">
+                <div className="bg-red-50 rounded p-4">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-white px-2 py-1 rounded">
                     Bonne approche
                   </span>
-                  <ul className="mt-3 space-y-1.5 text-sm text-pr-gray-dark">
+                  <ul className="mt-3 space-y-1.5 text-sm text-carnet-ink-soft">
                     {tr.good.map((g) => <li key={g}>— {g}</li>)}
                   </ul>
                 </div>
@@ -202,15 +202,15 @@ const ErreursEviterPage = () => {
       <MethodSection label="Section 04" title="Plan d'action anti-erreurs" icon={CheckCircle}>
         <div className="grid md:grid-cols-3 gap-5">
           {actionPlan.map((step, i) => (
-            <div key={step.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
-              <span className="font-dm-serif text-3xl text-pr-orange">{String(i + 1).padStart(2, '0')}</span>
-              <h4 className="font-dm-serif text-lg text-pr-black mt-1">{step.t}</h4>
-              <p className="text-xs uppercase tracking-wider text-pr-gray-mid mb-3">{step.sub}</p>
-              <div className="h-px w-8 bg-pr-orange mb-4" />
-              <ul className="space-y-2 text-sm text-pr-gray-dark">
+            <div key={step.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+              <span className="font-dm-serif text-3xl text-red-600">{String(i + 1).padStart(2, '0')}</span>
+              <h4 className="font-dm-serif text-lg text-carnet-ink mt-1">{step.t}</h4>
+              <p className="text-xs uppercase tracking-wider text-carnet-ink-mute mb-3">{step.sub}</p>
+              <div className="h-px w-8 bg-red-600 mb-4" />
+              <ul className="space-y-2 text-sm text-carnet-ink-soft">
                 {step.l.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-pr-orange mt-0.5 flex-shrink-0" strokeWidth={1.8} />
+                    <CheckCircle className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" strokeWidth={1.8} />
                     {item}
                   </li>
                 ))}

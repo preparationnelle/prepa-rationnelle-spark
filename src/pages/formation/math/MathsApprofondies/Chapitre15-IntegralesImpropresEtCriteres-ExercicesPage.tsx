@@ -314,6 +314,166 @@ const Chapitre15IntegralesImpropresEtCriteresExercicesPage = () => {
           }
         />
 
+        <DifficultyHeader level="Niveau : Facile — Intégrale de fonction continue prolongeable" />
+
+        <ExerciseCard
+          id="15-6"
+          title="Intégrale faussement impropre"
+          difficulty="Niveau: Facile"
+          content={
+            <div className="space-y-3">
+              <p>Étudier la nature et calculer si possible <LatexRenderer latex="\int_0^1 \frac{\sin t}{t}\,dt" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Une intégrale est dite <em>faussement impropre</em> en une borne <LatexRenderer latex="a" /> si l'intégrand est prolongeable par continuité en <LatexRenderer latex="a" />. Dans ce cas, l'intégrale est en fait une intégrale de Riemann ordinaire sur un segment, et converge automatiquement.
+              </PointMethodo>
+              <p>Soit <LatexRenderer latex="f(t) = \sin t / t" /> définie sur <LatexRenderer latex="]0, 1]" />.</p>
+              <p className="mt-2">Or <LatexRenderer latex="\sin t = t - t^3/6 + o(t^3)" /> en 0, donc <LatexRenderer latex="\sin t / t = 1 - t^2/6 + o(t^2) \xrightarrow[t\to 0^+]{} 1" />.</p>
+              <p className="mt-2">D'où <LatexRenderer latex="f" /> se prolonge par continuité en posant <LatexRenderer latex="f(0) = 1" />. L'intégrale est <em>faussement impropre</em> en 0 et converge.</p>
+              <Astuce>
+                Note : on n'a pas d'expression élémentaire pour <LatexRenderer latex="\int_0^1 \sin t / t\,dt" /> ; sa valeur s'exprime à l'aide de la fonction Si (sine integral), <LatexRenderer latex="\mathrm{Si}(1) \approx 0{,}946" />.
+              </Astuce>
+              <ConclusionBox>
+                <LatexRenderer latex="\int_0^1 \sin t / t\,dt" /> converge (intégrale faussement impropre en 0), valeur <LatexRenderer latex="\approx 0{,}946" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <DifficultyHeader level="Niveau : Intermédiaire — Critères de convergence" />
+
+        <ExerciseCard
+          id="15-7"
+          title="Convergence par équivalents en zéro"
+          difficulty="Niveau: Intermédiaire"
+          content={
+            <div className="space-y-3">
+              <p>Étudier la nature de <LatexRenderer latex="\int_0^1 \frac{\ln t}{\sqrt{t}}\,dt" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Pour les intégrales avec <LatexRenderer latex="\ln" /> ou puissances en 0, on compare directement à <LatexRenderer latex="\int 1/t^\alpha" /> via le théorème : pour <LatexRenderer latex="\alpha < 1" />, <LatexRenderer latex="\int_0^1 dt/t^\alpha" /> converge ; sinon diverge. Le logarithme se domine par toute puissance.
+              </PointMethodo>
+              <p>Soit <LatexRenderer latex="f(t) = \ln t / \sqrt{t}" /> sur <LatexRenderer latex="]0, 1]" />. L'intégrale est impropre en 0 (<LatexRenderer latex="f \to -\infty" />).</p>
+              <p className="mt-2"><strong>Majoration.</strong> Or <LatexRenderer latex="\ln t = o(1/t^{1/4})" /> quand <LatexRenderer latex="t \to 0^+" /> (croissances comparées). D'où :</p>
+              <LatexRenderer latex="|f(t)| = \frac{|\ln t|}{\sqrt{t}} \le \frac{C}{t^{1/4} \cdot t^{1/2}} = \frac{C}{t^{3/4}} \quad \text{pour } t \text{ assez petit}." />
+              <p className="mt-2">Or <LatexRenderer latex="\int_0^1 dt/t^{3/4}" /> converge (<LatexRenderer latex="\alpha = 3/4 < 1" />). Donc <LatexRenderer latex="\int_0^1 |f(t)|\,dt" /> converge par comparaison, et l'intégrale converge absolument.</p>
+              <p className="mt-2"><strong>Calcul.</strong> Par changement de variable <LatexRenderer latex="u = \sqrt{t}" />, <LatexRenderer latex="t = u^2" />, <LatexRenderer latex="dt = 2u\,du" /> :</p>
+              <LatexRenderer latex="\int_0^1 \frac{\ln t}{\sqrt{t}}\,dt = \int_0^1 \frac{2 \ln u}{u} \cdot 2u\,du = 4 \int_0^1 \ln u\,du = 4 [u \ln u - u]_0^1 = 4(0 - 1) = -4." />
+              <Astuce>
+                Limite <LatexRenderer latex="u \ln u \to 0" /> quand <LatexRenderer latex="u \to 0^+" /> par croissances comparées.
+              </Astuce>
+              <ConclusionBox>
+                <LatexRenderer latex="\int_0^1 \ln t / \sqrt{t}\,dt = -4" />.
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <ExerciseCard
+          id="15-8"
+          title="Intégrale Gamma — fonction Γ(s) pour s entier"
+          difficulty="Niveau: Intermédiaire"
+          content={
+            <div className="space-y-3">
+              <p>On définit <LatexRenderer latex="\Gamma(s) = \int_0^{+\infty} t^{s-1} e^{-t}\,dt" /> pour <LatexRenderer latex="s > 0" />.</p>
+              <p>1. Justifier la convergence pour tout <LatexRenderer latex="s > 0" />.</p>
+              <p>2. Démontrer la relation fonctionnelle <LatexRenderer latex="\Gamma(s + 1) = s\,\Gamma(s)" />.</p>
+              <p>3. En déduire que <LatexRenderer latex="\Gamma(n + 1) = n!" /> pour tout <LatexRenderer latex="n \in \mathbb{N}" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                La fonction Γ étend la factorielle aux réels positifs. Sa relation fonctionnelle <LatexRenderer latex="\Gamma(s+1) = s\,\Gamma(s)" /> s'obtient par intégration par parties. L'identité avec la factorielle se déduit par récurrence à partir de <LatexRenderer latex="\Gamma(1) = 1" />.
+              </PointMethodo>
+              <p><strong>1. Convergence.</strong> L'intégrand <LatexRenderer latex="t^{s-1} e^{-t}" /> est positif. Impropre en 0 (si <LatexRenderer latex="s < 1" />) et en <LatexRenderer latex="+\infty" />.</p>
+              <p>En 0 : <LatexRenderer latex="t^{s-1} e^{-t} \sim t^{s-1}" />, et <LatexRenderer latex="\int_0^1 t^{s-1}\,dt" /> converge ssi <LatexRenderer latex="s - 1 > -1" />, soit <LatexRenderer latex="s > 0" />. ✓</p>
+              <p>En <LatexRenderer latex="+\infty" /> : <LatexRenderer latex="t^{s-1} e^{-t} = o(1/t^2)" /> par croissances comparées (<LatexRenderer latex="e^{-t}" /> tue tout polynôme). Donc convergente.</p>
+              <p className="mt-2"><strong>2. Relation fonctionnelle.</strong> Soit <LatexRenderer latex="s > 0" />. Par intégration par parties sur <LatexRenderer latex="[\varepsilon, X]" /> avec <LatexRenderer latex="u = t^s" /> et <LatexRenderer latex="v' = e^{-t}" /> :</p>
+              <LatexRenderer latex="\int_\varepsilon^X t^s e^{-t}\,dt = \left[-t^s e^{-t}\right]_\varepsilon^X + s \int_\varepsilon^X t^{s-1} e^{-t}\,dt." />
+              <p className="mt-2">Le terme crochet : <LatexRenderer latex="-X^s e^{-X} \to 0" /> et <LatexRenderer latex="\varepsilon^s e^{-\varepsilon} \to 0" /> (car <LatexRenderer latex="s > 0" />).</p>
+              <Astuce>
+                L'IPP marche car les deux termes "limites" tendent vers 0 : à l'infini grâce à la décroissance exponentielle, en 0 grâce à <LatexRenderer latex="t^s" /> avec <LatexRenderer latex="s > 0" />.
+              </Astuce>
+              <p className="mt-2">D'où <LatexRenderer latex="\Gamma(s + 1) = s \Gamma(s)" />.</p>
+              <p className="mt-2"><strong>3. Récurrence.</strong> Or <LatexRenderer latex="\Gamma(1) = \int_0^{+\infty} e^{-t}\,dt = 1 = 0!" />. Par récurrence : si <LatexRenderer latex="\Gamma(n+1) = n!" />, alors <LatexRenderer latex="\Gamma(n+2) = (n+1)\Gamma(n+1) = (n+1) \cdot n! = (n+1)!" />.</p>
+              <ConclusionBox>
+                <LatexRenderer latex="\Gamma(n + 1) = n!" /> pour tout <LatexRenderer latex="n \in \mathbb{N}" />. La fonction Gamma est l'extension naturelle de la factorielle aux réels positifs (et même aux complexes).
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <DifficultyHeader level="Niveau : Concours — Critère par équivalent fin" />
+
+        <ExerciseCard
+          id="15-9"
+          title="Convergence d'intégrales avec exponentielle"
+          difficulty="Niveau: Concours"
+          content={
+            <div className="space-y-3">
+              <p>Déterminer la nature de <LatexRenderer latex="\int_1^{+\infty} \frac{e^{-t}}{t^\alpha}\,dt" /> selon les valeurs de <LatexRenderer latex="\alpha \in \mathbb{R}" />.</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Pour une intégrale en <LatexRenderer latex="+\infty" /> impliquant une décroissance exponentielle, celle-ci domine toute puissance polynomiale, donc la convergence est garantie quelle que soit la puissance.
+              </PointMethodo>
+              <p>Soit <LatexRenderer latex="f(t) = e^{-t} / t^\alpha" /> sur <LatexRenderer latex="[1, +\infty[" />. Positive et continue.</p>
+              <p className="mt-2"><strong>Majoration.</strong> Or pour tout <LatexRenderer latex="\alpha \in \mathbb{R}" /> et <LatexRenderer latex="t \ge 1" /> : <LatexRenderer latex="|f(t)| = e^{-t}/t^\alpha \le e^{-t}/1^{\min(\alpha, 0)}" /> (selon le signe de <LatexRenderer latex="\alpha" />).</p>
+              <p>Mais plus simplement : par croissances comparées, <LatexRenderer latex="e^{-t} = o(1/t^2)" /> quand <LatexRenderer latex="t \to +\infty" />. D'où pour tout <LatexRenderer latex="\alpha \in \mathbb{R}" /> :</p>
+              <LatexRenderer latex="f(t) = \frac{e^{-t}}{t^\alpha} = o\!\left(\frac{1}{t^{\alpha + 2}}\right)." />
+              <Astuce>
+                L'exponentielle <LatexRenderer latex="e^{-t}" /> écrase toute puissance <LatexRenderer latex="t^\alpha" /> à l'infini, quelle que soit la valeur de <LatexRenderer latex="\alpha" />. C'est pourquoi la convergence ne dépend pas de <LatexRenderer latex="\alpha" />.
+              </Astuce>
+              <p className="mt-2">Donc <LatexRenderer latex="f(t) = o(1/t^2)" /> en <LatexRenderer latex="+\infty" />, et par comparaison à <LatexRenderer latex="\int 1/t^2 dt" /> (convergente), <LatexRenderer latex="\int_1^{+\infty} f(t)\,dt" /> converge pour tout <LatexRenderer latex="\alpha" />.</p>
+              <ConclusionBox>
+                <LatexRenderer latex="\int_1^{+\infty} e^{-t}/t^\alpha\,dt" /> converge pour tout <LatexRenderer latex="\alpha \in \mathbb{R}" /> (la décroissance exponentielle domine).
+              </ConclusionBox>
+            </div>
+          }
+        />
+
+        <DifficultyHeader level="Niveau : Difficile — Intégrales doubles et Fubini" />
+
+        <ExerciseCard
+          id="15-10"
+          title="Convergence d'une intégrale par symétrisation"
+          difficulty="Niveau: Difficile"
+          content={
+            <div className="space-y-3">
+              <p>Montrer que <LatexRenderer latex="\int_0^{+\infty} \frac{1 - \cos t}{t^2}\,dt" /> converge et calculer sa valeur (on admet <LatexRenderer latex="\int_0^{+\infty} \sin t / t\,dt = \pi/2" />).</p>
+            </div>
+          }
+          correction={
+            <div className="space-y-3">
+              <PointMethodo>
+                Une intégrale faisant intervenir un facteur <LatexRenderer latex="1 - \cos t" /> est souvent faussement impropre en 0 (car <LatexRenderer latex="1 - \cos t \sim t^2/2" />) et bénéficie d'une astuce par intégration par parties pour se ramener à une intégrale connue (Dirichlet).
+              </PointMethodo>
+              <p><strong>Convergence.</strong> Soit <LatexRenderer latex="f(t) = (1 - \cos t)/t^2" />.</p>
+              <p>En 0 : <LatexRenderer latex="1 - \cos t = t^2/2 - t^4/24 + o(t^4)" />, donc <LatexRenderer latex="f(t) \to 1/2" />. <em>Faussement impropre en 0.</em></p>
+              <p>En <LatexRenderer latex="+\infty" /> : <LatexRenderer latex="|f(t)| \le 2/t^2" />, et <LatexRenderer latex="\int 1/t^2" /> converge (Riemann, <LatexRenderer latex="\alpha = 2 > 1" />). Donc convergence absolue.</p>
+              <p className="mt-2"><strong>Calcul par IPP.</strong> Sur <LatexRenderer latex="[\varepsilon, X]" />, posons <LatexRenderer latex="u = 1 - \cos t" />, <LatexRenderer latex="v' = 1/t^2" />, donc <LatexRenderer latex="u' = \sin t" />, <LatexRenderer latex="v = -1/t" /> :</p>
+              <LatexRenderer latex="\int_\varepsilon^X \frac{1 - \cos t}{t^2}\,dt = \left[-\frac{1 - \cos t}{t}\right]_\varepsilon^X + \int_\varepsilon^X \frac{\sin t}{t}\,dt." />
+              <Astuce>
+                Terme crochet en 0 : <LatexRenderer latex="(1 - \cos \varepsilon)/\varepsilon \sim \varepsilon/2 \to 0" />. En <LatexRenderer latex="+\infty" /> : <LatexRenderer latex="|(1 - \cos X)/X| \le 2/X \to 0" />.
+              </Astuce>
+              <p className="mt-2">D'où, en passant à la limite <LatexRenderer latex="\varepsilon \to 0" />, <LatexRenderer latex="X \to +\infty" /> :</p>
+              <LatexRenderer latex="\int_0^{+\infty} \frac{1 - \cos t}{t^2}\,dt = \int_0^{+\infty} \frac{\sin t}{t}\,dt = \frac{\pi}{2}." />
+              <ConclusionBox>
+                <LatexRenderer latex="\int_0^{+\infty} \frac{1 - \cos t}{t^2}\,dt = \dfrac{\pi}{2}" /> (ramenée à l'intégrale de Dirichlet par IPP).
+              </ConclusionBox>
+            </div>
+          }
+        />
+
       </div>
     </MathChapterTemplate>
   );

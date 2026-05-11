@@ -325,6 +325,173 @@ const Chapitre11ApplicationsLineairesEtStructuresVectoriellesExercicesPage = () 
           />
         </div>
 
+        <div>
+          <DifficultyHeader level="Module 5 — Caractérisations classiques d'application linéaire" />
+
+          <ExerciseCard
+            id="ex23"
+            title="Application linéaire et image d'une base"
+            difficulty="Niveau: Facile"
+            content={
+              <div>
+                <p>Soient <LatexRenderer latex="E" /> et <LatexRenderer latex="F" /> deux espaces vectoriels de dimensions finies, <LatexRenderer latex="(e_1, \ldots, e_n)" /> une base de <LatexRenderer latex="E" />, et <LatexRenderer latex="(y_1, \ldots, y_n)" /> une famille quelconque de <LatexRenderer latex="F" />.</p>
+                <p>Démontrer qu'il existe une unique application linéaire <LatexRenderer latex="u : E \to F" /> telle que <LatexRenderer latex="u(e_i) = y_i" /> pour tout <LatexRenderer latex="i" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  C'est le principe fondamental : une application linéaire est entièrement déterminée par les images d'une base. La démonstration construit <LatexRenderer latex="u" /> à partir de la décomposition unique sur la base.
+                </PointMethodo>
+                <p><strong>Unicité.</strong> Soit <LatexRenderer latex="x \in E" />. Décomposons <LatexRenderer latex="x = \sum_{i=1}^n x_i e_i" /> de manière unique sur la base. Or par linéarité de <LatexRenderer latex="u" /> :</p>
+                <LatexRenderer latex="u(x) = \sum_{i=1}^n x_i\,u(e_i) = \sum_{i=1}^n x_i y_i." />
+                <p className="mt-2"><strong>Existence.</strong> Définissons <LatexRenderer latex="u(x) = \sum_{i=1}^n x_i y_i" /> où <LatexRenderer latex="x_i" /> sont les coordonnées de <LatexRenderer latex="x" /> dans la base.</p>
+                <p>Vérifions la linéarité : pour <LatexRenderer latex="x, y \in E" /> et <LatexRenderer latex="\alpha, \beta \in \mathbb{R}" />, avec <LatexRenderer latex="x = \sum x_i e_i" /> et <LatexRenderer latex="y = \sum y_i e_i" /> :</p>
+                <LatexRenderer latex="\alpha x + \beta y = \sum (\alpha x_i + \beta y_i) e_i \quad \Rightarrow \quad u(\alpha x + \beta y) = \sum (\alpha x_i + \beta y_i) y_i = \alpha u(x) + \beta u(y)." />
+                <Astuce>
+                  Ce principe permet de définir une application linéaire par les images d'une base, sans avoir à expliciter l'action sur tous les vecteurs.
+                </Astuce>
+                <ConclusionBox>
+                  Toute famille d'images d'une base définit de manière unique une application linéaire. C'est le théorème de définition par les images d'une base.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 6 — Endomorphismes et stabilité" />
+
+          <ExerciseCard
+            id="ex24"
+            title="Sous-espace stable par un endomorphisme"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex="u \in \mathcal{L}(\mathbb{R}^3)" /> de matrice <LatexRenderer latex="A = \begin{pmatrix} 2 & 0 & 0 \\ 0 & 3 & 1 \\ 0 & 1 & 3 \end{pmatrix}" /> dans la base canonique.</p>
+                <p>Démontrer que <LatexRenderer latex="F = \{(x, y, z) \in \mathbb{R}^3 : x = 0\}" /> est stable par <LatexRenderer latex="u" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Un sous-espace <LatexRenderer latex="F" /> est <em>stable</em> par <LatexRenderer latex="u" /> si <LatexRenderer latex="u(F) \subset F" />. Pour le vérifier, on prend un vecteur générique de <LatexRenderer latex="F" /> et on calcule son image, puis on vérifie qu'elle est dans <LatexRenderer latex="F" />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="v = (0, y, z) \in F" />. Or :</p>
+                <LatexRenderer latex="u(v) = A \begin{pmatrix} 0 \\ y \\ z \end{pmatrix} = \begin{pmatrix} 0 \\ 3y + z \\ y + 3z \end{pmatrix}." />
+                <p className="mt-2">La première coordonnée de <LatexRenderer latex="u(v)" /> est 0, donc <LatexRenderer latex="u(v) \in F" />.</p>
+                <p className="mt-2">D'où <LatexRenderer latex="u(F) \subset F" />, et <LatexRenderer latex="F" /> est stable par <LatexRenderer latex="u" />.</p>
+                <Astuce>
+                  Les sous-espaces stables d'un endomorphisme sont structurellement importants : ils permettent d'écrire la matrice de <LatexRenderer latex="u" /> par blocs dans une base adaptée.
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="F = \{(0, y, z)\}" /> est stable par <LatexRenderer latex="u" />. La restriction <LatexRenderer latex="u_{|F}" /> est donnée par la matrice <LatexRenderer latex="\begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex25"
+            title="Symétrie vectorielle"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex="E" /> un espace vectoriel et <LatexRenderer latex="s \in \mathcal{L}(E)" /> tel que <LatexRenderer latex="s \circ s = \mathrm{id}_E" /> (involution).</p>
+                <p>Démontrer que <LatexRenderer latex="E = \ker(s - \mathrm{id}) \oplus \ker(s + \mathrm{id})" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Une symétrie vectorielle <LatexRenderer latex="s" /> vérifie <LatexRenderer latex="s^2 = \mathrm{id}" />. Le résultat de décomposition exprime que <LatexRenderer latex="E" /> se partitionne en sous-espaces propres pour les valeurs propres <LatexRenderer latex="\pm 1" />. La démonstration utilise la décomposition <LatexRenderer latex="x = (x + s(x))/2 + (x - s(x))/2" />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="F = \ker(s - \mathrm{id})" /> et <LatexRenderer latex="G = \ker(s + \mathrm{id})" />. <LatexRenderer latex="F = \{x : s(x) = x\}" /> et <LatexRenderer latex="G = \{x : s(x) = -x\}" />.</p>
+                <p className="mt-2"><strong>Décomposition.</strong> Pour <LatexRenderer latex="x \in E" />, écrivons :</p>
+                <LatexRenderer latex="x = \frac{x + s(x)}{2} + \frac{x - s(x)}{2}." />
+                <p className="mt-2"><strong>Vérification.</strong> Posons <LatexRenderer latex="x_+ = (x + s(x))/2" /> et <LatexRenderer latex="x_- = (x - s(x))/2" />. Or :</p>
+                <LatexRenderer latex="s(x_+) = \frac{s(x) + s^2(x)}{2} = \frac{s(x) + x}{2} = x_+." />
+                <p>Donc <LatexRenderer latex="x_+ \in F" />. De même <LatexRenderer latex="s(x_-) = (s(x) - x)/2 = -x_-" />, donc <LatexRenderer latex="x_- \in G" />.</p>
+                <Astuce>
+                  Cette décomposition est l'analogue vectoriel des fonctions paire/impaire : toute fonction se décompose en somme d'une partie paire et d'une partie impaire.
+                </Astuce>
+                <p className="mt-2"><strong>Intersection nulle.</strong> Si <LatexRenderer latex="x \in F \cap G" />, alors <LatexRenderer latex="s(x) = x" /> et <LatexRenderer latex="s(x) = -x" />, donc <LatexRenderer latex="x = -x" />, soit <LatexRenderer latex="x = 0" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="E = \ker(s - \mathrm{id}) \oplus \ker(s + \mathrm{id})" />. Toute symétrie vectorielle se "diagonalise" en sous-espaces propres pour <LatexRenderer latex="\pm 1" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 7 — Construction d'une base adaptée" />
+
+          <ExerciseCard
+            id="ex26"
+            title="Théorème de la base adaptée à un sous-espace stable"
+            difficulty="Niveau: Concours"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex="u \in \mathcal{L}(E)" /> (avec <LatexRenderer latex="\dim E = n" />) et <LatexRenderer latex="F" /> un sous-espace stable de dimension <LatexRenderer latex="p" />.</p>
+                <p>Démontrer qu'il existe une base de <LatexRenderer latex="E" /> dans laquelle la matrice de <LatexRenderer latex="u" /> est triangulaire par blocs : <LatexRenderer latex="\begin{pmatrix} A & B \\ 0 & C \end{pmatrix}" /> avec <LatexRenderer latex="A \in \mathcal{M}_p" /> et <LatexRenderer latex="C \in \mathcal{M}_{n-p}" />.</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  Pour obtenir une matrice triangulaire par blocs, on construit une base "adaptée" : d'abord une base de <LatexRenderer latex="F" />, puis on la complète en une base de <LatexRenderer latex="E" />. La stabilité de <LatexRenderer latex="F" /> impose que les images des premiers vecteurs de base soient dans <LatexRenderer latex="F" />, ce qui annule la moitié inférieure des premières colonnes.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="(e_1, \ldots, e_p)" /> une base de <LatexRenderer latex="F" />. Par le théorème de la base incomplète, on peut compléter en une base <LatexRenderer latex="(e_1, \ldots, e_p, e_{p+1}, \ldots, e_n)" /> de <LatexRenderer latex="E" />.</p>
+                <p className="mt-2"><strong>Matrice de u dans cette base.</strong> Pour <LatexRenderer latex="i \in \{1, \ldots, p\}" />, <LatexRenderer latex="u(e_i) \in F" /> (par stabilité), donc <LatexRenderer latex="u(e_i)" /> s'écrit comme combinaison linéaire de <LatexRenderer latex="(e_1, \ldots, e_p)" /> uniquement.</p>
+                <p className="mt-2">D'où les colonnes 1 à <LatexRenderer latex="p" /> de la matrice de <LatexRenderer latex="u" /> ont des zéros sur les lignes <LatexRenderer latex="p+1" /> à <LatexRenderer latex="n" />.</p>
+                <Astuce>
+                  Le bloc <LatexRenderer latex="A" /> est la matrice de la restriction <LatexRenderer latex="u_{|F}" /> dans la base <LatexRenderer latex="(e_1, \ldots, e_p)" />. Le bloc <LatexRenderer latex="C" /> est la matrice de l'endomorphisme induit sur le quotient <LatexRenderer latex="E/F" />.
+                </Astuce>
+                <p className="mt-2">Pour <LatexRenderer latex="j \in \{p+1, \ldots, n\}" />, <LatexRenderer latex="u(e_j)" /> est une combinaison libre de toute la base, donnant le bloc <LatexRenderer latex="B" /> en haut à droite et <LatexRenderer latex="C" /> en bas à droite.</p>
+                <ConclusionBox>
+                  Dans la base adaptée, la matrice de <LatexRenderer latex="u" /> est de la forme <LatexRenderer latex="\begin{pmatrix} A & B \\ 0 & C \end{pmatrix}" /> avec <LatexRenderer latex="A = \mathrm{Mat}(u_{|F})" />. Conséquence : <LatexRenderer latex="\det(u - \lambda I) = \det(A - \lambda I_p) \cdot \det(C - \lambda I_{n-p})" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
+        <div>
+          <DifficultyHeader level="Module 8 — Théorèmes de structure" />
+
+          <ExerciseCard
+            id="ex27"
+            title="Décomposition d'un endomorphisme en partie diagonale et nilpotente"
+            difficulty="Niveau: Difficile"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex="u \in \mathcal{L}(E)" /> dont le polynôme caractéristique est scindé sur <LatexRenderer latex="\mathbb{R}" />.</p>
+                <p>Démontrer (théorème de décomposition de Dunford) qu'il existe un unique couple <LatexRenderer latex="(d, n)" /> tel que <LatexRenderer latex="u = d + n" />, <LatexRenderer latex="d" /> diagonalisable, <LatexRenderer latex="n" /> nilpotent, <LatexRenderer latex="d \circ n = n \circ d" />.</p>
+                <p>(On admettra l'existence ; démontrer l'unicité.)</p>
+              </div>
+            }
+            correction={
+              <div className="space-y-3">
+                <PointMethodo>
+                  L'unicité de la décomposition de Dunford repose sur le fait que les diagonalisables (resp. nilpotents) qui commutent sont stables par addition (resp. soustraction), couplé au fait qu'un endomorphisme à la fois diagonalisable et nilpotent est nul.
+                </PointMethodo>
+                <p><strong>Unicité.</strong> Supposons deux décompositions : <LatexRenderer latex="u = d_1 + n_1 = d_2 + n_2" /> avec les conditions données. Alors :</p>
+                <LatexRenderer latex="d_1 - d_2 = n_2 - n_1." />
+                <p className="mt-2"><strong>Premier point :</strong> <LatexRenderer latex="d_1 - d_2" /> est diagonalisable (différence de deux diagonalisables qui commutent — admis ; il suffit qu'ils soient codiagonalisables).</p>
+                <p className="mt-2"><strong>Deuxième point :</strong> <LatexRenderer latex="n_2 - n_1" /> est nilpotent (différence de deux nilpotents qui commutent : si <LatexRenderer latex="n_1^p = 0" /> et <LatexRenderer latex="n_2^q = 0" />, alors <LatexRenderer latex="(n_2 - n_1)^{p+q} = 0" /> par développement binomial).</p>
+                <Astuce>
+                  Lemme-clé : un endomorphisme à la fois diagonalisable ET nilpotent est nécessairement l'endomorphisme nul. En effet, ses valeurs propres sont toutes nulles (nilpotence), donc sa matrice diagonale est nulle.
+                </Astuce>
+                <p className="mt-2"><strong>Conclusion.</strong> L'application <LatexRenderer latex="d_1 - d_2" /> est diagonalisable et nilpotente, donc nulle. D'où <LatexRenderer latex="d_1 = d_2" />, et par conséquent <LatexRenderer latex="n_1 = n_2" />.</p>
+                <ConclusionBox>
+                  La décomposition de Dunford <LatexRenderer latex="u = d + n" /> avec <LatexRenderer latex="d" /> diagonalisable, <LatexRenderer latex="n" /> nilpotent et <LatexRenderer latex="d \circ n = n \circ d" /> est unique. Théorème structurel central pour l'étude des endomorphismes.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
       </div>
     </MathChapterTemplate>
   );

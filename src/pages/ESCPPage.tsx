@@ -36,19 +36,21 @@ const ESCPPage = () => {
           </CardHeader>
           <CardContent>
             <p className="mb-4">
-              <span className="font-semibold">Un entretien classique, format court :</span> À l'ESCP, 
-              l'entretien de personnalité dure 30 minutes environ, coefficient 12 . 
-              Il est très structuré et classique dans la forme.
+              <span className="font-semibold">Un entretien classique mais très exigeant :</span> À l'ESCP,
+              l'entretien de personnalité dure <span className="font-semibold">25 à 30 minutes</span> (coefficient 12 —
+              soit près de 40 % de la note globale à l'oral). C'est l'épreuve phare des oraux ESCP, et depuis 2026 elle
+              comporte une <span className="font-semibold">note éliminatoire fixée à 7/20</span> : en dessous de cette note,
+              le candidat est éliminé du concours quelle que soit sa performance dans les autres épreuves.
             </p>
             <p className="mb-4">
-              Comme à l'ESSEC, vous remplirez au préalable un questionnaire de personnalité que le jury lira 
-              pendant ~5 minutes avant de vous faire entrer. Mais contrairement à l'ESSEC, ici tout l'entretien 
-              s'articule autour du questionnaire : il sert de trame principale.
+              Avant l'entretien, vous remplissez un <span className="font-semibold">questionnaire de personnalité composé d'une page de présentation
+              et de 6 questions</span> (disponible à la publication des résultats d'admissibilité). Vous le remettez en
+              <span className="font-semibold"> 3 exemplaires</span> le jour J — un par membre du jury. Tout l'entretien
+              s'articule autour de ce questionnaire, qui sert de trame principale.
             </p>
-            <p className="mb-4">
-          </p>
             <p>
-              Le jury est souvent composé de 2 à 3 personnes (prof + alumni).
+              Le jury est composé de <span className="font-semibold">3 personnes</span> : 1 membre du corps enseignant ESCP,
+              1 ancien élève (alumni), et 1 représentant du monde économique.
             </p>
 
             <Separator className="my-6" />
@@ -108,8 +110,8 @@ const ESCPPage = () => {
                   <span className="text-sm font-semibold text-primary">3</span>
                 </div>
                 <div>
-                  <p className="font-medium">Jury </p>
-                  <p className="text-sm text-muted-foreground">2-3 personnes (prof + alumni)</p>
+                  <p className="font-medium">Jury de 3 personnes</p>
+                  <p className="text-sm text-muted-foreground">Corps enseignant + alumni + professionnel</p>
                 </div>
               </li>
               <li className="flex gap-2">
@@ -117,8 +119,8 @@ const ESCPPage = () => {
                   <span className="text-sm font-semibold text-primary">4</span>
                 </div>
                 <div>
-                  <p className="font-medium">Rythme rapide</p>
-                  <p className="text-sm text-muted-foreground">30 minutes d'entretien </p>
+                  <p className="font-medium">Note éliminatoire : 7/20</p>
+                  <p className="text-sm text-muted-foreground">Nouveau depuis 2026 — en dessous = élimination du concours</p>
                 </div>
               </li>
             </ul>
@@ -136,19 +138,24 @@ const ESCPPage = () => {
           </CardHeader>
           <CardContent>
             <p className="mb-4">
-             Le jury est généralement composé de deux à trois personnes, incluant un professeur de l’école, un Alumni (ancien élève) et parfois un membre extérieur au corps professoral.
+              Le jury de 3 personnes — 1 professeur ESCP, 1 alumni et 1 professionnel extérieur — lit votre questionnaire
+              quelques minutes avant de vous faire entrer. L’entretien s’articule ensuite quasi exclusivement autour
+              de vos 6 réponses écrites, que le jury reprend une à une.
             </p>
             <p className="mb-4">
-              Attendez-vous 
-              à beaucoup de questions directes tirées du questionnaire : si vous avez écrit que vous pratiquez la voile, 
-              on vous demandera sans doute d'en parler plus en détail ; si vous indiquez vouloir tel secteur, pourquoi 
-              ce choix, etc.
+              Attendez-vous à des questions directes sur chaque réponse : si vous avez écrit pratiquer la voile,
+              on vous demandera de développer ; si vous indiquez un secteur cible, attendez-vous à justifier votre choix
+              en profondeur. Le jury creuse méthodiquement chaque réponse.
             </p>
-            <p className="mb-4">Le rythme est assez rapide (30 minutes passent vite), donc les jurés peuvent vous interrompre pour passer à une autre question, ne le prenez pas mal. Ils veulent simplement couvrir tout le nécessaire dans le temps imparti.</p>
+            <p className="mb-4">
+              Le rythme est rapide : 25-30 minutes pour 6 questions, les jurés peuvent vous interrompre pour passer à
+              la suivante — c’est normal, ils veulent tout couvrir dans le temps imparti. Entraînez-vous à répondre
+              de façon concise et structurée.
+            </p>
             <p>
-              Le format est globalement classique : motivations, parcours, projet, quelques questions "perso" et peut-être 
-              une petite question d'actualité ou de culture générale pour voir votre curiosité. Pas de pièges exotiques 
-              en principe. Le ton est professionnel mais cordial.
+              Point clé depuis 2026 : une note inférieure à <span className="font-semibold">7/20 entraîne l’élimination automatique du concours</span>,
+              quels que soient vos autres résultats. Cet entretien pèse près de 40 % de votre note orale totale —
+              préparez-le avec une rigueur absolue.
             </p>
           </CardContent>
         </Card>
@@ -163,10 +170,10 @@ const ESCPPage = () => {
               <AccordionItem value="item-1">
                 <AccordionTrigger>Préparez votre questionnaire</AccordionTrigger>
                 <AccordionContent>
-                  Travaillez votre questionnaire très en amont. L'ESCP publie généralement son questionnaire type 
-                  (6-7 questions) : par exemple, "Quels sont vos 3 centres d'intérêt majeurs ?", "Quel événement 
-                  d'actualité récente vous a intéressé ?", etc. Remplissez-le en soignant le détail : pas de faute, 
-                  chaque mot compte.
+                  Travaillez votre questionnaire très en amont. Il comporte une page de présentation (état civil, filière)
+                  et 6 questions de personnalité (centres d'intérêt, expériences, projet professionnel, actualité, etc.).
+                  Vous devez remettre 3 exemplaires le jour J — 1 par membre du jury. Soignez chaque réponse : pas de
+                  faute, des réponses précises et développées. Tout ce que vous écrivez sera passé en revue.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">

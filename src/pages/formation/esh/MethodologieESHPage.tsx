@@ -1,306 +1,338 @@
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Target, Home, ChevronRight, FileText, Brain, Lightbulb, CheckCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Target, Home, ChevronRight, ArrowLeft, ArrowRight, FileText, Brain, Lightbulb, CheckCircle } from 'lucide-react';
 import ESHModuleNavigation from '@/components/formation/ESHModuleNavigation';
+
+const pillars = [
+  {
+    Icon: FileText,
+    title: 'Analyse de documents',
+    badge: 'Technique',
+    description: "Apprends à décortiquer et analyser efficacement tout type de document économique ou sociologique.",
+    items: ['Identification des enjeux', 'Analyse des arguments', 'Critique et synthèse'],
+  },
+  {
+    Icon: Brain,
+    title: 'Raisonnement économique',
+    badge: 'Logique',
+    description: 'Développe une pensée structurée pour analyser les phénomènes économiques complexes.',
+    items: ['Causalité économique', 'Analyse coûts/avantages', 'Modélisation simplifiée'],
+  },
+  {
+    Icon: Lightbulb,
+    title: 'Préparation aux colles',
+    badge: 'Pratique',
+    description: "Techniques spécifiques pour briller lors des épreuves orales et des colles d'ESH.",
+    items: ["Structuration de l'exposé", 'Gestion du temps', 'Argumentation convaincante'],
+  },
+];
+
+const steps = [
+  {
+    n: '01',
+    title: 'Compréhension du sujet',
+    description: 'Lire attentivement le sujet et identifier les notions clés, les enjeux et les limites temporelles.',
+    items: [
+      'Repérer les mots-clés et concepts économiques/sociologiques',
+      "Identifier le type d'épreuve (analyse, synthèse, dissertation)",
+      'Délimiter le cadre temporel et spatial',
+    ],
+  },
+  {
+    n: '02',
+    title: 'Mobilisation des connaissances',
+    description: 'Rappeler les concepts théoriques et faits économiques pertinents pour traiter le sujet.',
+    items: [
+      'Sélectionner les théories économiques appropriées',
+      'Mobiliser des exemples concrets et actualités',
+      'Établir des liens entre micro et macroéconomie',
+    ],
+  },
+  {
+    n: '03',
+    title: 'Analyse et argumentation',
+    description: 'Construire un raisonnement logique avec des arguments solides et des exemples pertinents.',
+    items: [
+      'Développer une problématique claire',
+      'Articuler thèse, arguments et exemples',
+      'Prévoir les contre-arguments',
+    ],
+  },
+  {
+    n: '04',
+    title: 'Conclusion et ouverture',
+    description: "Synthétiser l'analyse et ouvrir sur des perspectives plus larges.",
+    items: [
+      'Répondre explicitement à la problématique',
+      'Ouvrir sur des enjeux contemporains',
+      'Maintenir une distance critique',
+    ],
+  },
+];
+
+const tools = {
+  economic: [
+    { title: "Courbes d'offre et demande", desc: 'Interprétation des variations et impacts des politiques' },
+    { title: 'Multiplicateur keynésien', desc: "Effets des politiques budgétaires sur l'économie" },
+    { title: 'Équilibre général', desc: 'Interactions entre marchés et effets globaux' },
+  ],
+  sociological: [
+    { title: 'Analyse des acteurs', desc: 'Intérêts, stratégies et rapports de force' },
+    { title: 'Variables contextuelles', desc: 'Facteurs historiques, culturels et institutionnels' },
+    { title: 'Analyse critique', desc: 'Questionnement des normes et des représentations' },
+  ],
+};
 
 const MethodologieESHPage = () => {
   return (
-    <div className="relative">
-      {/* Floating elements - Blue bubbles */}
-
-      {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-carnet-paper/95 backdrop-blur-sm/95 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper/95 backdrop-blur-sm/60 border-b border-border/40 relative z-10">
-        <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-muted-foreground">
-            <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
-              <Home className="h-3 w-3" />
+    <div className="carnet-paper min-h-screen">
+      {/* Fil d'Ariane */}
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
+              <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formations" className="hover:text-foreground transition-colors">
-              Toutes les formations
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formations" className="hover:text-carnet-red transition-colors">
+              Formations
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <Link to="/formation/esh" className="hover:text-foreground transition-colors">
-              Formation ESH ECG
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <Link to="/formation/esh" className="hover:text-carnet-red transition-colors">
+              ESH ECG
             </Link>
-            <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
-            <span className="text-foreground font-medium">Méthodologie</span>
+            <ChevronRight className="h-3 w-3 mx-2 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">Méthodologie</span>
           </div>
         </div>
       </nav>
 
-      <div className="container mx-auto py-8 px-4 relative z-10">
-        {/* Module Navigation */}
-        <div className="mb-8">
-          <ESHModuleNavigation />
-        </div>
+      {/* Hero */}
+      <section className="relative py-16 lg:py-20">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <Link
+            to="/formation/esh"
+            className="inline-flex items-center gap-2 mb-8 font-instrument text-[13px] text-carnet-ink-soft hover:text-carnet-red transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Retour à la formation ESH
+          </Link>
 
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <div className="flex justify-center mb-6">
-            <div className="p-4 rounded-2xl bg-carnet-red text-white shadow-lg">
-              <Target className="h-12 w-12" />
+          <div className="mb-10">
+            <ESHModuleNavigation />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[820px]"
+          >
+            <div className="carnet-eyebrow mb-6">ESH · Méthodologie</div>
+
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                <Target className="h-6 w-6 text-carnet-red" />
+              </div>
+              <h1 className="font-lora text-[40px] sm:text-[48px] lg:text-[56px] leading-[1.05] text-carnet-ink tracking-tight">
+                Méthodologie{' '}
+                <em className="font-lora italic text-carnet-red">ESH</em>.
+              </h1>
+            </div>
+
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px]">
+              Maîtrise les <span className="carnet-hl font-lora italic">techniques et stratégies essentielles</span> pour réussir les épreuves ESH des concours.
+            </p>
+
+            <div className="carnet-hand text-[24px] mt-8 hidden md:block" style={{ transform: 'rotate(-2deg)' }}>
+              ↓ trois piliers + une méthode
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Pillars */}
+      <section className="relative pb-16">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="flex items-baseline gap-4 mb-8">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">01</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <div>
+              <h2 className="font-lora text-[28px] sm:text-[34px] text-carnet-ink leading-tight">
+                Trois piliers méthodologiques
+              </h2>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft mt-1">
+                Les compétences fondamentales à maîtriser.
+              </p>
             </div>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-carnet-red to-pr-orange-dark bg-clip-text text-transparent">
-              Méthodologie ESH
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-4xl mx-auto">
-            Maîtrisez les techniques et stratégies essentielles pour réussir les épreuves ESH des concours.
-          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {pillars.map((p, idx) => {
+              const tilt = idx % 3 === 1 ? 'carnet-tilt-r' : '';
+              return (
+                <motion.div
+                  key={p.title}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-30px' }}
+                  transition={{ duration: 0.35, delay: idx * 0.08 }}
+                  className={`bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)] shadow-[0_1px_2px_rgba(78,55,30,0.04)] ${tilt}`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center">
+                      <p.Icon className="h-5 w-5 text-carnet-red" />
+                    </div>
+                    <span className="font-instrument text-[10px] uppercase tracking-[0.12em] text-carnet-ink-mute px-2.5 py-1 rounded-full bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)]">
+                      {p.badge}
+                    </span>
+                  </div>
+                  <h3 className="font-lora text-[22px] text-carnet-ink mb-3 leading-tight">{p.title}</h3>
+                  <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.6] mb-4">
+                    {p.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {p.items.map((item) => (
+                      <li key={item} className="flex items-center gap-2 font-instrument text-[13px] text-carnet-ink-soft">
+                        <CheckCircle className="h-3.5 w-3.5 text-carnet-red flex-shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
+      </section>
 
-        {/* Contenu principal */}
-        <div className="max-w-6xl mx-auto">
-          {/* Section principale - 3 piliers méthodologiques */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-            {/* Analyse de documents */}
-            <Card className="hover:shadow-xl transition-all duration-300 border-l-4 border-l-purple-500">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <FileText className="h-5 w-5 text-purple-600" />
-                  </div>
-                  <CardTitle className="text-xl">Analyse de documents</CardTitle>
-                </div>
-                <Badge variant="secondary" className="w-fit">Technique</Badge>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Apprendre à décortiquer et analyser efficacement tout type de document économique ou sociologique.
-                </p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center text-purple-600">
-                    <CheckCircle className="mr-2 h-4 w-4" />
-                    <span>Identification des enjeux</span>
-                  </div>
-                  <div className="flex items-center text-purple-600">
-                    <CheckCircle className="mr-2 h-4 w-4" />
-                    <span>Analyse des arguments</span>
-                  </div>
-                  <div className="flex items-center text-purple-600">
-                    <CheckCircle className="mr-2 h-4 w-4" />
-                    <span>Critique et synthèse</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Raisonnement économique */}
-            <Card className="hover:shadow-xl transition-all duration-300 border-l-4 border-l-purple-500">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <Brain className="h-5 w-5 text-purple-600" />
-                  </div>
-                  <CardTitle className="text-xl">Raisonnement économique</CardTitle>
-                </div>
-                <Badge variant="secondary" className="w-fit">Logique</Badge>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Développer une pensée structurée pour analyser les phénomènes économiques complexes.
-                </p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center text-purple-600">
-                    <CheckCircle className="mr-2 h-4 w-4" />
-                    <span>Causalité économique</span>
-                  </div>
-                  <div className="flex items-center text-purple-600">
-                    <CheckCircle className="mr-2 h-4 w-4" />
-                    <span>Analyse coûts/avantages</span>
-                  </div>
-                  <div className="flex items-center text-purple-600">
-                    <CheckCircle className="mr-2 h-4 w-4" />
-                    <span>Modélisation simplifiée</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Préparation aux colles */}
-            <Card className="hover:shadow-xl transition-all duration-300 border-l-4 border-l-purple-500">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <Lightbulb className="h-5 w-5 text-purple-600" />
-                  </div>
-                  <CardTitle className="text-xl">Préparation aux colles</CardTitle>
-                </div>
-                <Badge variant="secondary" className="w-fit">Pratique</Badge>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">
-                  Techniques spécifiques pour briller lors des épreuves orales et des colles d'ESH.
-                </p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center text-purple-600">
-                    <CheckCircle className="mr-2 h-4 w-4" />
-                    <span>Structuration de l'exposé</span>
-                  </div>
-                  <div className="flex items-center text-purple-600">
-                    <CheckCircle className="mr-2 h-4 w-4" />
-                    <span>Gestion du temps</span>
-                  </div>
-                  <div className="flex items-center text-purple-600">
-                    <CheckCircle className="mr-2 h-4 w-4" />
-                    <span>Argumentation convaincante</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+      {/* Méthode pas à pas */}
+      <section className="relative pb-16">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="flex items-baseline gap-4 mb-8">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">02</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <div>
+              <h2 className="font-lora text-[28px] sm:text-[34px] text-carnet-ink leading-tight">
+                Méthode d'analyse — pas à pas
+              </h2>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft mt-1">
+                Quatre étapes pour structurer chaque épreuve.
+              </p>
+            </div>
           </div>
 
-          {/* Section détaillée - Méthode pas à pas */}
-          <Card className="mb-8 hover:shadow-xl transition-all duration-300">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">Méthode d'analyse ESH - Étape par étape</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-purple-600 font-bold text-sm">1</span>
+          <div className="space-y-5">
+            {steps.map((step, idx) => {
+              const tilt = idx % 2 === 1 ? 'carnet-tilt-r' : '';
+              return (
+                <motion.div
+                  key={step.n}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-20px' }}
+                  transition={{ duration: 0.35, delay: idx * 0.06 }}
+                  className={`bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)] ${tilt}`}
+                >
+                  <div className="flex items-start gap-5">
+                    <span className="carnet-hand text-[32px] text-carnet-red leading-none font-semibold flex-shrink-0">
+                      {step.n}
+                    </span>
+                    <div className="flex-1">
+                      <h4 className="font-lora text-[20px] text-carnet-ink mb-2 leading-snug">{step.title}</h4>
+                      <p className="font-instrument text-[14px] text-carnet-ink-soft mb-3 leading-[1.6]">
+                        {step.description}
+                      </p>
+                      <ul className="space-y-1.5">
+                        {step.items.map((it) => (
+                          <li key={it} className="font-instrument text-[13px] text-carnet-ink-mute leading-[1.55]">
+                            <span className="text-carnet-red mr-2">·</span>
+                            {it}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2 text-purple-700">Compréhension du sujet</h4>
-                    <p className="text-gray-600 mb-2">Lire attentivement le sujet et identifier les notions clés, les enjeux et les limites temporelles.</p>
-                    <ul className="text-sm text-gray-500 space-y-1">
-                      <li>• Repérer les mots-clés et concepts économiques/sociologiques</li>
-                      <li>• Identifier le type d'épreuve (analyse, synthèse, dissertation)</li>
-                      <li>• Délimiter le cadre temporel et spatial</li>
-                    </ul>
-                  </div>
-                </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-purple-600 font-bold text-sm">2</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2 text-purple-700">Mobilisation des connaissances</h4>
-                    <p className="text-gray-600 mb-2">Rappeler les concepts théoriques et faits économiques pertinents pour traiter le sujet.</p>
-                    <ul className="text-sm text-gray-500 space-y-1">
-                      <li>• Sélectionner les théories économiques appropriées</li>
-                      <li>• Mobiliser des exemples concrets et actualités</li>
-                      <li>• Établir des liens entre micro et macroéconomie</li>
-                    </ul>
-                  </div>
-                </div>
+      {/* Outils méthodologiques */}
+      <section className="relative pb-16">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="flex items-baseline gap-4 mb-8">
+            <span className="carnet-hand text-[44px] text-carnet-red leading-none font-semibold">03</span>
+            <hr className="flex-shrink-0 w-10 h-0.5 bg-carnet-ink border-0 mt-3" />
+            <div>
+              <h2 className="font-lora text-[28px] sm:text-[34px] text-carnet-ink leading-tight">
+                Outils méthodologiques essentiels
+              </h2>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft mt-1">
+                Pour articuler analyse économique et sociologique.
+              </p>
+            </div>
+          </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-purple-600 font-bold text-sm">3</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h4 className="font-lora italic text-[20px] text-carnet-ink-soft mb-5 leading-snug">
+                Pour l'analyse économique
+              </h4>
+              <div className="space-y-4">
+                {tools.economic.map((t) => (
+                  <div key={t.title} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-carnet-red rounded-full mt-2 flex-shrink-0" />
+                    <div>
+                      <div className="font-lora text-[15px] text-carnet-ink font-semibold mb-0.5">{t.title}</div>
+                      <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">{t.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2 text-purple-700">Analyse et argumentation</h4>
-                    <p className="text-gray-600 mb-2">Construire un raisonnement logique avec des arguments solides et des exemples pertinents.</p>
-                    <ul className="text-sm text-gray-500 space-y-1">
-                      <li>• Développer une problématique claire</li>
-                      <li>• Articuler thèse, arguments et exemples</li>
-                      <li>• Prévoir les contre-arguments</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-purple-600 font-bold text-sm">4</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2 text-purple-700">Conclusion et ouverture</h4>
-                    <p className="text-gray-600 mb-2">Synthétiser l'analyse et ouvrir sur des perspectives plus larges.</p>
-                    <ul className="text-sm text-gray-500 space-y-1">
-                      <li>• Répondre explicitement à la problématique</li>
-                      <li>• Ouvrir sur des enjeux contemporains</li>
-                      <li>• Maintenir une distance critique</li>
-                    </ul>
-                  </div>
-                </div>
+                ))}
               </div>
-            </CardContent>
-          </Card>
-
-          {/* Outils méthodologiques */}
-          <Card className="mb-8 hover:shadow-xl transition-all duration-300">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">Outils méthodologiques essentiels</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-semibold text-lg mb-4 text-purple-700">Pour l'analyse économique</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <strong className="text-purple-700">Courbes d'offre et demande</strong>
-                        <p className="text-sm text-gray-600">Interprétation des variations et impacts des politiques</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <strong className="text-purple-700">Multiplicateur keynésien</strong>
-                        <p className="text-sm text-gray-600">Effets des politiques budgétaires sur l'économie</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <strong className="text-purple-700">Équilibre général</strong>
-                        <p className="text-sm text-gray-600">Interactions entre marchés et effets globaux</p>
-                      </div>
+            </div>
+            <div className="bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)]">
+              <h4 className="font-lora italic text-[20px] text-carnet-ink-soft mb-5 leading-snug">
+                Pour l'analyse sociologique
+              </h4>
+              <div className="space-y-4">
+                {tools.sociological.map((t) => (
+                  <div key={t.title} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-carnet-red rounded-full mt-2 flex-shrink-0" />
+                    <div>
+                      <div className="font-lora text-[15px] text-carnet-ink font-semibold mb-0.5">{t.title}</div>
+                      <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">{t.desc}</p>
                     </div>
                   </div>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-4 text-purple-700">Pour l'analyse sociologique</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <strong className="text-purple-700">Analyse des acteurs</strong>
-                        <p className="text-sm text-gray-600">Intérêts, stratégies et rapports de force</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <strong className="text-purple-700">Variables contextuelles</strong>
-                        <p className="text-sm text-gray-600">Facteurs historiques, culturels et institutionnels</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <strong className="text-purple-700">Analyse critique</strong>
-                        <p className="text-sm text-gray-600">Questionnement des normes et des représentations</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          {/* Call to action */}
-          <div className="text-center">
-            <Link to="/formation/esh/etudes-cas">
-              <Button size="lg" className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white px-8 py-3 text-lg">
-                Pratiquer avec les études de cas
-                <ChevronRight className="ml-2 h-5 w-5" />
-              </Button>
+      {/* CTA */}
+      <section className="relative pb-24">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <div className="rounded-2xl border border-dashed border-[rgba(78,55,30,0.25)] bg-carnet-paper-2 p-8 sm:p-10 text-center">
+            <div className="carnet-eyebrow mb-3">Mets-toi en pratique</div>
+            <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight mb-5">
+              Passe aux <em className="font-lora italic text-carnet-red">études de cas</em>
+            </h2>
+            <Link
+              to="/formation/esh/etudes-cas"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-carnet-red hover:bg-carnet-red-deep text-white font-instrument font-semibold text-[14px] transition-all duration-300 hover:-translate-y-0.5 shadow-[0_2px_8px_rgba(193,68,58,0.25)]"
+            >
+              Pratiquer avec les études de cas
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

@@ -169,7 +169,7 @@ const PronounsExercicesPage = () => {
           <Button 
             onClick={() => validateAnswer(exerciseId)}
             disabled={!userAnswers[exerciseId]}
-            className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white flex items-center gap-2"
+            className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper flex items-center gap-2"
           >
             <CheckCircle className="h-4 w-4" />
             Valider ma réponse
@@ -187,17 +187,17 @@ const PronounsExercicesPage = () => {
         {validatedAnswers[exerciseId] !== undefined && (
           <div className={`rounded-lg p-4 border-2 ${
             validatedAnswers[exerciseId] 
-              ? 'bg-green-50 border-green-200' 
+              ? 'bg-[rgba(193,68,58,0.05)] border-[rgba(193,68,58,0.25)]' 
               : 'bg-red-50 border-red-200'
           }`}>
             <div className="flex items-center gap-2">
               {validatedAnswers[exerciseId] ? (
-                <CheckCircle className="h-5 w-5 text-green-600" />
+                <CheckCircle className="h-5 w-5 text-carnet-red" />
               ) : (
                 <X className="h-5 w-5 text-red-600" />
               )}
               <span className={`font-semibold ${
-                validatedAnswers[exerciseId] ? 'text-green-800' : 'text-red-800'
+                validatedAnswers[exerciseId] ? 'text-carnet-red-deep' : 'text-red-800'
               }`}>
                 {validatedAnswers[exerciseId] ? '✅ Correct !' : '❌ Incorrect'}
               </span>
@@ -227,28 +227,28 @@ const PronounsExercicesPage = () => {
   }, [examMode, examStarted]);
 
   return (
-    <div className="relative font-dm-sans text-pr-black">
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+    <div className="carnet-paper min-h-screen font-instrument text-carnet-ink">
+      <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol" className="hover:text-carnet-red transition-colors">
               Formation Espagnol
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol/grammaire" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol/grammaire" className="hover:text-carnet-red transition-colors">
               Grammaire
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/espagnol/grammaire/pronouns" className="hover:text-gray-900 transition-colors">
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <Link to="/formation/espagnol/grammaire/pronouns" className="hover:text-carnet-red transition-colors">
               Pronoms
             </Link>
-            <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Exercices</span>
+            <ChevronRight className="h-3 w-3 opacity-50 mx-2" />
+            <span className="text-carnet-ink font-semibold">Exercices</span>
           </div>
         </div>
       </nav>
@@ -264,13 +264,13 @@ const PronounsExercicesPage = () => {
             </Link>
           </div>
           
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
+          <h1 className="text-4xl font-lora text-carnet-ink mb-4 flex items-center justify-center gap-3">
             <div className="p-3 rounded-lg bg-purple-600 text-white">
               <Target className="h-9 w-9" />
             </div>
             Exercices sur les Pronoms
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-carnet-ink-mute max-w-3xl mx-auto">
             Maîtrisez les pronoms espagnols avec ces exercices de niveau prépa ECG : leísmo, enclise, ordre complexe...
           </p>
           <div className="flex justify-center gap-2 mt-4">
@@ -284,30 +284,30 @@ const PronounsExercicesPage = () => {
           <Button
             variant={examMode ? "default" : "outline"}
             onClick={() => setExamMode(prev => !prev)}
-            className={examMode ? "bg-pr-orange-dark hover:bg-pr-orange-dark text-white" : "border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50"}
+            className={examMode ? "bg-carnet-ink hover:bg-carnet-red text-carnet-paper" : "border-carnet-red text-carnet-red hover:bg-[rgba(193,68,58,0.05)]"}
           >
             {examMode ? "Désactiver le Mode Examen" : "Activer le Mode Examen"}
           </Button>
         </div>
 
         {examMode && (
-          <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-orange-50">
+          <Card className="mb-8 border-2 border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]">
             <CardContent className="py-4">
               {!examStarted ? (
                 <div className="flex items-center justify-center gap-4">
                   <Button
                     onClick={startExam}
-                    className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-6 py-2"
+                    className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper px-6 py-2"
                   >
                     <Play className="h-4 w-4 mr-2" />
                     Commencer l'examen
                   </Button>
-                  <p className="text-sm text-gray-600">⚠️ Le feedback sera désactivé.</p>
+                  <p className="text-sm text-carnet-ink-mute">⚠️ Le feedback sera désactivé.</p>
                 </div>
               ) : (
                 <div className="flex items-center justify-center gap-4">
-                  <div className="bg-orange-200 rounded-lg px-4 py-2">
-                    <span className="text-orange-900 font-mono text-lg">
+                  <div className="bg-[rgba(193,68,58,0.15)] rounded-lg px-4 py-2">
+                    <span className="text-carnet-red-deep font-mono text-lg">
                       ⏱️ {formatTime(examTime)}
                     </span>
                   </div>
@@ -370,9 +370,9 @@ const PronounsExercicesPage = () => {
         </Card>
 
         {!examStarted && (
-          <Card className="mb-8 border-4 border-pr-orange bg-gradient-to-r from-orange-100 to-orange-100 shadow-lg">
+          <Card className="mb-8 border-4 border-carnet-red bg-[rgba(193,68,58,0.08)] shadow-lg">
             <CardHeader>
-              <CardTitle className="text-2xl font-bold flex items-center gap-2 text-orange-900">
+              <CardTitle className="text-2xl font-bold flex items-center gap-2 text-carnet-red-deep">
                 <BookOpenIcon className="h-6 w-6" />
                 Choisir le type d'exercices
               </CardTitle>
@@ -382,21 +382,21 @@ const PronounsExercicesPage = () => {
                 <Button 
                   variant={selectedExerciseType === 'qcm' ? 'default' : 'outline'} 
                   onClick={() => setSelectedExerciseType('qcm')}
-                  className={selectedExerciseType === 'qcm' ? 'bg-pr-orange-dark hover:bg-pr-orange-dark text-white' : 'border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50'}
+                  className={selectedExerciseType === 'qcm' ? 'bg-carnet-ink hover:bg-carnet-red text-carnet-paper' : 'border-carnet-red text-carnet-red hover:bg-[rgba(193,68,58,0.05)]'}
                 >
                   QCM ({getPronounsExercisesByType('qcm').length})
                 </Button>
                 <Button 
                   variant={selectedExerciseType === 'choix' ? 'default' : 'outline'} 
                   onClick={() => setSelectedExerciseType('choix')}
-                  className={selectedExerciseType === 'choix' ? 'bg-pr-orange-dark hover:bg-pr-orange-dark text-white' : 'border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50'}
+                  className={selectedExerciseType === 'choix' ? 'bg-carnet-ink hover:bg-carnet-red text-carnet-paper' : 'border-carnet-red text-carnet-red hover:bg-[rgba(193,68,58,0.05)]'}
                 >
                   Choix multiples ({getPronounsExercisesByType('choix').length})
                 </Button>
                 <Button 
                   variant={selectedExerciseType === 'complet' ? 'default' : 'outline'} 
                   onClick={() => setSelectedExerciseType('complet')}
-                  className={selectedExerciseType === 'complet' ? 'bg-pr-orange-dark hover:bg-pr-orange-dark text-white' : 'border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50'}
+                  className={selectedExerciseType === 'complet' ? 'bg-carnet-ink hover:bg-carnet-red text-carnet-paper' : 'border-carnet-red text-carnet-red hover:bg-[rgba(193,68,58,0.05)]'}
                 >
                   Mots à compléter ({getPronounsExercisesByType('complet').length})
                 </Button>
@@ -407,7 +407,7 @@ const PronounsExercicesPage = () => {
 
         {filteredExercises.length > 0 && currentExercise && (
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <h2 className="text-3xl font-lora text-carnet-ink mb-6 flex items-center gap-3">
               <FileText className="h-8 w-8 text-purple-600" />
               Question {currentExerciseIndex + 1} / {filteredExercises.length}
               <Badge variant="outline" className="ml-2">
@@ -425,7 +425,7 @@ const PronounsExercicesPage = () => {
               <CardContent className="space-y-4">
                 <div className="bg-white/70 rounded-lg p-4 border border-purple-200">
                   <h4 className="font-semibold text-purple-900 mb-2">Question :</h4>
-                  <p className="text-lg text-gray-800 font-mono">{currentExercise.question}</p>
+                  <p className="text-lg text-carnet-ink font-mono">{currentExercise.question}</p>
                 </div>
 
                 {currentExercise.type === 'qcm' || currentExercise.type === 'choix' ? (
@@ -441,7 +441,7 @@ const PronounsExercicesPage = () => {
                           className="text-purple-600 focus:ring-purple-500"
                           disabled={examMode && examStarted}
                         />
-                        <span className="text-gray-800">{option}</span>
+                        <span className="text-carnet-ink">{option}</span>
                       </label>
                     ))}
                   </div>
@@ -452,7 +452,7 @@ const PronounsExercicesPage = () => {
                       type="text"
                       value={userAnswers[currentExercise.id] || ''}
                       onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                      className="w-full p-2 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-lg text-gray-800"
+                      className="w-full p-2 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-lg text-carnet-ink"
                       placeholder="Tapez votre réponse ici..."
                       disabled={examMode && examStarted}
                     />
@@ -462,13 +462,13 @@ const PronounsExercicesPage = () => {
                 {renderActionButtons(currentExercise.id)}
 
                 {showCorrections[currentExercise.id] && (
-                  <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                    <h4 className="font-semibold text-green-900 mb-3 flex items-center gap-2">
+                  <div className="bg-[rgba(193,68,58,0.05)] rounded-lg p-4 border border-[rgba(193,68,58,0.25)]">
+                    <h4 className="font-semibold text-carnet-red-deep mb-3 flex items-center gap-2">
                       <CheckCircle className="h-4 w-4" />
                       ✅ Correction et explication :
                     </h4>
-                    <p className="text-lg text-green-800 font-medium mb-2">{currentExercise.correctAnswer}</p>
-                    <p className="text-sm text-green-700">{currentExercise.explanation}</p>
+                    <p className="text-lg text-carnet-red-deep font-medium mb-2">{currentExercise.correctAnswer}</p>
+                    <p className="text-sm text-carnet-ink-soft">{currentExercise.explanation}</p>
                   </div>
                 )}
               </CardContent>
@@ -484,7 +484,7 @@ const PronounsExercicesPage = () => {
                 <ArrowLeft className="h-4 w-4" />
                 Question précédente
               </Button>
-              <span className="text-sm text-gray-500 hidden md:block">Utilisez les flèches ← → pour naviguer</span>
+              <span className="text-sm text-carnet-ink-mute hidden md:block">Utilisez les flèches ← → pour naviguer</span>
               <Button 
                 onClick={() => setCurrentExerciseIndex(prev => Math.min(filteredExercises.length - 1, prev + 1))}
                 disabled={currentExerciseIndex === filteredExercises.length - 1 || examStarted}
@@ -512,7 +512,7 @@ const PronounsExercicesPage = () => {
           <div className="flex justify-center gap-4 mt-10">
             <Button 
               onClick={calculateScore} 
-              className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg flex items-center gap-2"
+              className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper px-8 py-3 text-lg flex items-center gap-2"
             >
               <CheckCircle className="h-5 w-5" />
               Terminer et voir le score
@@ -520,7 +520,7 @@ const PronounsExercicesPage = () => {
             <Button 
               onClick={resetQuiz} 
               variant="outline" 
-              className="px-8 py-3 text-lg flex items-center gap-2 border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50"
+              className="px-8 py-3 text-lg flex items-center gap-2 border-carnet-red text-carnet-red hover:bg-[rgba(193,68,58,0.05)]"
             >
               <RotateCcw className="h-5 w-5" />
               Réinitialiser
@@ -529,23 +529,23 @@ const PronounsExercicesPage = () => {
         )}
 
         {showScore && score !== null && (
-          <Card className={`mt-10 border-2 ${examMode ? 'border-orange-200 bg-orange-50' : 'border-purple-200 bg-purple-50'}`}>
+          <Card className={`mt-10 border-2 ${examMode ? 'border-[rgba(193,68,58,0.25)] bg-[rgba(193,68,58,0.05)]' : 'border-purple-200 bg-purple-50'}`}>
             <CardHeader className="text-center">
-              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-orange-800' : 'text-purple-800'}`}>
+              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-carnet-red-deep' : 'text-purple-800'}`}>
                 <Award className="h-8 w-8" />
                 {examMode ? 'Résultats de l\'Examen' : 'Votre Score'} : {score}%
               </CardTitle>
             </CardHeader>
             <CardContent className="text-center">
               {examMode && examTime > 0 && (
-                <div className="mb-4 p-3 bg-orange-100 rounded-lg border border-orange-200">
-                  <p className="text-orange-800 font-medium">
+                <div className="mb-4 p-3 bg-[rgba(193,68,58,0.08)] rounded-lg border border-[rgba(193,68,58,0.25)]">
+                  <p className="text-carnet-red-deep font-medium">
                     ⏱️ Temps total : {formatTime(examTime)}
                   </p>
                 </div>
               )}
               <div className={`text-lg ${
-                examMode ? 'text-pr-orange-dark' : 'text-purple-700'
+                examMode ? 'text-carnet-red' : 'text-purple-700'
               }`}>
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
@@ -559,7 +559,7 @@ const PronounsExercicesPage = () => {
                   </div>
                 ) : (
                   <div className="flex items-center justify-center gap-2">
-                    <Lightbulb className="h-6 w-6 text-pr-orange" />
+                    <Lightbulb className="h-6 w-6 text-carnet-red" />
                     {examMode ? 'Les pronoms sont complexes. Révisez les règles de base !' : 'Les pronoms demandent de la pratique. Révisez et réessayez !'}
                   </div>
                 )}

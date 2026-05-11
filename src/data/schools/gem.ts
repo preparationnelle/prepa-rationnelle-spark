@@ -7,9 +7,9 @@ export const gemData: SchoolData = {
     title: "L'entretien multi-parties avec \"entretien inversé\"",
     content: [
       "GEM propose un entretien d'admission en plusieurs séquences, assez particulier dans son déroulement. Durée ~30 minutes (coef. 10).",
-      "1. Exposé d'actualité (5 min) : En amont (avant le jour J), chaque candidat prépare une présentation de 5 minutes sur un fait d'actualité récent de son choix, lié à une thématique au programme (géopolitique, économie ou management de la tech, selon votre spécialité prépa). Vous présentez ce sujet pendant 5 min devant le jury.",
+      "1. Exposé d'actualité (5 min) : Le sujet est choisi à l'avance parmi les thématiques au programme (géopolitique, économique ou management de la technologie/innovation). Le jour J, aucun temps de préparation supplémentaire n'est accordé : vous présentez directement, sans support, pendant 5 minutes. L'exposé est suivi de questions du jury pour vous challenger.",
       "2. Entretien inversé (10 min) : Vous endossez le rôle de l'interviewer. Vous choisissez l'un des jurés et vous lui posez des questions pendant 9 minutes, comme si vous meniez l'entretien. Puis vous faites une courte synthèse de 1 minute de ce qu'il vous a répondu.",
-      "3. Échange libre (15 min) : Retour au format classique, le jury reprend la main et vous pose des questions de motivation, parcours, etc. C'est l'entretien de personnalité final où vous \"bouclez\" l'oral.",
+      "3. Échange libre (15 min) : Retour au format classique, le jury reprend la main. Cet échange repose souvent sur un test de personnalité que vous avez rempli juste avant l'épreuve, et qui permet au jury de mieux vous cerner. Il vous pose ensuite des questions sur votre motivation pour GEM, votre parcours et votre projet.",
       "**[Guide complet : Toutes les questions pour réussir votre entretien inversé à GEM](/questions/entretien-inverse-gem)**"
     ],
     values: {
@@ -29,7 +29,7 @@ export const gemData: SchoolData = {
     },
     {
       title: "Exposé d'actualité (5 min)",
-      description: "Préparé en avance"
+      description: "Sujet préparé en avance, présenté sans support le jour J"
     },
     {
       title: "Entretien inversé (10 min)",
@@ -47,7 +47,7 @@ export const gemData: SchoolData = {
       "L'entretien inversé est souvent un moment que les candidats apprécient : le juré choisi se prête au jeu et répond en général volontiers, surtout si vos questions sont intéressantes. Cela crée presque une conversation détendue où les rôles sont renversés.",
       "Certains jurés adorent parler d'eux, donc si vous tombez sur quelqu'un de bavard, ça peut même tourner à votre avantage car le temps file pendant qu'il parle (mais restez attentif, car vous devrez synthétiser !).",
       "Pendant ces 10 minutes, l'ambiance dépend aussi de vos talents d'interviewer : si vous rebondissez, relancez, ça devient dynamique et agréable. Si vous êtes timide ou à court de questions, ça peut y perdre. Le jury évalue, mais de manière assez indirecte (puisqu'ils répondent à vos questions).",
-      "Lors de l'échange libre final, ça redevient un entretien classique, possiblement plus serré car le temps restant est court et ils n'ont pas encore parlé de votre motivation. Ils peuvent alors vous poser des questions assez directes sur vous, pour rattraper ce qui n'a pas été vu.",
+      "Lors de l'échange libre final, ça redevient un entretien classique. À noter : certains jurys GEM s'appuient sur un test de personnalité que vous avez rempli juste avant l'épreuve pour orienter leurs questions. Le temps restant étant limité, les jurés peuvent vous poser des questions assez directes sur votre parcours et votre motivation pour GEM.",
       "L'ambiance globale reste constructive : GEM ne cherche pas à vous piéger méchamment, mais c'est une école qui aime l'originalité, donc ils s'attendent à voir des candidats qui savent sortir du cadre. Montrez-leur de l'enthousiasme et de la curiosité, et ils seront plutôt bienveillants."
     ]
   },

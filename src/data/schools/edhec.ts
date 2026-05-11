@@ -7,7 +7,7 @@ export const edhecData: SchoolData = {
   presentation: {
     title: "Le triptyque EDHEC",
     content: [
-      "À l'EDHEC, l'épreuve orale d'admission ne se limite pas à un entretien classique. Elle se déroule sous forme d'une session globale d'environ 1h30 (coefficient 15) comprenant trois volets successifs : une présentation personnelle chronométrée avec un mot imposé, un travail de groupe sur un cas d'entreprise, et un entretien individuel classique de motivation.",
+      "À l'EDHEC, l'épreuve orale d'admission ne se limite pas à un entretien classique. Elle se déroule sous forme d'une session globale de 2 heures (120 minutes) au total (coefficient 15) comprenant trois volets successifs : une présentation personnelle chronométrée avec un mot imposé, un travail de groupe sur un cas d'entreprise, et un entretien individuel classique de motivation.",
       "Les candidats passent cette épreuve en groupe de 6 personnes, face à un jury de 3 évaluateurs. Ce format unique s'apparente à un assessment center et permet d'évaluer à la fois vos compétences individuelles et votre capacité à travailler en équipe."
     ],
     values: {
@@ -21,7 +21,7 @@ export const edhecData: SchoolData = {
   keyPoints: [
     {
       title: "Format tripartite",
-      description: "Présentation avec mot imposé + travail de groupe + entretien individuel, en 1h30 au total"
+      description: "Présentation avec mot imposé + travail de groupe + entretien individuel, en 2 heures (120 min) au total"
     },
     {
       title: "Épreuve collective",
@@ -40,8 +40,8 @@ export const edhecData: SchoolData = {
     title: "Structure de l'épreuve",
     content: [
       "1. Présentation personnelle avec mot imposé (4 minutes) : Chaque candidat doit se présenter pendant 4 minutes devant tout le groupe. La particularité : juste avant de commencer, le jury vous donne un mot aléatoire que vous devez intégrer spontanément dans votre présentation. Vous avez 60 secondes pour réfléchir, puis c'est parti pour votre monologue.",
-      "2. Travail de groupe (45 minutes) : Les 6 candidats s'installent autour d'une table avec des ordinateurs partagés. Vous visionnez une vidéo présentant un cas d'entreprise avec trois solutions possibles. En groupe, vous devez débattre pour choisir l'une des solutions et produire une synthèse écrite. L'objectif réel est d'évaluer votre comportement en équipe.",
-      "3. Entretien individuel (20 minutes) : Chaque candidat passe un entretien de motivation avec un membre du jury. Deux entretiens se déroulent en parallèle dans la même salle. C'est un format questions-réponses classique centré sur votre parcours et vos motivations pour l'EDHEC."
+      "2. Travail de groupe (45 minutes) : Les 6 candidats s'installent autour d'une table. Vous visionnez une vidéo (~5 min) dans laquelle un ancien élève EDHEC présente sa propre entreprise ou organisation, expose une problématique et soumet trois pistes de réflexion. En groupe, vous débattez pour choisir l'une des trois solutions et produire une synthèse écrite. L'objectif réel est d'évaluer votre comportement collectif : prise d'initiative, écoute, leadership collaboratif.",
+      "3. Entretien individuel (20 minutes) : Chaque candidat passe face à un membre du jury. Les 2-3 premières minutes sont consacrées au bilan de votre participation au travail de groupe (comment avez-vous vécu l'exercice, ce que vous retenez). L'entretien se poursuit ensuite de façon classique sur votre parcours, vos motivations pour l'EDHEC et votre projet professionnel."
     ]
   },
   tips: [
