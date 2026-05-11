@@ -302,6 +302,174 @@ const Chapitre17VariablesAleatoiresDiscretesLoisExercicesPage = () => {
           />
         </section>
 
+        <section id="approfondissements">
+          <DifficultyHeader level="Niveau : Facile — Lois usuelles" />
+
+          <ExerciseCard
+            id="ex-07"
+            title="Espérance d'une loi géométrique"
+            difficulty="Niveau: Facile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X \sim \mathcal{G}(p)" /> avec <LatexRenderer latex="p \in (0, 1)" />. Calculer <LatexRenderer latex="E(X)" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  La loi géométrique de paramètre <LatexRenderer latex="p" /> compte le rang du premier succès dans une suite de Bernoulli indépendantes. Son espérance se calcule par dérivation de la série géométrique : <LatexRenderer latex="\sum k q^{k-1} = 1/(1-q)^2" /> pour <LatexRenderer latex="|q| < 1" />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="X \sim \mathcal{G}(p)" />, <LatexRenderer latex="X(\Omega) = \mathbb{N}^*" /> et <LatexRenderer latex="P(X = k) = p(1-p)^{k-1}" />. Posons <LatexRenderer latex="q = 1 - p" />.</p>
+                <p className="mt-2">Or, par dérivation terme à terme (licite sur un compact dans <LatexRenderer latex="(-1, 1)" />) :</p>
+                <LatexRenderer latex="\sum_{k=1}^{+\infty} k q^{k-1} = \frac{d}{dq}\sum_{k=0}^{+\infty} q^k = \frac{d}{dq}\frac{1}{1-q} = \frac{1}{(1-q)^2}." />
+                <p className="mt-2">D'où :</p>
+                <LatexRenderer latex="E(X) = \sum_{k=1}^{+\infty} k\,p(1-p)^{k-1} = p \cdot \frac{1}{(1-q)^2} = p \cdot \frac{1}{p^2} = \frac{1}{p}." />
+                <Astuce>
+                  Vérification intuitive : pour <LatexRenderer latex="p = 1/2" /> (pile équiprobable), il faut en moyenne 2 lancers pour obtenir le premier pile. Pour <LatexRenderer latex="p = 1/6" /> (un 6 au dé), il faut en moyenne 6 lancers.
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="E(\mathcal{G}(p)) = 1/p" />. La variance, par calcul similaire, est <LatexRenderer latex="V(\mathcal{G}(p)) = (1-p)/p^2" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <DifficultyHeader level="Niveau : Intermédiaire — Lois discrètes et transformations" />
+
+          <ExerciseCard
+            id="ex-08"
+            title="Somme de deux Poisson indépendantes"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soient <LatexRenderer latex="X \sim \mathcal{P}(\lambda)" /> et <LatexRenderer latex="Y \sim \mathcal{P}(\mu)" /> indépendantes.</p>
+                <p>Démontrer que <LatexRenderer latex="X + Y \sim \mathcal{P}(\lambda + \mu)" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour déterminer la loi d'une somme de VA discrètes indépendantes, on utilise la formule de convolution : <LatexRenderer latex="P(X + Y = n) = \sum_{k=0}^n P(X = k) P(Y = n - k)" />. Pour la loi de Poisson, le calcul fait apparaître la formule du binôme.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="n \in \mathbb{N}" />. Par indépendance et convolution :</p>
+                <LatexRenderer latex="P(X + Y = n) = \sum_{k=0}^n P(X = k) P(Y = n - k) = \sum_{k=0}^n \frac{e^{-\lambda} \lambda^k}{k!} \cdot \frac{e^{-\mu} \mu^{n-k}}{(n-k)!}." />
+                <p className="mt-2">Factorisons :</p>
+                <LatexRenderer latex="P(X + Y = n) = e^{-(\lambda + \mu)} \cdot \frac{1}{n!} \sum_{k=0}^n \binom{n}{k} \lambda^k \mu^{n-k}." />
+                <Astuce>
+                  La somme <LatexRenderer latex="\sum_k \binom{n}{k} \lambda^k \mu^{n-k}" /> est exactement <LatexRenderer latex="(\lambda + \mu)^n" /> par la formule du binôme.
+                </Astuce>
+                <p className="mt-2">D'où :</p>
+                <LatexRenderer latex="P(X + Y = n) = e^{-(\lambda+\mu)} \frac{(\lambda + \mu)^n}{n!}," />
+                <p className="mt-2">qui est exactement la loi de Poisson de paramètre <LatexRenderer latex="\lambda + \mu" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="X + Y \sim \mathcal{P}(\lambda + \mu)" />. <strong>Stabilité de la loi de Poisson</strong> par addition de variables indépendantes.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-09"
+            title="Inégalité de Markov pour une variable de Poisson"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X \sim \mathcal{P}(\lambda)" />.</p>
+                <p>Majorer <LatexRenderer latex="P(X \ge 2\lambda)" /> par l'inégalité de Markov.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  L'inégalité de Markov, valable pour toute VA positive admettant une espérance, fournit une majoration rapide : <LatexRenderer latex="P(X \ge a) \le E(X)/a" />. Pour des bornes plus fines, utiliser Bienaymé-Tchebychev (qui nécessite la variance) ou Chernoff (qui nécessite la fonction génératrice).
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="X \sim \mathcal{P}(\lambda)" /> avec <LatexRenderer latex="\lambda > 0" />. Or <LatexRenderer latex="X \ge 0" /> et <LatexRenderer latex="E(X) = \lambda" />.</p>
+                <p className="mt-2">Par l'inégalité de Markov avec <LatexRenderer latex="a = 2\lambda" /> :</p>
+                <LatexRenderer latex="P(X \ge 2\lambda) \le \frac{E(X)}{2\lambda} = \frac{\lambda}{2\lambda} = \frac{1}{2}." />
+                <Astuce>
+                  Cette borne est très lâche : pour <LatexRenderer latex="\lambda" /> grand, la concentration de la loi de Poisson donne en réalité <LatexRenderer latex="P(X \ge 2\lambda)" /> très petit (de l'ordre de <LatexRenderer latex="e^{-c\lambda}" /> par Chernoff).
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="P(X \ge 2\lambda) \le 1/2" /> par Markov. Borne grossière mais sans hypothèse supplémentaire.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <DifficultyHeader level="Niveau : Difficile — Fonctions génératrices et calculs avancés" />
+
+          <ExerciseCard
+            id="ex-10"
+            title="Espérance et variance d'une loi binomiale par dérivation"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X \sim \mathcal{B}(n, p)" />.</p>
+                <p>Calculer <LatexRenderer latex="E(X)" /> et <LatexRenderer latex="V(X)" /> en exploitant l'identité <LatexRenderer latex="(p + q)^n = \sum_{k=0}^n \binom{n}{k} p^k q^{n-k}" /> avec <LatexRenderer latex="q = 1 - p" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Les moments d'une loi binomiale se calculent élégamment en dérivant la formule du binôme par rapport à <LatexRenderer latex="p" />. La méthode "fonction génératrice" généralise cette technique aux moments d'ordre quelconque.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="X \sim \mathcal{B}(n, p)" />, <LatexRenderer latex="P(X = k) = \binom{n}{k} p^k q^{n-k}" /> avec <LatexRenderer latex="q = 1 - p" />.</p>
+                <p className="mt-2"><strong>Espérance.</strong> Or, en dérivant <LatexRenderer latex="(p + q)^n = \sum_k \binom{n}{k} p^k q^{n-k}" /> par rapport à <LatexRenderer latex="p" /> (avec <LatexRenderer latex="q" /> constant) :</p>
+                <LatexRenderer latex="n(p + q)^{n-1} = \sum_{k=0}^n \binom{n}{k} k p^{k-1} q^{n-k}." />
+                <p className="mt-2">En multipliant par <LatexRenderer latex="p" /> et en utilisant <LatexRenderer latex="p + q = 1" /> :</p>
+                <LatexRenderer latex="np = \sum_{k=0}^n k \binom{n}{k} p^k q^{n-k} = E(X)." />
+                <p className="mt-2"><strong>Moment d'ordre 2 (par dérivée seconde).</strong> En dérivant à nouveau :</p>
+                <LatexRenderer latex="n(n-1)(p + q)^{n-2} = \sum_{k=0}^n \binom{n}{k} k(k-1) p^{k-2} q^{n-k}." />
+                <Astuce>
+                  L'astuce du moment factoriel <LatexRenderer latex="E(X(X-1))" /> est plus simple que <LatexRenderer latex="E(X^2)" /> directement, car elle évite le terme <LatexRenderer latex="k" /> seul.
+                </Astuce>
+                <p className="mt-2">En multipliant par <LatexRenderer latex="p^2" /> : <LatexRenderer latex="n(n-1)p^2 = E(X(X-1)) = E(X^2) - E(X) = E(X^2) - np" />.</p>
+                <p className="mt-2">D'où <LatexRenderer latex="E(X^2) = n(n-1)p^2 + np" />, et :</p>
+                <LatexRenderer latex="V(X) = E(X^2) - E(X)^2 = n(n-1)p^2 + np - n^2 p^2 = np(1 - p) = npq." />
+                <ConclusionBox>
+                  <LatexRenderer latex="E(\mathcal{B}(n, p)) = np" /> et <LatexRenderer latex="V(\mathcal{B}(n, p)) = npq" /> (avec <LatexRenderer latex="q = 1-p" />).
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-11"
+            title="Convergence en loi de la binomiale vers la Poisson"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="X_n \sim \mathcal{B}(n, \lambda/n)" /> pour <LatexRenderer latex="n" /> assez grand pour que <LatexRenderer latex="\lambda/n \in (0, 1)" />.</p>
+                <p>Démontrer que pour tout <LatexRenderer latex="k \in \mathbb{N}" />, <LatexRenderer latex="P(X_n = k) \to e^{-\lambda} \lambda^k / k!" /> quand <LatexRenderer latex="n \to +\infty" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Le théorème de convergence binomiale → Poisson est l'origine pratique de l'approximation Poisson : pour <LatexRenderer latex="n" /> grand et <LatexRenderer latex="p" /> petit avec <LatexRenderer latex="np = \lambda" /> fixé, la binomiale converge vers la Poisson. La démonstration combine les équivalents <LatexRenderer latex="(1 - \lambda/n)^n \to e^{-\lambda}" /> et l'asymptotique des coefficients binomiaux.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="k \in \mathbb{N}" /> fixé. Pour <LatexRenderer latex="n \ge k" /> :</p>
+                <LatexRenderer latex="P(X_n = k) = \binom{n}{k} \left(\frac{\lambda}{n}\right)^k \left(1 - \frac{\lambda}{n}\right)^{n - k}." />
+                <p className="mt-2"><strong>Asymptotique des termes.</strong></p>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li><LatexRenderer latex="\binom{n}{k} = n(n-1)\cdots(n-k+1)/k! \sim n^k/k!" /> quand <LatexRenderer latex="n \to +\infty" /> (<LatexRenderer latex="k" /> fixé).</li>
+                  <li><LatexRenderer latex="(\lambda/n)^k = \lambda^k / n^k" />.</li>
+                  <li><LatexRenderer latex="(1 - \lambda/n)^n \to e^{-\lambda}" /> par la limite classique <LatexRenderer latex="\lim (1 + x/n)^n = e^x" />.</li>
+                  <li><LatexRenderer latex="(1 - \lambda/n)^{-k} \to 1" /> car <LatexRenderer latex="k" /> est fixé.</li>
+                </ul>
+                <Astuce>
+                  Le miracle : <LatexRenderer latex="n^k / n^k = 1" />, donc <LatexRenderer latex="\binom{n}{k}(\lambda/n)^k \to \lambda^k / k!" />. Ce qui reste est juste <LatexRenderer latex="(1 - \lambda/n)^n \to e^{-\lambda}" />.
+                </Astuce>
+                <p className="mt-2">D'où :</p>
+                <LatexRenderer latex="P(X_n = k) \xrightarrow[n\to+\infty]{} \frac{\lambda^k}{k!} \cdot e^{-\lambda} \cdot 1 = e^{-\lambda} \frac{\lambda^k}{k!} = P(\mathcal{P}(\lambda) = k)." />
+                <ConclusionBox>
+                  <LatexRenderer latex="\mathcal{B}(n, \lambda/n) \xrightarrow{\mathcal{L}} \mathcal{P}(\lambda)" /> quand <LatexRenderer latex="n \to +\infty" />. Justifie l'approximation Poisson pour les "événements rares" (n grand, p petit, np modéré).
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </section>
+
       </div>
     </MathChapterTemplate>
   );

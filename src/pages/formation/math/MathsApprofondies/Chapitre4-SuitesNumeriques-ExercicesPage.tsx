@@ -543,6 +543,154 @@ const Chapitre4SuitesNumeriquesExercicesPage = () => {
           />
         </div>
 
+        <div>
+          <DifficultyHeader level="Module — Suites adjacentes et théorème de la limite monotone" />
+
+          <ExerciseCard
+            id="ex14"
+            title="Suites adjacentes — limite commune"
+            difficulty="Niveau: Facile"
+            content={
+              <div>
+                <p>Soient <LatexRenderer latex={"u_n = \\sum_{k=0}^n 1/k!"} /> et <LatexRenderer latex={"v_n = u_n + 1/(n \\cdot n!)"} />.</p>
+                <p>Démontrer que <LatexRenderer latex={"(u_n)"} /> et <LatexRenderer latex={"(v_n)"} /> sont adjacentes et déterminer leur limite commune.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Deux suites sont adjacentes si l'une est croissante, l'autre décroissante, et leur différence tend vers 0. Le théorème des suites adjacentes garantit alors qu'elles convergent vers une limite commune.
+                </PointMethodo>
+                <p><strong>Monotonie de u_n.</strong> Or <LatexRenderer latex={"u_{n+1} - u_n = 1/(n+1)! > 0"} />, donc <LatexRenderer latex={"(u_n)"} /> est strictement croissante.</p>
+                <p className="mt-2"><strong>Différence.</strong> <LatexRenderer latex={"v_n - u_n = 1/(n \\cdot n!) \\to 0"} />.</p>
+                <Astuce>
+                  La limite commune est <LatexRenderer latex={"e"} /> (nombre d'Euler), définie par <LatexRenderer latex={"e = \\sum_{k=0}^{+\\infty} 1/k!"} />.
+                </Astuce>
+                <p className="mt-2">Pour la monotonie de <LatexRenderer latex={"v_n"} /> : calcul direct (omis) donne <LatexRenderer latex={"v_{n+1} < v_n"} />.</p>
+                <p className="mt-2">D'où par le théorème des suites adjacentes, <LatexRenderer latex={"(u_n)"} /> et <LatexRenderer latex={"(v_n)"} /> convergent vers la même limite <LatexRenderer latex={"\\ell = e"} />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex={"(u_n)"} /> et <LatexRenderer latex={"(v_n)"} /> sont adjacentes et convergent vers <LatexRenderer latex={"e"} />. Cette construction fournit aussi un encadrement de <LatexRenderer latex={"e"} /> à n'importe quel ordre.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex15"
+            title="Suite récurrente x - x²/2"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex={"u_0 \\in [0, 1]"} /> et <LatexRenderer latex={"u_{n+1} = u_n - u_n^2/2"} />.</p>
+                <p>1. Montrer que <LatexRenderer latex={"(u_n)"} /> est décroissante et minorée par 0.</p>
+                <p>2. En déduire qu'elle converge vers 0.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour une suite récurrente <LatexRenderer latex={"u_{n+1} = f(u_n)"} />, étudier stabilité, monotonie, puis convergence vers un point fixe par le théorème de la limite monotone.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex={"f(x) = x - x^2/2"} /> sur <LatexRenderer latex={"[0, 1]"} />. <strong>Stabilité.</strong> <LatexRenderer latex={"f([0, 1]) \\subset [0, 1/2] \\subset [0, 1]"} />.</p>
+                <p className="mt-2"><strong>Monotonie.</strong> <LatexRenderer latex={"u_{n+1} - u_n = -u_n^2/2 \\le 0"} />, donc <LatexRenderer latex={"(u_n)"} /> est décroissante.</p>
+                <Astuce>
+                  Toute suite décroissante et minorée converge. La limite est un point fixe.
+                </Astuce>
+                <p className="mt-2"><strong>Convergence.</strong> <LatexRenderer latex={"(u_n)"} /> décroissante minorée par 0, donc converge vers <LatexRenderer latex={"\\ell \\in [0, 1]"} /> avec <LatexRenderer latex={"\\ell = f(\\ell) = \\ell - \\ell^2/2"} />, soit <LatexRenderer latex={"\\ell^2 = 0"} />, donc <LatexRenderer latex={"\\ell = 0"} />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex={"u_n \\to 0"} />. Vitesse : <LatexRenderer latex={"u_n \\sim 2/n"} />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex16"
+            title="Théorème des gendarmes"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div>
+                <p>Calculer <LatexRenderer latex={"\\lim_{n \\to +\\infty} \\sum_{k=1}^n \\frac{1}{n^2 + k}"} />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour la limite d'une somme dont chaque terme tend vers 0 et dont le nombre de termes croît, encadrer chaque terme par les extrêmes : on obtient un encadrement par deux suites convergentes.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex={"S_n = \\sum_{k=1}^n 1/(n^2 + k)"} />.</p>
+                <p className="mt-2"><strong>Encadrement.</strong> Pour <LatexRenderer latex={"k \\in \\{1, \\ldots, n\\}"} /> : <LatexRenderer latex={"1/(n^2 + n) \\le 1/(n^2 + k) \\le 1/(n^2 + 1)"} />. En sommant :</p>
+                <LatexRenderer latex={"\\frac{n}{n^2 + n} \\le S_n \\le \\frac{n}{n^2 + 1}."} />
+                <p className="mt-2">Or <LatexRenderer latex={"n/(n^2 + n) = 1/(n + 1) \\to 0"} /> et <LatexRenderer latex={"n/(n^2 + 1) \\to 0"} />.</p>
+                <Astuce>
+                  Astuce-clé : <LatexRenderer latex={"n"} /> termes d'ordre <LatexRenderer latex={"1/n^2"} />, donc somme d'ordre <LatexRenderer latex={"1/n \\to 0"} />.
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex={"\\sum_{k=1}^n 1/(n^2 + k) \\to 0"} /> (théorème des gendarmes).
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex17"
+            title="Méthode de Héron pour √2"
+            difficulty="Niveau: Concours"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex={"u_0 > 0"} /> et <LatexRenderer latex={"u_{n+1} = (u_n + 2/u_n)/2"} />.</p>
+                <p>1. Montrer que <LatexRenderer latex={"u_n \\ge \\sqrt{2}"} /> pour <LatexRenderer latex={"n \\ge 1"} />.</p>
+                <p>2. Montrer la convergence quadratique : <LatexRenderer latex={"u_{n+1} - \\sqrt{2} \\le (u_n - \\sqrt{2})^2 / (2\\sqrt{2})"} />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  La méthode de Héron est un cas particulier de Newton appliquée à <LatexRenderer latex={"f(x) = x^2 - 2"} />. Convergence quadratique : nombre de chiffres exacts double à chaque itération.
+                </PointMethodo>
+                <p><strong>1. Minoration.</strong> Or par inégalité arithmético-géométrique : <LatexRenderer latex={"(u_n + 2/u_n)/2 \\ge \\sqrt{u_n \\cdot 2/u_n} = \\sqrt{2}"} />. Donc <LatexRenderer latex={"u_{n+1} \\ge \\sqrt{2}"} /> pour <LatexRenderer latex={"n \\ge 0"} />.</p>
+                <p className="mt-2"><strong>2. Convergence quadratique.</strong> Calcul direct :</p>
+                <LatexRenderer latex={"u_{n+1} - \\sqrt{2} = \\frac{u_n + 2/u_n}{2} - \\sqrt{2} = \\frac{u_n^2 - 2\\sqrt{2} u_n + 2}{2 u_n} = \\frac{(u_n - \\sqrt{2})^2}{2 u_n}."} />
+                <Astuce>
+                  Factorisation exacte : <LatexRenderer latex={"u_n^2 - 2\\sqrt{2} u_n + 2 = (u_n - \\sqrt{2})^2"} />.
+                </Astuce>
+                <p className="mt-2">Or <LatexRenderer latex={"u_n \\ge \\sqrt{2}"} />, donc <LatexRenderer latex={"1/(2 u_n) \\le 1/(2\\sqrt{2})"} />.</p>
+                <ConclusionBox>
+                  Convergence quadratique : pour <LatexRenderer latex={"u_0 = 1{,}5"} />, 14 décimales exactes en 4 itérations.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex18"
+            title="Critère de Cauchy pour Σ sin(k)/k"
+            difficulty="Niveau: Difficile"
+            content={
+              <div>
+                <p>Soit <LatexRenderer latex={"u_n = \\sum_{k=1}^n \\sin(k)/k"} />. Démontrer que <LatexRenderer latex={"(u_n)"} /> converge.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour démontrer la convergence d'une suite, utiliser le critère de Cauchy : <LatexRenderer latex={"(u_n)"} /> converge ssi pour tout <LatexRenderer latex={"\\varepsilon > 0"} />, il existe <LatexRenderer latex={"N"} /> tel que <LatexRenderer latex={"|u_m - u_n| \\le \\varepsilon"} /> pour <LatexRenderer latex={"m, n \\ge N"} />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex={"m > n \\ge 1"} />. Alors <LatexRenderer latex={"u_m - u_n = \\sum_{k=n+1}^m \\sin(k)/k"} />.</p>
+                <Astuce>
+                  L'astuce-clé : l'inégalité d'Abel pour majorer <LatexRenderer latex={"|\\sum a_k b_k|"} /> avec <LatexRenderer latex={"a_k"} /> décroissante positive et <LatexRenderer latex={"\\sum b_k"} /> bornée.
+                </Astuce>
+                <p className="mt-2"><strong>Inégalité d'Abel.</strong> Avec <LatexRenderer latex={"a_k = 1/k"} /> (décroissante, positive) et <LatexRenderer latex={"b_k = \\sin k"} /> (sommes partielles bornées par <LatexRenderer latex={"1/|\\sin(1/2)|"} />) :</p>
+                <LatexRenderer latex={"|u_m - u_n| \\le \\frac{2}{n+1} \\cdot \\frac{1}{|\\sin(1/2)|}."} />
+                <p className="mt-2">D'où pour tout <LatexRenderer latex={"\\varepsilon > 0"} />, en choisissant <LatexRenderer latex={"N"} /> suffisamment grand, le critère de Cauchy est vérifié. Donc <LatexRenderer latex={"(u_n)"} /> converge.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex={"\\sum \\sin(k)/k"} /> converge (critère de Cauchy + Abel). Série semi-convergente.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </div>
+
       </div>
     </MathChapterTemplate>
   );

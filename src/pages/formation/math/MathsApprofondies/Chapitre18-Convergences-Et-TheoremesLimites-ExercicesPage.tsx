@@ -302,6 +302,168 @@ const Chapitre18ConvergencesEtTheoremesLimitesExercicesPage = () => {
           />
         </section>
 
+        <section id="approfondissements">
+          <DifficultyHeader level="Niveau : Facile — Convergence en probabilité et loi des grands nombres" />
+
+          <ExerciseCard
+            id="ex-07"
+            title="Convergence en probabilité d'une suite déterministe"
+            difficulty="Niveau: Facile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="(Y_n)" /> une suite de VA telle que <LatexRenderer latex="Y_n = 1/n" /> presque sûrement.</p>
+                <p>Démontrer que <LatexRenderer latex="Y_n \xrightarrow{P} 0" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour démontrer une convergence en probabilité <LatexRenderer latex="Y_n \xrightarrow{P} c" />, vérifier que pour tout <LatexRenderer latex="\varepsilon > 0" />, <LatexRenderer latex="P(|Y_n - c| \ge \varepsilon) \to 0" />.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="\varepsilon > 0" />. Or <LatexRenderer latex="Y_n = 1/n" /> p.s., donc :</p>
+                <LatexRenderer latex="P(|Y_n - 0| \ge \varepsilon) = P(1/n \ge \varepsilon) = \begin{cases} 1 & \text{si } 1/n \ge \varepsilon \\ 0 & \text{sinon} \end{cases}." />
+                <p className="mt-2">Or pour <LatexRenderer latex="n > 1/\varepsilon" />, on a <LatexRenderer latex="1/n < \varepsilon" />, donc <LatexRenderer latex="P(|Y_n - 0| \ge \varepsilon) = 0" />.</p>
+                <p className="mt-2">D'où <LatexRenderer latex="P(|Y_n - 0| \ge \varepsilon) \to 0" /> quand <LatexRenderer latex="n \to +\infty" />.</p>
+                <Astuce>
+                  Une suite déterministe qui converge converge aussi en probabilité (au sens trivial). C'est un cas particulier utile pour comprendre le concept.
+                </Astuce>
+                <ConclusionBox>
+                  <LatexRenderer latex="Y_n = 1/n \xrightarrow{P} 0" />. La convergence en probabilité généralise la convergence usuelle aux suites de VA.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <DifficultyHeader level="Niveau : Intermédiaire — TCL et application" />
+
+          <ExerciseCard
+            id="ex-08"
+            title="Approximation normale d'une somme de Bernoulli"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soient <LatexRenderer latex="X_1, \ldots, X_{1000}" /> iid <LatexRenderer latex="\mathcal{B}(0,5)" /> (pile/face équilibré).</p>
+                <p>Estimer <LatexRenderer latex="P(490 \le S_n \le 510)" /> où <LatexRenderer latex="S_n = X_1 + \ldots + X_{1000}" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Pour estimer une probabilité d'écart par rapport à la moyenne dans le cadre du TCL, standardiser, lire les quantiles de la <LatexRenderer latex="\mathcal{N}(0, 1)" />, et appliquer la symétrie.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="S_n \sim \mathcal{B}(1000, 0{,}5)" />, donc <LatexRenderer latex="E(S_n) = 500" /> et <LatexRenderer latex="V(S_n) = 250" />, soit <LatexRenderer latex="\sigma = \sqrt{250} \approx 15{,}81" />.</p>
+                <p className="mt-2">Par le TCL, <LatexRenderer latex="(S_n - 500)/\sigma \approx \mathcal{N}(0, 1)" />.</p>
+                <p className="mt-2">D'où :</p>
+                <LatexRenderer latex="P(490 \le S_n \le 510) \approx P\!\left(\frac{490 - 500}{15{,}81} \le Z \le \frac{510 - 500}{15{,}81}\right) = P(-0{,}632 \le Z \le 0{,}632)." />
+                <Astuce>
+                  Par symétrie de la loi normale : <LatexRenderer latex="P(|Z| \le t) = 2\Phi(t) - 1" /> où <LatexRenderer latex="\Phi" /> est la FdR de <LatexRenderer latex="\mathcal{N}(0, 1)" />. Pour <LatexRenderer latex="t = 0{,}632" />, <LatexRenderer latex="\Phi(0{,}632) \approx 0{,}737" />.
+                </Astuce>
+                <p className="mt-2">Donc <LatexRenderer latex="P(490 \le S_n \le 510) \approx 2 \cdot 0{,}737 - 1 = 0{,}474" />.</p>
+                <ConclusionBox>
+                  <LatexRenderer latex="P(490 \le S_n \le 510) \approx 47\%" />. Pour des écarts plus larges (<LatexRenderer latex="\pm 30" />), la probabilité tend vers 1 par le TCL.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-09"
+            title="Théorème central limite — vitesse de convergence"
+            difficulty="Niveau: Intermédiaire"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="(X_n)" /> iid de moyenne <LatexRenderer latex="\mu" /> et variance <LatexRenderer latex="\sigma^2" /> finies. Soit <LatexRenderer latex="Z_n = (S_n - n\mu)/(\sigma \sqrt{n})" /> où <LatexRenderer latex="S_n = X_1 + \ldots + X_n" />.</p>
+                <p>1. Quelle est la loi limite de <LatexRenderer latex="Z_n" /> ?</p>
+                <p>2. Démontrer que <LatexRenderer latex="\sqrt{n}(\overline{X}_n - \mu) \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2)" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Le TCL "standardisé" donne <LatexRenderer latex="Z_n \to \mathcal{N}(0, 1)" />. La version "non standardisée" <LatexRenderer latex="\sqrt{n}(\overline{X}_n - \mu) \to \mathcal{N}(0, \sigma^2)" /> s'en déduit immédiatement par multiplication par <LatexRenderer latex="\sigma" />.
+                </PointMethodo>
+                <p><strong>1.</strong> Par le théorème central limite : <LatexRenderer latex="Z_n = \dfrac{S_n - n\mu}{\sigma \sqrt{n}} \xrightarrow{\mathcal{L}} \mathcal{N}(0, 1)" />.</p>
+                <p className="mt-2"><strong>2.</strong> Or <LatexRenderer latex="\sqrt{n}(\overline{X}_n - \mu) = \sqrt{n}\left(\dfrac{S_n}{n} - \mu\right) = \dfrac{S_n - n\mu}{\sqrt{n}} = \sigma\,Z_n" />.</p>
+                <p className="mt-2">D'où <LatexRenderer latex="\sqrt{n}(\overline{X}_n - \mu) = \sigma\,Z_n \xrightarrow{\mathcal{L}} \sigma\,\mathcal{N}(0, 1) = \mathcal{N}(0, \sigma^2)" />.</p>
+                <Astuce>
+                  Multiplier une <LatexRenderer latex="\mathcal{N}(0, 1)" /> par une constante <LatexRenderer latex="c > 0" /> donne une <LatexRenderer latex="\mathcal{N}(0, c^2)" /> (par changement d'échelle).
+                </Astuce>
+                <ConclusionBox>
+                  Le TCL "non standardisé" : <LatexRenderer latex="\sqrt{n}(\overline{X}_n - \mu) \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2)" />. Vitesse de convergence en <LatexRenderer latex="1/\sqrt{n}" />.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <DifficultyHeader level="Niveau : Difficile — Théorème de Slutsky" />
+
+          <ExerciseCard
+            id="ex-10"
+            title="Théorème de Slutsky"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soient <LatexRenderer latex="(X_n)" /> et <LatexRenderer latex="(Y_n)" /> deux suites de VA telles que <LatexRenderer latex="X_n \xrightarrow{\mathcal{L}} X" /> et <LatexRenderer latex="Y_n \xrightarrow{P} c \in \mathbb{R}" /> (constante).</p>
+                <p>(On admet) Démontrer le théorème de Slutsky : <LatexRenderer latex="X_n + Y_n \xrightarrow{\mathcal{L}} X + c" /> et <LatexRenderer latex="X_n Y_n \xrightarrow{\mathcal{L}} c X" />.</p>
+                <p>Application : si <LatexRenderer latex="\sqrt{n}(\overline{X}_n - \mu) \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2)" /> et <LatexRenderer latex="S_n^2 \xrightarrow{P} \sigma^2" />, en déduire la loi limite de <LatexRenderer latex="\sqrt{n}(\overline{X}_n - \mu)/S_n" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  Le théorème de Slutsky combine convergence en loi (qui se transmet aux fonctions continues) et convergence en probabilité vers une constante (qui se transmet à toutes les opérations algébriques). C'est l'outil fondamental pour "substituer" des estimateurs consistants à des paramètres inconnus dans une loi limite.
+                </PointMethodo>
+                <p><strong>Application directe.</strong> Soit <LatexRenderer latex="\sqrt{n}(\overline{X}_n - \mu) \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2)" /> par TCL, et <LatexRenderer latex="S_n^2 \xrightarrow{P} \sigma^2" /> par LFGN appliquée à la variance.</p>
+                <p className="mt-2">Or <LatexRenderer latex="S_n \xrightarrow{P} \sigma" /> par continuité de la racine carrée. D'où <LatexRenderer latex="1/S_n \xrightarrow{P} 1/\sigma" />.</p>
+                <p className="mt-2">Par le théorème de Slutsky (cas du produit) :</p>
+                <LatexRenderer latex="\sqrt{n}\,\frac{\overline{X}_n - \mu}{S_n} = \sqrt{n}(\overline{X}_n - \mu) \cdot \frac{1}{S_n} \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2) \cdot \frac{1}{\sigma} = \mathcal{N}(0, 1)." />
+                <Astuce>
+                  C'est l'application centrale : la statistique de Student <LatexRenderer latex="T_n = \sqrt{n}(\overline{X}_n - \mu)/S_n" /> a la même loi limite asymptotique que la statistique <LatexRenderer latex="Z_n = \sqrt{n}(\overline{X}_n - \mu)/\sigma" /> — ce qui justifie d'utiliser <LatexRenderer latex="S_n" /> à la place de <LatexRenderer latex="\sigma" /> inconnu dans la construction d'IC.
+                </Astuce>
+                <p className="mt-2"><strong>Précautions.</strong> Le théorème de Slutsky requiert que <LatexRenderer latex="Y_n \xrightarrow{P} c" /> (une <em>constante</em>, pas une VA quelconque). Si <LatexRenderer latex="Y_n \xrightarrow{\mathcal{L}} Y" /> (VA aléatoire), on ne peut pas conclure <LatexRenderer latex="X_n + Y_n \xrightarrow{\mathcal{L}} X + Y" /> sans hypothèses d'indépendance.</p>
+                <ConclusionBox>
+                  Théorème de Slutsky : convergence en loi + convergence en proba vers une constante = convergence en loi du produit/somme. Outil-clé pour la statistique inférentielle.
+                </ConclusionBox>
+              </div>
+            }
+          />
+
+          <ExerciseCard
+            id="ex-11"
+            title="Méthode delta"
+            difficulty="Niveau: Difficile"
+            content={
+              <div className="space-y-3">
+                <p>Soit <LatexRenderer latex="(X_n)" /> une suite de VA telles que <LatexRenderer latex="\sqrt{n}(X_n - \theta) \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2)" />.</p>
+                <p>Soit <LatexRenderer latex="g : \mathbb{R} \to \mathbb{R}" /> dérivable en <LatexRenderer latex="\theta" /> avec <LatexRenderer latex="g'(\theta) \ne 0" />.</p>
+                <p>Démontrer (méthode delta) que <LatexRenderer latex="\sqrt{n}(g(X_n) - g(\theta)) \xrightarrow{\mathcal{L}} \mathcal{N}(0, g'(\theta)^2 \sigma^2)" />.</p>
+              </div>
+            }
+            correction={
+              <div>
+                <PointMethodo>
+                  La méthode delta transfère la loi limite normale d'un estimateur <LatexRenderer latex="X_n" /> à toute fonction dérivable <LatexRenderer latex="g(X_n)" />, avec une variance multipliée par <LatexRenderer latex="g'(\theta)^2" />. Elle s'obtient par développement de Taylor à l'ordre 1 et application du théorème de Slutsky.
+                </PointMethodo>
+                <p>Soit <LatexRenderer latex="X_n \to \theta" /> en probabilité (conséquence du TCL : si <LatexRenderer latex="\sqrt{n}(X_n - \theta)" /> converge en loi, alors <LatexRenderer latex="X_n - \theta \to 0" /> en probabilité).</p>
+                <p className="mt-2"><strong>Développement de Taylor.</strong> Or <LatexRenderer latex="g" /> est dérivable en <LatexRenderer latex="\theta" />, donc :</p>
+                <LatexRenderer latex="g(X_n) - g(\theta) = g'(\theta)(X_n - \theta) + (X_n - \theta) \cdot \varepsilon(X_n - \theta)" />
+                <p className="mt-2">avec <LatexRenderer latex="\varepsilon(h) \to 0" /> quand <LatexRenderer latex="h \to 0" />.</p>
+                <Astuce>
+                  L'écriture <LatexRenderer latex="g(x_0 + h) = g(x_0) + h g'(x_0) + h \varepsilon(h)" /> avec <LatexRenderer latex="\varepsilon \to 0" /> est la définition même de la dérivabilité (formule de Taylor d'ordre 1 en <LatexRenderer latex="x_0" />).
+                </Astuce>
+                <p className="mt-2">Multipliant par <LatexRenderer latex="\sqrt{n}" /> :</p>
+                <LatexRenderer latex="\sqrt{n}(g(X_n) - g(\theta)) = g'(\theta)\,\sqrt{n}(X_n - \theta) + \sqrt{n}(X_n - \theta) \cdot \varepsilon(X_n - \theta)." />
+                <p className="mt-2"><strong>Limite du premier terme.</strong> <LatexRenderer latex="g'(\theta) \cdot \sqrt{n}(X_n - \theta) \xrightarrow{\mathcal{L}} g'(\theta) \cdot \mathcal{N}(0, \sigma^2) = \mathcal{N}(0, g'(\theta)^2 \sigma^2)" />.</p>
+                <p className="mt-2"><strong>Limite du second terme.</strong> Or <LatexRenderer latex="X_n - \theta \xrightarrow{P} 0" />, donc <LatexRenderer latex="\varepsilon(X_n - \theta) \xrightarrow{P} 0" />. Par Slutsky, <LatexRenderer latex="\sqrt{n}(X_n - \theta) \cdot \varepsilon(X_n - \theta) \xrightarrow{P} 0" />.</p>
+                <p className="mt-2">Par addition (Slutsky), la somme converge vers <LatexRenderer latex="\mathcal{N}(0, g'(\theta)^2 \sigma^2)" />.</p>
+                <ConclusionBox>
+                  Méthode delta : <LatexRenderer latex="\sqrt{n}(g(X_n) - g(\theta)) \xrightarrow{\mathcal{L}} \mathcal{N}(0, g'(\theta)^2 \sigma^2)" />. Outil-clé pour propager la normalité asymptotique aux transformations d'estimateurs.
+                </ConclusionBox>
+              </div>
+            }
+          />
+        </section>
+
       </div>
     </MathChapterTemplate>
   );
