@@ -803,7 +803,7 @@ const ChronologieEuropePage = () => {
       case 'Économique': return 'bg-green-100 text-green-800 border-green-200';
       case 'Militaire': return 'bg-red-100 text-red-800 border-red-200';
       case 'Institutionnel': return 'bg-purple-100 text-purple-800 border-purple-200';
-      case 'Élargissement': return 'bg-orange-100 text-orange-800 border-orange-200';
+      case 'Élargissement': return 'bg-gray-100 text-gray-800 border-gray-200';
       case 'Monétaire': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
       case 'Conflit': return 'bg-red-200 text-red-900 border-red-300';
       case 'Géopolitique': return 'bg-indigo-100 text-indigo-800 border-indigo-200';
@@ -814,7 +814,7 @@ const ChronologieEuropePage = () => {
   const getImportanceColor = (importance: string) => {
     switch (importance) {
       case 'high': return 'border-l-red-500 bg-red-50';
-      case 'medium': return 'border-l-pr-orange bg-orange-50';
+      case 'medium': return 'border-l-pr-black bg-gray-50';
       case 'low': return 'border-l-green-500 bg-green-50';
       default: return 'border-l-gray-500 bg-gray-50';
     }
@@ -873,7 +873,7 @@ const ChronologieEuropePage = () => {
           </Card>
           <Card className="text-center">
             <CardContent className="pt-6">
-              <MapPin className="h-8 w-8 text-pr-orange-dark mx-auto mb-2" />
+              <MapPin className="h-8 w-8 text-pr-black mx-auto mb-2" />
               <div className="text-2xl font-bold text-gray-900">27</div>
               <div className="text-sm text-gray-600">États membres UE</div>
             </CardContent>

@@ -193,7 +193,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
     const correctCount = Object.values(userResponses).filter((r) => r === 'correct').length;
     return (
       <div className="max-w-2xl mx-auto px-4 py-12">
-        <Card className="border-0 shadow-sm bg-white text-center p-8">
+        <Card className="border border-carnet-rule shadow-none bg-carnet-paper-2 text-center p-8">
           <h2 className="text-2xl font-serif text-slate-900 mb-4">Session terminée</h2>
           <div className="flex justify-center items-center gap-8 mb-8">
             <div className="text-center">
@@ -238,7 +238,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
             className={`text-xs uppercase tracking-wider px-3 py-1.5 rounded-full border transition-colors ${
               selectedCategory === 'all'
                 ? 'bg-slate-900 text-white border-slate-900'
-                : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+                : 'bg-carnet-paper-2 text-carnet-ink-soft border-carnet-rule hover:bg-carnet-paper'
             }`}
           >
             Toutes ({cards.length})
@@ -252,7 +252,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
                 className={`text-xs uppercase tracking-wider px-3 py-1.5 rounded-full border transition-colors ${
                   selectedCategory === cat
                     ? 'bg-slate-900 text-white border-slate-900'
-                    : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
+                    : 'bg-carnet-paper-2 text-carnet-ink-soft border-carnet-rule hover:bg-carnet-paper'
                 }`}
               >
                 {cat} ({count})
@@ -263,12 +263,12 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
       )}
 
       <div className="flex items-center gap-4 mb-6">
-        <span className="text-xs font-medium text-slate-400 font-mono">
+        <span className="text-xs font-medium text-carnet-ink-mute font-mono">
           {currentIndex + 1} / {totalCards}
         </span>
         <div className="h-[2px] w-full flex-1 bg-slate-100 rounded-full overflow-hidden">
           <div
-            className="h-full bg-slate-900 transition-all duration-500 ease-out"
+            className="h-full bg-carnet-red transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -284,7 +284,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
       </div>
 
       <div className="perspective-1000">
-        <Card className="min-h-[400px] bg-white border-slate-200 shadow-sm transition-all duration-300 relative overflow-hidden group">
+        <Card className="min-h-[400px] bg-carnet-paper-2 border-carnet-rule shadow-none transition-all duration-300 relative overflow-hidden group">
           <CardContent className="h-full p-8 sm:p-12 flex flex-col items-center justify-center text-center">
             <button
               onClick={toggleReview}
@@ -299,7 +299,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
             {currentCard.category && (
               <Badge
                 variant="outline"
-                className="absolute top-6 left-6 px-2.5 py-0.5 text-[10px] uppercase tracking-wider border-slate-200 text-slate-500 font-normal"
+                className="absolute top-6 left-6 px-2.5 py-0.5 text-[10px] uppercase tracking-wider border-carnet-rule text-carnet-ink-mute font-normal"
               >
                 {currentCard.category}
               </Badge>
@@ -319,7 +319,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
                   <div className="mt-10">
                     <Button
                       onClick={toggleAnswer}
-                      className="bg-slate-900 hover:bg-slate-800 text-white rounded-full px-8 shadow-none transition-transform active:scale-95"
+                      className="bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper rounded-full px-8 shadow-none transition-transform active:scale-95"
                     >
                       Révéler la réponse
                     </Button>
@@ -373,13 +373,13 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
           onClick={goPrev}
           disabled={currentIndex === 0}
           variant="outline"
-          className="border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900 disabled:opacity-30 rounded-full px-5 h-11"
+          className="border-carnet-rule text-carnet-ink-soft hover:bg-carnet-paper hover:text-carnet-ink disabled:opacity-30 rounded-full px-5 h-11"
         >
           <ChevronLeft className="h-5 w-5 mr-1.5" />
           Précédente
         </Button>
 
-        <span className="text-xs text-slate-400 font-mono hidden sm:inline">
+        <span className="text-xs text-carnet-ink-mute font-mono hidden sm:inline">
           Carte {currentIndex + 1} / {totalCards}
         </span>
 
@@ -387,7 +387,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
           onClick={goNext}
           disabled={currentIndex === totalCards - 1}
           variant="outline"
-          className="border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900 disabled:opacity-30 rounded-full px-5 h-11"
+          className="border-carnet-rule text-carnet-ink-soft hover:bg-carnet-paper hover:text-carnet-ink disabled:opacity-30 rounded-full px-5 h-11"
         >
           Suivante
           <ChevronRight className="h-5 w-5 ml-1.5" />

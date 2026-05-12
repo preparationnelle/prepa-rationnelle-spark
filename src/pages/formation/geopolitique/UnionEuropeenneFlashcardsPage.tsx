@@ -208,7 +208,7 @@ const UnionEuropeenneFlashcardsPage = () => {
         <div className="max-w-4xl mx-auto mb-6 flex flex-wrap justify-center gap-4">
           <button
             onClick={resetCards}
-            className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md transition-colors"
+            className="inline-flex items-center gap-2 bg-pr-black hover:bg-pr-black-dark text-white px-4 py-2 rounded-md transition-colors"
           >
             <RotateCcw className="w-4 h-4" />
             Recommencer
@@ -268,7 +268,7 @@ const UnionEuropeenneFlashcardsPage = () => {
                       </h2>
                       <button
                         onClick={toggleAnswer}
-                        className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-3 rounded-lg transition-colors"
+                        className="inline-flex items-center gap-2 bg-pr-black hover:bg-pr-black-dark text-white px-6 py-3 rounded-lg transition-colors"
                       >
                         <Eye className="w-5 h-5" />
                         Voir la réponse
@@ -327,7 +327,7 @@ const UnionEuropeenneFlashcardsPage = () => {
               <button
                 onClick={handleNext}
                 disabled={currentCardIndex === flashcards.length - 1}
-                className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark disabled:bg-carnet-red disabled:cursor-not-allowed text-white px-4 py-2 rounded-md transition-colors"
+                className="inline-flex items-center gap-2 bg-pr-black hover:bg-pr-black-dark disabled:bg-carnet-red disabled:cursor-not-allowed text-white px-4 py-2 rounded-md transition-colors"
               >
                 <span className="hidden sm:inline">Carte suivante</span>
                 <span className="sm:hidden">Suivante</span>

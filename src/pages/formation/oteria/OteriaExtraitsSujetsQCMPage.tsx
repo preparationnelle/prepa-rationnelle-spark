@@ -369,7 +369,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
         {/* Results */}
         {showResults && (
           <Card className="mb-8 border-2 border-carnet-red/30">
-            <CardHeader className="bg-pr-orange-pale">
+            <CardHeader className="bg-pr-gray-bg">
               <CardTitle className="text-center text-carnet-red-deep flex items-center justify-center gap-2">
                 <Database className="h-5 w-5" />
                 Résultats du QCM
@@ -392,7 +392,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
                   Refaire le QCM
                 </Button>
                 <Link to="/articles/oteria-cyber-school">
-                  <Button variant="outline" className="border-carnet-red text-carnet-red hover:bg-pr-orange-pale">
+                  <Button variant="outline" className="border-carnet-red text-carnet-red hover:bg-pr-gray-bg">
                     <BookOpen className="mr-2 h-4 w-4" />
                     Retour au programme
                   </Button>
@@ -405,7 +405,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
         {/* Question */}
         {!showResults && (
           <Card className="mb-8 border-2 border-carnet-red/30">
-            <CardHeader className="bg-pr-orange-pale">
+            <CardHeader className="bg-pr-gray-bg">
               <Badge variant="outline" className="mb-2 border-carnet-red/40 text-carnet-red">
                 {question.chapter}
               </Badge>
@@ -418,7 +418,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
                     key={choice.key}
                     onClick={() => handleAnswer(question.id, choice.key)}
                     className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${answers[question.id] === choice.key
-                        ? 'border-carnet-red bg-pr-orange-pale text-carnet-red-deep'
+                        ? 'border-carnet-red bg-pr-gray-bg text-carnet-red-deep'
                         : 'border-gray-200 hover:border-carnet-red/40 hover:bg-carnet-paper-2'
                       }`}
                   >
@@ -476,7 +476,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
               onClick={prevQuestion}
               disabled={currentQuestion === 0}
               variant="outline"
-              className="border-carnet-red text-carnet-red hover:bg-pr-orange-pale disabled:opacity-50"
+              className="border-carnet-red text-carnet-red hover:bg-pr-gray-bg disabled:opacity-50"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
               Précédent

@@ -17,37 +17,12 @@ interface FormData {
 
 interface HeroContactFormProps {
     showContent?: boolean; // For animation control from parent
-    theme?: 'orange' | 'blue';
+    theme?: 'orange' | 'blue'; // Kept for backwards compatibility but not used in carnet styling
 }
 
 export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = true, theme = 'orange' }) => {
     const { toast } = useToast();
     const [step, setStep] = useState(1);
-
-    const themeStyles = {
-        orange: {
-            gradient: 'from-pr-orange to-orange-400',
-            gradientHover: 'hover:from-pr-orange-dark hover:to-pr-orange',
-            text: 'text-orange-900',
-            textLight: 'text-pr-orange',
-            bg: 'bg-orange-50',
-            border: 'border-orange-200',
-            shadow: 'shadow-pr-orange/30',
-            iconBg: 'bg-gradient-to-br from-pr-orange to-orange-400',
-        },
-        blue: {
-            gradient: 'from-blue-600 to-indigo-600',
-            gradientHover: 'hover:from-blue-700 hover:to-indigo-700',
-            text: 'text-blue-900',
-            textLight: 'text-blue-600',
-            bg: 'bg-blue-50',
-            border: 'border-blue-200',
-            shadow: 'shadow-blue-500/30',
-            iconBg: 'bg-gradient-to-br from-blue-600 to-indigo-600',
-        }
-    };
-
-    const currentTheme = themeStyles[theme];
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [formData, setFormData] = useState<FormData>({
@@ -115,50 +90,48 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
     return (
         <div className={`max-w-lg mx-auto transition-all duration-700 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="relative">
-                {/* Subtle glow effect behind card */}
-                {/* Subtle glow effect behind card */}
-                <div className={`absolute -inset-1 bg-gradient-to-r ${theme === 'orange' ? 'from-pr-orange/20 via-orange-400/15 to-pr-orange/20' : 'from-blue-500/20 via-indigo-400/15 to-blue-500/20'} rounded-2xl blur-xl`}></div>
-
-                {/* Card with glassmorphism touch */}
-                <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl shadow-black/20 p-6 sm:p-7 border border-white/50">
+                {/* Card with carnet paper touch */}
+                <div className="relative bg-carnet-paper-2 rounded-xl p-6 sm:p-7 border border-[rgba(78,55,30,0.18)] shadow-[0_8px_24px_rgba(78,55,30,0.08)]">
 
                     {/* Success Screen */}
                     {isSuccess ? (
                         <div className="text-center py-6 animate-in fade-in-up">
                             {/* Success Icon */}
-                            <div className="mx-auto w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-4 animate-bounce">
-                                <Check className="w-10 h-10 text-white" />
+                            <div className="mx-auto w-16 h-16 bg-[rgba(193,68,58,0.08)] rounded-full flex items-center justify-center mb-4 border border-[rgba(193,68,58,0.25)]">
+                                <Check className="w-8 h-8 text-carnet-red" />
                             </div>
 
                             {/* Thank You Message */}
-                            <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                                Merci {formData.firstName} ! 🎉
+                            <h3 className="font-lora text-[24px] italic text-carnet-ink mb-2">
+                                Merci {formData.firstName} !
                             </h3>
-                            <p className="text-gray-700 mb-6">
+                            <p className="font-instrument text-[15px] text-carnet-ink-soft mb-6">
                                 Vous allez être recontacté pour organiser l'accompagnement
                             </p>
 
                             {/* Recap */}
-                            <div className="bg-green-50 rounded-xl p-4 mb-4 text-left border border-green-200">
-                                <h4 className="font-bold text-sm mb-2 text-green-900 flex items-center gap-1">
-                                    <Check className="w-4 h-4" />
+                            <div className="bg-carnet-paper rounded-xl p-4 mb-4 text-left border border-[rgba(78,55,30,0.18)]">
+                                <h4 className="font-instrument font-semibold text-[14px] mb-2 text-carnet-ink flex items-center gap-1.5">
+                                    <span className="carnet-hand text-[18px] text-carnet-red leading-none mt-1">✓</span>
                                     Récapitulatif
                                 </h4>
-                                <div className="space-y-1 text-sm text-gray-700">
-                                    <p><strong>Prénom :</strong> {formData.firstName}</p>
-                                    <p><strong>Téléphone :</strong> {formData.phone}</p>
-                                    <p><strong>Niveau :</strong> {formData.studentLevel === 'prepa' ? 'Prépa' : formData.studentLevel === 'lycee' ? 'Lycée' : 'Collège'}</p>
-                                    <p><strong>Type :</strong> {formData.studentType === 'eleve' ? 'Élève' : 'Parent'}</p>
+                                <div className="space-y-1 font-instrument text-[14px] text-carnet-ink-soft">
+                                    <p><strong className="text-carnet-ink font-semibold">Prénom :</strong> {formData.firstName}</p>
+                                    <p><strong className="text-carnet-ink font-semibold">Téléphone :</strong> {formData.phone}</p>
+                                    <p><strong className="text-carnet-ink font-semibold">Niveau :</strong> {formData.studentLevel === 'prepa' ? 'Prépa' : formData.studentLevel === 'lycee' ? 'Lycée' : 'Collège'}</p>
+                                    <p><strong className="text-carnet-ink font-semibold">Type :</strong> {formData.studentType === 'eleve' ? 'Élève' : 'Parent'}</p>
                                 </div>
                             </div>
 
                             {/* Next Steps */}
-                            <div className={`${currentTheme.bg} rounded-xl p-4 text-left border ${currentTheme.border}`}>
-                                <h4 className={`font-bold text-sm mb-2 ${currentTheme.text}`}>📞 Prochaines étapes</h4>
-                                <div className="space-y-1 text-sm text-gray-700">
-                                    <p>1. Nous vous appelons <strong>sous 24h</strong></p>
+                            <div className="bg-[rgba(193,68,58,0.04)] rounded-xl p-4 text-left border border-[rgba(193,68,58,0.15)]">
+                                <h4 className="font-instrument font-semibold text-[14px] mb-2 text-carnet-red flex items-center gap-1.5">
+                                    <Phone className="w-4 h-4" /> Prochaines étapes
+                                </h4>
+                                <div className="space-y-1 font-instrument text-[14px] text-carnet-ink-soft">
+                                    <p>1. Nous vous appelons <strong className="text-carnet-ink font-semibold">sous 24h</strong></p>
                                     <p>2. Nous discutons de vos besoins</p>
-                                    <p>3. Nous organisons votre <strong>cours d'essai gratuit</strong></p>
+                                    <p>3. Nous organisons votre <strong className="text-carnet-ink font-semibold">cours d'essai gratuit</strong></p>
                                 </div>
                             </div>
 
@@ -170,7 +143,7 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                     setStep(1);
                                 }}
                                 variant="outline"
-                                className="mt-4"
+                                className="mt-6 border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(78,55,30,0.04)] font-instrument font-semibold rounded-full px-6"
                             >
                                 Fermer
                             </Button>
@@ -178,53 +151,53 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                     ) : (
                         <>
                             {/* Progress bar */}
-                            <div className="mb-5">
-                                <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
+                            <div className="mb-6">
+                                <div className="h-1 bg-[rgba(78,55,30,0.08)] rounded-full overflow-hidden">
                                     <div
-                                        className={`h-full bg-gradient-to-r ${currentTheme.gradient} rounded-full transition-all duration-500`}
+                                        className="h-full bg-carnet-red rounded-full transition-all duration-500"
                                         style={{ width: progressWidth }}
                                     ></div>
                                 </div>
-                                <div className="text-center text-xs text-gray-500 mt-1">
+                                <div className="text-center font-instrument text-[11px] uppercase tracking-[0.15em] text-carnet-ink-mute mt-3">
                                     Étape {step} sur {totalSteps}
                                 </div>
                             </div>
 
-                            <h3 className="text-lg font-bold text-center text-gray-800 mb-5">
-                                Complétez le formulaire et bénéficiez de nos conseils
+                            <h3 className="font-lora text-[22px] md:text-[26px] leading-[1.2] font-medium text-center text-carnet-ink mb-6">
+                                Complétez le formulaire et bénéficiez de <em className="italic text-carnet-red font-lora">nos conseils</em>
                             </h3>
 
                             {/* Step 1: Name + Level + Type */}
                             {step === 1 && (
-                                <div className="space-y-4">
+                                <div className="space-y-5">
                                     {/* First Name */}
                                     <div>
-                                        <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Votre prénom *</label>
+                                        <label className="font-instrument text-[14px] font-semibold text-carnet-ink mb-2 block">Votre prénom *</label>
                                         <Input
                                             placeholder="Pierre"
                                             value={formData.firstName}
                                             onChange={(e) => updateFormData('firstName', e.target.value)}
-                                            className="bg-white border-gray-200 text-base"
+                                            className="bg-transparent border-[rgba(78,55,30,0.18)] text-carnet-ink text-[15px] font-instrument h-12 focus-visible:ring-carnet-red focus-visible:border-carnet-red"
                                         />
                                     </div>
 
                                     {/* Level Selection */}
                                     <div>
-                                        <div className="flex items-center gap-2 mb-2.5">
-                                            <div className={`w-6 h-6 ${currentTheme.iconBg} rounded-md flex items-center justify-center`}>
-                                                <BookOpen className="h-3.5 w-3.5 text-white" />
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <div className="w-7 h-7 bg-[rgba(193,68,58,0.08)] rounded-md flex items-center justify-center border border-[rgba(193,68,58,0.15)]">
+                                                <BookOpen className="h-3.5 w-3.5 text-carnet-red" />
                                             </div>
-                                            <span className="text-sm font-semibold text-gray-700">Niveau de l'élève</span>
+                                            <span className="font-instrument text-[14px] font-semibold text-carnet-ink">Niveau de l'élève</span>
                                         </div>
-                                        <div className="grid grid-cols-3 gap-2">
+                                        <div className="grid grid-cols-3 gap-2.5">
                                             {(['prepa', 'lycee', 'college'] as StudentLevel[]).map((level) => (
                                                 <button
                                                     key={level}
                                                     type="button"
                                                     onClick={() => updateFormData('studentLevel', level)}
-                                                    className={`py-3 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${formData.studentLevel === level
-                                                        ? `bg-gradient-to-r ${currentTheme.gradient} text-white shadow-md ${theme === 'orange' ? 'shadow-pr-orange/25' : 'shadow-blue-500/25'}`
-                                                        : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-gray-300'
+                                                    className={`py-3 px-3 rounded-lg text-[14px] font-instrument font-semibold transition-all duration-200 border ${formData.studentLevel === level
+                                                        ? 'bg-[rgba(193,68,58,0.06)] text-carnet-red border-carnet-red shadow-sm'
+                                                        : 'bg-transparent text-carnet-ink-soft hover:bg-[rgba(78,55,30,0.03)] border-[rgba(78,55,30,0.18)] hover:border-[rgba(78,55,30,0.3)]'
                                                         }`}
                                                 >
                                                     {level === 'prepa' ? 'Prépa' : level === 'lycee' ? 'Lycée' : 'Collège'}
@@ -235,21 +208,21 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
 
                                     {/* Role Selection */}
                                     <div>
-                                        <div className="flex items-center gap-2 mb-2.5">
-                                            <div className={`w-6 h-6 ${currentTheme.iconBg} rounded-md flex items-center justify-center`}>
-                                                <Users className="h-3.5 w-3.5 text-white" />
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <div className="w-7 h-7 bg-[rgba(193,68,58,0.08)] rounded-md flex items-center justify-center border border-[rgba(193,68,58,0.15)]">
+                                                <Users className="h-3.5 w-3.5 text-carnet-red" />
                                             </div>
-                                            <span className="text-sm font-semibold text-gray-700">Je suis...</span>
+                                            <span className="font-instrument text-[14px] font-semibold text-carnet-ink">Je suis...</span>
                                         </div>
-                                        <div className="grid grid-cols-2 gap-2">
+                                        <div className="grid grid-cols-2 gap-2.5">
                                             {(['eleve', 'parent'] as StudentType[]).map((type) => (
                                                 <button
                                                     key={type}
                                                     type="button"
                                                     onClick={() => updateFormData('studentType', type)}
-                                                    className={`py-3 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${formData.studentType === type
-                                                        ? `bg-gradient-to-r ${currentTheme.gradient} text-white shadow-md ${theme === 'orange' ? 'shadow-pr-orange/25' : 'shadow-blue-500/25'}`
-                                                        : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-gray-300'
+                                                    className={`py-3 px-3 rounded-lg text-[14px] font-instrument font-semibold transition-all duration-200 border ${formData.studentType === type
+                                                        ? 'bg-[rgba(193,68,58,0.06)] text-carnet-red border-carnet-red shadow-sm'
+                                                        : 'bg-transparent text-carnet-ink-soft hover:bg-[rgba(78,55,30,0.03)] border-[rgba(78,55,30,0.18)] hover:border-[rgba(78,55,30,0.3)]'
                                                         }`}
                                                 >
                                                     {type === 'eleve' ? 'Un élève' : 'Un parent'}
@@ -262,11 +235,11 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                     <Button
                                         onClick={() => setStep(2)}
                                         disabled={!canProceedStep1}
-                                        className={`w-full py-6 text-base font-bold bg-gradient-to-r ${currentTheme.gradient} ${currentTheme.gradientHover} text-white rounded-xl shadow-lg ${currentTheme.shadow} hover:shadow-xl transition-all duration-300 group border-0`}
+                                        className="w-full py-6 mt-2 text-[15px] font-instrument font-semibold bg-carnet-ink hover:bg-carnet-red text-carnet-paper rounded-full transition-all duration-300 group border-0"
                                     >
                                         <span className="flex items-center justify-center gap-2">
                                             Continuer
-                                            <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                                            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                                         </span>
                                     </Button>
                                 </div>
@@ -274,42 +247,42 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
 
                             {/* Step 2: Phone Only */}
                             {step === 2 && (
-                                <div className="space-y-4">
+                                <div className="space-y-5">
                                     {/* Phone */}
                                     <div>
-                                        <div className="flex items-center gap-2 mb-2.5 justify-center">
-                                            <Phone className={`w-5 h-5 ${currentTheme.textLight}`} />
-                                            <label className="text-base font-bold text-gray-700">Votre numéro de téléphone *</label>
+                                        <div className="flex items-center gap-2 mb-3 justify-center">
+                                            <Phone className="w-4 h-4 text-carnet-red" />
+                                            <label className="font-instrument text-[15px] font-semibold text-carnet-ink">Votre numéro de téléphone *</label>
                                         </div>
                                         <Input
                                             type="tel"
                                             placeholder="06 12 34 56 78"
                                             value={formData.phone}
                                             onChange={(e) => updateFormData('phone', e.target.value)}
-                                            className="bg-white border-gray-200 text-lg p-6 text-center font-bold"
+                                            className="bg-transparent border-[rgba(78,55,30,0.18)] text-carnet-ink text-lg p-6 text-center font-instrument font-semibold focus-visible:ring-carnet-red focus-visible:border-carnet-red"
                                         />
-                                        <p className="text-xs text-gray-500 mt-2 text-center">
+                                        <p className="font-instrument text-[13px] text-carnet-ink-soft mt-3 text-center">
                                             Nous vous rappelons sous 24h pour vous proposer un cours d'essai gratuit
                                         </p>
                                     </div>
 
                                     {/* Summary */}
-                                    <div className={`p-4 ${currentTheme.bg} rounded-xl border ${currentTheme.border}`}>
-                                        <h4 className={`font-bold text-sm mb-2 ${currentTheme.text}`}>📋 Récapitulatif</h4>
-                                        <div className="space-y-1 text-sm text-gray-700">
-                                            <p><strong>Prénom :</strong> {formData.firstName}</p>
-                                            <p><strong>Niveau :</strong> {formData.studentLevel === 'prepa' ? 'Prépa' : formData.studentLevel === 'lycee' ? 'Lycée' : 'Collège'}</p>
-                                            <p><strong>Type :</strong> {formData.studentType === 'eleve' ? 'Élève' : 'Parent'}</p>
+                                    <div className="p-4 bg-[rgba(78,55,30,0.02)] rounded-xl border border-[rgba(78,55,30,0.08)]">
+                                        <h4 className="font-instrument font-semibold text-[13px] mb-2 text-carnet-ink uppercase tracking-[0.1em]">Récapitulatif</h4>
+                                        <div className="space-y-1 font-instrument text-[14px] text-carnet-ink-soft">
+                                            <p><strong className="text-carnet-ink font-semibold">Prénom :</strong> {formData.firstName}</p>
+                                            <p><strong className="text-carnet-ink font-semibold">Niveau :</strong> {formData.studentLevel === 'prepa' ? 'Prépa' : formData.studentLevel === 'lycee' ? 'Lycée' : 'Collège'}</p>
+                                            <p><strong className="text-carnet-ink font-semibold">Type :</strong> {formData.studentType === 'eleve' ? 'Élève' : 'Parent'}</p>
                                         </div>
                                     </div>
 
                                     {/* Navigation */}
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-3">
                                         <Button
                                             type="button"
                                             variant="outline"
                                             onClick={() => setStep(1)}
-                                            className="flex items-center gap-1"
+                                            className="flex items-center gap-1.5 border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:bg-[rgba(78,55,30,0.04)] font-instrument font-semibold rounded-full px-5"
                                             disabled={isSubmitting}
                                         >
                                             <ArrowLeft className="w-4 h-4" />
@@ -319,18 +292,18 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                                             type="button"
                                             onClick={handleSubmit}
                                             disabled={!canSubmit || isSubmitting}
-                                            className={`flex-1 py-6 text-base font-bold bg-gradient-to-r ${currentTheme.gradient} ${currentTheme.gradientHover} text-white rounded-xl shadow-lg ${currentTheme.shadow} hover:shadow-xl transition-all duration-300 group border-0`}
+                                            className="flex-1 py-6 text-[15px] font-instrument font-semibold bg-carnet-ink hover:bg-carnet-red text-carnet-paper rounded-full transition-all duration-300 group border-0"
                                         >
                                             {isSubmitting ? (
                                                 <span className="flex items-center justify-center gap-2">
-                                                    <Loader2 className="w-5 h-5 animate-spin" />
+                                                    <Loader2 className="w-4 h-4 animate-spin" />
                                                     Envoi...
                                                 </span>
                                             ) : (
                                                 <span className="flex items-center justify-center gap-2">
-                                                    <Calendar className="h-5 w-5" />
-                                                    Réserver mon cours gratuit
-                                                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                                                    <Calendar className="h-4 w-4" />
+                                                    Réserver mon cours
+                                                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                                                 </span>
                                             )}
                                         </Button>
@@ -339,13 +312,13 @@ export const HeroContactForm: React.FC<HeroContactFormProps> = ({ showContent = 
                             )}
 
                             {/* Trust indicators */}
-                            <div className="mt-4 flex items-center justify-center gap-4 text-xs text-gray-500">
+                            <div className="mt-5 pt-4 border-t border-dashed border-[rgba(78,55,30,0.18)] flex flex-wrap items-center justify-center gap-x-5 gap-y-2 font-instrument text-[13px] text-carnet-ink-soft">
                                 <div className="flex items-center gap-1.5">
-                                    <Check className="h-3.5 w-3.5 text-emerald-500" />
+                                    <span className="carnet-hand text-[18px] text-carnet-red leading-none mt-0.5">✓</span>
                                     <span>Sans engagement</span>
                                 </div>
                                 <div className="flex items-center gap-1.5">
-                                    <Check className="h-3.5 w-3.5 text-emerald-500" />
+                                    <span className="carnet-hand text-[18px] text-carnet-red leading-none mt-0.5">✓</span>
                                     <span>Réponse sous 24h</span>
                                 </div>
                             </div>

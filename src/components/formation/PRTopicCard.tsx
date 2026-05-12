@@ -24,7 +24,7 @@ export const PRTopicCard: React.FC<PRTopicCardProps> = ({
   return (
     <Link
       to={to}
-      className="group relative block bg-white border border-pr-gray-light rounded-xl p-5 transition-all duration-300 hover:border-pr-orange hover:shadow-[0_4px_16px_rgba(244,132,95,0.08)] h-full"
+      className="group relative block bg-carnet-paper-2 border border-carnet-rule rounded-xl p-5 transition-all duration-300 hover:border-pr-orange hover:shadow-[0_4px_12px_rgba(193,68,58,0.08)] h-full"
     >
       <span className="absolute top-0 bottom-0 left-0 w-[3px] bg-pr-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-l-xl" />
 

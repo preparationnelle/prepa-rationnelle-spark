@@ -5,28 +5,29 @@ import { Home, ChevronRight } from 'lucide-react';
 const DissertationAZPage: React.FC = () => {
   return (
     <div className="relative">
-      <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
+      <div className="sticky top-0 z-40 bg-carnet-paper/95 backdrop-blur-sm border-b border-carnet-rule/60">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-gray-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-800 transition-colors">
+          <div className="flex items-center text-[11px] uppercase tracking-[0.08em] text-carnet-ink-soft font-semibold">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
-            <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/geopolitique" className="hover:text-gray-800 transition-colors">Géopolitique</Link>
-            <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/geopolitique/methodologie" className="hover:text-gray-800 transition-colors">Méthodologie</Link>
-            <ChevronRight className="h-3 w-3 mx-1" />
-            <span className="text-gray-800 font-medium">Dissertation de géopolitique de A à Z</span>
+            <ChevronRight className="h-3 w-3 mx-1 text-carnet-rule" />
+            <Link to="/formation/geopolitique" className="hover:text-carnet-ink transition-colors">Géopolitique</Link>
+            <ChevronRight className="h-3 w-3 mx-1 text-carnet-rule" />
+            <Link to="/formation/geopolitique/methodologie" className="hover:text-carnet-ink transition-colors">Méthodologie</Link>
+            <ChevronRight className="h-3 w-3 mx-1 text-carnet-rule" />
+            <span className="text-carnet-ink">Dissertation de A à Z</span>
           </div>
         </div>
       </div>
 
       <div className="container mx-auto px-4 pt-12 pb-16">
-        <div className="max-w-4xl mx-auto bg-white border rounded-xl p-6">
-          <h1 className="text-2xl font-bold mb-4">Dissertation</h1>
+        <div className="max-w-4xl mx-auto bg-carnet-paper-2 border border-carnet-rule rounded-xl p-6 md:p-10">
+          <h1 className="font-dm-serif text-3xl text-carnet-ink mb-2">Dissertation</h1>
+          <div className="w-12 h-[3px] bg-carnet-red mb-6" />
 
-          <h2 className="text-xl font-semibold mb-2">Gestion du temps en épreuve</h2>
+          <h2 className="font-dm-serif text-xl text-carnet-red mb-3 mt-6">Gestion du temps en épreuve</h2>
           <div className="overflow-x-auto mb-6">
             <table className="w-full text-sm">
               <tbody>
@@ -45,7 +46,7 @@ const DissertationAZPage: React.FC = () => {
           </div>
 
           <h2 className="text-xl font-semibold mb-2">Le travail sur le brouillon</h2>
-          <div className="prose prose-sm max-w-none text-gray-800">
+          <div className="prose prose-sm max-w-none text-carnet-ink [&_h2]:font-dm-serif [&_h2]:text-carnet-red [&_h2]:text-xl [&_h3]:font-dm-serif [&_h3]:text-carnet-ink [&_h3]:text-lg [&_h4]:font-semibold [&_h4]:text-carnet-ink [&_li]:text-carnet-ink [&_p]:text-carnet-ink [&_strong]:text-carnet-ink">
             <p><strong>Analyse des termes du sujet</strong></p>
             <ol>
               <li>
@@ -94,14 +95,14 @@ const DissertationAZPage: React.FC = () => {
               </li>
             </ol>
 
-            <h3 className="text-lg font-semibold mt-6">Les plans types</h3>
+            <h3 className="font-dm-serif text-lg text-carnet-ink mt-6">Les plans types</h3>
             <ul>
               <li>Plan n°1 : Manifestations‑Aspects / Facteurs / Bilan ou Limites (CPJ)</li>
               <li>Plan 1bis : Facteurs / Manifestations‑Aspects / Bilan ou Limites (PCJ)</li>
               <li>Plan n°2 : Héritages / Facteurs / Bilan (situation initiale, facteurs de transformation, bilan)</li>
               <li>Plan n°3 : Dialectique — Certes / mais / dépassement (ou Certes / pourquoi / mais)</li>
             </ul>
-            <h4 className="font-medium mt-4">Remarques importantes</h4>
+            <h4 className="font-semibold text-carnet-ink mt-4">Remarques importantes</h4>
             <ol>
               <li>Ne jamais écrire « il semble » dans le grand I</li>
               <li>Ne pas faire de partie prospective en grand III (sauf référence ponctuelle en sous‑partie)</li>

@@ -45,7 +45,7 @@ const ArticlesCollegePage = () => {
           <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-carnet-rule/40 text-carnet-ink-soft text-sm font-medium mb-4 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-pr-orange"></span>
+                <span className="w-2 h-2 rounded-full bg-pr-black"></span>
                 Espace Parents • Collège
               </div>
               <h1 className="text-3xl sm:text-4xl font-extrabold text-carnet-ink tracking-tight mb-4">
@@ -66,14 +66,14 @@ const ArticlesCollegePage = () => {
               const Icon = article.icon;
               return (
                 <Link key={article.id} to={article.link} className="group block h-full">
-                  <article className="bg-white border border-carnet-rule/40 rounded-xl p-6 h-full transition-all duration-200 hover:shadow-lg hover:border-pr-orange hover:-translate-y-1 flex flex-col">
+                  <article className="bg-white border border-carnet-rule/40 rounded-xl p-6 h-full transition-all duration-200 hover:shadow-lg hover:border-pr-black hover:-translate-y-1 flex flex-col">
 
                     {/* Icon & Question */}
                     <div className="mb-4">
-                      <div className="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center text-pr-orange-dark border border-orange-100 mb-4 transition-colors">
+                      <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center text-pr-black border border-orange-100 mb-4 transition-colors">
                         <Icon className="h-5 w-5" />
                       </div>
-                      <h2 className="text-xl font-bold text-carnet-ink leading-snug group-hover:text-pr-orange transition-colors">
+                      <h2 className="text-xl font-bold text-carnet-ink leading-snug group-hover:text-pr-black transition-colors">
                         {article.question}
                       </h2>
                     </div>
@@ -91,7 +91,7 @@ const ArticlesCollegePage = () => {
                         {article.description}
                       </p>
 
-                      <div className="flex items-center text-pr-orange-dark text-sm font-semibold transition-all duration-300 group-hover:translate-x-1">
+                      <div className="flex items-center text-pr-black text-sm font-semibold transition-all duration-300 group-hover:translate-x-1">
                         Lire l'article <ChevronRight className="ml-1 h-4 w-4" />
                       </div>
                     </div>
@@ -118,7 +118,7 @@ const ArticlesCollegePage = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/contact">
-                    <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold px-8 py-6 rounded-xl">
+                    <Button className="bg-pr-black hover:bg-pr-black-dark text-white font-semibold px-8 py-6 rounded-xl">
                       Poser ma question
                     </Button>
                   </Link>

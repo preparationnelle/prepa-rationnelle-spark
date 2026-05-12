@@ -140,12 +140,12 @@ const RegisterPage = () => {
                 value={profileType}
                 onValueChange={(value: ProfileType) => setProfileType(value)}
               >
-                <SelectTrigger id="profile" className="bg-white border-carnet-rule/40 text-carnet-ink focus:border-pr-orange/50 focus:ring-pr-orange/20 [&>span]:text-carnet-ink-mute data-[state=open]:border-pr-orange/50">
+                <SelectTrigger id="profile" className="bg-white border-carnet-rule/40 text-carnet-ink focus:border-pr-black/50 focus:ring-pr-black/20 [&>span]:text-carnet-ink-mute data-[state=open]:border-pr-black/50">
                   <SelectValue placeholder="Sélectionnez votre profil" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-900/95 backdrop-blur-xl border-white/10">
                   {PROFILE_OPTIONS.map((option) => (
-                    <SelectItem key={option.value} value={option.value} className="text-carnet-ink focus:bg-pr-orange/20 focus:text-white">
+                    <SelectItem key={option.value} value={option.value} className="text-carnet-ink focus:bg-pr-black/20 focus:text-white">
                       {option.label}
                     </SelectItem>
                   ))}
@@ -162,7 +162,7 @@ const RegisterPage = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20"
+                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-black/50 focus:ring-pr-black/20"
               />
             </div>
 
@@ -178,7 +178,7 @@ const RegisterPage = () => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   required={requiresPhone}
-                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20"
+                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-black/50 focus:ring-pr-black/20"
                 />
               </div>
             )}
@@ -191,7 +191,7 @@ const RegisterPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20"
+                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-black/50 focus:ring-pr-black/20"
               />
             </div>
             <div className="space-y-2">
@@ -204,7 +204,7 @@ const RegisterPage = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20 pr-10"
+                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-black/50 focus:ring-pr-black/20 pr-10"
                 />
                 <Button
                   type="button"
@@ -230,12 +230,12 @@ const RegisterPage = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
-                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20"
+                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-black/50 focus:ring-pr-black/20"
               />
             </div>
             <Button
               type="submit"
-              className="w-full bg-pr-orange hover:bg-pr-orange-dark text-white border-0 shadow-lg shadow-pr-orange/20 transition-all duration-300"
+              className="w-full bg-pr-black hover:bg-pr-black-dark text-white border-0 shadow-lg shadow-pr-orange/20 transition-all duration-300"
               disabled={loading}
             >
               {loading ? (
@@ -250,7 +250,7 @@ const RegisterPage = () => {
         <CardFooter className="flex flex-col border-t border-carnet-rule/30 pt-6 mt-2">
           <div className="text-center text-sm text-carnet-ink-mute">
             Vous avez déjà un compte?{' '}
-            <Link to="/login" className="text-pr-orange hover:text-pr-orange-dark font-medium hover:underline transition-colors">
+            <Link to="/login" className="text-pr-black hover:text-pr-black font-medium hover:underline transition-colors">
               Se connecter
             </Link>
           </div>

@@ -29,7 +29,7 @@ export const PRHubCard: React.FC<PRHubCardProps> = ({
   return (
     <Link
       to={to}
-      className="group relative block bg-white border border-pr-gray-light rounded-2xl p-7 transition-all duration-300 hover:border-pr-orange hover:shadow-[0_8px_30px_rgba(244,132,95,0.12)] hover:-translate-y-1 flex flex-col h-full overflow-hidden"
+      className="group relative block bg-carnet-paper-2 border border-carnet-rule rounded-2xl p-7 transition-all duration-300 hover:border-pr-orange hover:shadow-[0_4px_16px_rgba(193,68,58,0.10)] hover:-translate-y-1 flex flex-col h-full overflow-hidden"
     >
       <span className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 

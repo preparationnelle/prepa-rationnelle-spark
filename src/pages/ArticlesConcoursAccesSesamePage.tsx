@@ -52,7 +52,7 @@ const ArticlesConcoursAccesSesamePage = () => {
               </div>
 
               <div className="prose prose-lg max-w-none text-gray-700">
-                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40 mb-8">
+                <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-carnet-red/40 mb-8">
                   <p className="text-carnet-red-deep font-medium text-lg">
                     Les concours SESAME et ACCÈS ouvrent les portes respectivement à 16 grandes écoles pour SESAME et 3 écoles prestigieuses pour ACCÈS, toutes reconnues par l'État. Ces concours attirent des milliers de candidats chaque année.
                   </p>
@@ -61,12 +61,12 @@ const ArticlesConcoursAccesSesamePage = () => {
                 <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">Présentation des Concours</h4>
 
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-pr-orange-pale p-6 rounded-lg border border-carnet-red/30">
+                  <div className="bg-pr-gray-bg p-6 rounded-lg border border-carnet-red/30">
                     <h5 className="text-xl font-semibold text-carnet-red mb-3">Concours SESAME</h5>
                     <p className="mb-3">Le concours SESAME permet d'accéder à 19 programmes dans 16 écoles, dont l'ESSEC, EM Lyon, NEOMA, KEDGE, SKEMA, EM Normandie, EMLV.</p>
                     <p className="text-sm text-gray-600">Plus de 6 000 places • ~11 000 candidats</p>
                   </div>
-                  <div className="bg-pr-orange-pale p-6 rounded-lg border border-carnet-red/30">
+                  <div className="bg-pr-gray-bg p-6 rounded-lg border border-carnet-red/30">
                     <h5 className="text-xl font-semibold text-carnet-red mb-3">Concours ACCÈS</h5>
                     <p className="mb-3">Le concours ACCÈS donne accès aux trois écoles : IÉSEG, ESSCA et ESDES. Ces établissements sont particulièrement sélectifs.</p>
                     <p className="text-sm text-gray-600">3 écoles prestigieuses • Programme Grande École en 5 ans</p>
@@ -75,7 +75,7 @@ const ArticlesConcoursAccesSesamePage = () => {
 
                 <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">Structure et Matières des Épreuves</h4>
 
-                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40 mb-8">
+                <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-carnet-red/40 mb-8">
                   <h5 className="text-xl font-semibold text-carnet-red mb-4">Quelles sont les matières des épreuves écrites pour le concours SESAME ?</h5>
                   <p className="text-carnet-red-deep mb-4 font-medium">
                     Toutes les épreuves du concours se déroulent sous la forme de QCU (questions à choix unique)/QCM (questions à choix multiple) et les matières sont :
@@ -129,7 +129,7 @@ const ArticlesConcoursAccesSesamePage = () => {
                 <h5 className="text-xl font-semibold text-carnet-red mb-3">SESAME : Organisation en 3 Séquences</h5>
 
                 <div className="grid md:grid-cols-3 gap-4 mb-6">
-                  <div className="bg-pr-orange-pale p-4 rounded-lg border border-carnet-red/30">
+                  <div className="bg-pr-gray-bg p-4 rounded-lg border border-carnet-red/30">
                     <h6 className="font-semibold text-carnet-red mb-2">Séquence 1 - "Comprendre" (1h30 max)</h6>
                     <ul className="text-sm space-y-1">
                       <li>• Compétences digitales : 20 ex. en 20 min</li>
@@ -137,7 +137,7 @@ const ArticlesConcoursAccesSesamePage = () => {
                       <li>• Mathématiques : 20 ex. niveau seconde en 40 min</li>
                     </ul>
                   </div>
-                  <div className="bg-pr-orange-pale p-4 rounded-lg border border-carnet-red/30">
+                  <div className="bg-pr-gray-bg p-4 rounded-lg border border-carnet-red/30">
                     <h6 className="font-semibold text-carnet-red mb-2">Séquence 2 - "Communiquer" (1h30 max)</h6>
                     <ul className="text-sm space-y-1">
                       <li>• Français : 40 quest. expression/compréhension en 30 min</li>
@@ -145,7 +145,7 @@ const ArticlesConcoursAccesSesamePage = () => {
                       <li>• Deuxième langue : 40 quest. niveau B1/B2 en 30 min</li>
                 </ul>
                   </div>
-                  <div className="bg-pr-orange-pale p-4 rounded-lg border border-carnet-red/30">
+                  <div className="bg-pr-gray-bg p-4 rounded-lg border border-carnet-red/30">
                     <h6 className="font-semibold text-carnet-red mb-2">Séquence 3 - "Analyser" (2h)</h6>
                     <ul className="text-sm space-y-1">
                       <li>• Analyse documentaire : 20 quest. sur un dossier thématique</li>
@@ -156,15 +156,15 @@ const ArticlesConcoursAccesSesamePage = () => {
                 <h5 className="text-xl font-semibold text-carnet-red mb-3">ACCÈS : 3 Épreuves Écrites</h5>
 
                 <div className="grid md:grid-cols-3 gap-4 mb-6">
-                  <div className="bg-pr-orange-pale p-4 rounded-lg border border-carnet-red/30">
+                  <div className="bg-pr-gray-bg p-4 rounded-lg border border-carnet-red/30">
                     <h6 className="font-semibold text-carnet-red mb-2">Synthèse (3 heures)</h6>
                     <p className="text-sm">Synthétiser un ensemble de documents en 350 mots sur un thème d'actualité</p>
                   </div>
-                  <div className="bg-pr-orange-pale p-4 rounded-lg border border-carnet-red/30">
+                  <div className="bg-pr-gray-bg p-4 rounded-lg border border-carnet-red/30">
                     <h6 className="font-semibold text-carnet-red mb-2">Raisonnement logique et mathématique (2 heures)</h6>
                     <p className="text-sm">QCM évaluant l'aptitude à utiliser les concepts mathématiques du secondaire</p>
                   </div>
-                  <div className="bg-pr-orange-pale p-4 rounded-lg border border-carnet-red/30">
+                  <div className="bg-pr-gray-bg p-4 rounded-lg border border-carnet-red/30">
                     <h6 className="font-semibold text-carnet-red mb-2">Anglais (1 heure)</h6>
                     <p className="text-sm">QCM sur la grammaire, vocabulaire et compréhension</p>
                   </div>
@@ -172,7 +172,7 @@ const ArticlesConcoursAccesSesamePage = () => {
 
                 <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">Coefficients par École</h4>
 
-                <div className="bg-pr-orange-pale p-6 rounded-lg mb-6">
+                <div className="bg-pr-gray-bg p-6 rounded-lg mb-6">
                   <h5 className="text-lg font-semibold text-carnet-red mb-4">Coefficients ACCÈS</h5>
                   <table className="w-full border-collapse border border-carnet-red/30">
                     <thead>
@@ -207,7 +207,7 @@ const ArticlesConcoursAccesSesamePage = () => {
                   <p className="text-sm text-gray-600 mt-3">Pour SESAME, les coefficients varient selon les écoles (total de 40 points)</p>
                 </div>
 
-                <div className="bg-pr-orange-pale p-6 rounded-lg mb-6">
+                <div className="bg-pr-gray-bg p-6 rounded-lg mb-6">
                   <h5 className="text-lg font-semibold text-carnet-red mb-4">Coefficients SESAME 2026</h5>
                   <div className="overflow-x-auto">
                     <table className="w-full border-collapse border border-carnet-red/30 text-sm">
@@ -655,7 +655,7 @@ const ArticlesConcoursAccesSesamePage = () => {
                 <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">Calendrier 2025-2026</h4>
 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div className="bg-pr-orange-pale p-6 rounded-lg border border-carnet-red/30">
+                  <div className="bg-pr-gray-bg p-6 rounded-lg border border-carnet-red/30">
                     <h5 className="text-xl font-semibold text-carnet-red mb-3">SESAME 2026</h5>
                     <ul className="space-y-2 text-sm">
                       <li><strong>Inscriptions :</strong> 15 janvier au 13 mars 2026 sur Parcoursup</li>
@@ -664,7 +664,7 @@ const ArticlesConcoursAccesSesamePage = () => {
                       <li><strong>Épreuves orales :</strong> fin avril à mi-mai 2026</li>
                     </ul>
                   </div>
-                  <div className="bg-pr-orange-pale p-6 rounded-lg border border-carnet-red/30">
+                  <div className="bg-pr-gray-bg p-6 rounded-lg border border-carnet-red/30">
                     <h5 className="text-xl font-semibold text-carnet-red mb-3">ACCÈS 2026</h5>
                     <ul className="space-y-2 text-sm">
                       <li><strong>Inscriptions :</strong> novembre 2025 à mars 2026</li>
@@ -744,19 +744,19 @@ const ArticlesConcoursAccesSesamePage = () => {
                 <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">Coûts et Modalités</h4>
 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div className="bg-pr-orange-pale p-4 rounded-lg">
+                  <div className="bg-pr-gray-bg p-4 rounded-lg">
                     <h6 className="font-semibold text-carnet-red mb-2">SESAME</h6>
                     <p className="text-2xl font-bold text-carnet-red">295€</p>
                     <p className="text-sm text-gray-600">réduction 50% pour boursiers</p>
                   </div>
-                  <div className="bg-pr-orange-pale p-4 rounded-lg">
+                  <div className="bg-pr-gray-bg p-4 rounded-lg">
                     <h6 className="font-semibold text-carnet-red mb-2">ACCÈS</h6>
                     <p className="text-2xl font-bold text-carnet-red">210€</p>
                     <p className="text-sm text-gray-600">50€ pour boursiers</p>
                   </div>
                 </div>
 
-                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40 mb-6">
+                <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-carnet-red/40 mb-6">
                   <p className="text-carnet-red-deep font-medium">
                     Remboursement en cas d'intégration
                   </p>
@@ -766,7 +766,7 @@ const ArticlesConcoursAccesSesamePage = () => {
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <div className="bg-gradient-to-br from-carnet-paper-2 to-pr-orange-pale border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-indigo-300 hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pr-orange-pale transition-all duration-300 group p-8 rounded-lg">
+              <div className="bg-gradient-to-br from-carnet-paper-2 to-pr-black-pale border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-indigo-300 hover:bg-gradient-to-br hover:from-indigo-50 hover:to-pr-black-pale transition-all duration-300 group p-8 rounded-lg">
                 <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
                   <Award className="h-8 w-8 text-carnet-red group-hover:text-indigo-600 transition-colors duration-300" />
                 </div>

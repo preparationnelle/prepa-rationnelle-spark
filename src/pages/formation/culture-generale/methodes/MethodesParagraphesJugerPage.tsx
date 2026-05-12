@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number?: string; title: string; children: React.ReactNo
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        {number && <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>}
+        {number && <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>}
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -30,11 +30,11 @@ type ParapersoProps = {
 };
 
 const Paraperso: React.FC<ParapersoProps> = ({ sousTheme, titre, glose, refs, motCount, children }) => (
-  <div className="bg-pr-orange-pale rounded-xl p-5 text-sm md:text-base leading-relaxed">
-    <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark mb-2">
+  <div className="bg-pr-gray-bg rounded-xl p-5 text-sm md:text-base leading-relaxed">
+    <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-black mb-2">
       {sousTheme}
     </p>
-    <p className="font-dm-serif text-pr-orange-dark text-base mb-1">
+    <p className="font-dm-serif text-pr-black text-base mb-1">
       <strong>{titre}</strong>
       <span className="italic font-dm-sans text-pr-gray-dark"> ({glose})</span>
     </p>
@@ -49,13 +49,13 @@ const MethodesParagraphesJugerPage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Méthode
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               Fiche méthode : les paragraphes (Humanité)
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Construire 30 à 50 parapersos autonomes et puissants pour le thème <em>l&apos;humanité</em>.
             </p>
@@ -66,21 +66,21 @@ const MethodesParagraphesJugerPage: React.FC = () => {
               <p>Produire <strong>30 à 50 paragraphes</strong>, chacun de <strong>270 à 300 mots maximum</strong>, organisés selon les <strong>8 sous-thèmes du programme</strong>, afin de couvrir tout le champ sémantique et conceptuel du thème.</p>
               <p>Chaque paragraphe doit :</p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>Être <strong>autonome</strong> (lisible seul, sans contexte de dissertation).</li>
-                <li><span className="text-pr-orange mr-2">→</span>Avancer une <strong>thèse-titre claire</strong> (idée directrice annoncée en haut).</li>
-                <li><span className="text-pr-orange mr-2">→</span>Mobiliser <strong>1 ou 2 références bien expliquées</strong>, jamais plaquées (philosophe, œuvre, fait historique, film).</li>
+                <li><span className="text-pr-black mr-2">→</span>Être <strong>autonome</strong> (lisible seul, sans contexte de dissertation).</li>
+                <li><span className="text-pr-black mr-2">→</span>Avancer une <strong>thèse-titre claire</strong> (idée directrice annoncée en haut).</li>
+                <li><span className="text-pr-black mr-2">→</span>Mobiliser <strong>1 ou 2 références bien expliquées</strong>, jamais plaquées (philosophe, œuvre, fait historique, film).</li>
               </ul>
             </div>
           </PRCard>
 
           <PRCard title="Règles de style non négociables">
             <ul className="space-y-1.5 text-sm md:text-base">
-              <li><span className="text-pr-orange mr-2">→</span><strong>Jamais de tirets longs</strong> dans le corps. Utiliser points, virgules, deux-points, parenthèses.</li>
-              <li><span className="text-pr-orange mr-2">→</span><strong>Jamais de termes techniques en langue étrangère</strong> non traduits. Tout doit être en français.</li>
-              <li><span className="text-pr-orange mr-2">→</span><strong>Jamais plus de 300 mots</strong>. La limite est dure.</li>
-              <li><span className="text-pr-orange mr-2">→</span><strong>Phrases courtes ou moyennes</strong> (5 à 25 mots). Pas de phrase-fleuve au-delà de 30.</li>
-              <li><span className="text-pr-orange mr-2">→</span><strong>Ton affirmatif</strong>. Pas de conditionnel systématique.</li>
-              <li><span className="text-pr-orange mr-2">→</span><strong>Œuvres soulignées ou en italique</strong> avec auteur et date : Hannah Arendt, <em>Eichmann à Jérusalem</em>, 1963.</li>
+              <li><span className="text-pr-black mr-2">→</span><strong>Jamais de tirets longs</strong> dans le corps. Utiliser points, virgules, deux-points, parenthèses.</li>
+              <li><span className="text-pr-black mr-2">→</span><strong>Jamais de termes techniques en langue étrangère</strong> non traduits. Tout doit être en français.</li>
+              <li><span className="text-pr-black mr-2">→</span><strong>Jamais plus de 300 mots</strong>. La limite est dure.</li>
+              <li><span className="text-pr-black mr-2">→</span><strong>Phrases courtes ou moyennes</strong> (5 à 25 mots). Pas de phrase-fleuve au-delà de 30.</li>
+              <li><span className="text-pr-black mr-2">→</span><strong>Ton affirmatif</strong>. Pas de conditionnel systématique.</li>
+              <li><span className="text-pr-black mr-2">→</span><strong>Œuvres soulignées ou en italique</strong> avec auteur et date : Hannah Arendt, <em>Eichmann à Jérusalem</em>, 1963.</li>
             </ul>
           </PRCard>
 
@@ -114,7 +114,7 @@ const MethodesParagraphesJugerPage: React.FC = () => {
                 <div key={b.t}>
                   <h3 className="font-dm-serif text-pr-black text-lg mb-2">{b.t}</h3>
                   <ul className="space-y-1.5">
-                    {b.items.map((it) => <li key={it}><span className="text-pr-orange mr-2">→</span>{it}</li>)}
+                    {b.items.map((it) => <li key={it}><span className="text-pr-black mr-2">→</span>{it}</li>)}
                   </ul>
                 </div>
               ))}
@@ -122,8 +122,8 @@ const MethodesParagraphesJugerPage: React.FC = () => {
           </PRCard>
 
           <PRCard title="Exemple 1 : « L'humanité comme indétermination radicale »">
-            <div className="bg-pr-orange-pale rounded-xl p-5 text-sm md:text-base leading-relaxed">
-              <p className="font-dm-serif text-pr-orange-dark text-base mb-1">
+            <div className="bg-pr-gray-bg rounded-xl p-5 text-sm md:text-base leading-relaxed">
+              <p className="font-dm-serif text-pr-black text-base mb-1">
                 <strong>L&apos;humanité comme indétermination radicale</strong>
                 <span className="italic font-dm-sans text-pr-gray-dark"> (l&apos;humain défini par l&apos;absence même d&apos;essence fixe)</span>
               </p>
@@ -135,8 +135,8 @@ const MethodesParagraphesJugerPage: React.FC = () => {
           </PRCard>
 
           <PRCard title="Exemple 2 : « La barbarie comme possibilité ordinaire de l'humain »">
-            <div className="bg-pr-orange-pale rounded-xl p-5 text-sm md:text-base leading-relaxed">
-              <p className="font-dm-serif text-pr-orange-dark text-base mb-1">
+            <div className="bg-pr-gray-bg rounded-xl p-5 text-sm md:text-base leading-relaxed">
+              <p className="font-dm-serif text-pr-black text-base mb-1">
                 <strong>La barbarie comme possibilité ordinaire de l&apos;humain</strong>
                 <span className="italic font-dm-sans text-pr-gray-dark"> (l&apos;inhumanité ne vient pas du dehors, elle gît au cœur même de l&apos;humain)</span>
               </p>
@@ -309,7 +309,7 @@ const MethodesParagraphesJugerPage: React.FC = () => {
           </PRCard>
 
           <PRCard title="Organisation : les 8 sous-thèmes pour vos parapersos">
-            <ol className="space-y-1.5 text-sm md:text-base list-decimal list-inside marker:text-pr-orange marker:font-dm-serif">
+            <ol className="space-y-1.5 text-sm md:text-base list-decimal list-inside marker:text-pr-black marker:font-dm-serif">
               <li>Définir l&apos;humanité (essence, nature, propre de l&apos;homme)</li>
               <li>L&apos;humanité comme construction (culture, langage, technique, hominisation)</li>
               <li>L&apos;inhumanité au cœur de l&apos;humain (barbarie, totalitarismes, banalité du mal)</li>
@@ -323,7 +323,7 @@ const MethodesParagraphesJugerPage: React.FC = () => {
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/methodes">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des méthodes
               </Button>
             </Link>

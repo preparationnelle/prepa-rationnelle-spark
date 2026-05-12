@@ -12,7 +12,7 @@ const ReussirCollePage: React.FC = () => {
       title: "Préparation avant l'épreuve",
       icon: <Users className="w-5 h-5" />,
       color: "from-carnet-red to-cyan-600",
-      bgColor: "from-pr-orange-pale to-cyan-50",
+      bgColor: "from-carnet-red-pale to-cyan-50",
       points: [
         "Arrivez en avance et détendu",
         "Préparez votre matériel (stylo, feuille)",
@@ -37,7 +37,7 @@ const ReussirCollePage: React.FC = () => {
       id: 3,
       title: "Gestion du stress",
       icon: <Clock className="w-5 h-5" />,
-      color: "from-pr-orange-dark to-amber-600",
+      color: "from-carnet-red to-amber-600",
       bgColor: "from-orange-50 to-amber-50",
       points: [
         "Respirez calmement entre les questions",
@@ -338,11 +338,11 @@ const ReussirCollePage: React.FC = () => {
               </div>
 
               {/* III. Transition */}
-              <div className="bg-white p-4 rounded-lg border border-orange-200">
-                <h4 className="font-bold text-orange-800 text-lg mb-3">III. Übergang zum Kommentar – Transition (4:00 – 4:30)</h4>
+              <div className="bg-white p-4 rounded-lg border border-gray-200">
+                <h4 className="font-bold text-gray-800 text-lg mb-3">III. Übergang zum Kommentar – Transition (4:00 – 4:30)</h4>
                 
                 <div className="space-y-2">
-                  <h5 className="font-semibold text-pr-orange-dark mb-2">Phrase de bascule :</h5>
+                  <h5 className="font-semibold text-pr-black mb-2">Phrase de bascule :</h5>
                   <ul className="text-sm text-gray-600 space-y-1 ml-4">
                     <li>• <em>Dieser Text ist kommentarwürdig, denn er spricht ein kontroverses Thema an.</em></li>
                     <li>• <em>Nun möchte ich meine persönliche Meinung zu dieser Frage äußern.</em></li>
@@ -414,7 +414,7 @@ const ReussirCollePage: React.FC = () => {
         </Card>
 
         {/* Conseils pour la compréhension */}
-        <Card className="mb-8 bg-gradient-to-r from-cyan-50 to-pr-orange-pale border-cyan-200">
+        <Card className="mb-8 bg-carnet-paper-2 border-carnet-rule border-cyan-200">
           <CardHeader>
             <CardTitle className="text-xl text-cyan-800">
               Conseils pour la compréhension

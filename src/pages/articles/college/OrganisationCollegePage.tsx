@@ -53,7 +53,7 @@ const OrganisationCollegePage = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
                             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
-                                <div className="mx-auto bg-pr-orange-pale w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                                <div className="mx-auto bg-pr-gray-bg w-12 h-12 rounded-full flex items-center justify-center mb-4">
                                     <CheckSquare className="h-6 w-6 text-carnet-red" />
                                 </div>
                                 <h3 className="font-bold text-gray-900 mb-2">Le Lieu</h3>

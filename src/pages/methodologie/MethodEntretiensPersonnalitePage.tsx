@@ -34,6 +34,9 @@ import {
   Home,
   ChevronRight,
   Sparkles,
+  BookOpen,
+  Lightbulb,
+  Globe,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -56,6 +59,10 @@ const methodModules: MethodModule[] = [
   { to: '/methodologie/parler-defauts',              icon: ThumbsDown,    label: 'Parler de ses défauts',      description: 'Faites de vos faiblesses un atout.' },
   { to: '/methodologie/valoriser-experiences',       icon: Briefcase,     label: 'Valoriser ses expériences',  description: 'Donnez du sens à chaque ligne de votre CV.' },
   { to: '/methodologie/questions-au-jury',           icon: HelpCircle,    label: 'Questions au jury',          description: 'Marquez des points avec vos propres questions.' },
+  { to: '/methodologie/banque-anecdotes',            icon: BookOpen,      label: 'Banque d\'anecdotes',         description: 'Construisez 7 histoires polyvalentes pour 90 % des questions.' },
+  { to: '/methodologie/international',               icon: Globe,         label: 'Parler de l\'international',  description: 'Reliez en une réponse votre profil, votre projet et l\'école.' },
+  { to: '/methodologie/se-differencier',             icon: Sparkles,      label: 'Se différencier',             description: 'Pensez comme le jury et construisez une présence mémorable.' },
+  { to: '/methodologie/associations-ecole',          icon: Users,         label: 'Associations de l\'école',   description: 'Parlez des associations de manière concrète et différenciante.' },
 ];
 
 type SpecialFormat = { to: string; badge: string; title: string; description: string; icon: LucideIcon };
@@ -74,6 +81,13 @@ const specialFormats: SpecialFormat[] = [
     title: 'CV projectif',
     description: 'Construisez un CV projectif convaincant pour SKEMA et les écoles qui demandent ce format unique.',
     icon: FileText,
+  },
+  {
+    to: '/mise-en-situation-essec',
+    badge: 'ESSEC',
+    title: 'Mise en situation ESSEC',
+    description: "Une question, un cas pratique ou un dilemme éthique posé sans préparation pour révéler vos valeurs, votre logique et votre capacité de décision.",
+    icon: Lightbulb,
   },
 ];
 
@@ -112,7 +126,7 @@ const MethodEntretiensPersonnalitePage = () => {
       <SEOHead
         canonical="/methodologie/entretiens-personnalite"
         title="Méthodologie des entretiens de personnalité — Prépa Rationnelle"
-        description="16 techniques essentielles pour réussir vos entretiens de personnalité aux concours BCE et Ecricome. Méthode, outils IA et fiches écoles."
+        description="20 techniques essentielles pour réussir vos entretiens de personnalité aux concours BCE et Ecricome. Méthode, outils IA et fiches écoles."
       />
 
       {/* Fil d'Ariane */}
@@ -159,7 +173,7 @@ const MethodEntretiensPersonnalitePage = () => {
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-instrument text-[13px] text-carnet-ink-soft">
               <span className="inline-flex items-center gap-1.5">
                 <Target className="h-3.5 w-3.5 text-carnet-red" strokeWidth={1.8} />
-                16 techniques clés
+                20 techniques clés
               </span>
               <span className="h-3 w-px bg-carnet-rule hidden sm:block" />
               <span className="inline-flex items-center gap-1.5">
@@ -167,6 +181,52 @@ const MethodEntretiensPersonnalitePage = () => {
                 9 fiches écoles
               </span>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* BANQUE DE QUESTIONS — bloc mis en avant */}
+      <section className="relative pb-12">
+        <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <Link to="/methodologie/banque-questions" className="block group">
+              <div className="relative rounded-md overflow-hidden bg-[#1a1209] flex">
+                {/* Barre rouge verticale */}
+                <div className="w-[3px] flex-shrink-0 bg-carnet-red" />
+
+                <div className="relative flex-1 flex flex-col lg:flex-row lg:items-center gap-7 lg:gap-0 px-7 py-9 sm:px-10">
+                  {/* Texte */}
+                  <div className="flex-1 min-w-0">
+                    <p className="font-instrument text-[10.5px] font-semibold uppercase tracking-[0.18em] text-carnet-red/70 mb-4 whitespace-nowrap">
+                      Ressource essentielle · Entretiens de personnalité
+                    </p>
+                    <h2 className="font-lora text-[27px] sm:text-[32px] lg:text-[38px] leading-[1.1] tracking-tight text-white mb-3">
+                      100 questions —{' '}
+                      <em className="text-carnet-red not-italic">100 réponses structurées.</em>
+                    </h2>
+                    <p className="font-instrument text-[13px] leading-[1.7] text-white/50 max-w-[480px]">
+                      Jury · Structure · Ancrage · Phrases-clés — pour chacune des 100 questions classiques.
+                    </p>
+                  </div>
+
+                  {/* CTA + watermark */}
+                  <div className="flex-shrink-0 lg:pl-12 flex items-center gap-10">
+                    {/* numéro décoratif dans la zone droite */}
+                    <span className="hidden xl:block font-lora text-[88px] leading-none text-white/[0.05] tabular-nums select-none">
+                      100
+                    </span>
+                    <span className="inline-flex items-center gap-2.5 bg-carnet-red text-white font-instrument font-semibold text-[13.5px] px-6 py-3 rounded-sm group-hover:bg-[#b03a30] transition-colors whitespace-nowrap">
+                      Accéder à la banque
+                      <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" strokeWidth={2} />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -180,7 +240,7 @@ const MethodEntretiensPersonnalitePage = () => {
               Méthodologie générale.
             </h2>
             <p className="font-instrument text-[15px] lg:text-[16px] leading-[1.65] text-carnet-ink-soft mt-3 max-w-[640px]">
-              Maîtrisez les 16 techniques essentielles pour briller lors de vos entretiens.
+              Maîtrisez les 20 techniques essentielles pour briller lors de vos entretiens.
             </p>
           </div>
 

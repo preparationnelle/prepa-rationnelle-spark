@@ -38,8 +38,8 @@ const GrammaireAvanceePage = () => {
         <div className="mb-8">
 
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
-              <BookOpen className="h-6 w-6 text-pr-orange-dark" />
+            <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center border border-gray-200">
+              <BookOpen className="h-6 w-6 text-pr-black" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Grammaire avancée</h1>
           </div>
@@ -48,10 +48,10 @@ const GrammaireAvanceePage = () => {
           </p>
 
           {/* Informations pratiques */}
-          <div className="bg-orange-50 rounded-lg p-4 border border-orange-200 mb-8">
+          <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <Target className="h-5 w-5 text-pr-orange-dark" />
-              <span className="font-medium text-orange-800">Objectif :</span>
+              <Target className="h-5 w-5 text-pr-black" />
+              <span className="font-medium text-gray-800">Objectif :</span>
             </div>
             <p className="text-gray-700">
               Maîtrisez les structures grammaticales complexes essentielles pour réussir vos épreuves d'allemand.
@@ -66,7 +66,7 @@ const GrammaireAvanceePage = () => {
           {/* Exemple 1 - Interrogation avec wann */}
           <section className="bg-white rounded-lg p-6 border border-gray-200">
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-200 pl-4">
+              <div className="border-l-4 border-gray-200 pl-4">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Quand veux-tu visiter ce célèbre musée : demain ou seulement dimanche ?
                 </p>
@@ -77,13 +77,13 @@ const GrammaireAvanceePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">GRAMMAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">GRAMMAIRE</h4>
                   <p className="text-gray-700 text-sm">
                     Inversion sujet-verbe avec l'interrogatif "wann", verbe de modalité au présent (willst), infinitif en fin de phrase.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">VOCABULAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">VOCABULAIRE</h4>
                   <ul className="text-gray-700 text-sm space-y-1">
                     <li>• <strong>wollen</strong> = vouloir (modal)</li>
                     <li>• <strong>besichtigen</strong> = visiter (un lieu culturel)</li>
@@ -96,7 +96,7 @@ const GrammaireAvanceePage = () => {
           {/* Exemple 2 - Construction impersonnelle */}
           <section className="bg-white rounded-lg p-6 border border-gray-200">
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-200 pl-4">
+              <div className="border-l-4 border-gray-200 pl-4">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Aujourd'hui, on constate que beaucoup de gens font de moins en moins confiance aux hommes politiques.
                 </p>
@@ -107,13 +107,13 @@ const GrammaireAvanceePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">GRAMMAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">GRAMMAIRE</h4>
                   <p className="text-gray-700 text-sm">
                     Construction impersonnelle "man stellt fest", subordonnée introduite par dass, vertrauen suivi du datif.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">VOCABULAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">VOCABULAIRE</h4>
                   <ul className="text-gray-700 text-sm space-y-1">
                     <li>• <strong>feststellen</strong> = constater</li>
                     <li>• <strong>vertrauen + D</strong> = faire confiance</li>
@@ -126,7 +126,7 @@ const GrammaireAvanceePage = () => {
           {/* Exemple 3 - Proposition relative */}
           <section className="bg-white rounded-lg p-6 border border-gray-200">
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-200 pl-4">
+              <div className="border-l-4 border-gray-200 pl-4">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Nos amis, qui ont passé quatre jours en Autriche, s'intéressent à l'histoire de ce pays.
                 </p>
@@ -137,13 +137,13 @@ const GrammaireAvanceePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">GRAMMAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">GRAMMAIRE</h4>
                   <p className="text-gray-700 text-sm">
                     Proposition relative au passé composé (haben verbracht), sich interessieren für suivi de l'accusatif.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">VOCABULAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">VOCABULAIRE</h4>
                   <ul className="text-gray-700 text-sm space-y-1">
                     <li>• <strong>sich interessieren für</strong> = s'intéresser à</li>
                     <li>• <strong>Geschichte</strong> = histoire</li>
@@ -156,7 +156,7 @@ const GrammaireAvanceePage = () => {
           {/* Exemple 4 - Parfait avec modalité */}
           <section className="bg-white rounded-lg p-6 border border-gray-200">
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-200 pl-4">
+              <div className="border-l-4 border-gray-200 pl-4">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Après leur stage, ils ont voulu travailler dans une grande entreprise de Stuttgart.
                 </p>
@@ -167,13 +167,13 @@ const GrammaireAvanceePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">GRAMMAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">GRAMMAIRE</h4>
                   <p className="text-gray-700 text-sm">
                     Parfait avec modalité (haben arbeiten wollen), complément de lieu avec in + D.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">VOCABULAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">VOCABULAIRE</h4>
                   <ul className="text-gray-700 text-sm space-y-1">
                     <li>• <strong>arbeiten wollen</strong> = vouloir travailler</li>
                     <li>• <strong>Praktikum</strong> = stage</li>
@@ -186,7 +186,7 @@ const GrammaireAvanceePage = () => {
           {/* Exemple 5 - Irréel du passé */}
           <section className="bg-white rounded-lg p-6 border border-gray-200">
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-200 pl-4">
+              <div className="border-l-4 border-gray-200 pl-4">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Si elle avait eu plus de temps, elle serait restée à la mer tout le week-end.
                 </p>
@@ -197,13 +197,13 @@ const GrammaireAvanceePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">GRAMMAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">GRAMMAIRE</h4>
                   <p className="text-gray-700 text-sm">
                     Irréel du passé en Konjunktiv II Perfekt (hätte gehabt, wäre geblieben), wenn en tête ou possibilité d'inversion.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">VOCABULAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">VOCABULAIRE</h4>
                   <ul className="text-gray-700 text-sm space-y-1">
                     <li>• <strong>Konjunktiv II</strong> = irréel du passé</li>
                     <li>• <strong>bleiben</strong> = rester</li>
@@ -216,7 +216,7 @@ const GrammaireAvanceePage = () => {
           {/* Exemple 6 - Inversion sujet-verbe */}
           <section className="bg-white rounded-lg p-6 border border-gray-200">
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-200 pl-4">
+              <div className="border-l-4 border-gray-200 pl-4">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Mon mari et moi avons rencontré une famille allemande dans l'avion pour Munich au mois de juillet.
                 </p>
@@ -227,13 +227,13 @@ const GrammaireAvanceePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">GRAMMAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">GRAMMAIRE</h4>
                   <p className="text-gray-700 text-sm">
                     Complément circonstanciel de temps en tête, ordre sujet-verbe inversé (haben mein Mann und ich), treffen conjugué au parfait.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">VOCABULAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">VOCABULAIRE</h4>
                   <ul className="text-gray-700 text-sm space-y-1">
                     <li>• <strong>treffen</strong> = rencontrer</li>
                     <li>• <strong>im Juli</strong> = en juillet</li>
@@ -246,7 +246,7 @@ const GrammaireAvanceePage = () => {
           {/* Exemple 7 - Verbe pronominal réfléchi */}
           <section className="bg-white rounded-lg p-6 border border-gray-200">
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-200 pl-4">
+              <div className="border-l-4 border-gray-200 pl-4">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Te souviens-tu que les enfants ne sont pas allés à l'école pendant des semaines l'année dernière ?
                 </p>
@@ -257,13 +257,13 @@ const GrammaireAvanceePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">GRAMMAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">GRAMMAIRE</h4>
                   <p className="text-gray-700 text-sm">
                     Verbe pronominal réfléchi avec sich erinnern an, usage du pronom daran pour introduire une subordonnée, parfait avec sein.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">VOCABULAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">VOCABULAIRE</h4>
                   <ul className="text-gray-700 text-sm space-y-1">
                     <li>• <strong>sich erinnern an</strong> = se souvenir de</li>
                     <li>• <strong>wochenlang</strong> = pendant des semaines</li>
@@ -276,7 +276,7 @@ const GrammaireAvanceePage = () => {
           {/* Exemple 8 - Génitif avec trotz */}
           <section className="bg-white rounded-lg p-6 border border-gray-200">
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-200 pl-4">
+              <div className="border-l-4 border-gray-200 pl-4">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Malgré le confinement et les difficultés, les étudiants sérieux ont réussi l'examen.
                 </p>
@@ -287,13 +287,13 @@ const GrammaireAvanceePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">GRAMMAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">GRAMMAIRE</h4>
                   <p className="text-gray-700 text-sm">
                     trotz suivi du génitif, parfait avec haben, adjectif épithète accordé (fleißigen Studenten).
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">VOCABULAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">VOCABULAIRE</h4>
                   <ul className="text-gray-700 text-sm space-y-1">
                     <li>• <strong>trotz + G</strong> = malgré</li>
                     <li>• <strong>bestehen</strong> = réussir</li>
@@ -306,7 +306,7 @@ const GrammaireAvanceePage = () => {
           {/* Exemple 9 - Passif parfait */}
           <section className="bg-white rounded-lg p-6 border border-gray-200">
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-200 pl-4">
+              <div className="border-l-4 border-gray-200 pl-4">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Cette très belle maison a été louée par des touristes américains qu'il connaît bien.
                 </p>
@@ -317,13 +317,13 @@ const GrammaireAvanceePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">GRAMMAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">GRAMMAIRE</h4>
                   <p className="text-gray-700 text-sm">
                     Passif parfait avec ist … worden, proposition relative insérée, adjectifs épithètes.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">VOCABULAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">VOCABULAIRE</h4>
                   <ul className="text-gray-700 text-sm space-y-1">
                     <li>• <strong>gemietet worden</strong> = passif au parfait</li>
                     <li>• <strong>kennen</strong> = connaître</li>
@@ -336,7 +336,7 @@ const GrammaireAvanceePage = () => {
           {/* Exemple 10 - Subordonnée causale */}
           <section className="bg-white rounded-lg p-6 border border-gray-200">
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-200 pl-4">
+              <div className="border-l-4 border-gray-200 pl-4">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Comme j'habite maintenant dans le centre-ville, je n'ai plus besoin de voiture.
                 </p>
@@ -347,13 +347,13 @@ const GrammaireAvanceePage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">GRAMMAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">GRAMMAIRE</h4>
                   <p className="text-gray-700 text-sm">
                     Subordonnée causale en tête (da), inversion sujet-verbe dans la principale (brauche ich), négation avec kein mehr.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-orange-800 mb-2">VOCABULAIRE</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-2">VOCABULAIRE</h4>
                   <ul className="text-gray-700 text-sm space-y-1">
                     <li>• <strong>da</strong> = comme (cause)</li>
                     <li>• <strong>kein Auto mehr</strong> = plus besoin de voiture</li>
@@ -366,8 +366,8 @@ const GrammaireAvanceePage = () => {
         </div>
 
         {/* Section pratique */}
-        <section className="bg-orange-50 rounded-lg p-6 border border-orange-200 mt-8 mb-8">
-          <h3 className="text-lg font-semibold text-orange-800 mb-3">💡 Points grammaticaux à maîtriser</h3>
+        <section className="bg-gray-50 rounded-lg p-6 border border-gray-200 mt-8 mb-8">
+          <h3 className="text-lg font-semibold text-gray-800 mb-3">💡 Points grammaticaux à maîtriser</h3>
           <div className="text-gray-700 space-y-2">
             <p>• <strong>Structures complexes :</strong> Inversion sujet-verbe, propositions relatives, subordonnées</p>
             <p>• <strong>Temps composés :</strong> Parfait avec modalité, irréel du passé, passif parfait</p>

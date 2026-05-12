@@ -31,7 +31,7 @@ export const CourseDisplay = ({ structuredCourse, language, onRegenerate }: Cour
 
       if (/^[IVX]+\.\s/.test(trimmedLine)) {
         return (
-          <h2 key={index} className="font-dm-serif text-xl text-pr-black mt-6 mb-3 border-b border-pr-orange/30 pb-2">
+          <h2 key={index} className="font-dm-serif text-xl text-pr-black mt-6 mb-3 border-b border-pr-gray-light/30 pb-2">
             {trimmedLine}
           </h2>
         );
@@ -39,7 +39,7 @@ export const CourseDisplay = ({ structuredCourse, language, onRegenerate }: Cour
 
       if (/^[A-Z]\.\s/.test(trimmedLine) || /^\d+\.\s/.test(trimmedLine)) {
         return (
-          <h3 key={index} className="font-dm-serif text-lg text-pr-orange-dark mt-4 mb-2">
+          <h3 key={index} className="font-dm-serif text-lg text-pr-black mt-4 mb-2">
             {trimmedLine}
           </h3>
         );
@@ -47,8 +47,8 @@ export const CourseDisplay = ({ structuredCourse, language, onRegenerate }: Cour
 
       if (trimmedLine.toLowerCase().includes('définition')) {
         return (
-          <div key={index} className="bg-pr-orange-pale border-l-4 border-pr-orange p-3 my-3 rounded-r-lg">
-            <p className="text-pr-orange-dark font-medium font-dm-sans">{trimmedLine}</p>
+          <div key={index} className="bg-pr-gray-bg border-l-4 border-pr-black p-3 my-3 rounded-r-lg">
+            <p className="text-pr-black font-medium font-dm-sans">{trimmedLine}</p>
           </div>
         );
       }
@@ -75,11 +75,11 @@ export const CourseDisplay = ({ structuredCourse, language, onRegenerate }: Cour
 
   return (
     <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-      <div className="h-[3px] w-full bg-pr-orange" />
+      <div className="h-[3px] w-full bg-pr-black" />
       <div className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5 sm:px-8">
         <div className="flex justify-between items-center flex-wrap gap-3">
           <h3 className="flex items-center gap-3 font-dm-serif text-xl text-pr-black">
-            <BookOpen className="h-5 w-5 text-pr-orange" />
+            <BookOpen className="h-5 w-5 text-pr-black" />
             {language === 'fr' ? 'Fiche de cours structurée' : 'Structured course sheet'}
           </h3>
           <div className="flex gap-2 flex-wrap">
@@ -88,7 +88,7 @@ export const CourseDisplay = ({ structuredCourse, language, onRegenerate }: Cour
                 onClick={onRegenerate}
                 variant="outline"
                 size="sm"
-                className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft"
+                className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft"
               >
                 <RefreshCw className="h-4 w-4 mr-1" />
                 {language === 'fr' ? 'Régénérer' : 'Regenerate'}
@@ -98,7 +98,7 @@ export const CourseDisplay = ({ structuredCourse, language, onRegenerate }: Cour
               onClick={handleDownloadText}
               variant="outline"
               size="sm"
-              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft"
+              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft"
             >
               <Download className="h-4 w-4 mr-1" />
               TXT
@@ -106,7 +106,7 @@ export const CourseDisplay = ({ structuredCourse, language, onRegenerate }: Cour
             <Button
               onClick={handleDownloadPDF}
               size="sm"
-              className="bg-pr-orange hover:bg-pr-orange-dark text-white"
+              className="bg-pr-black hover:bg-pr-black-dark text-white"
             >
               <Download className="h-4 w-4 mr-1" />
               PDF
@@ -116,8 +116,8 @@ export const CourseDisplay = ({ structuredCourse, language, onRegenerate }: Cour
       </div>
       <div className="p-6 sm:p-8">
         <div className="space-y-4">
-          <div className="bg-pr-orange-pale border-l-4 border-pr-orange p-4 rounded-r-lg">
-            <p className="text-sm text-pr-orange-dark font-dm-sans">
+          <div className="bg-pr-gray-bg border-l-4 border-pr-black p-4 rounded-r-lg">
+            <p className="text-sm text-pr-black font-dm-sans">
               {language === 'fr'
                 ? "Cours structuré avec plan hiérarchisé, points-clés et exemples. Idéal pour révision et compréhension."
                 : "Structured course with hierarchical plan, key points and examples. Ideal for revision and understanding."

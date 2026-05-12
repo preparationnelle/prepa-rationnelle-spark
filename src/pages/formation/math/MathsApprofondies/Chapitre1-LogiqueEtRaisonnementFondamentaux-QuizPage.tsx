@@ -15,7 +15,7 @@ const Chapitre1LogiqueEtRaisonnementFondamentauxQuizPage = () => {
       <div className="space-y-6"
       
     >
-        <div className="bg-gradient-to-r from-purple-50 to-pr-orange-pale border border-purple-200 rounded-lg p-6"
+        <div className="bg-gradient-to-r from-purple-50 to-pr-black-pale border border-purple-200 rounded-lg p-6"
       
     >
           <h2 className="text-2xl font-bold text-purple-800 mb-4 flex items-center gap-3"

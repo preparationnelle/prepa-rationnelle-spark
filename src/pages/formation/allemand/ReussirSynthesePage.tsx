@@ -12,7 +12,7 @@ const ReussirSynthesePage: React.FC = () => {
       title: "Lecture et analyse",
       icon: <Search className="w-5 h-5" />,
       color: "from-carnet-red to-cyan-600",
-      bgColor: "from-pr-orange-pale to-cyan-50",
+      bgColor: "from-carnet-red-pale to-cyan-50",
       points: [
         "Lisez le texte 2-3 fois attentivement",
         "Identifiez l'idée principale et la thèse",
@@ -205,7 +205,7 @@ const ReussirSynthesePage: React.FC = () => {
         </Card>
 
         {/* Fiche méthodologique complète : SYNTHÈSE PARFAITE */}
-        <Card className="mb-8 bg-gradient-to-r from-cyan-50 to-pr-orange-pale border-cyan-200">
+        <Card className="mb-8 bg-carnet-paper-2 border-carnet-rule border-cyan-200">
           <CardHeader>
             <CardTitle className="text-xl text-cyan-800 flex items-center gap-2">
               <FileText className="w-5 h-5" />
@@ -320,12 +320,12 @@ const ReussirSynthesePage: React.FC = () => {
               </div>
 
               {/* VERBINDUNGEN / LIAISONS UTILES */}
-              <div className="bg-white p-4 rounded-lg border border-orange-200">
-                <h4 className="font-bold text-orange-800 text-lg mb-3">VERBINDUNGEN / LIAISONS UTILES</h4>
+              <div className="bg-white p-4 rounded-lg border border-gray-200">
+                <h4 className="font-bold text-gray-800 text-lg mb-3">VERBINDUNGEN / LIAISONS UTILES</h4>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <h5 className="font-semibold text-pr-orange-dark mb-2">Connecteurs logiques</h5>
+                    <h5 className="font-semibold text-pr-black mb-2">Connecteurs logiques</h5>
                     <ul className="text-sm text-gray-600 space-y-1 ml-4">
                       <li>• <em>aufgrund von (+D)</em> = en raison de</li>
                       <li>• <em>es liegt daran, dass...</em> = cela est dû au fait que</li>
@@ -335,7 +335,7 @@ const ReussirSynthesePage: React.FC = () => {
                     </ul>
                   </div>
                   <div>
-                    <h5 className="font-semibold text-pr-orange-dark mb-2">Expressions de nuance</h5>
+                    <h5 className="font-semibold text-pr-black mb-2">Expressions de nuance</h5>
                     <ul className="text-sm text-gray-600 space-y-1 ml-4">
                       <li>• <em>zwar..., aber...</em> = certes..., mais...</li>
                       <li>• <em>nämlich / in der Tat</em> = en effet</li>
@@ -465,7 +465,7 @@ const ReussirSynthesePage: React.FC = () => {
         </Card>
 
         {/* Conseils pratiques */}
-        <Card className="mb-8 bg-gradient-to-r from-cyan-50 to-pr-orange-pale border-cyan-200">
+        <Card className="mb-8 bg-carnet-paper-2 border-carnet-rule border-cyan-200">
           <CardHeader>
             <CardTitle className="text-xl text-cyan-800">
               Conseils pratiques pour réussir

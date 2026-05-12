@@ -33,7 +33,7 @@ const TendrePerchesPage = () => {
           ].map((p) => (
             <div key={p.n} className="bg-white border border-carnet-rule/30 rounded-2xl p-6 hover:border-red-200 hover:shadow-md transition-all duration-300">
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="font-dm-serif text-4xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-orange-dark">{p.n}</span>
+                <span className="font-dm-serif text-4xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-black">{p.n}</span>
                 <h4 className="font-dm-serif text-xl text-carnet-ink">{p.t}</h4>
               </div>
               <div className="h-px w-10 bg-red-500 mb-3" />

@@ -321,7 +321,7 @@ const ContinentAfricainAuteursPage = () => {
         </Card>
 
         {/* Note méthodologique */}
-        <Card className="mt-8 bg-pr-orange-pale border-carnet-red/30">
+        <Card className="mt-8 bg-pr-gray-bg border-carnet-red/30">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 text-carnet-red-deep mb-4">
               <Lightbulb className="h-5 w-5" />

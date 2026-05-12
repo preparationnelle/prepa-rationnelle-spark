@@ -173,7 +173,7 @@ const ErreursEviterPage = () => {
       <MethodSection label="Section 03" title="Situations pièges et comment les éviter" icon={Shield}>
         <div className="space-y-5">
           {traps.map((tr) => (
-            <div key={tr.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <div key={tr.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <h4 className="font-dm-serif text-xl text-carnet-ink mb-5">{tr.t}</h4>
               <div className="grid md:grid-cols-2 gap-5">
                 <div className="bg-carnet-paper rounded p-4">
@@ -202,7 +202,7 @@ const ErreursEviterPage = () => {
       <MethodSection label="Section 04" title="Plan d'action anti-erreurs" icon={CheckCircle}>
         <div className="grid md:grid-cols-3 gap-5">
           {actionPlan.map((step, i) => (
-            <div key={step.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <div key={step.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <span className="font-dm-serif text-3xl text-red-600">{String(i + 1).padStart(2, '0')}</span>
               <h4 className="font-dm-serif text-lg text-carnet-ink mt-1">{step.t}</h4>
               <p className="text-xs uppercase tracking-wider text-carnet-ink-mute mb-3">{step.sub}</p>

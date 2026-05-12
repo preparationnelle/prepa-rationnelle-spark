@@ -176,7 +176,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale via-white to-pr-orange-soft">
+    <div className="min-h-screen bg-transparent font-dm-sans">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-carnet-paper-2/90 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper-2/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -233,7 +233,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
           </div>
           <div className="w-full bg-carnet-rule/40 rounded-full h-2.5">
             <div 
-              className="bg-gradient-to-r from-carnet-red to-pr-orange-dark h-2.5 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-carnet-red to-carnet-red-deep h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -270,7 +270,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
 
           {/* Aide aux raccourcis */}
           {showHelp && (
-            <Card className="mb-4 bg-pr-orange-pale border-carnet-red/30">
+            <Card className="mb-4 bg-carnet-paper-2 border-carnet-red/30">
               <CardContent className="p-4">
                 <h3 className="font-semibold text-carnet-red-deep mb-3">Raccourcis clavier :</h3>
                 <div className="grid grid-cols-2 gap-2 text-sm text-carnet-red">
@@ -302,8 +302,8 @@ const VocabulairePolitiqueFlashcardsPage = () => {
               <div className="absolute -z-10 top-4 left-4 flex items-center gap-2">
                 {isFlipped ? (
                   <>
-                    <Eye className="h-4 w-4 text-pr-orange-dark" />
-                    <span className="text-sm font-medium text-pr-orange-dark">Allemand</span>
+                    <Eye className="h-4 w-4 text-carnet-red-deep" />
+                    <span className="text-sm font-medium text-carnet-red-deep">Allemand</span>
                   </>
                 ) : (
                   <>
@@ -362,7 +362,7 @@ const VocabulairePolitiqueFlashcardsPage = () => {
 
         {/* Section informative */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-pr-orange-soft shadow-lg">
+          <Card className="border-2 border-carnet-red/30 bg-carnet-paper-2 border-carnet-rule">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-carnet-red-deep mb-4">💡 Conseils pour l'apprentissage</h3>
               <div className="grid md:grid-cols-2 gap-6">

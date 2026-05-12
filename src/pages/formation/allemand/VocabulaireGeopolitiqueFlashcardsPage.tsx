@@ -248,7 +248,7 @@ const VocabulaireGeopolitiqueFlashcardsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale via-white to-pr-orange-soft">
+    <div className="min-h-screen bg-transparent font-dm-sans">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-carnet-paper-2/90 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper-2/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -282,7 +282,7 @@ const VocabulaireGeopolitiqueFlashcardsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-carnet-ink mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+            <div className="p-3 rounded-lg bg-carnet-red/10 text-carnet-red-deep">
               <BookOpen className="h-9 w-9" />
             </div>
             Vocabulaire Géopolitique Européenne
@@ -293,7 +293,7 @@ const VocabulaireGeopolitiqueFlashcardsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">{cards.length} mots</Badge>
             <Badge variant="outline">Module 4 - Géopolitique Européenne</Badge>
-            <Badge className="bg-pr-orange-dark">Flashcards</Badge>
+            <Badge className="bg-carnet-red hover:bg-carnet-red-deep text-white border-0">Flashcards</Badge>
           </div>
         </div>
 
@@ -301,11 +301,11 @@ const VocabulaireGeopolitiqueFlashcardsPage = () => {
         <div className="max-w-2xl mx-auto mb-6">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm font-medium text-carnet-ink-soft">Progression</span>
-            <span className="text-sm font-medium text-pr-orange-dark">{currentIndex + 1} / {cards.length}</span>
+            <span className="text-sm font-medium text-carnet-red-deep">{currentIndex + 1} / {cards.length}</span>
           </div>
           <div className="w-full bg-carnet-rule/40 rounded-full h-2.5">
             <div 
-              className="bg-gradient-to-r from-pr-orange to-pr-orange-dark h-2.5 rounded-full transition-all duration-300"
+              className="bg-carnet-red h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -342,10 +342,10 @@ const VocabulaireGeopolitiqueFlashcardsPage = () => {
 
           {/* Aide aux raccourcis */}
           {showHelp && (
-            <Card className="mb-4 bg-pr-orange-pale border-pr-orange-soft">
+            <Card className="mb-4 bg-carnet-paper-2 border-carnet-rule">
               <CardContent className="p-4">
                 <h3 className="font-semibold text-carnet-ink mb-3">Raccourcis clavier :</h3>
-                <div className="grid grid-cols-2 gap-2 text-sm text-pr-orange-dark">
+                <div className="grid grid-cols-2 gap-2 text-sm text-carnet-ink-soft">
                   <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">Espace</kbd> ou <kbd className="bg-carnet-rule/30 px-2 py-1 rounded">Entrée</kbd> : Retourner la carte</div>
                   <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">←</kbd> <kbd className="bg-carnet-rule/30 px-2 py-1 rounded">→</kbd> : Navigation</div>
                   <div><kbd className="bg-carnet-rule/30 px-2 py-1 rounded">S</kbd> : Mélanger</div>
@@ -374,13 +374,13 @@ const VocabulaireGeopolitiqueFlashcardsPage = () => {
               <div className="absolute -z-10 top-4 left-4 flex items-center gap-2">
                 {isFlipped ? (
                   <>
-                    <Eye className="h-4 w-4 text-pr-orange-dark" />
-                    <span className="text-sm font-medium text-pr-orange-dark">Allemand</span>
+                    <Eye className="h-4 w-4 text-carnet-red-deep" />
+                    <span className="text-sm font-medium text-carnet-red-deep">Allemand</span>
                   </>
                 ) : (
                   <>
-                    <EyeOff className="h-4 w-4 text-pr-orange-dark" />
-                    <span className="text-sm font-medium text-pr-orange-dark">Français</span>
+                    <EyeOff className="h-4 w-4 text-carnet-red-deep" />
+                    <span className="text-sm font-medium text-carnet-red-deep">Français</span>
                   </>
                 )}
               </div>
@@ -434,13 +434,13 @@ const VocabulaireGeopolitiqueFlashcardsPage = () => {
 
         {/* Section informative */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-pr-orange-soft bg-gradient-to-r from-pr-orange-pale to-pr-orange-soft shadow-lg">
+          <Card className="border border-carnet-rule bg-carnet-paper-2">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-carnet-ink mb-4">🌍 Conseils pour l'apprentissage</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <h4 className="font-semibold text-carnet-ink">Technique de révision :</h4>
-                  <ul className="text-sm text-pr-orange-dark space-y-1">
+                  <ul className="text-sm text-carnet-ink-soft space-y-1">
                     <li>• Commencez par le français (plus familier)</li>
                     <li>• Tentez de deviner l'allemand avant de retourner</li>
                     <li>• Répétez à voix haute pour la prononciation</li>
@@ -449,7 +449,7 @@ const VocabulaireGeopolitiqueFlashcardsPage = () => {
                 </div>
                 <div className="space-y-3">
                   <h4 className="font-semibold text-carnet-ink">Pour les concours :</h4>
-                  <ul className="text-sm text-pr-orange-dark space-y-1">
+                  <ul className="text-sm text-carnet-ink-soft space-y-1">
                     <li>• Vocabulaire essentiel pour la Zeitenwende</li>
                     <li>• Termes techniques des relations internationales</li>
                     <li>• Base indispensable pour Module 4 - Géopolitique</li>

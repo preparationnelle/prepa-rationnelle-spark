@@ -189,7 +189,7 @@ const GeopolitiqueCasPratiquesPage = () => {
                   boxShadow: "0 1px 2px rgba(0,0,0,0.02)"
                 }}
               >
-                {/* Trait orange top */}
+                {/* trait noir top */}
                 <div className="h-[3px] w-full" style={{ backgroundColor: PR_ORANGE }} />
 
                 <div className="p-6 flex flex-col h-full">

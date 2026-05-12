@@ -18,8 +18,8 @@ const AccesRestreintPage: React.FC = () => {
     <div className="relative flex items-center justify-center p-4">
       <Card className="w-full max-w-lg bg-white rounded-2xl shadow-sm border border-[#E6EEF9]">
         <CardHeader className="text-center pb-4">
-          <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Lock className="w-8 h-8 text-pr-orange" />
+          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Lock className="w-8 h-8 text-pr-black" />
           </div>
           <CardTitle className="text-2xl font-bold text-gray-900">
             {isPythonSection ? 'Connexion requise' : 'Accès restreint'}
@@ -32,14 +32,14 @@ const AccesRestreintPage: React.FC = () => {
           </p>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+          <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-pr-orange-dark mt-0.5 flex-shrink-0" />
+              <AlertTriangle className="w-5 h-5 text-pr-black mt-0.5 flex-shrink-0" />
               <div className="text-sm">
-                <p className="font-medium text-orange-800 mb-1">
+                <p className="font-medium text-gray-800 mb-1">
                   {isPythonSection ? 'Formation Python' : 'Section protégée'}
                 </p>
-                <p className="text-pr-orange-dark">
+                <p className="text-pr-black">
                   {isPythonSection 
                     ? 'Les formations Python sont accessibles gratuitement à tous les utilisateurs connectés.'
                     : 'Les formations Maths ne sont accessibles qu\'aux utilisateurs inscrits sur la liste blanche.'
@@ -56,24 +56,24 @@ const AccesRestreintPage: React.FC = () => {
             </h3>
             <ul className="text-sm text-gray-600 space-y-2 ml-6">
               <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-pr-orange rounded-full"></span>
+                <span className="w-1.5 h-1.5 bg-pr-black rounded-full"></span>
                 Connectez-vous avec votre compte
               </li>
               {!isPythonSection && (
                 <>
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-pr-orange rounded-full"></span>
+                    <span className="w-1.5 h-1.5 bg-pr-black rounded-full"></span>
                     Votre email doit être dans la liste autorisée
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-pr-orange rounded-full"></span>
+                    <span className="w-1.5 h-1.5 bg-pr-black rounded-full"></span>
                     Contactez l'équipe pour demander l'accès
                   </li>
                 </>
               )}
               {isPythonSection && (
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-pr-orange rounded-full"></span>
+                  <span className="w-1.5 h-1.5 bg-pr-black rounded-full"></span>
                   Accès libre après inscription !
                 </li>
               )}
@@ -81,7 +81,7 @@ const AccesRestreintPage: React.FC = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 pt-4">
-            <Button asChild className="bg-pr-orange hover:bg-pr-orange-dark text-white flex-1">
+            <Button asChild className="bg-pr-black hover:bg-pr-black-dark text-white flex-1">
               <Link to={loginHref}>Se connecter</Link>
             </Button>
             {!isPythonSection && (

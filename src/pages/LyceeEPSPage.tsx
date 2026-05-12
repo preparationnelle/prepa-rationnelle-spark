@@ -53,7 +53,7 @@ const LyceeEPSPage = () => {
               </div>
 
               <div className="prose prose-lg max-w-none text-gray-700">
-                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-green-400 mb-8">
+                <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-green-400 mb-8">
                   <p className="text-carnet-red-deep font-medium text-lg">
                     <strong>Principale caractéristique :</strong> l'épreuve d'éducation physique et sportive (EPS) au baccalauréat se déroule en contrôle continu (CCF) durant l'année de terminale, avec trois évaluations portant sur trois activités physiques, sportives et artistiques (APSA), dont au moins une collective, choisies par l'établissement en lien avec les cinq champs d'apprentissage du cycle terminal.
                   </p>
@@ -123,7 +123,7 @@ const LyceeEPSPage = () => {
                   Une fiche de bilan accompagne l'élève, récapitulant les APSA pratiquées, les compétences travaillées et le niveau atteint (de « niveau de seconde » à « niveau 2 »).
                 </p>
 
-                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-green-400 mb-8">
+                <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-green-400 mb-8">
                   <p className="text-carnet-red-deep font-medium mb-4">
                     Ainsi, l'épreuve d'EPS en Terminale repose sur une évaluation formative et certificative de la maîtrise des compétences motrices, tactiques, artistiques et méthodologiques, avec un accent sur l'engagement, l'analyse réflexive et l'autonomie.
                   </p>
@@ -165,7 +165,7 @@ const LyceeEPSPage = () => {
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <div className="bg-gradient-to-br from-green-50 to-pr-orange-pale border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-carnet-red/40 hover:bg-gradient-to-br hover:from-carnet-paper-2 hover:to-green-50 transition-all duration-300 group p-8 rounded-lg">
+              <div className="bg-gradient-to-br from-green-50 to-pr-black-pale border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-carnet-red/40 hover:bg-gradient-to-br hover:from-carnet-paper-2 hover:to-green-50 transition-all duration-300 group p-8 rounded-lg">
                 <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-carnet-red/10 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
                   <Trophy className="h-8 w-8 text-carnet-red group-hover:text-carnet-red transition-colors duration-300" />
                 </div>

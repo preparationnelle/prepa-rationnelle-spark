@@ -111,14 +111,14 @@ const LoginPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20"
+                className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-black/50 focus:ring-pr-black/20"
               />
             </div>
 
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <Label htmlFor="password" className="text-carnet-ink">Mot de passe</Label>
-                <Link to="/forgot-password" className="text-sm text-pr-orange hover:text-pr-orange-dark hover:underline transition-colors">
+                <Link to="/forgot-password" className="text-sm text-pr-black hover:text-pr-black hover:underline transition-colors">
                   Mot de passe oublié?
                 </Link>
               </div>
@@ -130,7 +130,7 @@ const LoginPage = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-orange/50 focus:ring-pr-orange/20 pr-10"
+                  className="bg-white border-carnet-rule/40 text-carnet-ink placeholder:text-carnet-ink-mute focus:border-pr-black/50 focus:ring-pr-black/20 pr-10"
                 />
                 <Button
                   type="button"
@@ -150,7 +150,7 @@ const LoginPage = () => {
 
             <Button
               type="submit"
-              className="w-full bg-pr-orange hover:bg-pr-orange-dark text-white border-0 shadow-lg shadow-pr-orange/20 transition-all duration-300"
+              className="w-full bg-pr-black hover:bg-pr-black-dark text-white border-0 shadow-lg shadow-pr-orange/20 transition-all duration-300"
               disabled={loading}
             >
               {loading ? (
@@ -165,7 +165,7 @@ const LoginPage = () => {
         <CardFooter className="flex flex-col border-t border-carnet-rule/30 pt-6 mt-2">
           <div className="text-center text-sm text-carnet-ink-mute">
             Vous n'avez pas de compte?{' '}
-            <Link to="/register" className="text-pr-orange hover:text-pr-orange-dark font-medium hover:underline transition-colors">
+            <Link to="/register" className="text-pr-black hover:text-pr-black font-medium hover:underline transition-colors">
               S'inscrire
             </Link>
           </div>

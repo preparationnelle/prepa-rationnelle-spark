@@ -38,8 +38,8 @@ const EpreuvesEcritesEssaiPage = () => {
         <div className="mb-8">
 
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
-              <BookOpen className="h-6 w-6 text-pr-orange-dark" />
+            <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center border border-gray-200">
+              <BookOpen className="h-6 w-6 text-pr-black" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Réussir l'essai</h1>
           </div>
@@ -48,10 +48,10 @@ const EpreuvesEcritesEssaiPage = () => {
           </p>
 
           {/* Informations pratiques */}
-          <div className="bg-orange-50 rounded-lg p-4 border border-orange-200 mb-8">
+          <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <Target className="h-5 w-5 text-pr-orange-dark" />
-              <span className="font-medium text-orange-800">Objectif :</span>
+              <Target className="h-5 w-5 text-pr-black" />
+              <span className="font-medium text-gray-800">Objectif :</span>
             </div>
             <p className="text-gray-700">
               Maîtrisez la structure et les expressions essentielles pour réussir votre essai d'allemand.
@@ -249,8 +249,8 @@ const EpreuvesEcritesEssaiPage = () => {
           </section>
 
           {/* Section pratique */}
-          <section className="bg-orange-50 rounded-lg p-6 border border-orange-200">
-            <h3 className="text-lg font-semibold text-orange-800 mb-3">💡 Conseils pour l'essai</h3>
+          <section className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">💡 Conseils pour l'essai</h3>
             <div className="text-gray-700 space-y-2">
               <p>• <strong>Structure rigoureuse :</strong> Respectez l'ordre introduction-partie I-partie II-conclusion</p>
               <p>• <strong>Thèse claire :</strong> Annoncez votre position dès l'introduction</p>

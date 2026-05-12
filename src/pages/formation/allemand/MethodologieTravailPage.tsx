@@ -38,8 +38,8 @@ const MethodologieTravailPage = () => {
         <div className="mb-8">
 
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
-              <BookOpen className="h-6 w-6 text-pr-orange-dark" />
+            <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center border border-gray-200">
+              <BookOpen className="h-6 w-6 text-pr-black" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Comment travailler l'allemand en prépa</h1>
           </div>
@@ -48,10 +48,10 @@ const MethodologieTravailPage = () => {
           </p>
 
           {/* Avertissement */}
-          <div className="bg-orange-50 rounded-lg p-4 border border-orange-200 mb-8">
+          <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <AlertTriangle className="h-5 w-5 text-pr-orange-dark" />
-              <span className="font-medium text-orange-800">⚠️ Attention :</span>
+              <AlertTriangle className="h-5 w-5 text-pr-black" />
+              <span className="font-medium text-gray-800">⚠️ Attention :</span>
             </div>
             <p className="text-gray-700">
               Ceci n'est pas une méthode pour apprendre l'allemand, c'est une méthode pour réussir les épreuves d'allemand en prépa HEC/ECG.
@@ -62,21 +62,21 @@ const MethodologieTravailPage = () => {
         {/* Section 1 - Traduction et Grammaire */}
         <section className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <span className="font-bold text-pr-orange-dark text-sm">1</span>
+            <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+              <span className="font-bold text-pr-black text-sm">1</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Traduction et Grammaire</h2>
           </div>
 
           <div className="mb-6">
-            <h3 className="text-lg font-semibold text-orange-800 mb-3">Pourquoi est-ce crucial ?</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">Pourquoi est-ce crucial ?</h3>
             <p className="text-gray-700 mb-4">
               La traduction est non seulement une épreuve des concours, c'est aussi un moyen efficace de maîtriser la grammaire allemande !
             </p>
           </div>
 
           <div className="mb-6">
-            <h3 className="text-lg font-semibold text-orange-800 mb-3">Comment s'y prendre efficacement ?</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">Comment s'y prendre efficacement ?</h3>
             <p className="text-gray-700 mb-4">
               Pratiquez régulièrement des phrases de thème, en utilisant les sujets vus en cours ou disponibles dans les annales des concours comme Ecricome LV2. Les corrigés sont détaillés et présentent souvent plein d'options de traduction.
             </p>
@@ -85,7 +85,7 @@ const MethodologieTravailPage = () => {
           <div className="mb-6">
             <h3 className="text-lg font-semibold text-gray-800 mb-3">Exemples concrets :</h3>
             <div className="space-y-4">
-              <div className="border-l-4 border-orange-200 pl-4 bg-gray-50 p-4 rounded">
+              <div className="border-l-4 border-gray-200 pl-4 bg-gray-50 p-4 rounded">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Depuis le début des années 90, le Japon se bat contre la déflation et une croissance faible.
                 </p>
@@ -97,7 +97,7 @@ const MethodologieTravailPage = () => {
                 </p>
               </div>
 
-              <div className="border-l-4 border-orange-200 pl-4 bg-gray-50 p-4 rounded">
+              <div className="border-l-4 border-gray-200 pl-4 bg-gray-50 p-4 rounded">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Si la reprise économique n'avait pas été si timide, il n'y aurait pas eu tant de fermetures d'usines.
                 </p>
@@ -109,7 +109,7 @@ const MethodologieTravailPage = () => {
                 </p>
               </div>
 
-              <div className="border-l-4 border-orange-200 pl-4 bg-gray-50 p-4 rounded">
+              <div className="border-l-4 border-gray-200 pl-4 bg-gray-50 p-4 rounded">
                 <p className="text-lg text-gray-900 font-medium mb-2">
                   Moins vous passerez de temps sur les réseaux sociaux, plus vous vous rapprocherez de vos vrais amis.
                 </p>
@@ -123,10 +123,10 @@ const MethodologieTravailPage = () => {
             </div>
           </div>
 
-          <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+          <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
             <div className="flex items-center gap-2 mb-2">
-              <Zap className="h-5 w-5 text-pr-orange-dark" />
-              <span className="font-medium text-orange-800">🚀 Ce que je propose :</span>
+              <Zap className="h-5 w-5 text-pr-black" />
+              <span className="font-medium text-gray-800">🚀 Ce que je propose :</span>
             </div>
             <p className="text-gray-700 text-sm">
               Vous pouvez accéder à mon fichier Quizlet avec des centaines de phrases de thème corrigées.
@@ -137,21 +137,21 @@ const MethodologieTravailPage = () => {
         {/* Section 2 - Gérer vos erreurs */}
         <section className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <span className="font-bold text-pr-orange-dark text-sm">2</span>
+            <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+              <span className="font-bold text-pr-black text-sm">2</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Gérer vos erreurs</h2>
           </div>
 
           <div className="mb-6">
-            <h3 className="text-lg font-semibold text-orange-800 mb-3">Pourquoi ?</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">Pourquoi ?</h3>
             <p className="text-gray-700 mb-4">
               Prendre des notes structurées sur vos erreurs, vocabulaire et nouvelles structures rencontrées vous aide à progresser plus vite. Cela vous permet aussi de réviser efficacement sans repartir de zéro. Ceci est valable pour la traduction, et aussi pour les essais.
             </p>
           </div>
 
           <div className="mb-6">
-            <h3 className="text-lg font-semibold text-orange-800 mb-3">1. Gérer vos erreurs en Trois Points</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">1. Gérer vos erreurs en Trois Points</h3>
             <p className="text-gray-700 mb-4">
               Identifiez vos erreurs fréquentes : par exemple un problème d'accord ("The informations are not reliable" au lieu de "The information is not reliable").
             </p>
@@ -181,7 +181,7 @@ const MethodologieTravailPage = () => {
           </div>
 
           <div className="mb-6">
-            <h3 className="text-lg font-semibold text-orange-800 mb-3">2. Vocabulaire</h3>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">2. Vocabulaire</h3>
             <p className="text-gray-700 mb-4">
               Créer un carnet thématique :
             </p>
@@ -208,7 +208,7 @@ const MethodologieTravailPage = () => {
               </p>
             </div>
 
-            <div className="bg-orange-50 rounded-lg p-3 border border-orange-200">
+            <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
               <p className="text-gray-700 text-sm">
                 <strong>Flashcards :</strong> Utilisez une appli comme Anki pour mémoriser vos mots clés.
               </p>
@@ -219,15 +219,15 @@ const MethodologieTravailPage = () => {
         {/* Section 3 - Approfondir les Thèmes */}
         <section className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <span className="font-bold text-pr-orange-dark text-sm">3</span>
+            <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+              <span className="font-bold text-pr-black text-sm">3</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Approfondir les Thèmes qui tombent aux concours</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-orange-800">Thèmes fréquents :</h3>
+              <h3 className="text-lg font-semibold text-gray-800">Thèmes fréquents :</h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• <strong>Économie allemande :</strong> Industrie 4.0, exportations, euro</li>
                 <li>• <strong>Politique européenne :</strong> UE, migrations, environnement</li>
@@ -237,7 +237,7 @@ const MethodologieTravailPage = () => {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-orange-800">Stratégie :</h3>
+              <h3 className="text-lg font-semibold text-gray-800">Stratégie :</h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• Lire Der Spiegel, Die Zeit régulièrement</li>
                 <li>• Suivre l'actualité allemande sur France 24</li>
@@ -251,15 +251,15 @@ const MethodologieTravailPage = () => {
         {/* Section 4 - Préparation Structurée des Colles */}
         <section className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <span className="font-bold text-pr-orange-dark text-sm">4</span>
+            <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+              <span className="font-bold text-pr-black text-sm">4</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Préparation Structurée des Colles</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-lg font-semibold text-orange-800 mb-3">Méthode de préparation :</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Méthode de préparation :</h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• <strong>15 minutes de préparation :</strong> lire le texte attentivement</li>
                 <li>• <strong>Structure :</strong> Introduction + Résumé + Transition + Commentaire + Conclusion</li>
@@ -269,7 +269,7 @@ const MethodologieTravailPage = () => {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-orange-800 mb-3">Expressions essentielles :</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Expressions essentielles :</h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• <strong>Introduction :</strong> "In diesem Artikel geht es um..."</li>
                 <li>• <strong>Transition :</strong> "Nun möchte ich meine Meinung äußern"</li>
@@ -283,15 +283,15 @@ const MethodologieTravailPage = () => {
         {/* Section 5 - Réussir Essais et Synthèses */}
         <section className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <span className="font-bold text-pr-orange-dark text-sm">5</span>
+            <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+              <span className="font-bold text-pr-black text-sm">5</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Réussir Essais et Synthèses</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-lg font-semibold text-orange-800 mb-3">Essai argumentatif :</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Essai argumentatif :</h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• <strong>Introduction :</strong> Thèse + annonce du plan</li>
                 <li>• <strong>Partie I :</strong> Critique de la contre-thèse</li>
@@ -301,7 +301,7 @@ const MethodologieTravailPage = () => {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-orange-800 mb-3">Synthèse :</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-3">Synthèse :</h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• <strong>Introduction :</strong> Présenter les documents</li>
                 <li>• <strong>Comparaison :</strong> Points communs et différences</li>
@@ -315,8 +315,8 @@ const MethodologieTravailPage = () => {
         {/* Section 6 - Organisation du temps */}
         <section className="bg-white rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <span className="font-bold text-pr-orange-dark text-sm">6</span>
+            <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+              <span className="font-bold text-pr-black text-sm">6</span>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Organisation du temps</h2>
           </div>
@@ -324,7 +324,7 @@ const MethodologieTravailPage = () => {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Clock className="h-5 w-5 text-pr-orange-dark" />
+                <Clock className="h-5 w-5 text-pr-black" />
                 <h4 className="font-semibold text-gray-800">Préparation (Sept-Oct)</h4>
               </div>
               <ul className="text-sm text-gray-700 space-y-1">
@@ -336,7 +336,7 @@ const MethodologieTravailPage = () => {
 
             <div className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Clock className="h-5 w-5 text-pr-orange-dark" />
+                <Clock className="h-5 w-5 text-pr-black" />
                 <h4 className="font-semibold text-gray-800">Intensif (Nov-Jan)</h4>
               </div>
               <ul className="text-sm text-gray-700 space-y-1">
@@ -348,7 +348,7 @@ const MethodologieTravailPage = () => {
 
             <div className="bg-gray-50 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Clock className="h-5 w-5 text-pr-orange-dark" />
+                <Clock className="h-5 w-5 text-pr-black" />
                 <h4 className="font-semibold text-gray-800">Finalisation (Fév-Mars)</h4>
               </div>
               <ul className="text-sm text-gray-700 space-y-1">
@@ -361,12 +361,12 @@ const MethodologieTravailPage = () => {
         </section>
 
         {/* Bonus Section */}
-        <section className="bg-orange-50 rounded-lg p-6 border border-orange-200 mb-6">
+        <section className="bg-gray-50 rounded-lg p-6 border border-gray-200 mb-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-              <CheckCircle className="h-5 w-5 text-pr-orange-dark" />
+            <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+              <CheckCircle className="h-5 w-5 text-pr-black" />
             </div>
-            <h2 className="text-2xl font-bold text-orange-800">🎁 Bonus - Méthodes Complémentaires</h2>
+            <h2 className="text-2xl font-bold text-gray-800">🎁 Bonus - Méthodes Complémentaires</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">

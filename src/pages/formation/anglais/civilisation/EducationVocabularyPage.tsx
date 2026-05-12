@@ -202,7 +202,7 @@ const EducationVocabularyPage = () => {
       'Système éducatif (général)': 'bg-carnet-red',
       'Acteurs et structures': 'bg-green-500',
       'Diplômes et examens': 'bg-purple-500',
-      'Politiques éducatives': 'bg-pr-orange',
+      'Politiques éducatives': 'bg-pr-black',
       'Débats pédagogiques': 'bg-red-500',
       'Culture wars : thèmes de société à l\'école': 'bg-emerald-500',
       'Débats identitaires et historiques': 'bg-teal-500',
@@ -407,7 +407,7 @@ const EducationVocabularyPage = () => {
                 <p className="text-sm text-gray-600">Progression</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-pr-orange-dark">
+                <p className="text-2xl font-bold text-pr-black">
                   {currentCardIndex + 1}
                 </p>
                 <p className="text-sm text-gray-600">Carte actuelle</p>

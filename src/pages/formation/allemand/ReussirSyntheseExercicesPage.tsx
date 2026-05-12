@@ -355,8 +355,8 @@ const ReussirSyntheseExercicesPage = () => {
           </Link>
 
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
-              <BookOpen className="h-6 w-6 text-pr-orange-dark" />
+            <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center border border-gray-200">
+              <BookOpen className="h-6 w-6 text-pr-black" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Exercices - Réussir la synthèse</h1>
           </div>
@@ -365,10 +365,10 @@ const ReussirSyntheseExercicesPage = () => {
           </p>
 
           {/* Informations pratiques */}
-          <div className="bg-orange-50 rounded-lg p-4 border border-orange-200 mb-8">
+          <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <Target className="h-5 w-5 text-pr-orange-dark" />
-              <span className="font-medium text-orange-800">Objectif :</span>
+              <Target className="h-5 w-5 text-pr-black" />
+              <span className="font-medium text-gray-800">Objectif :</span>
             </div>
             <p className="text-gray-700">
               Ces flashcards vous aideront à mémoriser les expressions clés pour structurer vos synthèses.
@@ -388,27 +388,27 @@ const ReussirSyntheseExercicesPage = () => {
           <h2 className="text-xl font-semibold text-gray-900 mb-6">📋 Récapitulatif des sections couvertes</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="bg-gray-50 rounded p-4">
-              <h4 className="font-medium text-orange-800 mb-2">I. Introduction</h4>
+              <h4 className="font-medium text-gray-800 mb-2">I. Introduction</h4>
               <p className="text-sm text-gray-600">Présenter les documents et situer le débat</p>
             </div>
             <div className="bg-gray-50 rounded p-4">
-              <h4 className="font-medium text-orange-800 mb-2">II. Comparaison</h4>
+              <h4 className="font-medium text-gray-800 mb-2">II. Comparaison</h4>
               <p className="text-sm text-gray-600">Accords et désaccords entre auteurs</p>
             </div>
             <div className="bg-gray-50 rounded p-4">
-              <h4 className="font-medium text-orange-800 mb-2">III. Structure</h4>
+              <h4 className="font-medium text-gray-800 mb-2">III. Structure</h4>
               <p className="text-sm text-gray-600">Organisation par paragraphes</p>
             </div>
             <div className="bg-gray-50 rounded p-4">
-              <h4 className="font-medium text-orange-800 mb-2">IV. Liaisons</h4>
+              <h4 className="font-medium text-gray-800 mb-2">IV. Liaisons</h4>
               <p className="text-sm text-gray-600">Connecteurs logiques essentiels</p>
             </div>
             <div className="bg-gray-50 rounded p-4">
-              <h4 className="font-medium text-orange-800 mb-2">V. Conclusion</h4>
+              <h4 className="font-medium text-gray-800 mb-2">V. Conclusion</h4>
               <p className="text-sm text-gray-600">Formules de clôture</p>
             </div>
             <div className="bg-gray-50 rounded p-4">
-              <h4 className="font-medium text-orange-800 mb-2">Conseils</h4>
+              <h4 className="font-medium text-gray-800 mb-2">Conseils</h4>
               <p className="text-sm text-gray-600">Méthodologie pratique</p>
             </div>
           </div>
@@ -426,7 +426,7 @@ const ReussirSyntheseExercicesPage = () => {
 
             <Link
               to="/formation/allemand/reussir-synthese"
-              className="inline-flex items-center px-4 py-2 bg-pr-orange-dark hover:bg-pr-orange-dark text-white rounded-md font-medium transition-colors"
+              className="inline-flex items-center px-4 py-2 bg-pr-black-dark hover:bg-pr-black-dark text-white rounded-md font-medium transition-colors"
             >
               <BookOpen className="mr-2 h-4 w-4" />
               Méthodologie complète

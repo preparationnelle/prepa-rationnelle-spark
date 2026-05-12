@@ -100,14 +100,14 @@ Référence : Montaigne, Essais`);
     <div className="space-y-6">
       {/* Header avec explication */}
       <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-        <div className="h-[3px] w-full bg-pr-orange" />
+        <div className="h-[3px] w-full bg-pr-black" />
         <CardHeader className="px-6 pt-5 pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl bg-pr-orange-pale border border-pr-orange-soft flex items-center justify-center">
-              <BookOpen className="h-5 w-5 text-pr-orange-dark" />
+            <div className="w-11 h-11 rounded-xl bg-pr-gray-bg border border-pr-black-soft flex items-center justify-center">
+              <BookOpen className="h-5 w-5 text-pr-black" />
             </div>
             <div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
                 Culture générale
               </div>
               <CardTitle className="font-dm-serif text-2xl text-pr-black leading-none">
@@ -117,8 +117,8 @@ Référence : Montaigne, Essais`);
           </div>
         </CardHeader>
         <CardContent className="px-6 pb-6">
-          <Alert className="bg-pr-orange-pale/60 border-pr-orange-pale rounded-xl">
-            <Info className="h-4 w-4 text-pr-orange-dark" />
+          <Alert className="bg-pr-gray-bg/60 border-pr-black-pale rounded-xl">
+            <Info className="h-4 w-4 text-pr-black" />
             <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
               <strong className="text-pr-black">Comment faire un bon paragraphe ?</strong> Un paragraphe = une idée.
               Commence par une transition avec le précédent, développe ton argument, puis appuie-le avec une référence (1-2 max).
@@ -132,7 +132,7 @@ Référence : Montaigne, Essais`);
       <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
         <CardHeader className="px-6 pt-5 pb-4">
           <CardTitle className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-pr-orange" />
+            <Sparkles className="h-4 w-4 text-pr-black" />
             Informations pour la génération
           </CardTitle>
         </CardHeader>
@@ -141,12 +141,12 @@ Référence : Montaigne, Essais`);
           <div className="space-y-3">
             <div className="flex items-center justify-between gap-3">
               <Label htmlFor="details" className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-orange-pale text-pr-orange-dark text-[11px] font-bold">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-gray-bg text-pr-black text-[11px] font-bold">
                   1
                 </span>
                 Détails du paragraphe à générer
               </Label>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark bg-pr-orange-pale px-2.5 py-1 rounded-full">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-black bg-pr-gray-bg px-2.5 py-1 rounded-full">
                 Requis
               </span>
             </div>
@@ -163,7 +163,7 @@ Contexte : Les paragraphes précédents ont montré que l'homme partage de nombr
 Référence : Montaigne, Essais`}
               value={details}
               onChange={(e) => setDetails(e.target.value)}
-              className="min-h-[200px] border-pr-gray-light bg-white focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 text-pr-black placeholder:text-pr-gray-mid rounded-xl resize-y text-[14px] leading-relaxed p-4 transition-colors"
+              className="min-h-[200px] border-pr-gray-light bg-white focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 text-pr-black placeholder:text-pr-gray-mid rounded-xl resize-y text-[14px] leading-relaxed p-4 transition-colors"
             />
             <p className="text-[13px] text-pr-gray-mid">
               Plus vous donnez de détails (sujet, argument, contexte, références), mieux sera le paragraphe généré.
@@ -180,7 +180,7 @@ Référence : Montaigne, Essais`}
                 handleGenerate();
               }}
               disabled={!details.trim() || loading}
-              className="flex items-center justify-center gap-2 flex-1 bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none h-12 text-[15px]"
+              className="flex items-center justify-center gap-2 flex-1 bg-pr-black hover:bg-pr-black-dark text-white font-semibold rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none h-12 text-[15px]"
             >
               {loading ? (
                 <>
@@ -198,7 +198,7 @@ Référence : Montaigne, Essais`}
             <Button
               type="button"
               onClick={loadExample}
-              className="flex items-center gap-2 bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-xl h-12 px-4 font-medium transition-colors"
+              className="flex items-center gap-2 bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-4 font-medium transition-colors"
               disabled={loading}
             >
               <Info className="h-4 w-4" />
@@ -211,15 +211,15 @@ Référence : Montaigne, Essais`}
       {/* Résultat */}
       {paragraph && (
         <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)] animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="h-[3px] w-full bg-pr-orange" />
+          <div className="h-[3px] w-full bg-pr-black" />
           <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-white border border-pr-orange-soft flex items-center justify-center">
-                  <BookOpen className="h-5 w-5 text-pr-orange-dark" />
+                <div className="w-10 h-10 rounded-xl bg-white border border-pr-black-soft flex items-center justify-center">
+                  <BookOpen className="h-5 w-5 text-pr-black" />
                 </div>
                 <div>
-                  <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
                     Paragraphe généré
                   </div>
                   <CardTitle className="font-dm-serif text-xl text-pr-black leading-none">
@@ -236,7 +236,7 @@ Référence : Montaigne, Essais`}
                 <Button
                   onClick={handleCopy}
                   size="sm"
-                  className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-lg flex items-center gap-2"
+                  className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg flex items-center gap-2"
                 >
                   {copied ? (
                     <>
@@ -262,7 +262,7 @@ Référence : Montaigne, Essais`}
 
             {/* Conseils */}
             <Alert className="bg-pr-gray-bg border-pr-gray-light rounded-xl">
-              <AlertCircle className="h-4 w-4 text-pr-orange" />
+              <AlertCircle className="h-4 w-4 text-pr-black" />
               <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
                 <strong className="text-pr-black">Conseils :</strong> Vérifie que le paragraphe commence bien par une transition,
                 développe clairement l'argument, et utilise la référence de manière pertinente.

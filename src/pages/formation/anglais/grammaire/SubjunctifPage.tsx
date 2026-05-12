@@ -45,7 +45,7 @@ const SubjunctifPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+            <div className="p-3 rounded-lg bg-pr-black-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Subjunctif et Structures Subjectives
@@ -56,14 +56,14 @@ const SubjunctifPage = () => {
         </div>
 
         {/* Introduction */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale">
+        <Card className="mb-8 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-pr-black-pale">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <HelpCircle className="h-6 w-6" />
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark space-y-3">
+          <CardContent className="text-pr-black space-y-3">
             <p>Le <span className="font-semibold">subjunctif mandatif</span> s'emploie après des verbes/expressions d'exigence, recommandation ou nécessité; le <span className="font-semibold">subjunctif hypothétique</span> apparaît surtout avec <span className="font-semibold">If I were...</span> et certaines formules figées.</p>
           </CardContent>
         </Card>
@@ -77,17 +77,17 @@ const SubjunctifPage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">Structure</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">that + sujet + base</span> (sans -s, y compris à la 3e personne) : It is essential that he <span className="text-pr-orange-dark font-semibold">be</span> on time.</li>
-                <li>Négation : that he <span className="text-pr-orange-dark font-semibold">not be</span> late.</li>
-                <li>Passif : that the report <span className="text-pr-orange-dark font-semibold">be completed</span> by Friday.</li>
+                <li><span className="text-pr-black font-semibold">that + sujet + base</span> (sans -s, y compris à la 3e personne) : It is essential that he <span className="text-pr-black font-semibold">be</span> on time.</li>
+                <li>Négation : that he <span className="text-pr-black font-semibold">not be</span> late.</li>
+                <li>Passif : that the report <span className="text-pr-black font-semibold">be completed</span> by Friday.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Déclencheurs fréquents</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>Verbes : <span className="text-pr-orange-dark font-semibold">demand, require, insist, suggest, recommend, propose</span>.</li>
-                <li>Expressions : <span className="text-pr-orange-dark font-semibold">it is essential/important/necessary/urgent</span> that...</li>
-                <li>Variante (surtout BrE) : <span className="text-pr-orange-dark font-semibold">should</span> + base : It is essential that he <span className="text-pr-orange-dark font-semibold">should be</span> on time.</li>
+                <li>Verbes : <span className="text-pr-black font-semibold">demand, require, insist, suggest, recommend, propose</span>.</li>
+                <li>Expressions : <span className="text-pr-black font-semibold">it is essential/important/necessary/urgent</span> that...</li>
+                <li>Variante (surtout BrE) : <span className="text-pr-black font-semibold">should</span> + base : It is essential that he <span className="text-pr-black font-semibold">should be</span> on time.</li>
               </ul>
             </section>
           </CardContent>
@@ -102,16 +102,16 @@ const SubjunctifPage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">Forme et emploi</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">If I were</span> you, I would... (registre standard soigné; If I was courant mais moins soutenu)</li>
-                <li>Souhaits/irréel : <span className="text-pr-orange-dark font-semibold">I wish</span> I <span className="text-pr-orange-dark font-semibold">were</span> taller. / <span className="text-pr-orange-dark font-semibold">If only</span> he <span className="text-pr-orange-dark font-semibold">were</span> here.</li>
+                <li><span className="text-pr-black font-semibold">If I were</span> you, I would... (registre standard soigné; If I was courant mais moins soutenu)</li>
+                <li>Souhaits/irréel : <span className="text-pr-black font-semibold">I wish</span> I <span className="text-pr-black font-semibold">were</span> taller. / <span className="text-pr-black font-semibold">If only</span> he <span className="text-pr-black font-semibold">were</span> here.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Formules figées</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">God save</span> the King/Queen.</li>
-                <li><span className="text-pr-orange-dark font-semibold">Long live</span> the King.</li>
-                <li><span className="text-pr-orange-dark font-semibold">Be that as it may</span>, ... / <span className="text-pr-orange-dark font-semibold">So be it</span>.</li>
+                <li><span className="text-pr-black font-semibold">God save</span> the King/Queen.</li>
+                <li><span className="text-pr-black font-semibold">Long live</span> the King.</li>
+                <li><span className="text-pr-black font-semibold">Be that as it may</span>, ... / <span className="text-pr-black font-semibold">So be it</span>.</li>
               </ul>
             </section>
           </CardContent>
@@ -125,10 +125,10 @@ const SubjunctifPage = () => {
           <CardContent className="space-y-6">
             <section>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">It is + adj + that + subjunctif</span> : It is crucial that the data <span className="text-pr-orange-dark font-semibold">be</span> accurate.</li>
-                <li><span className="text-pr-orange-dark font-semibold">It is time (that) + prétérit</span> : It is time we <span className="text-pr-orange-dark font-semibold">left</span>.</li>
-                <li><span className="text-pr-orange-dark font-semibold">I would rather + prétérit</span> : I would rather you <span className="text-pr-orange-dark font-semibold">did</span> it now.</li>
-                <li><span className="text-pr-orange-dark font-semibold">Wish / If only</span> : present irreality → past simple; past regret → past perfect.</li>
+                <li><span className="text-pr-black font-semibold">It is + adj + that + subjunctif</span> : It is crucial that the data <span className="text-pr-black font-semibold">be</span> accurate.</li>
+                <li><span className="text-pr-black font-semibold">It is time (that) + prétérit</span> : It is time we <span className="text-pr-black font-semibold">left</span>.</li>
+                <li><span className="text-pr-black font-semibold">I would rather + prétérit</span> : I would rather you <span className="text-pr-black font-semibold">did</span> it now.</li>
+                <li><span className="text-pr-black font-semibold">Wish / If only</span> : present irreality → past simple; past regret → past perfect.</li>
               </ul>
             </section>
           </CardContent>
@@ -138,27 +138,27 @@ const SubjunctifPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-pr-orange-dark" />
+              <Table className="h-6 w-6 text-pr-black" />
               4. Tableaux Récapitulatifs
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Structure</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Sens</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Structure</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Sens</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">that + base</td><td className="border px-3 py-2">They insist that he <span className="font-semibold">be</span> present.</td><td className="border px-3 py-2">Exigence</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">that + not + base</td><td className="border px-3 py-2">They suggested that he <span className="font-semibold">not speak</span>.</td><td className="border px-3 py-2">Interdiction</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">passif</td><td className="border px-3 py-2">It is vital that the plan <span className="font-semibold">be approved</span>.</td><td className="border px-3 py-2">Résultat</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">If I were</td><td className="border px-3 py-2">If I were you, I would call.</td><td className="border px-3 py-2">Hypothèse/conseil</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Wish (présent)</td><td className="border px-3 py-2">I wish I <span className="font-semibold">knew</span>.</td><td className="border px-3 py-2">Regret présent</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Wish (passé)</td><td className="border px-3 py-2">I wish I <span className="font-semibold">had studied</span>.</td><td className="border px-3 py-2">Regret passé</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">that + base</td><td className="border px-3 py-2">They insist that he <span className="font-semibold">be</span> present.</td><td className="border px-3 py-2">Exigence</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">that + not + base</td><td className="border px-3 py-2">They suggested that he <span className="font-semibold">not speak</span>.</td><td className="border px-3 py-2">Interdiction</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">passif</td><td className="border px-3 py-2">It is vital that the plan <span className="font-semibold">be approved</span>.</td><td className="border px-3 py-2">Résultat</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">If I were</td><td className="border px-3 py-2">If I were you, I would call.</td><td className="border px-3 py-2">Hypothèse/conseil</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Wish (présent)</td><td className="border px-3 py-2">I wish I <span className="font-semibold">knew</span>.</td><td className="border px-3 py-2">Regret présent</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Wish (passé)</td><td className="border px-3 py-2">I wish I <span className="font-semibold">had studied</span>.</td><td className="border px-3 py-2">Regret passé</td></tr>
                 </tbody>
               </table>
             </div>
@@ -172,27 +172,27 @@ const SubjunctifPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Ajouter -s à la 3e personne au subjunctif (❌ It is vital he <span className="line-through">comes</span> → ✅ he <span className="text-pr-orange-dark font-semibold">come</span>).</li>
-              <li>Confondre <span className="text-pr-orange-dark font-semibold">were/was</span> dans les hypothèses (registre soutenu : If I <span className="text-pr-orange-dark font-semibold">were</span>...).</li>
-              <li>Oublier la structure <span className="text-pr-orange-dark font-semibold">that + base</span> après suggest/insist/recommend.</li>
-              <li>Employer <span className="text-pr-orange-dark font-semibold">will</span> après wish/if only (préférer prétérit/past perfect).</li>
+              <li>Ajouter -s à la 3e personne au subjunctif (❌ It is vital he <span className="line-through">comes</span> → ✅ he <span className="text-pr-black font-semibold">come</span>).</li>
+              <li>Confondre <span className="text-pr-black font-semibold">were/was</span> dans les hypothèses (registre soutenu : If I <span className="text-pr-black font-semibold">were</span>...).</li>
+              <li>Oublier la structure <span className="text-pr-black font-semibold">that + base</span> après suggest/insist/recommend.</li>
+              <li>Employer <span className="text-pr-black font-semibold">will</span> après wish/if only (préférer prétérit/past perfect).</li>
             </ul>
           </CardContent>
         </Card>
 
         {/* CTA exercices */}
-        <Card className="mt-2 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mt-2 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-amber-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <Target className="h-6 w-6" />
               Prêt à mettre en pratique ?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-pr-orange-dark mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
+            <p className="text-lg text-pr-black mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/subjunctif/exercices">
-                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-black-dark hover:bg-pr-black-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

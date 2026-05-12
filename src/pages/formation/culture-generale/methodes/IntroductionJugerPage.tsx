@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -50,13 +50,13 @@ const IntroductionJugerPage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Méthode
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               Rédiger l&apos;introduction : méthode &amp; exemple
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Architecture en 5 temps et modèle appliqué au sujet « <em>Qu&apos;est-ce qui fait l&apos;humanité ?</em> »
             </p>
@@ -64,11 +64,11 @@ const IntroductionJugerPage: React.FC = () => {
 
           <PRCard number="01" title="La structure formelle de l'introduction">
             <ul className="space-y-2 text-sm md:text-base">
-              <li><span className="text-pr-orange mr-2">→</span><strong>Accroche</strong> : citation, fait historique, référence culturelle qui donne de la profondeur au sujet.</li>
-              <li><span className="text-pr-orange mr-2">→</span><strong>Analyse des termes</strong> : définir thème et mots clés (synonymes, antonymes, polysémie, connotations).</li>
-              <li><span className="text-pr-orange mr-2">→</span><strong>Annonce du paradoxe</strong> : mettre au jour la tension qui rend la réflexion nécessaire.</li>
-              <li><span className="text-pr-orange mr-2">→</span><strong>Problématique</strong> : transformer le paradoxe en question directrice.</li>
-              <li><span className="text-pr-orange mr-2">→</span><strong>Annonce du plan</strong> : présenter en une phrase la structure en trois parties.</li>
+              <li><span className="text-pr-black mr-2">→</span><strong>Accroche</strong> : citation, fait historique, référence culturelle qui donne de la profondeur au sujet.</li>
+              <li><span className="text-pr-black mr-2">→</span><strong>Analyse des termes</strong> : définir thème et mots clés (synonymes, antonymes, polysémie, connotations).</li>
+              <li><span className="text-pr-black mr-2">→</span><strong>Annonce du paradoxe</strong> : mettre au jour la tension qui rend la réflexion nécessaire.</li>
+              <li><span className="text-pr-black mr-2">→</span><strong>Problématique</strong> : transformer le paradoxe en question directrice.</li>
+              <li><span className="text-pr-black mr-2">→</span><strong>Annonce du plan</strong> : présenter en une phrase la structure en trois parties.</li>
             </ul>
           </PRCard>
 
@@ -77,9 +77,9 @@ const IntroductionJugerPage: React.FC = () => {
               {steps.map((s) => (
                 <div
                   key={s.title}
-                  className={`rounded-lg p-4 ${s.highlight ? 'bg-pr-orange-pale' : 'bg-pr-gray-bg'}`}
+                  className={`rounded-lg p-4 ${s.highlight ? 'bg-pr-gray-bg' : 'bg-pr-gray-bg'}`}
                 >
-                  <h3 className={`font-dm-serif text-lg mb-2 ${s.highlight ? 'text-pr-orange-dark' : 'text-pr-black'}`}>
+                  <h3 className={`font-dm-serif text-lg mb-2 ${s.highlight ? 'text-pr-black' : 'text-pr-black'}`}>
                     {s.title}
                   </h3>
                   <p className="leading-relaxed">{s.body}</p>
@@ -90,7 +90,7 @@ const IntroductionJugerPage: React.FC = () => {
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/methodes">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des méthodes
               </Button>
             </Link>

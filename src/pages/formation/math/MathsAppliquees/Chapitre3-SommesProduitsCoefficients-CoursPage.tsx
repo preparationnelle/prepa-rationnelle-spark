@@ -18,17 +18,17 @@ const Chapitre3SommesProduitsCoefficientsCoursPage = () => {
       level="Intermédiaire"
     >
       {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-pr-orange-pale">
+      <Card className="border-0 shadow-lg bg-pr-gray-bg">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-sommes-produits-coefficients-binomiaux-exercices">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>
             </Link>
             <Link to="/formation/maths-sommes-produits-coefficients-binomiaux-quiz">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <Target className="mr-2 h-4 w-4" />
                 Quiz
               </Button>
@@ -38,7 +38,7 @@ const Chapitre3SommesProduitsCoefficientsCoursPage = () => {
       </Card>
 
       {/* Présentation générale */}
-      <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60">
+      <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
             <Code className="h-6 w-6" />
@@ -76,7 +76,7 @@ const Chapitre3SommesProduitsCoefficientsCoursPage = () => {
       </Card>
 
       {/* Section 1: Calcul de sommes en Python */}
-      <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60">
+      <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
             <Code className="h-6 w-6" />
@@ -458,7 +458,7 @@ print(f"NumPy : {np.sum(raison ** h)}")  # 2047`}</pre>
       </Card>
 
       {/* Section 2: Calcul de produits en Python */}
-      <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60">
+      <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
             <Code className="h-6 w-6" />
@@ -516,7 +516,7 @@ print(f"Après k=4 : P = {P}")  # P = 24
                 <strong> Explication :</strong> À chaque étape, on <strong>multiplie</strong> P par k. 
                 On commence toujours avec <span className="font-mono">P = 1</span> pour un produit (jamais 0 !).
               </p>
-              <p className="mt-3 text-sm text-carnet-red bg-pr-orange-pale p-2 rounded">
+              <p className="mt-3 text-sm text-carnet-red bg-pr-gray-bg p-2 rounded">
                 <strong>Attention :</strong> Si vous initialisez avec <span className="font-mono">P = 0</span>,
                 le résultat sera toujours 0 car 0 × n'importe quoi = 0 !
               </p>
@@ -585,12 +585,12 @@ for k in range(1, n+1):
 print(f"Produit : {produit}")  # 120`}</pre>
               </div>
               <div className="mt-3 grid grid-cols-2 gap-4 text-sm">
-                <div className="bg-pr-orange-pale p-2 rounded">
+                <div className="bg-pr-gray-bg p-2 rounded">
                   <p className="font-semibold">Somme</p>
                   <p className="font-mono">S = 0</p>
                   <p className="font-mono">S += k</p>
                 </div>
-                <div className="bg-pr-orange-pale p-2 rounded">
+                <div className="bg-pr-gray-bg p-2 rounded">
                   <p className="font-semibold">Produit</p>
                   <p className="font-mono">P = 1</p>
                   <p className="font-mono">P *= k</p>
@@ -662,7 +662,7 @@ print(f"P3 = {P3}")  # 6.0`}</pre>
       </Card>
 
       {/* Section 3: Coefficients binomiaux en Python */}
-      <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60">
+      <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
             <Code className="h-6 w-6" />
@@ -1056,7 +1056,7 @@ print(comb(100, 50))  # Fonction built-in (recommandée)`}</pre>
               </Button>
             </Link>
             <Link to="/formation/maths-sommes-produits-coefficients-binomiaux-exercices">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>

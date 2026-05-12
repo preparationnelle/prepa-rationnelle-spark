@@ -45,7 +45,7 @@ const QuantifieursPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+            <div className="p-3 rounded-lg bg-pr-black-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Quantifieurs en Anglais
@@ -56,14 +56,14 @@ const QuantifieursPage = () => {
         </div>
 
         {/* Introduction */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale">
+        <Card className="mb-8 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-pr-black-pale">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <HelpCircle className="h-6 w-6" />
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark space-y-3">
+          <CardContent className="text-pr-black space-y-3">
             <p>Les quantifieurs expriment une quantité ou une proportion. Leur choix dépend du caractère <span className="font-semibold">comptable</span> ou <span className="font-semibold">non comptable</span> du nom, de l’affirmation/négation, et du registre (formel/familier).</p>
           </CardContent>
         </Card>
@@ -75,8 +75,8 @@ const QuantifieursPage = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <ul className="list-disc pl-6 space-y-1">
-              <li><span className="text-pr-orange-dark font-semibold">Comptables (pluriel)</span> : apples, books, ideas…</li>
-              <li><span className="text-pr-orange-dark font-semibold">Non comptables</span> : water, time, information, advice…</li>
+              <li><span className="text-pr-black font-semibold">Comptables (pluriel)</span> : apples, books, ideas…</li>
+              <li><span className="text-pr-black font-semibold">Non comptables</span> : water, time, information, advice…</li>
             </ul>
           </CardContent>
         </Card>
@@ -85,29 +85,29 @@ const QuantifieursPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-pr-orange-dark" />
+              <Table className="h-6 w-6 text-pr-black" />
               2. Principaux quantifieurs
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Quantifieur</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Type de nom</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Contexte</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Quantifieur</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Type de nom</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Contexte</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Exemple</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">many</td><td className="border px-3 py-2">comptables (pl.)</td><td className="border px-3 py-2">général</td><td className="border px-3 py-2">Many students attended.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">much</td><td className="border px-3 py-2">non comptables</td><td className="border px-3 py-2">nég./interrog.; formel en affirmatif</td><td className="border px-3 py-2">I don’t have much time.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">a lot of / lots of</td><td className="border px-3 py-2">comptables & non comptables</td><td className="border px-3 py-2">affirmatif (familier)</td><td className="border px-3 py-2">We have a lot of work.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">plenty of</td><td className="border px-3 py-2">les deux</td><td className="border px-3 py-2">abondance suffisante</td><td className="border px-3 py-2">There is plenty of space.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">few / a few</td><td className="border px-3 py-2">comptables (pl.)</td><td className="border px-3 py-2">peu / quelques</td><td className="border px-3 py-2">Few people came. / A few people came.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">little / a little</td><td className="border px-3 py-2">non comptables</td><td className="border px-3 py-2">peu / un peu</td><td className="border px-3 py-2">Little time left. / A little time left.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">some / any</td><td className="border px-3 py-2">les deux</td><td className="border px-3 py-2">some: affirmatif/offre/demande; any: ? / nég.</td><td className="border px-3 py-2">Some tea? / Do you have any questions?</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">many</td><td className="border px-3 py-2">comptables (pl.)</td><td className="border px-3 py-2">général</td><td className="border px-3 py-2">Many students attended.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">much</td><td className="border px-3 py-2">non comptables</td><td className="border px-3 py-2">nég./interrog.; formel en affirmatif</td><td className="border px-3 py-2">I don’t have much time.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">a lot of / lots of</td><td className="border px-3 py-2">comptables & non comptables</td><td className="border px-3 py-2">affirmatif (familier)</td><td className="border px-3 py-2">We have a lot of work.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">plenty of</td><td className="border px-3 py-2">les deux</td><td className="border px-3 py-2">abondance suffisante</td><td className="border px-3 py-2">There is plenty of space.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">few / a few</td><td className="border px-3 py-2">comptables (pl.)</td><td className="border px-3 py-2">peu / quelques</td><td className="border px-3 py-2">Few people came. / A few people came.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">little / a little</td><td className="border px-3 py-2">non comptables</td><td className="border px-3 py-2">peu / un peu</td><td className="border px-3 py-2">Little time left. / A little time left.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">some / any</td><td className="border px-3 py-2">les deux</td><td className="border px-3 py-2">some: affirmatif/offre/demande; any: ? / nég.</td><td className="border px-3 py-2">Some tea? / Do you have any questions?</td></tr>
                 </tbody>
               </table>
             </div>
@@ -121,7 +121,7 @@ const QuantifieursPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li><span className="text-pr-orange-dark font-semibold">a great deal of</span> (non comptable, formel), <span className="text-pr-orange-dark font-semibold">a large number of</span> (comptable), <span className="text-pr-orange-dark font-semibold">a large amount of</span> (non comptable).</li>
+              <li><span className="text-pr-black font-semibold">a great deal of</span> (non comptable, formel), <span className="text-pr-black font-semibold">a large number of</span> (comptable), <span className="text-pr-black font-semibold">a large amount of</span> (non comptable).</li>
               <li>Registre soutenu: much/many en affirmatif; neutre/familier: a lot of/lots of.</li>
             </ul>
           </CardContent>
@@ -134,8 +134,8 @@ const QuantifieursPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Confondre <span className="text-pr-orange-dark font-semibold">much</span>/<span className="text-pr-orange-dark font-semibold">many</span> (type de nom).</li>
-              <li>Oublier l’usage de <span className="text-pr-orange-dark font-semibold">any</span> en questions/négations.</li>
+              <li>Confondre <span className="text-pr-black font-semibold">much</span>/<span className="text-pr-black font-semibold">many</span> (type de nom).</li>
+              <li>Oublier l’usage de <span className="text-pr-black font-semibold">any</span> en questions/négations.</li>
               <li>Employer few/little vs a few/a little (sens positif vs négatif).</li>
               <li>Compter des noms non comptables (informations, meubles → pieces of information, furniture).</li>
             </ul>
@@ -143,18 +143,18 @@ const QuantifieursPage = () => {
         </Card>
 
         {/* CTA exercices */}
-        <Card className="mt-2 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mt-2 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-amber-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <Target className="h-6 w-6" />
               Prêt à mettre en pratique ?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-pr-orange-dark mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
+            <p className="text-lg text-pr-black mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/quantifieurs/exercices">
-                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-black-dark hover:bg-pr-black-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

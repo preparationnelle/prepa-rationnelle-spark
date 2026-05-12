@@ -61,7 +61,7 @@ const TransportsPage = () => {
       <div className="container mx-auto px-4 py-8">
 
         {/* Header */}
-        <Card className="mb-8 bg-gradient-to-r from-purple-600 to-pr-orange text-white">
+        <Card className="mb-8 bg-gradient-to-r from-purple-600 to-pr-black text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Globe className="h-8 w-8" />
@@ -112,7 +112,7 @@ const TransportsPage = () => {
                   atteignant 11 milliards de tonnes transportées en 2024. L'innovation du conteneur depuis 1956 
                   a révolutionné le transport, avec des navires atteignant 24 000 TEU et une vitesse de 25 nœuds.
                 </p>
-                <div className="bg-pr-orange-pale p-3 rounded-lg">
+                <div className="bg-pr-gray-bg p-3 rounded-lg">
                   <p className="text-sm text-carnet-red-deep">
                     <strong>L. Carroué :</strong> <em>"Le transport du conteneur assure sécurité, fiabilité, vitesse et intermodalité"</em>
                   </p>
@@ -121,7 +121,7 @@ const TransportsPage = () => {
               
               <div className="space-y-3">
                 {maritimeStats.map((stat, index) => (
-                  <div key={index} className="bg-pr-orange-pale p-3 rounded-lg border border-carnet-red/30">
+                  <div key={index} className="bg-pr-gray-bg p-3 rounded-lg border border-carnet-red/30">
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-carnet-red-deep">{stat.label}</span>
                       <span className="font-bold text-carnet-red">{stat.value}</span>
@@ -220,7 +220,7 @@ const TransportsPage = () => {
             <CardContent>
               <div className="space-y-3">
                 {topAirports.map((airport, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
+                  <div key={index} className="flex items-center justify-between p-3 bg-pr-gray-bg rounded-lg border border-carnet-red/30">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 bg-carnet-red text-white rounded-full flex items-center justify-center text-sm font-bold">
                         {airport.rank}
@@ -266,7 +266,7 @@ const TransportsPage = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-4">
-                    <div className="bg-pr-orange-pale p-4 rounded-lg">
+                    <div className="bg-pr-gray-bg p-4 rounded-lg">
                       <h4 className="font-semibold text-carnet-red-deep mb-2">Concentration géographique</h4>
                       <ul className="list-disc list-inside text-sm text-carnet-red space-y-1">
                         <li><strong>Asie dominante :</strong> 8 des 10 premiers ports conteneurs (Chine en tête)</li>
@@ -305,9 +305,9 @@ const TransportsPage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-orange-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-orange-800 mb-2">Évolutions récentes</h4>
-                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-semibold text-gray-800 mb-2">Évolutions récentes</h4>
+                      <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Low-cost asiatique :</strong> Expansion rapide (AirAsia, Cebu Pacific)</li>
                         <li><strong>Hubs du Golfe :</strong> Dubaï, Doha, Abu Dhabi comme plateformes intercontinentales</li>
                         <li><strong>Défis environnementaux :</strong> Objectifs zéro carbone d'ici 2050</li>
@@ -337,12 +337,12 @@ const TransportsPage = () => {
                       </div>
                     </div>
 
-                    <div className="border-l-4 border-orange-400 bg-orange-50 p-4 rounded-r-lg">
-                      <h4 className="font-semibold text-orange-800 mb-3">
+                    <div className="border-l-4 border-orange-400 bg-gray-50 p-4 rounded-r-lg">
+                      <h4 className="font-semibold text-gray-800 mb-3">
                         <Globe className="inline h-4 w-4 mr-2" />
                         Conflits en Mer Rouge (2024)
                       </h4>
-                      <div className="text-sm text-pr-orange-dark space-y-2">
+                      <div className="text-sm text-pr-black space-y-2">
                         <p><strong>Context :</strong> Tensions géopolitiques affectant trafic Suez-Mer Rouge</p>
                         <p><strong>Détournements :</strong> Route du Cap, allongement voyages +40%</p>
                         <p><strong>Coûts :</strong> Hausse frets, assurances, délais livraison</p>
@@ -350,7 +350,7 @@ const TransportsPage = () => {
                       </div>
                     </div>
 
-                    <div className="border-l-4 border-carnet-red/40 bg-pr-orange-pale p-4 rounded-r-lg">
+                    <div className="border-l-4 border-carnet-red/40 bg-pr-gray-bg p-4 rounded-r-lg">
                       <h4 className="font-semibold text-carnet-red-deep mb-3">
                         <Plane className="inline h-4 w-4 mr-2" />
                         Résilience et adaptation

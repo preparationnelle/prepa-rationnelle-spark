@@ -276,7 +276,7 @@ const MethodesSociologiquesPage = () => {
               </h2>
 
               <div className="space-y-4">
-                <div className="border-l-4 border-orange-200 pl-4">
+                <div className="border-l-4 border-gray-200 pl-4">
                   <h3 className="font-semibold text-carnet-red mb-2">Les méthodes mixtes (quantitatif + qualitatif)</h3>
                   <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Combinaison des approches quantitative et qualitative pour bénéficier
@@ -290,7 +290,7 @@ const MethodesSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="border-l-4 border-orange-200 pl-4">
+                <div className="border-l-4 border-gray-200 pl-4">
                   <h3 className="font-semibold text-carnet-red mb-2">La méthode comparative</h3>
                   <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Comparaison de sociétés, groupes ou phénomènes sociaux différents
@@ -304,7 +304,7 @@ const MethodesSociologiquesPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-orange-50 rounded-lg p-4">
+                <div className="bg-gray-50 rounded-lg p-4">
                   <h4 className="font-semibold text-carnet-red mb-2">La recherche-action</h4>
                   <p className="font-instrument text-[13px] text-carnet-ink-soft leading-[1.55]">
                     Approche participative où le chercheur intervient directement dans la situation

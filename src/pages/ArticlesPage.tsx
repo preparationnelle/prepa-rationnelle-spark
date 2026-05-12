@@ -68,31 +68,31 @@ const ArticlesPage = () => {
             {/* Articles Grid */}
             <div className="space-y-8">
               {articles.map((article) => (
-                <Card key={article.id} className={`bg-white border-2 border-carnet-red/20 hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-pr-orange hover:bg-pr-orange-pale transition-all duration-300 group ${article.featured ? 'ring-2 ring-blue-200' : ''}`}>
+                <Card key={article.id} className={`bg-white border-2 border-carnet-red/20 hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-pr-black hover:bg-pr-gray-bg transition-all duration-300 group ${article.featured ? 'ring-2 ring-blue-200' : ''}`}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         {article.featured && (
-                          <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-carnet-red/10 text-carnet-red group-hover:bg-orange-100 group-hover:text-pr-orange-dark transition-colors duration-300 mb-3">
+                          <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-carnet-red/10 text-carnet-red group-hover:bg-gray-100 group-hover:text-pr-black transition-colors duration-300 mb-3">
                             Article vedette
                           </div>
                         )}
-                        <CardTitle className="text-2xl mb-2 text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">
+                        <CardTitle className="text-2xl mb-2 text-carnet-red group-hover:text-pr-black transition-colors duration-300">
                           <Link to={article.link}>
                             {article.title}
                           </Link>
                         </CardTitle>
                         {article.subtitle && (
-                          <p className="text-lg text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300 font-medium mb-3">
+                          <p className="text-lg text-carnet-red group-hover:text-pr-black transition-colors duration-300 font-medium mb-3">
                             {article.subtitle}
                           </p>
                         )}
-                        <p className="text-gray-600 group-hover:text-pr-orange-dark transition-colors duration-300 mb-4">
+                        <p className="text-gray-600 group-hover:text-pr-black transition-colors duration-300 mb-4">
                           {article.description}
                         </p>
 
                         {/* Meta information */}
-                        <div className="flex items-center gap-4 text-sm text-carnet-red group-hover:text-pr-orange transition-colors duration-300 mb-4">
+                        <div className="flex items-center gap-4 text-sm text-carnet-red group-hover:text-pr-black transition-colors duration-300 mb-4">
                           <div className="flex items-center gap-1">
                             <User className="h-4 w-4" />
                             <span>{article.author}</span>
@@ -111,7 +111,7 @@ const ArticlesPage = () => {
                   </CardHeader>
                   <CardContent className="pt-0">
                     <Link to={article.link}>
-                      <Button className="bg-carnet-red hover:bg-pr-orange-dark text-white border-0 group-inner transition-all duration-300">
+                      <Button className="bg-carnet-red hover:bg-pr-black-dark text-white border-0 group-inner transition-all duration-300">
                         Lire l'article
                         <ArrowRight className="ml-2 h-4 w-4 group-inner-hover:translate-x-1 transition-transform" />
                       </Button>
@@ -123,25 +123,25 @@ const ArticlesPage = () => {
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <Card className="bg-gradient-to-br from-carnet-paper-2 to-orange-50 border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-pr-orange hover:bg-gradient-to-br hover:from-orange-50 hover:to-pr-orange-pale transition-all duration-300 group">
+              <Card className="bg-gradient-to-br from-carnet-paper-2 to-orange-50 border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-pr-black hover:bg-gradient-to-br hover:from-orange-50 hover:to-pr-black-pale transition-all duration-300 group">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                    <FileText className="h-8 w-8 text-carnet-red group-hover:text-pr-orange transition-colors duration-300" />
+                  <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+                    <FileText className="h-8 w-8 text-carnet-red group-hover:text-pr-black transition-colors duration-300" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">
+                  <h3 className="text-2xl font-bold mb-4 text-carnet-red group-hover:text-pr-black transition-colors duration-300">
                     Besoin de conseils personnalisés ?
                   </h3>
-                  <p className="text-gray-600 group-hover:text-pr-orange-dark transition-colors duration-300 mb-6">
+                  <p className="text-gray-600 group-hover:text-pr-black transition-colors duration-300 mb-6">
                     Nos experts sont là pour vous accompagner dans votre réussite.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link to="/contact">
-                      <Button size="lg" className="bg-carnet-red hover:bg-pr-orange-dark text-white transition-all duration-300">
+                      <Button size="lg" className="bg-carnet-red hover:bg-pr-black-dark text-white transition-all duration-300">
                         Nous contacter
                       </Button>
                     </Link>
                     <Link to="/coaching">
-                      <Button variant="outline" size="lg" className="border-carnet-red text-carnet-red hover:border-pr-orange-dark hover:text-pr-orange hover:bg-pr-orange-pale transition-all duration-300">
+                      <Button variant="outline" size="lg" className="border-carnet-red text-carnet-red hover:border-pr-black-dark hover:text-pr-black hover:bg-pr-gray-bg transition-all duration-300">
                         Coaching individuel
                       </Button>
                     </Link>

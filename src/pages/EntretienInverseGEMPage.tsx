@@ -150,10 +150,10 @@ const EntretienInverseGEMPage = () => {
           {careerQs.map((g) => (
             <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
               <h4 className="font-dm-serif text-lg text-pr-black mb-3 flex items-center gap-2">
-                <g.icon className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.6} />
+                <g.icon className="w-5 h-5 text-pr-black" strokeWidth={1.6} />
                 {g.t}
               </h4>
-              <div className="h-px w-8 bg-pr-orange mb-4" />
+              <div className="h-px w-8 bg-pr-black mb-4" />
               <ul className="space-y-2 text-sm text-pr-gray-dark">
                 {g.l.map((q) => <li key={q}>— {q}</li>)}
               </ul>
@@ -168,7 +168,7 @@ const EntretienInverseGEMPage = () => {
           {currentExp.map((g) => (
             <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
               <h4 className="font-dm-serif text-lg text-pr-black mb-2">{g.t}</h4>
-              <div className="h-px w-8 bg-pr-orange mb-4" />
+              <div className="h-px w-8 bg-pr-black mb-4" />
               <ul className="space-y-2 text-sm text-pr-gray-dark">
                 {g.l.map((q) => <li key={q}>— {q}</li>)}
               </ul>
@@ -183,7 +183,7 @@ const EntretienInverseGEMPage = () => {
           {reflection.map((g) => (
             <div key={g.t} className="bg-white border border-pr-gray-light rounded-lg p-6">
               <h4 className="font-dm-serif text-lg text-pr-black mb-2">{g.t}</h4>
-              <div className="h-px w-8 bg-pr-orange mb-4" />
+              <div className="h-px w-8 bg-pr-black mb-4" />
               <ul className="space-y-2 text-sm text-pr-gray-dark">
                 {g.l.map((q) => <li key={q}>— {q}</li>)}
               </ul>
@@ -196,7 +196,7 @@ const EntretienInverseGEMPage = () => {
       <MethodSection label="Section 04" title="Questions spécifiques selon le profil du juré" icon={Users}>
         <div className="grid md:grid-cols-3 gap-5">
           {profiles.map((g) => (
-            <div key={g.t} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-6">
+            <div key={g.t} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-black rounded-r-lg p-6">
               <h4 className="font-dm-serif text-lg text-pr-black mb-4">{g.t}</h4>
               <ul className="space-y-2 text-sm text-pr-gray-dark">
                 {g.l.map((q) => <li key={q}>— {q}</li>)}
@@ -211,12 +211,12 @@ const EntretienInverseGEMPage = () => {
         <div className="space-y-4">
           {tips.map((tip, i) => (
             <div key={tip.t} className="bg-white border border-pr-gray-light rounded-lg p-6 flex items-start gap-5">
-              <span className="font-dm-serif text-3xl text-pr-orange leading-none flex-shrink-0">
+              <span className="font-dm-serif text-3xl text-pr-black leading-none flex-shrink-0">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div>
                 <h4 className="font-dm-serif text-lg text-pr-black mb-2">{tip.t}</h4>
-                <div className="h-px w-8 bg-pr-orange mb-3" />
+                <div className="h-px w-8 bg-pr-black mb-3" />
                 <p className="text-sm text-pr-gray-dark leading-relaxed">{tip.d}</p>
               </div>
             </div>

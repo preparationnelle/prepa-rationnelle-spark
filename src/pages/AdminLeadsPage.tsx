@@ -156,7 +156,7 @@ export default function AdminLeadsPage() {
         const badges: Record<string, { bg: string; text: string; icon: string }> = {
             low: { bg: 'bg-gray-100', text: 'text-gray-600', icon: '⬇️' },
             normal: { bg: 'bg-blue-100', text: 'text-blue-600', icon: '➡️' },
-            high: { bg: 'bg-orange-100', text: 'text-pr-orange-dark', icon: '⬆️' },
+            high: { bg: 'bg-gray-100', text: 'text-pr-black', icon: '⬆️' },
             urgent: { bg: 'bg-red-100', text: 'text-red-600', icon: '🔥' },
         };
         const badge = badges[priority] || badges.normal;
@@ -189,7 +189,7 @@ export default function AdminLeadsPage() {
             <>
                 <div className="relative min-h-[60vh] flex items-center justify-center">
                     <div className="text-center">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pr-orange mx-auto mb-4"></div>
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pr-black mx-auto mb-4"></div>
                         <p className="text-gray-600">Chargement des leads...</p>
                     </div>
                 </div>
@@ -328,30 +328,30 @@ export default function AdminLeadsPage() {
                                             <div className="space-y-3">
                                                 <h4 className="font-semibold text-sm text-gray-700 mb-3">📞 Contact</h4>
                                                 <div className="flex items-center gap-2 text-sm">
-                                                    <Phone className="w-4 h-4 text-pr-orange" />
-                                                    <a href={`tel:${lead.phone_student}`} className="text-pr-orange-dark hover:underline font-medium">
+                                                    <Phone className="w-4 h-4 text-pr-black" />
+                                                    <a href={`tel:${lead.phone_student}`} className="text-pr-black hover:underline font-medium">
                                                         {lead.phone_student}
                                                     </a>
                                                     <span className="text-gray-500">(élève)</span>
                                                 </div>
                                                 {lead.phone_parent && (
                                                     <div className="flex items-center gap-2 text-sm">
-                                                        <Phone className="w-4 h-4 text-pr-orange" />
-                                                        <a href={`tel:${lead.phone_parent}`} className="text-pr-orange-dark hover:underline font-medium">
+                                                        <Phone className="w-4 h-4 text-pr-black" />
+                                                        <a href={`tel:${lead.phone_parent}`} className="text-pr-black hover:underline font-medium">
                                                             {lead.phone_parent}
                                                         </a>
                                                         <span className="text-gray-500">(parent)</span>
                                                     </div>
                                                 )}
                                                 <div className="flex items-center gap-2 text-sm">
-                                                    <Mail className="w-4 h-4 text-pr-orange" />
-                                                    <a href={`mailto:${lead.email}`} className="text-pr-orange-dark hover:underline">
+                                                    <Mail className="w-4 h-4 text-pr-black" />
+                                                    <a href={`mailto:${lead.email}`} className="text-pr-black hover:underline">
                                                         {lead.email}
                                                     </a>
                                                 </div>
                                                 {lead.city && (
                                                     <div className="flex items-center gap-2 text-sm">
-                                                        <MapPin className="w-4 h-4 text-pr-orange" />
+                                                        <MapPin className="w-4 h-4 text-pr-black" />
                                                         <span>{lead.city}</span>
                                                     </div>
                                                 )}

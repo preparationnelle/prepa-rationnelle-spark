@@ -136,18 +136,18 @@ const AvisPage: React.FC = () => {
 
   const renderStars = () => {
     return Array.from({ length: 5 }, (_, i) => (
-      <Star key={i} className="h-4 w-4 fill-pr-orange text-pr-orange" />
+      <Star key={i} className="h-4 w-4 fill-carnet-red text-carnet-red" />
     ));
   };
 
   return (
-    <div className="min-h-screen bg-pr-gray-bg font-dm-sans">
+    <div className="min-h-screen bg-transparent font-dm-sans">
       <div className="container mx-auto px-4 py-12 sm:py-16">
         {/* Back Button */}
         <div className="fade-in-up mb-10">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-pr-gray-mid hover:text-pr-orange transition-colors duration-300 group text-sm font-medium"
+            className="inline-flex items-center gap-2 text-carnet-ink-mute hover:text-carnet-red transition-colors duration-300 group text-sm font-medium"
           >
             <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
             Retour à l'accueil
@@ -158,26 +158,26 @@ const AvisPage: React.FC = () => {
         <div className="text-center mb-16 sm:mb-20">
           {/* Brand label */}
           <div className="fade-in-up flex flex-col items-center gap-3 mb-8">
-            <span className="text-[11px] tracking-[0.2em] font-semibold text-pr-orange uppercase">
+            <span className="text-[11px] tracking-[0.2em] font-semibold text-carnet-red uppercase">
               Prépa Rationnelle
             </span>
-            <div className="h-[2px] w-12 bg-pr-orange" />
+            <div className="h-[2px] w-12 bg-carnet-red" />
           </div>
 
           {/* Badge */}
           <div
-            className="fade-in-up inline-flex items-center gap-2 bg-pr-orange-pale text-pr-orange-dark px-4 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.08em] mb-6"
+            className="fade-in-up inline-flex items-center gap-2 bg-carnet-paper-2 border border-carnet-rule text-carnet-red-deep px-4 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.08em] mb-6"
             style={{ animationDelay: '0.05s' }}
           >
-            <Star className="h-3.5 w-3.5 fill-pr-orange-dark text-pr-orange-dark" />
+            <Star className="h-3.5 w-3.5 fill-carnet-red-deep text-carnet-red-deep" />
             5.0 / 5 sur Superprof
           </div>
 
           <h1
-            className="fade-in-up font-dm-serif text-4xl sm:text-5xl lg:text-6xl text-pr-black mb-6 leading-tight"
+            className="fade-in-up font-dm-serif text-4xl sm:text-5xl lg:text-6xl text-carnet-ink mb-6 leading-tight"
             style={{ animationDelay: '0.1s' }}
           >
-            Tous les <span className="text-pr-orange">avis</span>
+            Tous les <span className="text-carnet-red">avis</span>
           </h1>
 
           <div
@@ -185,11 +185,11 @@ const AvisPage: React.FC = () => {
             style={{ animationDelay: '0.15s' }}
           >
             {renderStars()}
-            <span className="text-base font-semibold text-pr-gray-dark ml-2">5.0/5</span>
+            <span className="text-base font-semibold text-carnet-ink-soft ml-2">5.0/5</span>
           </div>
 
           <p
-            className="fade-in-up text-base sm:text-lg text-pr-gray-dark max-w-2xl mx-auto leading-relaxed"
+            className="fade-in-up text-base sm:text-lg text-carnet-ink-soft max-w-2xl mx-auto leading-relaxed"
             style={{ animationDelay: '0.2s' }}
           >
             Découvrez tous les témoignages de mes élèves satisfaits.
@@ -201,32 +201,32 @@ const AvisPage: React.FC = () => {
           className="fade-in-up max-w-4xl mx-auto mb-20"
           style={{ animationDelay: '0.25s' }}
         >
-          <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden">
-            {/* Trait orange signature en haut */}
-            <div className="h-[3px] bg-pr-orange w-full" />
+          <div className="bg-carnet-paper-2 rounded-2xl border border-carnet-rule overflow-hidden">
+            {/* trait noir signature en haut */}
+            <div className="h-[3px] bg-carnet-red w-full" />
             <div className="p-8 sm:p-10">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 text-center">
                 <div>
-                  <div className="font-dm-serif text-5xl sm:text-6xl text-pr-orange mb-2">
+                  <div className="font-dm-serif text-5xl sm:text-6xl text-carnet-red mb-2">
                     +50
                   </div>
-                  <div className="text-pr-gray-dark text-sm font-medium">
+                  <div className="text-carnet-ink-soft text-sm font-medium">
                     Étudiants accompagnés
                   </div>
                 </div>
-                <div className="sm:border-x sm:border-pr-gray-light">
-                  <div className="font-dm-serif text-5xl sm:text-6xl text-pr-orange mb-2">
+                <div className="sm:border-x sm:border-carnet-rule">
+                  <div className="font-dm-serif text-5xl sm:text-6xl text-carnet-red mb-2">
                     100%
                   </div>
-                  <div className="text-pr-gray-dark text-sm font-medium">
+                  <div className="text-carnet-ink-soft text-sm font-medium">
                     Satisfaction
                   </div>
                 </div>
                 <div>
-                  <div className="font-dm-serif text-5xl sm:text-6xl text-pr-orange mb-2">
+                  <div className="font-dm-serif text-5xl sm:text-6xl text-carnet-red mb-2">
                     +5
                   </div>
-                  <div className="text-pr-gray-dark text-sm font-medium">
+                  <div className="text-carnet-ink-soft text-sm font-medium">
                     Points de progression
                   </div>
                 </div>
@@ -240,33 +240,33 @@ const AvisPage: React.FC = () => {
           {reviews.map((review, index) => (
             <div
               key={index}
-              className="scale-in group bg-white rounded-2xl border border-pr-gray-light hover:border-pr-orange/60 transition-all duration-300 overflow-hidden flex flex-col"
+              className="scale-in group bg-carnet-paper-2 rounded-2xl border border-carnet-rule hover:border-carnet-red/60 transition-all duration-300 overflow-hidden flex flex-col"
               style={{ animationDelay: `${0.05 * (index % 9)}s` }}
             >
-              {/* Trait orange signature top */}
-              <div className="h-[2px] bg-pr-orange w-full opacity-70 group-hover:opacity-100 transition-opacity" />
+              {/* trait noir signature top */}
+              <div className="h-[2px] bg-carnet-red w-full opacity-70 group-hover:opacity-100 transition-opacity" />
 
               <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-11 h-11 bg-pr-orange-pale border border-pr-orange/30 rounded-full flex items-center justify-center text-pr-orange-dark font-semibold text-base flex-shrink-0">
+                  <div className="w-11 h-11 bg-carnet-paper-2 border border-carnet-red/30 rounded-full flex items-center justify-center text-carnet-red-deep font-semibold text-base flex-shrink-0">
                     {review.name.charAt(0)}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-pr-black mb-1.5 text-base">
+                    <h3 className="font-semibold text-carnet-ink mb-1.5 text-base">
                       {review.name}
                     </h3>
                     <div className="flex items-center gap-0.5 mb-2">
                       {renderStars()}
                     </div>
-                    <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.08em] text-pr-orange-dark bg-pr-orange-pale px-2 py-0.5 rounded">
+                    <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.08em] text-carnet-red-deep bg-carnet-paper-2 border border-carnet-rule px-2 py-0.5 rounded">
                       {review.subject}
                     </span>
                   </div>
                 </div>
 
-                <div className="relative pl-4 border-l-2 border-pr-orange/40 mt-2 flex-1">
-                  <Quote className="h-4 w-4 text-pr-orange/50 absolute -top-1 -left-[9px] bg-white" />
-                  <p className="text-sm text-pr-gray-dark leading-relaxed">
+                <div className="relative pl-4 border-l-2 border-carnet-red/40 mt-2 flex-1">
+                  <Quote className="h-4 w-4 text-carnet-red/50 absolute -top-1 -left-[9px] bg-carnet-paper-2" />
+                  <p className="text-sm text-carnet-ink-soft leading-relaxed">
                     {review.content}
                   </p>
                 </div>
@@ -277,18 +277,18 @@ const AvisPage: React.FC = () => {
 
         {/* Call to Action */}
         <div className="fade-in-up text-center" style={{ animationDelay: '0.3s' }}>
-          <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden max-w-2xl mx-auto">
-            <div className="h-[3px] bg-pr-orange w-full" />
+          <div className="bg-carnet-paper-2 rounded-2xl border border-carnet-rule overflow-hidden max-w-2xl mx-auto">
+            <div className="h-[3px] bg-carnet-red w-full" />
             <div className="p-10 sm:p-12">
-              <div className="flex items-center justify-center gap-3 bg-pr-orange-pale w-fit mx-auto px-5 py-2.5 rounded-full mb-6">
+              <div className="flex items-center justify-center gap-3 bg-carnet-paper-2 border border-carnet-rule w-fit mx-auto px-5 py-2.5 rounded-full mb-6">
                 {renderStars()}
-                <span className="text-lg font-semibold text-pr-orange-dark">5.0</span>
+                <span className="text-lg font-semibold text-carnet-red-deep">5.0</span>
               </div>
 
-              <h2 className="font-dm-serif text-2xl sm:text-3xl text-pr-black mb-3">
+              <h2 className="font-dm-serif text-2xl sm:text-3xl text-carnet-ink mb-3">
                 Envie de progresser à ton tour&nbsp;?
               </h2>
-              <p className="text-pr-gray-dark text-sm sm:text-base mb-8 max-w-md mx-auto leading-relaxed">
+              <p className="text-carnet-ink-soft text-sm sm:text-base mb-8 max-w-md mx-auto leading-relaxed">
                 Rejoins les élèves qui ont fait confiance à Prépa Rationnelle pour atteindre leurs objectifs.
               </p>
 
@@ -300,7 +300,7 @@ const AvisPage: React.FC = () => {
                 >
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold py-6 px-8 text-base rounded-xl transition-colors duration-300"
+                    className="w-full sm:w-auto bg-carnet-red hover:bg-carnet-red-deep text-white font-semibold py-6 px-8 text-base rounded-xl transition-colors duration-300"
                   >
                     Voir sur Superprof
                     <ExternalLink className="ml-2 h-4 w-4" />
@@ -311,7 +311,7 @@ const AvisPage: React.FC = () => {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="w-full sm:w-auto bg-white border border-pr-gray-light hover:border-pr-orange hover:text-pr-orange text-pr-black font-semibold py-6 px-8 text-base rounded-xl transition-colors duration-300"
+                    className="w-full sm:w-auto bg-carnet-paper-2 border border-carnet-rule hover:border-carnet-red hover:text-carnet-red text-carnet-ink font-semibold py-6 px-8 text-base rounded-xl transition-colors duration-300"
                   >
                     Me contacter
                     <Star className="ml-2 h-4 w-4" />

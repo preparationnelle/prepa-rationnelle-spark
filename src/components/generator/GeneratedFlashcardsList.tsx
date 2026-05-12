@@ -39,7 +39,7 @@ export const GeneratedFlashcardsList = ({
       <div className="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-800">
         <div>
           <h3 className="text-lg font-bold flex items-center gap-2 text-gray-900 dark:text-white">
-            <History className="h-4 w-4 text-pr-orange" />
+            <History className="h-4 w-4 text-pr-black" />
             {language === 'fr' ? 'Flashcards générées' : 'Generated Flashcards'}
           </h3>
           <p className="text-sm text-gray-500 mt-1">
@@ -61,12 +61,12 @@ export const GeneratedFlashcardsList = ({
           <div
             key={flashcard.id || index}
             className={`relative border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all hover:shadow-md ${index === 0
-                ? 'bg-orange-50/50 dark:bg-orange-900/10 border-orange-200/50 dark:border-orange-800/30'
+                ? 'bg-gray-50/50 dark:bg-gray-900/10 border-gray-200/50 dark:border-gray-800/30'
                 : 'bg-white dark:bg-gray-900'
               }`}
           >
             {index === 0 && (
-              <span className="absolute top-4 right-4 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200">
+              <span className="absolute top-4 right-4 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
                 ✨ {language === 'fr' ? 'Nouveau' : 'New'}
               </span>
             )}
@@ -85,14 +85,14 @@ export const GeneratedFlashcardsList = ({
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-xs font-semibold text-pr-gray-mid uppercase tracking-wider">
-                  <span className="w-5 h-5 rounded-full bg-pr-orange-pale flex items-center justify-center text-pr-orange-dark text-[10px]">Q</span>
+                  <span className="w-5 h-5 rounded-full bg-pr-gray-bg flex items-center justify-center text-pr-black text-[10px]">Q</span>
                   {language === 'fr' ? 'Question / Recto' : 'Question / Front'}
                 </div>
                 <p className="text-lg font-bold text-pr-black">{flashcard.front}</p>
               </div>
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-xs font-semibold text-pr-gray-mid uppercase tracking-wider">
-                  <span className="w-5 h-5 rounded-full bg-pr-orange-pale flex items-center justify-center text-pr-orange text-[10px]">R</span>
+                  <span className="w-5 h-5 rounded-full bg-pr-gray-bg flex items-center justify-center text-pr-black text-[10px]">R</span>
                   {language === 'fr' ? 'Réponse / Verso' : 'Answer / Back'}
                 </div>
                 <p className="text-lg font-bold text-pr-black">{flashcard.back}</p>
@@ -103,7 +103,7 @@ export const GeneratedFlashcardsList = ({
             {flashcard.hint && (
               <div className="mt-4 pt-4 border-t border-pr-gray-light">
                 <div className="flex items-start gap-2 text-sm text-pr-gray-dark">
-                  <Lightbulb className="w-4 h-4 text-pr-orange mt-0.5 shrink-0" />
+                  <Lightbulb className="w-4 h-4 text-pr-black mt-0.5 shrink-0" />
                   <span className="italic">{flashcard.hint}</span>
                 </div>
               </div>

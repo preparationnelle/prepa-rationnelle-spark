@@ -9,7 +9,7 @@ type PRGrammarCardProps = {
 };
 
 export const PRGrammarCard: React.FC<PRGrammarCardProps> = ({ title, number, children, className = '' }) => (
-  <div className={`bg-white border border-pr-gray-light rounded-2xl overflow-hidden ${className}`}>
+  <div className={`bg-carnet-paper-2 border border-pr-gray-light rounded-2xl overflow-hidden ${className}`}>
     <div className="h-[2px] bg-pr-orange" />
     <div className="p-6 sm:p-8">
       {(title || number) && (

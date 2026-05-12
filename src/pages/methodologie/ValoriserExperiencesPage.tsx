@@ -77,7 +77,7 @@ const ValoriserExperiencesPage = () => (
     <MethodSection label="Section 01" title="Les 4 types d'expériences valorisables" icon={Award}>
       <div className="grid md:grid-cols-2 gap-5">
         {categories.map((g) => (
-          <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+          <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
             <h4 className="font-dm-serif text-lg text-carnet-ink mb-2">{g.t}</h4>
             <div className="h-px w-8 bg-red-600 mb-4" />
             <ul className="space-y-2 text-sm text-carnet-ink-soft">

@@ -15,8 +15,8 @@ import { supabase } from '@/integrations/supabase/client';
 
 // Wrapper carte design system PR (réutilisé localement)
 const PrCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
-  <div className={`bg-white rounded-2xl border border-pr-gray-light overflow-hidden ${className}`}>
-    <div className="h-[3px] w-full bg-pr-orange" />
+  <div className={`bg-carnet-paper-2 rounded-2xl border border-carnet-rule overflow-hidden ${className}`}>
+    <div className="h-[3px] w-full bg-pr-black" />
     {children}
   </div>
 );
@@ -279,7 +279,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
       <PrCard>
         <div className="px-6 py-5 sm:px-8 sm:py-6 bg-pr-gray-bg border-b border-pr-gray-light">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-pr-orange-pale text-pr-orange-dark flex items-center justify-center shrink-0">
+            <div className="h-10 w-10 rounded-xl bg-pr-gray-bg text-pr-black flex items-center justify-center shrink-0">
               <PenTool className="h-5 w-5" />
             </div>
             <div>
@@ -297,7 +297,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
       {/* Section question */}
       <PrCard>
         <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center justify-between flex-wrap gap-3">
-          <div className="flex items-center gap-2 text-pr-orange-dark">
+          <div className="flex items-center gap-2 text-pr-black">
             <HelpCircle className="h-5 w-5" />
             <h3 className="font-dm-serif text-lg text-pr-black">Question posée</h3>
           </div>
@@ -305,14 +305,14 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
             onClick={generateRandomQuestion}
             variant="outline"
             size="sm"
-            className="border-pr-orange/40 text-pr-orange-dark hover:bg-pr-orange hover:text-white hover:border-pr-orange transition-colors"
+            className="border-pr-gray-light/40 text-pr-black hover:bg-pr-black hover:text-white hover:border-pr-black transition-colors"
           >
             <Shuffle className="h-4 w-4 mr-2" />
             Nouvelle question
           </Button>
         </div>
         <div className="p-6 sm:p-8">
-          <div className="rounded-xl border border-pr-orange/20 bg-pr-orange-pale/40 px-6 py-6 sm:py-8">
+          <div className="rounded-xl border border-pr-black/20 bg-pr-gray-bg/40 px-6 py-6 sm:py-8">
             <p className="font-dm-serif text-xl sm:text-2xl text-pr-black text-center leading-snug">
               {currentQuestion || "Cliquez sur « Nouvelle question » pour commencer"}
             </p>
@@ -322,10 +322,10 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                   onClick={speakQuestion}
                   variant="outline"
                   size="sm"
-                  className={`border-pr-orange/40 transition-colors ${
+                  className={`border-pr-gray-light/40 transition-colors ${
                     isSpeaking
-                      ? 'bg-pr-orange text-white border-pr-orange'
-                      : 'text-pr-orange-dark hover:bg-pr-orange hover:text-white hover:border-pr-orange'
+                      ? 'bg-pr-black text-white border-pr-black'
+                      : 'text-pr-black hover:bg-pr-black hover:text-white hover:border-pr-black'
                   }`}
                 >
                   {isSpeaking ? (
@@ -350,20 +350,20 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
       {currentQuestion && questionTips[currentQuestion] && (
         <div className="space-y-6">
           <PrCard>
-            <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center gap-2 text-pr-orange-dark">
+            <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center gap-2 text-pr-black">
               <Target className="h-5 w-5" />
               <h3 className="font-dm-serif text-lg text-pr-black">Idées importantes pour ta réponse</h3>
             </div>
             <div className="p-6 sm:p-8">
               <Select value={selectedTip} onValueChange={setSelectedTip}>
-                <SelectTrigger className="w-full border-pr-gray-light bg-white text-pr-gray-dark">
+                <SelectTrigger className="w-full border-carnet-rule bg-carnet-paper-2 text-carnet-ink">
                   <SelectValue placeholder="Sélectionne une idée pour t'aider…" />
                 </SelectTrigger>
                 <SelectContent>
                   {questionTips[currentQuestion].ideas.map((idea, index) => (
                     <SelectItem key={index} value={idea} className="cursor-pointer">
                       <div className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 bg-pr-orange rounded-full flex-shrink-0 mt-2"></span>
+                        <span className="w-1.5 h-1.5 bg-pr-black rounded-full flex-shrink-0 mt-2"></span>
                         <span className="text-sm leading-relaxed">{idea}</span>
                       </div>
                     </SelectItem>
@@ -371,8 +371,8 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                 </SelectContent>
               </Select>
               {selectedTip && (
-                <div className="mt-4 p-4 bg-pr-orange-pale border border-pr-orange/20 rounded-xl">
-                  <p className="text-xs uppercase tracking-[0.08em] font-semibold text-pr-orange-dark mb-1">
+                <div className="mt-4 p-4 bg-pr-gray-bg border border-pr-black/20 rounded-xl">
+                  <p className="text-xs uppercase tracking-[0.08em] font-semibold text-pr-black mb-1">
                     Idée sélectionnée
                   </p>
                   <p className="text-sm text-pr-gray-dark leading-relaxed">{selectedTip}</p>
@@ -389,7 +389,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                   className="w-full px-6 py-4 sm:px-8 border-b border-pr-gray-light hover:bg-pr-gray-bg transition-colors text-left"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-2 text-pr-orange-dark">
+                    <div className="flex items-center gap-2 text-pr-black">
                       <CheckCircle className="h-5 w-5" />
                       <span className="font-dm-serif text-lg text-pr-black">Proposition de corrigé type</span>
                     </div>
@@ -407,9 +407,9 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                       {questionTips[currentQuestion].sampleAnswer}
                     </div>
                   </div>
-                  <div className="bg-pr-orange-pale border border-pr-orange/20 rounded-xl p-4">
+                  <div className="bg-pr-gray-bg border border-pr-black/20 rounded-xl p-4">
                     <p className="text-sm text-pr-gray-dark">
-                      <span className="font-semibold text-pr-orange-dark">Conseil :</span> personnalise ce corrigé avec tes expériences concrètes. Les anecdotes personnelles rendent ta réponse mémorable.
+                      <span className="font-semibold text-pr-black">Conseil :</span> personnalise ce corrigé avec tes expériences concrètes. Les anecdotes personnelles rendent ta réponse mémorable.
                     </p>
                   </div>
                 </div>
@@ -421,14 +421,14 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
 
       {/* Section chronomètre + enregistrement */}
       <PrCard>
-        <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center gap-2 text-pr-orange-dark">
+        <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center gap-2 text-pr-black">
           <Clock className="h-5 w-5" />
           <h3 className="font-dm-serif text-lg text-pr-black">Chronomètre d'entraînement</h3>
         </div>
         <div className="p-6 sm:p-8">
           <div className="flex items-center justify-center gap-6 flex-wrap">
             <div className="text-center">
-              <div className="font-dm-serif text-5xl text-pr-orange tabular-nums leading-none mb-2">
+              <div className="font-dm-serif text-5xl text-pr-black tabular-nums leading-none mb-2">
                 {formatTime(timeElapsed)}
               </div>
               <p className="text-xs uppercase tracking-[0.08em] text-pr-gray-mid font-semibold">
@@ -441,7 +441,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                 className={
                   isTimerRunning
                     ? 'bg-pr-black hover:bg-pr-gray-dark text-white'
-                    : 'bg-pr-orange hover:bg-pr-orange-dark text-white'
+                    : 'bg-pr-black hover:bg-pr-black-dark text-white'
                 }
               >
                 {isTimerRunning ? <Pause className="h-4 w-4 mr-2" /> : <Play className="h-4 w-4 mr-2" />}
@@ -463,15 +463,15 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
             <div className="bg-pr-gray-bg rounded-2xl p-6 border border-pr-gray-light">
               <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
                 <h4 className="text-base font-semibold text-pr-black flex items-center gap-3 font-dm-sans">
-                  <div className="p-2 bg-pr-orange-pale rounded-xl">
-                    <Mic className="h-5 w-5 text-pr-orange-dark" />
+                  <div className="p-2 bg-pr-gray-bg rounded-xl">
+                    <Mic className="h-5 w-5 text-pr-black" />
                   </div>
                   Enregistrement audio
                 </h4>
                 {isRecording && (
-                  <div className="flex items-center gap-2 bg-white border border-pr-orange/30 rounded-full px-4 py-1.5">
-                    <div className="w-2.5 h-2.5 bg-pr-orange rounded-full animate-pulse"></div>
-                    <span className="text-sm font-semibold text-pr-orange-dark tabular-nums">
+                  <div className="flex items-center gap-2 bg-carnet-paper-2 border border-carnet-rule rounded-full px-4 py-1.5">
+                    <div className="w-2.5 h-2.5 bg-pr-black rounded-full animate-pulse"></div>
+                    <span className="text-sm font-semibold text-pr-black tabular-nums">
                       {formatRecordingTime(recordingTime)}
                     </span>
                   </div>
@@ -483,7 +483,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                   <div className="flex flex-col items-center gap-4">
                     <button
                       onClick={startRecording}
-                      className="group relative w-24 h-24 rounded-full bg-pr-orange hover:bg-pr-orange-dark text-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pr-orange-pale"
+                      className="group relative w-24 h-24 rounded-full bg-pr-black hover:bg-pr-black-dark text-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pr-black-pale"
                     >
                       <Mic className="h-10 w-10 mx-auto transition-transform group-hover:scale-110" />
                     </button>
@@ -497,7 +497,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                       {[...Array(12)].map((_, i) => (
                         <div
                           key={i}
-                          className="w-1.5 bg-pr-orange rounded-full animate-pulse"
+                          className="w-1.5 bg-pr-black rounded-full animate-pulse"
                           style={{
                             height: `${Math.random() * 100}%`,
                             minHeight: '8px',
@@ -513,18 +513,18 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                       className="group relative w-24 h-24 rounded-full bg-pr-black hover:bg-pr-gray-dark text-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pr-gray-light"
                     >
                       <Square className="h-8 w-8 mx-auto fill-white" />
-                      <div className="absolute -inset-2 rounded-full border-2 border-pr-orange animate-ping opacity-30"></div>
+                      <div className="absolute -inset-2 rounded-full border-2 border-pr-black animate-ping opacity-30"></div>
                     </button>
-                    <span className="text-sm font-medium text-pr-orange-dark">Clique pour arrêter</span>
+                    <span className="text-sm font-medium text-pr-black">Clique pour arrêter</span>
                   </div>
                 )}
 
                 {audioUrl && !isRecording && (
                   <div className="w-full">
-                    <div className="bg-white rounded-xl p-4 border border-pr-gray-light">
+                    <div className="bg-carnet-paper-2 rounded-xl p-4 border border-carnet-rule">
                       <div className="flex items-center gap-4 flex-wrap">
-                        <div className="p-2 bg-pr-orange-pale rounded-lg flex-shrink-0">
-                          <Volume2 className="h-5 w-5 text-pr-orange-dark" />
+                        <div className="p-2 bg-pr-gray-bg rounded-lg flex-shrink-0">
+                          <Volume2 className="h-5 w-5 text-pr-black" />
                         </div>
                         <audio controls className="flex-1 h-10 min-w-[200px]">
                           <source src={audioUrl} type="audio/wav" />
@@ -537,7 +537,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                           }}
                           variant="outline"
                           size="sm"
-                          className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:border-pr-orange/30 hover:text-pr-orange-dark transition-colors"
+                          className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:border-pr-gray-light/30 hover:text-pr-black transition-colors"
                         >
                           <RotateCcw className="h-4 w-4 mr-1" />
                           Refaire
@@ -548,10 +548,10 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                 )}
 
                 {isTranscribing && (
-                  <div className="w-full bg-white border border-pr-gray-light rounded-xl p-4">
+                  <div className="w-full bg-carnet-paper-2 border border-carnet-rule rounded-xl p-4">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-1.5 bg-pr-orange-pale rounded-lg">
-                        <Loader2 className="h-4 w-4 animate-spin text-pr-orange-dark" />
+                      <div className="p-1.5 bg-pr-gray-bg rounded-lg">
+                        <Loader2 className="h-4 w-4 animate-spin text-pr-black" />
                       </div>
                       <div>
                         <span className="text-sm font-semibold text-pr-black">Retranscription en cours…</span>
@@ -561,7 +561,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                       </div>
                     </div>
                     <div className="w-full bg-pr-gray-bg rounded-full h-1.5 overflow-hidden">
-                      <div className="bg-pr-orange h-full rounded-full animate-pulse" style={{ width: '60%' }}></div>
+                      <div className="bg-pr-black h-full rounded-full animate-pulse" style={{ width: '60%' }}></div>
                     </div>
                   </div>
                 )}
@@ -573,9 +573,9 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
             </div>
           </div>
 
-          <div className="mt-6 p-4 bg-pr-orange-pale border border-pr-orange/20 rounded-xl">
+          <div className="mt-6 p-4 bg-pr-gray-bg border border-pr-black/20 rounded-xl">
             <p className="text-sm text-pr-gray-dark">
-              <span className="font-semibold text-pr-orange-dark">Conseil :</span> en entretien réel, tu disposes généralement de 2 à 3 minutes pour répondre. Utilise ce chronomètre pour t'entraîner à respecter le temps imparti.
+              <span className="font-semibold text-pr-black">Conseil :</span> en entretien réel, tu disposes généralement de 2 à 3 minutes pour répondre. Utilise ce chronomètre pour t'entraîner à respecter le temps imparti.
             </p>
           </div>
         </div>
@@ -584,7 +584,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
       {/* Section réponse */}
       <PrCard>
         <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center justify-between flex-wrap gap-3">
-          <div className="flex items-center gap-2 text-pr-orange-dark">
+          <div className="flex items-center gap-2 text-pr-black">
             <Mic className="h-5 w-5" />
             <h3 className="font-dm-serif text-lg text-pr-black">Ta réponse</h3>
           </div>
@@ -592,7 +592,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
             onClick={() => setShowAnswer(!showAnswer)}
             variant="outline"
             size="sm"
-            className="border-pr-orange/40 text-pr-orange-dark hover:bg-pr-orange hover:text-white hover:border-pr-orange transition-colors"
+            className="border-pr-gray-light/40 text-pr-black hover:bg-pr-black hover:text-white hover:border-pr-black transition-colors"
           >
             {showAnswer ? 'Masquer' : 'Voir'} réponse
           </Button>
@@ -602,7 +602,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
             value={userAnswer}
             onChange={(e) => setUserAnswer(e.target.value)}
             placeholder={isTranscribing ? 'Retranscription en cours…' : 'Tape ta réponse ici ou enregistre-toi pour obtenir une retranscription automatique.'}
-            className="min-h-[200px] text-base leading-relaxed border border-pr-gray-light bg-white text-pr-gray-dark focus-visible:ring-pr-orange focus-visible:border-pr-orange transition-colors"
+            className="min-h-[200px] text-base leading-relaxed border border-carnet-rule bg-carnet-paper-2 text-carnet-ink focus-visible:ring-pr-black focus-visible:border-pr-black transition-colors"
           />
           <div className="mt-4 flex items-center justify-between text-xs text-pr-gray-mid font-medium">
             <span>{userAnswer.length} caractères</span>
@@ -614,7 +614,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
               onClick={evaluateAnswer}
               disabled={isEvaluating || !userAnswer.trim()}
               size="lg"
-              className="bg-pr-orange hover:bg-pr-orange-dark text-white shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50"
+              className="bg-pr-black hover:bg-pr-black-dark text-white shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50"
             >
               {isEvaluating ? (
                 <>
@@ -635,16 +635,16 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
       {/* Section évaluation */}
       {evaluation && (
         <PrCard>
-          <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center gap-2 text-pr-orange-dark">
+          <div className="px-6 py-4 sm:px-8 border-b border-pr-gray-light flex items-center gap-2 text-pr-black">
             <Award className="h-5 w-5" />
             <h3 className="font-dm-serif text-lg text-pr-black">Évaluation de ta réponse</h3>
           </div>
           <div className="p-6 sm:p-8 space-y-6">
             {/* Score */}
-            <div className="flex items-center justify-center p-6 bg-pr-orange-pale rounded-xl border border-pr-orange/20">
+            <div className="flex items-center justify-center p-6 bg-pr-gray-bg rounded-xl border border-pr-black/20">
               <div className="text-center">
-                <div className="font-dm-serif text-6xl text-pr-orange-dark mb-1 leading-none">
-                  {evaluation.score}<span className="text-3xl text-pr-orange">/20</span>
+                <div className="font-dm-serif text-6xl text-pr-black mb-1 leading-none">
+                  {evaluation.score}<span className="text-3xl text-pr-black">/20</span>
                 </div>
                 <p className="text-xs uppercase tracking-[0.08em] text-pr-gray-mid font-semibold mt-2">
                   Note globale
@@ -660,15 +660,15 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
             </div>
 
             {/* Points forts */}
-            <div className="bg-white rounded-xl p-5 border border-pr-gray-light">
+            <div className="bg-carnet-paper-2 rounded-xl p-5 border border-carnet-rule">
               <h4 className="font-semibold text-pr-black flex items-center gap-2 mb-3 font-dm-sans">
-                <CheckCircle className="h-5 w-5 text-pr-orange" />
+                <CheckCircle className="h-5 w-5 text-pr-black" />
                 Points forts
               </h4>
               <ul className="space-y-2">
                 {evaluation.strengths.map((strength, index) => (
                   <li key={index} className="flex items-start gap-2 text-sm text-pr-gray-dark">
-                    <span className="text-pr-orange mt-0.5 font-semibold">✓</span>
+                    <span className="text-pr-black mt-0.5 font-semibold">✓</span>
                     <span>{strength}</span>
                   </li>
                 ))}
@@ -676,15 +676,15 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
             </div>
 
             {/* Points à améliorer */}
-            <div className="bg-white rounded-xl p-5 border border-pr-gray-light">
+            <div className="bg-carnet-paper-2 rounded-xl p-5 border border-carnet-rule">
               <h4 className="font-semibold text-pr-black flex items-center gap-2 mb-3 font-dm-sans">
-                <AlertCircle className="h-5 w-5 text-pr-orange-dark" />
+                <AlertCircle className="h-5 w-5 text-pr-black" />
                 Points à améliorer
               </h4>
               <ul className="space-y-2">
                 {evaluation.weaknesses.map((weakness, index) => (
                   <li key={index} className="flex items-start gap-2 text-sm text-pr-gray-dark">
-                    <span className="text-pr-orange-dark mt-0.5 font-semibold">!</span>
+                    <span className="text-pr-black mt-0.5 font-semibold">!</span>
                     <span>{weakness}</span>
                   </li>
                 ))}
@@ -692,15 +692,15 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
             </div>
 
             {/* Suggestions */}
-            <div className="bg-white rounded-xl p-5 border border-pr-gray-light">
+            <div className="bg-carnet-paper-2 rounded-xl p-5 border border-carnet-rule">
               <h4 className="font-semibold text-pr-black flex items-center gap-2 mb-3 font-dm-sans">
-                <Lightbulb className="h-5 w-5 text-pr-orange" />
+                <Lightbulb className="h-5 w-5 text-pr-black" />
                 Suggestions d'amélioration
               </h4>
               <ul className="space-y-2">
                 {evaluation.suggestions.map((suggestion, index) => (
                   <li key={index} className="flex items-start gap-2 text-sm text-pr-gray-dark">
-                    <span className="text-pr-orange mt-0.5">→</span>
+                    <span className="text-pr-black mt-0.5">→</span>
                     <span>{suggestion}</span>
                   </li>
                 ))}
@@ -711,7 +711,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
               <Button
                 onClick={generateRandomQuestion}
                 variant="outline"
-                className="border-pr-orange/40 text-pr-orange-dark hover:bg-pr-orange hover:text-white hover:border-pr-orange transition-colors"
+                className="border-pr-gray-light/40 text-pr-black hover:bg-pr-black hover:text-white hover:border-pr-black transition-colors"
               >
                 <TrendingUp className="h-4 w-4 mr-2" />
                 Nouvelle question pour progresser

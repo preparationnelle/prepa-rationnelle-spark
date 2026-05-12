@@ -47,7 +47,7 @@ export const CivItem: React.FC<CivItemProps> = ({ value, title, children }) => {
   return (
     <AccordionItem
       value={value}
-      className="bg-white border border-pr-gray-light rounded-xl px-6 hover:border-pr-orange/60 transition-colors"
+      className="bg-carnet-paper-2 border border-carnet-rule rounded-xl px-6 hover:border-pr-orange/60 transition-colors"
     >
       <AccordionTrigger className="font-dm-serif text-lg sm:text-xl text-pr-black hover:text-pr-orange-dark hover:no-underline py-5 [&[data-state=open]]:text-pr-orange-dark">
         {title}

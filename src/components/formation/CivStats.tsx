@@ -12,7 +12,7 @@ type CivStatsProps = {
 
 export const CivStats: React.FC<CivStatsProps> = ({ title, stats }) => {
   return (
-    <div className="bg-white border border-pr-gray-light rounded-xl overflow-hidden mb-10">
+    <div className="bg-carnet-paper-2 border border-carnet-rule rounded-xl overflow-hidden mb-10">
       <div className="h-[2px] bg-pr-orange" />
       {title && (
         <div className="px-6 pt-5">

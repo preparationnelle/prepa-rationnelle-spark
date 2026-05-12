@@ -88,7 +88,7 @@ export const FlashcardDisplay = ({
                   ? 'bg-amber-50 text-amber-700'
                   : reviewData.status === 'review'
                   ? 'bg-slate-100 text-slate-600'
-                  : 'bg-pr-orange-pale text-pr-orange-dark'
+                  : 'bg-pr-gray-bg text-pr-black'
               }`}
             >
               {statusLabel(reviewData.status, language)}
@@ -131,9 +131,9 @@ export const FlashcardDisplay = ({
               )}
 
               {!isLegacyFormat && hintContent && (
-                <div className="mt-6 flex items-start gap-3 text-left p-4 rounded-lg bg-pr-orange-pale border border-pr-orange-soft/40">
-                  <Lightbulb className="w-4 h-4 text-pr-orange-dark shrink-0 mt-0.5" />
-                  <span className="text-sm text-pr-orange-dark italic leading-relaxed">{hintContent}</span>
+                <div className="mt-6 flex items-start gap-3 text-left p-4 rounded-lg bg-pr-gray-bg border border-pr-black-soft/40">
+                  <Lightbulb className="w-4 h-4 text-pr-black shrink-0 mt-0.5" />
+                  <span className="text-sm text-pr-black italic leading-relaxed">{hintContent}</span>
                 </div>
               )}
             </div>

@@ -96,28 +96,28 @@ const GuerreEconomiquePage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-pr-orange-dark" />
+                  <Calendar className="h-5 w-5 text-pr-black" />
                   Dates clés
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">1945</div>
                       <div className="text-gray-700">Début Guerre froide économique</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2018-2025</div>
                       <div className="text-gray-700">Tariffs Trump</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2022</div>
                       <div className="text-gray-700">Sanctions post-invasion Ukraine</div>

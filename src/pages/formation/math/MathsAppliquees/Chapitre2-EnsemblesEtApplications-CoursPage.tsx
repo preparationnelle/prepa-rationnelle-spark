@@ -16,17 +16,17 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
       showNavigation={true}
     >
       {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-pr-orange-pale">
+      <Card className="border-0 shadow-lg bg-pr-gray-bg">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-ensembles-et-applications-exercices">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>
             </Link>
             <Link to="/formation/maths-ensembles-et-applications-quiz">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <Target className="mr-2 h-4 w-4" />
                 Quiz
               </Button>
@@ -45,7 +45,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Ensemble</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -56,7 +56,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Modes de définition d'un ensemble</p>
               <div className="mt-2 space-y-2">
                 <ul className="space-y-2 ml-4">
@@ -66,7 +66,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Opérations sur les ensembles</p>
               <div className="mt-2 space-y-2">
                 <p>Soient <LatexRenderer latex="A" block={false} /> et <LatexRenderer latex="B" block={false} /> deux ensembles :</p>
@@ -79,7 +79,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Propriétés — Lois de De Morgan</p>
               <div className="mt-2 space-y-2">
                 <ul className="space-y-1 ml-4">
@@ -89,7 +89,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Produit cartésien</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -126,7 +126,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Application</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -142,7 +142,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Image directe et image réciproque</p>
               <div className="mt-2 space-y-2">
                 <p>Soit <LatexRenderer latex="f : E \to F" block={false} /> une application :</p>
@@ -155,7 +155,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Application injective</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -170,7 +170,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Application surjective</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -185,7 +185,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Application bijective</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -212,7 +212,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Composition d'applications</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -225,7 +225,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Propriétés de la composition</p>
               <div className="mt-2 space-y-2">
                 <ul className="space-y-2 ml-4">
@@ -237,7 +237,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Relation d'équivalence</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -251,7 +251,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Classes d'équivalence</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -291,7 +291,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </Button>
             </Link>
             <Link to="/formation/maths-ensembles-et-applications-exercices">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>

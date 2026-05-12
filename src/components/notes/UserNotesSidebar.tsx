@@ -76,7 +76,7 @@ const NoteCard: React.FC<{
                     <textarea
                         value={editContent}
                         onChange={e => setEditContent(e.target.value)}
-                        className="w-full p-2 text-sm rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/20 resize-none"
+                        className="w-full p-2 text-sm rounded-lg border border-carnet-rule bg-carnet-paper-2 focus:outline-none focus:ring-2 focus:ring-teal-500/20 resize-none"
                         rows={3}
                         autoFocus
                     />
@@ -204,7 +204,7 @@ const UserNotesSidebar: React.FC<UserNotesSidebarProps> = ({
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed right-0 top-0 bottom-0 w-full sm:w-[380px] bg-white shadow-2xl z-[201] flex flex-col"
+                        className="fixed right-0 top-0 bottom-0 w-full sm:w-[380px] bg-carnet-paper shadow-2xl z-[201] flex flex-col border-l border-carnet-rule"
                     >
                         {/* Header */}
                         <div className="px-5 py-4 flex items-center justify-between border-b border-gray-100 bg-amber-50/50">
@@ -221,7 +221,7 @@ const UserNotesSidebar: React.FC<UserNotesSidebarProps> = ({
                             </div>
                             <button
                                 onClick={onClose}
-                                className="h-8 w-8 rounded-lg hover:bg-gray-100 flex items-center justify-center transition-colors"
+                                className="h-8 w-8 rounded-lg hover:bg-carnet-paper flex items-center justify-center transition-colors"
                             >
                                 <X className="h-4 w-4 text-gray-500" />
                             </button>

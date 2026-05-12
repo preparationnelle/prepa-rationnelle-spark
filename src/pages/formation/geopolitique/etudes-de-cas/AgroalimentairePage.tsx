@@ -60,7 +60,7 @@ const AgroalimentairePage = () => {
       <div className="container mx-auto px-4 py-8">
 
         {/* Header */}
-        <Card className="mb-8 bg-gradient-to-r from-yellow-600 to-pr-orange-dark text-white">
+        <Card className="mb-8 bg-gradient-to-r from-yellow-600 to-pr-black text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Wheat className="h-8 w-8" />
@@ -120,9 +120,9 @@ const AgroalimentairePage = () => {
                 </ul>
               </div>
               
-              <div className="bg-orange-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-orange-800 mb-3">Grandes exploitations</h4>
-                <ul className="text-sm text-pr-orange-dark space-y-1">
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-gray-800 mb-3">Grandes exploitations</h4>
+                <ul className="text-sm text-pr-black space-y-1">
                                       <li>• Philippines : Dole {'>'}10 000 ha</li>
                     <li>• US : 60 000 farms {'>'}1M$ (65% production)</li>
                   <li>• France : Vignes Champagne 1M€/ha</li>
@@ -181,7 +181,7 @@ const AgroalimentairePage = () => {
             <CardContent>
               <div className="space-y-3">
                 {topCompanies.map((company, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
+                  <div key={index} className="flex items-center justify-between p-3 bg-pr-gray-bg rounded-lg border border-carnet-red/30">
                     <div>
                       <div className="font-semibold text-carnet-red-deep">{company.company}</div>
                       <div className="text-sm text-carnet-red">{company.country} • {company.sector}</div>
@@ -227,9 +227,9 @@ const AgroalimentairePage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-orange-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-orange-800 mb-2">Vulnérabilités géopolitiques</h4>
-                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-semibold text-gray-800 mb-2">Vulnérabilités géopolitiques</h4>
+                      <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Ukraine :</strong> "Grenier Europe" perturbé par guerre (2022-)</li>
                         <li><strong>Fertilisants :</strong> Russie 20% exports, sanctions impactent production</li>
                         <li><strong>Routes commerciales :</strong> Mer Noire, détroits sensibles</li>
@@ -289,7 +289,7 @@ const AgroalimentairePage = () => {
                       </div>
                     </div>
 
-                    <div className="border-l-4 border-carnet-red/40 bg-pr-orange-pale p-4 rounded-r-lg">
+                    <div className="border-l-4 border-carnet-red/40 bg-pr-gray-bg p-4 rounded-r-lg">
                       <h4 className="font-semibold text-carnet-red-deep mb-3">
                         <Building className="inline h-4 w-4 mr-2" />
                         Agriculture de précision et numérique

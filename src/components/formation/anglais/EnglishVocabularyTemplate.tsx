@@ -48,7 +48,7 @@ export const EnglishVocabularyTemplate: React.FC<EnglishVocabularyTemplateProps>
       Icon={Icon}
     >
       <div className="max-w-6xl mx-auto">
-        <div className="bg-white border border-pr-gray-light rounded-2xl overflow-hidden">
+        <div className="bg-carnet-paper-2 border border-carnet-rule rounded-2xl overflow-hidden">
           <div className="h-[2px] bg-pr-orange" />
           <div className="p-6 sm:p-8">
             <UnifiedFlashcards

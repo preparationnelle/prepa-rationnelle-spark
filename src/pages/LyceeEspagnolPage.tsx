@@ -162,7 +162,7 @@ const LyceeEspagnolPage = () => {
                   Organisez des groupes de révision avec des camarades sérieux. Alternez les rôles : un jour candidat, un jour examinateur pour simuler les épreuves orales. Cette méthode permet de travailler l'expression orale tout en révisant le contenu.
                 </p>
 
-                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
+                <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-carnet-red/40">
                   <p className="text-carnet-red-deep font-medium">
                     La réussite en espagnol en terminale repose sur trois piliers fondamentaux : la régularité du travail, la diversité des supports d'apprentissage et l'entraînement systématique aux épreuves. En appliquant ces méthodes de manière cohérente tout au long de l'année, vous développerez progressivement les compétences nécessaires pour exceller dans cette matière évaluée en contrôle continu.
                   </p>
@@ -172,19 +172,19 @@ const LyceeEspagnolPage = () => {
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <div className="bg-gradient-to-br from-carnet-paper-2 to-orange-50 border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-pr-orange hover:bg-gradient-to-br hover:from-orange-50 hover:to-pr-orange-pale transition-all duration-300 group p-8 rounded-lg">
-                <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                  <Languages className="h-8 w-8 text-carnet-red group-hover:text-pr-orange transition-colors duration-300" />
+              <div className="bg-gradient-to-br from-carnet-paper-2 to-orange-50 border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-pr-black hover:bg-gradient-to-br hover:from-orange-50 hover:to-pr-black-pale transition-all duration-300 group p-8 rounded-lg">
+                <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+                  <Languages className="h-8 w-8 text-carnet-red group-hover:text-pr-black transition-colors duration-300" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">
+                <h3 className="text-2xl font-bold mb-4 text-carnet-red group-hover:text-pr-black transition-colors duration-300">
                   Besoin d'aide personnalisée en espagnol ?
                 </h3>
-                <p className="text-gray-600 group-hover:text-pr-orange-dark transition-colors duration-300 mb-6">
+                <p className="text-gray-600 group-hover:text-pr-black transition-colors duration-300 mb-6">
                   Nos experts vous accompagnent pour maîtriser l'espagnol et réussir votre LV2.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/contact">
-                    <Button size="lg" className="bg-carnet-red hover:bg-pr-orange-dark text-white transition-all duration-300">
+                    <Button size="lg" className="bg-carnet-red hover:bg-pr-black-dark text-white transition-all duration-300">
                       Nous contacter
                     </Button>
                   </Link>

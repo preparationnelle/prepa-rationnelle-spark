@@ -203,7 +203,7 @@ const JusticeVocabularyPage = () => {
       'Droit et législation': 'bg-green-500',
       'Procédure et procès': 'bg-red-500',
       'Droits et libertés': 'bg-purple-500',
-      'Justice pénale': 'bg-pr-orange',
+      'Justice pénale': 'bg-pr-black',
       'Justice sociale et équité': 'bg-emerald-500',
       'Résolution de conflits': 'bg-teal-500',
       'Contrôle et surveillance': 'bg-indigo-500',
@@ -407,7 +407,7 @@ const JusticeVocabularyPage = () => {
                 <p className="text-sm text-gray-600">Progression</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-pr-orange-dark">
+                <p className="text-2xl font-bold text-pr-black">
                   {currentCardIndex + 1}
                 </p>
                 <p className="text-sm text-gray-600">Carte actuelle</p>

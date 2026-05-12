@@ -38,9 +38,9 @@ const GestionEntPage = () => {
                     {/* Corps de l'article */}
                     <div className="prose prose-lg prose-gray max-w-none">
 
-                        <div className="bg-orange-50 border-l-4 border-pr-orange p-6 mb-8 rounded-r-lg">
+                        <div className="bg-gray-50 border-l-4 border-pr-black p-6 mb-8 rounded-r-lg">
                             <h3 className="text-orange-900 font-bold text-lg mt-0">Le paradoxe 2025</h3>
-                            <p className="text-orange-800 mb-0">
+                            <p className="text-gray-800 mb-0">
                                 Un outil créé pour améliorer la communication a transformé la relation école-famille en source d'anxiété pour <strong>62% des parents</strong>.
                             </p>
                         </div>

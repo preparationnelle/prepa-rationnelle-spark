@@ -290,10 +290,10 @@ const EtudesDeCasPage = () => {
 
   const getColorClasses = (color: string) => {
     const colorMap: { [key: string]: { bg: string; text: string; hover: string; badge: string } } = {
-      blue: { bg: 'bg-pr-orange-pale', text: 'text-carnet-red', hover: 'hover:bg-carnet-red/10', badge: 'bg-carnet-red/10 text-carnet-red' },
+      blue: { bg: 'bg-pr-gray-bg', text: 'text-carnet-red', hover: 'hover:bg-carnet-red/10', badge: 'bg-carnet-red/10 text-carnet-red' },
       green: { bg: 'bg-green-50', text: 'text-green-700', hover: 'hover:bg-green-100', badge: 'bg-green-100 text-green-700' },
       purple: { bg: 'bg-purple-50', text: 'text-purple-700', hover: 'hover:bg-purple-100', badge: 'bg-purple-100 text-purple-700' },
-      orange: { bg: 'bg-orange-50', text: 'text-pr-orange-dark', hover: 'hover:bg-orange-100', badge: 'bg-orange-100 text-pr-orange-dark' },
+      orange: { bg: 'bg-gray-50', text: 'text-pr-black', hover: 'hover:bg-gray-100', badge: 'bg-gray-100 text-pr-black' },
       gray: { bg: 'bg-gray-50', text: 'text-gray-700', hover: 'hover:bg-gray-100', badge: 'bg-gray-100 text-gray-700' },
       emerald: { bg: 'bg-emerald-50', text: 'text-emerald-700', hover: 'hover:bg-emerald-100', badge: 'bg-emerald-100 text-emerald-700' },
       yellow: { bg: 'bg-yellow-50', text: 'text-yellow-700', hover: 'hover:bg-yellow-100', badge: 'bg-yellow-100 text-yellow-700' },
@@ -301,7 +301,7 @@ const EtudesDeCasPage = () => {
       indigo: { bg: 'bg-indigo-50', text: 'text-indigo-700', hover: 'hover:bg-indigo-100', badge: 'bg-indigo-100 text-indigo-700' },
       red: { bg: 'bg-red-50', text: 'text-red-700', hover: 'hover:bg-red-100', badge: 'bg-red-100 text-red-700' },
       slate: { bg: 'bg-slate-50', text: 'text-slate-700', hover: 'hover:bg-slate-100', badge: 'bg-slate-100 text-slate-700' },
-      pr: { bg: 'bg-white', text: 'text-pr-orange-dark', hover: 'hover:bg-pr-orange-pale/40', badge: 'bg-pr-orange-pale text-pr-orange-dark' }
+      pr: { bg: 'bg-white', text: 'text-pr-black', hover: 'hover:bg-pr-gray-bg/40', badge: 'bg-pr-gray-bg text-pr-black' }
     };
     return colorMap[color] || colorMap.gray;
   };

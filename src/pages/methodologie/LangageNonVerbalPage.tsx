@@ -75,7 +75,7 @@ const LangageNonVerbalPage = () => (
     <MethodSection label="Section 02" title="Les premiers instants : entrée et installation" icon={UserCheck}>
       <div className="grid md:grid-cols-3 gap-5">
         {entree.map((e, i) => (
-          <div key={e.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+          <div key={e.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
             <span className="font-dm-serif text-3xl text-red-600">{String(i + 1).padStart(2, '0')}</span>
             <h4 className="font-dm-serif text-lg text-carnet-ink mt-1 mb-1">{e.t}</h4>
             <div className="h-px w-8 bg-red-600 mb-4" />

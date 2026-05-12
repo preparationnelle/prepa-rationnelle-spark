@@ -210,7 +210,7 @@ const MathsIntegrationPage = () => {
                                                         <FormulaBox>
                                                                 <LatexRenderer latex={"\\int_{\\varphi(a)}^{\\varphi(b)} f(t)\\,dt = \\int_a^b f(\\varphi(x))\\varphi'(x)\\,dx"} />
                                                         </FormulaBox>
-                                                        <div className="bg-pr-orange-pale border border-carnet-red/20 p-4 rounded text-carnet-red-deep text-sm mt-4">
+                                                        <div className="bg-pr-gray-bg border border-carnet-red/20 p-4 rounded text-carnet-red-deep text-sm mt-4">
                                                                 <strong>Conseil pour la rédaction :</strong> Toujours préciser l'intervalle de définition, la bijectivité (si nécessaire pour les bornes inverses) et la régularité <LatexRenderer latex={"\\mathcal{C}^1"} /> du changement de variable.
                                                         </div>
                                                 </div>

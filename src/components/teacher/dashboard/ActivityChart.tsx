@@ -90,16 +90,20 @@ const ActivityChart: React.FC = () => {
             <Line 
               type="monotone" 
               dataKey="connections" 
-              stroke="hsl(var(--primary))" 
+              stroke="#1F1714" 
               strokeWidth={2}
               name="Connexions uniques"
+              dot={{ fill: '#1F1714', strokeWidth: 2, r: 4 }}
+              activeDot={{ r: 6, fill: '#1F1714' }}
             />
             <Line 
               type="monotone" 
               dataKey="activities" 
-              stroke="hsl(var(--secondary))" 
+              stroke="#C1443A" 
               strokeWidth={2}
               name="Activités totales"
+              dot={{ fill: '#C1443A', strokeWidth: 2, r: 4 }}
+              activeDot={{ r: 6, fill: '#C1443A' }}
             />
           </LineChart>
         </ResponsiveContainer>

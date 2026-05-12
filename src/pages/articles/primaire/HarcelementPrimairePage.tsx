@@ -38,9 +38,9 @@ const HarcelementPrimairePage = () => {
                     {/* Corps de l'article */}
                     <div className="prose prose-lg prose-gray max-w-none">
 
-                        <div className="bg-orange-50 border-l-4 border-pr-orange p-6 mb-8 rounded-r-lg">
+                        <div className="bg-gray-50 border-l-4 border-pr-black p-6 mb-8 rounded-r-lg">
                             <h3 className="text-orange-900 font-bold text-lg mt-0">Le saviez-vous ?</h3>
-                            <p className="text-orange-800 mb-0">
+                            <p className="text-gray-800 mb-0">
                                 <strong>56% des parents</strong> se posent régulièrement la question de savoir si leur enfant est victime de harcèlement ou de simples conflits. La distinction est cruciale pour apporter la bonne réponse.
                             </p>
                         </div>
@@ -62,7 +62,7 @@ const HarcelementPrimairePage = () => {
                         <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6">Première Distinction Essentielle : Conflit Normal vs Harcèlement</h2>
 
                         <div className="grid md:grid-cols-2 gap-6 my-8">
-                            <div className="bg-pr-orange-pale p-6 rounded-xl border border-carnet-red/20">
+                            <div className="bg-pr-gray-bg p-6 rounded-xl border border-carnet-red/20">
                                 <h4 className="text-carnet-red-deep font-bold mb-3 flex items-center">
                                     <span className="w-2 h-2 rounded-full bg-carnet-red mr-2"></span>
                                     Conflit Normal

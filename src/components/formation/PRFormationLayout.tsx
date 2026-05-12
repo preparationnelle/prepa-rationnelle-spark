@@ -31,9 +31,9 @@ export const PRFormationLayout: React.FC<PRFormationLayoutProps> = ({
   const eyebrowText = eyebrow ?? badge;
 
   return (
-    <div className="min-h-screen bg-pr-gray-bg font-dm-sans text-pr-gray-dark">
+    <div className="min-h-screen font-dm-sans text-pr-gray-dark">
       {crumbs && crumbs.length > 0 && (
-        <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-pr-gray-light/70">
+        <nav className="sticky top-0 z-40 bg-carnet-paper/95 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper/90 border-b border-carnet-rule/60">
           <div className="container mx-auto px-4 py-2">
             <div className="flex items-center text-[11px] uppercase tracking-[0.08em] text-pr-gray-mid font-dm-sans font-semibold">
               {crumbs.map((c, i) => (
@@ -97,7 +97,7 @@ export const PRFormationLayout: React.FC<PRFormationLayoutProps> = ({
                   className={
                     t.highlight
                       ? 'px-3 py-1 bg-pr-orange-pale text-pr-orange-dark rounded-full text-xs font-semibold uppercase tracking-wider'
-                      : 'px-3 py-1 bg-white border border-pr-gray-light text-pr-gray-dark rounded-full text-xs font-semibold uppercase tracking-wider'
+                      : 'px-3 py-1 bg-carnet-paper-2 border border-carnet-rule text-pr-gray-dark rounded-full text-xs font-semibold uppercase tracking-wider'
                   }
                 >
                   {t.label}

@@ -9,27 +9,27 @@ const ProcheMoyenOrientPage = () => {
   return (
     <div className="relative">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2/90 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper-2/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center text-xs font-medium text-carnet-ink-soft">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formations" className="hover:text-gray-900 transition-colors">
+            <Link to="/formations" className="hover:text-carnet-ink transition-colors">
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/geopolitique" className="hover:text-gray-900 transition-colors">
+            <Link to="/formation/geopolitique" className="hover:text-carnet-ink transition-colors">
               Formation Géopolitique
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/geopolitique/deuxieme-annee" className="hover:text-gray-900 transition-colors">
+            <Link to="/formation/geopolitique/deuxieme-annee" className="hover:text-carnet-ink transition-colors">
               Deuxième Année
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Proche et Moyen-Orient</span>
+            <span className="text-carnet-ink font-bold">Proche et Moyen-Orient</span>
           </div>
         </div>
       </nav>
@@ -37,10 +37,10 @@ const ProcheMoyenOrientPage = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-semibold text-gray-900">
+          <h1 className="text-3xl md:text-4xl font-semibold text-carnet-ink">
             Le Proche et Moyen-Orient
           </h1>
-          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mt-3">
+          <p className="text-base md:text-lg text-carnet-ink-soft max-w-2xl mx-auto mt-3">
             Une région aux frontières floues, épicentre des tensions mondiales entre puissances régionales et enjeux stratégiques
           </p>
         </div>
@@ -49,10 +49,10 @@ const ProcheMoyenOrientPage = () => {
         <div className="max-w-6xl mx-auto space-y-8">
 
           {/* Introduction */}
-          <Card className="border-2 border-gray-200 bg-white shadow-none">
+          <Card className="border-2 border-carnet-rule bg-carnet-paper-2 shadow-none">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-3">
-                <Lightbulb className="h-6 w-6 text-gray-600" />
+                <Lightbulb className="h-6 w-6 text-carnet-ink-soft" />
                 Introduction
               </CardTitle>
             </CardHeader>
@@ -65,11 +65,11 @@ const ProcheMoyenOrientPage = () => {
                   <AccordionContent>
                     <div className="space-y-6">
                       
-                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                        <h4 className="font-semibold text-gray-800 mb-2">Définition à apprendre par cœur</h4>
+                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                        <h4 className="font-semibold text-carnet-ink mb-2">Définition à apprendre par cœur</h4>
                         <div className="flex items-start gap-3">
-                          <Quote className="h-5 w-5 text-gray-600 mt-1 flex-shrink-0" />
-                          <p className="text-gray-700 italic">
+                          <Quote className="h-5 w-5 text-carnet-ink-soft mt-1 flex-shrink-0" />
+                          <p className="text-carnet-ink-soft italic">
                             Le Moyen-Orient est une région aux frontières fluctuantes, englobant l'Asie occidentale et l'Afrique du Nord, 
                             où se rencontrent des enjeux énergétiques, religieux et stratégiques majeurs. Il est marqué par la rivalité 
                             entre puissances régionales (Iran, Turquie, Arabie Saoudite), l'intervention des grandes puissances et des 
@@ -78,28 +78,28 @@ const ProcheMoyenOrientPage = () => {
                         </div>
                       </div>
 
-                      <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                        <h4 className="font-semibold text-gray-800 mb-3">Terminologies et délimitations :</h4>
+                      <div className="bg-carnet-paper p-4 rounded-lg border border-carnet-rule">
+                        <h4 className="font-semibold text-carnet-ink mb-3">Terminologies et délimitations :</h4>
                         <div className="space-y-3">
                           <div>
-                            <p className="font-semibold text-gray-800">Moyen-Orient (Middle East)</p>
-                            <p className="text-gray-700 text-sm">Expression occidentale, popularisée après la Seconde Guerre mondiale.</p>
+                            <p className="font-semibold text-carnet-ink">Moyen-Orient (Middle East)</p>
+                            <p className="text-carnet-ink-soft text-sm">Expression occidentale, popularisée après la Seconde Guerre mondiale.</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-800">Proche-Orient</p>
-                            <p className="text-gray-700 text-sm">Terme d'origine européenne, désignant les territoires du Levant (Liban, Syrie, Palestine, Irak).</p>
+                            <p className="font-semibold text-carnet-ink">Proche-Orient</p>
+                            <p className="text-carnet-ink-soft text-sm">Terme d'origine européenne, désignant les territoires du Levant (Liban, Syrie, Palestine, Irak).</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-800">MENA (Middle East and North Africa)</p>
-                            <p className="text-gray-700 text-sm">Intègre les pays d'Afrique du Nord (Maroc, Algérie, Tunisie, Égypte).</p>
+                            <p className="font-semibold text-carnet-ink">MENA (Middle East and North Africa)</p>
+                            <p className="text-carnet-ink-soft text-sm">Intègre les pays d'Afrique du Nord (Maroc, Algérie, Tunisie, Égypte).</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-800">Grand Moyen-Orient (Great Middle East)</p>
-                            <p className="text-gray-700 text-sm">Vision stratégique américaine élargie incluant l'Afghanistan, la Mauritanie et le Pakistan (Bush, 2004).</p>
+                            <p className="font-semibold text-carnet-ink">Grand Moyen-Orient (Great Middle East)</p>
+                            <p className="text-carnet-ink-soft text-sm">Vision stratégique américaine élargie incluant l'Afghanistan, la Mauritanie et le Pakistan (Bush, 2004).</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-800">Arc de crises</p>
-                            <p className="text-gray-700 text-sm">Concept géopolitique désignant une zone d'instabilité s'étendant de l'Afrique du Nord jusqu'à l'Asie centrale.</p>
+                            <p className="font-semibold text-carnet-ink">Arc de crises</p>
+                            <p className="text-carnet-ink-soft text-sm">Concept géopolitique désignant une zone d'instabilité s'étendant de l'Afrique du Nord jusqu'à l'Asie centrale.</p>
                           </div>
                         </div>
                       </div>
@@ -113,38 +113,38 @@ const ProcheMoyenOrientPage = () => {
                   <AccordionContent>
                     <div className="space-y-6">
                       
-                      <div className="bg-white p-4 rounded-lg border border-gray-200">
-                        <h4 className="font-semibold text-gray-800 mb-3">Trois grandes puissances régionales non arabes :</h4>
+                      <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
+                        <h4 className="font-semibold text-carnet-ink mb-3">Trois grandes puissances régionales non arabes :</h4>
                         <div className="space-y-3">
-                          <div className="bg-gray-50 p-3 rounded border-l-4 border-gray-300">
-                            <p className="font-semibold text-gray-800">Turquie</p>
-                            <p className="text-gray-700 text-sm">Puissance militaire et économique, ambition néo-ottomane sous Erdogan.</p>
+                          <div className="bg-carnet-paper p-3 rounded border-l-4 border-carnet-rule">
+                            <p className="font-semibold text-carnet-ink">Turquie</p>
+                            <p className="text-carnet-ink-soft text-sm">Puissance militaire et économique, ambition néo-ottomane sous Erdogan.</p>
                           </div>
-                          <div className="bg-gray-50 p-3 rounded border-l-4 border-gray-300">
-                            <p className="font-semibold text-gray-800">Iran</p>
-                            <p className="text-gray-700 text-sm">Puissance chiite, influence en Irak, Syrie, Liban et Yémen.</p>
+                          <div className="bg-carnet-paper p-3 rounded border-l-4 border-carnet-rule">
+                            <p className="font-semibold text-carnet-ink">Iran</p>
+                            <p className="text-carnet-ink-soft text-sm">Puissance chiite, influence en Irak, Syrie, Liban et Yémen.</p>
                           </div>
-                          <div className="bg-gray-50 p-3 rounded border-l-4 border-gray-300">
-                            <p className="font-semibold text-gray-800">Égypte</p>
-                            <p className="text-gray-700 text-sm">Puissance démographique et militaire, rôle central dans le monde arabe.</p>
+                          <div className="bg-carnet-paper p-3 rounded border-l-4 border-carnet-rule">
+                            <p className="font-semibold text-carnet-ink">Égypte</p>
+                            <p className="text-carnet-ink-soft text-sm">Puissance démographique et militaire, rôle central dans le monde arabe.</p>
                           </div>
                         </div>
                       </div>
 
-                      <div className="bg-white p-4 rounded-lg border border-gray-200">
-                        <h4 className="font-semibold text-gray-800 mb-3">Les autres acteurs majeurs :</h4>
+                      <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
+                        <h4 className="font-semibold text-carnet-ink mb-3">Les autres acteurs majeurs :</h4>
                         <div className="space-y-3">
-                          <div className="bg-gray-50 p-3 rounded border-l-4 border-gray-300">
-                            <p className="font-semibold text-gray-800">Arabie Saoudite</p>
-                            <p className="text-gray-700 text-sm">Leader du monde sunnite, puissance pétrolière, rival de l'Iran.</p>
+                          <div className="bg-carnet-paper p-3 rounded border-l-4 border-carnet-rule">
+                            <p className="font-semibold text-carnet-ink">Arabie Saoudite</p>
+                            <p className="text-carnet-ink-soft text-sm">Leader du monde sunnite, puissance pétrolière, rival de l'Iran.</p>
                           </div>
-                          <div className="bg-gray-50 p-3 rounded border-l-4 border-gray-300">
-                            <p className="font-semibold text-gray-800">Israël</p>
-                            <p className="text-gray-700 text-sm">Puissance militaire et technologique, alliances stratégiques avec les États-Unis et les pays du Golfe.</p>
+                          <div className="bg-carnet-paper p-3 rounded border-l-4 border-carnet-rule">
+                            <p className="font-semibold text-carnet-ink">Israël</p>
+                            <p className="text-carnet-ink-soft text-sm">Puissance militaire et technologique, alliances stratégiques avec les États-Unis et les pays du Golfe.</p>
                           </div>
                           <div className="bg-teal-50 p-3 rounded border-l-4 border-teal-400">
-                            <p className="font-semibold text-gray-800">Qatar, EAU</p>
-                            <p className="text-gray-700 text-sm">Influence diplomatique et financière (soft power, Al Jazeera, investissements).</p>
+                            <p className="font-semibold text-carnet-ink">Qatar, EAU</p>
+                            <p className="text-carnet-ink-soft text-sm">Influence diplomatique et financière (soft power, Al Jazeera, investissements).</p>
                           </div>
                         </div>
                       </div>
@@ -158,44 +158,44 @@ const ProcheMoyenOrientPage = () => {
                   <AccordionContent>
                     <div className="space-y-6">
                       
-                      <div className="bg-white p-4 rounded-lg border border-gray-200">
-                        <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                      <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
+                        <h4 className="font-semibold text-carnet-ink mb-3 flex items-center gap-2">
                           <AlertTriangle className="h-5 w-5" />
                           Instabilités internes
                         </h4>
                         <div className="space-y-2">
                           <div>
-                            <p className="font-semibold text-gray-800">Guerres civiles et conflits ethniques</p>
-                            <p className="text-gray-700 text-sm">Syrie, Yémen, Libye, Irak.</p>
+                            <p className="font-semibold text-carnet-ink">Guerres civiles et conflits ethniques</p>
+                            <p className="text-carnet-ink-soft text-sm">Syrie, Yémen, Libye, Irak.</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-800">Crises économiques et mal-développement</p>
-                            <p className="text-gray-700 text-sm">Liban (effondrement économique), Irak (corruption, infrastructures défaillantes).</p>
+                            <p className="font-semibold text-carnet-ink">Crises économiques et mal-développement</p>
+                            <p className="text-carnet-ink-soft text-sm">Liban (effondrement économique), Irak (corruption, infrastructures défaillantes).</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-800">Inégalités sociales et contestations</p>
-                            <p className="text-gray-700 text-sm">Printemps arabes (2011), révoltes au Soudan, en Iran.</p>
+                            <p className="font-semibold text-carnet-ink">Inégalités sociales et contestations</p>
+                            <p className="text-carnet-ink-soft text-sm">Printemps arabes (2011), révoltes au Soudan, en Iran.</p>
                           </div>
                         </div>
                       </div>
 
-                      <div className="bg-white p-4 rounded-lg border border-gray-200">
-                        <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                      <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
+                        <h4 className="font-semibold text-carnet-ink mb-3 flex items-center gap-2">
                           <Globe className="h-5 w-5" />
                           Instabilités externes
                         </h4>
                         <div className="space-y-2">
                           <div>
-                            <p className="font-semibold text-gray-800">Conflits interétatiques et interventions étrangères</p>
-                            <p className="text-gray-700 text-sm">Guerre Iran-Irak (1980-1988), invasion américaine de l'Irak (2003).</p>
+                            <p className="font-semibold text-carnet-ink">Conflits interétatiques et interventions étrangères</p>
+                            <p className="text-carnet-ink-soft text-sm">Guerre Iran-Irak (1980-1988), invasion américaine de l'Irak (2003).</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-800">Influence des grandes puissances</p>
-                            <p className="text-gray-700 text-sm">Rôle des États-Unis, de la Russie et de la Chine dans la région.</p>
+                            <p className="font-semibold text-carnet-ink">Influence des grandes puissances</p>
+                            <p className="text-carnet-ink-soft text-sm">Rôle des États-Unis, de la Russie et de la Chine dans la région.</p>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-800">Rivalités entre puissances régionales</p>
-                            <p className="text-gray-700 text-sm">Iran vs Arabie Saoudite, Israël vs Iran, Turquie vs Égypte.</p>
+                            <p className="font-semibold text-carnet-ink">Rivalités entre puissances régionales</p>
+                            <p className="text-carnet-ink-soft text-sm">Iran vs Arabie Saoudite, Israël vs Iran, Turquie vs Égypte.</p>
                           </div>
                         </div>
                       </div>
@@ -210,24 +210,24 @@ const ProcheMoyenOrientPage = () => {
                     <div className="space-y-6">
                       
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                          <h4 className="font-semibold text-gray-800 mb-3">Maghreb (Afrique du Nord)</h4>
+                        <div className="bg-carnet-paper p-4 rounded-lg border border-carnet-rule">
+                          <h4 className="font-semibold text-carnet-ink mb-3">Maghreb (Afrique du Nord)</h4>
                           <div className="space-y-2">
-                            <p className="text-gray-700 text-sm"><strong>Pays :</strong> Maroc, Algérie, Tunisie, Libye, Mauritanie</p>
-                            <p className="text-gray-700 text-sm"><strong>Caractéristiques :</strong></p>
-                            <ul className="text-gray-700 text-sm space-y-1 ml-4">
+                            <p className="text-carnet-ink-soft text-sm"><strong>Pays :</strong> Maroc, Algérie, Tunisie, Libye, Mauritanie</p>
+                            <p className="text-carnet-ink-soft text-sm"><strong>Caractéristiques :</strong></p>
+                            <ul className="text-carnet-ink-soft text-sm space-y-1 ml-4">
                               <li>• Influence historique de l'Europe</li>
                               <li>• Faible intégration régionale (échec de l'UMA)</li>
                             </ul>
                           </div>
                         </div>
                         
-                        <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                          <h4 className="font-semibold text-gray-800 mb-3">Machrek (Orient arabe)</h4>
+                        <div className="bg-carnet-paper p-4 rounded-lg border border-carnet-rule">
+                          <h4 className="font-semibold text-carnet-ink mb-3">Machrek (Orient arabe)</h4>
                           <div className="space-y-2">
-                            <p className="text-gray-700 text-sm"><strong>Pays :</strong> Égypte, Levant, Irak, péninsule Arabique</p>
-                            <p className="text-gray-700 text-sm"><strong>Caractéristiques :</strong></p>
-                            <ul className="text-gray-700 text-sm space-y-1 ml-4">
+                            <p className="text-carnet-ink-soft text-sm"><strong>Pays :</strong> Égypte, Levant, Irak, péninsule Arabique</p>
+                            <p className="text-carnet-ink-soft text-sm"><strong>Caractéristiques :</strong></p>
+                            <ul className="text-carnet-ink-soft text-sm space-y-1 ml-4">
                               <li>• Poids du pétrole et des tensions géopolitiques</li>
                               <li>• Fragmentation politique</li>
                             </ul>
@@ -245,51 +245,51 @@ const ProcheMoyenOrientPage = () => {
                     <div className="space-y-6">
                       
                       {/* Paradoxe 1 */}
-                      <div className="bg-white p-4 rounded-lg border border-gray-200">
-                        <h4 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                      <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
+                        <h4 className="font-semibold text-carnet-ink mb-2 flex items-center gap-2">
                           <Zap className="h-4 w-4" />
                           1. Une région stratégique, instable et convoitée
                         </h4>
                         <div className="space-y-2">
-                          <p className="text-gray-700"><strong>Constat :</strong> Le Moyen-Orient est une zone de tensions majeures, avec des conflits récurrents et des ingérences étrangères.</p>
-                          <p className="text-gray-700"><strong>Paradoxe :</strong> Malgré son instabilité chronique, il reste un espace central dans la géopolitique mondiale et l'économie énergétique.</p>
-                          <p className="text-gray-700 font-semibold"><strong>Problématique :</strong> La région est-elle condamnée à être une poudrière mondiale ou peut-elle stabiliser ses rivalités internes et externes ?</p>
+                          <p className="text-carnet-ink-soft"><strong>Constat :</strong> Le Moyen-Orient est une zone de tensions majeures, avec des conflits récurrents et des ingérences étrangères.</p>
+                          <p className="text-carnet-ink-soft"><strong>Paradoxe :</strong> Malgré son instabilité chronique, il reste un espace central dans la géopolitique mondiale et l'économie énergétique.</p>
+                          <p className="text-carnet-ink-soft font-semibold"><strong>Problématique :</strong> La région est-elle condamnée à être une poudrière mondiale ou peut-elle stabiliser ses rivalités internes et externes ?</p>
                         </div>
                       </div>
 
                       {/* Paradoxe 2 */}
-                      <div className="bg-white p-4 rounded-lg border border-gray-200">
-                        <h4 className="font-semibold text-gray-800 mb-2">2. Les ingérences étrangères : stabilisation ou chaos ?</h4>
+                      <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
+                        <h4 className="font-semibold text-carnet-ink mb-2">2. Les ingérences étrangères : stabilisation ou chaos ?</h4>
                         <div className="space-y-2">
-                          <p className="text-gray-700"><strong>Constat :</strong> Les puissances occidentales ont historiquement cherché à façonner l'ordre régional, des accords Sykes-Picot à l'intervention américaine en Irak.</p>
-                          <p className="text-gray-700"><strong>Paradoxe :</strong> Les interventions étrangères prétendent rétablir la stabilité mais génèrent souvent plus de désordre, tandis que leur absence favorise l'essor des acteurs non étatiques (milices, terrorisme).</p>
-                          <p className="text-gray-700 font-semibold"><strong>Problématique :</strong> L'ingérence est-elle une cause de l'instabilité du Moyen-Orient ou la seule alternative pour éviter l'anarchie ?</p>
+                          <p className="text-carnet-ink-soft"><strong>Constat :</strong> Les puissances occidentales ont historiquement cherché à façonner l'ordre régional, des accords Sykes-Picot à l'intervention américaine en Irak.</p>
+                          <p className="text-carnet-ink-soft"><strong>Paradoxe :</strong> Les interventions étrangères prétendent rétablir la stabilité mais génèrent souvent plus de désordre, tandis que leur absence favorise l'essor des acteurs non étatiques (milices, terrorisme).</p>
+                          <p className="text-carnet-ink-soft font-semibold"><strong>Problématique :</strong> L'ingérence est-elle une cause de l'instabilité du Moyen-Orient ou la seule alternative pour éviter l'anarchie ?</p>
                         </div>
                       </div>
 
                       {/* Paradoxe 3 */}
-                      <div className="bg-white p-4 rounded-lg border border-gray-200">
-                        <h4 className="font-semibold text-gray-800 mb-2">3. Le pétrole : une richesse qui freine le développement</h4>
+                      <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
+                        <h4 className="font-semibold text-carnet-ink mb-2">3. Le pétrole : une richesse qui freine le développement</h4>
                         <div className="space-y-2">
-                          <p className="text-gray-700"><strong>Constat :</strong> Le Moyen-Orient détient plus de 50 % des réserves mondiales de pétrole et 40 % des réserves de gaz, assurant un poids géostratégique considérable.</p>
-                          <p className="text-gray-700"><strong>Paradoxe :</strong> La rente pétrolière n'a pas permis un développement homogène : les pays les plus riches sont ceux où la redistribution est la plus inégalitaire.</p>
-                          <p className="text-gray-700 font-semibold"><strong>Problématique :</strong> Pourquoi le Moyen-Orient, malgré son potentiel économique, ne parvient-il pas à émerger durablement ?</p>
+                          <p className="text-carnet-ink-soft"><strong>Constat :</strong> Le Moyen-Orient détient plus de 50 % des réserves mondiales de pétrole et 40 % des réserves de gaz, assurant un poids géostratégique considérable.</p>
+                          <p className="text-carnet-ink-soft"><strong>Paradoxe :</strong> La rente pétrolière n'a pas permis un développement homogène : les pays les plus riches sont ceux où la redistribution est la plus inégalitaire.</p>
+                          <p className="text-carnet-ink-soft font-semibold"><strong>Problématique :</strong> Pourquoi le Moyen-Orient, malgré son potentiel économique, ne parvient-il pas à émerger durablement ?</p>
                         </div>
                       </div>
 
                       {/* Paradoxe 4 */}
-                      <div className="bg-white p-4 rounded-lg border border-gray-200">
-                        <h4 className="font-semibold text-gray-800 mb-2">4. Une région entre opulence et mal-développement</h4>
+                      <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
+                        <h4 className="font-semibold text-carnet-ink mb-2">4. Une région entre opulence et mal-développement</h4>
                         <div className="space-y-2">
-                          <p className="text-gray-700"><strong>Constat :</strong> Certains États affichent des niveaux de richesse spectaculaires (Dubaï, Doha), tandis que d'autres s'effondrent sous le poids des guerres et des crises économiques (Yémen, Syrie, Liban).</p>
-                          <p className="text-gray-700"><strong>Paradoxe :</strong> L'opulence des monarchies pétrolières coexiste avec une pauvreté extrême et des tensions sociales qui menacent la stabilité régionale.</p>
-                          <p className="text-gray-700 font-semibold"><strong>Problématique :</strong> Le développement du Moyen-Orient est-il réellement durable ou repose-t-il sur des bases fragiles et artificielles ?</p>
+                          <p className="text-carnet-ink-soft"><strong>Constat :</strong> Certains États affichent des niveaux de richesse spectaculaires (Dubaï, Doha), tandis que d'autres s'effondrent sous le poids des guerres et des crises économiques (Yémen, Syrie, Liban).</p>
+                          <p className="text-carnet-ink-soft"><strong>Paradoxe :</strong> L'opulence des monarchies pétrolières coexiste avec une pauvreté extrême et des tensions sociales qui menacent la stabilité régionale.</p>
+                          <p className="text-carnet-ink-soft font-semibold"><strong>Problématique :</strong> Le développement du Moyen-Orient est-il réellement durable ou repose-t-il sur des bases fragiles et artificielles ?</p>
                         </div>
                       </div>
 
                       {/* Autres paradoxes - version condensée */}
-                      <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                        <h4 className="font-semibold text-gray-800 mb-3">Autres paradoxes majeurs :</h4>
+                      <div className="bg-carnet-paper p-4 rounded-lg border border-carnet-rule">
+                        <h4 className="font-semibold text-carnet-ink mb-3">Autres paradoxes majeurs :</h4>
                         <div className="space-y-2 text-sm">
                           <p><strong>5. Nouvel ordre régional ou fragmentation ?</strong> Recomposition autour de nouvelles alliances (Accords d'Abraham) vs conflits persistants.</p>
                           <p><strong>6. La Méditerranée :</strong> Un pont historique devenu fossé géopolitique entre Europe et monde arabe.</p>
@@ -308,10 +308,10 @@ const ProcheMoyenOrientPage = () => {
           </Card>
 
           {/* Plan de la dissertation */}
-          <Card className="border-2 border-gray-200 bg-gradient-to-br bg-white shadow-none">
+          <Card className="border-2 border-carnet-rule bg-gradient-to-br bg-carnet-paper-2 shadow-none">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-3">
-                <BookOpen className="h-6 w-6 text-gray-600" />
+                <BookOpen className="h-6 w-6 text-carnet-ink-soft" />
                 Plan de la dissertation
               </CardTitle>
             </CardHeader>
@@ -320,12 +320,12 @@ const ProcheMoyenOrientPage = () => {
                 
                 {/* Partie I */}
                 <AccordionItem value="partie-1">
-                  <AccordionTrigger className="text-xl font-semibold text-gray-800">
+                  <AccordionTrigger className="text-xl font-semibold text-carnet-ink">
                     I. Une région historiquement marquée par les ingérences et l'instabilité
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-4">
-                      <Card className="border border-gray-200">
+                      <Card className="border border-carnet-rule">
                         <CardContent className="p-4">
                           <Accordion type="single" collapsible>
                             <AccordionItem value="i-a">
@@ -335,9 +335,9 @@ const ProcheMoyenOrientPage = () => {
                               <AccordionContent>
                                 <div className="space-y-6">
                                   
-                                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                    <p className="text-gray-800 font-semibold mb-2">Le Moyen-Orient, une région au cœur des intérêts des grandes puissances</p>
-                                    <p className="text-gray-700">
+                                  <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                    <p className="text-carnet-ink font-semibold mb-2">Le Moyen-Orient, une région au cœur des intérêts des grandes puissances</p>
+                                    <p className="text-carnet-ink-soft">
                                       Le Moyen-Orient suscite l'attention des grandes puissances depuis la révolution industrielle, en raison de son 
                                       emplacement stratégique et de ses ressources énergétiques. Cette convoitise a donné lieu à des alliances et 
                                       des partenariats historiques, mais surtout à des ingérences répétées, faisant du Moyen-Orient une région de 
@@ -345,9 +345,9 @@ const ProcheMoyenOrientPage = () => {
                                     </p>
                                   </div>
 
-                                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                                    <p className="text-gray-800 font-semibold mb-2">Problématique centrale :</p>
-                                    <p className="text-gray-700">
+                                  <div className="bg-carnet-paper p-4 rounded-lg border border-carnet-rule">
+                                    <p className="text-carnet-ink font-semibold mb-2">Problématique centrale :</p>
+                                    <p className="text-carnet-ink-soft">
                                       Le Moyen-Orient occupe une position géographique centrale et dispose de ressources énergétiques majeures, 
                                       ce qui en fait un enjeu crucial pour les grandes puissances depuis la révolution industrielle. Son histoire 
                                       est marquée par une structuration politique sous l'Empire ottoman, suivie d'un partage entre puissances 
@@ -356,24 +356,24 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* 1. Position géographique */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <MapPin className="h-5 w-5" />
                                       1. Une position géographique au cœur des dynamiques mondiales
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Un carrefour entre trois continents</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Un carrefour entre trois continents</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• Situé à l'interface de l'Europe, de l'Afrique et de l'Asie, le Moyen-Orient est un espace clé pour les échanges économiques et politiques mondiaux</li>
                                           <li>• Il contrôle des routes commerciales stratégiques, comme la route maritime de l'Asie vers l'Europe</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">L'importance des infrastructures de transport</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">L'importance des infrastructures de transport</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li><strong>Canal de Suez (1869) :</strong> devient un axe essentiel reliant la Méditerranée à l'océan Indien, réduisant le temps de trajet entre l'Europe et l'Asie</li>
                                           <li><strong>Contrôle égyptien :</strong> son rôle géopolitique est renforcé lors de la crise de Suez (1956)</li>
                                         </ul>
@@ -382,24 +382,24 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* 2. Ressources énergétiques */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Zap className="h-5 w-5" />
                                       2. Des ressources énergétiques majeures qui attirent les convoitises
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Un centre névralgique du pétrole et du gaz</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Un centre névralgique du pétrole et du gaz</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• Le Moyen-Orient détient <strong>plus de 40 % des réserves mondiales de pétrole</strong> et une part significative des ressources gazières</li>
                                           <li>• Dès la révolution industrielle, les grandes puissances cherchent à sécuriser leur approvisionnement énergétique</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Le partage des ressources entre puissances occidentales</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Le partage des ressources entre puissances occidentales</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li><strong>Accords d'Achnacarry (1928) :</strong> les compagnies pétrolières occidentales (Shell, Exxon, BP) établissent un cartel pour se partager l'exploitation des gisements et éviter la concurrence</li>
                                           <li><strong>Pacte de Quincy (1945) :</strong> accord entre les États-Unis et l'Arabie Saoudite garantissant la protection du régime saoudien en échange d'un accès privilégié au pétrole</li>
                                         </ul>
@@ -408,33 +408,33 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* 3. Interventions extérieures */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Globe className="h-5 w-5" />
                                       3. Un territoire façonné par les interventions extérieures
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Le démembrement de l'Empire ottoman</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Le démembrement de l'Empire ottoman</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• Avant 1914, la région est sous domination ottomane, garantissant une certaine unité politique</li>
                                           <li>• La défaite ottomane lors de la Première Guerre mondiale entraîne son démantèlement et la redistribution des territoires sous contrôle occidental</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Le partage du Moyen-Orient entre puissances européennes</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Le partage du Moyen-Orient entre puissances européennes</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li><strong>Accords Sykes-Picot (1916) :</strong> la France et le Royaume-Uni préparent le découpage de la région avant même la fin du conflit mondial</li>
                                           <li><strong>Traité de Sèvres (1920) :</strong> officialise le partage des territoires, plaçant plusieurs États sous mandat européen</li>
                                           <li><strong>Conférence de San Remo (1920) :</strong> confirme ces mandats sous l'égide de la Société des Nations (SDN)</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Des frontières artificielles sources de tensions</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Des frontières artificielles sources de tensions</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• La création de nouveaux États sans tenir compte des réalités ethniques et religieuses entraîne des divisions profondes</li>
                                           <li><strong>Pierre Blanc et Jean-Paul Chagnollaud</strong> parlent d'une <em>« invention tragique »</em> du Moyen-Orient (<em>L'invention tragique du Moyen-Orient</em>, 2017), illustrant la fragmentation territoriale et ses conséquences</li>
                                           <li><strong>Exemple :</strong> L'absence d'un État pour les Kurdes, répartis entre quatre pays (Turquie, Iran, Irak, Syrie), est un exemple de ces tensions</li>
@@ -444,9 +444,9 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* Transition */}
-                                  <div className="bg-gradient-to-r bg-white p-6 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Transition</h4>
-                                    <p className="text-gray-700 leading-relaxed">
+                                  <div className="bg-gradient-to-r bg-carnet-paper-2 p-6 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-3">Transition</h4>
+                                    <p className="text-carnet-ink-soft leading-relaxed">
                                       Le Moyen-Orient est depuis plus d'un siècle un espace de convoitise pour les puissances étrangères, d'abord européennes, 
                                       puis américaines. Sa position stratégique et ses ressources énergétiques majeures ont entraîné son partage entre États 
                                       occidentaux après la Première Guerre mondiale, créant des frontières artificielles et des rivalités persistantes. 
@@ -464,9 +464,9 @@ const ProcheMoyenOrientPage = () => {
                               <AccordionContent>
                                 <div className="space-y-6">
                                   
-                                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                    <p className="text-gray-800 font-semibold mb-2">Une région où se croisent divers facteurs de tensions</p>
-                                    <p className="text-gray-700">
+                                  <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                    <p className="text-carnet-ink font-semibold mb-2">Une région où se croisent divers facteurs de tensions</p>
+                                    <p className="text-carnet-ink-soft">
                                       Le Moyen-Orient est une région où se croisent divers facteurs de tensions. Instabilité politique, rivalités 
                                       régionales, conflits armés, mal-développement et dépendance aux ressources naturelles en font un espace où 
                                       les crises s'enchevêtrent. <strong>Dominique Moïsi</strong>, dans <em>La géopolitique de l'émotion</em> (2009), 
@@ -476,33 +476,33 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* A. Instabilité chronique */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <AlertTriangle className="h-5 w-5" />
                                       A. Une instabilité chronique alimentée par des conflits internes et des rivalités régionales
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Une absence de puissance stabilisatrice</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Une absence de puissance stabilisatrice</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• Contrairement à d'autres régions où une puissance dominante impose un équilibre (ex : États-Unis en Amérique), le Moyen-Orient est fragmenté entre plusieurs acteurs cherchant à asseoir leur influence</li>
                                           <li>• <strong>L'Arabie Saoudite et l'Iran</strong> s'affrontent dans une guerre froide régionale (guerres par procuration en Syrie, au Yémen, au Liban)</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Un territoire morcelé et des revendications territoriales non résolues</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Un territoire morcelé et des revendications territoriales non résolues</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li><strong>Conflit israélo-palestinien :</strong> demeure un facteur majeur d'instabilité depuis la Nakba de 1948</li>
                                           <li><strong>Question kurde :</strong> répartis entre la Turquie, l'Irak, l'Iran et la Syrie, une source de tensions persistantes</li>
                                           <li><strong>Cas du Yémen :</strong> pays éclaté entre différents groupes armés (Houthis soutenus par l'Iran, gouvernement reconnu soutenu par l'Arabie Saoudite)</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Des guerres civiles qui s'éternisent</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Des guerres civiles qui s'éternisent</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li><strong>Syrie (depuis 2011) :</strong> la guerre civile oppose le régime de Bachar al-Assad, les rebelles et des groupes djihadistes, avec des interventions extérieures (Russie, Iran, Turquie)</li>
                                           <li><strong>Libye :</strong> après la chute de Kadhafi en 2011, le pays est en proie à une guerre entre factions rivales</li>
                                         </ul>
@@ -511,33 +511,33 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* B. Mal-développement */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Zap className="h-5 w-5" />
                                       B. Un mal-développement et une économie fragile malgré des ressources majeures
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Un paradoxe économique : des ressources mais un développement limité</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Un paradoxe économique : des ressources mais un développement limité</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• Malgré la rente pétrolière, de nombreux pays peinent à assurer une croissance durable et inclusive</li>
                                           <li>• <strong>La malédiction des matières premières</strong> (Resource Curse, Richard Auty, 1993) frappe plusieurs États, où les richesses naturelles servent à financer des régimes autoritaires sans générer un développement industriel ou technologique</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Dépendance aux hydrocarbures et diversification difficile</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Dépendance aux hydrocarbures et diversification difficile</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li><strong>Arabie Saoudite et monarchies du Golfe :</strong> tentent de diversifier leur économie avec des projets comme Vision 2030 (Mohammed Ben Salmane)</li>
                                           <li><strong>Iran :</strong> souffre des sanctions économiques et peine à se diversifier</li>
                                           <li><strong>Égypte :</strong> dépourvue de grandes ressources énergétiques, est dépendante du tourisme et du canal de Suez</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-400">
-                                        <p className="text-gray-800 font-semibold mb-2">Des inégalités sociales exacerbées</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-gray-400">
+                                        <p className="text-carnet-ink font-semibold mb-2">Des inégalités sociales exacerbées</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li><strong>Taux de chômage élevé des jeunes :</strong> en Tunisie, en Égypte, au Liban, le chômage dépasse 30 % chez les jeunes diplômés</li>
                                           <li><strong>Disparités urbain/rural :</strong> Dubaï et Riyad sont des vitrines modernes, mais de nombreux pays de la région souffrent de pauvreté et de précarité</li>
                                         </ul>
@@ -546,25 +546,25 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* C. Ingérences étrangères */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Globe className="h-5 w-5" />
                                       C. Le rôle des ingérences étrangères : stabilisation ou facteur d'instabilité ?
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Un espace convoité par les grandes puissances</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Un espace convoité par les grandes puissances</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li><strong>États-Unis :</strong> intervention en Irak (2003), soutien aux monarchies du Golfe, retrait d'Afghanistan (2021)</li>
                                           <li><strong>Russie :</strong> alliée du régime syrien, présence militaire en Méditerranée (base de Tartous en Syrie)</li>
                                           <li><strong>Chine :</strong> investissements croissants dans les infrastructures et l'énergie (initiative des Nouvelles Routes de la Soie)</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Paradoxe des ingérences</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Paradoxe des ingérences</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li><strong>Intervention en Irak (2003) :</strong> l'intervention occidentale a déstabilisé le pays et favorisé la montée de groupes terroristes comme Daech</li>
                                           <li><strong>Retrait d'Afghanistan (2021) :</strong> le retrait des États-Unis a laissé place aux Talibans, posant la question de la responsabilité des puissances extérieures</li>
                                           <li><strong>Absence d'ingérence :</strong> dans certains conflits (Syrie en 2011, Yémen) a laissé place à un chaos prolongé</li>
@@ -574,9 +574,9 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* Conclusion partielle */}
-                                  <div className="bg-gradient-to-r bg-white p-6 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Conclusion partielle</h4>
-                                    <div className="text-gray-700 leading-relaxed space-y-3">
+                                  <div className="bg-gradient-to-r bg-carnet-paper-2 p-6 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-3">Conclusion partielle</h4>
+                                    <div className="text-carnet-ink-soft leading-relaxed space-y-3">
                                       <p>
                                         Le Moyen-Orient est une région où s'entrelacent conflits, crises économiques et rivalités géopolitiques. 
                                         Le morcellement territorial, la dépendance aux ressources naturelles et les interventions extérieures ont 
@@ -600,9 +600,9 @@ const ProcheMoyenOrientPage = () => {
                               <AccordionContent>
                                 <div className="space-y-6">
                                   
-                                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                    <p className="text-gray-800 font-semibold mb-2">Une région stratégique pour les grandes puissances</p>
-                                    <p className="text-gray-700">
+                                  <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                    <p className="text-carnet-ink font-semibold mb-2">Une région stratégique pour les grandes puissances</p>
+                                    <p className="text-carnet-ink-soft">
                                       Le Moyen-Orient a toujours été une région stratégique pour les grandes puissances, à la fois en raison de sa 
                                       position géographique, de ses ressources naturelles et de ses dynamiques politiques internes. L'histoire de 
                                       la région est marquée par des interventions extérieures successives, d'abord coloniales, puis impérialistes et 
@@ -613,33 +613,33 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* A. Région historiquement convoitée */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <MapPin className="h-5 w-5" />
                                       A. Une région historiquement convoitée : l'empreinte des grandes puissances
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Le Moyen-Orient, un espace stratégique du « Grand Jeu »</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Le Moyen-Orient, un espace stratégique du « Grand Jeu »</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• Dès le XIXe siècle, le Moyen-Orient est au cœur de la rivalité entre la Grande-Bretagne et la Russie dans la lutte pour le contrôle des routes vers l'Inde et l'Asie centrale</li>
                                           <li>• <strong>Ressources stratégiques :</strong> le Moyen-Orient devient un espace incontournable avec la découverte du pétrole au début du XXe siècle, renforçant son poids géopolitique</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">L'empreinte coloniale et la recomposition des frontières</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">L'empreinte coloniale et la recomposition des frontières</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• <strong>Accords Sykes-Picot (1916)</strong> et <strong>conférence de San Remo (1920)</strong> redessinent la région après la chute de l'Empire ottoman, plaçant plusieurs territoires sous mandat britannique et français</li>
                                           <li>• <strong>Traité de Sèvres (1920)</strong> démantèle l'Empire ottoman et pose les bases des tensions géopolitiques actuelles (question kurde, rivalités territoriales)</li>
                                           <li>• <strong>Pacte de Quincy (1945)</strong> établit un partenariat clé entre les États-Unis et l'Arabie Saoudite, échangeant protection militaire contre accès privilégié aux ressources pétrolières</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Le Moyen-Orient pendant la Guerre froide : une zone de conflits par procuration</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Le Moyen-Orient pendant la Guerre froide : une zone de conflits par procuration</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li><strong>Nationalisation du canal de Suez (1956)</strong> par Nasser : opposition entre logiques impérialistes (France, Royaume-Uni) et nouvelle réalité géopolitique (montée du panarabisme et influence américaine)</li>
                                           <li><strong>Guerres israélo-arabes</strong> (1948, 1956, 1967, 1973) et interventionnisme soviétique et américain dans la région</li>
                                           <li><strong>Guerre Iran-Irak</strong> (1980-1988) : soutien occidental à Saddam Hussein pour contrer la révolution islamique iranienne</li>
@@ -649,33 +649,33 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* B. Ingérence toujours actuelle */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Globe className="h-5 w-5" />
                                       B. Une ingérence toujours actuelle : redéfinition des rapports de force
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">La présence persistante des États-Unis et la politique d'intervention</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">La présence persistante des États-Unis et la politique d'intervention</p>
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Trois piliers de la stratégie américaine au Moyen-Orient (Hudson) :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Trois piliers de la stratégie américaine au Moyen-Orient (Hudson) :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>1. Protection d'Israël</li>
                                               <li>2. Contrôle du pétrole</li>
                                               <li>3. Lutte contre le communisme puis contre le terrorisme</li>
                                             </ul>
                                           </div>
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>La doctrine du Wilsonisme botté</strong> (Pierre Hassner) : après 2001, les États-Unis tentent d'imposer un modèle démocratique par la force (Irak, Afghanistan), avec des résultats mitigés.
                                           </p>
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Échecs et désengagement progressif :</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Échecs et désengagement progressif :</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li><strong>Irak (2003) :</strong> guerre qui déstabilise durablement la région, montée de Daech</li>
                                           <li><strong>Afghanistan (2021) :</strong> retrait américain et retour des Talibans</li>
                                           <li><strong>Stratégie du « leading from behind »</strong> sous Obama (Libye, Syrie)</li>
@@ -685,13 +685,13 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* Émergence de la Chine */}
-                                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                    <p className="text-gray-800 font-semibold mb-2">L'émergence de la Chine : un acteur incontournable mais prudent</p>
+                                  <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                    <p className="text-carnet-ink font-semibold mb-2">L'émergence de la Chine : un acteur incontournable mais prudent</p>
                                     
                                     <div className="space-y-3">
                                       <div>
-                                        <p className="text-gray-800 font-semibold">Une diplomatie économique et pragmatique</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                        <p className="text-carnet-ink font-semibold">Une diplomatie économique et pragmatique</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• <strong>Port de Gwadar (Pakistan) :</strong> accès stratégique pour la Chine sur l'océan Indien</li>
                                           <li>• <strong>Base militaire chinoise à Djibouti :</strong> premier point d'ancrage militaire chinois en Afrique</li>
                                           <li>• <strong>Sommet Chine-Arabie Saoudite</strong> (décembre 2022) : accords économiques majeurs</li>
@@ -699,16 +699,16 @@ const ProcheMoyenOrientPage = () => {
                                       </div>
                                       
                                       <div>
-                                        <p className="text-gray-800 font-semibold">Des investissements stratégiques</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                        <p className="text-carnet-ink font-semibold">Des investissements stratégiques</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• <strong>Pétrole et gaz :</strong> Pékin sécurise ses approvisionnements avec des contrats à long terme avec Riyad et Téhéran</li>
                                           <li>• <strong>Projets de haute technologie :</strong> accords entre la Chine et les pays du Golfe pour des infrastructures numériques et énergétiques</li>
                                         </ul>
                                       </div>
                                       
                                       <div>
-                                        <p className="text-gray-800 font-semibold">Un soft power grandissant sans ingérence politique directe</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                        <p className="text-carnet-ink font-semibold">Un soft power grandissant sans ingérence politique directe</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• La Chine soutient le <strong>consensus de Pékin</strong> (non-ingérence, souveraineté absolue des États)</li>
                                           <li>• <strong>Rapprochement avec l'Iran et Israël :</strong> Pékin évite de prendre parti dans les conflits régionaux</li>
                                         </ul>
@@ -717,34 +717,34 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* C. Conséquences des ingérences */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <AlertTriangle className="h-5 w-5" />
                                       C. Conséquences des ingérences : instabilité chronique et reconfiguration des alliances
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Le paradoxe des interventions étrangères : stabilisation ou chaos ?</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Le paradoxe des interventions étrangères : stabilisation ou chaos ?</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• L'intervention américaine en Irak (2003) a favorisé l'essor de Daech et la radicalisation régionale</li>
                                           <li>• Le retrait américain d'Afghanistan (2021) a laissé un vide exploité par les Talibans</li>
                                           <li>• L'absence d'intervention occidentale en Syrie a permis à la Russie et à l'Iran de renforcer leur influence</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Des alliances mouvantes et des rivalités exacerbées</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Des alliances mouvantes et des rivalités exacerbées</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li><strong>Accords d'Abraham (2020) :</strong> rapprochement entre Israël et plusieurs pays arabes (Émirats arabes unis, Bahreïn, Soudan, Maroc)</li>
                                           <li><strong>Montée en puissance</strong> de l'axe Iran-Russie-Chine face aux alliances occidentales et sunnites</li>
                                           <li><strong>Arabie Saoudite :</strong> un acteur pivot qui oscille entre les États-Unis et la Chine</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-2">Vers une recomposition géopolitique incertaine</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-2">Vers une recomposition géopolitique incertaine</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• Les puissances occidentales en retrait, les acteurs régionaux plus influents</li>
                                           <li>• Montée en puissance des nouvelles alliances (Chine-Monde arabe, Russie-Iran)</li>
                                           <li>• Le Moyen-Orient, toujours une zone clé de la géopolitique mondiale, entre dépendances, ingérences et résistances locales</li>
@@ -754,9 +754,9 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* Conclusion partielle */}
-                                  <div className="bg-gradient-to-r bg-white p-6 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Conclusion partielle</h4>
-                                    <div className="text-gray-700 leading-relaxed space-y-3">
+                                  <div className="bg-gradient-to-r bg-carnet-paper-2 p-6 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-3">Conclusion partielle</h4>
+                                    <div className="text-carnet-ink-soft leading-relaxed space-y-3">
                                       <p>
                                         Le Moyen-Orient reste un espace où les grandes puissances extérieures s'affrontent indirectement, influençant 
                                         durablement la stabilité de la région. Si les États-Unis ont longtemps dominé la scène géopolitique, leur 
@@ -766,9 +766,9 @@ const ProcheMoyenOrientPage = () => {
                                         Cependant, l'absence de puissance hégémonique régionale et les rivalités internes entravent tout projet 
                                         d'unification ou de stabilisation.
                                       </p>
-                                      <div className="bg-white p-4 rounded border-l-4 border-gray-300 mt-4">
-                                        <p className="text-gray-800 font-semibold">Question prospective :</p>
-                                        <p className="text-gray-700 italic">
+                                      <div className="bg-carnet-paper-2 p-4 rounded border-l-4 border-carnet-rule mt-4">
+                                        <p className="text-carnet-ink font-semibold">Question prospective :</p>
+                                        <p className="text-carnet-ink-soft italic">
                                           La région peut-elle sortir de cette logique d'ingérence pour développer un ordre propre, ou restera-t-elle 
                                           un terrain d'affrontement entre puissances rivales ?
                                         </p>
@@ -788,12 +788,12 @@ const ProcheMoyenOrientPage = () => {
 
                 {/* Partie II */}
                 <AccordionItem value="partie-2">
-                  <AccordionTrigger className="text-xl font-semibold text-gray-800">
+                  <AccordionTrigger className="text-xl font-semibold text-carnet-ink">
                     II. Les facteurs d'instabilité structurelle au Moyen-Orient
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-4">
-                      <Card className="border border-gray-200">
+                      <Card className="border border-carnet-rule">
                         <CardContent className="p-4">
                           <Accordion type="single" collapsible>
                             <AccordionItem value="ii-a">
@@ -803,9 +803,9 @@ const ProcheMoyenOrientPage = () => {
                               <AccordionContent>
                                 <div className="space-y-6">
                                   
-                                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                    <p className="text-gray-800 font-semibold mb-2">Une interdépendance complexe entre producteurs et importateurs</p>
-                                    <p className="text-gray-700">
+                                  <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                    <p className="text-carnet-ink font-semibold mb-2">Une interdépendance complexe entre producteurs et importateurs</p>
+                                    <p className="text-carnet-ink-soft">
                                       La dépendance mutuelle entre les pays exportateurs (Moyen-Orient, Afrique) et les importateurs 
                                       (États-Unis, Europe, Chine) engendre des stratégies, oscillant entre alliances, rivalités et 
                                       reconfigurations des marchés.
@@ -813,25 +813,25 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* A. Dépendance des pays importateurs */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Zap className="h-5 w-5" />
                                       A. La dépendance des pays importateurs : entre sécurisation des approvisionnements et diversification
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">1. Les États-Unis et la volonté de réduire leur dépendance énergétique au Moyen-Orient</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">1. Les États-Unis et la volonté de réduire leur dépendance énergétique au Moyen-Orient</p>
                                         <div className="space-y-2">
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>Shale revolution :</strong> indépendance énergétique américaine depuis 2010 grâce à 
                                             l'exploitation du pétrole et du gaz de schiste.
                                           </p>
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>Pivot vers l'Asie :</strong> désengagement progressif du Moyen-Orient (Irak, Afghanistan) 
                                             au profit d'une stratégie de containment de la Chine.
                                           </p>
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>Contradictions :</strong> si les États-Unis réduisent leur dépendance au pétrole du Golfe, 
                                             ils restent impliqués dans la sécurité régionale (présence militaire en Arabie Saoudite, base 
                                             d'Al Udeid au Qatar).
@@ -839,18 +839,18 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">2. L'Europe et la crise de l'approvisionnement énergétique</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">2. L'Europe et la crise de l'approvisionnement énergétique</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• <strong>Dépendance au gaz russe</strong> remise en question depuis l'invasion de l'Ukraine en 2022</li>
                                           <li>• <strong>Alternative méditerranéenne :</strong> projet EastMed (Israël, Chypre, Grèce) pour diversifier les sources d'énergie</li>
                                           <li>• <strong>Tensions avec la Turquie :</strong> provocations en Méditerranée orientale (Oruç Reis en 2020), Ankara cherchant à étendre sa ZEE pour exploiter les ressources sous-marines</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">3. La Chine, premier importateur mondial de pétrole, sécurise ses approvisionnements</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">3. La Chine, premier importateur mondial de pétrole, sécurise ses approvisionnements</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• <strong>Stratégie des Nouvelles Routes de la Soie (BRI)</strong> pour garantir un accès stable aux hydrocarbures (investissements dans le Golfe et en Afrique)</li>
                                           <li>• <strong>Port de Gwadar (Pakistan) :</strong> corridor stratégique pour éviter le détroit de Malacca</li>
                                           <li>• <strong>Accords stratégiques</strong> avec l'Arabie Saoudite et l'Iran (contrat de 400 milliards USD avec l'Iran en 2021)</li>
@@ -860,43 +860,43 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* B. Dépendance des pays exportateurs */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Globe className="h-5 w-5" />
                                       B. La dépendance des pays exportateurs : rente énergétique et instabilité interne
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">1. L'Iran : un "Rogue State" sous pression économique et géopolitique</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">1. L'Iran : un "Rogue State" sous pression économique et géopolitique</p>
                                         <div className="space-y-2">
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>Ressources :</strong> 2e réserves mondiales de gaz, 4e de pétrole.
                                           </p>
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>Embargo occidental et sanctions économiques :</strong> pression maximale des États-Unis sur le régime iranien.
                                           </p>
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>Stratégie de contournement :</strong> exportations vers la Chine, renforcement de l'axe Iran-Russie-Chine.
                                           </p>
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>Instabilité interne :</strong> contestations sociales, affaiblissement économique malgré la rente pétrolière.
                                           </p>
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">2. L'Arabie Saoudite et la diversification économique face à la fin du pétrole</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">2. L'Arabie Saoudite et la diversification économique face à la fin du pétrole</p>
                                         <div className="space-y-2">
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>Vision 2030</strong> de Mohammed Ben Salmane : transformation du modèle économique saoudien.
                                           </p>
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>Investissements</strong> dans les nouvelles technologies et les énergies renouvelables.
                                           </p>
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Relations ambivalentes avec les États-Unis et la Chine :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Relations ambivalentes avec les États-Unis et la Chine :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• Visite de Xi Jinping à Riyad (2022) : accords énergétiques majeurs</li>
                                               <li>• Refus d'augmenter la production de pétrole malgré les pressions américaines</li>
                                             </ul>
@@ -904,15 +904,15 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">3. L'Afrique : une dépendance économique aux matières premières</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">3. L'Afrique : une dépendance économique aux matières premières</p>
                                         <div className="space-y-2">
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>L'Algérie</strong>, fournisseur stratégique de l'Europe : opportunité post-Ukraine pour diversifier les importations de gaz.
                                           </p>
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Le Sénégal et le pétrole : entre dépendance et volonté de diversification</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Le Sénégal et le pétrole : entre dépendance et volonté de diversification</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• Forte dépendance aux importations alimentaires et énergétiques</li>
                                               <li>• Relations stratégiques avec la Russie et la Chine</li>
                                             </ul>
@@ -923,28 +923,28 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* C. Instabilité géopolitique */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <AlertTriangle className="h-5 w-5" />
                                       C. Une instabilité géopolitique exacerbée par les tensions énergétiques
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">1. L'exportation des tensions régionales : de l'énergie à la guerre</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">1. L'exportation des tensions régionales : de l'énergie à la guerre</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Le Golfe persique, point chaud du pétrole mondial :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Le Golfe persique, point chaud du pétrole mondial :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Détroit d'Ormuz :</strong> 30 % du pétrole mondial y transite</li>
                                               <li>• <strong>Attaques sur les infrastructures saoudiennes</strong> par les Houthis du Yémen (2019, Aramco)</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Méditerranée orientale : un nouveau front énergétique</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Méditerranée orientale : un nouveau front énergétique</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Gisements de Tamar, Leviathan, Zohr, Aphrodite :</strong> Israël, Égypte et Chypre face à la Turquie</li>
                                               <li>• <strong>Projet EastMed et opposition turque</strong> (contestation des frontières maritimes)</li>
                                             </ul>
@@ -952,18 +952,18 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">2. Les stratégies d'adaptation des États face à cette double dépendance</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">2. Les stratégies d'adaptation des États face à cette double dépendance</p>
                                         
                                         <div className="space-y-3">
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>Projet de "politique des tubes"</strong> (Philippe Rekacewicz, 2011), mettant en évidence 
                                             le maillage des pipelines et son impact géopolitique.
                                           </p>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">L'essor des énergies renouvelables comme réponse partielle :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-2">
+                                            <p className="text-carnet-ink font-semibold">L'essor des énergies renouvelables comme réponse partielle :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-2">
                                               <li>• <strong>Arabie Saoudite et le solaire</strong> (Neom, The Line)</li>
                                               <li>• <strong>Hydrogène vert :</strong> un potentiel pour remplacer les énergies fossiles</li>
                                               <li>• <strong>Investissements africains</strong> (Sénégal, Maroc) pour réduire la dépendance aux hydrocarbures</li>
@@ -975,18 +975,18 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* Conclusion partielle */}
-                                  <div className="bg-gradient-to-r bg-white p-6 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Conclusion partielle</h4>
-                                    <div className="text-gray-700 leading-relaxed space-y-3">
+                                  <div className="bg-gradient-to-r bg-carnet-paper-2 p-6 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-3">Conclusion partielle</h4>
+                                    <div className="text-carnet-ink-soft leading-relaxed space-y-3">
                                       <p>
                                         La dépendance énergétique est une arme à double tranchant, créant une interdépendance complexe entre 
                                         producteurs et importateurs. Si certains pays cherchent à diversifier leurs sources ou à investir 
                                         dans les renouvelables, la transition énergétique reste un enjeu majeur, influençant les équilibres 
                                         géopolitiques du XXIe siècle.
                                       </p>
-                                      <div className="bg-white p-4 rounded border-l-4 border-gray-300 mt-4">
-                                        <p className="text-gray-800 font-semibold">Question prospective :</p>
-                                        <p className="text-gray-700 italic">
+                                      <div className="bg-carnet-paper-2 p-4 rounded border-l-4 border-carnet-rule mt-4">
+                                        <p className="text-carnet-ink font-semibold">Question prospective :</p>
+                                        <p className="text-carnet-ink-soft italic">
                                           Le Moyen-Orient et l'Afrique pourront-ils réduire leur dépendance à la rente énergétique pour 
                                           garantir une stabilité durable, ou resteront-ils otages des fluctuations des prix du pétrole et du gaz ?
                                         </p>
@@ -1004,9 +1004,9 @@ const ProcheMoyenOrientPage = () => {
                               <AccordionContent>
                                 <div className="space-y-6">
                                   
-                                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                    <p className="text-gray-800 font-semibold mb-2">Une dispersion croissante du pouvoir</p>
-                                    <p className="text-gray-700">
+                                  <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                    <p className="text-carnet-ink font-semibold mb-2">Une dispersion croissante du pouvoir</p>
+                                    <p className="text-carnet-ink-soft">
                                       La région du Moyen-Orient est marquée par une <strong>"power diffusion"</strong> (Joseph Nye, <em>Future of Power</em>, 2011), 
                                       illustrant la dispersion croissante du pouvoir entre divers acteurs sans qu'aucune hégémonie stable ne se dégage. 
                                       Contrairement à une simple "power transition", où une puissance prend le relais d'une autre, cette dispersion 
@@ -1015,24 +1015,24 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* I. Prolifération des acteurs */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Users className="h-5 w-5" />
                                       I. Une Prolifération des Acteurs Impactant les Équilibres Régionaux
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">A. Une Multiplication des Acteurs Externes</p>
-                                        <p className="text-gray-700 mb-3">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">A. Une Multiplication des Acteurs Externes</p>
+                                        <p className="text-carnet-ink-soft mb-3">
                                           La complexité de la géopolitique au Moyen-Orient réside dans l'implication croissante d'acteurs exogènes 
                                           traditionnels et non-traditionnels :
                                         </p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Acteurs traditionnels :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Acteurs traditionnels :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>États-Unis :</strong> historiquement impliqués via le Pacte de Quincy (1945), puis via leurs interventions militaires (Irak 2003, Syrie 2014-2019)</li>
                                               <li>• <strong>Russie :</strong> retour en force depuis 2015 avec le soutien au régime syrien de Bachar el-Assad</li>
                                               <li>• <strong>Union Européenne :</strong> présente à travers des accords économiques et des interventions diplomatiques (Accords de Vienne sur le nucléaire iranien, 2015)</li>
@@ -1040,8 +1040,8 @@ const ProcheMoyenOrientPage = () => {
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Nouveaux acteurs :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Nouveaux acteurs :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Chine :</strong> influence économique grandissante via les Nouvelles Routes de la Soie et la coopération énergétique avec les monarchies du Golfe</li>
                                               <li>• <strong>Groupes paramilitaires et mercenaires :</strong> Wagner en Syrie, soutien indirect à Bachar el-Assad et contrebalancement de l'influence occidentale</li>
                                             </ul>
@@ -1049,23 +1049,23 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">B. Une Multiplication des Acteurs Internes</p>
-                                        <p className="text-gray-700 mb-3">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">B. Une Multiplication des Acteurs Internes</p>
+                                        <p className="text-carnet-ink-soft mb-3">
                                           La fragmentation du pouvoir se traduit également par une prolifération d'acteurs internes traditionnels et non-traditionnels :
                                         </p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Acteurs étatiques traditionnels :</p>
-                                            <p className="text-gray-700 ml-4">
+                                            <p className="text-carnet-ink font-semibold">Acteurs étatiques traditionnels :</p>
+                                            <p className="text-carnet-ink-soft ml-4">
                                               Turquie, Iran, Arabie Saoudite, Israël, Égypte, qui cherchent à projeter leur puissance régionale.
                                             </p>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Acteurs non-étatiques :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Acteurs non-étatiques :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Milices et groupes terroristes :</strong> Hezbollah (Liban), AQPA (Al-Qaïda dans la Péninsule Arabique, Yémen), État Islamique (Irak-Syrie)</li>
                                               <li>• <strong>Entités politiques non reconnues :</strong> Le Rojava kurde en Syrie, contesté par la Turquie</li>
                                             </ul>
@@ -1076,20 +1076,20 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* II. Power Diffusion et Complexification des Conflits */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <AlertTriangle className="h-5 w-5" />
                                       II. Power Diffusion et Complexification des Conflits : L'Exemple Syrien
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">A. Une Guerre Civile Inextinguible</p>
-                                        <p className="text-gray-700 mb-3">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">A. Une Guerre Civile Inextinguible</p>
+                                        <p className="text-carnet-ink-soft mb-3">
                                           Depuis 2011, la Syrie est le théâtre d'un conflit où se superposent luttes internes et interventions étrangères :
                                         </p>
                                         
-                                        <ul className="text-gray-700 space-y-2">
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• <strong>État central syrien (Bachar el-Assad) :</strong> soutenu par la Russie et l'Iran</li>
                                           <li>• <strong>Opposition rebelle :</strong> soutenue par la Turquie et, à certaines périodes, par les États-Unis et les monarchies du Golfe</li>
                                           <li>• <strong>Kurdes (PYD, YPG, PKK) :</strong> alliés ponctuels des Occidentaux contre Daech, mais menacés par la Turquie</li>
@@ -1097,13 +1097,13 @@ const ProcheMoyenOrientPage = () => {
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">B. Une Guerre d'Usure et un Statu Quo</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">B. Une Guerre d'Usure et un Statu Quo</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Bilan humain et migratoire :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Bilan humain et migratoire :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• 1,6 million de morts depuis 2011</li>
                                               <li>• 13 millions de déplacés internes et externes</li>
                                               <li>• 7 millions de Syriens ont fui leur pays</li>
@@ -1111,8 +1111,8 @@ const ProcheMoyenOrientPage = () => {
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Équilibre fragile et interventions étrangères persistantes :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Équilibre fragile et interventions étrangères persistantes :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Opération "Griffe Épée"</strong> (Turquie) contre les forces kurdes</li>
                                               <li>• <strong>Présence de Wagner</strong>, soutien russe aux forces d'Assad</li>
                                               <li>• <strong>Retrait partiel des États-Unis</strong> sous Trump, laissant le champ libre à la Russie et à l'Iran</li>
@@ -1121,14 +1121,14 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-400">
-                                        <p className="text-gray-800 font-semibold mb-3">C. Un Piège de Kindleberger : Pas d'Hégémonie Stabilisatrice</p>
-                                        <p className="text-gray-700 mb-3">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-gray-400">
+                                        <p className="text-carnet-ink font-semibold mb-3">C. Un Piège de Kindleberger : Pas d'Hégémonie Stabilisatrice</p>
+                                        <p className="text-carnet-ink-soft mb-3">
                                           Le piège de Kindleberger explique qu'en l'absence d'une puissance hégémonique capable de stabiliser un ordre, 
                                           le système s'effondre dans le chaos. Au Moyen-Orient :
                                         </p>
                                         
-                                        <ul className="text-gray-700 space-y-2">
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• <strong>Les États-Unis se désengagent</strong>, réduisant leur influence militaire mais conservant une présence économique et stratégique</li>
                                           <li>• <strong>La Russie et la Chine</strong> comblent partiellement le vide, mais sans réelle volonté de stabilisation durable</li>
                                           <li>• <strong>Les acteurs locaux</strong> sont trop fragmentés pour imposer un ordre régional, laissant place à une instabilité structurelle</li>
@@ -1138,27 +1138,27 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* III. Autres Théâtres de Power Diffusion */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <MapPin className="h-5 w-5" />
                                       III. Autres Théâtres de Power Diffusion : Yémen et Libye
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">A. Le Yémen : Une Guerre par Procuration</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">A. Le Yémen : Une Guerre par Procuration</p>
                                         
-                                        <ul className="text-gray-700 space-y-2">
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• <strong>Opposition</strong> entre Houthistes (soutenus par l'Iran) et gouvernement yéménite (soutenu par l'Arabie Saoudite)</li>
                                           <li>• <strong>Stratégie de la tension autour de Bab el-Mandeb :</strong> un point stratégique du commerce mondial</li>
                                           <li>• <strong>Unification en 1990</strong>, mais éclatement post-Guerre Froide : retour à une fragmentation Nord-Sud</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">B. La Libye : Un État Failli et un Nouvel Enjeu Géopolitique</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">B. La Libye : Un État Failli et un Nouvel Enjeu Géopolitique</p>
                                         
-                                        <ul className="text-gray-700 space-y-2">
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• <strong>Effondrement de Kadhafi (2011)</strong> → guerre civile prolongée</li>
                                           <li>• <strong>Présence de Wagner</strong>, soutien de la Russie à Khalifa Haftar</li>
                                           <li>• <strong>Ingérences turques et européennes</strong> (France, Italie)</li>
@@ -1169,9 +1169,9 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* Conclusion */}
-                                  <div className="bg-gradient-to-r bg-white p-6 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Conclusion</h4>
-                                    <div className="text-gray-700 leading-relaxed space-y-3">
+                                  <div className="bg-gradient-to-r bg-carnet-paper-2 p-6 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-3">Conclusion</h4>
+                                    <div className="text-carnet-ink-soft leading-relaxed space-y-3">
                                       <p>
                                         La power diffusion au Moyen-Orient illustre l'incapacité de tout acteur, interne ou externe, à imposer 
                                         une hégémonie stabilisatrice. Loin d'un simple basculement vers l'Asie, le Moyen-Orient reste une zone 
@@ -1195,31 +1195,31 @@ const ProcheMoyenOrientPage = () => {
                                 <div className="space-y-6">
 
                                   {/* A. Région Stratégiquement Dépendante */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Zap className="h-5 w-5" />
                                       A. Une Région Stratégiquement Dépendante des Matières Premières
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Double dépendance énergétique :</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Double dépendance énergétique :</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• <strong>Pays importateurs :</strong> Dépendance au pétrole et au gaz du Moyen-Orient (exemple des États-Unis avant le boom du pétrole de schiste)</li>
                                           <li>• <strong>Pays exportateurs :</strong> Dépendance aux revenus des hydrocarbures (exemple de l'Arabie Saoudite et de l'Iran)</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Fluctuations des prix du pétrole</p>
-                                        <p className="text-gray-700">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Fluctuations des prix du pétrole</p>
+                                        <p className="text-carnet-ink-soft">
                                           Un facteur de crise politique et économique dans les États rentiers.
                                         </p>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Exemple de l'Iran :</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Exemple de l'Iran :</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• Polycrise interne liée aux sanctions économiques</li>
                                           <li>• Incapacité à diversifier son économie</li>
                                         </ul>
@@ -1228,34 +1228,34 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* B. Sanctions Économiques */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <AlertTriangle className="h-5 w-5" />
                                       B. Les Sanctions Économiques : Une Arme de Guerre Économique
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Loi Amato-Kennedy (1996)</p>
-                                        <p className="text-gray-700">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Loi Amato-Kennedy (1996)</p>
+                                        <p className="text-carnet-ink-soft">
                                           Sanctions contre l'Iran et la Libye, stratégie d'asphyxie économique.
                                         </p>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Extraterritorialité du droit américain :</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Extraterritorialité du droit américain :</p>
                                         <div className="space-y-2">
-                                          <p className="text-gray-800 font-semibold">Exemples :</p>
-                                          <ul className="text-gray-700 ml-4 space-y-1">
+                                          <p className="text-carnet-ink font-semibold">Exemples :</p>
+                                          <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                             <li>• <strong>Sanctions contre BNP Paribas (2014) :</strong> 8,9 milliards de dollars d'amendes pour transactions avec l'Iran</li>
                                             <li>• <strong>Pression sur les entreprises européennes</strong> pour limiter les investissements au Moyen-Orient</li>
                                           </ul>
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-400">
-                                        <p className="text-gray-800 font-semibold mb-3">Impact des sanctions :</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-gray-400">
+                                        <p className="text-carnet-ink font-semibold mb-3">Impact des sanctions :</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• Inflation, chômage, mécontentement populaire, révoltes internes (Iran, 2022)</li>
                                           <li>• Asphyxie des États visés, mais renforcement des régimes autoritaires</li>
                                         </ul>
@@ -1264,25 +1264,25 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* C. Géopolitique des Infrastructures */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <MapPin className="h-5 w-5" />
                                       C. Géopolitique des Infrastructures et Contrôle des Routes Commerciales
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Hydrocarbures et contrôle des routes stratégiques :</p>
-                                        <ul className="text-gray-700 space-y-2">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Hydrocarbures et contrôle des routes stratégiques :</p>
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• <strong>Canal de Suez :</strong> Essentiel pour le commerce mondial</li>
                                           <li>• <strong>Détroit d'Ormuz :</strong> 30% du trafic pétrolier mondial, enjeu majeur entre l'Iran et les puissances occidentales</li>
                                           <li>• <strong>Détroit de Bab el-Mandeb :</strong> Axe clé entre la mer Rouge et l'océan Indien</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Nouvelles routes de la soie chinoises :</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Nouvelles routes de la soie chinoises :</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• <strong>Port de Gwadar (Pakistan)</strong> et influence en Iran (port de Chabahar)</li>
                                           <li>• Développement d'infrastructures énergétiques pour contourner l'influence occidentale</li>
                                         </ul>
@@ -1291,32 +1291,32 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* D. Reconfiguration des Alliances Économiques */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Globe className="h-5 w-5" />
                                       D. Vers une Reconfiguration des Alliances Économiques ?
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Arabie Saoudite et diversification économique (Vision 2030) :</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Arabie Saoudite et diversification économique (Vision 2030) :</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• Investissements dans les énergies renouvelables</li>
                                           <li>• Partenariat avec la Chine et la Russie pour réduire la dépendance aux États-Unis</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Les nouveaux pôles économiques du Golfe :</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Les nouveaux pôles économiques du Golfe :</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• <strong>Dubaï, Abu Dhabi, Doha :</strong> Hubs financiers et commerciaux</li>
                                           <li>• <strong>Fonds souverains (QIA, KIA, PIF) :</strong> Moteurs de la diversification économique</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Guerre économique entre puissances régionales :</p>
-                                        <ul className="text-gray-700 space-y-1">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Guerre économique entre puissances régionales :</p>
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• Rivalité Arabie Saoudite/Iran autour des hydrocarbures</li>
                                           <li>• Concurrence pour le leadership économique régional : Émirats vs Arabie Saoudite</li>
                                         </ul>
@@ -1325,9 +1325,9 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* Conclusion */}
-                                  <div className="bg-gradient-to-r bg-white p-6 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Conclusion : Une Région Clé des Rivalités Géopolitiques et Géoéconomiques</h4>
-                                    <div className="text-gray-700 leading-relaxed space-y-3">
+                                  <div className="bg-gradient-to-r bg-carnet-paper-2 p-6 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-3">Conclusion : Une Région Clé des Rivalités Géopolitiques et Géoéconomiques</h4>
+                                    <div className="text-carnet-ink-soft leading-relaxed space-y-3">
                                       <p>
                                         Le Moyen-Orient reste un espace structuré par la rente pétrolière, mais en mutation face aux nouvelles 
                                         dynamiques énergétiques et technologiques.
@@ -1355,12 +1355,12 @@ const ProcheMoyenOrientPage = () => {
 
                 {/* Partie III */}
                 <AccordionItem value="partie-3">
-                  <AccordionTrigger className="text-xl font-semibold text-gray-800">
+                  <AccordionTrigger className="text-xl font-semibold text-carnet-ink">
                     III. Entre mal-développement et stratégies de diversification : quelles perspectives ?
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-4">
-                      <Card className="border border-gray-200">
+                      <Card className="border border-carnet-rule">
                         <CardContent className="p-4">
                           <Accordion type="single" collapsible>
                             <AccordionItem value="iii-a">
@@ -1370,9 +1370,9 @@ const ProcheMoyenOrientPage = () => {
                               <AccordionContent>
                                 <div className="space-y-6">
                                   
-                                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                    <p className="text-gray-800 font-semibold mb-2">Une région marquée par une forte hétérogénéité de développement</p>
-                                    <p className="text-gray-700">
+                                  <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                    <p className="text-carnet-ink font-semibold mb-2">Une région marquée par une forte hétérogénéité de développement</p>
+                                    <p className="text-carnet-ink-soft">
                                       Le Moyen-Orient est une région marquée par une forte hétérogénéité en matière de développement. Si certains États 
                                       connaissent une forte émergence économique et une diversification progressive de leur économie, d'autres restent 
                                       englués dans des crises économiques, politiques et sociales. Cette partie vise à illustrer cette dualité entre 
@@ -1381,20 +1381,20 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* A. Écarts de développement */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <BarChart className="h-5 w-5" />
                                       A. Des écarts de développement considérables entre les pays et au sein des sociétés
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Un contraste entre pays riches et pays pauvres</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Un contraste entre pays riches et pays pauvres</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">L'Indice de Développement Humain (IDH) au Moyen-Orient illustre ces écarts :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">L'Indice de Développement Humain (IDH) au Moyen-Orient illustre ces écarts :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Israël (0,91, 18e mondial)</strong> : seul pays du MO dans l'OCDE</li>
                                               <li>• <strong>Qatar (0,85, 45e) et EAU (0,86, 31e)</strong> : des pétromonarchies qui investissent dans la diversification</li>
                                               <li>• <strong>Yémen (0,48, 153e)</strong> : en guerre et marqué par une pauvreté extrême</li>
@@ -1402,8 +1402,8 @@ const ProcheMoyenOrientPage = () => {
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Des situations économiques opposées :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Des situations économiques opposées :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Les pétromonarchies</strong> investissent dans la transition économique (Vision 2030 en AS, Horizon 2030 au Qatar)</li>
                                               <li>• <strong>Israël et les Émirats Arabes Unis</strong> ont su diversifier leur économie en se tournant vers les nouvelles technologies</li>
                                               <li>• À l'inverse, <strong>l'Algérie, l'Iran ou l'Irak</strong> restent piégés dans la malédiction des matières premières</li>
@@ -1412,21 +1412,21 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Les inégalités à l'intérieur des États</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Les inégalités à l'intérieur des États</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Inégalités socio-économiques :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Inégalités socio-économiques :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Coefficient de Gini élevé :</strong> Iran (42 en 2020)</li>
                                               <li>• <strong>70% de la population des Émirats et 86% du Qatar</strong> sont des travailleurs étrangers précaires</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Inégalités de genre :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Inégalités de genre :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Yémen (162e sur 189</strong> au classement de l'égalité des sexes)</li>
                                               <li>• <strong>Kafala :</strong> système qui réduit les travailleurs immigrés à une main-d'œuvre exploitée, souvent assimilé à une forme d'esclavage moderne</li>
                                             </ul>
@@ -1437,20 +1437,20 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* B. Stratégies de diversification économique */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Globe className="h-5 w-5" />
                                       B. Les stratégies de diversification économique : des succès et des limites
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Des pétromonarchies qui cherchent à sortir de la rente pétrolière</p>
-                                        <p className="text-gray-700 mb-3">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Des pétromonarchies qui cherchent à sortir de la rente pétrolière</p>
+                                        <p className="text-carnet-ink-soft mb-3">
                                           <strong>Caroline Piquet</strong>, <em>Les pays du Golfe, de la perle à l'économie de la connaissance</em> :
                                         </p>
                                         
-                                        <ul className="text-gray-700 space-y-1">
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• <strong>Développement du secteur tertiaire</strong> (tourisme, finance, innovation)</li>
                                           <li>• <strong>Investissements massifs dans la culture</strong> (ex : Louvre Abou Dhabi)</li>
                                           <li>• <strong>Happening sportif</strong> avec la Coupe du monde 2022 au Qatar</li>
@@ -1458,37 +1458,37 @@ const ProcheMoyenOrientPage = () => {
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Dubaï, un modèle de diversification réussi</p>
-                                        <p className="text-gray-700 mb-3">
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Dubaï, un modèle de diversification réussi</p>
+                                        <p className="text-carnet-ink-soft mb-3">
                                           (Mike Davis, <em>Le stade Dubaï du capitalisme</em>, 2007) :
                                         </p>
                                         
-                                        <ul className="text-gray-700 space-y-1">
+                                        <ul className="text-carnet-ink-soft space-y-1">
                                           <li>• <strong>DP World, Emirates</strong> : hubs logistiques, industrie financière</li>
                                           <li>• <strong>Migration de talents</strong> et traders internationaux</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Les revers de la diversification économique</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Les revers de la diversification économique</p>
                                         
                                         <div className="space-y-3">
-                                          <p className="text-gray-700">
+                                          <p className="text-carnet-ink-soft">
                                             <strong>Des conditions de travail déplorables :</strong> 6500 morts liés aux chantiers de la Coupe du monde.
                                           </p>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Dépendance persistante aux hydrocarbures :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Dépendance persistante aux hydrocarbures :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Qatar :</strong> exploitation du North Field/South Pars partagé avec l'Iran</li>
                                               <li>• <strong>Arabie Saoudite :</strong> diversification freinée par la dépendance au pétrole</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Défis environnementaux et climatiques :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Défis environnementaux et climatiques :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• Désertification, épuisement des ressources en eau</li>
                                               <li>• Pollution et surconsommation énergétique des villes nouvelles</li>
                                             </ul>
@@ -1499,28 +1499,28 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* C. États faillis et en crise */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <AlertTriangle className="h-5 w-5" />
                                       C. Des États faillis et en crise : l'envers de l'émergence
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">L'Iran : une puissance en crise</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">L'Iran : une puissance en crise</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Échec de la diversification et crise économique :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Échec de la diversification et crise économique :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Inflation à 40%</strong> en 2021</li>
                                               <li>• <strong>Accords de Vienne</strong> au point mort</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Répression des libertés fondamentales :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Répression des libertés fondamentales :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Durcissement du régime</strong> sous Raïssi</li>
                                               <li>• <strong>Manifestations</strong> contre la police des mœurs</li>
                                             </ul>
@@ -1528,10 +1528,10 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">Les États faillis : Syrie, Yémen, Libye</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">Les États faillis : Syrie, Yémen, Libye</p>
                                         
-                                        <ul className="text-gray-700 space-y-2">
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• <strong>Syrie :</strong> Guerre civile inextinguible, économie détruite</li>
                                           <li>• <strong>Yémen :</strong> Catastrophe humanitaire, 80% de la population en insécurité alimentaire</li>
                                           <li>• <strong>Libye :</strong> État morcelé, absence d'autorité centrale</li>
@@ -1541,9 +1541,9 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* Conclusion */}
-                                  <div className="bg-gradient-to-r bg-white p-6 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Conclusion : Une émergence sélective et fragile</h4>
-                                    <div className="text-gray-700 leading-relaxed space-y-3">
+                                  <div className="bg-gradient-to-r bg-carnet-paper-2 p-6 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-3">Conclusion : Une émergence sélective et fragile</h4>
+                                    <div className="text-carnet-ink-soft leading-relaxed space-y-3">
                                       <p>
                                         Une modernisation économique visible mais limitée à quelques pôles (Golfe, Israël).
                                       </p>
@@ -1568,9 +1568,9 @@ const ProcheMoyenOrientPage = () => {
                               <AccordionContent>
                                 <div className="space-y-6">
                                   
-                                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                    <p className="text-gray-800 font-semibold mb-2">Un rééquilibrage géopolitique majeur</p>
-                                    <p className="text-gray-700">
+                                  <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                    <p className="text-carnet-ink font-semibold mb-2">Un rééquilibrage géopolitique majeur</p>
+                                    <p className="text-carnet-ink-soft">
                                       Le Moyen-Orient connaît un rééquilibrage géopolitique majeur, marqué par le désengagement progressif des États-Unis 
                                       et des puissances occidentales, laissant place à des acteurs régionaux plus influents et à une montée en puissance 
                                       des puissances extra-régionales comme la Chine et la Russie. L'absence d'un hégémon régional stable favorise une 
@@ -1579,20 +1579,20 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* A. Désengagement progressif */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Users className="h-5 w-5" />
                                       A. Un désengagement progressif des États-Unis et des puissances occidentales
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">1. Un retrait motivé par une redéfinition des priorités stratégiques américaines</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">1. Un retrait motivé par une redéfinition des priorités stratégiques américaines</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Vision stratégique et pivot géopolitique :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Vision stratégique et pivot géopolitique :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Brzezinski et l'arc de crise :</strong> vision stratégique des États-Unis sur la zone</li>
                                               <li>• <strong>Pivot vers l'Asie sous Obama :</strong> volonté de recentrer les ressources sur la compétition avec la Chine</li>
                                               <li>• <strong>Wilsonisme botté</strong> (Pierre Hassner) : interventionnisme post-11 septembre (Afghanistan 2001, Irak 2003) qui a entraîné un coût humain et financier énorme</li>
@@ -1600,8 +1600,8 @@ const ProcheMoyenOrientPage = () => {
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Fatigue des guerres :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Fatigue des guerres :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>1 000 milliards de dollars</strong> dépensés en Afghanistan</li>
                                               <li>• <strong>Retrait d'Irak en 2011</strong>, puis d'Afghanistan en 2021</li>
                                               <li>• <strong>Désengagement partiel</strong> en Syrie et en Libye</li>
@@ -1611,10 +1611,10 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-400">
-                                        <p className="text-gray-800 font-semibold mb-3">2. Une région sans maître ?</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-gray-400">
+                                        <p className="text-carnet-ink font-semibold mb-3">2. Une région sans maître ?</p>
                                         
-                                        <ul className="text-gray-700 space-y-2">
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• <strong>Le Moyen-Orient comme "Las Vegas des relations internationales"</strong> (Serge Sur) : absence de cadre juridique stable et non-respect du droit international</li>
                                           <li>• <strong>Dominique Moïsi</strong> parle d'"une région sans maître", où les grandes puissances peinent à s'imposer durablement</li>
                                           <li>• <strong>Un vide géopolitique</strong> qui ouvre la voie à de nouveaux rapports de force régionaux</li>
@@ -1624,20 +1624,20 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* B. Recomposition de l'ordre régional */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Globe className="h-5 w-5" />
                                       B. Une recomposition de l'ordre régional : vers de nouveaux leaderships ?
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">1. Un basculement du leadership régional</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">1. Un basculement du leadership régional</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">La chute des anciens leaders régionaux :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">La chute des anciens leaders régionaux :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>L'Égypte</strong> marginalisée après la chute de Moubarak (2011)</li>
                                               <li>• <strong>La Syrie</strong> en guerre civile</li>
                                               <li>• <strong>L'Irak</strong> en décomposition après l'intervention américaine</li>
@@ -1645,8 +1645,8 @@ const ProcheMoyenOrientPage = () => {
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">De nouvelles puissances régionales émergent :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">De nouvelles puissances régionales émergent :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Iran :</strong> expansionnisme régional (Syrie, Liban, Irak, Yémen)</li>
                                               <li>• <strong>Arabie Saoudite :</strong> Mohammed Ben Salmane veut s'imposer comme leader du Golfe et du monde sunnite</li>
                                               <li>• <strong>Turquie :</strong> retour du néo-ottomanisme avec Erdogan</li>
@@ -1655,21 +1655,21 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">2. Des alliances qui se redessinent</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">2. Des alliances qui se redessinent</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">La normalisation avec Israël :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">La normalisation avec Israël :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Accords d'Abraham (2020) :</strong> Émirats arabes unis, Bahreïn, Maroc, Soudan reconnaissent Israël</li>
                                               <li>• <strong>Un axe anti-Iran</strong> se met en place : rapprochement stratégique entre Israël et les pétromonarchies</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Un basculement du regard vers l'Asie :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Un basculement du regard vers l'Asie :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Chine-Arabie Saoudite (2022) :</strong> visite de Xi Jinping à Riyad, accords pour 30 milliards de dollars</li>
                                               <li>• <strong>Diversification des partenariats</strong> des pays du Golfe (BRI, projets 2030, énergie, tech)</li>
                                               <li>• <strong>Émergence d'un bloc anti-occidental</strong> Chine-Iran-Russie</li>
@@ -1681,30 +1681,30 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* C. Émergence de nouveaux acteurs régionaux */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <MapPin className="h-5 w-5" />
                                       C. L'émergence de nouveaux acteurs régionaux et le début d'un ordre moyen-oriental multipolaire
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">1. Une montée en puissance des acteurs régionaux</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">1. Une montée en puissance des acteurs régionaux</p>
                                         
-                                        <ul className="text-gray-700 space-y-2">
+                                        <ul className="text-carnet-ink-soft space-y-2">
                                           <li>• <strong>Iran :</strong> acteur clé, détenant la 2e réserve mondiale de gaz, soutien aux milices chiites (Hezbollah, Houthis, milices irakiennes)</li>
                                           <li>• <strong>Arabie Saoudite :</strong> modernisation économique (Vision 2030), renforcement militaire, rapprochement avec Israël</li>
                                           <li>• <strong>Turquie :</strong> puissance néo-ottomane, intervention en Libye, Syrie, tensions en Méditerranée orientale</li>
                                         </ul>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">2. La Turquie, un acteur de plus en plus incontournable</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">2. La Turquie, un acteur de plus en plus incontournable</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Concepts clés :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Concepts clés :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Mavi Vatan (patrie bleue) :</strong> ambition turque de contrôle maritime en Méditerranée</li>
                                               <li>• <strong>Néo-ottomanisme :</strong> influence culturelle et politique en Afrique du Nord et dans les Balkans</li>
                                               <li>• <strong>Politique multidirectionnelle :</strong> dialogue avec la Russie, l'Occident et le monde musulman</li>
@@ -1712,8 +1712,8 @@ const ProcheMoyenOrientPage = () => {
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Tensions régionales :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Tensions régionales :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Chypre et la Méditerranée orientale :</strong> exploitation du gaz contestée par la Grèce</li>
                                               <li>• <strong>Conflits avec la France :</strong> boycott des produits français en 2020 après les caricatures de Charlie Hebdo</li>
                                               <li>• <strong>Soutien aux Frères musulmans :</strong> tensions avec l'Arabie Saoudite et l'Égypte</li>
@@ -1722,21 +1722,21 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">3. Une multipolarité naissante avec de nouvelles coopérations</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">3. Une multipolarité naissante avec de nouvelles coopérations</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Exemple : Forum du Néguev (mars 2022)</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Exemple : Forum du Néguev (mars 2022)</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Rencontre</strong> entre Israël, Bahreïn, Émirats, Maroc, Égypte et les États-Unis pour une nouvelle architecture sécuritaire régionale</li>
                                               <li>• <strong>Objectif :</strong> contenir l'influence de l'Iran et favoriser la coopération économique</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Un nouveau jeu d'alliances se dessine :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Un nouveau jeu d'alliances se dessine :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Turquie-Qatar</strong> vs <strong>Arabie Saoudite-Égypte</strong></li>
                                               <li>• <strong>Iran et ses alliés chiites</strong> vs <strong>bloc sunnite pro-occidental</strong></li>
                                             </ul>
@@ -1747,9 +1747,9 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* Conclusion */}
-                                  <div className="bg-gradient-to-r bg-white p-6 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Conclusion : Un Moyen-Orient en transition, sans stabilité durable</h4>
-                                    <div className="text-gray-700 leading-relaxed space-y-3">
+                                  <div className="bg-gradient-to-r bg-carnet-paper-2 p-6 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-3">Conclusion : Un Moyen-Orient en transition, sans stabilité durable</h4>
+                                    <div className="text-carnet-ink-soft leading-relaxed space-y-3">
                                       <p>
                                         Les États-Unis et l'Europe se retirent progressivement, laissant place à une recomposition des forces régionales.
                                       </p>
@@ -1773,9 +1773,9 @@ const ProcheMoyenOrientPage = () => {
                               <AccordionContent>
                                 <div className="space-y-6">
                                   
-                                  <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                    <p className="text-gray-800 font-semibold mb-2">Une transformation profonde face aux nouveaux enjeux</p>
-                                    <p className="text-gray-700">
+                                  <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                    <p className="text-carnet-ink font-semibold mb-2">Une transformation profonde face aux nouveaux enjeux</p>
+                                    <p className="text-carnet-ink-soft">
                                       Le Moyen-Orient est confronté à une transformation profonde, dictée par des enjeux environnementaux, des mutations 
                                       économiques et des stratégies d'adaptation aux crises à venir. Si la région a historiquement été façonnée par ses 
                                       ressources naturelles et les rivalités géopolitiques, elle doit aujourd'hui faire face à des contraintes climatiques 
@@ -1785,20 +1785,20 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* A. Vulnérabilité climatique */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Thermometer className="h-5 w-5" />
                                       A. Un Moyen-Orient vulnérable face au réchauffement climatique
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">1. Une des régions les plus exposées au changement climatique</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">1. Une des régions les plus exposées au changement climatique</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Rapport de l'Institut Max Planck (2020) :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Rapport de l'Institut Max Planck (2020) :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>D'ici 2100 :</strong> températures de 50°C le jour et 30°C la nuit</li>
                                               <li>• <strong>Réchauffement de 3,5°C</strong>, rendant certaines zones inhabitables</li>
                                               <li>• <strong>L'Algérie, l'Égypte, l'Arabie Saoudite et la Turquie</strong> parmi les pays les plus touchés</li>
@@ -1806,8 +1806,8 @@ const ProcheMoyenOrientPage = () => {
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Problème du stress hydrique :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Problème du stress hydrique :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Moins de 7% de la population mondiale</strong> pour seulement 1% des réserves d'eau douce</li>
                                               <li>• <strong>Intensification des conflits pour l'eau</strong>, notamment autour du Nil, du Tigre et de l'Euphrate</li>
                                             </ul>
@@ -1815,29 +1815,29 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">2. S'adapter au changement climatique : des projets d'adaptation ambitieux</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">2. S'adapter au changement climatique : des projets d'adaptation ambitieux</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Wedian, la nouvelle capitale de l'Égypte :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Wedian, la nouvelle capitale de l'Égypte :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Déplacement du Caire</strong> vers une zone désertique pour décongestionner la ville et mieux gérer les ressources</li>
                                               <li>• <strong>Réduction des risques</strong> liés à l'élévation des températures et à la pollution</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Projets d'agriculture durable :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Projets d'agriculture durable :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>New Valley Project</strong> en Égypte pour étendre les terres cultivables</li>
                                               <li>• <strong>Initiatives de désalinisation</strong> de l'eau pour réduire la dépendance aux ressources naturelles</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Gestion de l'eau et conflits hydriques :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Gestion de l'eau et conflits hydriques :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Barrage de la Renaissance</strong> en Éthiopie, qui impacte directement l'accès à l'eau de l'Égypte et du Soudan</li>
                                               <li>• <strong>Tensions croissantes</strong> entre la Turquie, la Syrie et l'Irak sur l'utilisation des fleuves Tigre et Euphrate</li>
                                             </ul>
@@ -1848,28 +1848,28 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* B. Économies en quête de diversification */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Zap className="h-5 w-5" />
                                       B. Des économies dépendantes des ressources fossiles en quête de diversification
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">1. La transition énergétique : entre ambition et dépendance persistante</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">1. La transition énergétique : entre ambition et dépendance persistante</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Une dépendance structurelle aux hydrocarbures :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Une dépendance structurelle aux hydrocarbures :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Près de 70% du PIB</strong> des pays du Golfe provient encore du pétrole et du gaz</li>
                                               <li>• <strong>L'Arabie Saoudite et l'Iran</strong> parmi les premiers producteurs mondiaux</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Des plans de diversification ambitieux :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Des plans de diversification ambitieux :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Vision 2030 (Arabie Saoudite) :</strong> investissement massif dans le tourisme, les technologies et les énergies renouvelables</li>
                                               <li>• <strong>Horizon 2030 (Qatar) :</strong> développement des NTIC et des industries hors hydrocarbures</li>
                                               <li>• <strong>Dubaï :</strong> modèle de transition avec une forte tertiarisation (Emirates, DP World, tourisme de luxe)</li>
@@ -1879,29 +1879,29 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">2. L'émergence de nouvelles stratégies industrielles</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">2. L'émergence de nouvelles stratégies industrielles</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Industrie pétrochimique :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Industrie pétrochimique :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Sabic</strong> en Arabie Saoudite, leader mondial de la chimie pétrochimique</li>
                                               <li>• <strong>Création de hubs industriels</strong> spécialisés (Jubail, Yanbu)</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Le défi des énergies renouvelables :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Le défi des énergies renouvelables :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Investissement dans l'énergie solaire</strong> (exemple : projet Noor au Maroc)</li>
                                               <li>• <strong>Développement du nucléaire civil</strong> en Iran, aux Émirats Arabes Unis et en Arabie Saoudite</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Le secteur de l'eau et des infrastructures :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Le secteur de l'eau et des infrastructures :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Désalinisation massive</strong> de l'eau de mer pour compenser la rareté des ressources</li>
                                               <li>• <strong>Construction de mégaprojets</strong> comme The Line en Arabie Saoudite (ville futuriste sans voiture et autosuffisante en énergie)</li>
                                             </ul>
@@ -1912,28 +1912,28 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* C. Stratégies des États pour faire face aux défis */}
-                                  <div className="bg-white p-5 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                  <div className="bg-carnet-paper-2 p-5 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-4 flex items-center gap-2">
                                       <Lightbulb className="h-5 w-5" />
                                       C. Les stratégies des États pour faire face aux défis à venir
                                     </h4>
                                     
                                     <div className="space-y-4">
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">1. Anticiper la transition post-pétrole</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">1. Anticiper la transition post-pétrole</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Développement du tourisme :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Développement du tourisme :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Qatar, Dubaï et l'Arabie Saoudite</strong> investissent dans les hubs touristiques (hôtels de luxe, événements sportifs, expositions universelles)</li>
                                               <li>• <strong>Coupe du Monde 2022 au Qatar</strong>, un happening sportif pour attirer les investissements</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Industrie de défense et influence géopolitique :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Industrie de défense et influence géopolitique :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>L'Arabie Saoudite et les Émirats Arabes Unis</strong> se dotent d'industries militaires locales</li>
                                               <li>• <strong>L'objectif :</strong> réduire leur dépendance aux États-Unis et à l'Europe pour leur sécurité</li>
                                             </ul>
@@ -1941,21 +1941,21 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">2. Construire de nouveaux pôles économiques et technologiques</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">2. Construire de nouveaux pôles économiques et technologiques</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Neom (Arabie Saoudite) :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Neom (Arabie Saoudite) :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Projet de ville intelligente et écologique</strong> visant à transformer l'Arabie Saoudite en un hub mondial d'innovation</li>
                                               <li>• <strong>Objectif :</strong> zéro émission de carbone et une énergie 100% propre</li>
                                             </ul>
                                           </div>
                                           
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Cap sur l'intelligence artificielle et la Fintech :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Cap sur l'intelligence artificielle et la Fintech :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Développement de centres financiers et technologiques</strong> à Abou Dhabi, Riyad et Doha</li>
                                               <li>• <strong>Montée en puissance des startups</strong> dans le domaine du numérique et de la cybersécurité</li>
                                             </ul>
@@ -1963,13 +1963,13 @@ const ProcheMoyenOrientPage = () => {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
-                                        <p className="text-gray-800 font-semibold mb-3">3. La montée en puissance des fonds souverains et l'investissement international</p>
+                                      <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-carnet-rule">
+                                        <p className="text-carnet-ink font-semibold mb-3">3. La montée en puissance des fonds souverains et l'investissement international</p>
                                         
                                         <div className="space-y-3">
                                           <div>
-                                            <p className="text-gray-800 font-semibold">Des États qui investissent massivement à l'étranger :</p>
-                                            <ul className="text-gray-700 ml-4 space-y-1">
+                                            <p className="text-carnet-ink font-semibold">Des États qui investissent massivement à l'étranger :</p>
+                                            <ul className="text-carnet-ink-soft ml-4 space-y-1">
                                               <li>• <strong>Le KIA (Kuwait Investment Authority) et l'ADIA</strong> (Abu Dhabi Investment Authority) parmi les plus grands investisseurs mondiaux</li>
                                               <li>• <strong>Investissements massifs</strong> en Europe, en Afrique et en Asie pour diversifier les revenus</li>
                                               <li>• <strong>Qatar Investment Authority</strong> propriétaire du PSG, de centres financiers et d'infrastructures européennes</li>
@@ -1981,9 +1981,9 @@ const ProcheMoyenOrientPage = () => {
                                   </div>
 
                                   {/* Conclusion */}
-                                  <div className="bg-gradient-to-r bg-white p-6 rounded-lg border border-gray-200">
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">Conclusion : Un Moyen-Orient en mutation, mais des défis persistants</h4>
-                                    <div className="text-gray-700 leading-relaxed space-y-3">
+                                  <div className="bg-gradient-to-r bg-carnet-paper-2 p-6 rounded-lg border border-carnet-rule">
+                                    <h4 className="text-lg font-semibold text-carnet-ink mb-3">Conclusion : Un Moyen-Orient en mutation, mais des défis persistants</h4>
+                                    <div className="text-carnet-ink-soft leading-relaxed space-y-3">
                                       <p>
                                         La transition énergétique et économique est en marche, mais la dépendance aux hydrocarbures reste forte.
                                       </p>
@@ -2017,20 +2017,20 @@ const ProcheMoyenOrientPage = () => {
           </Card>
 
           {/* Chronologie */}
-          <Card className="border-2 border-gray-200 bg-white shadow-none">
+          <Card className="border-2 border-carnet-rule bg-carnet-paper-2 shadow-none">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-3">
-                <Clock className="h-6 w-6 text-gray-600" />
+                <Clock className="h-6 w-6 text-carnet-ink-soft" />
                 Chronologie du Proche et Moyen-Orient
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <p className="text-gray-700 mb-6">
+                <p className="text-carnet-ink-soft mb-6">
                   Les événements clés qui ont façonné cette région stratégique, de l'incident d'Aqaba aux conflits contemporains.
                 </p>
                 
-                <div className="space-y-3 max-h-96 overflow-y-auto bg-white p-4 rounded-lg border border-gray-200">
+                <div className="space-y-3 max-h-96 overflow-y-auto bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
                   {[
                     { year: "1906", event: "Incident d'Aqaba. Crise diplomatique quant au tracé du chemin de fer dans la région du Hedjaz." },
                     { year: "1914", event: "Les Britanniques placent le Koweït sous protectorat, prennent la ville de Bassorah" },
@@ -2129,28 +2129,28 @@ const ProcheMoyenOrientPage = () => {
                     { year: "2025", event: "Intensification des tensions régionales avec l'Iran, qui accélère son programme nucléaire en réponse aux sanctions américaines renouvelées" },
                   ].map((item, index) => (
                     <div key={index} className="flex items-start border-b border-gray-100 pb-2">
-                      <span className="flex-shrink-0 w-20 text-sm font-semibold text-gray-700 mr-3">
+                      <span className="flex-shrink-0 w-20 text-sm font-semibold text-carnet-ink-soft mr-3">
                         {item.year}
                       </span>
-                      <p className="flex-grow text-gray-700 text-sm leading-relaxed">
+                      <p className="flex-grow text-carnet-ink-soft text-sm leading-relaxed">
                         {item.event}
                       </p>
                     </div>
                   ))}
                 </div>
                 
-                <div className="mt-4 p-4 bg-gray-100 rounded-lg border border-gray-300">
+                <div className="mt-4 p-4 bg-carnet-paper rounded-lg border border-carnet-rule">
                   <div className="flex items-center gap-2 mb-2">
-                    <Calendar className="h-5 w-5 text-gray-600" />
-                    <p className="font-semibold text-gray-800">Chronologie complète</p>
+                    <Calendar className="h-5 w-5 text-carnet-ink-soft" />
+                    <p className="font-semibold text-carnet-ink">Chronologie complète</p>
                   </div>
-                  <p className="text-sm text-gray-700">
+                  <p className="text-sm text-carnet-ink-soft">
                     Cette chronologie présente les événements majeurs de 1906 à 2025. Pour une version plus détaillée avec 
                     catégorisation et analyse, consultez la page dédiée.
                   </p>
                   <Link 
                     to="/formation/geopolitique/proche-moyen-orient/chronologie" 
-                    className="inline-flex items-center mt-2 text-gray-600 hover:text-gray-800 font-medium text-sm"
+                    className="inline-flex items-center mt-2 text-carnet-ink-soft hover:text-carnet-ink font-medium text-sm"
                   >
                     Voir la chronologie détaillée →
                   </Link>
@@ -2160,16 +2160,16 @@ const ProcheMoyenOrientPage = () => {
           </Card>
 
           {/* Conclusion */}
-          <Card className="border-2 border-gray-200 bg-gradient-to-br bg-white shadow-none">
+          <Card className="border-2 border-carnet-rule bg-gradient-to-br bg-carnet-paper-2 shadow-none">
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-3">
-                <BookOpen className="h-6 w-6 text-gray-600" />
+                <BookOpen className="h-6 w-6 text-carnet-ink-soft" />
                 Conclusion
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gray-50 p-6 rounded-lg text-center border border-gray-200">
-                <p className="text-gray-600 italic">
+              <div className="bg-carnet-paper p-6 rounded-lg text-center border border-carnet-rule">
+                <p className="text-carnet-ink-soft italic">
                   [Contenu en attente - Veuillez fournir la conclusion de la dissertation]
                 </p>
               </div>
@@ -2179,49 +2179,49 @@ const ProcheMoyenOrientPage = () => {
         {/* Navigation vers ressources */}
         <div className="grid md:grid-cols-4 gap-6 mb-12">
           <Link to="/formation/geopolitique/proche-moyen-orient/chronologie">
-            <Card className="h-full hover:shadow-none transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-gray-300">
+            <Card className="h-full hover:shadow-none transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-carnet-rule">
               <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Globe className="h-6 w-6 text-gray-600" />
+                <div className="w-12 h-12 bg-carnet-paper rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Globe className="h-6 w-6 text-carnet-ink-soft" />
                 </div>
                 <h3 className="font-semibold mb-2">Chronologie</h3>
-                <p className="text-sm text-gray-600">Histoire du Moyen-Orient</p>
+                <p className="text-sm text-carnet-ink-soft">Histoire du Moyen-Orient</p>
               </CardContent>
             </Card>
           </Link>
 
           <Link to="/formation/geopolitique/proche-moyen-orient/flashcards">
-            <Card className="h-full hover:shadow-none transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-gray-300">
+            <Card className="h-full hover:shadow-none transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-carnet-rule">
               <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Target className="h-6 w-6 text-gray-600" />
+                <div className="w-12 h-12 bg-carnet-paper rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Target className="h-6 w-6 text-carnet-ink-soft" />
                 </div>
                 <h3 className="font-semibold mb-2">Flashcards</h3>
-                <p className="text-sm text-gray-600">Révision interactive</p>
+                <p className="text-sm text-carnet-ink-soft">Révision interactive</p>
               </CardContent>
             </Card>
           </Link>
 
           <Link to="/formation/geopolitique/proche-moyen-orient/etudes-de-cas">
-            <Card className="h-full hover:shadow-none transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-gray-300">
+            <Card className="h-full hover:shadow-none transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-carnet-rule">
               <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <List className="h-6 w-6 text-gray-600" />
+                <div className="w-12 h-12 bg-carnet-paper rounded-full flex items-center justify-center mx-auto mb-3">
+                  <List className="h-6 w-6 text-carnet-ink-soft" />
                 </div>
                 <h3 className="font-semibold mb-2">Études de cas</h3>
-                <p className="text-sm text-gray-600">Sujets de dissertation</p>
+                <p className="text-sm text-carnet-ink-soft">Sujets de dissertation</p>
               </CardContent>
             </Card>
           </Link>
 
           <Link to="/formation/geopolitique/proche-moyen-orient/auteurs">
-            <Card className="h-full hover:shadow-none transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-gray-300">
+            <Card className="h-full hover:shadow-none transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-carnet-rule">
               <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <BookOpen className="h-6 w-6 text-gray-600" />
+                <div className="w-12 h-12 bg-carnet-paper rounded-full flex items-center justify-center mx-auto mb-3">
+                  <BookOpen className="h-6 w-6 text-carnet-ink-soft" />
                 </div>
                 <h3 className="font-semibold mb-2">Auteurs</h3>
-                <p className="text-sm text-gray-600">Bibliographie essentielle</p>
+                <p className="text-sm text-carnet-ink-soft">Bibliographie essentielle</p>
               </CardContent>
             </Card>
           </Link>

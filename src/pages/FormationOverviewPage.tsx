@@ -52,13 +52,13 @@ const FormationOverviewPage = () => {
 
       <section className="rounded-2xl border border-pr-gray-light bg-white p-8 sm:p-12">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-black mb-3">
             Préparation aux entretiens
           </p>
           <h2 className="font-dm-serif text-3xl sm:text-4xl text-pr-black mb-3">
             Entretiens de personnalité
           </h2>
-          <div className="w-12 h-[3px] bg-pr-orange mx-auto mb-5" />
+          <div className="w-12 h-[3px] bg-pr-black mx-auto mb-5" />
           <p className="text-base text-pr-gray-dark/80 mb-8">
             Méthodologie, outils de préparation, et fiches écoles détaillées pour réussir vos entretiens.
           </p>
@@ -70,7 +70,7 @@ const FormationOverviewPage = () => {
               { value: '∞', label: 'Questions générées IA' },
             ].map((s) => (
               <div key={s.label} className="flex sm:flex-col items-center sm:items-center justify-center gap-2 sm:gap-1">
-                <span className="font-dm-serif text-3xl text-pr-orange">{s.value}</span>
+                <span className="font-dm-serif text-3xl text-pr-black">{s.value}</span>
                 <span className="text-sm text-pr-gray-dark">{s.label}</span>
               </div>
             ))}
@@ -78,7 +78,7 @@ const FormationOverviewPage = () => {
 
           <Link
             to="/methodologie/entretiens-personnalite"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-pr-black hover:bg-pr-black-dark text-white font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5"
           >
             <Users className="h-4 w-4" />
             <span>Voir la formation</span>
@@ -95,13 +95,13 @@ const FormationOverviewPage = () => {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             to="/register"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold text-sm transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-pr-black hover:bg-pr-black-dark text-white font-semibold text-sm transition-colors"
           >
             Commencer gratuitement
           </Link>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-pr-gray-light bg-white hover:border-pr-orange text-pr-black font-semibold text-sm transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-pr-gray-light bg-white hover:border-pr-black text-pr-black font-semibold text-sm transition-colors"
           >
             Nous contacter
           </Link>

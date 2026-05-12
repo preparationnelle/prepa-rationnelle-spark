@@ -47,7 +47,7 @@ const ExamensCollegePage = () => {
                         <hr className="my-10 border-gray-200" />
 
                         <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-6">1. Avant la révision : l'écoute active en classe</h2>
-                        <div className="bg-pr-orange-pale border-l-4 border-carnet-red p-6 my-6">
+                        <div className="bg-pr-gray-bg border-l-4 border-carnet-red p-6 my-6">
                             <p className="text-carnet-red-deep font-medium">
                                 Le secret le mieux gardé des bons élèves : 70% du travail d'apprentissage se fait EN CLASSE.
                             </p>
@@ -96,7 +96,7 @@ const ExamensCollegePage = () => {
 
                         <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">La gestion du chrono</h3>
                         <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
-                            <Timer className="h-8 w-8 text-pr-orange" />
+                            <Timer className="h-8 w-8 text-pr-black" />
                             <p className="text-gray-700 text-sm">
                                 Si l'épreuve dure 1h et qu'il y a 4 exercices notés sur 5 points chacun, on doit passer environ 15 minutes par exercice. Si ça dépasse, on passe au suivant et on reviendra plus tard.
                             </p>

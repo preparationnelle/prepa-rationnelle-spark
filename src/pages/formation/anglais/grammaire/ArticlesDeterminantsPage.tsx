@@ -45,7 +45,7 @@ const ArticlesDeterminantsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+            <div className="p-3 rounded-lg bg-pr-black-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Articles et Déterminants en Anglais
@@ -56,14 +56,14 @@ const ArticlesDeterminantsPage = () => {
         </div>
 
         {/* Introduction */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale">
+        <Card className="mb-8 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-pr-black-pale">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <HelpCircle className="h-6 w-6" />
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark space-y-3">
+          <CardContent className="text-pr-black space-y-3">
             <p>Cette fiche couvre : l’usage de <span className="font-semibold">a/an</span> et <span className="font-semibold">the</span>, les indéfinis <span className="font-semibold">some</span>, <span className="font-semibold">any</span>, <span className="font-semibold">a lot of</span>, les quantifieurs <span className="font-semibold">much, many, little, few</span>, et d’autres déterminants utiles.</p>
           </CardContent>
         </Card>
@@ -76,27 +76,27 @@ const ArticlesDeterminantsPage = () => {
           <CardContent className="space-y-6 text-gray-800">
             <section>
               <h3 className="text-xl font-semibold mb-2">A / AN (indéfini)</h3>
-              <p><span className="text-pr-orange-dark font-semibold">Usage</span> : présenter un nom singulier non identifié ou non spécifique</p>
-              <p><span className="text-pr-orange-dark font-semibold">Forme</span> : <span className="font-semibold">a</span> devant son consonantique, <span className="font-semibold">an</span> devant son vocalique</p>
+              <p><span className="text-pr-black font-semibold">Usage</span> : présenter un nom singulier non identifié ou non spécifique</p>
+              <p><span className="text-pr-black font-semibold">Forme</span> : <span className="font-semibold">a</span> devant son consonantique, <span className="font-semibold">an</span> devant son vocalique</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>I saw <span className="text-pr-orange-dark font-semibold">a</span> cat in the garden.</li>
-                <li>She is <span className="text-pr-orange-dark font-semibold">an</span> engineer.</li>
-                <li>Can I have <span className="text-pr-orange-dark font-semibold">an</span> apple?</li>
+                <li>I saw <span className="text-pr-black font-semibold">a</span> cat in the garden.</li>
+                <li>She is <span className="text-pr-black font-semibold">an</span> engineer.</li>
+                <li>Can I have <span className="text-pr-black font-semibold">an</span> apple?</li>
                 <li><span className="text-sm text-gray-600">Attention au son : <span className="italic">an</span> hour, <span className="italic">a</span> university.</span></li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">THE (défini)</h3>
-              <p><span className="text-pr-orange-dark font-semibold">Usage</span> : nom spécifique, déjà mentionné ou unique</p>
+              <p><span className="text-pr-black font-semibold">Usage</span> : nom spécifique, déjà mentionné ou unique</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>I saw <span className="text-pr-orange-dark font-semibold">the</span> cat we talked about.</li>
-                <li><span className="text-pr-orange-dark font-semibold">The</span> sun rises in the east.</li>
-                <li>Please close <span className="text-pr-orange-dark font-semibold">the</span> door.</li>
+                <li>I saw <span className="text-pr-black font-semibold">the</span> cat we talked about.</li>
+                <li><span className="text-pr-black font-semibold">The</span> sun rises in the east.</li>
+                <li>Please close <span className="text-pr-black font-semibold">the</span> door.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Zéro article</h3>
-              <p><span className="text-pr-orange-dark font-semibold">Usage</span> : pluriels ou non comptables au sens général</p>
+              <p><span className="text-pr-black font-semibold">Usage</span> : pluriels ou non comptables au sens général</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>Cats are friendly animals.</li>
                 <li>Water is essential.</li>
@@ -113,28 +113,28 @@ const ArticlesDeterminantsPage = () => {
           <CardContent className="space-y-6">
             <section>
               <h3 className="text-xl font-semibold mb-2">SOME</h3>
-              <p><span className="text-pr-orange-dark font-semibold">Usage</span> : quantités indéfinies dans affirmations positives, offres et demandes</p>
+              <p><span className="text-pr-black font-semibold">Usage</span> : quantités indéfinies dans affirmations positives, offres et demandes</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>I have <span className="text-pr-orange-dark font-semibold">some</span> friends in London.</li>
-                <li>Would you like <span className="text-pr-orange-dark font-semibold">some</span> tea?</li>
-                <li>She bought <span className="text-pr-orange-dark font-semibold">some</span> bread.</li>
+                <li>I have <span className="text-pr-black font-semibold">some</span> friends in London.</li>
+                <li>Would you like <span className="text-pr-black font-semibold">some</span> tea?</li>
+                <li>She bought <span className="text-pr-black font-semibold">some</span> bread.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">ANY</h3>
-              <p><span className="text-pr-orange-dark font-semibold">Usage</span> : interrogatives et négatives</p>
+              <p><span className="text-pr-black font-semibold">Usage</span> : interrogatives et négatives</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Do you have <span className="text-pr-orange-dark font-semibold">any</span> questions?</li>
-                <li>I don’t have <span className="text-pr-orange-dark font-semibold">any</span> money.</li>
-                <li>Are there <span className="text-pr-orange-dark font-semibold">any</span> cookies left?</li>
+                <li>Do you have <span className="text-pr-black font-semibold">any</span> questions?</li>
+                <li>I don’t have <span className="text-pr-black font-semibold">any</span> money.</li>
+                <li>Are there <span className="text-pr-black font-semibold">any</span> cookies left?</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">A LOT OF / LOTS OF</h3>
-              <p><span className="text-pr-orange-dark font-semibold">Usage</span> : grandes quantités, registre plutôt informel</p>
+              <p><span className="text-pr-black font-semibold">Usage</span> : grandes quantités, registre plutôt informel</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>They have <span className="text-pr-orange-dark font-semibold">a lot of</span> work to do.</li>
-                <li>There are <span className="text-pr-orange-dark font-semibold">lots of</span> people here.</li>
+                <li>They have <span className="text-pr-black font-semibold">a lot of</span> work to do.</li>
+                <li>There are <span className="text-pr-black font-semibold">lots of</span> people here.</li>
               </ul>
             </section>
           </CardContent>
@@ -144,28 +144,28 @@ const ArticlesDeterminantsPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-pr-orange-dark" />
+              <Table className="h-6 w-6 text-pr-black" />
               3. Much / Many / Little / Few
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Mot</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Usage</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Forme</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Mot</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Usage</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Forme</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Exemple</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">many</td><td className="border px-3 py-2">noms pluriels</td><td className="border px-3 py-2">many</td><td className="border px-3 py-2">She has many books.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">much</td><td className="border px-3 py-2">noms non comptables</td><td className="border px-3 py-2">much</td><td className="border px-3 py-2">I don’t have much time.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">few</td><td className="border px-3 py-2">petits nombres (pluriel)</td><td className="border px-3 py-2">few</td><td className="border px-3 py-2">Few students passed the exam.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">a few</td><td className="border px-3 py-2">quelques (pluriel)</td><td className="border px-3 py-2">a few</td><td className="border px-3 py-2">I have a few ideas.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">little</td><td className="border px-3 py-2">petite quantité (non comptable)</td><td className="border px-3 py-2">little</td><td className="border px-3 py-2">There is little milk left.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">a little</td><td className="border px-3 py-2">un peu (non comptable)</td><td className="border px-3 py-2">a little</td><td className="border px-3 py-2">I have a little money.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">many</td><td className="border px-3 py-2">noms pluriels</td><td className="border px-3 py-2">many</td><td className="border px-3 py-2">She has many books.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">much</td><td className="border px-3 py-2">noms non comptables</td><td className="border px-3 py-2">much</td><td className="border px-3 py-2">I don’t have much time.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">few</td><td className="border px-3 py-2">petits nombres (pluriel)</td><td className="border px-3 py-2">few</td><td className="border px-3 py-2">Few students passed the exam.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">a few</td><td className="border px-3 py-2">quelques (pluriel)</td><td className="border px-3 py-2">a few</td><td className="border px-3 py-2">I have a few ideas.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">little</td><td className="border px-3 py-2">petite quantité (non comptable)</td><td className="border px-3 py-2">little</td><td className="border px-3 py-2">There is little milk left.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">a little</td><td className="border px-3 py-2">un peu (non comptable)</td><td className="border px-3 py-2">a little</td><td className="border px-3 py-2">I have a little money.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -180,10 +180,10 @@ const ArticlesDeterminantsPage = () => {
           <CardContent className="space-y-6">
             <section>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">each / every</span> : Each student received a certificate. / Every day is a new beginning.</li>
-                <li><span className="text-pr-orange-dark font-semibold">either / neither</span> : You can choose either option. / Neither answer is correct.</li>
-                <li><span className="text-pr-orange-dark font-semibold">both / all</span> : Both candidates are qualified. / All participants must register.</li>
-                <li><span className="text-pr-orange-dark font-semibold">no</span> : No student was absent.</li>
+                <li><span className="text-pr-black font-semibold">each / every</span> : Each student received a certificate. / Every day is a new beginning.</li>
+                <li><span className="text-pr-black font-semibold">either / neither</span> : You can choose either option. / Neither answer is correct.</li>
+                <li><span className="text-pr-black font-semibold">both / all</span> : Both candidates are qualified. / All participants must register.</li>
+                <li><span className="text-pr-black font-semibold">no</span> : No student was absent.</li>
               </ul>
             </section>
           </CardContent>
@@ -196,30 +196,30 @@ const ArticlesDeterminantsPage = () => {
           </CardHeader>
           <CardContent className="space-y-1">
             <ul className="list-disc pl-6 space-y-1">
-              <li><span className="text-pr-orange-dark font-semibold">Much</span> vs <span className="text-pr-orange-dark font-semibold">Many</span> : many pour pluriel, much pour non comptable</li>
-              <li><span className="text-pr-orange-dark font-semibold">Some</span> vs <span className="text-pr-orange-dark font-semibold">Any</span> : some en affirmatif, any en questions/négations</li>
-              <li><span className="text-pr-orange-dark font-semibold">A / An</span> : basé sur le <span className="text-pr-orange-dark font-semibold">son</span> (an hour, a university)</li>
-              <li><span className="text-pr-orange-dark font-semibold">Zéro article</span> : pas d’article avec génériques pluriels et non comptables</li>
-              <li><span className="text-pr-orange-dark font-semibold">Each</span> vs <span className="text-pr-orange-dark font-semibold">Every</span> : each = individuel, every = global</li>
+              <li><span className="text-pr-black font-semibold">Much</span> vs <span className="text-pr-black font-semibold">Many</span> : many pour pluriel, much pour non comptable</li>
+              <li><span className="text-pr-black font-semibold">Some</span> vs <span className="text-pr-black font-semibold">Any</span> : some en affirmatif, any en questions/négations</li>
+              <li><span className="text-pr-black font-semibold">A / An</span> : basé sur le <span className="text-pr-black font-semibold">son</span> (an hour, a university)</li>
+              <li><span className="text-pr-black font-semibold">Zéro article</span> : pas d’article avec génériques pluriels et non comptables</li>
+              <li><span className="text-pr-black font-semibold">Each</span> vs <span className="text-pr-black font-semibold">Every</span> : each = individuel, every = global</li>
             </ul>
           </CardContent>
         </Card>
 
         {/* CTA exercices */}
-        <Card className="mt-2 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mt-2 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-amber-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <Target className="h-6 w-6" />
               Prêt à mettre en pratique ?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-pr-orange-dark mb-6">
+            <p className="text-lg text-pr-black mb-6">
               Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/articles/exercices">
-                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-black-dark hover:bg-pr-black-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

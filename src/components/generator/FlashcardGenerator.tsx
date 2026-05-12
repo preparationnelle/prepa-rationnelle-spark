@@ -88,14 +88,14 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
   return (
     <div className="max-w-6xl mx-auto px-4 pb-20 font-dm-sans">
 
-      {/* Header — trait orange signature + titre serif */}
+      {/* Header — trait noir signature + titre serif */}
       <header className="text-center pt-8 pb-10">
         <div className="inline-flex items-center gap-2 mb-5">
-          <span className="h-px w-8 bg-pr-orange" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark">
+          <span className="h-px w-8 bg-pr-black" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-black">
             {language === 'fr' ? 'Générateur de flashcards' : 'Flashcard generator'}
           </span>
-          <span className="h-px w-8 bg-pr-orange" />
+          <span className="h-px w-8 bg-pr-black" />
         </div>
 
         <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black leading-[1.1] mb-4">
@@ -112,8 +112,8 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
       {/* Carte de saisie */}
       <section className="max-w-3xl mx-auto mb-12">
         <div className="relative bg-white border border-pr-gray-light rounded-2xl overflow-hidden">
-          {/* Trait orange signature en haut */}
-          <div className="h-[3px] bg-pr-orange" />
+          {/* trait noir signature en haut */}
+          <div className="h-[3px] bg-pr-black" />
           <div className="p-6 md:p-8">
             <FlashcardInput
               language={language}
@@ -150,7 +150,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
                   <TabsTrigger
                     key={tab.id}
                     value={tab.id}
-                    className="rounded-full px-4 sm:px-5 py-2.5 text-[13px] font-medium text-pr-gray-mid transition-colors data-[state=active]:bg-pr-orange-pale data-[state=active]:text-pr-orange-dark data-[state=active]:shadow-sm whitespace-nowrap"
+                    className="rounded-full px-4 sm:px-5 py-2.5 text-[13px] font-medium text-pr-gray-mid transition-colors data-[state=active]:bg-pr-gray-bg data-[state=active]:text-pr-black data-[state=active]:shadow-sm whitespace-nowrap"
                   >
                     <div className="flex items-center gap-2">
                       <Icon className="w-4 h-4" />
@@ -159,7 +159,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
                         <span
                           className={`ml-0 sm:ml-1 px-1.5 min-w-[20px] text-center text-[10px] font-semibold rounded-full ${
                             isActive
-                              ? 'bg-white text-pr-orange-dark border border-pr-orange/30'
+                              ? 'bg-white text-pr-black border border-pr-gray-light/30'
                               : 'bg-pr-gray-bg text-pr-gray-mid border border-pr-gray-light'
                           }`}
                         >
@@ -201,8 +201,8 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
             <TabsContent value="stats" className="mt-0 focus-visible:outline-none">
               {allFlashcards.length === 0 ? (
                 <div className="flex flex-col items-center text-center py-16">
-                  <div className="w-12 h-12 rounded-full bg-pr-orange-pale flex items-center justify-center mb-4">
-                    <BarChart3 className="w-6 h-6 text-pr-orange-dark" />
+                  <div className="w-12 h-12 rounded-full bg-pr-gray-bg flex items-center justify-center mb-4">
+                    <BarChart3 className="w-6 h-6 text-pr-black" />
                   </div>
                   <h3 className="font-dm-serif text-xl text-pr-black mb-2">
                     {language === 'fr' ? 'Pas encore de statistiques' : 'No stats yet'}
@@ -214,7 +214,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
                   </p>
                   <button
                     onClick={() => setActiveTab('generated')}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-pr-orange hover:bg-pr-orange-dark text-white text-[13px] font-semibold transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-pr-black hover:bg-pr-black-dark text-white text-[13px] font-semibold transition-colors"
                   >
                     <Sparkles className="w-4 h-4" />
                     {language === 'fr' ? 'Créer ma première carte' : 'Create my first card'}
@@ -222,15 +222,15 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
                 </div>
               ) : (
                 <div className="space-y-10">
-                  {/* Cartes stats — neutres + numéro orange décoratif */}
+                  {/* Cartes stats — neutres + numéro noir décoratif */}
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     {summaryStats.map((stat, idx) => (
                       <div
                         key={idx}
                         className="relative bg-pr-gray-bg border border-pr-gray-light rounded-xl p-5 text-center overflow-hidden"
                       >
-                        <div className="absolute top-0 left-0 h-[2px] w-10 bg-pr-orange" />
-                        <div className="font-dm-serif text-4xl text-pr-orange leading-none mb-2 tabular-nums">
+                        <div className="absolute top-0 left-0 h-[2px] w-10 bg-pr-black" />
+                        <div className="font-dm-serif text-4xl text-pr-black leading-none mb-2 tabular-nums">
                           {stat.value}
                         </div>
                         <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-gray-mid">
@@ -243,7 +243,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
                   {/* Répartition par catégorie */}
                   <div>
                     <div className="flex items-center gap-3 mb-5">
-                      <div className="h-7 w-[3px] bg-pr-orange rounded-full" />
+                      <div className="h-7 w-[3px] bg-pr-black rounded-full" />
                       <h3 className="font-dm-serif text-xl text-pr-black">
                         {language === 'fr' ? 'Répartition par catégorie' : 'By category'}
                       </h3>
@@ -258,14 +258,14 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
                               <div className="flex items-center justify-between text-[13px]">
                                 <span className="font-medium text-pr-gray-dark">{cat}</span>
                                 <span className="text-pr-gray-mid tabular-nums">
-                                  <span className="text-pr-orange-dark font-semibold">{count}</span>
+                                  <span className="text-pr-black font-semibold">{count}</span>
                                   <span className="mx-1.5 text-pr-gray-light">·</span>
                                   {percent.toFixed(0)}%
                                 </span>
                               </div>
                               <div className="h-1.5 bg-white rounded-full overflow-hidden border border-pr-gray-light">
                                 <div
-                                  className="h-full bg-pr-orange rounded-full transition-all"
+                                  className="h-full bg-pr-black rounded-full transition-all"
                                   style={{ width: `${percent}%` }}
                                 />
                               </div>

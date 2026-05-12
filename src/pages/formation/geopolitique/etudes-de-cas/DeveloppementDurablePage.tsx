@@ -119,7 +119,7 @@ const DeveloppementDurablePage = () => {
               <div className="space-y-6">
                 
                 {/* Évolution historique */}
-                <Card className="bg-pr-orange-pale border-carnet-red/30">
+                <Card className="bg-pr-gray-bg border-carnet-red/30">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-carnet-red-deep">
                       <TrendingUp className="h-5 w-5" />
@@ -204,23 +204,23 @@ const DeveloppementDurablePage = () => {
           </AccordionItem>
 
           <AccordionItem value="africa-youth-bulge">
-            <AccordionTrigger className="text-xl text-pr-orange-dark">
+            <AccordionTrigger className="text-xl text-pr-black">
               II. Le "Youth Bulge" africain : Opportunités et défis
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-6">
 
-                <Card className="bg-orange-50 border-orange-200">
+                <Card className="bg-gray-50 border-gray-200">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-orange-800">
+                    <CardTitle className="flex items-center gap-2 text-gray-800">
                       <Baby className="h-5 w-5" />
                       Jeunesse africaine : dividende démographique
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="bg-orange-100 p-4 rounded-lg mb-6">
-                      <h4 className="font-semibold text-orange-800 mb-2">Ampleur du phénomène</h4>
-                      <ul className="text-sm text-pr-orange-dark space-y-2">
+                    <div className="bg-gray-100 p-4 rounded-lg mb-6">
+                      <h4 className="font-semibold text-gray-800 mb-2">Ampleur du phénomène</h4>
+                      <ul className="text-sm text-pr-black space-y-2">
                         <li><strong>Afrique subsaharienne :</strong> Plus de 60% population sous 25 ans</li>
                         <li><strong>Projection 2030 :</strong> 42% des jeunes mondiaux seront africains</li>
                         <li><strong>Croissance :</strong> 2,5% en Afrique sub. (Nigeria 2,6%, Mali 3%)</li>
@@ -230,16 +230,16 @@ const DeveloppementDurablePage = () => {
 
                     <div className="space-y-4">
                       {youthBulgeFactors.map((factor, index) => (
-                        <div key={index} className="p-3 bg-orange-100 rounded-lg border border-orange-300">
+                        <div key={index} className="p-3 bg-gray-100 rounded-lg border border-orange-300">
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <div className="flex items-center gap-3 mb-1">
-                                <span className="font-semibold text-orange-800">{factor.factor}</span>
-                                <Badge className="bg-pr-orange-dark text-white text-xs">
+                                <span className="font-semibold text-gray-800">{factor.factor}</span>
+                                <Badge className="bg-pr-black-dark text-white text-xs">
                                   {factor.stat}
                                 </Badge>
                               </div>
-                              <div className="text-sm text-pr-orange-dark">
+                              <div className="text-sm text-pr-black">
                                 <strong>Impact :</strong> {factor.impact}
                               </div>
                             </div>
@@ -320,7 +320,7 @@ const DeveloppementDurablePage = () => {
                           <div className="p-2 bg-carnet-red/10 rounded text-sm">
                             <strong>Europe :</strong> Âge médian 44 ans, population active vieillissante
                           </div>
-                          <div className="p-2 bg-orange-100 rounded text-sm">
+                          <div className="p-2 bg-gray-100 rounded text-sm">
                             <strong>Afrique :</strong> Âge médian 19 ans, force de travail jeune
                           </div>
                         </div>
@@ -434,7 +434,7 @@ const DeveloppementDurablePage = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-pr-orange-pale border-carnet-red/30">
+                <Card className="bg-pr-gray-bg border-carnet-red/30">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-carnet-red-deep">
                       <Target className="h-5 w-5" />

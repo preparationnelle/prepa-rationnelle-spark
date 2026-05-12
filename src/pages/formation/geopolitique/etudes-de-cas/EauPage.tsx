@@ -27,7 +27,7 @@ const EauPage = () => {
         </nav>
 
         {/* Header */}
-        <Card className="mb-8 bg-gradient-to-r from-cyan-600 to-pr-orange text-white">
+        <Card className="mb-8 bg-gradient-to-r from-cyan-600 to-pr-black text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Droplets className="h-8 w-8" />
@@ -77,7 +77,7 @@ const EauPage = () => {
                   dont <strong>55% provient de l'aquaculture</strong> (+5%/an). Cette croissance exponentielle 
                   transforme la géographie maritime mondiale.
                 </p>
-                <div className="bg-pr-orange-pale p-3 rounded-lg">
+                <div className="bg-pr-gray-bg p-3 rounded-lg">
                   <h4 className="font-semibold text-carnet-red-deep mb-2">Régions de pêche</h4>
                   <ul className="text-sm text-carnet-red space-y-1">
                     <li>• Pacifique : 50 millions tonnes</li>
@@ -119,7 +119,7 @@ const EauPage = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-4">
-                    <div className="bg-pr-orange-pale p-4 rounded-lg">
+                    <div className="bg-pr-gray-bg p-4 rounded-lg">
                       <h4 className="font-semibold text-carnet-red-deep mb-2">Répartition mondiale</h4>
                       <ul className="list-disc list-inside text-sm text-carnet-red space-y-1">
                         <li><strong>71% Terre eau :</strong> 97% océans, 2,5% douce</li>
@@ -129,9 +129,9 @@ const EauPage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-orange-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-orange-800 mb-2">Stress hydrique</h4>
-                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-semibold text-gray-800 mb-2">Stress hydrique</h4>
+                      <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Évolution :</strong> x0,3 disponibilité par personne depuis 1950</li>
                         <li><strong>Régions critiques :</strong> Moyen-Orient, Afrique Nord, Inde</li>
                         <li><strong>Urbanisation :</strong> Concentration demande métropoles</li>
@@ -162,7 +162,7 @@ const EauPage = () => {
                       </div>
                     </div>
 
-                    <div className="border-l-4 border-carnet-red/40 bg-pr-orange-pale p-4 rounded-r-lg">
+                    <div className="border-l-4 border-carnet-red/40 bg-pr-gray-bg p-4 rounded-r-lg">
                       <h4 className="font-semibold text-carnet-red-deep mb-3">
                         <Droplets className="inline h-4 w-4 mr-2" />
                         Nil : Barrage éthiopien vs Égypte/Soudan

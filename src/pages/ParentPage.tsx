@@ -57,7 +57,7 @@ const ParentPage = () => {
               </Button>
 
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-2 border-carnet-rule/40 hover:border-carnet-red text-carnet-ink hover:bg-pr-orange-pale px-8 py-6 text-lg rounded-xl">
+                <Button size="lg" variant="outline" className="border-2 border-carnet-rule/40 hover:border-carnet-red text-carnet-ink hover:bg-pr-gray-bg px-8 py-6 text-lg rounded-xl">
                   <Phone className="h-5 w-5 mr-2" />
                   Nous contacter
                 </Button>
@@ -127,7 +127,7 @@ const ParentPage = () => {
                   className="fade-in-up bg-white rounded-2xl p-6 border border-carnet-rule/30 hover:border-carnet-red transition-all duration-300 hover:shadow-lg hover:shadow-carnet-red/20 group block"
                   style={{ animationDelay: `${niveau.delay}s` }}
                 >
-                  <div className="w-14 h-14 bg-pr-orange-pale rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 bg-pr-gray-bg rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="h-7 w-7 text-carnet-red" />
                   </div>
                   <h3 className="font-semibold text-xl mb-2 text-carnet-ink">{niveau.title}</h3>
@@ -185,7 +185,7 @@ const ParentPage = () => {
                   className="fade-in-up bg-white rounded-2xl p-8 border border-carnet-rule/30 group"
                   style={{ animationDelay: `${card.delay}s` }}
                 >
-                  <div className="w-16 h-16 bg-pr-orange-pale rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 bg-pr-gray-bg rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                     <Icon className="h-8 w-8 text-carnet-red" />
                   </div>
                   <h3 className="font-semibold text-xl mb-3 text-center text-carnet-ink">{card.title}</h3>

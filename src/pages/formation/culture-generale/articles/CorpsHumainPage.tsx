@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -26,13 +26,13 @@ const CorpsHumainPage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Article
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               Le corps humain&nbsp;: entre objet biologique, sujet vécu et construction sociale
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Mauss, Merleau-Ponty, Foucault. Trois manières de défaire l&apos;évidence
               cartésienne&nbsp;: le corps n&apos;est pas une chose qu&apos;on a, c&apos;est ce qu&apos;on est.
@@ -55,8 +55,8 @@ const CorpsHumainPage: React.FC = () => {
                 centre. Elle a montré que penser l&apos;humain, c&apos;est d&apos;abord penser ce
                 corps qu&apos;on n&apos;a pas&nbsp;: qu&apos;on est.
               </p>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Tension à retenir</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Tension à retenir</h3>
                 <p>
                   Avons-nous un corps comme on possède une chose, ou <em>sommes-nous</em>
                   notre corps&nbsp;? Et si nous le sommes, qui en décide&nbsp;: la nature, la
@@ -83,9 +83,9 @@ const CorpsHumainPage: React.FC = () => {
                 des Maoris&nbsp;: tout est appris.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Trois plans</strong>. Toute technique du corps articule un dressage biologique (le potentiel anatomique), un apprentissage psychologique (l&apos;imitation prestigieuse), et une norme sociale (ce que la société attend).</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Habitus</strong>. Mauss propose ce mot latin pour désigner les manières corporelles incorporées par l&apos;éducation. Bourdieu le reprendra pour penser la reproduction sociale.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Pas d&apos;humain sans culture corporelle</strong>. L&apos;enfant qui pleure le fait selon les codes de sa culture. La nature humaine n&apos;est jamais à l&apos;état pur.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Trois plans</strong>. Toute technique du corps articule un dressage biologique (le potentiel anatomique), un apprentissage psychologique (l&apos;imitation prestigieuse), et une norme sociale (ce que la société attend).</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Habitus</strong>. Mauss propose ce mot latin pour désigner les manières corporelles incorporées par l&apos;éducation. Bourdieu le reprendra pour penser la reproduction sociale.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Pas d&apos;humain sans culture corporelle</strong>. L&apos;enfant qui pleure le fait selon les codes de sa culture. La nature humaine n&apos;est jamais à l&apos;état pur.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Mauss inaugure une
@@ -105,9 +105,9 @@ const CorpsHumainPage: React.FC = () => {
                 utiliserait. Il est ce par quoi je suis au monde.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Le corps propre</strong>. Mon corps n&apos;est pas l&apos;un des objets que je perçois&nbsp;: il est l&apos;origine de toute perception. Je ne le vois pas, je vois <em>par</em> lui.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Le schéma corporel</strong>. Je sais où sont mes mains sans les regarder. Le corps est une unité vécue, pas un assemblage de parties — et il s&apos;étend même à mes outils (la canne du non-voyant, le clavier du musicien).</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Chair</strong>. Dans <em>Le Visible et l&apos;invisible</em> (1964, posthume), Merleau-Ponty parle de «&nbsp;chair&nbsp;» pour dire le tissu commun entre mon corps et le monde. Voir, c&apos;est aussi être visible.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Le corps propre</strong>. Mon corps n&apos;est pas l&apos;un des objets que je perçois&nbsp;: il est l&apos;origine de toute perception. Je ne le vois pas, je vois <em>par</em> lui.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Le schéma corporel</strong>. Je sais où sont mes mains sans les regarder. Le corps est une unité vécue, pas un assemblage de parties — et il s&apos;étend même à mes outils (la canne du non-voyant, le clavier du musicien).</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Chair</strong>. Dans <em>Le Visible et l&apos;invisible</em> (1964, posthume), Merleau-Ponty parle de «&nbsp;chair&nbsp;» pour dire le tissu commun entre mon corps et le monde. Voir, c&apos;est aussi être visible.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Le sujet n&apos;est pas une
@@ -134,9 +134,9 @@ const CorpsHumainPage: React.FC = () => {
                 pouvoir.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Disciplines</strong>. Au tournant des XVII<sup>e</sup>-XVIII<sup>e</sup> siècles, école, caserne, hôpital, prison, usine inventent des techniques de dressage&nbsp;: emplois du temps, postures, examens, cellules. Le corps moderne devient «&nbsp;docile et utile&nbsp;».</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Biopolitique</strong>. À côté du pouvoir sur les corps individuels, l&apos;État moderne invente une gestion des <em>populations</em>&nbsp;: natalité, santé publique, hygiène, statistiques. Faire vivre devient le grand projet politique.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Dispositifs de sexualité</strong>. Loin d&apos;être réprimée, la sexualité est <em>produite</em> par les discours médicaux, religieux, scolaires. Le corps désirant est un effet de ces dispositifs, non leur source naturelle.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Disciplines</strong>. Au tournant des XVII<sup>e</sup>-XVIII<sup>e</sup> siècles, école, caserne, hôpital, prison, usine inventent des techniques de dressage&nbsp;: emplois du temps, postures, examens, cellules. Le corps moderne devient «&nbsp;docile et utile&nbsp;».</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Biopolitique</strong>. À côté du pouvoir sur les corps individuels, l&apos;État moderne invente une gestion des <em>populations</em>&nbsp;: natalité, santé publique, hygiène, statistiques. Faire vivre devient le grand projet politique.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Dispositifs de sexualité</strong>. Loin d&apos;être réprimée, la sexualité est <em>produite</em> par les discours médicaux, religieux, scolaires. Le corps désirant est un effet de ces dispositifs, non leur source naturelle.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Le corps que nous habitons est
@@ -155,8 +155,8 @@ const CorpsHumainPage: React.FC = () => {
 
           <PRCard number="05" title="Paraperso prêt à l'emploi">
             <div className="space-y-4 text-sm md:text-base">
-              <div className="bg-pr-orange-pale rounded-xl p-5">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">
+              <div className="bg-pr-gray-bg rounded-xl p-5">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">
                   Le corps comme condition de l&apos;humanité
                 </h3>
                 <p className="text-xs italic mb-3">
@@ -208,19 +208,19 @@ const CorpsHumainPage: React.FC = () => {
           <PRCard number="06" title="Où mobiliser ces références ?">
             <div className="space-y-4 text-sm md:text-base">
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le corps</strong>&nbsp;» — sujet frontal classique.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Avons-nous un corps ou sommes-nous un corps&nbsp;?</strong>&nbsp;» — Merleau-Ponty contre Descartes.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>La nature humaine</strong>&nbsp;» — Mauss sur l&apos;impossibilité d&apos;un corps purement naturel.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>La médecine et l&apos;humanité</strong>&nbsp;» — biopolitique, dignité du patient.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le sport</strong>&nbsp;» — Mauss sur les techniques, Foucault sur le dressage.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le genre, la beauté, la norme</strong>&nbsp;» — Foucault et la fabrication du corps désirant.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le corps</strong>&nbsp;» — sujet frontal classique.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Avons-nous un corps ou sommes-nous un corps&nbsp;?</strong>&nbsp;» — Merleau-Ponty contre Descartes.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>La nature humaine</strong>&nbsp;» — Mauss sur l&apos;impossibilité d&apos;un corps purement naturel.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>La médecine et l&apos;humanité</strong>&nbsp;» — biopolitique, dignité du patient.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le sport</strong>&nbsp;» — Mauss sur les techniques, Foucault sur le dressage.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le genre, la beauté, la norme</strong>&nbsp;» — Foucault et la fabrication du corps désirant.</li>
               </ul>
             </div>
           </PRCard>
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/articles">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des articles
               </Button>
             </Link>

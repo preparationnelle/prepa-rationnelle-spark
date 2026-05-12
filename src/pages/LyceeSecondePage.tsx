@@ -106,9 +106,9 @@ const LyceeSecondePage = () => {
 
   /* Modern color palette using Tailwind classes dynamically */
   const colorClasses: Record<string, { bg: string, border: string, text: string, icon: string, shadow: string, gradient: string }> = {
-    blue: { bg: 'bg-pr-orange-pale', border: 'border-carnet-red/20', text: 'text-carnet-red-deep', icon: 'text-carnet-red', shadow: 'shadow-carnet-red/50', gradient: 'from-carnet-red to-pr-orange' },
+    blue: { bg: 'bg-pr-gray-bg', border: 'border-carnet-red/20', text: 'text-carnet-red-deep', icon: 'text-carnet-red', shadow: 'shadow-carnet-red/50', gradient: 'from-carnet-red to-pr-black' },
     emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-900', icon: 'text-emerald-600', shadow: 'shadow-emerald-200/50', gradient: 'from-emerald-500 to-emerald-600' },
-    orange: { bg: 'bg-orange-50', border: 'border-orange-100', text: 'text-orange-900', icon: 'text-pr-orange-dark', shadow: 'shadow-orange-200/50', gradient: 'from-pr-orange to-pr-orange-dark' },
+    orange: { bg: 'bg-gray-50', border: 'border-orange-100', text: 'text-orange-900', icon: 'text-pr-black', shadow: 'shadow-orange-200/50', gradient: 'from-pr-orange to-pr-black' },
     violet: { bg: 'bg-violet-50', border: 'border-violet-100', text: 'text-violet-900', icon: 'text-violet-600', shadow: 'shadow-violet-200/50', gradient: 'from-violet-500 to-violet-600' },
     pink: { bg: 'bg-pink-50', border: 'border-pink-100', text: 'text-pink-900', icon: 'text-pink-600', shadow: 'shadow-pink-200/50', gradient: 'from-pink-500 to-pink-600' },
     rose: { bg: 'bg-rose-50', border: 'border-rose-100', text: 'text-rose-900', icon: 'text-rose-600', shadow: 'shadow-rose-200/50', gradient: 'from-rose-500 to-rose-600' },
@@ -132,13 +132,13 @@ const LyceeSecondePage = () => {
           <div className="max-w-7xl mx-auto">
             {/* Header Section */}
             <div className="text-center mb-16 space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pr-orange-pale text-carnet-red text-sm font-medium border border-carnet-red/20 mb-4 animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pr-gray-bg text-carnet-red text-sm font-medium border border-carnet-red/20 mb-4 animate-fade-in-up">
                 <GraduationCap className="h-4 w-4" />
                 <span>Niveau Lycée</span>
               </div>
 
               <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-carnet-ink mb-6">
-                Classe de <span className="text-transparent bg-clip-text bg-gradient-to-r from-carnet-red to-pr-orange">Seconde</span>
+                Classe de <span className="text-transparent bg-clip-text bg-gradient-to-r from-carnet-red to-pr-black">Seconde</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-carnet-ink-soft max-w-3xl mx-auto leading-relaxed font-light">
@@ -147,7 +147,7 @@ const LyceeSecondePage = () => {
 
               <div className="pt-4">
                 <Link to="/articles/lycee">
-                  <Button variant="ghost" className="group text-carnet-ink-soft hover:text-carnet-red hover:bg-pr-orange-pale transition-all duration-300">
+                  <Button variant="ghost" className="group text-carnet-ink-soft hover:text-carnet-red hover:bg-pr-gray-bg transition-all duration-300">
                     <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     Retour aux niveaux lycée
                   </Button>
@@ -194,7 +194,7 @@ const LyceeSecondePage = () => {
               {/* Detailed Info Card */}
               <div className="md:col-span-8">
                 <Card className="h-full border-0 shadow-xl shadow-slate-200/60 overflow-hidden bg-white">
-                  <div className="h-2 bg-gradient-to-r from-carnet-red to-pr-orange"></div>
+                  <div className="h-2 bg-gradient-to-r from-carnet-red to-pr-black"></div>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3 text-2xl font-bold text-carnet-ink">
                       <Clock className="h-6 w-6 text-carnet-red" />
@@ -259,7 +259,7 @@ const LyceeSecondePage = () => {
 
               {/* Call to Action Card */}
               <div className="md:col-span-4 flex flex-col">
-                <Card className="flex-1 border-0 shadow-xl shadow-carnet-red/50 relative overflow-hidden bg-gradient-to-br from-carnet-red to-pr-orange-dark text-white">
+                <Card className="flex-1 border-0 shadow-xl shadow-carnet-red/50 relative overflow-hidden bg-gradient-to-br from-carnet-red to-pr-black text-white">
                   {/* Decorative circles */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                   <div className="absolute bottom-0 left-0 w-32 h-32 bg-white opacity-10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
@@ -275,7 +275,7 @@ const LyceeSecondePage = () => {
                       Nos experts vous accompagnent pour faire les meilleurs choix stratégiques pour votre avenir.
                     </p>
                     <Link to="/contact" className="w-full">
-                      <Button size="lg" className="w-full bg-white text-carnet-red hover:bg-pr-orange-pale font-bold border-0 shadow-lg hover:shadow-xl transition-all h-12">
+                      <Button size="lg" className="w-full bg-white text-carnet-red hover:bg-pr-gray-bg font-bold border-0 shadow-lg hover:shadow-xl transition-all h-12">
                         Prendre rendez-vous
                       </Button>
                     </Link>

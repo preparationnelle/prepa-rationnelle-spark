@@ -160,7 +160,7 @@ const MathsEspacesVectorielsComplementsPage = () => {
                                                                 </div>
                                                         </div>
 
-                                                        <div className="mt-4 p-4 bg-pr-orange-pale border border-carnet-red/20 rounded-lg">
+                                                        <div className="mt-4 p-4 bg-pr-gray-bg border border-carnet-red/20 rounded-lg">
                                                                 <p className="text-carnet-red-deep font-medium flex items-center gap-2">
                                                                         <span className="font-bold">Invariant de similitude :</span>
                                                                         La trace est invariante par changement de base : <LatexRenderer latex="\operatorname{Tr}(P^{-1}AP) = \operatorname{Tr}(A)" />.

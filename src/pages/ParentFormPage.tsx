@@ -142,7 +142,7 @@ const ParentFormPage = () => {
           <Card className="bg-white/95 backdrop-blur-sm shadow-2xl border border-orange-100">
             <CardHeader className="text-center pb-6">
               <CardTitle className="text-2xl font-bold text-gray-900 flex items-center justify-center gap-3">
-                <div className="p-3 rounded-lg bg-orange-100 text-pr-orange-dark">
+                <div className="p-3 rounded-lg bg-gray-100 text-pr-black">
                   <Users className="h-8 w-8" />
                 </div>
                 Formulaire de contact
@@ -157,7 +157,7 @@ const ParentFormPage = () => {
                 {/* Informations de contact */}
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                    <User className="h-5 w-5 text-pr-orange-dark" />
+                    <User className="h-5 w-5 text-pr-black" />
                     Informations de contact
                   </h3>
 
@@ -296,7 +296,7 @@ const ParentFormPage = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-pr-orange hover:bg-pr-orange-dark text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                    className="bg-pr-black hover:bg-pr-black-dark text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
@@ -332,14 +332,14 @@ const ParentFormPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               onClick={() => document.querySelector('form')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="bg-pr-black-dark hover:bg-pr-black-dark text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               Faire une demande
             </Button>
             <Button
               variant="outline"
               onClick={() => window.location.href = '/contact'}
-              className="px-8 py-4 text-lg font-semibold rounded-lg border-2 border-pr-orange-dark text-pr-orange-dark hover:bg-orange-50 transition-all duration-300"
+              className="px-8 py-4 text-lg font-semibold rounded-lg border-2 border-pr-black-dark text-pr-black hover:bg-gray-50 transition-all duration-300"
             >
               Nous contacter
             </Button>

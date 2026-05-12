@@ -124,7 +124,7 @@ const AIExplainPanel: React.FC<AIExplainPanelProps> = ({
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed right-0 top-0 bottom-0 w-full sm:w-[450px] bg-white shadow-2xl z-[201] flex flex-col"
+                        className="fixed right-0 top-0 bottom-0 w-full sm:w-[450px] bg-carnet-paper shadow-2xl z-[201] flex flex-col border-l border-carnet-rule"
                     >
                         {/* Header */}
                         <div className={cn(
@@ -149,7 +149,7 @@ const AIExplainPanel: React.FC<AIExplainPanelProps> = ({
                         </div>
 
                         {/* Selected text */}
-                        <div className="px-5 py-3 bg-gray-50 border-b border-gray-100">
+                        <div className="px-5 py-3 bg-carnet-paper-2 border-b border-carnet-rule">
                             <div className="flex items-start gap-2">
                                 <Quote className="h-4 w-4 text-gray-400 mt-0.5 shrink-0" />
                                 <p className="text-sm text-gray-600 italic line-clamp-3">
@@ -216,7 +216,7 @@ const AIExplainPanel: React.FC<AIExplainPanelProps> = ({
                                         value={followUp}
                                         onChange={e => setFollowUp(e.target.value)}
                                         placeholder="Poser une question de suivi…"
-                                        className="flex-1 px-4 py-2.5 rounded-xl border border-pr-gray-light bg-white text-sm focus:outline-none focus:ring-2 focus:ring-pr-orange/20 focus:border-pr-orange text-pr-black placeholder:text-pr-gray-mid font-dm-sans"
+                                        className="flex-1 px-4 py-2.5 rounded-xl border border-carnet-rule bg-carnet-paper-2 text-sm focus:outline-none focus:ring-2 focus:ring-pr-orange/20 focus:border-pr-orange text-pr-black placeholder:text-pr-gray-mid font-dm-sans"
                                         disabled={loading}
                                     />
                                     <button

@@ -179,9 +179,9 @@ const ForetPage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-orange-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-orange-800 mb-2">Asie du Sud-Est</h4>
-                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-semibold text-gray-800 mb-2">Asie du Sud-Est</h4>
+                      <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Huile de palme :</strong> Indonésie, Malaisie leaders mondiaux</li>
                         <li><strong>Feux :</strong> Brûlis illégaux, pollution transfrontalière</li>
                         <li><strong>Biodiversité :</strong> Habitat orangs-outans, tigres menacé</li>
@@ -212,7 +212,7 @@ const ForetPage = () => {
                       </div>
                     </div>
 
-                    <div className="border-l-4 border-carnet-red/40 bg-pr-orange-pale p-4 rounded-r-lg">
+                    <div className="border-l-4 border-carnet-red/40 bg-pr-gray-bg p-4 rounded-r-lg">
                       <h4 className="font-semibold text-carnet-red-deep mb-3">
                         <Globe className="inline h-4 w-4 mr-2" />
                         Initiative Bonn Challenge
@@ -235,7 +235,7 @@ const ForetPage = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-4">
-                    <div className="bg-pr-orange-pale p-4 rounded-lg">
+                    <div className="bg-pr-gray-bg p-4 rounded-lg">
                       <h4 className="font-semibold text-carnet-red-deep mb-2">Puits de carbone</h4>
                       <ul className="list-disc list-inside text-sm text-carnet-red space-y-1">
                         <li><strong>Absorption :</strong> 2,6 GtCO2/an par les forêts</li>

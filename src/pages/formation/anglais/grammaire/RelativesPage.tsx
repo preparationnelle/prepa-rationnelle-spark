@@ -45,7 +45,7 @@ const RelativesPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+            <div className="p-3 rounded-lg bg-pr-black-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Subordonnées Relatives en Anglais
@@ -56,14 +56,14 @@ const RelativesPage = () => {
         </div>
 
         {/* Introduction */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale">
+        <Card className="mb-8 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-pr-black-pale">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <HelpCircle className="h-6 w-6" />
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark">
+          <CardContent className="text-pr-black">
             <p>Les relatives (relative clauses) permettent d'éviter les répétitions en ajoutant des précisions à propos d'un antécédent.</p>
           </CardContent>
         </Card>
@@ -72,29 +72,29 @@ const RelativesPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-pr-orange-dark" />
+              <Table className="h-6 w-6 text-pr-black" />
               1. Pronoms Relatifs Principaux
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Pronom</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Antécédent</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Usage principal</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Restrictive vs Non-restrictive</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Pronom</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Antécédent</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Usage principal</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Restrictive vs Non-restrictive</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">who</td><td className="border px-3 py-2">personnes</td><td className="border px-3 py-2">sujet/objet</td><td className="border px-3 py-2">Both</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">whom</td><td className="border px-3 py-2">personnes</td><td className="border px-3 py-2">objet (formel)</td><td className="border px-3 py-2">Souvent non-restrictif</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">which</td><td className="border px-3 py-2">choses/animaux</td><td className="border px-3 py-2">sujet/objet</td><td className="border px-3 py-2">Both</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">that</td><td className="border px-3 py-2">personnes/choses</td><td className="border px-3 py-2">relatif général</td><td className="border px-3 py-2">Restrictive only</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">whose</td><td className="border px-3 py-2">personnes/choses</td><td className="border px-3 py-2">possession</td><td className="border px-3 py-2">Both</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">where</td><td className="border px-3 py-2">lieux</td><td className="border px-3 py-2">lieu</td><td className="border px-3 py-2">Both</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">when</td><td className="border px-3 py-2">moments/dates</td><td className="border px-3 py-2">temps</td><td className="border px-3 py-2">Both</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">who</td><td className="border px-3 py-2">personnes</td><td className="border px-3 py-2">sujet/objet</td><td className="border px-3 py-2">Both</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">whom</td><td className="border px-3 py-2">personnes</td><td className="border px-3 py-2">objet (formel)</td><td className="border px-3 py-2">Souvent non-restrictif</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">which</td><td className="border px-3 py-2">choses/animaux</td><td className="border px-3 py-2">sujet/objet</td><td className="border px-3 py-2">Both</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">that</td><td className="border px-3 py-2">personnes/choses</td><td className="border px-3 py-2">relatif général</td><td className="border px-3 py-2">Restrictive only</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">whose</td><td className="border px-3 py-2">personnes/choses</td><td className="border px-3 py-2">possession</td><td className="border px-3 py-2">Both</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">where</td><td className="border px-3 py-2">lieux</td><td className="border px-3 py-2">lieu</td><td className="border px-3 py-2">Both</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">when</td><td className="border px-3 py-2">moments/dates</td><td className="border px-3 py-2">temps</td><td className="border px-3 py-2">Both</td></tr>
                 </tbody>
               </table>
             </div>
@@ -109,16 +109,16 @@ const RelativesPage = () => {
           <CardContent className="space-y-6">
             <section>
               <h3 className="text-xl font-semibold mb-2">Restrictive (sans virgules)</h3>
-              <p>Identifient précisément l’antécédent. Pronoms possibles : <span className="text-pr-orange-dark font-semibold">that</span>, <span className="text-pr-orange-dark font-semibold">who</span>, <span className="text-pr-orange-dark font-semibold">which</span>.</p>
-              <div className="bg-white/70 rounded-lg p-4 border border-orange-200 mt-2">
-                <p>Ex : The book <span className="text-pr-orange-dark font-semibold">that</span> I borrowed was fascinating.</p>
+              <p>Identifient précisément l’antécédent. Pronoms possibles : <span className="text-pr-black font-semibold">that</span>, <span className="text-pr-black font-semibold">who</span>, <span className="text-pr-black font-semibold">which</span>.</p>
+              <div className="bg-white/70 rounded-lg p-4 border border-gray-200 mt-2">
+                <p>Ex : The book <span className="text-pr-black font-semibold">that</span> I borrowed was fascinating.</p>
               </div>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Non-Restrictive (avec virgules)</h3>
-              <p>Apportent une information supplémentaire. Pronoms possibles : <span className="text-pr-orange-dark font-semibold">who</span>, <span className="text-pr-orange-dark font-semibold">which</span>, <span className="text-pr-orange-dark font-semibold">whose</span>, <span className="text-pr-orange-dark font-semibold">where</span>, <span className="text-pr-orange-dark font-semibold">when</span> (pas <span className="text-pr-orange-dark font-semibold">that</span>).</p>
-              <div className="bg-white/70 rounded-lg p-4 border border-orange-200 mt-2">
-                <p>Ex : My car, <span className="text-pr-orange-dark font-semibold">which</span> is red, is parked outside.</p>
+              <p>Apportent une information supplémentaire. Pronoms possibles : <span className="text-pr-black font-semibold">who</span>, <span className="text-pr-black font-semibold">which</span>, <span className="text-pr-black font-semibold">whose</span>, <span className="text-pr-black font-semibold">where</span>, <span className="text-pr-black font-semibold">when</span> (pas <span className="text-pr-black font-semibold">that</span>).</p>
+              <div className="bg-white/70 rounded-lg p-4 border border-gray-200 mt-2">
+                <p>Ex : My car, <span className="text-pr-black font-semibold">which</span> is red, is parked outside.</p>
               </div>
             </section>
           </CardContent>
@@ -133,43 +133,43 @@ const RelativesPage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">Who / Whom</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>The woman <span className="text-pr-orange-dark font-semibold">who</span> lives next door is a doctor. (sujet)</li>
-                <li>The man <span className="text-pr-orange-dark font-semibold">whom</span> I met yesterday is an artist. (objet, formel)</li>
+                <li>The woman <span className="text-pr-black font-semibold">who</span> lives next door is a doctor. (sujet)</li>
+                <li>The man <span className="text-pr-black font-semibold">whom</span> I met yesterday is an artist. (objet, formel)</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Which</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>The cake <span className="text-pr-orange-dark font-semibold">which</span> she baked was delicious.</li>
-                <li>My laptop, <span className="text-pr-orange-dark font-semibold">which</span> I bought last year, is already broken.</li>
+                <li>The cake <span className="text-pr-black font-semibold">which</span> she baked was delicious.</li>
+                <li>My laptop, <span className="text-pr-black font-semibold">which</span> I bought last year, is already broken.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">That</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>The student <span className="text-pr-orange-dark font-semibold">that</span> got the highest score will receive a prize.</li>
-                <li>The house <span className="text-pr-orange-dark font-semibold">that</span> Jack built is now a museum.</li>
+                <li>The student <span className="text-pr-black font-semibold">that</span> got the highest score will receive a prize.</li>
+                <li>The house <span className="text-pr-black font-semibold">that</span> Jack built is now a museum.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Whose</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>The girl <span className="text-pr-orange-dark font-semibold">whose</span> mother is a teacher won the prize.</li>
-                <li>I met a man <span className="text-pr-orange-dark font-semibold">whose</span> car broke down on the highway.</li>
+                <li>The girl <span className="text-pr-black font-semibold">whose</span> mother is a teacher won the prize.</li>
+                <li>I met a man <span className="text-pr-black font-semibold">whose</span> car broke down on the highway.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Where</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>This is the restaurant <span className="text-pr-orange-dark font-semibold">where</span> we first met.</li>
-                <li>The village <span className="text-pr-orange-dark font-semibold">where</span> I grew up has changed a lot.</li>
+                <li>This is the restaurant <span className="text-pr-black font-semibold">where</span> we first met.</li>
+                <li>The village <span className="text-pr-black font-semibold">where</span> I grew up has changed a lot.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">When</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>I remember the day <span className="text-pr-orange-dark font-semibold">when</span> we first met.</li>
-                <li>Do you know a time <span className="text-pr-orange-dark font-semibold">when</span> phones were not common?</li>
+                <li>I remember the day <span className="text-pr-black font-semibold">when</span> we first met.</li>
+                <li>Do you know a time <span className="text-pr-black font-semibold">when</span> phones were not common?</li>
               </ul>
             </section>
           </CardContent>
@@ -182,27 +182,27 @@ const RelativesPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Pas de <span className="text-pr-orange-dark font-semibold">that</span> dans les non-restrictives.</li>
-              <li><span className="text-pr-orange-dark font-semibold">who</span> pour les personnes, <span className="text-pr-orange-dark font-semibold">which</span> pour les choses.</li>
-              <li>Omission possible de <span className="text-pr-orange-dark font-semibold">who/that</span> quand ils sont objets (The book (that) I read...).</li>
-              <li>Ne pas confondre <span className="text-pr-orange-dark font-semibold">where/when</span> avec <span className="text-pr-orange-dark font-semibold">which</span>.</li>
+              <li>Pas de <span className="text-pr-black font-semibold">that</span> dans les non-restrictives.</li>
+              <li><span className="text-pr-black font-semibold">who</span> pour les personnes, <span className="text-pr-black font-semibold">which</span> pour les choses.</li>
+              <li>Omission possible de <span className="text-pr-black font-semibold">who/that</span> quand ils sont objets (The book (that) I read...).</li>
+              <li>Ne pas confondre <span className="text-pr-black font-semibold">where/when</span> avec <span className="text-pr-black font-semibold">which</span>.</li>
             </ul>
           </CardContent>
         </Card>
 
         {/* CTA exercices */}
-        <Card className="mt-2 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mt-2 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-amber-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <Target className="h-6 w-6" />
               Prêt à mettre en pratique ?
             </CardTitle>
           </CardHeader>
         	<CardContent className="text-center">
-            <p className="text-lg text-pr-orange-dark mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
+            <p className="text-lg text-pr-black mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/relatives/exercices">
-                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-black-dark hover:bg-pr-black-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

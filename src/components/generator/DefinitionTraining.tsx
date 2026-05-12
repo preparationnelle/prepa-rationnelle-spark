@@ -235,7 +235,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
     return (
       <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-orange-100 shadow-2xl">
         <CardContent className="p-12 text-center">
-          <BookOpen className="h-16 w-16 mx-auto mb-4 text-orange-400" />
+          <BookOpen className="h-16 w-16 mx-auto mb-4 text-gray-400" />
           <h3 className="text-xl font-bold text-gray-900 mb-2">Définissez d'abord un sujet</h3>
           <p className="text-gray-600">
             Sélectionnez un sujet dans la zone principale pour commencer à définir ses termes clés.
@@ -249,7 +249,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
     return (
       <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-orange-100 shadow-2xl">
         <CardContent className="p-12 text-center">
-          <Loader2 className="h-16 w-16 mx-auto mb-4 text-pr-orange animate-spin" />
+          <Loader2 className="h-16 w-16 mx-auto mb-4 text-pr-black animate-spin" />
           <h3 className="text-xl font-bold text-gray-900 mb-2">Extraction des termes...</h3>
           <p className="text-gray-600">Analyse du sujet en cours</p>
         </CardContent>
@@ -261,14 +261,14 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
     return (
       <Card className="bg-white/90 backdrop-blur-sm rounded-3xl border border-orange-100 shadow-2xl">
         <CardContent className="p-12 text-center">
-          <AlertCircle className="h-16 w-16 mx-auto mb-4 text-orange-400" />
+          <AlertCircle className="h-16 w-16 mx-auto mb-4 text-gray-400" />
           <h3 className="text-xl font-bold text-gray-900 mb-2">Aucun terme extrait</h3>
           <p className="text-gray-600 mb-4">
             Impossible d'extraire les termes de ce sujet.
           </p>
           <Button
             onClick={() => extractTermsFromSubject(subjectFromParent)}
-            className="bg-pr-orange hover:bg-pr-orange-dark text-white rounded-full"
+            className="bg-pr-black hover:bg-pr-black-dark text-white rounded-full"
           >
             Réessayer
           </Button>
@@ -280,10 +280,10 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
   return (
     <div className="space-y-6">
       {/* Header Card - Subject and Progress */}
-      <Card className="bg-gradient-to-r from-orange-50 to-transparent border-orange-200 shadow-lg rounded-3xl overflow-hidden">
+      <Card className="bg-gradient-to-r from-orange-50 to-transparent border-gray-200 shadow-lg rounded-3xl overflow-hidden">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-3 text-xl text-gray-900">
-            <BookOpen className="h-6 w-6 text-pr-orange-dark" />
+            <BookOpen className="h-6 w-6 text-pr-black" />
             Définir les termes du sujet
           </CardTitle>
           <div className="mt-2 text-sm text-gray-600">
@@ -314,7 +314,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
                       value={def?.userDefinition || ''}
                       onChange={(e) => handleDefinitionChange(term, e.target.value)}
                       placeholder={`Définition...`}
-                      className="min-h-[60px] resize-none border border-orange-200 focus:border-pr-orange focus:ring-1 focus:ring-pr-orange bg-white rounded-md text-sm p-2 pr-12 leading-snug"
+                      className="min-h-[60px] resize-none border border-gray-200 focus:border-pr-black focus:ring-1 focus:ring-pr-black bg-white rounded-md text-sm p-2 pr-12 leading-snug"
                     />
                     <div className="absolute bottom-1 right-2 text-[9px] text-gray-400 pointer-events-none">
                       {def?.userDefinition.length || 0}
@@ -327,7 +327,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
                       {/* Score Badge */}
                       {def?.score !== undefined && (
                         <div className="flex items-center gap-2">
-                          <div className={`px-3 py-1 rounded-full text-xs font-bold font-dm-sans ${def.score >= 80 ? 'bg-pr-orange-pale text-pr-orange-dark border border-pr-orange/30' :
+                          <div className={`px-3 py-1 rounded-full text-xs font-bold font-dm-sans ${def.score >= 80 ? 'bg-pr-gray-bg text-pr-black border border-pr-gray-light/30' :
                             def.score >= 60 ? 'bg-pr-gray-bg text-pr-gray-dark border border-pr-gray-light' :
                               'bg-pr-black/5 text-pr-black border border-pr-gray-light'
                             }`}>
@@ -341,8 +341,8 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
                         <>
                           {/* Strengths */}
                           {def?.strengths && def.strengths.length > 0 && (
-                            <div className="bg-pr-orange-pale/40 rounded-md p-2 border border-pr-orange/20">
-                              <div className="text-xs font-semibold text-pr-orange-dark mb-1 flex items-center gap-1 font-dm-sans">
+                            <div className="bg-pr-gray-bg/40 rounded-md p-2 border border-pr-black/20">
+                              <div className="text-xs font-semibold text-pr-black mb-1 flex items-center gap-1 font-dm-sans">
                                 <CheckCircle2 className="h-3 w-3" />
                                 Points forts :
                               </div>
@@ -370,8 +370,8 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
 
                           {/* Missing Elements */}
                           {def?.missingElements && def.missingElements.length > 0 && (
-                            <div className="bg-pr-orange-pale rounded-md p-2 border border-pr-orange/30">
-                              <div className="text-xs font-semibold text-pr-orange-dark mb-1 flex items-center gap-1 font-dm-sans">
+                            <div className="bg-pr-gray-bg rounded-md p-2 border border-pr-gray-light/30">
+                              <div className="text-xs font-semibold text-pr-black mb-1 flex items-center gap-1 font-dm-sans">
                                 <AlertCircle className="h-3 w-3" />
                                 Éléments manquants :
                               </div>
@@ -386,7 +386,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
                           {/* Reference Definition */}
                           {def?.referenceDefinition && (
                             <div className="bg-white rounded-md p-2 border border-pr-gray-light">
-                              <div className="text-xs font-semibold text-pr-orange-dark mb-1 flex items-center gap-1 font-dm-sans">
+                              <div className="text-xs font-semibold text-pr-black mb-1 flex items-center gap-1 font-dm-sans">
                                 <BookOpen className="h-3 w-3" />
                                 Définition de référence :
                               </div>
@@ -411,7 +411,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
                           {/* Suggested References */}
                           {def?.suggestedReferences && def.suggestedReferences.length > 0 && (
                             <div className="bg-white rounded-md p-2 border border-pr-gray-light">
-                              <div className="text-xs font-semibold text-pr-orange-dark mb-1 flex items-center gap-1 font-dm-sans">
+                              <div className="text-xs font-semibold text-pr-black mb-1 flex items-center gap-1 font-dm-sans">
                                 📚 Références suggérées :
                               </div>
                               <ul className="text-xs text-pr-gray-dark space-y-1 ml-3 font-dm-sans">
@@ -441,8 +441,8 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
 
                           {/* Formal Definition */}
                           {def?.formalDefinition && (
-                            <div className="bg-pr-orange-pale/40 rounded-md p-2 border border-pr-orange/20">
-                              <div className="text-xs font-semibold text-pr-orange-dark mb-1 font-dm-sans">✓ Définition formelle attendue :</div>
+                            <div className="bg-pr-gray-bg/40 rounded-md p-2 border border-pr-black/20">
+                              <div className="text-xs font-semibold text-pr-black mb-1 font-dm-sans">✓ Définition formelle attendue :</div>
                               <p className="text-xs text-pr-gray-dark leading-tight font-dm-sans">{def.formalDefinition}</p>
                             </div>
                           )}
@@ -462,7 +462,7 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
         <Button
           onClick={handleValidateAll}
           disabled={isEvaluating}
-          className="bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold rounded-xl px-8 h-12 text-base shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-300 font-dm-sans"
+          className="bg-pr-black hover:bg-pr-black-dark text-white font-semibold rounded-xl px-8 h-12 text-base shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-300 font-dm-sans"
         >
           {isEvaluating ? (
             <>
@@ -481,18 +481,18 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
       {/* Global Feedback Card */}
       {finalFeedback && (
         <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)] animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="h-[3px] w-full bg-pr-orange" />
+          <div className="h-[3px] w-full bg-pr-black" />
           <div className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5 sm:px-8">
             <h3 className="flex items-center gap-3 font-dm-serif text-xl text-pr-black">
-              <CheckCircle2 className="h-5 w-5 text-pr-orange" />
+              <CheckCircle2 className="h-5 w-5 text-pr-black" />
               Feedback global
             </h3>
           </div>
           <div className="p-6 sm:p-8 space-y-4">
             {globalScore !== null && (
-              <div className="text-center p-6 bg-pr-orange-pale rounded-2xl border border-pr-orange/20">
-                <div className="font-dm-serif text-6xl text-pr-orange-dark mb-2 leading-none">
-                  {globalScore}<span className="text-3xl text-pr-orange">/100</span>
+              <div className="text-center p-6 bg-pr-gray-bg rounded-2xl border border-pr-black/20">
+                <div className="font-dm-serif text-6xl text-pr-black mb-2 leading-none">
+                  {globalScore}<span className="text-3xl text-pr-black">/100</span>
                 </div>
                 <div className="text-xs uppercase tracking-[0.08em] text-pr-gray-mid font-semibold mt-2 font-dm-sans">Score global</div>
               </div>
@@ -505,15 +505,15 @@ export const DefinitionTraining: React.FC<Props> = ({ subjectFromParent, mode = 
 
             {/* Transversal Suggestions (Culture Générale mode only) */}
             {mode === 'culture-generale' && transversalSuggestions && transversalSuggestions.length > 0 && (
-              <div className="bg-pr-orange-pale/60 p-6 rounded-2xl border border-pr-orange/20">
-                <div className="text-sm font-bold text-pr-orange-dark mb-3 flex items-center gap-2 font-dm-sans">
+              <div className="bg-pr-gray-bg/60 p-6 rounded-2xl border border-pr-black/20">
+                <div className="text-sm font-bold text-pr-black mb-3 flex items-center gap-2 font-dm-sans">
                   <Sparkles className="h-4 w-4" />
                   Suggestions transversales pour améliorer l'ensemble
                 </div>
                 <ul className="space-y-2">
                   {transversalSuggestions.map((suggestion, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-sm text-pr-gray-dark font-dm-sans">
-                      <span className="text-pr-orange font-bold mt-0.5">→</span>
+                      <span className="text-pr-black font-bold mt-0.5">→</span>
                       <span className="leading-relaxed">{suggestion}</span>
                     </li>
                   ))}

@@ -45,7 +45,7 @@ const ModauxPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+            <div className="p-3 rounded-lg bg-pr-black-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Grammar Sheet: Modal Verbs and Auxiliaries in English
@@ -56,14 +56,14 @@ const ModauxPage = () => {
         </div>
 
         {/* Introduction */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale">
+        <Card className="mb-8 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-pr-black-pale">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <HelpCircle className="h-6 w-6" />
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark space-y-3">
+          <CardContent className="text-pr-black space-y-3">
             <p>Modal verbs are auxiliary verbs that express modality - they modify the meaning of the main verb to express ideas such as ability, permission, obligation, possibility, and advice.</p>
             <p>They have specific characteristics: they don't change form for person or number, they are followed by a bare infinitive, and they have no -s in the third person singular.</p>
           </CardContent>
@@ -76,48 +76,48 @@ const ModauxPage = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-pr-orange-dark">Can - Ability/Permission</h3>
+              <h3 className="text-xl font-semibold mb-2 text-pr-black">Can - Ability/Permission</h3>
               <div className="space-y-4">
                 <div>
                   <p className="font-semibold">Present Ability:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>I <span className="text-pr-orange-dark font-semibold">can</span> swim. (I know how to swim)</li>
-                    <li>She <span className="text-pr-orange-dark font-semibold">can</span> speak French. (She has the ability)</li>
-                    <li><span className="text-pr-orange-dark font-semibold">Can</span> you help me? (Are you able to help?)</li>
+                    <li>I <span className="text-pr-black font-semibold">can</span> swim. (I know how to swim)</li>
+                    <li>She <span className="text-pr-black font-semibold">can</span> speak French. (She has the ability)</li>
+                    <li><span className="text-pr-black font-semibold">Can</span> you help me? (Are you able to help?)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Permission:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>You <span className="text-pr-orange-dark font-semibold">can</span> go now. (You have permission)</li>
-                    <li><span className="text-pr-orange-dark font-semibold">Can</span> I use your phone? (May I use your phone?)</li>
+                    <li>You <span className="text-pr-black font-semibold">can</span> go now. (You have permission)</li>
+                    <li><span className="text-pr-black font-semibold">Can</span> I use your phone? (May I use your phone?)</li>
                   </ul>
                 </div>
               </div>
             </section>
 
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-pr-orange-dark">Could - Past Ability/Polite Requests</h3>
+              <h3 className="text-xl font-semibold mb-2 text-pr-black">Could - Past Ability/Polite Requests</h3>
               <div className="space-y-4">
                 <div>
                   <p className="font-semibold">Past Ability:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>When I was young, I <span className="text-pr-orange-dark font-semibold">could</span> run very fast.</li>
-                    <li>She <span className="text-pr-orange-dark font-semibold">could</span> read when she was 4.</li>
+                    <li>When I was young, I <span className="text-pr-black font-semibold">could</span> run very fast.</li>
+                    <li>She <span className="text-pr-black font-semibold">could</span> read when she was 4.</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Polite Requests:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li><span className="text-pr-orange-dark font-semibold">Could</span> you help me? (More polite than "Can you help me?")</li>
-                    <li><span className="text-pr-orange-dark font-semibold">Could</span> I borrow your book? (Very polite request)</li>
+                    <li><span className="text-pr-black font-semibold">Could</span> you help me? (More polite than "Can you help me?")</li>
+                    <li><span className="text-pr-black font-semibold">Could</span> I borrow your book? (Very polite request)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Hypothetical Situations:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>I <span className="text-pr-orange-dark font-semibold">could</span> live anywhere in the world. (It's possible)</li>
-                    <li>You <span className="text-pr-orange-dark font-semibold">could</span> try calling him. (Suggestion)</li>
+                    <li>I <span className="text-pr-black font-semibold">could</span> live anywhere in the world. (It's possible)</li>
+                    <li>You <span className="text-pr-black font-semibold">could</span> try calling him. (Suggestion)</li>
                   </ul>
                 </div>
               </div>
@@ -132,50 +132,50 @@ const ModauxPage = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-pr-orange-dark">May - Formal Permission/Possibility</h3>
+              <h3 className="text-xl font-semibold mb-2 text-pr-black">May - Formal Permission/Possibility</h3>
               <div className="space-y-4">
                 <div>
                   <p className="font-semibold">Formal Permission:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>You <span className="text-pr-orange-dark font-semibold">may</span> leave now. (You have permission - formal)</li>
-                    <li><span className="text-pr-orange-dark font-semibold">May</span> I come in? (Request for permission - very formal)</li>
-                    <li>Students <span className="text-pr-orange-dark font-semibold">may</span> not use their phones in class. (School rule)</li>
+                    <li>You <span className="text-pr-black font-semibold">may</span> leave now. (You have permission - formal)</li>
+                    <li><span className="text-pr-black font-semibold">May</span> I come in? (Request for permission - very formal)</li>
+                    <li>Students <span className="text-pr-black font-semibold">may</span> not use their phones in class. (School rule)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Possibility (Present/Future):</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>It <span className="text-pr-orange-dark font-semibold">may</span> rain tomorrow. (It's possible)</li>
-                    <li>She <span className="text-pr-orange-dark font-semibold">may</span> be at home. (Perhaps she is at home)</li>
-                    <li>The test <span className="text-pr-orange-dark font-semibold">may</span> be difficult. (It's possible that it will be difficult)</li>
+                    <li>It <span className="text-pr-black font-semibold">may</span> rain tomorrow. (It's possible)</li>
+                    <li>She <span className="text-pr-black font-semibold">may</span> be at home. (Perhaps she is at home)</li>
+                    <li>The test <span className="text-pr-black font-semibold">may</span> be difficult. (It's possible that it will be difficult)</li>
                   </ul>
                 </div>
               </div>
             </section>
 
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-pr-orange-dark">Might - Less Certain Possibility</h3>
+              <h3 className="text-xl font-semibold mb-2 text-pr-black">Might - Less Certain Possibility</h3>
               <div className="space-y-4">
                 <div>
                   <p className="font-semibold">Less Certain Possibility:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>It <span className="text-pr-orange-dark font-semibold">might</span> rain later. (Less certain than "may")</li>
-                    <li>She <span className="text-pr-orange-dark font-semibold">might</span> call you. (It's possible but not very likely)</li>
-                    <li>We <span className="text-pr-orange-dark font-semibold">might</span> go to the cinema. (It's a possibility)</li>
+                    <li>It <span className="text-pr-black font-semibold">might</span> rain later. (Less certain than "may")</li>
+                    <li>She <span className="text-pr-black font-semibold">might</span> call you. (It's possible but not very likely)</li>
+                    <li>We <span className="text-pr-black font-semibold">might</span> go to the cinema. (It's a possibility)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Polite Requests/Suggestions:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li><span className="text-pr-orange-dark font-semibold">Might</span> I suggest an idea? (Very polite way to make a suggestion)</li>
-                    <li>You <span className="text-pr-orange-dark font-semibold">might</span> want to consider this option. (Gentle suggestion)</li>
+                    <li><span className="text-pr-black font-semibold">Might</span> I suggest an idea? (Very polite way to make a suggestion)</li>
+                    <li>You <span className="text-pr-black font-semibold">might</span> want to consider this option. (Gentle suggestion)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Past Possibility:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>She <span className="text-pr-orange-dark font-semibold">might</span> have been ill. (Perhaps she was ill)</li>
-                    <li>They <span className="text-pr-orange-dark font-semibold">might</span> have missed the train. (It's possible they missed it)</li>
+                    <li>She <span className="text-pr-black font-semibold">might</span> have been ill. (Perhaps she was ill)</li>
+                    <li>They <span className="text-pr-black font-semibold">might</span> have missed the train. (It's possible they missed it)</li>
                   </ul>
                 </div>
               </div>
@@ -190,78 +190,78 @@ const ModauxPage = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-pr-orange-dark">Must - Strong Obligation/Deduction</h3>
+              <h3 className="text-xl font-semibold mb-2 text-pr-black">Must - Strong Obligation/Deduction</h3>
               <div className="space-y-4">
                 <div>
                   <p className="font-semibold">Strong Obligation (Personal/Internal):</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>I <span className="text-pr-orange-dark font-semibold">must</span> study for the exam. (I feel it's necessary)</li>
-                    <li>You <span className="text-pr-orange-dark font-semibold">must</span> see this movie. (I strongly recommend it)</li>
-                    <li>We <span className="text-pr-orange-dark font-semibold">must</span> help them. (It's our duty)</li>
+                    <li>I <span className="text-pr-black font-semibold">must</span> study for the exam. (I feel it's necessary)</li>
+                    <li>You <span className="text-pr-black font-semibold">must</span> see this movie. (I strongly recommend it)</li>
+                    <li>We <span className="text-pr-black font-semibold">must</span> help them. (It's our duty)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Logical Deduction:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>The lights are off. She <span className="text-pr-orange-dark font-semibold">must</span> be asleep. (Logical conclusion)</li>
-                    <li>He's been working all day. He <span className="text-pr-orange-dark font-semibold">must</span> be tired. (Obvious conclusion)</li>
-                    <li>You <span className="text-pr-orange-dark font-semibold">must</span> be joking! (I conclude you're joking)</li>
+                    <li>The lights are off. She <span className="text-pr-black font-semibold">must</span> be asleep. (Logical conclusion)</li>
+                    <li>He's been working all day. He <span className="text-pr-black font-semibold">must</span> be tired. (Obvious conclusion)</li>
+                    <li>You <span className="text-pr-black font-semibold">must</span> be joking! (I conclude you're joking)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Prohibition:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>You <span className="text-pr-orange-dark font-semibold">must not</span> smoke here. (It's forbidden)</li>
-                    <li>Students <span className="text-pr-orange-dark font-semibold">must not</span> cheat. (It's not allowed)</li>
+                    <li>You <span className="text-pr-black font-semibold">must not</span> smoke here. (It's forbidden)</li>
+                    <li>Students <span className="text-pr-black font-semibold">must not</span> cheat. (It's not allowed)</li>
                   </ul>
                 </div>
               </div>
             </section>
 
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-pr-orange-dark">Have to - External Obligation</h3>
+              <h3 className="text-xl font-semibold mb-2 text-pr-black">Have to - External Obligation</h3>
               <div className="space-y-4">
                 <div>
                   <p className="font-semibold">External Obligation (Rules/Laws):</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>I <span className="text-pr-orange-dark font-semibold">have to</span> wear a uniform at work. (Company rule)</li>
-                    <li>You <span className="text-pr-orange-dark font-semibold">have to</span> pay taxes. (Legal requirement)</li>
-                    <li>Students <span className="text-pr-orange-dark font-semibold">have to</span> attend classes. (School rule)</li>
+                    <li>I <span className="text-pr-black font-semibold">have to</span> wear a uniform at work. (Company rule)</li>
+                    <li>You <span className="text-pr-black font-semibold">have to</span> pay taxes. (Legal requirement)</li>
+                    <li>Students <span className="text-pr-black font-semibold">have to</span> attend classes. (School rule)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Past and Future:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>I <span className="text-pr-orange-dark font-semibold">had to</span> work late yesterday. (Past obligation)</li>
-                    <li>She <span className="text-pr-orange-dark font-semibold">will have to</span> study harder. (Future obligation)</li>
+                    <li>I <span className="text-pr-black font-semibold">had to</span> work late yesterday. (Past obligation)</li>
+                    <li>She <span className="text-pr-black font-semibold">will have to</span> study harder. (Future obligation)</li>
                   </ul>
                 </div>
               </div>
             </section>
 
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-pr-orange-dark">Should - Advice/Recommendation</h3>
+              <h3 className="text-xl font-semibold mb-2 text-pr-black">Should - Advice/Recommendation</h3>
               <div className="space-y-4">
                 <div>
                   <p className="font-semibold">Advice/Recommendation:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>You <span className="text-pr-orange-dark font-semibold">should</span> see a doctor. (I recommend it)</li>
-                    <li>She <span className="text-pr-orange-dark font-semibold">should</span> study more. (It's advisable)</li>
-                    <li>We <span className="text-pr-orange-dark font-semibold">should</span> leave now. (It's the right thing to do)</li>
+                    <li>You <span className="text-pr-black font-semibold">should</span> see a doctor. (I recommend it)</li>
+                    <li>She <span className="text-pr-black font-semibold">should</span> study more. (It's advisable)</li>
+                    <li>We <span className="text-pr-black font-semibold">should</span> leave now. (It's the right thing to do)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Expectation:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>The train <span className="text-pr-orange-dark font-semibold">should</span> arrive soon. (I expect it will)</li>
-                    <li>She <span className="text-pr-orange-dark font-semibold">should</span> be here by now. (I expect her to be here)</li>
+                    <li>The train <span className="text-pr-black font-semibold">should</span> arrive soon. (I expect it will)</li>
+                    <li>She <span className="text-pr-black font-semibold">should</span> be here by now. (I expect her to be here)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Past Advice:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>You <span className="text-pr-orange-dark font-semibold">should have</span> called first. (You ought to have called)</li>
-                    <li>She <span className="text-pr-orange-dark font-semibold">shouldn't have</span> eaten so much. (It was unwise)</li>
+                    <li>You <span className="text-pr-black font-semibold">should have</span> called first. (You ought to have called)</li>
+                    <li>She <span className="text-pr-black font-semibold">shouldn't have</span> eaten so much. (It was unwise)</li>
                   </ul>
                 </div>
               </div>
@@ -276,57 +276,57 @@ const ModauxPage = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-pr-orange-dark">Will - Future/Promises/Spontaneous Decisions</h3>
+              <h3 className="text-xl font-semibold mb-2 text-pr-black">Will - Future/Promises/Spontaneous Decisions</h3>
               <div className="space-y-4">
                 <div>
                   <p className="font-semibold">Future Actions:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>I <span className="text-pr-orange-dark font-semibold">will</span> call you tomorrow. (Future intention)</li>
-                    <li>It <span className="text-pr-orange-dark font-semibold">will</span> rain soon. (Prediction)</li>
-                    <li>The meeting <span className="text-pr-orange-dark font-semibold">will</span> start at 3 PM. (Scheduled event)</li>
+                    <li>I <span className="text-pr-black font-semibold">will</span> call you tomorrow. (Future intention)</li>
+                    <li>It <span className="text-pr-black font-semibold">will</span> rain soon. (Prediction)</li>
+                    <li>The meeting <span className="text-pr-black font-semibold">will</span> start at 3 PM. (Scheduled event)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Promises/Offers:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>I <span className="text-pr-orange-dark font-semibold">will</span> help you with your homework. (Promise)</li>
-                    <li><span className="text-pr-orange-dark font-semibold">Will</span> you marry me? (Proposal)</li>
-                    <li>Don't worry, everything <span className="text-pr-orange-dark font-semibold">will</span> be fine. (Reassurance)</li>
+                    <li>I <span className="text-pr-black font-semibold">will</span> help you with your homework. (Promise)</li>
+                    <li><span className="text-pr-black font-semibold">Will</span> you marry me? (Proposal)</li>
+                    <li>Don't worry, everything <span className="text-pr-black font-semibold">will</span> be fine. (Reassurance)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Spontaneous Decisions:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>A: The phone is ringing. B: I <span className="text-pr-orange-dark font-semibold">will</span> answer it. (Spontaneous decision)</li>
-                    <li>It's hot in here. I <span className="text-pr-orange-dark font-semibold">will</span> open the window. (Impulsive action)</li>
+                    <li>A: The phone is ringing. B: I <span className="text-pr-black font-semibold">will</span> answer it. (Spontaneous decision)</li>
+                    <li>It's hot in here. I <span className="text-pr-black font-semibold">will</span> open the window. (Impulsive action)</li>
                   </ul>
                 </div>
               </div>
             </section>
 
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-pr-orange-dark">Would - Past Habits/Conditional/Polite Requests</h3>
+              <h3 className="text-xl font-semibold mb-2 text-pr-black">Would - Past Habits/Conditional/Polite Requests</h3>
               <div className="space-y-4">
                 <div>
                   <p className="font-semibold">Past Habits:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>When I was a child, I <span className="text-pr-orange-dark font-semibold">would</span> play in the park. (Regular past activity)</li>
-                    <li>Every summer we <span className="text-pr-orange-dark font-semibold">would</span> go to the beach. (Repeated action)</li>
-                    <li>She <span className="text-pr-orange-dark font-semibold">would</span> always help her friends. (Characteristic behavior)</li>
+                    <li>When I was a child, I <span className="text-pr-black font-semibold">would</span> play in the park. (Regular past activity)</li>
+                    <li>Every summer we <span className="text-pr-black font-semibold">would</span> go to the beach. (Repeated action)</li>
+                    <li>She <span className="text-pr-black font-semibold">would</span> always help her friends. (Characteristic behavior)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Second Conditional:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li>If I won the lottery, I <span className="text-pr-orange-dark font-semibold">would</span> buy a house. (Hypothetical)</li>
-                    <li>I <span className="text-pr-orange-dark font-semibold">would</span> help you if I could. (Conditional)</li>
+                    <li>If I won the lottery, I <span className="text-pr-black font-semibold">would</span> buy a house. (Hypothetical)</li>
+                    <li>I <span className="text-pr-black font-semibold">would</span> help you if I could. (Conditional)</li>
                   </ul>
                 </div>
                 <div>
                   <p className="font-semibold">Polite Requests:</p>
                   <ul className="list-disc pl-6 mt-1 space-y-1">
-                    <li><span className="text-pr-orange-dark font-semibold">Would</span> you mind opening the window? (Very polite request)</li>
-                    <li><span className="text-pr-orange-dark font-semibold">Would</span> you like some tea? (Polite offer)</li>
+                    <li><span className="text-pr-black font-semibold">Would</span> you mind opening the window? (Very polite request)</li>
+                    <li><span className="text-pr-black font-semibold">Would</span> you like some tea? (Polite offer)</li>
                   </ul>
                 </div>
               </div>
@@ -341,29 +341,29 @@ const ModauxPage = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-pr-orange-dark">Shall - Future Plans/Offer/Suggestion (British English)</h3>
+              <h3 className="text-xl font-semibold mb-2 text-pr-black">Shall - Future Plans/Offer/Suggestion (British English)</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">Shall</span> we go to the cinema? (Suggestion)</li>
-                <li>I <span className="text-pr-orange-dark font-semibold">shall</span> return tomorrow. (Formal future)</li>
-                <li><span className="text-pr-orange-dark font-semibold">Shall</span> I help you? (Offer of help)</li>
+                <li><span className="text-pr-black font-semibold">Shall</span> we go to the cinema? (Suggestion)</li>
+                <li>I <span className="text-pr-black font-semibold">shall</span> return tomorrow. (Formal future)</li>
+                <li><span className="text-pr-black font-semibold">Shall</span> I help you? (Offer of help)</li>
               </ul>
             </section>
 
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-pr-orange-dark">Need - Necessity (Only with to in questions/negatives)</h3>
+              <h3 className="text-xl font-semibold mb-2 text-pr-black">Need - Necessity (Only with to in questions/negatives)</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>You <span className="text-pr-orange-dark font-semibold">needn't</span> come if you don't want to. (No necessity)</li>
-                <li><span className="text-pr-orange-dark font-semibold">Need</span> I say more? (Is it necessary for me to say more?)</li>
-                <li>She <span className="text-pr-orange-dark font-semibold">doesn't need to</span> work. (No obligation)</li>
+                <li>You <span className="text-pr-black font-semibold">needn't</span> come if you don't want to. (No necessity)</li>
+                <li><span className="text-pr-black font-semibold">Need</span> I say more? (Is it necessary for me to say more?)</li>
+                <li>She <span className="text-pr-black font-semibold">doesn't need to</span> work. (No obligation)</li>
               </ul>
             </section>
 
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-pr-orange-dark">Dare - Courage (Rare, mostly negative)</h3>
+              <h3 className="text-xl font-semibold mb-2 text-pr-black">Dare - Courage (Rare, mostly negative)</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li>How <span className="text-pr-orange-dark font-semibold">dare</span> you speak to me like that! (How do you have the courage/audacity)</li>
-                <li>I <span className="text-pr-orange-dark font-semibold">daren't</span> tell him the truth. (I don't have the courage)</li>
-                <li><span className="text-pr-orange-dark font-semibold">Dare</span> you jump from there? (Do you have the courage?)</li>
+                <li>How <span className="text-pr-black font-semibold">dare</span> you speak to me like that! (How do you have the courage/audacity)</li>
+                <li>I <span className="text-pr-black font-semibold">daren't</span> tell him the truth. (I don't have the courage)</li>
+                <li><span className="text-pr-black font-semibold">Dare</span> you jump from there? (Do you have the courage?)</li>
               </ul>
             </section>
           </CardContent>
@@ -373,30 +373,30 @@ const ModauxPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-pr-orange-dark" />
+              <Table className="h-6 w-6 text-pr-black" />
               6. Modal Verbs Summary
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Modal</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Meaning</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Example</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Modal</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Meaning</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Example</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Can</td><td className="border px-3 py-2">Ability/Permission</td><td className="border px-3 py-2">I can swim.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Could</td><td className="border px-3 py-2">Past ability/Polite requests</td><td className="border px-3 py-2">Could you help me?</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">May</td><td className="border px-3 py-2">Formal permission/Possibility</td><td className="border px-3 py-2">May I come in?</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Might</td><td className="border px-3 py-2">Less certain possibility</td><td className="border px-3 py-2">It might rain.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Must</td><td className="border px-3 py-2">Strong obligation/Deduction</td><td className="border px-3 py-2">You must study.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Have to</td><td className="border px-3 py-2">External obligation</td><td className="border px-3 py-2">I have to work.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Should</td><td className="border px-3 py-2">Advice/Recommendation</td><td className="border px-3 py-2">You should rest.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Will</td><td className="border px-3 py-2">Future/Promises</td><td className="border px-3 py-2">I will help you.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Would</td><td className="border px-3 py-2">Past habits/Conditional</td><td className="border px-3 py-2">She would sing.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Can</td><td className="border px-3 py-2">Ability/Permission</td><td className="border px-3 py-2">I can swim.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Could</td><td className="border px-3 py-2">Past ability/Polite requests</td><td className="border px-3 py-2">Could you help me?</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">May</td><td className="border px-3 py-2">Formal permission/Possibility</td><td className="border px-3 py-2">May I come in?</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Might</td><td className="border px-3 py-2">Less certain possibility</td><td className="border px-3 py-2">It might rain.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Must</td><td className="border px-3 py-2">Strong obligation/Deduction</td><td className="border px-3 py-2">You must study.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Have to</td><td className="border px-3 py-2">External obligation</td><td className="border px-3 py-2">I have to work.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Should</td><td className="border px-3 py-2">Advice/Recommendation</td><td className="border px-3 py-2">You should rest.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Will</td><td className="border px-3 py-2">Future/Promises</td><td className="border px-3 py-2">I will help you.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Would</td><td className="border px-3 py-2">Past habits/Conditional</td><td className="border px-3 py-2">She would sing.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -411,28 +411,28 @@ const ModauxPage = () => {
           <CardContent className="space-y-6">
             <section>
               <h3 className="text-lg font-semibold mb-1">1. Double modal</h3>
-              <div className="bg-white/70 rounded-lg p-4 border border-orange-200 space-y-1">
+              <div className="bg-white/70 rounded-lg p-4 border border-gray-200 space-y-1">
                 <p>❌ I can must go now.</p>
                 <p>✅ I must go now.</p>
               </div>
             </section>
             <section>
               <h3 className="text-lg font-semibold mb-1">2. Wrong form after modal</h3>
-              <div className="bg-white/70 rounded-lg p-4 border border-orange-200 space-y-1">
+              <div className="bg-white/70 rounded-lg p-4 border border-gray-200 space-y-1">
                 <p>❌ She can to swim.</p>
                 <p>✅ She can swim.</p>
               </div>
             </section>
             <section>
               <h3 className="text-lg font-semibold mb-1">3. Confusing must/have to</h3>
-              <div className="bg-white/70 rounded-lg p-4 border border-orange-200 space-y-1">
+              <div className="bg-white/70 rounded-lg p-4 border border-gray-200 space-y-1">
                 <p>❌ I must wear uniform at school. (personal choice)</p>
                 <p>✅ I have to wear uniform at school. (school rule)</p>
               </div>
             </section>
             <section>
               <h3 className="text-lg font-semibold mb-1">4. May vs Can for permission</h3>
-              <div className="bg-white/70 rounded-lg p-4 border border-orange-200 space-y-1">
+              <div className="bg-white/70 rounded-lg p-4 border border-gray-200 space-y-1">
                 <p>❌ Can I smoke here? (in formal situations)</p>
                 <p>✅ May I smoke here? (more formal)</p>
               </div>
@@ -441,20 +441,20 @@ const ModauxPage = () => {
         </Card>
 
         {/* CTA exercices */}
-        <Card className="mt-2 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mt-2 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-amber-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <Target className="h-6 w-6" />
               Ready to practice?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-pr-orange-dark mb-6">
+            <p className="text-lg text-pr-black mb-6">
               After studying the sheet, launch into the exercises to consolidate your knowledge of modal verbs.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/modaux/exercices">
-                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-black-dark hover:bg-pr-black-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

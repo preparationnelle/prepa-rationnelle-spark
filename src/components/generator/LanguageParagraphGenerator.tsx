@@ -256,12 +256,12 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
         <div className="space-y-3">
           <div className="flex items-center justify-between gap-3">
             <Label htmlFor="article" className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-orange-pale text-pr-orange-dark text-[11px] font-bold">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-gray-bg text-pr-black text-[11px] font-bold">
                 1
               </span>
               Article de presse
             </Label>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark bg-pr-orange-pale px-2.5 py-1 rounded-full">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-black bg-pr-gray-bg px-2.5 py-1 rounded-full">
               Requis
             </span>
           </div>
@@ -271,7 +271,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
             value={article}
             onChange={(e) => setArticle(e.target.value)}
             rows={5}
-            className="min-h-[140px] border-pr-gray-light bg-white focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 resize-y text-[15px] leading-relaxed p-4 rounded-xl text-pr-black placeholder:text-pr-gray-mid transition-colors"
+            className="min-h-[140px] border-pr-gray-light bg-white focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 resize-y text-[15px] leading-relaxed p-4 rounded-xl text-pr-black placeholder:text-pr-gray-mid transition-colors"
           />
         </div>
 
@@ -293,10 +293,10 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
             placeholder="Ex. : politique, USA, immigration"
             value={keywords}
             onChange={(e) => setKeywords(e.target.value)}
-            className="h-12 border-pr-gray-light bg-white focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 text-[15px] rounded-xl text-pr-black placeholder:text-pr-gray-mid transition-colors"
+            className="h-12 border-pr-gray-light bg-white focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 text-[15px] rounded-xl text-pr-black placeholder:text-pr-gray-mid transition-colors"
           />
           <p className="text-[13px] text-pr-gray-mid flex items-center gap-1.5 pl-1">
-            <Lightbulb className="w-3.5 h-3.5 text-pr-orange" />
+            <Lightbulb className="w-3.5 h-3.5 text-pr-black" />
             Séparez par des virgules pour orienter l'angle du paragraphe.
           </p>
         </div>
@@ -306,7 +306,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
           <Button
             onClick={handleGenerate}
             disabled={loading || !article.trim()}
-            className="bg-pr-orange hover:bg-pr-orange-dark text-white shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 h-12 px-7 text-[15px] font-semibold rounded-xl flex-1 disabled:opacity-50 disabled:shadow-none"
+            className="bg-pr-black hover:bg-pr-black-dark text-white shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 h-12 px-7 text-[15px] font-semibold rounded-xl flex-1 disabled:opacity-50 disabled:shadow-none"
           >
             {loading ? (
               <>
@@ -325,7 +325,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
             <Button
               variant="outline"
               onClick={loadExample}
-              className="border-pr-gray-light bg-white text-pr-gray-dark hover:text-pr-orange-dark hover:border-pr-orange-soft hover:bg-pr-orange-pale h-12 px-4 rounded-xl font-medium transition-colors"
+              className="border-pr-gray-light bg-white text-pr-gray-dark hover:text-pr-black hover:border-pr-black-soft hover:bg-pr-gray-bg h-12 px-4 rounded-xl font-medium transition-colors"
               title="Charger un exemple"
             >
               <Lightbulb className="w-4 h-4 mr-2" />
@@ -349,16 +349,16 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
           <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
             {/* Bandeau supérieur orange */}
-            <div className="h-[3px] w-full bg-pr-orange" />
+            <div className="h-[3px] w-full bg-pr-black" />
 
             <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5 sm:px-8">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white border border-pr-orange-soft">
-                    <Target className="w-5 h-5 text-pr-orange-dark" />
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white border border-pr-black-soft">
+                    <Target className="w-5 h-5 text-pr-black" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                    <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
                       Paragraphe ECG
                     </div>
                     <CardTitle className="font-dm-serif text-2xl text-pr-black leading-none">
@@ -368,7 +368,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
                 </div>
                 {result.angle && (
                   <div className="bg-white border border-pr-gray-light rounded-xl px-4 py-2.5 max-w-full sm:max-w-md">
-                    <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark mb-1">
+                    <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-black mb-1">
                       Angle
                     </span>
                     <span className="block text-[14px] text-pr-black font-medium leading-snug">
@@ -384,14 +384,14 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
               {result.concoursTopics.length > 0 && (
                 <div className="space-y-3">
                   <Label className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                    <Compass className="w-3.5 h-3.5 text-pr-orange" />
+                    <Compass className="w-3.5 h-3.5 text-pr-black" />
                     Sujets de concours mobilisables
                   </Label>
-                  <div className="bg-pr-orange-pale/60 rounded-xl p-5 border border-pr-orange-pale">
+                  <div className="bg-pr-gray-bg/60 rounded-xl p-5 border border-pr-black-pale">
                     <ul className="space-y-2.5">
                       {result.concoursTopics.map((topic, index) => (
                         <li key={index} className="flex items-start gap-3">
-                          <span className="w-1.5 h-1.5 bg-pr-orange rounded-full mt-2 flex-shrink-0"></span>
+                          <span className="w-1.5 h-1.5 bg-pr-black rounded-full mt-2 flex-shrink-0"></span>
                           <span className="text-pr-black text-[15px] leading-snug">{topic}</span>
                         </li>
                       ))}
@@ -404,7 +404,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-3">
                   <Label className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                    <FileText className="w-3.5 h-3.5 text-pr-orange" />
+                    <FileText className="w-3.5 h-3.5 text-pr-black" />
                     Paragraphe argumentatif
                   </Label>
                   <span className="text-[11px] font-semibold uppercase tracking-[0.10em] text-pr-gray-mid bg-pr-gray-bg px-2.5 py-1 rounded-full">
@@ -417,7 +417,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
                       variant="ghost"
                       size="icon"
                       onClick={handleCopyParagraphOnly}
-                      className="h-8 w-8 text-pr-gray-mid hover:text-pr-orange-dark hover:bg-pr-orange-pale"
+                      className="h-8 w-8 text-pr-gray-mid hover:text-pr-black hover:bg-pr-gray-bg"
                       title="Copier le paragraphe seul"
                     >
                       {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
@@ -436,7 +436,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
               {result.vocabulary.length > 0 && (
                 <div className="space-y-3">
                   <Label className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                    <BookOpen className="w-3.5 h-3.5 text-pr-orange" />
+                    <BookOpen className="w-3.5 h-3.5 text-pr-black" />
                     Vocabulaire clé à mémoriser
                   </Label>
                   <div className="bg-pr-gray-bg rounded-xl border border-pr-gray-light overflow-hidden">
@@ -471,10 +471,10 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
               {result.variants && (
                 <div className="space-y-3">
                   <Label className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                    <Wand2 className="w-3.5 h-3.5 text-pr-orange" />
+                    <Wand2 className="w-3.5 h-3.5 text-pr-black" />
                     Variantes / extensions
                   </Label>
-                  <div className="bg-white rounded-xl p-5 border border-pr-gray-light border-l-[3px] border-l-pr-orange">
+                  <div className="bg-white rounded-xl p-5 border border-pr-gray-light border-l-[3px] border-l-pr-black">
                     <p className="text-pr-gray-dark text-[15px] leading-relaxed whitespace-pre-wrap">
                       {result.variants}
                     </p>
@@ -487,7 +487,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
                 <Button
                   onClick={handleCopy}
                   variant="outline"
-                  className="border-pr-gray-light bg-white text-pr-gray-dark hover:text-pr-orange-dark hover:border-pr-orange-soft hover:bg-pr-orange-pale h-11 px-4 rounded-xl font-medium transition-colors flex-1 min-w-[140px]"
+                  className="border-pr-gray-light bg-white text-pr-gray-dark hover:text-pr-black hover:border-pr-black-soft hover:bg-pr-gray-bg h-11 px-4 rounded-xl font-medium transition-colors flex-1 min-w-[140px]"
                 >
                   {copied ? (
                     <>
@@ -504,7 +504,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
                 <Button
                   onClick={handleDownloadText}
                   variant="outline"
-                  className="border-pr-gray-light bg-white text-pr-gray-dark hover:text-pr-orange-dark hover:border-pr-orange-soft hover:bg-pr-orange-pale h-11 px-4 rounded-xl font-medium transition-colors flex-1 min-w-[140px]"
+                  className="border-pr-gray-light bg-white text-pr-gray-dark hover:text-pr-black hover:border-pr-black-soft hover:bg-pr-gray-bg h-11 px-4 rounded-xl font-medium transition-colors flex-1 min-w-[140px]"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Télécharger (.txt)
@@ -512,7 +512,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
                 <Button
                   onClick={handleDownloadPDF}
                   variant="outline"
-                  className="border-pr-gray-light bg-white text-pr-gray-dark hover:text-pr-orange-dark hover:border-pr-orange-soft hover:bg-pr-orange-pale h-11 px-4 rounded-xl font-medium transition-colors flex-1 min-w-[140px]"
+                  className="border-pr-gray-light bg-white text-pr-gray-dark hover:text-pr-black hover:border-pr-black-soft hover:bg-pr-gray-bg h-11 px-4 rounded-xl font-medium transition-colors flex-1 min-w-[140px]"
                 >
                   <FileText className="w-4 h-4 mr-2" />
                   Télécharger (PDF)

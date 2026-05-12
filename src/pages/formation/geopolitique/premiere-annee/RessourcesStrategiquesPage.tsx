@@ -4,33 +4,33 @@ import { Home, ChevronRight } from 'lucide-react';
 
 const RessourcesStrategiquesPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
-      <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
+    <div className="relative">
+      <div className="sticky top-0 z-40 bg-carnet-paper/95 backdrop-blur-sm border-b border-carnet-rule/60">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-gray-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-800 transition-colors">
+          <div className="flex items-center text-[11px] uppercase tracking-[0.08em] text-carnet-ink-soft font-semibold">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/geopolitique" className="hover:text-gray-800 transition-colors">Géopolitique</Link>
+            <Link to="/formation/geopolitique" className="hover:text-carnet-ink transition-colors">Géopolitique</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/geopolitique/premiere-annee" className="hover:text-gray-800 transition-colors">Première année</Link>
+            <Link to="/formation/geopolitique/premiere-annee" className="hover:text-carnet-ink transition-colors">Première année</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <span className="text-gray-800 font-medium">Ressources stratégiques</span>
+            <span className="text-carnet-ink">Ressources stratégiques</span>
           </div>
         </div>
       </div>
 
       <div className="container mx-auto px-4 pt-12 pb-16">
-        <div className="max-w-4xl mx-auto bg-white border rounded-xl p-6">
+        <div className="max-w-4xl mx-auto bg-carnet-paper-2 border border-carnet-rule rounded-xl p-6">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-900">Les ressources stratégiques</h1>
             <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
           <div className="space-y-8 text-gray-900">
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+            <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4">
               <h3 className="text-lg font-semibold text-carnet-red mb-2">Typologie</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Productions agricoles</li>
@@ -40,7 +40,7 @@ const RessourcesStrategiquesPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+            <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4">
               <h3 className="text-lg font-semibold text-carnet-red mb-2">Conflits et ressources</h3>
               <p>Si les conflits existent à toutes les échelles, le caractère stratégique des ressources favorise d’abord la coopération : dans un monde où nul n’est autosuffisant, instabilités et conflits perturbent l’approvisionnement et l’exploitation.</p>
               <ul className="list-disc list-inside mt-2 space-y-1">
@@ -48,7 +48,7 @@ const RessourcesStrategiquesPage: React.FC = () => {
                 <li><strong>Approche historique</strong> : tournant avec les révolutions industrielles; conquêtes et mises en valeur.</li>
               </ul>
               <div className="mt-3 grid md:grid-cols-2 gap-3">
-                <div className="bg-white border border-carnet-red/20 rounded p-3">
+                <div className="bg-carnet-paper-2 border border-carnet-rule rounded p-3">
                   <h4 className="font-semibold text-carnet-red mb-1">Pressions accrues</h4>
                   <ul className="list-disc list-inside text-sm space-y-1">
                     <li>Besoins en hausse (industrialisation, émergences)</li>
@@ -56,7 +56,7 @@ const RessourcesStrategiquesPage: React.FC = () => {
                     <li>Défi environnemental (Rapport Meadows, 1972), risques d’épuisement</li>
                   </ul>
                 </div>
-                <div className="bg-white border border-carnet-red/20 rounded p-3">
+                <div className="bg-carnet-paper-2 border border-carnet-rule rounded p-3">
                   <h4 className="font-semibold text-carnet-red mb-1">Interdépendances</h4>
                   <p className="text-sm">Économies imbriquées ⇒ coopérations nécessaires sur les flux et la sécurité d’approvisionnement.</p>
                 </div>
@@ -99,7 +99,7 @@ const RessourcesStrategiquesPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+            <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4">
               <h3 className="text-lg font-semibold text-carnet-red mb-2">Études de cas</h3>
               <div className="space-y-4">
                 <div>

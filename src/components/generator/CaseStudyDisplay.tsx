@@ -44,15 +44,15 @@ export const CaseStudyDisplay = ({ caseStudy, wordCount, language }: CaseStudyDi
 
   return (
     <div className="mt-8 bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-      <div className="h-[3px] w-full bg-pr-orange" />
+      <div className="h-[3px] w-full bg-pr-black" />
       <div className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5 sm:px-8">
         <div className="flex justify-between items-start flex-wrap gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-white border border-pr-orange-soft rounded-xl">
-              <FileText className="h-5 w-5 text-pr-orange-dark" />
+            <div className="p-2 bg-white border border-pr-black-soft rounded-xl">
+              <FileText className="h-5 w-5 text-pr-black" />
             </div>
             <div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
                 {language === 'fr' ? 'Étude de cas' : 'Case study'}
               </div>
               <h3 className="font-dm-serif text-2xl text-pr-black leading-none">
@@ -68,7 +68,7 @@ export const CaseStudyDisplay = ({ caseStudy, wordCount, language }: CaseStudyDi
               onClick={copyToClipboard}
               variant="outline"
               size="sm"
-              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft"
+              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft"
             >
               <Copy className="h-4 w-4 mr-2" />
               {language === 'fr' ? 'Copier' : 'Copy'}
@@ -77,7 +77,7 @@ export const CaseStudyDisplay = ({ caseStudy, wordCount, language }: CaseStudyDi
               onClick={handleDownloadTxt}
               variant="outline"
               size="sm"
-              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft"
+              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft"
             >
               <Download className="h-4 w-4 mr-2" />
               TXT
@@ -85,7 +85,7 @@ export const CaseStudyDisplay = ({ caseStudy, wordCount, language }: CaseStudyDi
             <Button
               onClick={handleDownloadPdf}
               size="sm"
-              className="bg-pr-orange hover:bg-pr-orange-dark text-white"
+              className="bg-pr-black hover:bg-pr-black-dark text-white"
             >
               <Download className="h-4 w-4 mr-2" />
               PDF

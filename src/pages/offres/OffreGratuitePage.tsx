@@ -62,7 +62,7 @@ const OffreGratuitePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-carnet-paper-2 to-pr-orange-pale">
+    <div className="min-h-screen bg-gradient-to-br from-carnet-paper-2 to-pr-black-pale">
       {/* Header */}
       <section className="pt-20 pb-12 px-4">
         <div className="max-w-4xl mx-auto">
@@ -73,12 +73,12 @@ const OffreGratuitePage = () => {
           
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Offre <span className="text-pr-orange">Gratuite</span>
+              Offre <span className="text-pr-black">Gratuite</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Participe gratuitement à nos sessions live de préparation à la rentrée !
             </p>
-            <div className="mt-4 inline-flex items-center bg-orange-100 text-orange-800 px-4 py-2 rounded-full">
+            <div className="mt-4 inline-flex items-center bg-carnet-paper text-carnet-ink px-4 py-2 rounded-full">
               <Clock className="w-4 h-4 mr-2" />
               14 jours pour se préparer à la rentrée !
             </div>
@@ -89,14 +89,14 @@ const OffreGratuitePage = () => {
       {/* Programme Details */}
       <section className="pb-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <Card className="p-8 bg-white border border-gray-200/50 rounded-2xl shadow-sm mb-8">
+          <Card className="p-8 bg-carnet-paper-2 border border-carnet-rule rounded-2xl shadow-sm mb-8">
             <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
               Programme des sessions live
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div 
-                className="bg-pr-orange-pale rounded-lg p-6 border border-pr-orange-soft cursor-pointer hover:bg-carnet-red/10 hover:shadow-lg transition-all duration-200 hover:scale-105"
+                className="bg-pr-gray-bg rounded-lg p-6 border border-pr-black-soft cursor-pointer hover:bg-carnet-red/10 hover:shadow-lg transition-all duration-200 hover:scale-105"
                 onClick={() => handleOptionSelection('ECG1')}
               >
                 <div className="flex items-center mb-4">
@@ -152,23 +152,23 @@ const OffreGratuitePage = () => {
               </div>
             </div>
 
-            <div className="bg-gray-50 rounded-lg p-6">
+            <div className="bg-carnet-paper rounded-lg p-6">
               <h3 className="font-bold text-gray-900 mb-4">Au programme :</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-pr-orange mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-pr-black mt-0.5 flex-shrink-0" />
                   <p className="text-gray-700">Stratégies de révision pour la rentrée</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-pr-orange mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-pr-black mt-0.5 flex-shrink-0" />
                   <p className="text-gray-700">Planning optimal pour les 14 derniers jours</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-pr-orange mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-pr-black mt-0.5 flex-shrink-0" />
                   <p className="text-gray-700">Points essentiels à revoir en maths</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-pr-orange mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-pr-black mt-0.5 flex-shrink-0" />
                   <p className="text-gray-700">Q&A en direct avec Dimitri</p>
                 </div>
               </div>
@@ -176,7 +176,7 @@ const OffreGratuitePage = () => {
           </Card>
 
           {/* Questionnaire */}
-          <Card className="p-8 bg-white border border-gray-200/50 rounded-2xl shadow-sm">
+          <Card className="p-8 bg-carnet-paper-2 border border-carnet-rule rounded-2xl shadow-sm">
             <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
               Accéder à votre session
             </h2>
@@ -224,7 +224,7 @@ const OffreGratuitePage = () => {
                       </p>
                       <div className="space-y-2">
                         <Link to="/formations">
-                          <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white">
+                          <Button className="bg-pr-black hover:bg-pr-black-dark text-white">
                             Découvrir nos formations
                           </Button>
                         </Link>
@@ -250,7 +250,7 @@ const OffreGratuitePage = () => {
                   </h3>
                   
                   {(questionnaire.selectedOption === 'ECG1' || questionnaire.selectedOption === 'ECG2') && (
-                    <div className="bg-white rounded-lg p-6 mt-4">
+                    <div className="bg-carnet-paper-2 rounded-lg p-6 mt-4 border border-carnet-rule">
                       <h4 className="text-lg font-bold text-gray-900 mb-4">
                         {getZoomInfo().title}
                       </h4>
@@ -261,13 +261,13 @@ const OffreGratuitePage = () => {
                           <span className="font-semibold">{getZoomInfo().date} à {getZoomInfo().time}</span>
                         </div>
                         
-                        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 text-center">
-                          <p className="text-orange-800 font-semibold mb-2">Votre lien de session :</p>
+                        <div className="bg-carnet-paper border border-carnet-rule rounded-lg p-4 text-center">
+                          <p className="text-gray-800 font-semibold mb-2">Votre lien de session :</p>
                           <a 
                             href={getZoomInfo().link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-pr-orange-dark hover:text-pr-orange-dark underline text-sm break-all"
+                            className="text-pr-black hover:text-pr-black underline text-sm break-all"
                           >
                             {getZoomInfo().link}
                           </a>
@@ -281,7 +281,7 @@ const OffreGratuitePage = () => {
                           rel="noopener noreferrer"
                           className="block"
                         >
-                          <Button className="w-full bg-pr-orange hover:bg-pr-orange-dark text-white py-3">
+                          <Button className="w-full bg-pr-black hover:bg-pr-black-dark text-white py-3">
                             <Video className="w-5 h-5 mr-2" />
                             Rejoindre la session Zoom
                           </Button>
@@ -299,7 +299,7 @@ const OffreGratuitePage = () => {
                   )}
                 </div>
                 
-                <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+                <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4">
                   <p className="text-carnet-red-deep text-sm">
                     💡 <strong>Conseil :</strong> Ajoutez cet événement à votre calendrier et rejoignez-nous 5 minutes avant le début !
                   </p>

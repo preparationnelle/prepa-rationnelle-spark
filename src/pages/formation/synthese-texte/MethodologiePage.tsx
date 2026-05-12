@@ -145,9 +145,9 @@ const MethodologiePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="relative">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-pr-gray-light">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/95 backdrop-blur border-b border-carnet-rule/60">
         <div className="container mx-auto px-4 py-2.5">
           <div className="flex items-center text-xs text-pr-gray-mid font-dm-sans">
             <Link to="/" className="hover:text-pr-black transition-colors">
@@ -180,34 +180,34 @@ const MethodologiePage: React.FC = () => {
 
         {/* Header */}
         <div className="text-center mb-14">
-          <span className="text-[10px] font-dm-sans font-semibold uppercase tracking-[0.18em] text-pr-orange-dark bg-pr-orange-pale px-3 py-1.5 rounded-full">
+          <span className="text-[10px] font-dm-sans font-semibold uppercase tracking-[0.18em] text-pr-black bg-pr-gray-bg px-3 py-1.5 rounded-full">
             Méthode · Plan type
           </span>
           <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black mt-6 mb-5 leading-tight">
             Le secret de la synthèse
           </h1>
-          <div className="w-16 h-[3px] bg-pr-orange mx-auto mb-6" />
+          <div className="w-16 h-[3px] bg-pr-black mx-auto mb-6" />
           <p className="font-dm-sans text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
             90&nbsp;% des synthèses reposent sur un même plan type :
-            <span className="text-pr-orange-dark font-medium"> Manifestations / Facteurs / Limites ou conséquences ou solution.</span>
+            <span className="text-pr-black font-medium"> Manifestations / Facteurs / Limites ou conséquences ou solution.</span>
           </p>
         </div>
 
         {/* Encadré secret */}
-        <section className="mb-14 bg-pr-orange-pale/60 border-l-[3px] border-pr-orange rounded-r-md p-7">
+        <section className="mb-14 bg-pr-gray-bg/60 border-l-[3px] border-pr-black rounded-r-md p-7">
           <h2 className="font-dm-serif text-xl text-pr-black mb-3">
             Le plus grand secret de la synthèse
           </h2>
           <p className="font-dm-sans text-pr-gray-dark leading-relaxed">
             90&nbsp;% des synthèses excellentes reposent sur un même plan type plus ou moins maquillé&nbsp;:
-            <span className="font-medium text-pr-orange-dark"> Manifestations / Facteurs / Limites ou conséquences ou solution.</span>
+            <span className="font-medium text-pr-black"> Manifestations / Facteurs / Limites ou conséquences ou solution.</span>
           </p>
         </section>
 
         {/* Problématique */}
         <section className="mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <div className="w-1 h-7 bg-pr-black rounded-full" />
             <h2 className="font-dm-serif text-2xl text-pr-black">
               La problématique générale
             </h2>
@@ -219,19 +219,19 @@ const MethodologiePage: React.FC = () => {
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 font-dm-sans text-pr-gray-dark">
-                <span className="text-pr-orange mt-1">→</span>
+                <span className="text-pr-black mt-1">→</span>
                 <span>
                   C'est une question <strong className="text-pr-black">ouverte</strong> ou <strong className="text-pr-black">fermée</strong> (je conseille une question fermée, à laquelle on peut répondre par oui/non).
                 </span>
               </li>
               <li className="flex items-start gap-3 font-dm-sans text-pr-gray-dark">
-                <span className="text-pr-orange mt-1">→</span>
+                <span className="text-pr-black mt-1">→</span>
                 <span>
                   Elle doit <strong className="text-pr-black">impliquer les 3 sous-questions</strong>.
                 </span>
               </li>
               <li className="flex items-start gap-3 font-dm-sans text-pr-gray-dark">
-                <span className="text-pr-orange mt-1">→</span>
+                <span className="text-pr-black mt-1">→</span>
                 <span>
                   Elle doit donner une <strong className="text-pr-black">réelle direction</strong> et être <strong className="text-pr-black">engagée</strong>.
                 </span>
@@ -245,7 +245,7 @@ const MethodologiePage: React.FC = () => {
                 key={index}
                 className="bg-white border border-pr-gray-light rounded-md p-4"
               >
-                <p className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-orange-dark mb-2">
+                <p className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-black mb-2">
                   {prob.type}
                 </p>
                 <p className="font-dm-sans text-sm text-pr-gray-dark italic leading-relaxed">
@@ -255,9 +255,9 @@ const MethodologiePage: React.FC = () => {
             ))}
           </div>
 
-          <div className="bg-pr-orange-pale/60 border-l-[3px] border-pr-orange rounded-r-md p-4">
+          <div className="bg-pr-gray-bg/60 border-l-[3px] border-pr-black rounded-r-md p-4">
             <p className="font-dm-sans text-sm text-pr-gray-dark">
-              <strong className="text-pr-orange-dark">Remarque —</strong> noter l'emploi de mots « forts » qui permettent d'orienter et d'engager la question.
+              <strong className="text-pr-black">Remarque —</strong> noter l'emploi de mots « forts » qui permettent d'orienter et d'engager la question.
             </p>
           </div>
         </section>
@@ -265,7 +265,7 @@ const MethodologiePage: React.FC = () => {
         {/* Plan type */}
         <section className="mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <div className="w-1 h-7 bg-pr-black rounded-full" />
             <h2 className="font-dm-serif text-2xl text-pr-black">
               Le plan type — Manifestations / Facteurs / LCS
             </h2>
@@ -274,7 +274,7 @@ const MethodologiePage: React.FC = () => {
           <div className="border border-pr-gray-light rounded-lg p-6 mb-6 bg-pr-gray-bg/40">
             <p className="font-dm-sans text-pr-gray-dark leading-relaxed">
               Le plan <strong className="text-pr-black">Manifestations / Facteurs / Limites ou conséquences ou solution</strong> a l'avantage de proposer une véritable progression, recherchée par les correcteurs.
-              <span className="text-pr-orange-dark font-medium"> Attention, votre plan type doit être déguisé.</span> Évitez donc un plan : « quelles manifestations ? quels facteurs ? quelles limites ? ».
+              <span className="text-pr-black font-medium"> Attention, votre plan type doit être déguisé.</span> Évitez donc un plan : « quelles manifestations ? quels facteurs ? quelles limites ? ».
             </p>
           </div>
 
@@ -285,7 +285,7 @@ const MethodologiePage: React.FC = () => {
                 className="border border-pr-gray-light rounded-lg p-6"
               >
                 <div className="flex items-start gap-4 mb-5">
-                  <div className="font-dm-serif text-4xl text-pr-orange leading-none">
+                  <div className="font-dm-serif text-4xl text-pr-black leading-none">
                     {partie.numero}
                   </div>
                   <div>
@@ -302,7 +302,7 @@ const MethodologiePage: React.FC = () => {
                   {partie.exemples.map((exemple, exIndex) => (
                     <div
                       key={exIndex}
-                      className="bg-pr-gray-bg/60 border-l-[2px] border-pr-orange/60 rounded-r px-4 py-2.5"
+                      className="bg-pr-gray-bg/60 border-l-[2px] border-pr-black/60 rounded-r px-4 py-2.5"
                     >
                       <p className="font-dm-sans text-sm text-pr-gray-dark italic">
                         « {exemple} »
@@ -318,7 +318,7 @@ const MethodologiePage: React.FC = () => {
         {/* Exemples corrigés */}
         <section className="mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <div className="w-1 h-7 bg-pr-black rounded-full" />
             <h2 className="font-dm-serif text-2xl text-pr-black">
               Exemples issus de rapports de jury
             </h2>
@@ -336,14 +336,14 @@ const MethodologiePage: React.FC = () => {
                       {exemple.titre}
                     </h3>
                     <div className="flex items-center gap-2">
-                      <Badge className="bg-pr-orange-pale text-pr-orange-dark hover:bg-pr-orange-pale font-dm-sans text-[10px] uppercase tracking-wider">
+                      <Badge className="bg-pr-gray-bg text-pr-black hover:bg-pr-gray-bg font-dm-sans text-[10px] uppercase tracking-wider">
                         {exemple.mots} mots
                       </Badge>
                       <a
                         href={exemple.lien}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-dm-sans text-xs text-pr-orange-dark hover:text-pr-orange flex items-center gap-1"
+                        className="font-dm-sans text-xs text-pr-black hover:text-pr-black flex items-center gap-1"
                       >
                         <ExternalLink className="w-3.5 h-3.5" />
                         Source
@@ -355,7 +355,7 @@ const MethodologiePage: React.FC = () => {
                   {exemple.parties.map((partie, partieIndex) => (
                     <div
                       key={partieIndex}
-                      className="border-l-[3px] border-pr-orange pl-5"
+                      className="border-l-[3px] border-pr-black pl-5"
                     >
                       <h4 className="font-dm-sans font-semibold text-pr-black mb-2 text-sm">
                         {partie.numero} {partie.titre}
@@ -374,7 +374,7 @@ const MethodologiePage: React.FC = () => {
         {/* Remarques */}
         <section className="mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <div className="w-1 h-7 bg-pr-black rounded-full" />
             <h2 className="font-dm-serif text-2xl text-pr-black">
               Remarques importantes
             </h2>
@@ -400,7 +400,7 @@ const MethodologiePage: React.FC = () => {
         {/* Vocabulaire */}
         <section className="mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <div className="w-1 h-7 bg-pr-black rounded-full" />
             <h2 className="font-dm-serif text-2xl text-pr-black">
               Vocabulaire à utiliser
             </h2>
@@ -414,7 +414,7 @@ const MethodologiePage: React.FC = () => {
               {vocabulaireEssentiel.map((mot, index) => (
                 <span
                   key={index}
-                  className="font-dm-sans text-sm text-pr-orange-dark bg-pr-orange-pale px-3 py-1.5 rounded-full"
+                  className="font-dm-sans text-sm text-pr-black bg-pr-gray-bg px-3 py-1.5 rounded-full"
                 >
                   {mot}
                 </span>
@@ -428,7 +428,7 @@ const MethodologiePage: React.FC = () => {
           <h3 className="font-dm-serif text-2xl text-pr-black mb-3">
             Vous ne me croyez pas&nbsp;?
           </h3>
-          <div className="w-12 h-[2px] bg-pr-orange mx-auto mb-4" />
+          <div className="w-12 h-[2px] bg-pr-black mx-auto mb-4" />
           <p className="font-dm-sans text-pr-gray-dark mb-6 max-w-xl mx-auto leading-relaxed">
             Ce plan type, convenablement maquillé, constitue la base de la plupart des synthèses excellentes.
             Il offre une structure logique et une progression naturelle qui plaît aux correcteurs.
@@ -437,14 +437,14 @@ const MethodologiePage: React.FC = () => {
             <Link to="/formation/synthese-texte/travail-annuel">
               <Button
                 variant="outline"
-                className="font-dm-sans border-pr-gray-light text-pr-gray-dark hover:bg-white hover:border-pr-orange hover:text-pr-orange-dark gap-2"
+                className="font-dm-sans border-pr-gray-light text-pr-gray-dark hover:bg-white hover:border-pr-black hover:text-pr-black gap-2"
               >
                 <Calendar className="w-4 h-4" />
                 Voir le travail annuel
               </Button>
             </Link>
             <Link to="/formation/synthese-texte/ressources">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white font-dm-sans gap-2">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white font-dm-sans gap-2">
                 <BookOpen className="w-4 h-4" />
                 Accéder aux ressources
               </Button>

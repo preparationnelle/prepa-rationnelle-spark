@@ -15,7 +15,7 @@ const Chapitre23StatistiquesDescriptivesCoursPage = () => {
       showNavigation={true}
     >
       {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-pr-orange-pale">
+      <Card className="border-0 shadow-lg bg-pr-gray-bg">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-statistiques-descriptives">
@@ -25,13 +25,13 @@ const Chapitre23StatistiquesDescriptivesCoursPage = () => {
               </Button>
             </Link>
             <Link to="/formation/maths-statistiques-descriptives-exercices">
-              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-gray-bg">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>
             </Link>
             <Link to="/formation/maths-statistiques-descriptives-quiz">
-              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-gray-bg">
                 <Target className="mr-2 h-4 w-4" />
                 Quiz
               </Button>

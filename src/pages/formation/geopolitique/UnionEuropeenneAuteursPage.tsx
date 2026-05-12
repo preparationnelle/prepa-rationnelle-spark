@@ -342,7 +342,7 @@ const UnionEuropeenneAuteursPage = () => {
               Navigation rapide
             </h3>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/formation/geopolitique/union-europeenne" className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md transition-colors">
+              <Link to="/formation/geopolitique/union-europeenne" className="inline-flex items-center gap-2 bg-pr-black hover:bg-pr-black-dark text-white px-4 py-2 rounded-md transition-colors">
                 <BookOpen className="w-4 h-4" />
                 Accéder au cours
               </Link>
@@ -350,7 +350,7 @@ const UnionEuropeenneAuteursPage = () => {
                 <Globe className="w-4 h-4" />
                 Chronologie
               </Link>
-              <Link to="/formation/geopolitique/union-europeenne/flashcards" className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md transition-colors">
+              <Link to="/formation/geopolitique/union-europeenne/flashcards" className="inline-flex items-center gap-2 bg-pr-black hover:bg-pr-black-dark text-white px-4 py-2 rounded-md transition-colors">
                 <Target className="w-4 h-4" />
                 Flash cards
               </Link>
@@ -466,7 +466,7 @@ const UnionEuropeenneAuteursPage = () => {
         </Dialog>
 
         {/* Note méthodologique */}
-        <Card className="mt-8 bg-pr-orange-pale border-carnet-red/30">
+        <Card className="mt-8 bg-pr-gray-bg border-carnet-red/30">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 text-carnet-red-deep mb-4">
               <Lightbulb className="h-5 w-5" />

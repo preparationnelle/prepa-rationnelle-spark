@@ -72,7 +72,7 @@ const FormationArabeSommairePage = () => {
 
       <section className="mb-20">
         <div className="flex items-center gap-3 mb-8">
-          <span className="h-[2px] w-6 bg-pr-orange" />
+          <span className="h-[2px] w-6 bg-pr-black" />
           <h2 className="font-dm-serif text-2xl sm:text-3xl text-pr-black">Outils de génération</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -81,8 +81,8 @@ const FormationArabeSommairePage = () => {
               key={title}
               className="flex items-start gap-4 bg-white border border-pr-gray-light rounded-2xl p-6"
             >
-              <div className="w-10 h-10 rounded-lg bg-pr-orange-pale flex items-center justify-center flex-shrink-0">
-                <Icon className="h-5 w-5 text-pr-orange-dark" />
+              <div className="w-10 h-10 rounded-lg bg-pr-gray-bg flex items-center justify-center flex-shrink-0">
+                <Icon className="h-5 w-5 text-pr-black" />
               </div>
               <div className="flex-1">
                 <h3 className="font-dm-serif text-xl text-pr-black mb-1">{title}</h3>
@@ -95,12 +95,12 @@ const FormationArabeSommairePage = () => {
 
       <section className="rounded-2xl border border-pr-gray-light bg-white p-8 sm:p-12">
         <div className="text-center mb-10 max-w-2xl mx-auto">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-black mb-3">
             <CheckCircle className="inline h-3.5 w-3.5 mr-1 -mt-0.5" />
             Préparation concours
           </p>
           <h2 className="font-dm-serif text-3xl sm:text-4xl text-pr-black mb-3">SESAME — Arabe</h2>
-          <div className="w-12 h-[3px] bg-pr-orange mx-auto mb-5" />
+          <div className="w-12 h-[3px] bg-pr-black mx-auto mb-5" />
           <p className="text-base text-pr-gray-dark/80">
             Préparez-vous efficacement aux épreuves d’arabe du concours SESAME avec notre programme complet.
           </p>
@@ -108,8 +108,8 @@ const FormationArabeSommairePage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {sesameSteps.map(({ Icon, title, description }) => (
             <div key={title} className="text-center">
-              <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-pr-orange-pale flex items-center justify-center">
-                <Icon className="h-6 w-6 text-pr-orange-dark" />
+              <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-pr-gray-bg flex items-center justify-center">
+                <Icon className="h-6 w-6 text-pr-black" />
               </div>
               <h3 className="font-dm-serif text-lg text-pr-black mb-1">{title}</h3>
               <p className="text-sm text-pr-gray-dark/80">{description}</p>
@@ -119,7 +119,7 @@ const FormationArabeSommairePage = () => {
         <div className="text-center mt-10">
           <Link
             to="/formations"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-pr-gray-light bg-white hover:border-pr-orange text-pr-black font-semibold text-sm transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-pr-gray-light bg-white hover:border-pr-black text-pr-black font-semibold text-sm transition-colors"
           >
             Toutes les formations
           </Link>

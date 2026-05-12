@@ -44,7 +44,7 @@ const FinirEntretienPage = () => {
       <MethodSection label="Section 01" title="Les 4 phases d'une conclusion réussie" icon={Target}>
         <div className="grid md:grid-cols-2 gap-5">
           {phases.map((p) => (
-            <div key={p.n} className="bg-white border border-carnet-rule/30 rounded-lg p-6 hover:border-red-600 transition-colors">
+            <div key={p.n} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6 hover:border-carnet-red transition-colors">
               <div className="flex items-baseline gap-3 mb-2">
                 <span className="font-dm-serif text-3xl text-red-600">{p.n}</span>
                 <h4 className="font-dm-serif text-lg text-carnet-ink">{p.t}</h4>
@@ -103,7 +103,7 @@ const FinirEntretienPage = () => {
             { t: "3 min restantes", d: "Posez votre première question au jury. Adaptez le nombre selon le temps disponible." },
             { t: "1 min restante", d: "Réaffirmez votre motivation et remerciez chaleureusement le jury." },
           ].map((c) => (
-            <div key={c.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6 text-center">
+            <div key={c.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6 text-center">
               <div className="font-dm-serif text-2xl text-red-600 mb-1">{c.t}</div>
               <div className="h-px w-6 bg-red-600 mx-auto mb-3" />
               <p className="text-sm text-carnet-ink-soft">{c.d}</p>
@@ -166,7 +166,7 @@ const FinirEntretienPage = () => {
               ],
             },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-4 flex items-center gap-2">
                 <AlertCircle className="w-5 h-5 text-red-700" strokeWidth={1.8} />
                 {g.t}
@@ -190,7 +190,7 @@ const FinirEntretienPage = () => {
             { t: "Contenu", l: ["J'ai synthétisé mes points forts", "J'ai posé 2-3 questions pertinentes", "J'ai réaffirmé ma motivation", "J'ai remercié chaleureusement"] },
             { t: "Attitude", l: ["J'ai gardé un ton positif et énergique", "J'ai respecté le timing du jury", "J'ai maintenu le contact visuel", "J'ai serré la main avec confiance"] },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-2">{g.t}</h4>
               <div className="h-px w-8 bg-red-600 mb-4" />
               <ul className="space-y-3">

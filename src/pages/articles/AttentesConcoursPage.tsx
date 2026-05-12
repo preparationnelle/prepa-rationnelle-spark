@@ -58,7 +58,7 @@ const AttentesConcoursPage = () => {
           <CardContent className="p-8 prose prose-lg max-w-none">
             <div className="space-y-6">
               {/* Introduction */}
-              <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
+              <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-carnet-red/40">
                 <h3 className="text-xl font-bold text-carnet-red-deep mb-3">Introduction</h3>
                 <p className="text-carnet-red italic mb-4">
                   « Pourquoi foncer si l'on ignore la ligne d'arrivée ?»
@@ -84,7 +84,7 @@ const AttentesConcoursPage = () => {
                     <p className="text-gray-700 mb-3">
                       Vous n'avez pas besoin de tout traiter pour avoir 15 ou 20. En 2024, 40% du sujet HEC/ESSEC suffisaient pour 20/20. Ciblez intelligemment : Quelles questions sont les plus rentables ?
                     </p>
-                    <div className="bg-pr-orange-pale p-4 rounded-lg">
+                    <div className="bg-pr-gray-bg p-4 rounded-lg">
                       <p className="text-carnet-red-deep font-semibold">Action :</p>
                       <p className="text-carnet-red">Lisez les rapports (disponibles sur concours-bce.com) et repérez 3 exigences récurrentes par école.</p>
                     </div>
@@ -121,7 +121,7 @@ const AttentesConcoursPage = () => {
               </div>
 
               {/* Ce qu'il faut retenir */}
-              <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
+              <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-carnet-red/40">
                 <h3 className="text-xl font-bold text-carnet-red-deep mb-4">Ce qu'il faut retenir :</h3>
                 <ul className="space-y-2 text-carnet-red">
                   <li className="flex items-start gap-2">
@@ -143,7 +143,7 @@ const AttentesConcoursPage = () => {
               </div>
 
               {/* Conclusion */}
-              <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40">
+              <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-carnet-red/40">
                 <h3 className="text-xl font-bold text-carnet-red-deep mb-3">Conclusion</h3>
                 <p className="text-carnet-red">
                   Réussir les maths BCE ne dépend pas que de votre niveau, mais de votre manière de préparer et de composer. Les jurys cherchent des copies lisibles, rigoureuses, et stratégiques.

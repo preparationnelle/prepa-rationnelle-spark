@@ -29,7 +29,7 @@ export const PRChapterRow: React.FC<PRChapterRowProps> = ({
   actions = [],
 }) => {
   return (
-    <div className="group relative bg-white border border-pr-gray-light rounded-xl transition-all duration-300 hover:border-pr-orange hover:shadow-[0_4px_20px_rgba(244,132,95,0.10)] overflow-hidden">
+    <div className="group relative bg-carnet-paper-2 border border-carnet-rule rounded-xl transition-all duration-300 hover:border-pr-orange hover:shadow-[0_4px_16px_rgba(193,68,58,0.08)] overflow-hidden">
       {/* Trait orange à gauche, visible au hover */}
       <span className="absolute top-0 bottom-0 left-0 w-[3px] bg-pr-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 

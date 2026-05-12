@@ -39,10 +39,10 @@ const GeopoliticsMigrationsFlashcardsPage = () => {
         </div>
 
         {/* Main Content */}
-        <Card className="border-2 hover:border-pr-orange/50 transition-colors mb-6">
+        <Card className="border-2 hover:border-pr-black/50 transition-colors mb-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BookOpen className="h-6 w-6 text-pr-orange-dark" />
+              <BookOpen className="h-6 w-6 text-pr-black" />
               Vocabulaire des migrations
             </CardTitle>
             <p className="text-muted-foreground">

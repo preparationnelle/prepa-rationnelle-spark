@@ -221,7 +221,7 @@ const ProfesseurDashboard = () => {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--page-bg)' }}>
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pr-orange-dark mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pr-black-dark mx-auto mb-4"></div>
           <p className="text-gray-600">Chargement de votre espace professeur...</p>
         </div>
       </div>
@@ -234,7 +234,7 @@ const ProfesseurDashboard = () => {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-            <div className="p-3 rounded-lg bg-orange-100 text-pr-orange-dark">
+            <div className="p-3 rounded-lg bg-gray-100 text-pr-black">
               <GraduationCap className="h-8 w-8" />
             </div>
             Espace Professeur
@@ -261,10 +261,10 @@ const ProfesseurDashboard = () => {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-pr-orange-dark" />
+                  <Calendar className="h-5 w-5 text-pr-black" />
                   Mes créneaux disponibles
                 </CardTitle>
-                <Button onClick={handleAddAvailability} className="bg-pr-orange-dark hover:bg-pr-orange-dark">
+                <Button onClick={handleAddAvailability} className="bg-pr-black-dark hover:bg-pr-black-dark">
                   <Plus className="h-4 w-4 mr-2" />
                   Ajouter un créneau
                 </Button>
@@ -408,7 +408,7 @@ const ProfesseurDashboard = () => {
                               <span className="text-sm text-gray-600">
                                 {availability.start_time} - {availability.end_time}
                               </span>
-                              <span className="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">
+                              <span className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">
                                 {availability.subject}
                               </span>
                               <span className={`px-2 py-1 text-xs rounded-full ${

@@ -120,7 +120,7 @@ const MethodologieDissertationPage = () => {
         {/* Header de l'article */}
         <div className="max-w-4xl mx-auto">
           <Card className="border-2 border-carnet-red/30 mb-8">
-            <CardHeader className="bg-gradient-to-r from-pr-orange-pale to-indigo-50">
+            <CardHeader className="bg-carnet-paper">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 rounded-lg bg-carnet-red text-white">
                   <PenTool className="h-5 w-5" />
@@ -158,7 +158,7 @@ const MethodologieDissertationPage = () => {
                     qui répond à une question géopolitique précise.
                   </p>
                   
-                  <div className="bg-pr-orange-pale p-4 rounded-lg">
+                  <div className="bg-pr-gray-bg p-4 rounded-lg">
                     <h4 className="font-semibold mb-3">Elle évalue votre capacité à :</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
@@ -194,7 +194,7 @@ const MethodologieDissertationPage = () => {
             <AccordionItem value="attentes-correcteur" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-pr-orange text-white">
+                  <div className="p-2 rounded-lg bg-pr-black text-white">
                     <FileText className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -205,7 +205,7 @@ const MethodologieDissertationPage = () => {
               </AccordionTrigger>
               <AccordionContent className="px-6 pb-6">
                 <div className="space-y-4">
-                  <div className="bg-orange-50 p-4 rounded-lg">
+                  <div className="bg-gray-50 p-4 rounded-lg">
                     <p className="text-sm font-medium mb-2">
                       ⏱️ Le jury lit vite (7‑10 min par copie) ; il recherche donc immédiatement certains marqueurs :
                     </p>
@@ -213,11 +213,11 @@ const MethodologieDissertationPage = () => {
                   
                   <div className="space-y-4">
                     {attentesCorrecteur.map((item, index) => (
-                      <Card key={index} className="border-l-4 border-l-pr-orange">
+                      <Card key={index} className="border-l-4 border-l-pr-black">
                         <CardContent className="p-4">
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div>
-                              <h5 className="font-medium text-pr-orange-dark">{item.axe}</h5>
+                              <h5 className="font-medium text-pr-black">{item.axe}</h5>
                             </div>
                             <div>
                               <p className="text-sm font-medium">{item.attente}</p>
@@ -399,7 +399,7 @@ const MethodologieDissertationPage = () => {
             <AccordionItem value="introduction" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-indigo-500 text-white">
+                  <div className="p-2 rounded-lg bg-carnet-red text-carnet-paper">
                     <PenTool className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -410,8 +410,8 @@ const MethodologieDissertationPage = () => {
               </AccordionTrigger>
               <AccordionContent className="px-6 pb-6">
                 <div className="space-y-6">
-                  <div className="bg-indigo-50 p-4 rounded-lg">
-                    <p className="font-medium text-indigo-700">
+                  <div className="bg-carnet-paper p-4 rounded-lg">
+                    <p className="font-medium text-carnet-red">
                       Sujet fil rouge : « Les États‑Unis restent‑ils aujourd'hui la seule superpuissance mondiale ? »
                     </p>
                   </div>
@@ -428,7 +428,7 @@ const MethodologieDissertationPage = () => {
                           <li>• Citation courte</li>
                           <li>• Comparaison géographique ou contraste saisissant</li>
                         </ul>
-                        <div className="bg-white p-3 rounded border-l-4 border-l-indigo-500">
+                        <div className="bg-carnet-paper-2 p-3 rounded border-l-4 border-l-carnet-red">
                           <p className="text-sm italic">
                             <strong>Exemple :</strong> En 2024, les États‑Unis représentent encore 24 % du PIB mondial 
                             et disposent de 11 groupes aéronavals, record inégalé.
@@ -442,10 +442,10 @@ const MethodologieDissertationPage = () => {
                       <div className="bg-gray-50 p-4 rounded-lg space-y-3">
                         <p className="text-sm"><strong>Pourquoi ?</strong> Verrouiller le vocabulaire et le cadre spatio‑temporel rassure le correcteur.</p>
                         <div className="space-y-2">
-                          <div className="bg-white p-3 rounded">
+                          <div className="bg-carnet-paper-2 p-3 rounded">
                             <p className="text-sm"><strong>Superpuissance :</strong> État capable de projeter durablement sa puissance économique, militaire, technologique et culturelle à l'échelle planétaire, avec une liberté d'action quasi totale.</p>
                           </div>
-                          <div className="bg-white p-3 rounded">
+                          <div className="bg-carnet-paper-2 p-3 rounded">
                             <p className="text-sm"><strong>Aujourd'hui :</strong> Période allant de l'après‑Guerre froide jusqu'à 2025, marquée par l'essor de la Chine, les crises de 2008 et 2020 et la guerre en Ukraine.</p>
                           </div>
                         </div>
@@ -456,7 +456,7 @@ const MethodologieDissertationPage = () => {
                       <h4 className="font-semibold mb-3">5.3 Problématisation</h4>
                       <div className="bg-gray-50 p-4 rounded-lg">
                         <p className="text-sm mb-3"><strong>Objet :</strong> dégager la tension géopolitique, le paradoxe qui justifie l'analyse.</p>
-                        <div className="bg-white p-3 rounded border-l-4 border-l-indigo-500">
+                        <div className="bg-carnet-paper-2 p-3 rounded border-l-4 border-l-carnet-red">
                           <p className="text-sm italic">
                             L'ordre international repose encore largement sur la puissance américaine. Pourtant, l'ascension chinoise, 
                             la résilience russe et la montée de puissances régionales érodent cette centralité. 
@@ -470,7 +470,7 @@ const MethodologieDissertationPage = () => {
                     <div>
                       <h4 className="font-semibold mb-3">5.4 Problématique</h4>
                       <div className="bg-gray-50 p-4 rounded-lg">
-                        <div className="bg-white p-3 rounded border-l-4 border-l-indigo-500">
+                        <div className="bg-carnet-paper-2 p-3 rounded border-l-4 border-l-carnet-red">
                           <p className="text-sm italic font-medium">
                             Dans quelle mesure les États‑Unis conservent‑ils une suprématie globale 
                             alors que de nouvelles puissances contestent leur leadership ?
@@ -482,7 +482,7 @@ const MethodologieDissertationPage = () => {
                     <div>
                       <h4 className="font-semibold mb-3">5.5 Annonce du plan</h4>
                       <div className="bg-gray-50 p-4 rounded-lg">
-                        <div className="bg-white p-3 rounded border-l-4 border-l-indigo-500">
+                        <div className="bg-carnet-paper-2 p-3 rounded border-l-4 border-l-carnet-red">
                           <p className="text-sm italic">
                             (I) Dans un premier temps, nous rappellerons les fondements multidimensionnels de la puissance américaine ; 
                             (II) puis, nous montrerons comment des rivaux émergents en limitent la portée ; 
@@ -651,7 +651,7 @@ const MethodologieDissertationPage = () => {
             <AccordionItem value="transitions" className="border rounded-lg">
               <AccordionTrigger className="px-6 py-4 hover:no-underline">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-pink-500 text-white">
+                  <div className="p-2 rounded-lg bg-carnet-red/70 text-carnet-paper">
                     <ArrowRight className="h-5 w-5" />
                   </div>
                   <div className="text-left">
@@ -679,7 +679,7 @@ const MethodologieDissertationPage = () => {
                         <span><strong>Pont logique :</strong> annoncez la limite qui justifie la partie suivante</span>
                       </li>
                     </ul>
-                    <div className="mt-3 p-3 bg-white rounded border-l-4 border-l-pink-500">
+                    <div className="mt-3 p-3 bg-white rounded border-l-4 border-l-carnet-red/60">
                       <p className="text-sm italic">
                         <strong>Formule générique :</strong> « Cependant, si cet argument souligne X, 
                         il ne saurait occulter Y, qui exige désormais d'être analysé. »
@@ -690,7 +690,7 @@ const MethodologieDissertationPage = () => {
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <h4 className="font-semibold mb-3">8.2 Exemple appliqué</h4>
                     <p className="text-sm mb-2">Fin partie I → ouverture partie II :</p>
-                    <div className="bg-white p-3 rounded border-l-4 border-l-pink-500">
+                    <div className="bg-carnet-paper-2 p-3 rounded border-l-4 border-l-carnet-red/60">
                       <p className="text-sm italic">
                         En somme, la puissance américaine repose encore sur un trépied économique, militaire et technologique solide. 
                         Cependant, l'affirmation croissante de puissances concurrentes remet en cause cette suprématie sur plusieurs théâtres, 
@@ -742,13 +742,13 @@ const MethodologieDissertationPage = () => {
                     <div className="bg-gray-50 p-4 rounded-lg">
                       <h4 className="font-semibold mb-3">Exemple appliqué au sujet fil rouge</h4>
                       <div className="space-y-3">
-                        <div className="bg-white p-3 rounded">
+                        <div className="bg-carnet-paper-2 p-3 rounded">
                           <p className="text-sm"><strong>Bilan :</strong> D'abord, nous avons montré que la puissance américaine repose sur des atouts uniques ; ensuite, nous avons souligné les limites imposées par de nouvelles puissances ; enfin, nous avons examiné les scénarios d'adaptation possibles.</p>
                         </div>
-                        <div className="bg-white p-3 rounded">
+                        <div className="bg-carnet-paper-2 p-3 rounded">
                           <p className="text-sm"><strong>Réponse :</strong> Les États‑Unis ne sont plus la seule superpuissance, mais conservent une prééminence relative grâce à leur capacité d'innovation et à leurs alliances.</p>
                         </div>
-                        <div className="bg-white p-3 rounded">
+                        <div className="bg-carnet-paper-2 p-3 rounded">
                           <p className="text-sm"><strong>Ouverture :</strong> La durabilité de cette prééminence dépendra de la capacité de Washington à amorcer sa réindustrialisation, à partager le leadership dans la régulation de l'IA et à rester compétitif dans la nouvelle course vers l'espace.</p>
                         </div>
                       </div>

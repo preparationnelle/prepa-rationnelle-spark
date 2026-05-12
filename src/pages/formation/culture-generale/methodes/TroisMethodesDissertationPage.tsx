@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const PRCard: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black">
         {title}
@@ -21,13 +21,13 @@ const TroisMethodesDissertationPage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Méthode
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               Les 3 méthodes de dissertation
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Panorama clair des approches les plus répandues pour traiter le thème <em>l&apos;humanité</em> :
               Anarchie, Parapersos et Dissertation parfaite.
@@ -47,19 +47,19 @@ const TroisMethodesDissertationPage: React.FC = () => {
                 </thead>
                 <tbody className="align-top">
                   <tr className="border-t border-pr-gray-light">
-                    <td className="p-3 font-semibold text-pr-orange-dark uppercase text-xs tracking-wider">Description</td>
+                    <td className="p-3 font-semibold text-pr-black uppercase text-xs tracking-wider">Description</td>
                     <td className="p-3">Votre cours est votre unique support pour faire des dissertations.</td>
                     <td className="p-3">Une quarantaine de paragraphes préparés en amont, réutilisés dans vos dissertations.</td>
                     <td className="p-3">Une unique dissertation préparée en amont, adaptée à tous les sujets.</td>
                   </tr>
                   <tr className="border-t border-pr-gray-light bg-pr-gray-bg/50">
-                    <td className="p-3 font-semibold text-pr-orange-dark uppercase text-xs tracking-wider">Avantages</td>
+                    <td className="p-3 font-semibold text-pr-black uppercase text-xs tracking-wider">Avantages</td>
                     <td className="p-3">Grande liberté de raisonnement.</td>
                     <td className="p-3">Gain de temps considérable au brouillon ; références approfondies ; limite les fautes d&apos;orthographe.</td>
                     <td className="p-3">Travail unique et immuable ; références approfondies ; limite les fautes d&apos;orthographe.</td>
                   </tr>
                   <tr className="border-t border-pr-gray-light">
-                    <td className="p-3 font-semibold text-pr-orange-dark uppercase text-xs tracking-wider">Inconvénients</td>
+                    <td className="p-3 font-semibold text-pr-black uppercase text-xs tracking-wider">Inconvénients</td>
                     <td className="p-3">Difficile d&apos;approfondir les raisonnements sur les références ; vocabulaire limité — risque de copie « niveau lycée ».</td>
                     <td className="p-3">Tendance à s&apos;enfermer dans ses paragraphes au risque de passer à côté du sujet.</td>
                     <td className="p-3">Difficulté à coller au sujet avec une DP préparée — faible liberté de penser.</td>
@@ -86,7 +86,7 @@ const TroisMethodesDissertationPage: React.FC = () => {
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/methodes">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des méthodes
               </Button>
             </Link>

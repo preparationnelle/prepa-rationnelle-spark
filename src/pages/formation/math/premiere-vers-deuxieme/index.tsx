@@ -79,7 +79,7 @@ const PremiereVersDeuxiemePage: React.FC = () => {
       {/* Floating elements - Refined & Sober */}
       <div className="absolute -z-10 top-20 left-10 w-64 h-64 bg-carnet-red/10/40 rounded-full blur-3xl"></div>
       <div className="absolute -z-10 bottom-20 right-10 w-96 h-96 bg-indigo-100/30 rounded-full blur-3xl"></div>
-      <div className="absolute -z-10 top-40 right-1/4 w-72 h-72 bg-pr-orange-pale/80 rounded-full blur-2xl"></div>
+      <div className="absolute -z-10 top-40 right-1/4 w-72 h-72 bg-pr-gray-bg/80 rounded-full blur-2xl"></div>
 
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
@@ -98,7 +98,7 @@ const PremiereVersDeuxiemePage: React.FC = () => {
               Parcours Maths
             </Link>
             <ChevronRight className="h-3 w-3 mx-2 text-gray-300" />
-            <span className="text-carnet-red bg-pr-orange-pale px-2 py-0.5 rounded-full">Première → Deuxième année</span>
+            <span className="text-carnet-red bg-pr-gray-bg px-2 py-0.5 rounded-full">Première → Deuxième année</span>
           </div>
         </div>
       </nav>
@@ -123,7 +123,7 @@ const PremiereVersDeuxiemePage: React.FC = () => {
         {/* Chapitres libres d'accès */}
         <div className="max-w-5xl mx-auto pb-16">
           <div className="bg-white rounded-2xl p-8 border border-carnet-red/20 shadow-sm relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-pr-orange-pale rounded-bl-full -mr-8 -mt-8 opacity-50"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-pr-gray-bg rounded-bl-full -mr-8 -mt-8 opacity-50"></div>
 
             <h2 className="text-2xl font-bold mb-8 text-carnet-red-deep text-center relative z-10">
               Autres chapitres essentiels (accès libre)
@@ -139,14 +139,14 @@ const PremiereVersDeuxiemePage: React.FC = () => {
                   <div key={chapitre.id} className="bg-white rounded-2xl p-5 border border-gray-100 hover:border-carnet-red/30 shadow-[0_2px_8px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgb(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300 group">
                     <div className="flex flex-col sm:flex-row items-center gap-5">
                       {/* Icon */}
-                      <div className="w-12 h-12 bg-pr-orange-pale text-carnet-red rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-carnet-red group-hover:text-white transition-colors duration-200 border border-carnet-red/20/50">
+                      <div className="w-12 h-12 bg-pr-gray-bg text-carnet-red rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-carnet-red group-hover:text-white transition-colors duration-200 border border-carnet-red/20/50">
                         <chapitre.icon className="h-6 w-6" />
                       </div>
 
                       {/* Text Content */}
                       <div className="flex-1 text-center sm:text-left">
                         <div className="flex items-center justify-center sm:justify-start gap-2 mb-1">
-                          <span className="text-xs font-bold text-carnet-red uppercase tracking-wider bg-pr-orange-pale px-2 py-0.5 rounded-full">Chapitre {chapitre.id}</span>
+                          <span className="text-xs font-bold text-carnet-red uppercase tracking-wider bg-pr-gray-bg px-2 py-0.5 rounded-full">Chapitre {chapitre.id}</span>
                         </div>
                         <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-carnet-red transition-colors">
                           {chapitre.title}
@@ -162,7 +162,7 @@ const PremiereVersDeuxiemePage: React.FC = () => {
                           <Button
                             onClick={handleCoursApplicationsClick}
                             size="sm"
-                            className="bg-pr-orange hover:bg-pr-orange-dark text-white shadow-sm rounded-lg h-9 px-4"
+                            className="bg-pr-black hover:bg-pr-black-dark text-white shadow-sm rounded-lg h-9 px-4"
                           >
                             <BookOpen className="w-3.5 h-3.5 mr-2" />
                             Cours
@@ -171,7 +171,7 @@ const PremiereVersDeuxiemePage: React.FC = () => {
                           <Link to={chapitre.paths.cours}>
                             <Button
                               size="sm"
-                              className="bg-pr-orange hover:bg-pr-orange-dark text-white shadow-sm rounded-lg h-9 px-4"
+                              className="bg-pr-black hover:bg-pr-black-dark text-white shadow-sm rounded-lg h-9 px-4"
                             >
                               <BookOpen className="w-3.5 h-3.5 mr-2" />
                               Cours
@@ -183,7 +183,7 @@ const PremiereVersDeuxiemePage: React.FC = () => {
                           onClick={handleQuizClick}
                           variant="outline"
                           size="sm"
-                          className="border-gray-200 text-gray-600 hover:text-carnet-red hover:border-carnet-red/30 hover:bg-pr-orange-pale rounded-lg h-9 px-4 bg-transparent"
+                          className="border-gray-200 text-gray-600 hover:text-carnet-red hover:border-carnet-red/30 hover:bg-pr-gray-bg rounded-lg h-9 px-4 bg-transparent"
                         >
                           <Target className="w-3.5 h-3.5 mr-2" />
                           Quiz
@@ -193,7 +193,7 @@ const PremiereVersDeuxiemePage: React.FC = () => {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="border-gray-200 text-gray-600 hover:text-carnet-red hover:border-carnet-red/30 hover:bg-pr-orange-pale rounded-lg h-9 px-4 bg-transparent"
+                            className="border-gray-200 text-gray-600 hover:text-carnet-red hover:border-carnet-red/30 hover:bg-pr-gray-bg rounded-lg h-9 px-4 bg-transparent"
                           >
                             <Play className="w-3.5 h-3.5 mr-2" />
                             Exercices
@@ -208,7 +208,7 @@ const PremiereVersDeuxiemePage: React.FC = () => {
 
             <div className="text-center relative z-10">
               <Link to="/chapitres-libres">
-                <Button variant="ghost" className="text-carnet-red hover:text-carnet-red hover:bg-pr-orange-pale font-medium">
+                <Button variant="ghost" className="text-carnet-red hover:text-carnet-red hover:bg-pr-gray-bg font-medium">
                   Voir tous les chapitres libres
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>

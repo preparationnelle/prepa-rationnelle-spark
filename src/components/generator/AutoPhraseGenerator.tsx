@@ -91,15 +91,15 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
 
   return (
     <Card className="mb-8 border border-pr-gray-light bg-white overflow-hidden rounded-2xl shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-      <div className="h-[3px] w-full bg-pr-orange" />
+      <div className="h-[3px] w-full bg-pr-black" />
       <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl bg-white border border-pr-orange-soft flex items-center justify-center">
-              <Target className="h-5 w-5 text-pr-orange-dark" />
+            <div className="w-11 h-11 rounded-xl bg-white border border-pr-black-soft flex items-center justify-center">
+              <Target className="h-5 w-5 text-pr-black" />
             </div>
             <div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
                 {language === 'fr' ? 'Génération automatique' : 'Auto generation'}
               </div>
               <CardTitle className="font-dm-serif text-2xl text-pr-black leading-none">
@@ -107,7 +107,7 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
               </CardTitle>
             </div>
           </div>
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-[0.12em] bg-white text-pr-orange-dark border border-pr-orange-soft">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-[0.12em] bg-white text-pr-black border border-pr-black-soft">
             <Sparkles className="w-3 h-3 mr-1.5" />
             IA
           </span>
@@ -118,20 +118,20 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
         {currentPhrase ? (
           <div className="space-y-5">
             {/* Phrase française */}
-            <div className="group relative bg-white border border-pr-gray-light rounded-xl p-6 transition-colors hover:border-pr-orange-soft">
+            <div className="group relative bg-white border border-pr-gray-light rounded-xl p-6 transition-colors hover:border-pr-black-soft">
               <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => copyToClipboard(currentPhrase.french)}
-                  className="h-8 w-8 text-pr-gray-mid hover:text-pr-orange-dark hover:bg-pr-orange-pale"
+                  className="h-8 w-8 text-pr-gray-mid hover:text-pr-black hover:bg-pr-gray-bg"
                 >
                   {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                 </Button>
               </div>
 
               <div className="flex items-center gap-2 mb-3">
-                <PenTool className="h-3.5 w-3.5 text-pr-orange" />
+                <PenTool className="h-3.5 w-3.5 text-pr-black" />
                 <h3 className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em]">
                   {language === 'fr' ? 'Phrase à traduire' : 'Sentence to translate'}
                 </h3>
@@ -143,9 +143,9 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
             </div>
 
             {/* Phrase de référence */}
-            <div className="bg-pr-gray-bg border border-pr-gray-light rounded-xl p-5 border-l-[3px] border-l-pr-orange">
+            <div className="bg-pr-gray-bg border border-pr-gray-light rounded-xl p-5 border-l-[3px] border-l-pr-black">
               <div className="flex items-center gap-2 mb-2">
-                <BookOpen className="h-3.5 w-3.5 text-pr-orange" />
+                <BookOpen className="h-3.5 w-3.5 text-pr-black" />
                 <h3 className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em]">
                   {language === 'fr' ? 'Traduction de référence' : 'Reference translation'}
                 </h3>
@@ -160,7 +160,7 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
               {currentPhrase.grammar_points && currentPhrase.grammar_points.length > 0 && (
                 <div className="bg-white border border-pr-gray-light rounded-xl p-5">
                   <h3 className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2 mb-3">
-                    <Target className="h-3.5 w-3.5 text-pr-orange" />
+                    <Target className="h-3.5 w-3.5 text-pr-black" />
                     {language === 'fr' ? 'Points grammaticaux' : 'Grammar points'}
                   </h3>
                   <div className="flex flex-wrap gap-2">
@@ -177,13 +177,13 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
               {currentPhrase.notes && currentPhrase.notes.length > 0 && (
                 <div className="bg-white border border-pr-gray-light rounded-xl p-5">
                   <h3 className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2 mb-3">
-                    <Lightbulb className="h-3.5 w-3.5 text-pr-orange" />
+                    <Lightbulb className="h-3.5 w-3.5 text-pr-black" />
                     {language === 'fr' ? 'Notes explicatives' : 'Explanatory notes'}
                   </h3>
                   <ul className="space-y-2">
                     {currentPhrase.notes.map((note, index) => (
                       <li key={index} className="text-[14px] text-pr-gray-dark flex items-start gap-2.5">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-pr-orange flex-shrink-0" />
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-pr-black flex-shrink-0" />
                         <span className="leading-relaxed">{note}</span>
                       </li>
                     ))}
@@ -207,7 +207,7 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
           <Button
             onClick={generatePhrase}
             disabled={isGenerating}
-            className="bg-pr-orange hover:bg-pr-orange-dark text-white px-7 h-12 text-[15px] font-semibold rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
+            className="bg-pr-black hover:bg-pr-black-dark text-white px-7 h-12 text-[15px] font-semibold rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
           >
             {isGenerating ? (
               <>

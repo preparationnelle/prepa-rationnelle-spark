@@ -77,7 +77,7 @@ const PreparationCubePage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-pr-orange-dark">
+            <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-pr-black-dark">
               <h4 className="font-semibold text-carnet-red-deep mb-2">
                 Pourquoi choisir notre accompagnement ?
               </h4>

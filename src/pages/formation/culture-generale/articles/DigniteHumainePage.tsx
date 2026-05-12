@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -26,13 +26,13 @@ const DigniteHumainePage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Article
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               La dignité humaine&nbsp;: d&apos;un fondement métaphysique à un principe juridique
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Kant, 1948, Habermas. Trois moments d&apos;un mot omniprésent — et flou —
               dans toutes les constitutions modernes.
@@ -55,8 +55,8 @@ const DigniteHumainePage: React.FC = () => {
                 tradition est ambivalente&nbsp;: la dignité protège-t-elle l&apos;humain ou la
                 dignité <em>idéale</em> contre l&apos;humain <em>réel</em>&nbsp;?
               </p>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Tension à retenir</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Tension à retenir</h3>
                 <p>
                   La dignité est-elle une <em>propriété intrinsèque</em> qu&apos;aucune
                   autorité ne peut retirer (Kant, 1948), ou un <em>statut conféré</em>
@@ -73,15 +73,15 @@ const DigniteHumainePage: React.FC = () => {
                 Emmanuel Kant donne à la dignité sa formulation philosophique la plus
                 rigoureuse. Le principe est célèbre&nbsp;:
               </p>
-              <p className="italic pl-4 border-l-2 border-pr-orange">
+              <p className="italic pl-4 border-l-2 border-pr-black">
                 «&nbsp;Agis de telle sorte que tu traites l&apos;humanité, aussi bien dans ta
                 personne que dans la personne de tout autre, toujours en même temps comme
                 une fin, et jamais simplement comme un moyen.&nbsp;»
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Distinction prix / dignité</strong>. «&nbsp;Ce qui a un prix peut être remplacé&nbsp;; ce qui est au-dessus de tout prix, et ne souffre aucun équivalent, a une dignité.&nbsp;» Les choses ont un prix&nbsp;; les personnes ont une dignité.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Fondement&nbsp;: l&apos;autonomie</strong>. La dignité tient à la capacité de l&apos;humain à se donner à lui-même la loi morale. C&apos;est l&apos;autonomie qui le rend respectable.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Inconditionnalité</strong>. La dignité ne dépend ni du mérite, ni de l&apos;utilité, ni du statut social. Tout être humain en est porteur, du seul fait d&apos;être humain.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Distinction prix / dignité</strong>. «&nbsp;Ce qui a un prix peut être remplacé&nbsp;; ce qui est au-dessus de tout prix, et ne souffre aucun équivalent, a une dignité.&nbsp;» Les choses ont un prix&nbsp;; les personnes ont une dignité.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Fondement&nbsp;: l&apos;autonomie</strong>. La dignité tient à la capacité de l&apos;humain à se donner à lui-même la loi morale. C&apos;est l&apos;autonomie qui le rend respectable.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Inconditionnalité</strong>. La dignité ne dépend ni du mérite, ni de l&apos;utilité, ni du statut social. Tout être humain en est porteur, du seul fait d&apos;être humain.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Kant fait de la dignité un
@@ -106,7 +106,7 @@ const DigniteHumainePage: React.FC = () => {
                 rédigé sous la conduite d&apos;Eleanor Roosevelt et de René Cassin, s&apos;ouvre
                 par une formule décisive.
               </p>
-              <p className="italic pl-4 border-l-2 border-pr-orange">
+              <p className="italic pl-4 border-l-2 border-pr-black">
                 «&nbsp;Tous les êtres humains naissent libres et égaux en dignité et en
                 droits.&nbsp;» (Article 1)
               </p>
@@ -118,9 +118,9 @@ const DigniteHumainePage: React.FC = () => {
                 juridique</strong>.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>La Loi fondamentale allemande</strong> (Grundgesetz, 23 mai 1949), article 1&nbsp;: «&nbsp;La dignité de l&apos;être humain est intangible. Tous les pouvoirs publics ont l&apos;obligation de la respecter et de la protéger.&nbsp;»</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Charte des droits fondamentaux de l&apos;UE</strong> (2000), article 1&nbsp;: «&nbsp;La dignité humaine est inviolable.&nbsp;»</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Conseil constitutionnel français</strong>, décision du 27 juillet 1994&nbsp;: la sauvegarde de la dignité humaine est un principe à valeur constitutionnelle.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>La Loi fondamentale allemande</strong> (Grundgesetz, 23 mai 1949), article 1&nbsp;: «&nbsp;La dignité de l&apos;être humain est intangible. Tous les pouvoirs publics ont l&apos;obligation de la respecter et de la protéger.&nbsp;»</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Charte des droits fondamentaux de l&apos;UE</strong> (2000), article 1&nbsp;: «&nbsp;La dignité humaine est inviolable.&nbsp;»</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Conseil constitutionnel français</strong>, décision du 27 juillet 1994&nbsp;: la sauvegarde de la dignité humaine est un principe à valeur constitutionnelle.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Après 1945, la dignité devient
@@ -140,9 +140,9 @@ const DigniteHumainePage: React.FC = () => {
                 Mais&nbsp;: a-t-on le droit de fabriquer des humains à façon&nbsp;?
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>L&apos;eugénisme libéral</strong>. Lorsque des parents choisissent les caractères génétiques de leur enfant, ils inscrivent dans son patrimoine biologique une décision irrévocable. L&apos;enfant ne peut plus se dire l&apos;auteur de sa propre vie.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>L&apos;autonomie comme condition de la dignité</strong>. Pour pouvoir mener une «&nbsp;vie qui soit la sienne&nbsp;», l&apos;humain doit avoir hérité de sa nature comme d&apos;un donné, pas d&apos;un projet parental.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>La nature humaine comme limite</strong>. Habermas plaide pour une «&nbsp;auto-compréhension éthique de l&apos;espèce&nbsp;»&nbsp;: tracer une ligne au-delà de laquelle la biotechnologie attaque la dignité elle-même.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>L&apos;eugénisme libéral</strong>. Lorsque des parents choisissent les caractères génétiques de leur enfant, ils inscrivent dans son patrimoine biologique une décision irrévocable. L&apos;enfant ne peut plus se dire l&apos;auteur de sa propre vie.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>L&apos;autonomie comme condition de la dignité</strong>. Pour pouvoir mener une «&nbsp;vie qui soit la sienne&nbsp;», l&apos;humain doit avoir hérité de sa nature comme d&apos;un donné, pas d&apos;un projet parental.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>La nature humaine comme limite</strong>. Habermas plaide pour une «&nbsp;auto-compréhension éthique de l&apos;espèce&nbsp;»&nbsp;: tracer une ligne au-delà de laquelle la biotechnologie attaque la dignité elle-même.</li>
               </ul>
               <p>
                 <strong>Continuité avec Kant.</strong> Habermas reprend la formule de
@@ -160,8 +160,8 @@ const DigniteHumainePage: React.FC = () => {
 
           <PRCard number="05" title="Paraperso prêt à l'emploi">
             <div className="space-y-4 text-sm md:text-base">
-              <div className="bg-pr-orange-pale rounded-xl p-5">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">
+              <div className="bg-pr-gray-bg rounded-xl p-5">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">
                   La dignité comme socle de l&apos;humanité moderne
                 </h3>
                 <p className="text-xs italic mb-3">
@@ -212,19 +212,19 @@ const DigniteHumainePage: React.FC = () => {
           <PRCard number="06" title="Où mobiliser ces références ?">
             <div className="space-y-4 text-sm md:text-base">
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Qu&apos;est-ce que la dignité humaine&nbsp;?</strong>&nbsp;» — sujet frontal.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Toute vie humaine est-elle digne d&apos;être vécue&nbsp;?</strong>&nbsp;» — fin de vie, euthanasie.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Faut-il limiter le progrès technique au nom de l&apos;humanité&nbsp;?</strong>&nbsp;» — Habermas central.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;humanité a-t-elle des droits&nbsp;?</strong>&nbsp;» — articulation 1948 et droits humains.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le respect</strong>&nbsp;» — Kant, formule de l&apos;humanité.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Faut-il toujours respecter l&apos;autre&nbsp;?</strong>&nbsp;» — dignité comme limite à toute action.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Qu&apos;est-ce que la dignité humaine&nbsp;?</strong>&nbsp;» — sujet frontal.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Toute vie humaine est-elle digne d&apos;être vécue&nbsp;?</strong>&nbsp;» — fin de vie, euthanasie.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Faut-il limiter le progrès technique au nom de l&apos;humanité&nbsp;?</strong>&nbsp;» — Habermas central.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;humanité a-t-elle des droits&nbsp;?</strong>&nbsp;» — articulation 1948 et droits humains.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le respect</strong>&nbsp;» — Kant, formule de l&apos;humanité.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Faut-il toujours respecter l&apos;autre&nbsp;?</strong>&nbsp;» — dignité comme limite à toute action.</li>
               </ul>
             </div>
           </PRCard>
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/articles">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des articles
               </Button>
             </Link>

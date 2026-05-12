@@ -43,7 +43,7 @@ export const EnglishSampleEssayTemplate: React.FC<EnglishSampleEssayTemplateProp
       Icon={Icon}
     >
       <div className="max-w-3xl mx-auto">
-        <article className="bg-white border border-pr-gray-light rounded-2xl overflow-hidden">
+        <article className="bg-carnet-paper-2 border border-carnet-rule rounded-2xl overflow-hidden">
           <div className="h-[2px] bg-pr-orange" />
           <header className="p-6 sm:p-8 border-b border-pr-gray-light">
             <div className="text-[10px] font-dm-sans font-semibold uppercase tracking-[0.12em] text-pr-orange-dark mb-3">

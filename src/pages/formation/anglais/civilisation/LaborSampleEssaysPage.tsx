@@ -15,7 +15,7 @@ const LaborSampleEssaysPage = () => {
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
             <Link to="/formation/anglais" className="hover:text-foreground transition-colors">
-              Formation <span className="text-pr-orange-dark">Anglais</span>
+              Formation <span className="text-pr-black">Anglais</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
             <Link to="/formation/anglais/civilisation" className="hover:text-foreground transition-colors">
@@ -31,8 +31,8 @@ const LaborSampleEssaysPage = () => {
         <div className="max-w-4xl mx-auto bg-white rounded-lg border shadow-sm">
           <div className="sticky top-0 bg-white border-b p-6 flex items-center justify-between rounded-t-lg">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-orange-100">
-                <BookOpen className="h-5 w-5 text-pr-orange-dark" />
+              <div className="p-2 rounded-lg bg-gray-100">
+                <BookOpen className="h-5 w-5 text-pr-black" />
               </div>
               <div>
                 <h2 className="text-xl font-bold text-gray-900">Future of Work</h2>

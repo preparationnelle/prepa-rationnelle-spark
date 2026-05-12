@@ -150,7 +150,7 @@ const GeopolitiquesMethodologiePage = () => {
           {articles.map((article, idx) => (
             <div
               key={article.id}
-              className={`bg-white rounded-xl p-6 shadow-md transition-all duration-300 border group ${
+              className={`bg-carnet-paper-2 rounded-xl p-6 shadow-none transition-all duration-300 border border-carnet-rule group ${
                 article.disabled
                   ? 'opacity-60 cursor-not-allowed'
                   : 'hover:shadow-2xl hover:scale-105 hover:-translate-y-1 hover:border-carnet-red/30 border-transparent'
@@ -174,7 +174,7 @@ const GeopolitiquesMethodologiePage = () => {
                   <div className="flex gap-3">
                     {article.route && !article.disabled ? (
                       <Link to={article.route}>
-                        <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-4 py-2 rounded-md font-medium">
+                        <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-4 py-2 rounded-md font-medium">
                           <FileText className="mr-2 h-4 w-4" />
                           Lire l'article
                         </Button>
@@ -183,7 +183,7 @@ const GeopolitiquesMethodologiePage = () => {
                       <Button
                         disabled={article.disabled}
                         className={`px-4 py-2 rounded-md font-medium ${
-                          article.disabled ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-pr-orange hover:bg-pr-orange-dark text-white'
+                          article.disabled ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-pr-black hover:bg-pr-black-dark text-white'
                         }`}
                         onClick={() => {
                           if (!article.disabled && !article.route) {
@@ -205,7 +205,7 @@ const GeopolitiquesMethodologiePage = () => {
         {/* Article principal */}
         <div id="article-principal" className="max-w-4xl mx-auto">
           <Card className="border-2 border-carnet-red/30 mb-8">
-            <CardHeader className="bg-pr-orange-pale">
+            <CardHeader className="bg-pr-gray-bg">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 rounded-lg bg-carnet-red text-white">
                   <PenTool className="h-5 w-5" />
@@ -265,7 +265,7 @@ const GeopolitiquesMethodologiePage = () => {
                     <h4 className="font-semibold mb-4">Exemples d'études de cas polyvalentes :</h4>
                     <div className="grid gap-4">
                       {etudesDeCasPassePartout.map((etude, index) => (
-                        <Card key={index} className="border-l-4 border-l-blue-500">
+                        <Card key={index} className="border-l-4 border-l-carnet-red">
                           <CardContent className="p-4">
                             <div className="flex items-start justify-between gap-4">
                               <div className="flex-1">
@@ -279,7 +279,7 @@ const GeopolitiquesMethodologiePage = () => {
                     </div>
                   </div>
 
-                  <div className="bg-pr-orange-pale p-4 rounded-lg">
+                  <div className="bg-pr-gray-bg p-4 rounded-lg">
                     <h4 className="font-semibold mb-3 flex items-center gap-2">
                       <BookOpen className="h-4 w-4" />
                       Comment les apprendre efficacement ?
@@ -331,7 +331,7 @@ const GeopolitiquesMethodologiePage = () => {
                     </div>
                   </div>
 
-                  <div className="bg-pr-orange-pale p-4 rounded-lg">
+                  <div className="bg-pr-gray-bg p-4 rounded-lg">
                     <h4 className="font-semibold mb-4">Méthode pour préparer une dissertation type :</h4>
                     
                     <div className="space-y-4">
@@ -346,7 +346,7 @@ const GeopolitiquesMethodologiePage = () => {
                         <h5 className="font-medium mb-3">2. Construire un plan en trois parties systématiquement réutilisable</h5>
                         <div className="space-y-3">
                           {methodePlanType.map((partie, index) => (
-                            <Card key={index} className="border-l-4 border-l-blue-500">
+                            <Card key={index} className="border-l-4 border-l-carnet-red">
                               <CardContent className="p-3">
                                 <h6 className="font-medium">{partie.partie}</h6>
                                 <p className="text-sm text-muted-foreground">{partie.description}</p>
@@ -359,7 +359,7 @@ const GeopolitiquesMethodologiePage = () => {
 
                       <div>
                         <h5 className="font-medium mb-2">3. Apprendre les accroches et citations par cœur</h5>
-                        <div className="bg-white p-3 rounded border-l-4 border-l-blue-500">
+                        <div className="bg-carnet-paper-2 p-3 rounded border-l-4 border-l-carnet-red">
                           <p className="text-sm italic">
                             « Les frontières sont le mariage du droit et de la force » – Michel Foucher
                           </p>
@@ -395,7 +395,7 @@ const GeopolitiquesMethodologiePage = () => {
                     il faut savoir les mobiliser rapidement.
                   </p>
 
-                  <div className="bg-pr-orange-pale p-4 rounded-lg">
+                  <div className="bg-pr-gray-bg p-4 rounded-lg">
                     <h4 className="font-semibold mb-3 flex items-center gap-2">
                       <CheckCircle className="h-4 w-4" />
                       Comment s'entraîner efficacement ?

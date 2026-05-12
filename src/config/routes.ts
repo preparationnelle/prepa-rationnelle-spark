@@ -524,6 +524,9 @@ const OrganisationEtePage = lazy(() => import('../pages/offres/OrganisationEtePa
 const PreparationCubePage = lazy(() => import('../pages/offres/PreparationCubePage'));
 const OffreGratuitePage = lazy(() => import('../pages/offres/OffreGratuitePage'));
 
+// Landing pages
+const LandingPrepaMathsPage = lazy(() => import('../pages/landingpages/LandingPrepaMathsPage'));
+
 // Methodologie pages
 const MethodEntretiensPersonnalitePage = lazy(() => import('../pages/methodologie/MethodEntretiensPersonnalitePage'));
 const StorytellingMethodePage = lazy(() => import('../pages/StorytellingMethodePage'));
@@ -550,6 +553,11 @@ const QuestionsDestabilisantesPage = lazy(() => import('../pages/methodologie/Qu
 const ParlerDefautsPage = lazy(() => import('../pages/methodologie/ParlerDefautsPage'));
 const ValoriserExperiencesPage = lazy(() => import('../pages/methodologie/ValoriserExperiencesPage'));
 const QuestionsAuJuryPage = lazy(() => import('../pages/methodologie/QuestionsAuJuryPage'));
+const BanqueAnecdotesPage = lazy(() => import('../pages/methodologie/BanqueAnecdotesPage'));
+const BanqueQuestionsPage = lazy(() => import('../pages/methodologie/BanqueQuestionsPage'));
+const InternationalPage = lazy(() => import('../pages/methodologie/InternationalPage'));
+const SeDifferencierPage = lazy(() => import('../pages/methodologie/SeDifferencierPage'));
+const AssociationsEcolePage = lazy(() => import('../pages/methodologie/AssociationsEcolePage'));
 
 // Articles pages
 const ArticlesPrimairePage = lazy(() => import('../pages/ArticlesPrimairePage'));
@@ -677,6 +685,7 @@ const ExosClassiquesPage = lazy(() => import('../pages/articles/ExosClassiquesPa
 const AnnalesStrategiePage = lazy(() => import('../pages/articles/AnnalesStrategiePage'));
 const EntretienInverseGEMPage = lazy(() => import('../pages/EntretienInverseGEMPage'));
 const CVProjectifPage = lazy(() => import('../pages/CVProjectifPage'));
+const MiseEnSituationESSECPage = lazy(() => import('../pages/MiseEnSituationESSECPage'));
 
 // School pages
 const ESCPPage = lazy(() => import('../pages/ESCPPage'));
@@ -819,6 +828,7 @@ export const routes: RouteConfig[] = [
   { path: '/colle/detail/:sessionId', component: ColleDetailPage, title: 'Détail Colle', protected: true },
   { path: '/stage-accompagnement', component: StageAccompagnementPage, title: 'Stage & Accompagnement' },
   { path: '/offres/pre-rentree', component: PreRentreePage, title: 'Stage de Pré-entrée' },
+  { path: '/landing/prepa-maths', component: LandingPrepaMathsPage, title: 'Coaching Maths Prépa ECG' },
   { path: '/python-article', component: PythonArticlePage, title: 'Article Python' },
   { path: '/formation', component: FormationPage, title: 'Formations' },
   { path: '/formations', component: FormationsOverviewPage, title: 'Toutes nos formations' },
@@ -982,6 +992,11 @@ export const routes: RouteConfig[] = [
   { path: '/methodologie/parler-defauts', component: ParlerDefautsPage, title: 'Parler de ses Défauts' },
   { path: '/methodologie/valoriser-experiences', component: ValoriserExperiencesPage, title: 'Valoriser ses Expériences' },
   { path: '/methodologie/questions-au-jury', component: QuestionsAuJuryPage, title: 'Questions au Jury' },
+  { path: '/methodologie/banque-anecdotes', component: BanqueAnecdotesPage, title: "Banque d'Anecdotes" },
+  { path: '/methodologie/banque-questions', component: BanqueQuestionsPage, title: 'Banque de 100 Questions' },
+  { path: '/methodologie/international', component: InternationalPage, title: "Parler de l'International" },
+  { path: '/methodologie/se-differencier', component: SeDifferencierPage, title: 'Se Différencier en Entretien' },
+  { path: '/methodologie/associations-ecole', component: AssociationsEcolePage, title: 'Associations de l\'École' },
   { path: '/dashboard', component: DashboardPage, title: 'Mon Tableau de bord', protected: true },
 
   // Protected pages
@@ -1707,6 +1722,7 @@ export const routes: RouteConfig[] = [
   { path: '/articles/annales-strategie', component: AnnalesStrategiePage, title: 'Dompter les annales' },
   { path: '/entretien-inverse-gem', component: EntretienInverseGEMPage, title: 'L\'entretien inversé à GEM' },
   { path: '/cv-projectif', component: CVProjectifPage, title: 'Guide complet pour réaliser son CV projectif' },
+  { path: '/mise-en-situation-essec', component: MiseEnSituationESSECPage, title: 'La mise en situation de l\'ESSEC' },
 
   // School pages
   { path: '/escp', component: ESCPPage, title: 'ESCP Business School' },

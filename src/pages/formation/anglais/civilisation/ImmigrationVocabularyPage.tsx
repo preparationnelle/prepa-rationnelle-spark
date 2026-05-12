@@ -202,7 +202,7 @@ const ImmigrationVocabularyPage = () => {
       'Immigration et migration': 'bg-carnet-red',
       'Réfugiés et asile': 'bg-green-500',
       'Contrôle et sécurité': 'bg-red-500',
-      'Frontières et zones': 'bg-pr-orange',
+      'Frontières et zones': 'bg-pr-black',
       'Documents et identité': 'bg-purple-500',
       'Politiques et réglementation': 'bg-indigo-500',
       'Intégration et assimilation': 'bg-pink-500',
@@ -226,7 +226,7 @@ const ImmigrationVocabularyPage = () => {
               </Link>
             </div>
             <div className="flex items-center gap-4">
-              <Badge variant="outline" className="bg-pr-orange-pale text-carnet-red border-carnet-red/30">
+              <Badge variant="outline" className="bg-pr-gray-bg text-carnet-red border-carnet-red/30">
                 Immigration et Contrôle des frontières
               </Badge>
               <span className="text-sm text-gray-600">
@@ -295,7 +295,7 @@ const ImmigrationVocabularyPage = () => {
                 }`}
               >
                 <div className="text-center">
-                  <h2 className="text-3xl font-bold text-orange-800 mb-4">
+                  <h2 className="text-3xl font-bold text-gray-800 mb-4">
                     {currentCard.english}
                   </h2>
                   <p className="text-gray-600">Traduction en anglais</p>
@@ -391,7 +391,7 @@ const ImmigrationVocabularyPage = () => {
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div>
-                <p className="text-2xl font-bold text-orange-800">{vocabularyData.length}</p>
+                <p className="text-2xl font-bold text-gray-800">{vocabularyData.length}</p>
                 <p className="text-sm text-gray-600">Mots au total</p>
               </div>
               <div>
@@ -401,13 +401,13 @@ const ImmigrationVocabularyPage = () => {
                 <p className="text-sm text-gray-600">Catégories</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-orange-800">
+                <p className="text-2xl font-bold text-gray-800">
                   {Math.round(progress)}%
                 </p>
                 <p className="text-sm text-gray-600">Progression</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-pr-orange-dark">
+                <p className="text-2xl font-bold text-pr-black">
                   {currentCardIndex + 1}
                 </p>
                 <p className="text-sm text-gray-600">Carte actuelle</p>

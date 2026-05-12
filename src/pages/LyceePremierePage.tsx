@@ -124,9 +124,9 @@ const LyceePremierePage = () => {
 
   /* Modern color palette using Tailwind classes dynamically */
   const colorClasses: Record<string, { bg: string, border: string, text: string, icon: string, shadow: string, gradient: string }> = {
-    blue: { bg: 'bg-pr-orange-pale', border: 'border-carnet-red/20', text: 'text-carnet-red-deep', icon: 'text-carnet-red', shadow: 'shadow-carnet-red/50', gradient: 'from-carnet-red to-pr-orange' },
+    blue: { bg: 'bg-pr-gray-bg', border: 'border-carnet-red/20', text: 'text-carnet-red-deep', icon: 'text-carnet-red', shadow: 'shadow-carnet-red/50', gradient: 'from-carnet-red to-pr-black' },
     emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-900', icon: 'text-emerald-600', shadow: 'shadow-emerald-200/50', gradient: 'from-emerald-500 to-emerald-600' },
-    orange: { bg: 'bg-orange-50', border: 'border-orange-100', text: 'text-orange-900', icon: 'text-pr-orange-dark', shadow: 'shadow-orange-200/50', gradient: 'from-pr-orange to-pr-orange-dark' },
+    orange: { bg: 'bg-gray-50', border: 'border-orange-100', text: 'text-orange-900', icon: 'text-pr-black', shadow: 'shadow-orange-200/50', gradient: 'from-pr-orange to-pr-black' },
     violet: { bg: 'bg-violet-50', border: 'border-violet-100', text: 'text-violet-900', icon: 'text-violet-600', shadow: 'shadow-violet-200/50', gradient: 'from-violet-500 to-violet-600' },
     pink: { bg: 'bg-pink-50', border: 'border-pink-100', text: 'text-pink-900', icon: 'text-pink-600', shadow: 'shadow-pink-200/50', gradient: 'from-pink-500 to-pink-600' },
     rose: { bg: 'bg-rose-50', border: 'border-rose-100', text: 'text-rose-900', icon: 'text-rose-600', shadow: 'shadow-rose-200/50', gradient: 'from-rose-500 to-rose-600' },
@@ -145,14 +145,14 @@ const LyceePremierePage = () => {
       <div className="relative font-sans">
         {/* Modern Abstract Background - Orange Theme */}
         <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-orange-50/50 to-transparent -z-10" />
-        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-orange-100/30 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-gray-100/30 rounded-full blur-3xl -z-10" />
         <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-rose-100/30 rounded-full blur-3xl -z-10" />
 
         <div className="container mx-auto px-4 sm:px-6 py-12 relative z-10">
           <div className="max-w-7xl mx-auto">
             {/* Header Section */}
             <div className="text-center mb-16 space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 text-pr-orange-dark text-sm font-medium border border-orange-100 mb-4 animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-50 text-pr-black text-sm font-medium border border-orange-100 mb-4 animate-fade-in-up">
                 <GraduationCap className="h-4 w-4" />
                 <span>Niveau Lycée</span>
               </div>
@@ -167,7 +167,7 @@ const LyceePremierePage = () => {
 
               <div className="pt-4">
                 <Link to="/articles/lycee">
-                  <Button variant="ghost" className="group text-carnet-ink-soft hover:text-pr-orange-dark hover:bg-pr-orange-pale transition-all duration-300">
+                  <Button variant="ghost" className="group text-carnet-ink-soft hover:text-pr-black hover:bg-pr-gray-bg transition-all duration-300">
                     <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     Retour aux niveaux lycée
                   </Button>
@@ -178,7 +178,7 @@ const LyceePremierePage = () => {
             {/* Matières Communes Section */}
             <div className="mb-12">
               <h2 className="text-2xl font-bold text-carnet-ink mb-6 flex items-center gap-2">
-                <div className="w-1.5 h-8 bg-pr-orange rounded-full"></div>
+                <div className="w-1.5 h-8 bg-pr-black rounded-full"></div>
                 Matières communes à toutes les séries
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
@@ -260,7 +260,7 @@ const LyceePremierePage = () => {
                   <div className="h-2 bg-gradient-to-r from-pr-orange to-rose-600"></div>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3 text-2xl font-bold text-carnet-ink">
-                      <Clock className="h-6 w-6 text-pr-orange-dark" />
+                      <Clock className="h-6 w-6 text-pr-black" />
                       Les différentes séries
                     </CardTitle>
                   </CardHeader>
@@ -268,7 +268,7 @@ const LyceePremierePage = () => {
                     <div className="grid md:grid-cols-2 gap-8">
                       <div>
                         <h4 className="flex items-center gap-2 text-lg font-bold text-carnet-ink mb-4 pb-2 border-b border-carnet-rule/30">
-                          <Star className="h-5 w-5 text-pr-orange" />
+                          <Star className="h-5 w-5 text-pr-black" />
                           Série Générale
                         </h4>
                         <p className="text-carnet-ink-soft text-sm mb-4 leading-relaxed">
@@ -332,7 +332,7 @@ const LyceePremierePage = () => {
                       Le choix des spécialités est crucial pour Parcoursup. Nos experts vous guident.
                     </p>
                     <Link to="/contact" className="w-full">
-                      <Button size="lg" className="w-full bg-white text-pr-orange-dark hover:bg-pr-orange-pale font-bold border-0 shadow-lg hover:shadow-xl transition-all h-12">
+                      <Button size="lg" className="w-full bg-white text-pr-black hover:bg-pr-gray-bg font-bold border-0 shadow-lg hover:shadow-xl transition-all h-12">
                         Prendre rendez-vous
                       </Button>
                     </Link>

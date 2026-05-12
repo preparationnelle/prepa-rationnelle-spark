@@ -53,7 +53,7 @@ const LyceeAnglaisPage = () => {
               </div>
 
               <div className="prose prose-lg max-w-none text-gray-700">
-                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-carnet-red/40 mb-8">
+                <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-carnet-red/40 mb-8">
                   <p className="text-carnet-red-deep font-medium text-lg">
                     Réussir en anglais en terminale nécessite une approche structurée et régulière. Cette méthodologie vous aidera à atteindre le niveau B2 requis et à exceller aux épreuves du baccalauréat.
                   </p>
@@ -264,7 +264,7 @@ const LyceeAnglaisPage = () => {
                   <li>Réajuster votre méthode de travail</li>
                 </ul>
 
-                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-purple-400">
+                <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-purple-400">
                   <p className="text-carnet-red-deep font-medium">
                     Cette méthodologie, appliquée avec régularité et détermination, vous permettra d'atteindre le niveau B2 requis en terminale et de réussir brillamment vos épreuves d'anglais au baccalauréat.
                   </p>
@@ -274,19 +274,19 @@ const LyceeAnglaisPage = () => {
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <div className="bg-gradient-to-br from-carnet-paper-2 to-orange-50 border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-pr-orange hover:bg-gradient-to-br hover:from-orange-50 hover:to-pr-orange-pale transition-all duration-300 group p-8 rounded-lg">
-                <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                  <Languages className="h-8 w-8 text-carnet-red group-hover:text-pr-orange transition-colors duration-300" />
+              <div className="bg-gradient-to-br from-carnet-paper-2 to-orange-50 border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-pr-black hover:bg-gradient-to-br hover:from-orange-50 hover:to-pr-black-pale transition-all duration-300 group p-8 rounded-lg">
+                <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+                  <Languages className="h-8 w-8 text-carnet-red group-hover:text-pr-black transition-colors duration-300" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">
+                <h3 className="text-2xl font-bold mb-4 text-carnet-red group-hover:text-pr-black transition-colors duration-300">
                   Besoin d'aide personnalisée en anglais ?
                 </h3>
-                <p className="text-gray-600 group-hover:text-pr-orange-dark transition-colors duration-300 mb-6">
+                <p className="text-gray-600 group-hover:text-pr-black transition-colors duration-300 mb-6">
                   Nos experts vous accompagnent pour maîtriser l'anglais LV1 et atteindre le niveau B2.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/contact">
-                    <Button size="lg" className="bg-carnet-red hover:bg-pr-orange-dark text-white transition-all duration-300">
+                    <Button size="lg" className="bg-carnet-red hover:bg-pr-black-dark text-white transition-all duration-300">
                       Nous contacter
                     </Button>
                   </Link>

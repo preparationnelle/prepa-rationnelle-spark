@@ -45,7 +45,7 @@ const InversionsEmphasePage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+            <div className="p-3 rounded-lg bg-pr-black-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Inversions et Emphase
@@ -56,14 +56,14 @@ const InversionsEmphasePage = () => {
         </div>
 
         {/* Introduction */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale">
+        <Card className="mb-8 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-pr-black-pale">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <HelpCircle className="h-6 w-6" />
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark space-y-3">
+          <CardContent className="text-pr-black space-y-3">
             <p>Les inversions et structures emphatiques renforcent une idée, marquent la surprise, la restriction ou l’opposition, et relèvent le style à l’écrit comme à l’oral.</p>
           </CardContent>
         </Card>
@@ -77,16 +77,16 @@ const InversionsEmphasePage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">Adverbes fréquents</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">Never / Rarely / Seldom</span> had I seen such chaos.</li>
-                <li><span className="text-pr-orange-dark font-semibold">Hardly / Scarcely / Barely</span> had he arrived when it started to rain.</li>
-                <li><span className="text-pr-orange-dark font-semibold">No sooner ... than</span> had we left than it began to snow.</li>
-                <li><span className="text-pr-orange-dark font-semibold">Little</span> did he know the truth.</li>
-                <li><span className="text-pr-orange-dark font-semibold">Only</span> after/when/if/by ... did he realize...</li>
+                <li><span className="text-pr-black font-semibold">Never / Rarely / Seldom</span> had I seen such chaos.</li>
+                <li><span className="text-pr-black font-semibold">Hardly / Scarcely / Barely</span> had he arrived when it started to rain.</li>
+                <li><span className="text-pr-black font-semibold">No sooner ... than</span> had we left than it began to snow.</li>
+                <li><span className="text-pr-black font-semibold">Little</span> did he know the truth.</li>
+                <li><span className="text-pr-black font-semibold">Only</span> after/when/if/by ... did he realize...</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Structure</h3>
-              <p><span className="text-pr-orange-dark font-semibold">Adverbe en tête</span> + auxiliaire + sujet + verbe.</p>
+              <p><span className="text-pr-black font-semibold">Adverbe en tête</span> + auxiliaire + sujet + verbe.</p>
               <p className="text-sm text-gray-600">No sooner <span className="italic">had</span> we <span className="italic">left</span> than ...</p>
             </section>
           </CardContent>
@@ -99,9 +99,9 @@ const InversionsEmphasePage = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             <ul className="list-disc pl-6 space-y-1">
-              <li><span className="text-pr-orange-dark font-semibold">Here/There</span> comes the bus. / There goes the sun.</li>
-              <li><span className="text-pr-orange-dark font-semibold">So</span> do I. / <span className="text-pr-orange-dark font-semibold">Neither</span> did he.</li>
-              <li><span className="text-pr-orange-dark font-semibold">So + adj + be/do + sujet + that</span> : <span className="text-pr-orange-dark font-semibold">So</span> beautiful <span className="text-pr-orange-dark font-semibold">was</span> the view that we stayed.</li>
+              <li><span className="text-pr-black font-semibold">Here/There</span> comes the bus. / There goes the sun.</li>
+              <li><span className="text-pr-black font-semibold">So</span> do I. / <span className="text-pr-black font-semibold">Neither</span> did he.</li>
+              <li><span className="text-pr-black font-semibold">So + adj + be/do + sujet + that</span> : <span className="text-pr-black font-semibold">So</span> beautiful <span className="text-pr-black font-semibold">was</span> the view that we stayed.</li>
             </ul>
           </CardContent>
         </Card>
@@ -115,22 +115,22 @@ const InversionsEmphasePage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">So / Such ... that</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">So + adj/adverbe + that</span> : It was <span className="text-pr-orange-dark font-semibold">so</span> late that we left.</li>
-                <li><span className="text-pr-orange-dark font-semibold">Such + (a/an) + adj + nom + that</span> : It was <span className="text-pr-orange-dark font-semibold">such</span> a mess that we gave up.</li>
+                <li><span className="text-pr-black font-semibold">So + adj/adverbe + that</span> : It was <span className="text-pr-black font-semibold">so</span> late that we left.</li>
+                <li><span className="text-pr-black font-semibold">Such + (a/an) + adj + nom + that</span> : It was <span className="text-pr-black font-semibold">such</span> a mess that we gave up.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Cleft sentences (It-cleft / Wh-cleft)</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">It is/was + focus + that/who ...</span> : It was <span className="text-pr-orange-dark font-semibold">John</span> who called.</li>
-                <li><span className="text-pr-orange-dark font-semibold">What-clause + be + focus</span> : What I need is <span className="text-pr-orange-dark font-semibold">time</span>.</li>
+                <li><span className="text-pr-black font-semibold">It is/was + focus + that/who ...</span> : It was <span className="text-pr-black font-semibold">John</span> who called.</li>
+                <li><span className="text-pr-black font-semibold">What-clause + be + focus</span> : What I need is <span className="text-pr-black font-semibold">time</span>.</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Fronting (mise en tête)</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">Up the hill</span> came the soldiers.</li>
-                <li><span className="text-pr-orange-dark font-semibold">Into the room</span> walked the manager.</li>
+                <li><span className="text-pr-black font-semibold">Up the hill</span> came the soldiers.</li>
+                <li><span className="text-pr-black font-semibold">Into the room</span> walked the manager.</li>
               </ul>
             </section>
           </CardContent>
@@ -140,28 +140,28 @@ const InversionsEmphasePage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-pr-orange-dark" />
+              <Table className="h-6 w-6 text-pr-black" />
               4. Tableau Récapitulatif
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Structure</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Effet</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Structure</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Effet</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Never / Hardly ...</td><td className="border px-3 py-2">Never have I seen...</td><td className="border px-3 py-2">Surprise/intensité</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">No sooner ... than</td><td className="border px-3 py-2">No sooner had we left than...</td><td className="border px-3 py-2">Immédiateté</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">So do I / Neither did he</td><td className="border px-3 py-2">So do I.</td><td className="border px-3 py-2">Écho/accord</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">So/Such ... that</td><td className="border px-3 py-2">Such a mess that...</td><td className="border px-3 py-2">Intensité + conséquence</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">It-cleft</td><td className="border px-3 py-2">It was John who...</td><td className="border px-3 py-2">Focalisation</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Wh-cleft</td><td className="border px-3 py-2">What I need is time.</td><td className="border px-3 py-2">Focalisation</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Fronting</td><td className="border px-3 py-2">Into the room walked...</td><td className="border px-3 py-2">Effet stylistique</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Never / Hardly ...</td><td className="border px-3 py-2">Never have I seen...</td><td className="border px-3 py-2">Surprise/intensité</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">No sooner ... than</td><td className="border px-3 py-2">No sooner had we left than...</td><td className="border px-3 py-2">Immédiateté</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">So do I / Neither did he</td><td className="border px-3 py-2">So do I.</td><td className="border px-3 py-2">Écho/accord</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">So/Such ... that</td><td className="border px-3 py-2">Such a mess that...</td><td className="border px-3 py-2">Intensité + conséquence</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">It-cleft</td><td className="border px-3 py-2">It was John who...</td><td className="border px-3 py-2">Focalisation</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Wh-cleft</td><td className="border px-3 py-2">What I need is time.</td><td className="border px-3 py-2">Focalisation</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Fronting</td><td className="border px-3 py-2">Into the room walked...</td><td className="border px-3 py-2">Effet stylistique</td></tr>
                 </tbody>
               </table>
             </div>
@@ -175,26 +175,26 @@ const InversionsEmphasePage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Oublier l’auxiliaire dans l’inversion (❌ Never I saw → ✅ Never <span className="text-pr-orange-dark font-semibold">did</span> I see).</li>
-              <li>Employer « so » pour les noms (préférer <span className="text-pr-orange-dark font-semibold">such (a)</span>).</li>
+              <li>Oublier l’auxiliaire dans l’inversion (❌ Never I saw → ✅ Never <span className="text-pr-black font-semibold">did</span> I see).</li>
+              <li>Employer « so » pour les noms (préférer <span className="text-pr-black font-semibold">such (a)</span>).</li>
               <li>Confondre it-cleft et wh-cleft.</li>
             </ul>
           </CardContent>
         </Card>
 
         {/* CTA exercices */}
-        <Card className="mt-2 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mt-2 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-amber-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <Target className="h-6 w-6" />
               Prêt à mettre en pratique ?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-pr-orange-dark mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
+            <p className="text-lg text-pr-black mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/inversions/exercices">
-                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-black-dark hover:bg-pr-black-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

@@ -45,9 +45,9 @@ const AccompagnementLecturePage = () => {
                     {/* Corps de l'article */}
                     <div className="prose prose-lg prose-gray max-w-none">
 
-                        <div className="bg-orange-50 border-l-4 border-pr-orange p-6 mb-8 rounded-r-lg">
+                        <div className="bg-gray-50 border-l-4 border-pr-black p-6 mb-8 rounded-r-lg">
                             <h3 className="text-orange-900 font-bold text-lg mt-0">Note aux parents</h3>
-                            <p className="text-orange-800 mb-0">
+                            <p className="text-gray-800 mb-0">
                                 <strong>52% des parents</strong> se disent anxieux concernant les résultats scolaires. En matière de lecture, la différence majeure académique n'est pas la précocité, mais l'amour de la lecture.
                             </p>
                         </div>
@@ -78,7 +78,7 @@ const AccompagnementLecturePage = () => {
                                         </ul>
                                     </div>
                                     <div>
-                                        <p className="text-sm font-semibold text-pr-orange-dark uppercase">Pas d'inquiétude</p>
+                                        <p className="text-sm font-semibold text-pr-black uppercase">Pas d'inquiétude</p>
                                         <p className="text-sm text-gray-600">C'est du décodage en construction. Compréhension globale souvent décalée.</p>
                                     </div>
                                 </div>
@@ -96,7 +96,7 @@ const AccompagnementLecturePage = () => {
                                         </ul>
                                     </div>
                                     <div>
-                                        <p className="text-sm font-semibold text-pr-orange-dark uppercase">Pas d'inquiétude</p>
+                                        <p className="text-sm font-semibold text-pr-black uppercase">Pas d'inquiétude</p>
                                         <p className="text-sm text-gray-600">Toujours quelques erreurs sur mots nouveaux. Hésite encore.</p>
                                     </div>
                                 </div>

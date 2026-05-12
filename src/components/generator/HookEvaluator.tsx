@@ -116,14 +116,14 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
         <div className="space-y-6">
             {/* Input Card */}
             <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-                <div className="h-[3px] w-full bg-pr-orange" />
+                <div className="h-[3px] w-full bg-pr-black" />
                 <CardHeader className="px-6 pt-5 pb-4">
                     <div className="flex items-center gap-3">
-                        <div className="w-11 h-11 rounded-xl bg-pr-orange-pale border border-pr-orange-soft flex items-center justify-center">
-                            <Target className="h-5 w-5 text-pr-orange-dark" />
+                        <div className="w-11 h-11 rounded-xl bg-pr-gray-bg border border-pr-black-soft flex items-center justify-center">
+                            <Target className="h-5 w-5 text-pr-black" />
                         </div>
                         <div>
-                            <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                            <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
                                 Géopolitique
                             </div>
                             <CardTitle className="font-dm-serif text-2xl text-pr-black leading-none">
@@ -140,13 +140,13 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                     <div className="space-y-3">
                         <div className="flex items-center justify-between gap-3">
                             <Label htmlFor="subject" className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
-                                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-orange-pale text-pr-orange-dark text-[11px] font-bold">
+                                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-gray-bg text-pr-black text-[11px] font-bold">
                                     1
                                 </span>
                                 Sujet de dissertation
                             </Label>
                             {subjectFromParent && (
-                                <Badge className="bg-pr-orange-pale text-pr-orange-dark border border-pr-orange-soft hover:bg-pr-orange-pale rounded-full font-semibold text-[11px] uppercase tracking-wider">
+                                <Badge className="bg-pr-gray-bg text-pr-black border border-pr-black-soft hover:bg-pr-gray-bg rounded-full font-semibold text-[11px] uppercase tracking-wider">
                                     Sujet imposé
                                 </Badge>
                             )}
@@ -158,22 +158,22 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                                 value={subject}
                                 onChange={(e) => setSubject(e.target.value)}
                                 readOnly={!!subjectFromParent}
-                                className={`text-[15px] h-12 rounded-xl pr-12 ${subjectFromParent ? 'bg-pr-orange-pale/40 border-pr-orange-pale text-pr-gray-dark' : 'bg-white border-pr-gray-light focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20'} text-pr-black placeholder:text-pr-gray-mid transition-colors`}
+                                className={`text-[15px] h-12 rounded-xl pr-12 ${subjectFromParent ? 'bg-pr-gray-bg/40 border-pr-black-pale text-pr-gray-dark' : 'bg-white border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20'} text-pr-black placeholder:text-pr-gray-mid transition-colors`}
                             />
                             {!subjectFromParent && (
                                 <div className="absolute top-1 right-1">
                                     <Select onValueChange={(value) => setSubject(value)} value={Object.values(subjectsByCategory).flat().includes(subject) ? subject : undefined}>
-                                        <SelectTrigger className="w-10 h-10 p-0 flex justify-center items-center bg-transparent border-0 hover:bg-pr-orange-pale rounded-lg transition-colors" title="Choisir un sujet prédéfini">
-                                            <BookOpenCheck className="h-4 w-4 text-pr-orange-dark" />
+                                        <SelectTrigger className="w-10 h-10 p-0 flex justify-center items-center bg-transparent border-0 hover:bg-pr-gray-bg rounded-lg transition-colors" title="Choisir un sujet prédéfini">
+                                            <BookOpenCheck className="h-4 w-4 text-pr-black" />
                                         </SelectTrigger>
                                         <SelectContent className="max-h-[400px] bg-white border border-pr-gray-light shadow-xl rounded-xl">
                                             {Object.entries(subjectsByCategory).map(([category, subjects]) => (
                                                 <SelectGroup key={category}>
-                                                    <SelectLabel className="font-semibold text-pr-orange-dark sticky top-0 bg-white z-10 py-2 text-[11px] uppercase tracking-[0.12em]">
+                                                    <SelectLabel className="font-semibold text-pr-black sticky top-0 bg-white z-10 py-2 text-[11px] uppercase tracking-[0.12em]">
                                                         {getCategoryName(category as keyof typeof subjectsByCategory)}
                                                     </SelectLabel>
                                                     {subjects.map((subjectText, idx) => (
-                                                        <SelectItem key={`${category}-${idx}`} value={subjectText} className="cursor-pointer hover:bg-pr-orange-pale focus:bg-pr-orange-pale rounded-md text-pr-black">
+                                                        <SelectItem key={`${category}-${idx}`} value={subjectText} className="cursor-pointer hover:bg-pr-gray-bg focus:bg-pr-gray-bg rounded-md text-pr-black">
                                                             {subjectText}
                                                         </SelectItem>
                                                     ))}
@@ -189,7 +189,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                     {/* Hook */}
                     <div className="space-y-3">
                         <Label htmlFor="hook" className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-orange-pale text-pr-orange-dark text-[11px] font-bold">
+                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-gray-bg text-pr-black text-[11px] font-bold">
                                 2
                             </span>
                             Votre accroche
@@ -199,7 +199,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                             placeholder="Entrez votre accroche ici…"
                             value={hook}
                             onChange={(e) => setHook(e.target.value)}
-                            className="min-h-[140px] resize-y border-pr-gray-light focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 bg-white rounded-xl text-[15px] leading-relaxed p-4 transition-colors text-pr-black placeholder:text-pr-gray-mid"
+                            className="min-h-[140px] resize-y border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 bg-white rounded-xl text-[15px] leading-relaxed p-4 transition-colors text-pr-black placeholder:text-pr-gray-mid"
                         />
                         <div className="text-[13px] text-pr-gray-mid">
                             <span className="font-semibold text-pr-black tabular-nums">{hook.length}</span> caractères · ~{Math.ceil(hook.length / 100)} lignes estimées
@@ -211,7 +211,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                         <Button
                             onClick={handleEvaluate}
                             disabled={isEvaluating || !hook.trim() || !subject.trim()}
-                            className="flex-1 bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold rounded-xl h-12 text-[15px] shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
+                            className="flex-1 bg-pr-black hover:bg-pr-black-dark text-white font-semibold rounded-xl h-12 text-[15px] shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
                         >
                             {isEvaluating ? (
                                 <>
@@ -228,7 +228,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
 
                         <Button
                             onClick={loadExample}
-                            className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-xl h-12 px-5 font-medium transition-colors"
+                            className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-5 font-medium transition-colors"
                         >
                             Exemple
                         </Button>
@@ -256,11 +256,11 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
 
                     {/* Global Score */}
                     <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-                        <div className={`h-[3px] w-full ${(evaluation.globalScore / 20) * 100 >= 70 ? 'bg-pr-orange' : 'bg-pr-orange-soft'}`} />
+                        <div className={`h-[3px] w-full ${(evaluation.globalScore / 20) * 100 >= 70 ? 'bg-pr-black' : 'bg-pr-black-soft'}`} />
                         <CardContent className="p-6 sm:p-8">
                             <div className="flex items-center justify-between gap-4 flex-wrap">
                                 <div>
-                                    <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-1">
+                                    <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-1">
                                         Score global
                                     </div>
                                     <div className="text-[14px] text-pr-gray-mid">
@@ -284,7 +284,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                         ].map((s, idx) => (
                             <Card key={idx} className="rounded-2xl border border-pr-gray-light bg-white shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
                                 <CardContent className="p-5 text-center">
-                                    <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-2">
+                                    <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-2">
                                         {s.label}
                                     </div>
                                     <div className="font-dm-serif text-pr-black leading-none">
@@ -302,7 +302,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                         <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
                             <CardHeader className="px-6 pt-5 pb-3">
                                 <CardTitle className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                                    <CheckCircle2 className="h-3.5 w-3.5 text-pr-orange" />
+                                    <CheckCircle2 className="h-3.5 w-3.5 text-pr-black" />
                                     Points forts
                                 </CardTitle>
                             </CardHeader>
@@ -310,7 +310,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                                 <ul className="space-y-2.5">
                                     {evaluation.strengths.map((strength, idx) => (
                                         <li key={idx} className="flex items-start gap-3 text-pr-gray-dark text-[14px]">
-                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-pr-orange flex-shrink-0"></span>
+                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-pr-black flex-shrink-0"></span>
                                             <span className="leading-relaxed">{strength}</span>
                                         </li>
                                     ))}
@@ -324,7 +324,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                         <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
                             <CardHeader className="px-6 pt-5 pb-3">
                                 <CardTitle className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                                    <TrendingUp className="h-3.5 w-3.5 text-pr-orange" />
+                                    <TrendingUp className="h-3.5 w-3.5 text-pr-black" />
                                     Axes d'amélioration
                                 </CardTitle>
                             </CardHeader>
@@ -332,7 +332,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                                 <ul className="space-y-2.5">
                                     {evaluation.improvements.map((improvement, idx) => (
                                         <li key={idx} className="flex items-start gap-3 text-pr-gray-dark text-[14px]">
-                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-pr-orange-soft flex-shrink-0"></span>
+                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-pr-black-soft flex-shrink-0"></span>
                                             <span className="leading-relaxed">{improvement}</span>
                                         </li>
                                     ))}
@@ -343,10 +343,10 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
 
                     {/* Suggestions */}
                     {evaluation.suggestions.length > 0 && (
-                        <Card className="bg-white rounded-2xl border border-pr-gray-light border-l-[3px] border-l-pr-orange shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+                        <Card className="bg-white rounded-2xl border border-pr-gray-light border-l-[3px] border-l-pr-black shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
                             <CardHeader className="px-6 pt-5 pb-3">
                                 <CardTitle className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                                    <Lightbulb className="h-3.5 w-3.5 text-pr-orange" />
+                                    <Lightbulb className="h-3.5 w-3.5 text-pr-black" />
                                     Suggestions concrètes
                                 </CardTitle>
                             </CardHeader>
@@ -354,7 +354,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                                 <ul className="space-y-2.5">
                                     {evaluation.suggestions.map((suggestion, idx) => (
                                         <li key={idx} className="flex items-start gap-3 text-pr-gray-dark text-[14px]">
-                                            <Lightbulb className="h-4 w-4 text-pr-orange mt-0.5 shrink-0" />
+                                            <Lightbulb className="h-4 w-4 text-pr-black mt-0.5 shrink-0" />
                                             <span className="leading-relaxed">{suggestion}</span>
                                         </li>
                                     ))}
@@ -365,20 +365,20 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
 
                     {/* Improved Proposal */}
                     {evaluation.improvedProposal && (
-                        <Card className="bg-pr-orange-pale/60 border border-pr-orange-pale rounded-2xl overflow-hidden">
+                        <Card className="bg-pr-gray-bg/60 border border-pr-black-pale rounded-2xl overflow-hidden">
                             <CardHeader className="px-6 pt-5 pb-3">
-                                <CardTitle className="text-[11px] font-semibold text-pr-orange-dark uppercase tracking-[0.14em] flex items-center gap-2">
-                                    <Sparkles className="h-3.5 w-3.5 text-pr-orange-dark" />
+                                <CardTitle className="text-[11px] font-semibold text-pr-black uppercase tracking-[0.14em] flex items-center gap-2">
+                                    <Sparkles className="h-3.5 w-3.5 text-pr-black" />
                                     Proposition d'accroche améliorée
                                 </CardTitle>
                             </CardHeader>
                             <CardContent className="px-6 pb-6">
-                                <div className="bg-white p-6 rounded-xl border border-pr-orange-soft">
+                                <div className="bg-white p-6 rounded-xl border border-pr-black-soft">
                                     <p className="font-lora italic text-[16px] leading-[1.6] text-pr-black">
                                         « {evaluation.improvedProposal} »
                                     </p>
                                 </div>
-                                <div className="mt-3 text-[12px] text-pr-orange-dark flex items-center gap-2 font-medium">
+                                <div className="mt-3 text-[12px] text-pr-black flex items-center gap-2 font-medium">
                                     <CheckCircle2 className="h-3.5 w-3.5" />
                                     Version corrigée et optimisée
                                 </div>

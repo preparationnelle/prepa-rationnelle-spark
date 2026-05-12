@@ -669,7 +669,7 @@ const ContinentAfricainChronologiePage = () => {
       case 'independence': return 'bg-green-100 text-green-800';
       case 'cooperation': return 'bg-carnet-red/10 text-carnet-red-deep';
       case 'economique': return 'bg-purple-100 text-purple-800';
-      case 'politique': return 'bg-orange-100 text-orange-800';
+      case 'politique': return 'bg-gray-100 text-gray-800';
       case 'intervention': return 'bg-yellow-100 text-yellow-800';
       case 'sanitaire': return 'bg-pink-100 text-pink-800';
       case 'environnement': return 'bg-emerald-100 text-emerald-800';
@@ -680,7 +680,7 @@ const ContinentAfricainChronologiePage = () => {
 
   const getImportanceStyle = (importance: string) => {
     switch (importance) {
-      case 'major': return 'border-l-4 border-carnet-red bg-pr-orange-pale';
+      case 'major': return 'border-l-4 border-carnet-red bg-pr-gray-bg';
       case 'medium': return 'border-l-4 border-gray-300 bg-gray-50';
       default: return 'border-l-4 border-gray-200 bg-white';
     }
@@ -808,7 +808,7 @@ const ContinentAfricainChronologiePage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="p-4 bg-pr-orange-pale rounded-lg">
+              <div className="p-4 bg-pr-gray-bg rounded-lg">
                 <div className="text-2xl font-bold text-carnet-red">{events.length}</div>
                 <div className="text-sm text-gray-600">Événements</div>
               </div>
@@ -822,8 +822,8 @@ const ContinentAfricainChronologiePage = () => {
                 <div className="text-2xl font-bold text-purple-600">140</div>
                 <div className="text-sm text-gray-600">Années couvertes</div>
               </div>
-              <div className="p-4 bg-orange-50 rounded-lg">
-                <div className="text-2xl font-bold text-pr-orange-dark">
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <div className="text-2xl font-bold text-pr-black">
                   {Object.keys(groupedEvents).length}
                 </div>
                 <div className="text-sm text-gray-600">Décennies</div>

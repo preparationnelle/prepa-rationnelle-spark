@@ -443,13 +443,13 @@ const DashboardPage = () => {
     return (
       <div className="relative min-h-[60vh] flex items-center justify-center px-4">
         <Card className="p-8 text-center max-w-md bg-white border border-pr-gray-light shadow-sm">
-          <div className="w-16 h-16 mx-auto mb-6 bg-pr-orange-pale rounded-2xl flex items-center justify-center">
-            <Target className="h-8 w-8 text-pr-orange" />
+          <div className="w-16 h-16 mx-auto mb-6 bg-black/5 rounded-2xl flex items-center justify-center">
+            <Target className="h-8 w-8 text-carnet-red" />
           </div>
           <h2 className="font-serif text-3xl mb-3 text-pr-black">Connexion requise</h2>
           <p className="text-pr-black mb-6">Connectez-vous pour accéder à votre dashboard personnalisé.</p>
           <Link to="/login">
-            <Button className="w-full bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold py-6 rounded-lg shadow-none">
+            <Button className="w-full bg-black hover:bg-black-dark text-white font-semibold py-6 rounded-lg shadow-none">
               Se connecter
             </Button>
           </Link>
@@ -466,7 +466,7 @@ const DashboardPage = () => {
         {/* Header */}
         <div className="text-center mb-14">
           {/* Streak badge */}
-          <div className="fade-in-up inline-flex items-center gap-2 bg-pr-orange-pale text-pr-orange-dark px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 border border-pr-orange-soft">
+          <div className="fade-in-up inline-flex items-center gap-2 bg-black/5 text-carnet-ink px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 border border-black/10">
             <Flame className="h-3.5 w-3.5" />
             {isStreakLoading ? '...' : streak} jour{streak > 1 ? 's' : ''} de suite
           </div>
@@ -479,7 +479,7 @@ const DashboardPage = () => {
                 <div
                   className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
                     day.isActive
-                      ? 'bg-pr-orange border border-pr-orange'
+                      ? 'bg-black border border-black'
                       : 'bg-white border border-pr-gray-light'
                   }`}
                 >
@@ -490,16 +490,16 @@ const DashboardPage = () => {
           </div>
 
           {streak > 7 && (
-            <p className="fade-in-up text-pr-orange-dark font-semibold text-sm mb-5" style={{ animationDelay: '0.04s' }}>
+            <p className="fade-in-up text-carnet-ink font-semibold text-sm mb-5" style={{ animationDelay: '0.04s' }}>
               {streak} jours consécutifs — tu tiens le rythme.
             </p>
           )}
 
           <h1 className="fade-in-up font-serif text-5xl sm:text-6xl lg:text-7xl mb-4 text-pr-black leading-tight" style={{ animationDelay: '0.05s' }}>
-            Mon <span className="text-pr-orange">Dashboard</span>
+            Mon <span className="text-carnet-red">Dashboard</span>
           </h1>
           <div className="fade-in-up flex justify-center mb-4" style={{ animationDelay: '0.07s' }}>
-            <div className="h-[2px] w-16 bg-pr-orange" />
+            <div className="h-[2px] w-16 bg-black" />
           </div>
           <p className="fade-in-up text-base sm:text-lg text-pr-black max-w-xl mx-auto" style={{ animationDelay: '0.1s' }}>
             Suivez votre progression et atteignez vos objectifs.
@@ -509,22 +509,22 @@ const DashboardPage = () => {
         {/* Toggle prof/étudiant */}
         {isProfessor && !roleLoading && (
           <div className="fade-in-up flex items-center justify-center gap-3 mb-10 bg-white border border-pr-gray-light rounded-xl p-3 max-w-md mx-auto" style={{ animationDelay: '0.15s' }}>
-            <span className={`text-sm font-medium transition-colors ${!isTeacherView ? 'text-pr-orange-dark' : 'text-pr-black'}`}>
+            <span className={`text-sm font-medium transition-colors ${!isTeacherView ? 'text-carnet-ink' : 'text-pr-black'}`}>
               Interface Étudiant
             </span>
             <Switch
               checked={isTeacherView}
               onCheckedChange={setIsTeacherView}
-              className="data-[state=checked]:bg-pr-orange"
+              className="data-[state=checked]:bg-black"
             />
-            <span className={`text-sm font-medium transition-colors ${isTeacherView ? 'text-pr-orange-dark' : 'text-pr-black'}`}>
+            <span className={`text-sm font-medium transition-colors ${isTeacherView ? 'text-carnet-ink' : 'text-pr-black'}`}>
               Interface Professeur
             </span>
           </div>
         )}
 
         {isTeacherView ? (
-          <React.Suspense fallback={<div className="flex justify-center py-20"><div className="animate-spin rounded-full h-10 w-10 border-2 border-pr-orange border-t-transparent"></div></div>}>
+          <React.Suspense fallback={<div className="flex justify-center py-20"><div className="animate-spin rounded-full h-10 w-10 border-2 border-black border-t-transparent"></div></div>}>
             <TeacherDashboardView />
           </React.Suspense>
         ) : (
@@ -532,27 +532,27 @@ const DashboardPage = () => {
             {/* Stats overview */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
               <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden" style={{ animationDelay: '0.25s' }}>
-                <div className="h-[3px] w-full bg-pr-orange" />
+                <div className="h-[3px] w-full bg-black" />
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-11 h-11 bg-pr-orange-pale rounded-xl flex items-center justify-center">
-                      <Target className="h-5 w-5 text-pr-orange" />
+                    <div className="w-11 h-11 bg-black/5 rounded-xl flex items-center justify-center">
+                      <Target className="h-5 w-5 text-carnet-red" />
                     </div>
-                    <span className="font-serif text-4xl text-pr-orange leading-none">{overallProgress}<span className="text-2xl">%</span></span>
+                    <span className="font-serif text-4xl text-carnet-red leading-none">{overallProgress}<span className="text-2xl">%</span></span>
                   </div>
                   <p className="text-xs font-semibold text-pr-black uppercase tracking-wider mb-3">Progression globale</p>
                   <div className="h-1.5 bg-pr-gray-bg rounded-full overflow-hidden">
-                    <div className="h-full bg-pr-orange rounded-full transition-all duration-1000" style={{ width: `${overallProgress}%` }}></div>
+                    <div className="h-full bg-black rounded-full transition-all duration-1000" style={{ width: `${overallProgress}%` }}></div>
                   </div>
                 </CardContent>
               </Card>
 
               <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden" style={{ animationDelay: '0.3s' }}>
-                <div className="h-[3px] w-full bg-pr-orange" />
+                <div className="h-[3px] w-full bg-black" />
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-11 h-11 bg-pr-orange-pale rounded-xl flex items-center justify-center">
-                      <CheckCircle2 className="h-5 w-5 text-pr-orange" />
+                    <div className="w-11 h-11 bg-black/5 rounded-xl flex items-center justify-center">
+                      <CheckCircle2 className="h-5 w-5 text-carnet-red" />
                     </div>
                     <span className="font-serif text-4xl text-pr-black leading-none">{globalStats.totalExercises}</span>
                   </div>
@@ -561,11 +561,11 @@ const DashboardPage = () => {
               </Card>
 
               <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden" style={{ animationDelay: '0.35s' }}>
-                <div className="h-[3px] w-full bg-pr-orange" />
+                <div className="h-[3px] w-full bg-black" />
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-11 h-11 bg-pr-orange-pale rounded-xl flex items-center justify-center">
-                      <BarChart3 className="h-5 w-5 text-pr-orange" />
+                    <div className="w-11 h-11 bg-black/5 rounded-xl flex items-center justify-center">
+                      <BarChart3 className="h-5 w-5 text-carnet-red" />
                     </div>
                     <span className="font-serif text-4xl text-pr-black leading-none">
                       {averageQcm !== null ? <>{averageQcm}<span className="text-2xl">%</span></> : '—'}
@@ -581,22 +581,22 @@ const DashboardPage = () => {
               </Card>
 
               <Card
-                className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden cursor-pointer hover:border-pr-orange transition-colors"
+                className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden cursor-pointer hover:border-black transition-colors"
                 style={{ animationDelay: '0.4s' }}
                 onClick={() => document.getElementById('weekly-leaderboard')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <div className="h-[3px] w-full bg-pr-orange" />
+                <div className="h-[3px] w-full bg-black" />
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-11 h-11 bg-pr-orange-pale rounded-xl flex items-center justify-center">
-                      <Clock className="h-5 w-5 text-pr-orange" />
+                    <div className="w-11 h-11 bg-black/5 rounded-xl flex items-center justify-center">
+                      <Clock className="h-5 w-5 text-carnet-red" />
                     </div>
                     <div className="text-right">
                       <span className="font-serif text-3xl text-pr-black leading-none">{formatTime(totalWeekSeconds)}</span>
                       {weeklyRank && (
                         <div className="flex items-center justify-end gap-1 mt-1.5">
-                          <Trophy className="h-3 w-3 text-pr-orange" />
-                          <span className="text-[10px] text-pr-orange-dark font-semibold uppercase tracking-wide">#{weeklyRank} cette semaine</span>
+                          <Trophy className="h-3 w-3 text-carnet-red" />
+                          <span className="text-[10px] text-carnet-ink font-semibold uppercase tracking-wide">#{weeklyRank} cette semaine</span>
                         </div>
                       )}
                     </div>
@@ -605,12 +605,12 @@ const DashboardPage = () => {
                     <p className="text-xs font-semibold text-pr-black uppercase tracking-wider">Temps d'étude</p>
                     {isTracking && (
                       <span className="flex items-center gap-1 text-[10px] text-pr-black font-medium">
-                        <span className="w-1.5 h-1.5 bg-pr-orange rounded-full animate-pulse"></span>
+                        <span className="w-1.5 h-1.5 bg-black rounded-full animate-pulse"></span>
                         En cours
                       </span>
                     )}
                   </div>
-                  <p className="text-[10px] text-pr-black hover:text-pr-orange mt-2.5 transition-colors">Voir le classement →</p>
+                  <p className="text-[10px] text-pr-black hover:text-carnet-red mt-2.5 transition-colors">Voir le classement →</p>
                 </CardContent>
               </Card>
             </div>
@@ -618,7 +618,7 @@ const DashboardPage = () => {
             {/* Évaluations récentes */}
             <div className="mb-14">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-pr-black border-l-[3px] border-pr-orange pl-4">
+                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-pr-black border-l-[3px] border-black pl-4">
                   Évaluations récentes
                 </h2>
               </div>
@@ -630,8 +630,8 @@ const DashboardPage = () => {
                       oteriaResults.map((result) => (
                         <div key={result.id} className="p-5 hover:bg-pr-gray-bg transition-colors flex items-center justify-between gap-4">
                           <div className="flex items-center gap-4">
-                            <div className="w-11 h-11 bg-pr-orange-pale rounded-xl flex items-center justify-center flex-shrink-0">
-                              <Target className="h-5 w-5 text-pr-orange" />
+                            <div className="w-11 h-11 bg-black/5 rounded-xl flex items-center justify-center flex-shrink-0">
+                              <Target className="h-5 w-5 text-carnet-red" />
                             </div>
                             <div>
                               <h4 className="font-semibold text-pr-black">{result.title}</h4>
@@ -646,10 +646,10 @@ const DashboardPage = () => {
                             </div>
                           </div>
                           <div className="flex items-center gap-2 bg-pr-gray-bg px-4 py-2 rounded-lg">
-                            <Award className="h-4 w-4 text-pr-orange" />
+                            <Award className="h-4 w-4 text-carnet-red" />
                             <span className={`font-serif text-2xl ${
                               result.score >= 80 ? 'text-pr-black' :
-                              result.score >= 50 ? 'text-pr-orange' : 'text-pr-orange-dark'
+                              result.score >= 50 ? 'text-carnet-red' : 'text-carnet-ink'
                             }`}>
                               {result.score}<span className="text-base">%</span>
                             </span>
@@ -659,7 +659,7 @@ const DashboardPage = () => {
                     ) : (
                       <div className="p-10 text-center">
                         <p className="text-pr-black">Aucune évaluation pour le moment.</p>
-                        <Link to="/formation/oteria/logique-fondamentale-qcm" className="text-pr-orange hover:text-pr-orange-dark font-semibold mt-3 inline-block transition-colors">
+                        <Link to="/formation/oteria/logique-fondamentale-qcm" className="text-carnet-red hover:text-carnet-ink font-semibold mt-3 inline-block transition-colors">
                           Commencer un QCM →
                         </Link>
                       </div>
@@ -672,10 +672,10 @@ const DashboardPage = () => {
             {/* Progression par matière */}
             <div className="mb-14">
               <div className="flex items-end justify-between mb-6">
-                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-pr-black border-l-[3px] border-pr-orange pl-4">
+                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-pr-black border-l-[3px] border-black pl-4">
                   Progression par matière
                 </h2>
-                <Link to="/formations" className="fade-in-up text-pr-orange hover:text-pr-orange-dark font-semibold flex items-center gap-1 text-sm transition-colors">
+                <Link to="/formations" className="fade-in-up text-carnet-red hover:text-carnet-ink font-semibold flex items-center gap-1 text-sm transition-colors">
                   Voir tout <ChevronRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -688,27 +688,27 @@ const DashboardPage = () => {
                     className="fade-in-up group"
                     style={{ animationDelay: `${0.1 + index * 0.05}s` }}
                   >
-                    <Card className="bg-white border border-pr-gray-light rounded-xl shadow-none hover:border-pr-orange transition-all duration-300 overflow-hidden h-full">
+                    <Card className="bg-white border border-pr-gray-light rounded-xl shadow-none hover:border-black transition-all duration-300 overflow-hidden h-full">
                       <CardContent className="p-6">
                         {/* Header */}
                         <div className="flex items-center justify-between mb-5">
                           <div className="flex items-center gap-3">
-                            <div className="w-11 h-11 bg-pr-orange-pale rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-0.5">
-                              <subject.icon className="h-5 w-5 text-pr-orange" />
+                            <div className="w-11 h-11 bg-black/5 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-0.5">
+                              <subject.icon className="h-5 w-5 text-carnet-red" />
                             </div>
                             <div>
                               <h3 className="font-semibold text-base text-pr-black">{subject.name}</h3>
                               <p className="text-[10px] text-pr-black uppercase tracking-wide mt-0.5">Dernière activité · {subject.lastActivity}</p>
                             </div>
                           </div>
-                          <div className="font-serif text-2xl text-pr-orange">{subject.progress}<span className="text-base">%</span></div>
+                          <div className="font-serif text-2xl text-carnet-red">{subject.progress}<span className="text-base">%</span></div>
                         </div>
 
                         {/* Progress bar */}
                         <div className="mb-5">
                           <div className="h-1.5 bg-pr-gray-bg rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-pr-orange rounded-full transition-all duration-1000"
+                              className="h-full bg-black rounded-full transition-all duration-1000"
                               style={{ width: `${subject.progress}%` }}
                             ></div>
                           </div>
@@ -724,13 +724,13 @@ const DashboardPage = () => {
                             <p className="font-serif text-xl text-pr-black leading-none">{subject.exercisesDone}</p>
                             <p className="text-[10px] text-pr-black uppercase tracking-wide mt-1.5">Exercices</p>
                           </div>
-                          <div className="bg-pr-orange-pale rounded-lg p-2.5 text-center">
-                            <p className="font-serif text-xl text-pr-orange leading-none">{subject.averageScore}<span className="text-sm">%</span></p>
-                            <p className="text-[10px] text-pr-orange-dark uppercase tracking-wide mt-1.5">Moyenne</p>
+                          <div className="bg-black/5 rounded-lg p-2.5 text-center">
+                            <p className="font-serif text-xl text-carnet-red leading-none">{subject.averageScore}<span className="text-sm">%</span></p>
+                            <p className="text-[10px] text-carnet-ink uppercase tracking-wide mt-1.5">Moyenne</p>
                           </div>
                         </div>
 
-                        <div className="mt-5 flex items-center justify-end text-pr-black group-hover:text-pr-orange transition-colors">
+                        <div className="mt-5 flex items-center justify-end text-pr-black group-hover:text-carnet-red transition-colors">
                           <span className="text-sm font-semibold mr-1">Continuer</span>
                           <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         </div>
@@ -744,7 +744,7 @@ const DashboardPage = () => {
             {/* Classement de la semaine */}
             <div id="weekly-leaderboard" className="mb-14 scroll-mt-8">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-pr-black border-l-[3px] border-pr-orange pl-4">
+                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-pr-black border-l-[3px] border-black pl-4">
                   Classement de la semaine
                 </h2>
               </div>
@@ -761,26 +761,26 @@ const DashboardPage = () => {
                         <div
                           key={entry.userId}
                           className={`p-5 flex items-center justify-between gap-4 transition-colors ${
-                            entry.isCurrentUser ? 'bg-pr-orange-pale border-l-[3px] border-pr-orange' : 'hover:bg-pr-gray-bg'
+                            entry.isCurrentUser ? 'bg-black/5 border-l-[3px] border-black' : 'hover:bg-pr-gray-bg'
                           }`}
                         >
                           <div className="flex items-center gap-4">
                             <div className={`w-9 h-9 rounded-full flex items-center justify-center font-serif text-lg ${
-                              index === 0 ? 'bg-pr-orange text-white' :
-                              index === 1 ? 'bg-pr-orange-pale text-pr-orange-dark border border-pr-orange-soft' :
+                              index === 0 ? 'bg-black text-white' :
+                              index === 1 ? 'bg-black/5 text-carnet-ink border border-black/10' :
                               index === 2 ? 'bg-pr-gray-bg text-pr-black border border-pr-gray-light' :
                               'bg-pr-gray-bg text-pr-black'
                             }`}>
                               {index + 1}
                             </div>
                             <div>
-                              <h4 className={`font-semibold ${entry.isCurrentUser ? 'text-pr-orange-dark' : 'text-pr-black'}`}>
+                              <h4 className={`font-semibold ${entry.isCurrentUser ? 'text-carnet-ink' : 'text-pr-black'}`}>
                                 {entry.name} {entry.isCurrentUser && <span className="text-xs font-normal text-pr-black">(vous)</span>}
                               </h4>
                             </div>
                           </div>
                           <div className="flex items-center gap-2 bg-pr-gray-bg px-4 py-2 rounded-lg">
-                            <Clock className="h-4 w-4 text-pr-orange" />
+                            <Clock className="h-4 w-4 text-carnet-red" />
                             <span className="font-serif text-lg text-pr-black">{formatTime(entry.totalSeconds)}</span>
                           </div>
                         </div>
@@ -800,7 +800,7 @@ const DashboardPage = () => {
             {/* Notes & IA */}
             <div className="mb-14">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-pr-black border-l-[3px] border-pr-orange pl-4">
+                <h2 className="fade-in-up font-serif text-3xl sm:text-4xl text-pr-black border-l-[3px] border-black pl-4">
                   Mes notes & IA
                 </h2>
               </div>
@@ -809,8 +809,8 @@ const DashboardPage = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                 <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none">
                   <CardContent className="p-5 flex items-center gap-4">
-                    <div className="w-10 h-10 bg-pr-orange-pale rounded-lg flex items-center justify-center">
-                      <StickyNote className="h-4 w-4 text-pr-orange" />
+                    <div className="w-10 h-10 bg-black/5 rounded-lg flex items-center justify-center">
+                      <StickyNote className="h-4 w-4 text-carnet-red" />
                     </div>
                     <div>
                       <p className="font-serif text-2xl text-pr-black leading-none">
@@ -822,8 +822,8 @@ const DashboardPage = () => {
                 </Card>
                 <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none">
                   <CardContent className="p-5 flex items-center gap-4">
-                    <div className="w-10 h-10 bg-pr-orange-pale rounded-lg flex items-center justify-center">
-                      <Highlighter className="h-4 w-4 text-pr-orange" />
+                    <div className="w-10 h-10 bg-black/5 rounded-lg flex items-center justify-center">
+                      <Highlighter className="h-4 w-4 text-carnet-red" />
                     </div>
                     <div>
                       <p className="font-serif text-2xl text-pr-black leading-none">
@@ -835,8 +835,8 @@ const DashboardPage = () => {
                 </Card>
                 <Card className="fade-in-up bg-white border border-pr-gray-light rounded-xl shadow-none">
                   <CardContent className="p-5 flex items-center gap-4">
-                    <div className="w-10 h-10 bg-pr-orange-pale rounded-lg flex items-center justify-center">
-                      <Bot className="h-4 w-4 text-pr-orange" />
+                    <div className="w-10 h-10 bg-black/5 rounded-lg flex items-center justify-center">
+                      <Bot className="h-4 w-4 text-carnet-red" />
                     </div>
                     <div>
                       <p className="font-serif text-2xl text-pr-black leading-none">
@@ -866,12 +866,12 @@ const DashboardPage = () => {
                         return (
                           <div key={note.id} className="p-5 hover:bg-pr-gray-bg transition-colors">
                             <div className="flex items-start gap-3">
-                              <div className="w-9 h-9 bg-pr-orange-pale rounded-lg flex items-center justify-center flex-shrink-0">
-                                <TypeIcon className="h-4 w-4 text-pr-orange" />
+                              <div className="w-9 h-9 bg-black/5 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <TypeIcon className="h-4 w-4 text-carnet-red" />
                               </div>
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-1.5">
-                                  <span className="text-[10px] font-semibold text-pr-orange-dark uppercase tracking-wider bg-pr-orange-pale px-2 py-0.5 rounded">{typeLabel}</span>
+                                  <span className="text-[10px] font-semibold text-carnet-ink uppercase tracking-wider bg-black/5 px-2 py-0.5 rounded">{typeLabel}</span>
                                   {note.subject && (
                                     <span className="text-[10px] bg-pr-gray-bg text-pr-black px-2 py-0.5 rounded font-medium">
                                       {note.subject}
@@ -900,7 +900,7 @@ const DashboardPage = () => {
                                 {note.page_path && (
                                   <Link
                                     to={note.page_path}
-                                    className="text-xs text-pr-orange hover:text-pr-orange-dark mt-1.5 inline-block transition-colors font-semibold"
+                                    className="text-xs text-carnet-red hover:text-carnet-ink mt-1.5 inline-block transition-colors font-semibold"
                                   >
                                     Voir la page →
                                   </Link>
@@ -925,21 +925,21 @@ const DashboardPage = () => {
             {/* CTA */}
             <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
               <Card className="bg-white border border-pr-gray-light rounded-xl shadow-none overflow-hidden relative">
-                <div className="h-[3px] w-full bg-pr-orange" />
+                <div className="h-[3px] w-full bg-black" />
                 <CardContent className="p-10 sm:p-14 text-center">
-                  <div className="inline-flex items-center gap-2 bg-pr-orange-pale text-pr-orange-dark px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 border border-pr-orange-soft">
+                  <div className="inline-flex items-center gap-2 bg-black/5 text-carnet-ink px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 border border-black/10">
                     <Zap className="h-3.5 w-3.5" />
                     Boost ton apprentissage
                   </div>
                   <h3 className="font-serif text-3xl sm:text-4xl text-pr-black mb-4 leading-tight">
-                    Prêt à progresser <span className="text-pr-orange">encore plus</span> ?
+                    Prêt à progresser <span className="text-carnet-red">encore plus</span> ?
                   </h3>
                   <p className="text-pr-black mb-8 max-w-xl mx-auto">
                     Utilise nos générateurs IA pour créer des exercices personnalisés.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <Link to="/generator">
-                      <Button className="px-7 py-6 text-base font-semibold bg-pr-orange hover:bg-pr-orange-dark text-white rounded-lg shadow-none transition-colors">
+                      <Button className="px-7 py-6 text-base font-semibold bg-black hover:bg-black-dark text-white rounded-lg shadow-none transition-colors">
                         <Zap className="mr-2 h-4 w-4" />
                         Générateurs IA
                       </Button>

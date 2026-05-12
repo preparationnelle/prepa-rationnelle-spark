@@ -121,7 +121,7 @@ const GouvernanceMondialeChronologiePage = () => {
             </h2>
             <div className="space-y-6">
               {decadeEvents.map((item, index) => (
-                <Card key={index} className="border-l-4 border-carnet-red shadow-sm hover:shadow-md transition-shadow bg-white">
+                <Card key={index} className="border-l-4 border-carnet-red shadow-none bg-carnet-paper-2">
                   <CardContent className="p-4">
                     <div className="flex items-start">
                       <span className="flex-shrink-0 w-24 text-lg font-semibold text-carnet-red mr-4">

@@ -16,17 +16,17 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
       showNavigation={true}
     >
       {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-pr-orange-pale">
+      <Card className="border-0 shadow-lg bg-pr-gray-bg">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-equations-differentielles-exercices">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>
             </Link>
             <Link to="/formation/maths-equations-differentielles-quiz">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <Target className="mr-2 h-4 w-4" />
                 Quiz
               </Button>
@@ -45,7 +45,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Équation différentielle</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -54,7 +54,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Équation différentielle linéaire d'ordre n</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -67,7 +67,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Terminologie</p>
               <div className="mt-2 space-y-2">
                 <ul className="space-y-1 ml-4">
@@ -93,7 +93,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Propriété — Structure vectorielle</p>
               <div className="mt-2 space-y-2">
                 <p>Si <LatexRenderer latex="(E)" block={false} /> est une EDL et <LatexRenderer latex="(E_H)" block={false} /> l'équation homogène associée :</p>
@@ -112,7 +112,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Propriété — Principe de superposition</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -139,7 +139,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — EDL1 à coefficients constants</p>
               <div className="mt-2 space-y-2">
                 <p>Une EDL1 à coefficients constants est de la forme :</p>
@@ -149,7 +149,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Théorème — Résolution de y' + ay = 0</p>
               <div className="mt-2 space-y-2">
                 <p>Les solutions sont</p>
@@ -159,7 +159,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Théorème — Cauchy–Lipschitz sur EDL1</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -185,7 +185,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — EDL2 à coefficients constants</p>
               <div className="mt-2 space-y-2">
                 <p>Une EDL2 à coefficients constants est :</p>
@@ -199,7 +199,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Équation caractéristique</p>
               <div className="mt-2 space-y-2">
                 <p>L'équation associée est :</p>
@@ -209,7 +209,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Théorème — Résolution de y'' + ay' + by = 0</p>
               <div className="mt-2 space-y-2">
                 <p>Soit <LatexRenderer latex="\Delta = a^2-4b" block={false} />.</p>
@@ -233,7 +233,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Théorème — Cauchy–Lipschitz sur EDL2</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -280,7 +280,7 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
               </Button>
             </Link>
             <Link to="/formation/maths-equations-differentielles-exercices">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>

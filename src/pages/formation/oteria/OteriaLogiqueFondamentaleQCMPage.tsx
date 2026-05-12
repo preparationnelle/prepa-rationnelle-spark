@@ -322,7 +322,7 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
       <div className="max-w-4xl mx-auto space-y-8">
 
         {/* Header du QCM */}
-        <div className="border border-slate-200 rounded-lg p-6 bg-white shadow-sm">
+        <div className="border border-carnet-rule rounded-lg p-6 bg-carnet-paper-2">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold text-slate-900">
               {qcmData.title}
@@ -344,7 +344,7 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
               <Button
                 onClick={handleValidation}
                 disabled={answeredCount < qcmData.questions.length}
-                className="bg-slate-900 hover:bg-slate-800 text-white"
+                className="bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper"
               >
                 <CheckCircle className="h-4 w-4 mr-2" />
                 Valider ({answeredCount}/{qcmData.questions.length})
@@ -354,7 +354,7 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
                 <Button
                   onClick={() => setShowExplanations(!showExplanations)}
                   variant="outline"
-                  className="border-slate-300 text-slate-700 hover:bg-slate-50"
+                  className="border-carnet-rule text-carnet-ink hover:bg-carnet-paper"
                 >
                   {showExplanations ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
                   {showExplanations ? 'Masquer' : 'Afficher'} les explications
@@ -362,7 +362,7 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
                 <Button
                   onClick={resetQCM}
                   variant="outline"
-                  className="border-slate-300 text-slate-700 hover:bg-slate-50"
+                  className="border-carnet-rule text-carnet-ink hover:bg-carnet-paper"
                 >
                   <RotateCcw className="h-4 w-4 mr-2" />
                   Recommencer
@@ -387,11 +387,11 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
           const isAnswered = userAnswer !== undefined;
 
           return (
-            <div key={question.id} className="border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm">
+            <div key={question.id} className="border border-carnet-rule rounded-lg overflow-hidden bg-carnet-paper-2">
               {/* Question header */}
-              <div className="bg-slate-50 border-b border-slate-200 px-6 py-4">
+              <div className="bg-carnet-paper border-b border-carnet-rule px-6 py-4">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 bg-slate-900 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                  <span className="flex-shrink-0 w-7 h-7 bg-carnet-red text-carnet-paper rounded-full flex items-center justify-center text-sm font-bold">
                     {question.id}
                   </span>
                   <h3 className="text-slate-900 font-medium leading-relaxed">
@@ -414,12 +414,12 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
                       onClick={() => !showResults && handleAnswerSelect(question.id, choice.key)}
                       className={cn(
                         "p-4 rounded-lg border-2 transition-all duration-200",
-                        !showResults && "cursor-pointer hover:border-slate-400",
+                        !showResults && "cursor-pointer hover:border-carnet-red/40",
                         showResults && "cursor-default",
                         showCorrectAnswer && "border-emerald-500 bg-emerald-50",
                         showWrongAnswer && "border-red-500 bg-red-50",
-                        !showCorrectAnswer && !showWrongAnswer && isSelected && "border-slate-400 bg-slate-50",
-                        !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-slate-200 bg-white"
+                        !showCorrectAnswer && !showWrongAnswer && isSelected && "border-carnet-red/60 bg-carnet-paper",
+                        !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-carnet-rule bg-carnet-paper-2"
                       )}
                     >
                       <div className="flex items-center gap-3">
@@ -427,8 +427,8 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
                           "w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0",
                           showCorrectAnswer && "border-emerald-600 bg-emerald-600",
                           showWrongAnswer && "border-red-600 bg-red-600",
-                          !showCorrectAnswer && !showWrongAnswer && isSelected && "border-slate-600 bg-slate-600",
-                          !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-slate-300"
+                          !showCorrectAnswer && !showWrongAnswer && isSelected && "border-carnet-red bg-carnet-red",
+                          !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-carnet-rule"
                         )}>
                           {(isSelected || showCorrectAnswer) && (
                             <div className="w-2 h-2 bg-white rounded-full"></div>
@@ -453,7 +453,7 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
               {/* Explication */}
               {showResults && showExplanations && (
                 <div className="px-6 pb-6">
-                  <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
+                  <div className="bg-slate-50 border border-carnet-rule rounded-lg p-4">
                     <h4 className="text-sm font-bold text-slate-900 mb-2 uppercase tracking-wide">
                       💡 Explication
                     </h4>

@@ -162,14 +162,14 @@ const GeopolitiqueSujetsProbablesPage = () => {
 
   const getUrgenceColor = (urgence: number) => {
     if (urgence >= 9) return "text-red-700 bg-red-100";
-    if (urgence >= 7) return "text-pr-orange-dark bg-orange-100";
+    if (urgence >= 7) return "text-pr-black bg-gray-100";
     return "text-green-700 bg-green-100";
   };
 
   const getBorderColor = (color: string) => {
     switch (color) {
       case "red": return "border-red-500";
-      case "orange": return "border-pr-orange"; 
+      case "orange": return "border-pr-black"; 
       case "yellow": return "border-yellow-500";
       case "green": return "border-green-500";
       default: return "border-gray-500";
@@ -276,7 +276,7 @@ const GeopolitiqueSujetsProbablesPage = () => {
         
         {/* Introduction */}
         <div className="max-w-4xl mx-auto mb-12">
-          <Card className="border-2 border-carnet-red/30 bg-pr-orange-pale/50">
+          <Card className="border-2 border-carnet-red/30 bg-pr-gray-bg/50">
             <CardContent className="p-6">
               <div className="prose prose-blue max-w-none">
                 <p className="text-gray-700 mb-4">
@@ -315,7 +315,7 @@ const GeopolitiqueSujetsProbablesPage = () => {
                   <span className="text-sm">9-10/10 : Très élevée</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-pr-orange rounded-full"></div>
+                  <div className="w-4 h-4 bg-pr-black rounded-full"></div>
                   <span className="text-sm">7-8/10 : Élevée</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -350,7 +350,7 @@ const GeopolitiqueSujetsProbablesPage = () => {
                         </span>
                       </div>
                     </div>
-                    <TrendingUp className={`h-6 w-6 ${theme.color === 'red' ? 'text-red-600' : theme.color === 'orange' ? 'text-pr-orange-dark' : theme.color === 'yellow' ? 'text-yellow-600' : 'text-green-600'}`} />
+                    <TrendingUp className={`h-6 w-6 ${theme.color === 'red' ? 'text-red-600' : theme.color === 'orange' ? 'text-pr-black' : theme.color === 'yellow' ? 'text-yellow-600' : 'text-green-600'}`} />
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -371,7 +371,7 @@ const GeopolitiqueSujetsProbablesPage = () => {
                             onClick={() => handleSubjectClick(sujet)}
                             size="sm"
                             variant="outline"
-                            className="ml-4 hover:bg-pr-orange-pale hover:border-carnet-red/40"
+                            className="ml-4 hover:bg-pr-gray-bg hover:border-carnet-red/40"
                           >
                             Découvrir le sujet
                           </Button>

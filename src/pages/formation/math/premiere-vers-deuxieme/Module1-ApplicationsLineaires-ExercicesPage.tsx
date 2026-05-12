@@ -57,7 +57,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 1</div>
-              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Moyen</div>
+              <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Moyen</div>
             </div>
             <div className="space-y-3 mb-4">
               <p>
@@ -110,7 +110,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 2</div>
-              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Difficile</div>
+              <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Difficile</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Exercice 2 - Endomorphisme nilpotent</h3>
@@ -170,7 +170,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                       <LatexRenderer latex={'a_1 f(x) + \\dots + a_{k-1} f^{k-1}(x) = 0_E'} />
                     </div>
 
-                    <div className="p-3 rounded-lg border bg-orange-50 text-orange-800 border-orange-200">
+                    <div className="p-3 rounded-lg border bg-gray-50 text-gray-800 border-gray-200">
                       <strong>Astuce</strong> — Réappliquer successivement
                       <span className="inline-block align-middle"> <LatexRenderer latex={'f^{k-2}, f^{k-3}, \\dots'} /></span> pour obtenir
                       <span className="inline-block align-middle"> <LatexRenderer latex={'a_1 = a_2 = \\dots = a_{k-2} = 0'} /></span>.
@@ -204,7 +204,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 3</div>
-              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Intermédiaire</div>
+              <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Intermédiaire</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Exercice 3 — Un peu théorique…</h3>
@@ -273,7 +273,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 4</div>
-              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Moyen</div>
+              <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Moyen</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Exercice 4</h3>
@@ -329,7 +329,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 {/* Q3 */}
                 <div className="p-4 bg-white rounded-lg border space-y-3">
                   <h4 className="text-lg font-semibold text-gray-800">3) Image</h4>
-                  <div className="p-3 rounded-lg border bg-orange-50 text-orange-800 border-orange-200">
+                  <div className="p-3 rounded-lg border bg-gray-50 text-gray-800 border-gray-200">
                     <strong>Astuce</strong> — utiliser la base <LatexRenderer latex={'(E_{11},E_{12},E_{21},E_{22})'} /> de <LatexRenderer latex={'M_2(\\mathbb{R})'} /> et calculer <LatexRenderer latex={'AE_{ij}'} />.
                   </div>
                   <div className="text-center">
@@ -352,7 +352,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 5</div>
-              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Difficile (♥)</div>
+              <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Difficile (♥)</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Matrice de l’endomorphisme dans la base canonique</h3>
@@ -415,7 +415,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 6</div>
-              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Difficile (♥)</div>
+              <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Difficile (♥)</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Permutation cyclique sur R^3</h3>
@@ -449,7 +449,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                     Ainsi <LatexRenderer latex={'P(x)=x^3-1'} /> annule <LatexRenderer latex={'A'} />, donc annule <LatexRenderer latex={'f'} />:
                     <LatexRenderer latex={'P(f)=f^3-\\mathrm{Id}_{\\mathbb R^3}=0'} />.
                   </p>
-                  <div className="p-3 rounded-lg border bg-orange-50 text-orange-800 border-orange-200">
+                  <div className="p-3 rounded-lg border bg-gray-50 text-gray-800 border-gray-200">
                     <strong>Conclusion</strong> — polynôme annulateur possible: <LatexRenderer latex={'x^3-1'} />.
                   </div>
                   <p>
@@ -466,7 +466,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 7</div>
-              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Intermédiaire</div>
+              <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Intermédiaire</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Exercice 7</h3>
@@ -555,7 +555,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 8</div>
-              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Intermédiaire</div>
+              <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Intermédiaire</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Composition f ∘ g = Id</h3>
@@ -624,7 +624,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 9</div>
-              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Intermédiaire</div>
+              <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Intermédiaire</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">
@@ -710,7 +710,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 10</div>
-              <div className="text-xs text-carnet-red bg-pr-orange-pale px-2 py-1 rounded">Avancé</div>
+              <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Avancé</div>
             </div>
             <div className="space-y-3 mb-4">
               <h3 className="text-lg font-semibold text-gray-800">Décomposition spectrale simple et puissances de f</h3>

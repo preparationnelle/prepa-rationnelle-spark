@@ -5,7 +5,7 @@ import { CivPageFooterNav } from '@/components/formation/CivPageFooterNav';
 const SectionTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <h2 className="font-dm-serif text-2xl text-pr-black mt-12 mb-3">
     {children}
-    <div className="w-12 h-[3px] bg-pr-orange mt-2" />
+    <div className="w-12 h-[3px] bg-pr-black mt-2" />
   </h2>
 );
 
@@ -45,10 +45,10 @@ const LaborPage = () => {
           The pandemic fundamentally reshaped how we work, with <strong>hybrid models now becoming the dominant workplace arrangement</strong>. By 2023, 55% of remote-capable employees in the U.S. were working in hybrid arrangements. Research shows that hybrid work offers optimal balance, with <strong>working from home 2-3 days per week emerging as the ideal ratio</strong>.<sup>[6][7]</sup>
         </p>
         <ul className="space-y-1.5 mt-3">
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span><strong>Commuting time savings</strong> — the primary reason employees choose hybrid work<sup>[8]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span><strong>Improved work-life balance</strong> and enhanced job satisfaction<sup>[8]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span><strong>Access to global talent pools</strong> for employers<sup>[6]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span><strong>Cost efficiency</strong> through reduced office space requirements<sup>[8]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span><strong>Commuting time savings</strong> — the primary reason employees choose hybrid work<sup>[8]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span><strong>Improved work-life balance</strong> and enhanced job satisfaction<sup>[8]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span><strong>Access to global talent pools</strong> for employers<sup>[6]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span><strong>Cost efficiency</strong> through reduced office space requirements<sup>[8]</sup></span></li>
         </ul>
 
         <SectionTitle>Skills Evolution and Workforce Development</SectionTitle>
@@ -58,21 +58,21 @@ const LaborPage = () => {
         </p>
         <p className="font-semibold mt-4 text-pr-black">Technology and Data Skills</p>
         <ul className="space-y-1.5 mt-2">
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>AI and big data analytics<sup>[9]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Networks and cybersecurity<sup>[9]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Technology design and programming<sup>[10]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>AI and big data analytics<sup>[9]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Networks and cybersecurity<sup>[9]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Technology design and programming<sup>[10]</sup></span></li>
         </ul>
         <p className="font-semibold mt-4 text-pr-black">Human-Centered Skills</p>
         <ul className="space-y-1.5 mt-2">
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Analytical and creative thinking; complex problem-solving<sup>[10]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Leadership and social influence<sup>[9]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Resilience, flexibility, and agility<sup>[9]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Analytical and creative thinking; complex problem-solving<sup>[10]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Leadership and social influence<sup>[9]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Resilience, flexibility, and agility<sup>[9]</sup></span></li>
         </ul>
         <p className="font-semibold mt-4 text-pr-black">Emerging Priority Areas</p>
         <ul className="space-y-1.5 mt-2">
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Environmental stewardship<sup>[9]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Talent management and systems thinking<sup>[9]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Curiosity and lifelong learning<sup>[9]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Environmental stewardship<sup>[9]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Talent management and systems thinking<sup>[9]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Curiosity and lifelong learning<sup>[9]</sup></span></li>
         </ul>
 
         <SubTitle>Addressing the Skills Gap</SubTitle>
@@ -80,9 +80,9 @@ const LaborPage = () => {
           The digital skills crisis affects both advanced and developing economies. <strong>90% of jobs in the EU require at least basic digital literacy, yet nearly 42% of EU citizens lack these skills</strong>.<sup>[11]</sup>
         </p>
         <ul className="space-y-1.5 mt-3">
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span><strong>Digital academies</strong> and comprehensive training programs<sup>[12]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span><strong>Upskilling and reskilling initiatives</strong> — Walmart, JPMorgan Chase, Siemens lead<sup>[13]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span><strong>Strategic partnerships</strong> between businesses and educational institutions<sup>[13]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span><strong>Digital academies</strong> and comprehensive training programs<sup>[12]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span><strong>Upskilling and reskilling initiatives</strong> — Walmart, JPMorgan Chase, Siemens lead<sup>[13]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span><strong>Strategic partnerships</strong> between businesses and educational institutions<sup>[13]</sup></span></li>
         </ul>
 
         <SectionTitle>Green Transition and Sustainable Employment</SectionTitle>
@@ -94,10 +94,10 @@ const LaborPage = () => {
           <strong>Green hiring rates consistently outperform overall labor market trends</strong>, with demand for green skills rising 22% between 2022 and 2023.
         </p>
         <ul className="space-y-1.5 mt-3">
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Sustainability experts and circularity specialists<sup>[15]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Urban farmers and agronomists<sup>[15]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Ecology consultants and eco-builders<sup>[15]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Renewable energy engineers and technicians<sup>[14]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Sustainability experts and circularity specialists<sup>[15]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Urban farmers and agronomists<sup>[15]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Ecology consultants and eco-builders<sup>[15]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Renewable energy engineers and technicians<sup>[14]</sup></span></li>
         </ul>
 
         <SectionTitle>Gig Economy and Labor Rights Evolution</SectionTitle>
@@ -109,10 +109,10 @@ const LaborPage = () => {
         <p><strong>United States</strong> — 2024 Department of Labor policy requires platforms to classify economically dependent workers as employees rather than contractors.<sup>[18]</sup></p>
         <SubTitle>Ongoing Challenges</SubTitle>
         <ul className="space-y-1.5 mt-3">
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span><strong>Employment misclassification</strong> limiting access to benefits<sup>[19]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span><strong>Low and fluctuating income</strong> without traditional protections<sup>[19]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span><strong>Algorithmic management</strong> with limited transparency<sup>[19]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span><strong>Barriers to collective bargaining</strong> and unionization<sup>[18]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span><strong>Employment misclassification</strong> limiting access to benefits<sup>[19]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span><strong>Low and fluctuating income</strong> without traditional protections<sup>[19]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span><strong>Algorithmic management</strong> with limited transparency<sup>[19]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span><strong>Barriers to collective bargaining</strong> and unionization<sup>[18]</sup></span></li>
         </ul>
 
         <SectionTitle>Workplace Wellbeing and Mental Health</SectionTitle>
@@ -122,25 +122,25 @@ const LaborPage = () => {
         </p>
         <SubTitle>2025 Wellbeing Trends</SubTitle>
         <ul className="space-y-1.5 mt-3">
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Cognitive wellness programs and mental recovery breaks<sup>[20]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Sleep and rest prioritization aligned with natural rhythms<sup>[20]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Neuroscience-driven workplace design<sup>[20]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Integration of mental health with cognitive performance strategies<sup>[20]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Cognitive wellness programs and mental recovery breaks<sup>[20]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Sleep and rest prioritization aligned with natural rhythms<sup>[20]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Neuroscience-driven workplace design<sup>[20]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Integration of mental health with cognitive performance strategies<sup>[20]</sup></span></li>
         </ul>
         <p>Despite increased investment, <strong>38% of workers remain at risk of mental health issues</strong>, indicating the need for more comprehensive approaches.<sup>[21]</sup></p>
 
         <SectionTitle>Diversity, Equity, and Inclusion Evolution</SectionTitle>
         <SubTitle>Strategic Integration</SubTitle>
         <ul className="space-y-1.5 mt-3">
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Embedding DEI within ESG frameworks<sup>[22]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Aligning DEI with mental health and wellbeing<sup>[22]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Building durable leadership skills for diverse teams<sup>[22]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Embedding DEI within ESG frameworks<sup>[22]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Aligning DEI with mental health and wellbeing<sup>[22]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Building durable leadership skills for diverse teams<sup>[22]</sup></span></li>
         </ul>
         <SubTitle>Challenges and Opportunities</SubTitle>
         <ul className="space-y-1.5 mt-3">
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Formal mentoring programs across the employee journey<sup>[23]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Inclusive leadership development replacing isolated approaches<sup>[23]</sup></span></li>
-          <li className="flex gap-2"><span className="text-pr-orange mt-1">→</span><span>Data-driven methods to improve equity outcomes<sup>[23]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Formal mentoring programs across the employee journey<sup>[23]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Inclusive leadership development replacing isolated approaches<sup>[23]</sup></span></li>
+          <li className="flex gap-2"><span className="text-pr-black mt-1">→</span><span>Data-driven methods to improve equity outcomes<sup>[23]</sup></span></li>
         </ul>
 
         <SectionTitle>Looking Forward — Implications and Opportunities</SectionTitle>
@@ -154,7 +154,7 @@ const LaborPage = () => {
             'Inclusive growth models — ensure benefits are widely shared',
           ].map((s, i) => (
             <li key={i} className="flex gap-3">
-              <span className="font-dm-serif text-2xl text-pr-orange leading-none w-8 flex-shrink-0">{(i + 1).toString().padStart(2, '0')}</span>
+              <span className="font-dm-serif text-2xl text-pr-black leading-none w-8 flex-shrink-0">{(i + 1).toString().padStart(2, '0')}</span>
               <span className="pt-1.5">{s}</span>
             </li>
           ))}
@@ -189,7 +189,7 @@ const LaborPage = () => {
           ].map(([label, href], i) => (
             <li key={i} className="flex gap-2">
               <span className="text-pr-gray-mid w-7 flex-shrink-0 font-mono">[{i + 1}]</span>
-              <a className="text-pr-orange-dark hover:text-pr-orange hover:underline" href={href} target="_blank" rel="noreferrer">{label}</a>
+              <a className="text-pr-black hover:text-pr-black hover:underline" href={href} target="_blank" rel="noreferrer">{label}</a>
             </li>
           ))}
         </ol>

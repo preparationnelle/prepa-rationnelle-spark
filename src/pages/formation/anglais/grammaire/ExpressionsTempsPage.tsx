@@ -45,7 +45,7 @@ const ExpressionsTempsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+            <div className="p-3 rounded-lg bg-pr-black-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Expressions de Temps en Anglais
@@ -56,14 +56,14 @@ const ExpressionsTempsPage = () => {
         </div>
 
         {/* Introduction */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale">
+        <Card className="mb-8 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-pr-black-pale">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <HelpCircle className="h-6 w-6" />
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark space-y-3">
+          <CardContent className="text-pr-black space-y-3">
             <p>Les marqueurs temporels orientent le choix du temps (present perfect, past simple, etc.) et la position des adverbes. Ils sont déterminants pour la précision et la fluidité.</p>
           </CardContent>
         </Card>
@@ -72,32 +72,32 @@ const ExpressionsTempsPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-pr-orange-dark" />
+              <Table className="h-6 w-6 text-pr-black" />
               1. Repères temporels clés
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Expression</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Usage</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Expression</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Usage</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Exemple</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">since</td><td className="border px-3 py-2">point de départ</td><td className="border px-3 py-2">We have lived here <span className="font-semibold">since</span> 2020.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">for</td><td className="border px-3 py-2">durée</td><td className="border px-3 py-2">I have studied <span className="font-semibold">for</span> two hours.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">ago</td><td className="border px-3 py-2">durée écoulée (passé)</td><td className="border px-3 py-2">She left two hours <span className="font-semibold">ago</span>.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">already</td><td className="border px-3 py-2">action plus tôt que prévu</td><td className="border px-3 py-2">I have <span className="font-semibold">already</span> finished.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">yet</td><td className="border px-3 py-2">interrog./nég. (attente)</td><td className="border px-3 py-2">Have you finished <span className="font-semibold">yet</span>?</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">just</td><td className="border px-3 py-2">action très récente</td><td className="border px-3 py-2">She has <span className="font-semibold">just</span> arrived.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">still</td><td className="border px-3 py-2">continuité</td><td className="border px-3 py-2">He is <span className="font-semibold">still</span> sleeping.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">no longer / not anymore</td><td className="border px-3 py-2">cessation</td><td className="border px-3 py-2">They are <span className="font-semibold">no longer</span> here.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">by / by the time</td><td className="border px-3 py-2">deadline / antériorité</td><td className="border px-3 py-2">I will have finished <span className="font-semibold">by</span> Friday.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">until / till</td><td className="border px-3 py-2">jusqu’à (limite)</td><td className="border px-3 py-2">Wait <span className="font-semibold">until</span> I call.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">in / within</td><td className="border px-3 py-2">dans / d’ici</td><td className="border px-3 py-2">We will reply <span className="font-semibold">within</span> 24 hours.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">since</td><td className="border px-3 py-2">point de départ</td><td className="border px-3 py-2">We have lived here <span className="font-semibold">since</span> 2020.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">for</td><td className="border px-3 py-2">durée</td><td className="border px-3 py-2">I have studied <span className="font-semibold">for</span> two hours.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">ago</td><td className="border px-3 py-2">durée écoulée (passé)</td><td className="border px-3 py-2">She left two hours <span className="font-semibold">ago</span>.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">already</td><td className="border px-3 py-2">action plus tôt que prévu</td><td className="border px-3 py-2">I have <span className="font-semibold">already</span> finished.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">yet</td><td className="border px-3 py-2">interrog./nég. (attente)</td><td className="border px-3 py-2">Have you finished <span className="font-semibold">yet</span>?</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">just</td><td className="border px-3 py-2">action très récente</td><td className="border px-3 py-2">She has <span className="font-semibold">just</span> arrived.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">still</td><td className="border px-3 py-2">continuité</td><td className="border px-3 py-2">He is <span className="font-semibold">still</span> sleeping.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">no longer / not anymore</td><td className="border px-3 py-2">cessation</td><td className="border px-3 py-2">They are <span className="font-semibold">no longer</span> here.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">by / by the time</td><td className="border px-3 py-2">deadline / antériorité</td><td className="border px-3 py-2">I will have finished <span className="font-semibold">by</span> Friday.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">until / till</td><td className="border px-3 py-2">jusqu’à (limite)</td><td className="border px-3 py-2">Wait <span className="font-semibold">until</span> I call.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">in / within</td><td className="border px-3 py-2">dans / d’ici</td><td className="border px-3 py-2">We will reply <span className="font-semibold">within</span> 24 hours.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -113,21 +113,21 @@ const ExpressionsTempsPage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">Indicateurs typiques</h3>
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
-                  <h4 className="font-semibold text-orange-800 mb-2">Present Perfect</h4>
+                <div className="bg-white/70 rounded-lg p-4 border border-gray-200">
+                  <h4 className="font-semibold text-gray-800 mb-2">Present Perfect</h4>
                   <ul className="list-disc pl-6 space-y-1">
                     <li>already, yet, just, ever, never</li>
                     <li>since, for (période non terminée)</li>
                   </ul>
-                  <p className="mt-2">Ex : I have <span className="text-pr-orange-dark font-semibold">already</span> seen it.</p>
+                  <p className="mt-2">Ex : I have <span className="text-pr-black font-semibold">already</span> seen it.</p>
                 </div>
-                <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
-                  <h4 className="font-semibold text-orange-800 mb-2">Past Simple</h4>
+                <div className="bg-white/70 rounded-lg p-4 border border-gray-200">
+                  <h4 className="font-semibold text-gray-800 mb-2">Past Simple</h4>
                   <ul className="list-disc pl-6 space-y-1">
                     <li>yesterday, last week, ago, in 2010</li>
                     <li>période terminée</li>
                   </ul>
-                  <p className="mt-2">Ex : I saw him two hours <span className="text-pr-orange-dark font-semibold">ago</span>.</p>
+                  <p className="mt-2">Ex : I saw him two hours <span className="text-pr-black font-semibold">ago</span>.</p>
                 </div>
               </div>
             </section>
@@ -152,7 +152,7 @@ const ExpressionsTempsPage = () => {
               <li>soon, later, from now on</li>
               <li>by + time (deadline) / until + event (continuité)</li>
             </ul>
-            <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
+            <div className="bg-white/70 rounded-lg p-4 border border-gray-200">
               <p>Ex : By next Monday, we will have finished. / We will wait until she arrives.</p>
             </div>
           </CardContent>
@@ -165,9 +165,9 @@ const ExpressionsTempsPage = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             <ul className="list-disc pl-6 space-y-1">
-              <li><span className="text-pr-orange-dark font-semibold">always/often/sometimes/usually</span> : avant le verbe lexical; après BE.</li>
-              <li><span className="text-pr-orange-dark font-semibold">already</span> : avant le verbe principal; <span className="text-pr-orange-dark font-semibold">yet</span> : fin de phrase (questions/négations).</li>
-              <li><span className="text-pr-orange-dark font-semibold">still</span> : avant le verbe; <span className="text-pr-orange-dark font-semibold">no longer</span> : avant le verbe.</li>
+              <li><span className="text-pr-black font-semibold">always/often/sometimes/usually</span> : avant le verbe lexical; après BE.</li>
+              <li><span className="text-pr-black font-semibold">already</span> : avant le verbe principal; <span className="text-pr-black font-semibold">yet</span> : fin de phrase (questions/négations).</li>
+              <li><span className="text-pr-black font-semibold">still</span> : avant le verbe; <span className="text-pr-black font-semibold">no longer</span> : avant le verbe.</li>
             </ul>
             <p className="text-sm text-gray-600">Variante familière : not ... anymore (They don't live here anymore).</p>
           </CardContent>
@@ -177,26 +177,26 @@ const ExpressionsTempsPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-pr-orange-dark" />
+              <Table className="h-6 w-6 text-pr-black" />
               5. Tableau Récapitulatif
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Catégorie</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Mots clés</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Temps / Placement</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Catégorie</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Mots clés</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Temps / Placement</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Durée</td><td className="border px-3 py-2">since / for</td><td className="border px-3 py-2">present perfect; since/for en groupe prépositionnel</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Passé terminé</td><td className="border px-3 py-2">yesterday / last / ago / in + date</td><td className="border px-3 py-2">past simple</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Récence</td><td className="border px-3 py-2">just / already / yet</td><td className="border px-3 py-2">present perfect; already/just avant verbe; yet en fin</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Continuité/cessation</td><td className="border px-3 py-2">still / no longer / not anymore</td><td className="border px-3 py-2">avant verbe (ou BE); anymore en fin</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Deadline/limite</td><td className="border px-3 py-2">by / by the time / until</td><td className="border px-3 py-2">futur parfait / présent / selon contexte</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Durée</td><td className="border px-3 py-2">since / for</td><td className="border px-3 py-2">present perfect; since/for en groupe prépositionnel</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Passé terminé</td><td className="border px-3 py-2">yesterday / last / ago / in + date</td><td className="border px-3 py-2">past simple</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Récence</td><td className="border px-3 py-2">just / already / yet</td><td className="border px-3 py-2">present perfect; already/just avant verbe; yet en fin</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Continuité/cessation</td><td className="border px-3 py-2">still / no longer / not anymore</td><td className="border px-3 py-2">avant verbe (ou BE); anymore en fin</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Deadline/limite</td><td className="border px-3 py-2">by / by the time / until</td><td className="border px-3 py-2">futur parfait / présent / selon contexte</td></tr>
                 </tbody>
               </table>
             </div>
@@ -210,27 +210,27 @@ const ExpressionsTempsPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Confondre <span className="text-pr-orange-dark font-semibold">since</span> (point) et <span className="text-pr-orange-dark font-semibold">for</span> (durée).</li>
+              <li>Confondre <span className="text-pr-black font-semibold">since</span> (point) et <span className="text-pr-black font-semibold">for</span> (durée).</li>
               <li>Employer present perfect avec marqueurs de passé terminé (yesterday/ago).</li>
-              <li>Placer <span className="text-pr-orange-dark font-semibold">yet</span> ailleurs qu’en fin de question/négation.</li>
-              <li>Confondre <span className="text-pr-orange-dark font-semibold">by</span> (avant une échéance) et <span className="text-pr-orange-dark font-semibold">until</span> (jusqu’à un moment).</li>
+              <li>Placer <span className="text-pr-black font-semibold">yet</span> ailleurs qu’en fin de question/négation.</li>
+              <li>Confondre <span className="text-pr-black font-semibold">by</span> (avant une échéance) et <span className="text-pr-black font-semibold">until</span> (jusqu’à un moment).</li>
             </ul>
           </CardContent>
         </Card>
 
         {/* CTA exercices */}
-        <Card className="mt-2 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mt-2 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-amber-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <Target className="h-6 w-6" />
               Prêt à mettre en pratique ?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-pr-orange-dark mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
+            <p className="text-lg text-pr-black mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/expressions-temps/exercices">
-                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-black-dark hover:bg-pr-black-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

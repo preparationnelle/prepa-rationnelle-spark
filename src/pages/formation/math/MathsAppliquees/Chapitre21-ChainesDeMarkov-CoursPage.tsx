@@ -16,17 +16,17 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
       showNavigation={true}
     >
       {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-pr-orange-pale">
+      <Card className="border-0 shadow-lg bg-pr-gray-bg">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-chaines-de-markov-exercices">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>
             </Link>
             <Link to="/formation/maths-chaines-de-markov-quiz">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <Target className="mr-2 h-4 w-4" />
                 Quiz
               </Button>
@@ -45,7 +45,7 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Chaîne de Markov</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -57,7 +57,7 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Graphe probabiliste associé</p>
               <div className="mt-2 space-y-2">
                 <p>À une chaîne de Markov, on associe un graphe orienté pondéré où :</p>
@@ -68,7 +68,7 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Types de chaînes</p>
               <div className="mt-2 space-y-2">
                 <p>On dit que <LatexRenderer latex="(X_n)" block={false} /> est :</p>
@@ -94,7 +94,7 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Vecteur et matrice stochastiques</p>
               <div className="mt-2 space-y-2">
                 <ul className="space-y-2 ml-4">
@@ -104,7 +104,7 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Propriété</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -113,7 +113,7 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Propriété — Chaîne de Markov</p>
               <div className="mt-2 space-y-2">
                 <ol className="space-y-1 ml-4">
@@ -123,7 +123,7 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Graphe associé à A</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -132,7 +132,7 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Propriété — Loi d'une chaîne de Markov</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -159,7 +159,7 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Loi stationnaire</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -171,7 +171,7 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Propriété — État stable</p>
               <div className="mt-2 space-y-2">
                 <p>Soit <LatexRenderer latex="A" block={false} /> la matrice de transition.</p>
@@ -219,7 +219,7 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
               </Button>
             </Link>
             <Link to="/formation/maths-chaines-de-markov-exercices">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>

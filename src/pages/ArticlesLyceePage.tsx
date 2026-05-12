@@ -12,8 +12,8 @@ const ArticlesLyceePage = () => {
       subtitle: "Classe de détermination",
       description: "Découvrez toutes les matières enseignées en classe de seconde et les stratégies pour bien choisir votre voie.",
       theme: "blue",
-      gradient: "from-carnet-red to-pr-orange",
-      bgGradient: "from-carnet-paper-2 to-pr-orange-pale",
+      gradient: "from-carnet-red to-pr-black",
+      bgGradient: "from-carnet-paper-2 to-pr-black-pale",
       icon: School,
       link: "/articles/lycee/seconde",
       matieresCount: 12,
@@ -38,7 +38,7 @@ const ArticlesLyceePage = () => {
       subtitle: "Année du Bac",
       description: "Maîtrisez toutes les matières de terminale et préparez-vous efficacement aux épreuves du bac.",
       theme: "red",
-      gradient: "from-red-600 to-pr-orange-dark",
+      gradient: "from-red-600 to-pr-black",
       bgGradient: "from-red-50 to-orange-50",
       icon: GraduationCap,
       link: "/articles/lycee/terminale",
@@ -49,18 +49,18 @@ const ArticlesLyceePage = () => {
 
   const colorClasses: Record<string, { bg: string, text: string, border: string, shadow: string, button: string }> = {
     blue: {
-      bg: 'bg-pr-orange-pale',
+      bg: 'bg-pr-gray-bg',
       text: 'text-carnet-red',
       border: 'border-carnet-red/20',
       shadow: 'shadow-carnet-red/50',
       button: 'bg-carnet-red hover:bg-carnet-red-deep'
     },
     orange: {
-      bg: 'bg-orange-50',
-      text: 'text-pr-orange-dark',
+      bg: 'bg-gray-50',
+      text: 'text-pr-black',
       border: 'border-orange-100',
       shadow: 'shadow-orange-200/50',
-      button: 'bg-pr-orange-dark hover:bg-pr-orange-dark'
+      button: 'bg-pr-black-dark hover:bg-pr-black-dark'
     },
     red: {
       bg: 'bg-red-50',
@@ -77,7 +77,7 @@ const ArticlesLyceePage = () => {
         {/* Abstract Background */}
         <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-slate-50 to-transparent -z-10" />
         <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-carnet-red/30 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-orange-100/30 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-gray-100/30 rounded-full blur-3xl -z-10" />
 
         <div className="container mx-auto px-4 sm:px-6 py-12 relative z-10">
           <div className="max-w-6xl mx-auto">
@@ -89,7 +89,7 @@ const ArticlesLyceePage = () => {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-carnet-ink mb-6">
-                Articles <span className="text-transparent bg-clip-text bg-gradient-to-r from-carnet-red to-pr-orange-dark">Lycée</span>
+                Articles <span className="text-transparent bg-clip-text bg-gradient-to-r from-carnet-red to-pr-black">Lycée</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-carnet-ink-soft max-w-3xl mx-auto leading-relaxed font-light">
@@ -98,7 +98,7 @@ const ArticlesLyceePage = () => {
 
               <div className="pt-4">
                 <Link to="/articles">
-                  <Button variant="ghost" className="group text-carnet-ink-soft hover:text-carnet-red hover:bg-pr-orange-pale transition-all duration-300">
+                  <Button variant="ghost" className="group text-carnet-ink-soft hover:text-carnet-red hover:bg-pr-gray-bg transition-all duration-300">
                     <ArrowRight className="mr-2 h-4 w-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
                     Retour aux niveaux
                   </Button>
@@ -163,7 +163,7 @@ const ArticlesLyceePage = () => {
             {/* Call to Action */}
             <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-carnet-ink to-slate-800 text-white shadow-2xl shadow-slate-200/50">
               <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-carnet-red/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-              <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-pr-orange/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+              <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-pr-black/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
               <div className="relative z-10 p-8 md:p-12 text-center">
                 <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-inner border border-white/20">
@@ -180,7 +180,7 @@ const ArticlesLyceePage = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/contact">
-                    <Button size="lg" className="bg-white text-carnet-ink hover:bg-pr-orange-pale hover:text-carnet-red font-bold px-8 h-14 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+                    <Button size="lg" className="bg-white text-carnet-ink hover:bg-pr-gray-bg hover:text-carnet-red font-bold px-8 h-14 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
                       Prendre un premier RDV gratuit
                     </Button>
                   </Link>

@@ -16,7 +16,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
       
     >
       {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-pr-orange-pale"
+      <Card className="border-0 shadow-lg bg-pr-gray-bg"
       
     >
         <CardContent className="pt-6"
@@ -38,7 +38,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <Link to="/formation/maths-variables-aleatoires-densite-exercices"
       
     >
-              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-orange-pale"
+              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-gray-bg"
       
     >
                 <PenTool className="mr-2 h-4 w-4" /
@@ -54,7 +54,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <Link to="/formation/maths-variables-aleatoires-densite-flashcards"
       
     >
-              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-orange-pale"
+              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-gray-bg"
       
     >
                 <Brain className="mr-2 h-4 w-4" /
@@ -70,7 +70,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <Link to="/formation/maths-variables-aleatoires-densite-quiz"
       
     >
-              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-orange-pale"
+              <Button variant="outline" className="border-carnet-red/40 text-carnet-red hover:bg-pr-gray-bg"
       
     >
                 <Target className="mr-2 h-4 w-4" /
@@ -125,7 +125,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="bg-pr-orange-pale p-4 rounded-lg"
+            <div className="bg-pr-gray-bg p-4 rounded-lg"
       
     >
               <p className="text-black mb-3"
@@ -262,7 +262,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -277,7 +277,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </div
       
     >
-            <div className="mt-4 bg-pr-orange-pale p-4 rounded-lg"
+            <div className="mt-4 bg-pr-gray-bg p-4 rounded-lg"
       
     >
               <p className="text-black"
@@ -334,7 +334,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -367,7 +367,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -406,7 +406,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -461,7 +461,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -486,7 +486,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <h3 className="text-lg font-semibold mb-3">Formule de Koenig–Huygens</h3
       
     >
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -521,7 +521,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4"
       
     >
-              <div className="bg-pr-orange-pale p-3 rounded-lg text-center"
+              <div className="bg-pr-gray-bg p-3 rounded-lg text-center"
       
     >
                 <LatexRenderer latex="\mathbb{E}(aX+b)=a\,\mathbb{E}(X)+b" /
@@ -530,7 +530,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
               </div
       
     >
-              <div className="bg-pr-orange-pale p-3 rounded-lg text-center"
+              <div className="bg-pr-gray-bg p-3 rounded-lg text-center"
       
     >
                 <LatexRenderer latex="\operatorname{Var}(aX+b)=a^{2}\operatorname{Var}(X)" /
@@ -608,7 +608,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <h3 className="text-lg font-semibold mb-3">Variable centrée réduite associée</h3
       
     >
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
               <div className="text-center"
@@ -661,7 +661,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardContent className="space-y-6"
       
     >
-          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6"
+          <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-6"
       
     >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -812,7 +812,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardContent className="space-y-6"
       
     >
-          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6"
+          <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-6"
       
     >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -916,7 +916,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             </p
       
     >
-            <div className="text-center bg-pr-orange-pale p-4 rounded-lg"
+            <div className="text-center bg-pr-gray-bg p-4 rounded-lg"
       
     >
               <LatexRenderer latex="\mathbb{P}(X>t+h\mid X>h)=\mathbb{P}(X>t)" /
@@ -935,7 +935,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <h3 className="text-lg font-semibold mb-3">Transformations</h3
       
     >
-            <div className="text-center bg-pr-orange-pale p-4 rounded-lg"
+            <div className="text-center bg-pr-gray-bg p-4 rounded-lg"
       
     >
               <LatexRenderer latex="X\sim\mathcal{E}(1)\ \Longleftrightarrow\ \frac{X}{\lambda}\sim\mathcal{E}(\lambda)" /
@@ -974,7 +974,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardContent className="space-y-6"
       
     >
-          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6"
+          <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-6"
       
     >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -1110,7 +1110,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardContent className="space-y-6"
       
     >
-          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6"
+          <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-6"
       
     >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -1207,7 +1207,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <h3 className="text-lg font-semibold mb-3">Normale centrée réduite 𝒩(0,1)</h3
       
     >
-            <div className="bg-pr-orange-pale p-4 rounded-lg"
+            <div className="bg-pr-gray-bg p-4 rounded-lg"
       
     >
               <div className="text-center space-y-2"
@@ -1255,7 +1255,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
             <div className="space-y-4"
       
     >
-              <div className="bg-pr-orange-pale p-4 rounded-lg text-center"
+              <div className="bg-pr-gray-bg p-4 rounded-lg text-center"
       
     >
                 <LatexRenderer latex="X\sim\mathcal{N}(m,\sigma^{2})\;\Longleftrightarrow\;\frac{X-m}{\sigma}\sim\mathcal{N}(0,1)" /
@@ -1267,7 +1267,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
               <p className="text-black text-center">Par ailleurs,</p
       
     >
-              <div className="bg-pr-orange-pale p-4 rounded-lg text-center"
+              <div className="bg-pr-gray-bg p-4 rounded-lg text-center"
       
     >
                 <LatexRenderer latex="X\sim\mathcal{N}(m,\sigma^{2})\;\Longleftrightarrow\;aX+b\sim\mathcal{N}(am+b,\;a^{2}\sigma^{2})\quad(a\neq0)" /
@@ -1343,7 +1343,7 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
         <CardContent
       
     >
-          <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
+          <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4 rounded-r-lg"
       
     >
             <p className="text-black"

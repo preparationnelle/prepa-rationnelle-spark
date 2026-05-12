@@ -148,7 +148,7 @@ const PreRentreePage = () => {
       {/* Section Vidéo d'explication du stage */}
       <section id="video" className="pb-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <Card className="p-6 bg-gray-50/50 border border-gray-200/50 rounded-2xl shadow-sm">
+          <Card className="p-6 bg-carnet-paper-2 border border-carnet-rule rounded-2xl shadow-sm">
             <h2 className="text-2xl font-bold text-gray-900 text-center mb-6">
               Vidéo d'explication du stage
             </h2>
@@ -193,7 +193,7 @@ const PreRentreePage = () => {
       {/* Section Résumé & prochaines étapes */}
       <section id="resume" className="pb-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <Card className="p-8 bg-white border border-gray-200/50 rounded-2xl shadow-sm">
+          <Card className="p-8 bg-carnet-paper-2 border border-carnet-rule rounded-2xl shadow-sm">
             <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
               Pourquoi ce stage change la donne
             </h2>
@@ -239,7 +239,7 @@ const PreRentreePage = () => {
               <Button
                 asChild
                 variant="outline"
-                className="border-pr-orange text-pr-orange-dark hover:bg-orange-50"
+                className="border-pr-black text-pr-black hover:bg-carnet-paper"
               >
                 <a href="#" target="_blank" rel="noopener noreferrer">
                   <Download className="w-4 h-4 mr-2" />
@@ -249,7 +249,7 @@ const PreRentreePage = () => {
               
               <Button
                 onClick={scrollToInscription}
-                className="bg-gradient-to-r from-pr-orange to-red-500 hover:from-pr-orange-dark hover:to-red-600 text-white"
+                className="bg-gradient-to-r from-pr-orange to-red-500 hover:from-pr-black hover:to-red-600 text-white"
               >
                 S'inscrire maintenant
               </Button>
@@ -265,7 +265,7 @@ const PreRentreePage = () => {
 
 
       {/* Section 1 - Inscription au stage */}
-      <section id="inscription" className="py-8 px-4 bg-white">
+      <section id="inscription" className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
             Inscription au Stage de Pré-entrée
@@ -288,7 +288,7 @@ const PreRentreePage = () => {
                     value={formData.prenom}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-black focus:border-transparent"
                     placeholder="Votre prénom"
                   />
                 </div>
@@ -302,7 +302,7 @@ const PreRentreePage = () => {
                     value={formData.nom}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-black focus:border-transparent"
                     placeholder="Votre nom"
                   />
                 </div>
@@ -318,7 +318,7 @@ const PreRentreePage = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-black focus:border-transparent"
                   placeholder="votre.email@exemple.com"
                 />
               </div>
@@ -333,7 +333,7 @@ const PreRentreePage = () => {
                   value={formData.telephone}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-black focus:border-transparent"
                   placeholder="06 XX XX XX XX"
                 />
               </div>
@@ -352,7 +352,7 @@ const PreRentreePage = () => {
                       value="stripe"
                       checked={paymentMethod === 'stripe'}
                       onChange={(e) => setPaymentMethod(e.target.value as 'stripe')}
-                      className="mr-3 text-pr-orange-dark focus:ring-pr-orange"
+                      className="mr-3 text-pr-black focus:ring-pr-black"
                     />
                     <span className="text-gray-700">Paiement par carte (Stripe) - <strong>Recommandé</strong></span>
                   </label>
@@ -364,7 +364,7 @@ const PreRentreePage = () => {
                       value="virement"
                       checked={paymentMethod === 'virement'}
                       onChange={(e) => setPaymentMethod(e.target.value as 'virement')}
-                      className="mr-3 text-pr-orange-dark focus:ring-pr-orange"
+                      className="mr-3 text-pr-black focus:ring-pr-black"
                     />
                     <span className="text-gray-700">Paiement par virement bancaire (RIB)</span>
                   </label>
@@ -373,7 +373,7 @@ const PreRentreePage = () => {
 
               <Button 
                 type="submit"
-                className="w-full bg-gradient-to-r from-pr-orange to-red-500 hover:from-pr-orange-dark hover:to-red-600 text-white min-h-[44px] mt-6"
+                className="w-full bg-gradient-to-r from-pr-orange to-red-500 hover:from-pr-black hover:to-red-600 text-white min-h-[44px] mt-6"
               >
                 Procéder au paiement
               </Button>
@@ -393,26 +393,26 @@ const PreRentreePage = () => {
             {/* Contacts */}
             <Card className="p-6 bg-white">
               <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                <HelpCircle className="w-5 h-5 text-pr-orange mr-2" />
+                <HelpCircle className="w-5 h-5 text-pr-black mr-2" />
                 Contacts & support
               </h3>
               
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-pr-orange" />
+                  <Mail className="w-5 h-5 text-pr-black" />
                   <a 
                     href="mailto:preparationnelle@gmail.com"
-                    className="text-gray-700 hover:text-pr-orange-dark underline"
+                    className="text-gray-700 hover:text-pr-black underline"
                   >
                     preparationnelle@gmail.com
                   </a>
                 </div>
                 
                 <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-pr-orange" />
+                  <Phone className="w-5 h-5 text-pr-black" />
                   <a 
                     href="tel:+33609164668"
-                    className="text-gray-700 hover:text-pr-orange-dark underline"
+                    className="text-gray-700 hover:text-pr-black underline"
                   >
                     06 09 16 46 68
                   </a>
@@ -438,7 +438,7 @@ const PreRentreePage = () => {
                   <Button
                     asChild
                     variant="outline"
-                    className="w-full border-pr-orange text-pr-orange-dark hover:bg-orange-50"
+                    className="w-full border-pr-black text-pr-black hover:bg-carnet-paper"
                   >
                     <a href="mailto:preparationnelle@gmail.com?subject=Question Stage Pré-entrée">
                       <Mail className="w-4 h-4 mr-2" />
@@ -505,7 +505,7 @@ const PreRentreePage = () => {
                 Merci pour votre inscription ! Nous avons bien reçu votre demande de paiement par virement.
               </p>
               
-              <div className="bg-pr-orange-pale p-4 rounded-lg border border-pr-orange-soft">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border border-pr-black-soft">
                 <h4 className="font-medium text-carnet-red-deep mb-2">📋 Prochaines étapes :</h4>
                 <ul className="text-sm text-carnet-red space-y-1">
                   <li>• Nous vous enverrons notre RIB par email sous 24h</li>
@@ -523,7 +523,7 @@ const PreRentreePage = () => {
             <div className="flex space-x-3">
               <Button
                 onClick={() => setShowRIBModal(false)}
-                className="flex-1 bg-pr-orange hover:bg-pr-orange-dark text-white"
+                className="flex-1 bg-pr-black hover:bg-pr-black-dark text-white"
               >
                 Compris
               </Button>

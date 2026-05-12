@@ -101,7 +101,7 @@ const SESAMEAllemandPage = () => {
         }
 
         // Si pas encore répondu
-        return "border-gray-200 hover:border-carnet-red/40 hover:bg-pr-orange-pale";
+        return "border-gray-200 hover:border-carnet-red/40 hover:bg-pr-gray-bg";
     };
 
     const score = showResults ? calculateScore() : null;
@@ -137,7 +137,7 @@ const SESAMEAllemandPage = () => {
             <div className="container mx-auto py-8 px-4">
                 {/* Header */}
                 <div className="text-center mb-10">
-                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-pr-orange-pale to-pr-orange-soft rounded-2xl mb-6">
+                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br bg-carnet-paper-2 rounded-2xl mb-6">
                         <Award className="h-10 w-10 text-carnet-red" />
                     </div>
                     <h1 className="text-4xl sm:text-5xl font-bold mb-4">
@@ -163,7 +163,7 @@ const SESAMEAllemandPage = () => {
                                         setSelectedCategory(category);
                                         setCurrentQuestionIndex(0);
                                     }}
-                                    className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-carnet-red hover:bg-pr-orange-pale transition-all duration-300 group"
+                                    className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-carnet-red hover:bg-pr-gray-bg transition-all duration-300 group"
                                 >
                                     <div className="flex items-center gap-4">
                                         <div className="w-12 h-12 bg-carnet-red/10 rounded-lg flex items-center justify-center group-hover:bg-carnet-red/20 transition-colors">
@@ -188,7 +188,7 @@ const SESAMEAllemandPage = () => {
                                     }}
                                     size="lg"
                                     variant="outline"
-                                    className="border-2 border-carnet-red text-carnet-red hover:bg-pr-orange-pale px-8"
+                                    className="border-2 border-carnet-red text-carnet-red hover:bg-pr-gray-bg px-8"
                                 >
                                     Mode Normal (question par question)
                                 </Button>
@@ -198,7 +198,7 @@ const SESAMEAllemandPage = () => {
                                         setExamMode(true);
                                     }}
                                     size="lg"
-                                    className="bg-gradient-to-r from-pr-orange-dark to-pr-orange-dark hover:from-pr-orange-dark hover:to-orange-800 text-white px-8"
+                                    className="bg-gradient-to-r from-carnet-red to-carnet-red-deep hover:from-carnet-red hover:to-orange-800 text-white px-8"
                                 >
                                     Mode Examen (toutes les questions)
                                 </Button>
@@ -236,23 +236,23 @@ const SESAMEAllemandPage = () => {
                         {/* Exam Mode Progress */}
                         {!showResults && examMode && (
                             <div className="mb-8">
-                                <div className="bg-orange-50 border-2 border-orange-200 rounded-xl p-6">
+                                <div className="bg-gray-50 border-2 border-gray-200 rounded-xl p-6">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-3">
-                                            <Award className="h-6 w-6 text-pr-orange-dark" />
+                                            <Award className="h-6 w-6 text-pr-black" />
                                             <h3 className="font-bold text-lg text-orange-900">Mode Examen</h3>
                                         </div>
-                                        <div className="text-sm font-medium text-pr-orange-dark">
+                                        <div className="text-sm font-medium text-pr-black">
                                             {Object.keys(userAnswers).length} / {currentQuestions.length} réponses
                                         </div>
                                     </div>
-                                    <p className="text-sm text-pr-orange-dark mt-2">
+                                    <p className="text-sm text-pr-black mt-2">
                                         Toutes les questions sont affichées. Faites défiler pour répondre à toutes.
                                     </p>
                                     <Button
                                         onClick={handleSubmit}
                                         disabled={Object.keys(userAnswers).length !== currentQuestions.length}
-                                        className="mt-4 w-full bg-pr-orange-dark hover:bg-pr-orange-dark text-white"
+                                        className="mt-4 w-full bg-pr-black-dark hover:bg-pr-black-dark text-white"
                                     >
                                         Terminer l'examen ({Object.keys(userAnswers).length}/{currentQuestions.length})
                                     </Button>
@@ -262,7 +262,7 @@ const SESAMEAllemandPage = () => {
 
                         {/* Score Display */}
                         {showResults && score && (
-                            <div className="bg-gradient-to-br from-pr-orange-pale to-pr-orange-pale/60 rounded-xl p-8 mb-8 border-2 border-carnet-red/30">
+                            <div className="bg-gradient-to-br from-carnet-red-pale to-carnet-red-pale/60 rounded-xl p-8 mb-8 border-2 border-carnet-red/30">
                                 <div className="text-center">
                                     <Trophy className="h-16 w-16 text-carnet-red mx-auto mb-4" />
                                     <h2 className="text-3xl font-bold text-gray-800 mb-2">Résultats</h2>
@@ -339,11 +339,11 @@ const SESAMEAllemandPage = () => {
 
                                 {/* Explication automatique après réponse */}
                                 {userAnswers[currentQuestion.id] && currentQuestion.explanation && (
-                                    <div className="mt-6 p-5 bg-gradient-to-r from-pr-orange-pale to-indigo-50 border-l-4 border-carnet-red rounded-lg shadow-sm">
+                                    <div className="mt-6 p-5 bg-carnet-paper-2 border-carnet-rule border-l-4 border-carnet-red rounded-lg shadow-sm">
                                         <div className="flex items-start gap-3">
                                             <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${userAnswers[currentQuestion.id] === currentQuestion.correctAnswer
                                                 ? 'bg-green-100 text-green-700'
-                                                : 'bg-orange-100 text-pr-orange-dark'
+                                                : 'bg-gray-100 text-pr-black'
                                                 }`}>
                                                 {userAnswers[currentQuestion.id] === currentQuestion.correctAnswer ? '✓' : 'ℹ'}
                                             </div>
@@ -410,7 +410,7 @@ const SESAMEAllemandPage = () => {
                                 {currentQuestions.map((question, qIndex) => (
                                     <div key={question.id} className="bg-white rounded-xl border-2 border-gray-200 p-6 shadow-lg">
                                         <div className="flex items-start gap-4 mb-4">
-                                            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-orange-100 text-orange-800 font-bold flex items-center justify-center text-lg">
+                                            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gray-100 text-gray-800 font-bold flex items-center justify-center text-lg">
                                                 {qIndex + 1}
                                             </div>
                                             <div className="flex-1">
@@ -429,8 +429,8 @@ const SESAMEAllemandPage = () => {
                                                                 key={optIndex}
                                                                 onClick={() => handleAnswerSelect(optionLetter, question.id)}
                                                                 className={`w-full text-left p-3 rounded-lg border-2 transition-all duration-200 ${isSelected
-                                                                    ? 'border-pr-orange bg-orange-50 text-orange-900'
-                                                                    : 'border-gray-200 hover:border-orange-300 hover:bg-orange-50'
+                                                                    ? 'border-pr-black bg-gray-50 text-orange-900'
+                                                                    : 'border-gray-200 hover:border-orange-300 hover:bg-gray-50'
                                                                     }`}
                                                             >
                                                                 <div className="flex items-start gap-2">
@@ -509,7 +509,7 @@ const SESAMEAllemandPage = () => {
                                                     )}
 
                                                     {showExplanation[question.id] && question.explanation && (
-                                                        <div className="mt-3 p-4 bg-pr-orange-pale border-l-4 border-carnet-red rounded">
+                                                        <div className="mt-3 p-4 bg-pr-gray-bg border-l-4 border-carnet-red rounded">
                                                             <p className="text-sm text-gray-700">
                                                                 <strong className="text-carnet-red-deep">Explication : </strong>
                                                                 {question.explanation}

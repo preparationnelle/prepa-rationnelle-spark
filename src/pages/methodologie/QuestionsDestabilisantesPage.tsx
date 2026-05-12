@@ -103,7 +103,7 @@ const QuestionsDestabilisantesPage = () => (
     <MethodSection label="Section 03" title="Exemples de réponses réussies" icon={MessageSquare}>
       <div className="space-y-5">
         {exemples.map((ex, i) => (
-          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+          <div key={i} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
                 Exemple {i + 1}
@@ -148,7 +148,7 @@ const QuestionsDestabilisantesPage = () => (
             ],
           },
         ].map((g) => (
-          <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+          <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
             <h4 className="font-dm-serif text-lg text-carnet-ink mb-4 flex items-center gap-2">
               <AlertTriangle className="w-5 h-5 text-red-700" strokeWidth={1.8} />
               {g.t}

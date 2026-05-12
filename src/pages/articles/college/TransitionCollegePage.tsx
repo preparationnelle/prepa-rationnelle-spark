@@ -67,7 +67,7 @@ const TransitionCollegePage = () => {
                                 </p>
                             </div>
 
-                            <div className="bg-pr-orange-pale p-6 rounded-xl border border-carnet-red/20">
+                            <div className="bg-pr-gray-bg p-6 rounded-xl border border-carnet-red/20">
                                 <div className="flex items-center gap-3 mb-3">
                                     <Clock className="h-6 w-6 text-carnet-red" />
                                     <h3 className="text-lg font-bold text-gray-900 m-0">Emploi du temps</h3>
@@ -87,9 +87,9 @@ const TransitionCollegePage = () => {
                                 </p>
                             </div>
 
-                            <div className="bg-orange-50 p-6 rounded-xl border border-orange-100">
+                            <div className="bg-gray-50 p-6 rounded-xl border border-orange-100">
                                 <div className="flex items-center gap-3 mb-3">
-                                    <GraduationCap className="h-6 w-6 text-pr-orange-dark" />
+                                    <GraduationCap className="h-6 w-6 text-pr-black" />
                                     <h3 className="text-lg font-bold text-gray-900 m-0">Autonomie</h3>
                                 </div>
                                 <p className="text-gray-700 text-sm">

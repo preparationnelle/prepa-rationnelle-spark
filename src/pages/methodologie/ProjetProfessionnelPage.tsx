@@ -63,7 +63,7 @@ const ProjetProfessionnelPage = () => {
             { t: "Innovation & Tech", l: ["Entrepreneuriat", "Product management", "Business development", "Venture capital"] },
             { t: "Impact & Secteurs", l: ["Développement durable", "Santé & biotech", "Luxe & mode", "Économie sociale"] },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-2">{g.t}</h4>
               <div className="h-px w-8 bg-red-600 mb-4" />
               <ul className="space-y-2 text-sm text-carnet-ink-soft">
@@ -81,7 +81,7 @@ const ProjetProfessionnelPage = () => {
             { t: "Projets trop vagues", l: ['"Travailler dans le management"', '"Faire du business"', '"Être dans la finance"', '"Diriger une entreprise"'] },
             { t: "Manque de cohérence", l: ["Projet déconnecté du parcours", "Motivations superficielles", "Aucune expérience validante", "Plan irréaliste"] },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-4 flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5 text-red-700" strokeWidth={1.8} />
                 {g.t}

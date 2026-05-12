@@ -104,14 +104,14 @@ const PositionV2ExercicesPage = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-10">
           <div className="flex justify-center mb-6">
-            <Button variant="outline" className="flex items-center gap-2 border-orange-300 text-pr-orange-dark hover:bg-orange-50">
+            <Button variant="outline" className="flex items-center gap-2 border-orange-300 text-pr-black hover:bg-gray-50">
               <ArrowLeft className="h-4 w-4" />
               Retour
             </Button>
           </div>
 
           <div className="mb-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-pr-orange-dark text-white rounded-xl mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-pr-black-dark text-white rounded-xl mb-4">
               <Target className="h-8 w-8" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-3">
@@ -127,8 +127,8 @@ const PositionV2ExercicesPage = () => {
           <div className="mb-12">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <FileText className="h-5 w-5 text-pr-orange-dark" />
+                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <FileText className="h-5 w-5 text-pr-black" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -159,14 +159,14 @@ const PositionV2ExercicesPage = () => {
                     </h3>
                     <div className="space-y-2">
                       {currentExercise.options.map((option, index) => (
-                        <label key={index} className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-orange-300 hover:bg-orange-50 cursor-pointer transition-colors">
+                        <label key={index} className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-orange-300 hover:bg-gray-50 cursor-pointer transition-colors">
                           <input
                             type="radio"
                             name={currentExercise.id}
                             value={option}
                             checked={userAnswers[currentExercise.id] === option}
                             onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                            className="text-pr-orange-dark focus:ring-pr-orange"
+                            className="text-pr-black focus:ring-carnet-red/30"
                           />
                           <span className="text-gray-800 flex-1">{option}</span>
                         </label>
@@ -182,7 +182,7 @@ const PositionV2ExercicesPage = () => {
                       type="text"
                       value={userAnswers[currentExercise.id] || ''}
                       onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange text-gray-800 placeholder-gray-500"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carnet-red/30 focus:border-pr-black text-gray-800 placeholder-gray-500"
                       placeholder="Tapez votre réponse ici..."
                     />
                   </div>
@@ -192,7 +192,7 @@ const PositionV2ExercicesPage = () => {
                   <Button
                     onClick={() => validateAnswer(currentExercise.id)}
                     disabled={!userAnswers[currentExercise.id]}
-                    className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white flex items-center gap-2 px-6 py-2"
+                    className="bg-pr-black-dark hover:bg-pr-black-dark text-white flex items-center gap-2 px-6 py-2"
                   >
                     <CheckCircle className="h-4 w-4" />
                     Valider ma réponse
@@ -200,7 +200,7 @@ const PositionV2ExercicesPage = () => {
                   <Button
                     variant="outline"
                     onClick={() => toggleCorrections(currentExercise.id)}
-                    className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-orange-50 px-6 py-2"
+                    className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-gray-50 px-6 py-2"
                   >
                     <Eye className="h-4 w-4" />
                     Voir la correction

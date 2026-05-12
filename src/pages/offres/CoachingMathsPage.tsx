@@ -44,7 +44,7 @@ const CoachingMathsPage = () => {
           </div>
 
           {/* Offer details section */}
-          <div className="bg-white/90 rounded-xl border border-primary/30 p-6 mb-8">
+          <div className="bg-carnet-paper-2 rounded-xl border border-carnet-rule p-6 mb-8">
             <h3 className="text-xl font-bold text-primary mb-6">
               Découvre notre offre :
             </h3>
@@ -96,12 +96,12 @@ const CoachingMathsPage = () => {
             
             {/* Urgency and Guarantee */}
             <div className="space-y-4">
-              <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
-                <h4 className="font-semibold text-pr-orange-dark mb-2 flex items-center gap-2">
+              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <h4 className="font-semibold text-pr-black mb-2 flex items-center gap-2">
                   <span>⏰</span>
                   Urgence
                 </h4>
-                <p className="text-sm text-pr-orange-dark">
+                <p className="text-sm text-pr-black">
                   Les créneaux partent vite : assure-toi d&apos;en avoir un avant la fermeture des inscriptions dimanche 23h59
                 </p>
               </div>

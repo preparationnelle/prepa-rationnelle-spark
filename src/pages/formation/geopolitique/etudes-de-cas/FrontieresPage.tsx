@@ -174,7 +174,7 @@ const FrontieresPage = () => {
             <AccordionContent>
               <div className="space-y-6">
 
-                <Card className="bg-pr-orange-pale border-carnet-red/30">
+                <Card className="bg-pr-gray-bg border-carnet-red/30">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-carnet-red-deep">
                       <Coins className="h-5 w-5" />
@@ -223,9 +223,9 @@ const FrontieresPage = () => {
                       <div>
                         <h4 className="font-semibold text-carnet-red-deep mb-3">Défis contemporains</h4>
                         <div className="space-y-3">
-                          <div className="p-3 bg-orange-100 rounded-lg border border-orange-200">
-                            <div className="font-semibold text-orange-800 mb-1">Brexit</div>
-                            <div className="text-sm text-pr-orange-dark">
+                          <div className="p-3 bg-gray-100 rounded-lg border border-gray-200">
+                            <div className="font-semibold text-gray-800 mb-1">Brexit</div>
+                            <div className="text-sm text-pr-black">
                               Retour frontières économiques UK-UE. Nouveaux contrôles douaniers, 
                               impact chaînes logistiques.
                             </div>

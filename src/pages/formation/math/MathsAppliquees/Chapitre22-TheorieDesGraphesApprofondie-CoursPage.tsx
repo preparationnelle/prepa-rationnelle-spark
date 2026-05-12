@@ -16,17 +16,17 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
       showNavigation={true}
     >
       {/* Navigation vers les ressources */}
-      <Card className="border-0 shadow-lg bg-pr-orange-pale">
+      <Card className="border-0 shadow-lg bg-pr-gray-bg">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-theorie-des-graphes-approfondie-exercices">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>
             </Link>
             <Link to="/formation/maths-theorie-des-graphes-approfondie-quiz">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <Target className="mr-2 h-4 w-4" />
                 Quiz
               </Button>
@@ -45,7 +45,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Graphe non orienté</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -54,7 +54,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Terminologie de base</p>
               <div className="mt-2 space-y-2">
                 <ul className="space-y-1 ml-4">
@@ -69,7 +69,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Propriété — Formule d'Euler</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -82,14 +82,14 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Graphe complet</p>
               <div className="mt-2 space-y-2">
                 <p>Un graphe complet est un graphe simple où tous les sommets sont deux à deux adjacents.</p>
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Propriété</p>
               <div className="mt-2 space-y-2">
                 <p>Un graphe complet d'ordre <LatexRenderer latex="n" block={false} /> possède</p>
@@ -114,7 +114,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Graphe orienté</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -123,7 +123,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Degrés entrant et sortant</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -136,7 +136,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Propriété — Formule d'Euler orientée</p>
               <div className="mt-2 space-y-2">
                 <p>Pour un graphe orienté de <LatexRenderer latex="p" block={false} /> arcs :</p>
@@ -146,7 +146,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Graphe pondéré</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -155,7 +155,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Matrice d'adjacence</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -181,7 +181,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Chaînes et cycles</p>
               <div className="mt-2 space-y-2">
                 <ul className="space-y-1 ml-4">
@@ -195,7 +195,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Théorème — Puissances de la matrice d'adjacence</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -204,7 +204,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Graphe connexe</p>
               <div className="mt-2 space-y-2">
                 <p>Un graphe non orienté est connexe si tout sommet est relié à tout autre par une chaîne.</p>
@@ -216,7 +216,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Théorème — Critère de connectivité</p>
               <div className="mt-2 space-y-2">
                 <p>Soit <LatexRenderer latex="M" block={false} /> la matrice d'adjacence d'un graphe d'ordre <LatexRenderer latex="n" block={false} />.</p>
@@ -227,7 +227,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Théorème d'Euler</p>
               <div className="mt-2 space-y-2">
                 <p>Un graphe simple, non orienté et connexe :</p>
@@ -238,7 +238,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Théorème de Perron–Frobenius</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -264,7 +264,7 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
               </Button>
             </Link>
             <Link to="/formation/maths-theorie-des-graphes-approfondie-exercices">
-              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-orange-pale">
+              <Button variant="outline" className="border-carnet-red/30 text-carnet-red hover:bg-pr-gray-bg">
                 <PenTool className="mr-2 h-4 w-4" />
                 Exercices
               </Button>

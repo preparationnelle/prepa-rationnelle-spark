@@ -202,7 +202,7 @@ const CommonwealthVocabularyPage = () => {
       'Commonwealth et Empire': 'bg-carnet-red',
       'Relations et coopération': 'bg-green-500',
       'Développement et économie': 'bg-purple-500',
-      'Culture et identité': 'bg-pr-orange',
+      'Culture et identité': 'bg-pr-black',
       'Éducation et formation': 'bg-red-500',
       'Gouvernance et politique': 'bg-indigo-500',
       'Infrastructure et développement urbain': 'bg-pink-500',
@@ -226,7 +226,7 @@ const CommonwealthVocabularyPage = () => {
               </Link>
             </div>
             <div className="flex items-center gap-4">
-              <Badge variant="outline" className="bg-pr-orange-pale text-carnet-red border-carnet-red/30">
+              <Badge variant="outline" className="bg-pr-gray-bg text-carnet-red border-carnet-red/30">
                 Le Commonwealth et l'héritage post-colonial
               </Badge>
               <span className="text-sm text-gray-600">

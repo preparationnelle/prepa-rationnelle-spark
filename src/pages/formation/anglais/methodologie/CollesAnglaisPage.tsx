@@ -6,7 +6,7 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   <h2 className="font-dm-serif text-2xl text-pr-black mt-10 mb-3 leading-tight">{children}</h2>
 );
 
-const Accent = () => <div className="w-10 h-[2px] bg-pr-orange mb-5" />;
+const Accent = () => <div className="w-10 h-[2px] bg-pr-black mb-5" />;
 
 const SubTitle = ({ children }: { children: React.ReactNode }) => (
   <h3 className="font-dm-serif text-lg text-pr-black mt-7 mb-3 leading-tight">{children}</h3>
@@ -18,13 +18,13 @@ const P = ({ children, className = '' }: { children: React.ReactNode; className?
 
 const LI = ({ children }: { children: React.ReactNode }) => (
   <li className="flex gap-2 text-pr-gray-dark/90 leading-relaxed">
-    <span className="text-pr-orange mt-[2px]">→</span>
+    <span className="text-pr-black mt-[2px]">→</span>
     <span>{children}</span>
   </li>
 );
 
 const Box = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-pr-orange-pale/30 border border-pr-orange-pale rounded-xl p-5 my-4 text-pr-gray-dark/90">
+  <div className="bg-pr-gray-bg/30 border border-pr-black-pale rounded-xl p-5 my-4 text-pr-gray-dark/90">
     {children}
   </div>
 );
@@ -59,10 +59,10 @@ const CollesAnglaisPage = () => {
           <P>Les articles anglais hiérarchisent leurs informations. Suivre un plan type aide à rester clair :</P>
           <Box>
             <P className="mb-2">
-              <strong className="text-pr-orange-dark">Plan type 1</strong> : What? → Why? → Consequences / solutions?
+              <strong className="text-pr-black">Plan type 1</strong> : What? → Why? → Consequences / solutions?
             </P>
             <P className="mb-0">
-              <strong className="text-pr-orange-dark">Plan type 2</strong> : What? → Reactions? → Consequences / solutions?
+              <strong className="text-pr-black">Plan type 2</strong> : What? → Reactions? → Consequences / solutions?
             </P>
           </Box>
           <P>Piocher dans le texte les éléments pour remplir le plan.</P>
@@ -110,7 +110,7 @@ const CollesAnglaisPage = () => {
           </ol>
           <Box>
             <P className="mb-0">
-              <strong className="text-pr-orange-dark">Exemple</strong> : à partir de l'article « Canadian inferno… »,
+              <strong className="text-pr-black">Exemple</strong> : à partir de l'article « Canadian inferno… »,
               éviter un topo général sur le climat et discuter plutôt de la difficulté à penser hors des modèles
               préexistants (cf. Taleb, <em>The Black Swan</em>).
             </P>
@@ -136,7 +136,7 @@ const CollesAnglaisPage = () => {
           <P>
             7 références à connaître pour argumenter en colle :{' '}
             <a
-              className="text-pr-orange-dark hover:text-pr-orange underline underline-offset-2"
+              className="text-pr-black hover:text-pr-black underline underline-offset-2"
               href="https://urlz.fr/iMuo"
               target="_blank"
               rel="noreferrer"

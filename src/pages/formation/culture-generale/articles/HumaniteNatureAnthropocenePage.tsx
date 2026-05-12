@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -26,13 +26,13 @@ const HumaniteNatureAnthropocenePage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Article
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               L&apos;humanité face à la nature&nbsp;: l&apos;anthropocène et la fin du grand partage
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Jonas, Descola, Latour. Trois manières de défaire le grand partage moderne
               entre l&apos;humain et la nature.
@@ -55,8 +55,8 @@ const HumaniteNatureAnthropocenePage: React.FC = () => {
                 océans, atmosphère&nbsp;: la planète porte désormais notre signature. La
                 nature n&apos;est plus un décor. Elle riposte.
               </p>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Tension à retenir</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Tension à retenir</h3>
                 <p>
                   L&apos;humanité est-elle <em>face à</em> la nature comme à un objet, ou
                   est-elle <em>dans</em> la nature comme une espèce parmi d&apos;autres&nbsp;?
@@ -75,11 +75,11 @@ const HumaniteNatureAnthropocenePage: React.FC = () => {
                 traditionnelle.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Inadéquation des éthiques classiques</strong>. Aristote et Kant pensaient l&apos;action morale entre contemporains. La technique moderne agit sur des siècles, sur des écosystèmes, sur des humains à venir.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Nouvelle responsabilité</strong>. Le pouvoir crée le devoir. Si nous pouvons détruire les conditions de la vie humaine sur Terre, nous sommes responsables de la protéger pour ceux qui ne sont pas encore nés.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Heuristique de la peur</strong>. Pour penser les conséquences à long terme, il faut donner plus de poids aux scénarios catastrophiques qu&apos;aux scénarios optimistes. Le pire est plus instructif que le meilleur.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Inadéquation des éthiques classiques</strong>. Aristote et Kant pensaient l&apos;action morale entre contemporains. La technique moderne agit sur des siècles, sur des écosystèmes, sur des humains à venir.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Nouvelle responsabilité</strong>. Le pouvoir crée le devoir. Si nous pouvons détruire les conditions de la vie humaine sur Terre, nous sommes responsables de la protéger pour ceux qui ne sont pas encore nés.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Heuristique de la peur</strong>. Pour penser les conséquences à long terme, il faut donner plus de poids aux scénarios catastrophiques qu&apos;aux scénarios optimistes. Le pire est plus instructif que le meilleur.</li>
               </ul>
-              <p className="italic pl-4 border-l-2 border-pr-orange">
+              <p className="italic pl-4 border-l-2 border-pr-black">
                 «&nbsp;Agis de telle sorte que les effets de ton action soient compatibles
                 avec la permanence d&apos;une vie authentiquement humaine sur terre.&nbsp;»
               </p>
@@ -108,10 +108,10 @@ const HumaniteNatureAnthropocenePage: React.FC = () => {
                 d&apos;autres sociétés organisent le monde tout autrement.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Animisme</strong>. Mêmes intériorités (esprits, intentions), corps différents. Plantes et animaux ont une «&nbsp;personne&nbsp;» comme l&apos;humain.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Totémisme</strong>. Mêmes intériorités et mêmes corps&nbsp;: humains et certains non-humains sont parents.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Analogisme</strong>. Tous les êtres sont singuliers, reliés par des correspondances (Chine ancienne, Renaissance européenne).</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Naturalisme</strong>. La nôtre. Mêmes corps physiques, mais l&apos;intériorité (raison, conscience) est réservée à l&apos;humain.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Animisme</strong>. Mêmes intériorités (esprits, intentions), corps différents. Plantes et animaux ont une «&nbsp;personne&nbsp;» comme l&apos;humain.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Totémisme</strong>. Mêmes intériorités et mêmes corps&nbsp;: humains et certains non-humains sont parents.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Analogisme</strong>. Tous les êtres sont singuliers, reliés par des correspondances (Chine ancienne, Renaissance européenne).</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Naturalisme</strong>. La nôtre. Mêmes corps physiques, mais l&apos;intériorité (raison, conscience) est réservée à l&apos;humain.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Le naturalisme moderne est une
@@ -136,9 +136,9 @@ const HumaniteNatureAnthropocenePage: React.FC = () => {
                 nouveau ce que c&apos;est qu&apos;habiter la Terre.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Gaïa</strong>. Reprenant l&apos;hypothèse de James Lovelock, Latour parle de Gaïa non comme d&apos;une mère nourricière, mais comme d&apos;un système qui réagit. Le climat n&apos;est pas un décor&nbsp;: il agit, il punit, il négocie.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Le sol se dérobe</strong>. La géopolitique moderne supposait un globe neutre. L&apos;anthropocène fait découvrir que le sol lui-même change. Il n&apos;y a plus de territoire à conquérir, mais une planète à habiter.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Nouveau régime climatique</strong>. Notre époque inaugure un rapport politique inédit&nbsp;: la lutte de classes redevient une lutte pour les conditions matérielles d&apos;existence — air, eau, sol, espèces.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Gaïa</strong>. Reprenant l&apos;hypothèse de James Lovelock, Latour parle de Gaïa non comme d&apos;une mère nourricière, mais comme d&apos;un système qui réagit. Le climat n&apos;est pas un décor&nbsp;: il agit, il punit, il négocie.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Le sol se dérobe</strong>. La géopolitique moderne supposait un globe neutre. L&apos;anthropocène fait découvrir que le sol lui-même change. Il n&apos;y a plus de territoire à conquérir, mais une planète à habiter.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Nouveau régime climatique</strong>. Notre époque inaugure un rapport politique inédit&nbsp;: la lutte de classes redevient une lutte pour les conditions matérielles d&apos;existence — air, eau, sol, espèces.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Latour articule diagnostic
@@ -157,8 +157,8 @@ const HumaniteNatureAnthropocenePage: React.FC = () => {
 
           <PRCard number="05" title="Paraperso prêt à l'emploi">
             <div className="space-y-4 text-sm md:text-base">
-              <div className="bg-pr-orange-pale rounded-xl p-5">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">
+              <div className="bg-pr-gray-bg rounded-xl p-5">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">
                   L&apos;humanité réinscrite dans la Terre
                 </h3>
                 <p className="text-xs italic mb-3">
@@ -208,19 +208,19 @@ const HumaniteNatureAnthropocenePage: React.FC = () => {
           <PRCard number="06" title="Où mobiliser ces références ?">
             <div className="space-y-4 text-sm md:text-base">
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;humanité et la nature</strong>&nbsp;» — sujet frontal.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Sommes-nous responsables de l&apos;avenir&nbsp;?</strong>&nbsp;» — Jonas central.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;humain est-il maître de la nature&nbsp;?</strong>&nbsp;» — Descartes vs anthropocène.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le progrès technique a-t-il des limites&nbsp;?</strong>&nbsp;» — Jonas sur la précaution.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Y a-t-il une nature&nbsp;?</strong>&nbsp;» — Descola comme déconstruction.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;humanité au péril d&apos;elle-même</strong>&nbsp;» — anthropocène comme catastrophe et chance.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;humanité et la nature</strong>&nbsp;» — sujet frontal.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Sommes-nous responsables de l&apos;avenir&nbsp;?</strong>&nbsp;» — Jonas central.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;humain est-il maître de la nature&nbsp;?</strong>&nbsp;» — Descartes vs anthropocène.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le progrès technique a-t-il des limites&nbsp;?</strong>&nbsp;» — Jonas sur la précaution.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Y a-t-il une nature&nbsp;?</strong>&nbsp;» — Descola comme déconstruction.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;humanité au péril d&apos;elle-même</strong>&nbsp;» — anthropocène comme catastrophe et chance.</li>
               </ul>
             </div>
           </PRCard>
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/articles">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des articles
               </Button>
             </Link>

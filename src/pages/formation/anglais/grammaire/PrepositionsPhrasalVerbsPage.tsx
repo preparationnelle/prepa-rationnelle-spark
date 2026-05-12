@@ -45,7 +45,7 @@ const PrepositionsPhrasalVerbsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+            <div className="p-3 rounded-lg bg-pr-black-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Prépositions et Particules (Phrasal Verbs)
@@ -56,14 +56,14 @@ const PrepositionsPhrasalVerbsPage = () => {
         </div>
 
         {/* Introduction */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale">
+        <Card className="mb-8 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-pr-black-pale">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <HelpCircle className="h-6 w-6" />
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark space-y-3">
+          <CardContent className="text-pr-black space-y-3">
             <p>Cette fiche présente : l'emploi des <span className="font-semibold">prépositions essentielles</span>, la compréhension et l'usage des <span className="font-semibold">phrasal verbs</span> les plus fréquents, les <span className="font-semibold">règles de séparabilité</span>, ainsi qu'un <span className="font-semibold">tableau récapitulatif</span>.</p>
           </CardContent>
         </Card>
@@ -77,28 +77,28 @@ const PrepositionsPhrasalVerbsPage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">Principales catégories</h3>
               <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
-                  <h4 className="font-semibold text-orange-800 mb-2">Prépositions de <span className="text-pr-orange-dark">lieu</span></h4>
+                <div className="bg-white/70 rounded-lg p-4 border border-gray-200">
+                  <h4 className="font-semibold text-gray-800 mb-2">Prépositions de <span className="text-pr-black">lieu</span></h4>
                   <ul className="list-disc pl-6 space-y-1">
-                    <li><span className="text-pr-orange-dark font-semibold">in</span> : à l’intérieur (in the room)</li>
-                    <li><span className="text-pr-orange-dark font-semibold">on</span> : sur (on the table)</li>
-                    <li><span className="text-pr-orange-dark font-semibold">at</span> : point précis (at the station)</li>
+                    <li><span className="text-pr-black font-semibold">in</span> : à l’intérieur (in the room)</li>
+                    <li><span className="text-pr-black font-semibold">on</span> : sur (on the table)</li>
+                    <li><span className="text-pr-black font-semibold">at</span> : point précis (at the station)</li>
                     <li>under : sous (under the bed)</li>
                     <li>between : entre (between the trees)</li>
                   </ul>
                 </div>
-                <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
-                  <h4 className="font-semibold text-orange-800 mb-2">Prépositions de <span className="text-pr-orange-dark">temps</span></h4>
+                <div className="bg-white/70 rounded-lg p-4 border border-gray-200">
+                  <h4 className="font-semibold text-gray-800 mb-2">Prépositions de <span className="text-pr-black">temps</span></h4>
                   <ul className="list-disc pl-6 space-y-1">
-                    <li><span className="text-pr-orange-dark font-semibold">in</span> : mois, année, période (in 2025, in the morning)</li>
-                    <li><span className="text-pr-orange-dark font-semibold">on</span> : jour, date (on Monday, on July 4th)</li>
-                    <li><span className="text-pr-orange-dark font-semibold">at</span> : heure, moment précis (at 6 PM, at noon)</li>
+                    <li><span className="text-pr-black font-semibold">in</span> : mois, année, période (in 2025, in the morning)</li>
+                    <li><span className="text-pr-black font-semibold">on</span> : jour, date (on Monday, on July 4th)</li>
+                    <li><span className="text-pr-black font-semibold">at</span> : heure, moment précis (at 6 PM, at noon)</li>
                     <li>before/after : avant/après (before dinner, after school)</li>
                     <li>during : pendant (during the meeting)</li>
                   </ul>
                 </div>
-                <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
-                  <h4 className="font-semibold text-orange-800 mb-2">Prépositions de <span className="text-pr-orange-dark">mouvement</span></h4>
+                <div className="bg-white/70 rounded-lg p-4 border border-gray-200">
+                  <h4 className="font-semibold text-gray-800 mb-2">Prépositions de <span className="text-pr-black">mouvement</span></h4>
                   <ul className="list-disc pl-6 space-y-1">
                     <li>to : direction (go to Paris)</li>
                     <li>into/out of : entrée/sortie (get into the car)</li>
@@ -110,7 +110,7 @@ const PrepositionsPhrasalVerbsPage = () => {
               </div>
             </section>
             <section>
-              <h4 className="font-semibold text-orange-800">Prépositions composées (compound)</h4>
+              <h4 className="font-semibold text-gray-800">Prépositions composées (compound)</h4>
               <ul className="list-disc pl-6 space-y-1">
                 <li>because of : à cause de</li>
                 <li>in spite of : malgré</li>
@@ -120,11 +120,11 @@ const PrepositionsPhrasalVerbsPage = () => {
               </ul>
             </section>
             <section>
-              <h4 className="font-semibold text-orange-800">Utilisation et combinaisons</h4>
+              <h4 className="font-semibold text-gray-800">Utilisation et combinaisons</h4>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">Verbe + préposition</span> : listen to, depend on</li>
-                <li><span className="text-pr-orange-dark font-semibold">Adjectif + préposition</span> : accustomed to, different from</li>
-                <li><span className="text-pr-orange-dark font-semibold">Nom + préposition</span> : solution to, reason for</li>
+                <li><span className="text-pr-black font-semibold">Verbe + préposition</span> : listen to, depend on</li>
+                <li><span className="text-pr-black font-semibold">Adjectif + préposition</span> : accustomed to, different from</li>
+                <li><span className="text-pr-black font-semibold">Nom + préposition</span> : solution to, reason for</li>
               </ul>
             </section>
           </CardContent>
@@ -136,37 +136,37 @@ const PrepositionsPhrasalVerbsPage = () => {
             <CardTitle className="text-2xl">2. Phrasal Verbs Essentiels</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p>Un phrasal verb combine un <span className="text-pr-orange-dark font-semibold">verbe</span> + une <span className="text-pr-orange-dark font-semibold">particule</span> (adverbe ou préposition) pour former un sens spécifique.</p>
+            <p>Un phrasal verb combine un <span className="text-pr-black font-semibold">verbe</span> + une <span className="text-pr-black font-semibold">particule</span> (adverbe ou préposition) pour former un sens spécifique.</p>
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Phrasal Verb</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Sens</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Phrasal Verb</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Sens</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Exemple</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">call off</td><td className="border px-3 py-2">annuler</td><td className="border px-3 py-2">They called off the meeting.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">calm down</td><td className="border px-3 py-2">se calmer</td><td className="border px-3 py-2">Please calm down!</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">catch up (on)</td><td className="border px-3 py-2">rattraper</td><td className="border px-3 py-2">I need to catch up on my work.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">do over</td><td className="border px-3 py-2">refaire</td><td className="border px-3 py-2">I'll do the assignment over.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">eat out</td><td className="border px-3 py-2">manger au restaurant</td><td className="border px-3 py-2">Let's eat out tonight.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">figure out</td><td className="border px-3 py-2">comprendre</td><td className="border px-3 py-2">I figured out the solution.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">give up</td><td className="border px-3 py-2">abandonner</td><td className="border px-3 py-2">Don't give up!</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">look for</td><td className="border px-3 py-2">chercher</td><td className="border px-3 py-2">She is looking for her keys.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">look forward (to)</td><td className="border px-3 py-2">attendre avec impatience</td><td className="border px-3 py-2">I look forward to your reply.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">make up</td><td className="border px-3 py-2">inventer / se réconcilier</td><td className="border px-3 py-2">She made up an excuse.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">put off</td><td className="border px-3 py-2">remettre à plus tard</td><td className="border px-3 py-2">They put off the event.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">run out (of)</td><td className="border px-3 py-2">manquer, épuiser</td><td className="border px-3 py-2">We ran out of milk.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">show up</td><td className="border px-3 py-2">se présenter</td><td className="border px-3 py-2">He didn't show up at the party.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">take off</td><td className="border px-3 py-2">décoller / enlever</td><td className="border px-3 py-2">The plane took off.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">take over</td><td className="border px-3 py-2">prendre le contrôle</td><td className="border px-3 py-2">She will take over the project.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">turn down</td><td className="border px-3 py-2">refuser / baisser</td><td className="border px-3 py-2">He turned down the offer.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">turn up</td><td className="border px-3 py-2">arriver / augmenter</td><td className="border px-3 py-2">She turned up late.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">work out</td><td className="border px-3 py-2">résoudre / s'entraîner</td><td className="border px-3 py-2">Everything worked out fine.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">break down</td><td className="border px-3 py-2">tomber en panne / s'effondrer</td><td className="border px-3 py-2">The car broke down.</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">bring up</td><td className="border px-3 py-2">évoquer / élever</td><td className="border px-3 py-2">She brought up an interesting point.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">call off</td><td className="border px-3 py-2">annuler</td><td className="border px-3 py-2">They called off the meeting.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">calm down</td><td className="border px-3 py-2">se calmer</td><td className="border px-3 py-2">Please calm down!</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">catch up (on)</td><td className="border px-3 py-2">rattraper</td><td className="border px-3 py-2">I need to catch up on my work.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">do over</td><td className="border px-3 py-2">refaire</td><td className="border px-3 py-2">I'll do the assignment over.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">eat out</td><td className="border px-3 py-2">manger au restaurant</td><td className="border px-3 py-2">Let's eat out tonight.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">figure out</td><td className="border px-3 py-2">comprendre</td><td className="border px-3 py-2">I figured out the solution.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">give up</td><td className="border px-3 py-2">abandonner</td><td className="border px-3 py-2">Don't give up!</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">look for</td><td className="border px-3 py-2">chercher</td><td className="border px-3 py-2">She is looking for her keys.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">look forward (to)</td><td className="border px-3 py-2">attendre avec impatience</td><td className="border px-3 py-2">I look forward to your reply.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">make up</td><td className="border px-3 py-2">inventer / se réconcilier</td><td className="border px-3 py-2">She made up an excuse.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">put off</td><td className="border px-3 py-2">remettre à plus tard</td><td className="border px-3 py-2">They put off the event.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">run out (of)</td><td className="border px-3 py-2">manquer, épuiser</td><td className="border px-3 py-2">We ran out of milk.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">show up</td><td className="border px-3 py-2">se présenter</td><td className="border px-3 py-2">He didn't show up at the party.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">take off</td><td className="border px-3 py-2">décoller / enlever</td><td className="border px-3 py-2">The plane took off.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">take over</td><td className="border px-3 py-2">prendre le contrôle</td><td className="border px-3 py-2">She will take over the project.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">turn down</td><td className="border px-3 py-2">refuser / baisser</td><td className="border px-3 py-2">He turned down the offer.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">turn up</td><td className="border px-3 py-2">arriver / augmenter</td><td className="border px-3 py-2">She turned up late.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">work out</td><td className="border px-3 py-2">résoudre / s'entraîner</td><td className="border px-3 py-2">Everything worked out fine.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">break down</td><td className="border px-3 py-2">tomber en panne / s'effondrer</td><td className="border px-3 py-2">The car broke down.</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">bring up</td><td className="border px-3 py-2">évoquer / élever</td><td className="border px-3 py-2">She brought up an interesting point.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -182,16 +182,16 @@ const PrepositionsPhrasalVerbsPage = () => {
             <section>
               <h3 className="text-xl font-semibold mb-2">Separable vs Inseparable</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">Separable</span> : She looked <span className="italic">the word</span> up. / She looked up <span className="italic">the word</span>.</li>
-                <li><span className="text-pr-orange-dark font-semibold">Inseparable</span> : They got along (with each other). (jamais "got each other along")</li>
+                <li><span className="text-pr-black font-semibold">Separable</span> : She looked <span className="italic">the word</span> up. / She looked up <span className="italic">the word</span>.</li>
+                <li><span className="text-pr-black font-semibold">Inseparable</span> : They got along (with each other). (jamais "got each other along")</li>
               </ul>
             </section>
             <section>
               <h3 className="text-xl font-semibold mb-2">Règles pratiques</h3>
               <ul className="list-disc pl-6 space-y-1">
-                <li><span className="text-pr-orange-dark font-semibold">Pronoms</span> obligatoirement insérés : Put <span className="italic">it</span> off. (pas "put off it")</li>
-                <li><span className="text-pr-orange-dark font-semibold">Trois mots</span> (verb + 2 particules) : toujours inséparable</li>
-                <li><span className="text-pr-orange-dark font-semibold">Longs compléments</span> : préférer verbe + particule + objet</li>
+                <li><span className="text-pr-black font-semibold">Pronoms</span> obligatoirement insérés : Put <span className="italic">it</span> off. (pas "put off it")</li>
+                <li><span className="text-pr-black font-semibold">Trois mots</span> (verb + 2 particules) : toujours inséparable</li>
+                <li><span className="text-pr-black font-semibold">Longs compléments</span> : préférer verbe + particule + objet</li>
               </ul>
             </section>
           </CardContent>
@@ -204,10 +204,10 @@ const PrepositionsPhrasalVerbsPage = () => {
           </CardHeader>
           <CardContent className="space-y-1">
             <ul className="list-disc pl-6 space-y-1">
-              <li>Choix de la préposition : depend <span className="text-pr-orange-dark font-semibold">on</span> (pas <span className="line-through">of</span>)</li>
-              <li>Différencier phrasal verb vs préposition simple : look <span className="text-pr-orange-dark font-semibold">into</span> vs into</li>
-              <li>Séparabilité : pronoms bien placés (take <span className="text-pr-orange-dark font-semibold">it</span> off)</li>
-              <li>Verbes intransitifs : pas de complément direct (arrive <span className="text-pr-orange-dark font-semibold">at</span>)</li>
+              <li>Choix de la préposition : depend <span className="text-pr-black font-semibold">on</span> (pas <span className="line-through">of</span>)</li>
+              <li>Différencier phrasal verb vs préposition simple : look <span className="text-pr-black font-semibold">into</span> vs into</li>
+              <li>Séparabilité : pronoms bien placés (take <span className="text-pr-black font-semibold">it</span> off)</li>
+              <li>Verbes intransitifs : pas de complément direct (arrive <span className="text-pr-black font-semibold">at</span>)</li>
             </ul>
           </CardContent>
         </Card>
@@ -216,26 +216,26 @@ const PrepositionsPhrasalVerbsPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-pr-orange-dark" />
+              <Table className="h-6 w-6 text-pr-black" />
               5. Tableau Récapitulatif
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Catégorie</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Sens</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Catégorie</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Sens</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Prépositions</td><td className="border px-3 py-2">in / on / at / under / between</td><td className="border px-3 py-2">lieu, temps, mouvement</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Compound Prep.</td><td className="border px-3 py-2">because of / in spite of</td><td className="border px-3 py-2">liaison complexe</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Phrasal Verbs</td><td className="border px-3 py-2">call off / run out / put off</td><td className="border px-3 py-2">annuler / manquer / remettre</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Separable PV</td><td className="border px-3 py-2">look up the definition</td><td className="border px-3 py-2">rechercher</td></tr>
-                  <tr><td className="border px-3 py-2 text-pr-orange-dark font-medium">Inseparable PV</td><td className="border px-3 py-2">get along with someone</td><td className="border px-3 py-2">s'entendre</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Prépositions</td><td className="border px-3 py-2">in / on / at / under / between</td><td className="border px-3 py-2">lieu, temps, mouvement</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Compound Prep.</td><td className="border px-3 py-2">because of / in spite of</td><td className="border px-3 py-2">liaison complexe</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Phrasal Verbs</td><td className="border px-3 py-2">call off / run out / put off</td><td className="border px-3 py-2">annuler / manquer / remettre</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Separable PV</td><td className="border px-3 py-2">look up the definition</td><td className="border px-3 py-2">rechercher</td></tr>
+                  <tr><td className="border px-3 py-2 text-pr-black font-medium">Inseparable PV</td><td className="border px-3 py-2">get along with someone</td><td className="border px-3 py-2">s'entendre</td></tr>
                 </tbody>
               </table>
             </div>
@@ -255,24 +255,24 @@ const PrepositionsPhrasalVerbsPage = () => {
               <li>Pratiquer la séparation/inséparation avec des pronoms</li>
               <li>Utiliser le tableau récapitulatif pour des révisions rapides</li>
             </ul>
-            <p><span className="text-pr-orange-dark font-semibold">Conseil pratique</span> : repérez ces structures dans des textes authentiques pour les intégrer naturellement à l'écrit et à l'oral.</p>
+            <p><span className="text-pr-black font-semibold">Conseil pratique</span> : repérez ces structures dans des textes authentiques pour les intégrer naturellement à l'écrit et à l'oral.</p>
           </CardContent>
         </Card>
 
-        <Card className="mt-2 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mt-2 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-amber-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <Target className="h-6 w-6" />
               Prêt à mettre en pratique ?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-pr-orange-dark mb-6">
+            <p className="text-lg text-pr-black mb-6">
               Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/prepositions/exercices">
-                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-black-dark hover:bg-pr-black-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

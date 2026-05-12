@@ -325,7 +325,7 @@ const TeacherCourseGradesPage = () => {
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Passable (10-12)</span>
-                      <span className="text-pr-orange-dark">10%</span>
+                      <span className="text-pr-black">10%</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Insuffisant (&lt;10)</span>

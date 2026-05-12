@@ -4,9 +4,9 @@ import { Home, ChevronRight, ArrowLeft, Code2, Users, CheckSquare, Presentation,
 
 const OteriaMiniProjetPage = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="relative">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/95 backdrop-blur border-b border-carnet-rule/60">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-carnet-red">
             <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
@@ -42,7 +42,7 @@ const OteriaMiniProjetPage = () => {
 
           {/* Informations de séance */}
           <div className="max-w-2xl mx-auto mb-6">
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 shadow-sm">
+            <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4 shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                 <div className="flex flex-col items-center">
                   <span className="text-sm text-carnet-red font-medium mb-1">Numéro de séance</span>
@@ -76,14 +76,14 @@ const OteriaMiniProjetPage = () => {
         <div className="max-w-4xl mx-auto space-y-8">
 
           {/* Introduction */}
-          <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
+          <div className="bg-carnet-paper-2 rounded-xl border border-carnet-rule p-8">
             <p className="text-gray-700 leading-relaxed text-lg">
               Dans le cadre du cours de mathématiques, logique et algorithmique appliqués à l'informatique, les étudiants réalisent un projet de groupe qui constitue un fil conducteur tout au long du semestre. Ce projet vise à relier directement les notions théoriques étudiées en cours avec des applications concrètes et programmables en Python.
             </p>
           </div>
 
           {/* Objectifs pédagogiques */}
-          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6">
+          <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-6">
             <h2 className="text-2xl font-bold text-carnet-red-deep mb-4 flex items-center gap-3">
               <Target className="h-6 w-6 text-carnet-red" />
               Objectifs pédagogiques
@@ -102,7 +102,7 @@ const OteriaMiniProjetPage = () => {
           </div>
 
           {/* Organisation et calendrier */}
-          <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
+          <div className="bg-carnet-paper-2 rounded-xl border border-carnet-rule p-8">
             <h2 className="text-2xl font-bold text-carnet-red-deep mb-6 flex items-center gap-3">
               <Calendar className="h-6 w-6 text-carnet-red" />
               Organisation et calendrier
@@ -150,7 +150,7 @@ const OteriaMiniProjetPage = () => {
           </div>
 
           {/* Consignes de réalisation */}
-          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6">
+          <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-6">
             <h2 className="text-2xl font-bold text-carnet-red-deep mb-4 flex items-center gap-3">
               <CheckSquare className="h-6 w-6 text-carnet-red" />
               Consignes de réalisation
@@ -160,14 +160,14 @@ const OteriaMiniProjetPage = () => {
             </p>
 
             <div className="space-y-4">
-              <div className="bg-white rounded-lg p-4 border border-carnet-red/30">
+              <div className="bg-carnet-paper-2 rounded-lg p-4 border border-carnet-rule">
                 <h3 className="font-semibold text-carnet-red-deep mb-2">Rapport écrit (maximum 5 pages par groupe)</h3>
                 <p className="text-carnet-red-deep">
                   Le rapport doit présenter le problème choisi, détailler les outils mathématiques utilisés, inclure un extrait de code Python, illustrer les résultats par des exemples chiffrés et expliquer en quoi ce problème a un intérêt concret dans la vie réelle.
                 </p>
               </div>
 
-              <div className="bg-white rounded-lg p-4 border border-carnet-red/30">
+              <div className="bg-carnet-paper-2 rounded-lg p-4 border border-carnet-rule">
                 <h3 className="font-semibold text-carnet-red-deep mb-2">Présentation orale (10 minutes)</h3>
                 <p className="text-carnet-red-deep">
                   L'oral permet de mettre en valeur le travail accompli. Les critères d'évaluation sont : clarté du problème et de son intérêt, pertinence des explications mathématiques, qualité de la démonstration Python, capacité à montrer l'utilité concrète du sujet, et dynamisme de la présentation. Tous les membres du groupe doivent intervenir.
@@ -177,7 +177,7 @@ const OteriaMiniProjetPage = () => {
           </div>
 
           {/* Critères d'évaluation */}
-          <div className="bg-gradient-to-br from-pr-orange-pale to-pr-orange-pale/60 rounded-xl shadow-xl border-2 border-carnet-red/40 p-8">
+          <div className="bg-gradient-to-br from-pr-orange-pale to-pr-black-pale/60 rounded-xl shadow-xl border-2 border-carnet-red/40 p-8">
             <h2 className="text-2xl font-bold text-carnet-red-deep mb-4 flex items-center gap-3">
               <Award className="h-6 w-6 text-carnet-red" />
               Critères d'évaluation
@@ -186,7 +186,7 @@ const OteriaMiniProjetPage = () => {
               L'évaluation du projet repose sur deux parties égales :
             </p>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white border-2 border-carnet-red/30 rounded-lg p-6 shadow-md">
+              <div className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
                 <h3 className="font-bold text-carnet-red-deep mb-3 text-lg">Rapport écrit (50 points)</h3>
                 <ul className="text-carnet-red-deep space-y-2 text-sm">
                   <li className="flex items-start gap-2">
@@ -211,7 +211,7 @@ const OteriaMiniProjetPage = () => {
                   </li>
                 </ul>
               </div>
-              <div className="bg-white border-2 border-carnet-red/30 rounded-lg p-6 shadow-md">
+              <div className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
                 <h3 className="font-bold text-carnet-red-deep mb-3 text-lg">Présentation orale (50 points)</h3>
                 <ul className="text-carnet-red-deep space-y-2 text-sm">
                   <li className="flex items-start gap-2">
@@ -244,7 +244,7 @@ const OteriaMiniProjetPage = () => {
           </div>
 
           {/* Exemples de sujets */}
-          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6">
+          <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-6">
             <h2 className="text-2xl font-bold text-carnet-red-deep mb-4 flex items-center gap-3">
               <Users className="h-6 w-6 text-carnet-red" />
               Exemples de sujets proposés
@@ -268,7 +268,7 @@ const OteriaMiniProjetPage = () => {
           </div>
 
           {/* Rôle de l'enseignant */}
-          <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
+          <div className="bg-carnet-paper-2 rounded-xl border border-carnet-rule p-8">
             <h2 className="text-2xl font-bold text-carnet-red-deep mb-4 flex items-center gap-3">
               <Presentation className="h-6 w-6 text-carnet-red" />
               Rôle de l'enseignant
@@ -282,12 +282,12 @@ const OteriaMiniProjetPage = () => {
 
         {/* Navigation vers les ressources */}
         <div className="max-w-4xl mx-auto mb-8">
-          <div className="bg-white border border-carnet-red/30 rounded-lg p-6 shadow-sm">
+          <div className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
             <h3 className="text-lg font-semibold text-carnet-red-deep mb-4 text-center">
               Ressources pour le Mini Projet - Séance 13
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <button className="w-full bg-pr-orange-dark text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
+              <button className="w-full bg-pr-black-dark text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
                 <Target className="h-5 w-5 mx-auto mb-2" />
                 Mini Projet - Ateliers & Répétitions
               </button>
@@ -302,7 +302,7 @@ const OteriaMiniProjetPage = () => {
         </div>
 
         {/* Navigation */}
-        <div className="flex justify-between items-center bg-pr-orange-pale p-6 rounded-lg">
+        <div className="flex justify-between items-center bg-pr-gray-bg p-6 rounded-lg">
           <Link to="/formation/oteria/recurrence-recursivite-qcm">
             <div className="text-carnet-red hover:text-carnet-red">← Séance précédente</div>
           </Link>

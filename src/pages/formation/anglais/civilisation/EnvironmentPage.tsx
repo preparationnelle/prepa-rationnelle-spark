@@ -13,7 +13,7 @@ const EssayQuestion: React.FC<{ title: string; children: React.ReactNode }> = ({
 
 const VocabRow: React.FC<{ term: string; definition: string }> = ({ term, definition }) => (
   <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 py-2 border-b border-pr-gray-light/60 last:border-0">
-    <span className="font-dm-sans font-semibold text-pr-orange-dark text-sm sm:w-1/3 shrink-0">{term}</span>
+    <span className="font-dm-sans font-semibold text-pr-black text-sm sm:w-1/3 shrink-0">{term}</span>
     <span className="text-sm text-pr-gray-dark/90">{definition}</span>
   </div>
 );
@@ -63,12 +63,12 @@ const EnvironmentPage = () => {
           <CivItem value="key-topics" title="Key Environmental Topics">
             <div className="grid gap-4">
               {keyTopics.map((topic, index) => (
-                <div key={index} className="bg-white border border-pr-gray-light border-l-[3px] border-l-pr-orange rounded-md p-4">
+                <div key={index} className="bg-white border border-pr-gray-light border-l-[3px] border-l-pr-black rounded-md p-4">
                   <h4 className="font-dm-serif text-pr-black mb-2">{topic.title}</h4>
                   <p className="text-sm text-pr-gray-dark/90 mb-3">{topic.content}</p>
                   <div className="flex flex-wrap gap-2">
                     {topic.vocabulary.map((word, idx) => (
-                      <span key={idx} className="text-xs bg-pr-orange-pale text-pr-orange-dark px-2 py-1 rounded">{word}</span>
+                      <span key={idx} className="text-xs bg-pr-gray-bg text-pr-black px-2 py-1 rounded">{word}</span>
                     ))}
                   </div>
                 </div>

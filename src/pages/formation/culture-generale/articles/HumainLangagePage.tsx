@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -26,13 +26,13 @@ const HumainLangagePage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Article
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               L&apos;humain et le langage&nbsp;: un être qui parle, ou un être parlé&nbsp;?
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Saussure, Benveniste, Wittgenstein. Trois façons de penser ce que signifie
               «&nbsp;être l&apos;animal qui a le logos&nbsp;».
@@ -54,8 +54,8 @@ const HumainLangagePage: React.FC = () => {
                 lequel nous sommes nés. Le langage n&apos;est pas un outil neutre&nbsp;: il est
                 la matrice même de l&apos;humanité.
               </p>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Tension à retenir</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Tension à retenir</h3>
                 <p>
                   Le langage est-il un <em>outil</em> que l&apos;humain utilise pour
                   exprimer une pensée déjà là, ou la <em>condition</em> même par laquelle
@@ -74,11 +74,11 @@ const HumainLangagePage: React.FC = () => {
                 langage.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Le signe linguistique</strong>. Tout signe associe un signifiant (l&apos;image acoustique du mot) et un signifié (le concept). Cette association est <em>arbitraire</em>&nbsp;: rien dans le son /a/-/r/-/b/-/r/-/e/ n&apos;impose le concept «&nbsp;arbre&nbsp;».</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Langue vs parole</strong>. La langue est un système social partagé. La parole est l&apos;acte individuel par lequel on l&apos;actualise. La linguistique étudie la première, qui rend la seconde possible.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Valeur différentielle</strong>. Un signe ne se définit pas en lui-même, mais par opposition aux autres signes du système. «&nbsp;Mouton&nbsp;» en français recouvre l&apos;animal et la viande&nbsp;; l&apos;anglais distingue <em>sheep</em> et <em>mutton</em>. Mêmes choses, découpages différents.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Le signe linguistique</strong>. Tout signe associe un signifiant (l&apos;image acoustique du mot) et un signifié (le concept). Cette association est <em>arbitraire</em>&nbsp;: rien dans le son /a/-/r/-/b/-/r/-/e/ n&apos;impose le concept «&nbsp;arbre&nbsp;».</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Langue vs parole</strong>. La langue est un système social partagé. La parole est l&apos;acte individuel par lequel on l&apos;actualise. La linguistique étudie la première, qui rend la seconde possible.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Valeur différentielle</strong>. Un signe ne se définit pas en lui-même, mais par opposition aux autres signes du système. «&nbsp;Mouton&nbsp;» en français recouvre l&apos;animal et la viande&nbsp;; l&apos;anglais distingue <em>sheep</em> et <em>mutton</em>. Mêmes choses, découpages différents.</li>
               </ul>
-              <p className="italic pl-4 border-l-2 border-pr-orange">
+              <p className="italic pl-4 border-l-2 border-pr-black">
                 «&nbsp;La langue est un système où tout se tient.&nbsp;»
               </p>
               <p>
@@ -98,14 +98,14 @@ const HumainLangagePage: React.FC = () => {
                 pousse Saussure plus loin&nbsp;: ce n&apos;est pas seulement le monde que la
                 langue découpe, c&apos;est le sujet qu&apos;elle constitue.
               </p>
-              <p className="italic pl-4 border-l-2 border-pr-orange">
+              <p className="italic pl-4 border-l-2 border-pr-black">
                 «&nbsp;C&apos;est dans et par le langage que l&apos;homme se constitue comme
                 sujet.&nbsp;»
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Le «&nbsp;Je&nbsp;»</strong>. Ce mot ne désigne aucune réalité fixe. Il ne renvoie qu&apos;à <em>celui qui dit «&nbsp;Je&nbsp;»</em>, dans l&apos;instant où il le dit. Il est purement performatif.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Pas de Je sans Tu</strong>. Le sujet n&apos;émerge que dans le dialogue. Sans interlocuteur possible, pas de subjectivité. L&apos;humain est dialogique avant d&apos;être individuel.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Temps, espace, personne</strong>. C&apos;est le langage qui rend possibles les déictiques (ici, maintenant, hier, demain). Sans langue, pas de temporalité humaine.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Le «&nbsp;Je&nbsp;»</strong>. Ce mot ne désigne aucune réalité fixe. Il ne renvoie qu&apos;à <em>celui qui dit «&nbsp;Je&nbsp;»</em>, dans l&apos;instant où il le dit. Il est purement performatif.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Pas de Je sans Tu</strong>. Le sujet n&apos;émerge que dans le dialogue. Sans interlocuteur possible, pas de subjectivité. L&apos;humain est dialogique avant d&apos;être individuel.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Temps, espace, personne</strong>. C&apos;est le langage qui rend possibles les déictiques (ici, maintenant, hier, demain). Sans langue, pas de temporalité humaine.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> L&apos;humain n&apos;est pas un sujet
@@ -134,7 +134,7 @@ const HumainLangagePage: React.FC = () => {
                 qui ne peut pas l&apos;être (l&apos;éthique, l&apos;esthétique, le mystique) doit
                 être tu.
               </p>
-              <p className="italic pl-4 border-l-2 border-pr-orange">
+              <p className="italic pl-4 border-l-2 border-pr-black">
                 «&nbsp;Les limites de mon langage signifient les limites de mon monde.&nbsp;»
                 <br />«&nbsp;Ce dont on ne peut parler, il faut le taire.&nbsp;»
               </p>
@@ -145,9 +145,9 @@ const HumainLangagePage: React.FC = () => {
                 <em> usage</em> dans une «&nbsp;forme de vie&nbsp;».
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Jeux de langage</strong>. Promettre, ordonner, prier, plaisanter, mentir&nbsp;: autant de pratiques irréductibles. Comprendre une expression, c&apos;est savoir y jouer.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Forme de vie</strong>. Le langage n&apos;est pas séparable des activités humaines qui lui donnent sens. Apprendre un langage, c&apos;est apprendre à vivre avec d&apos;autres.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>«&nbsp;Si un lion pouvait parler, nous ne pourrions pas le comprendre&nbsp;»</strong>. Sa forme de vie nous est trop étrangère.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Jeux de langage</strong>. Promettre, ordonner, prier, plaisanter, mentir&nbsp;: autant de pratiques irréductibles. Comprendre une expression, c&apos;est savoir y jouer.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Forme de vie</strong>. Le langage n&apos;est pas séparable des activités humaines qui lui donnent sens. Apprendre un langage, c&apos;est apprendre à vivre avec d&apos;autres.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>«&nbsp;Si un lion pouvait parler, nous ne pourrions pas le comprendre&nbsp;»</strong>. Sa forme de vie nous est trop étrangère.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Pour Wittgenstein, le langage
@@ -160,8 +160,8 @@ const HumainLangagePage: React.FC = () => {
 
           <PRCard number="05" title="Paraperso prêt à l'emploi">
             <div className="space-y-4 text-sm md:text-base">
-              <div className="bg-pr-orange-pale rounded-xl p-5">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">
+              <div className="bg-pr-gray-bg rounded-xl p-5">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">
                   Le langage, matrice de l&apos;humanité
                 </h3>
                 <p className="text-xs italic mb-3">
@@ -213,19 +213,19 @@ const HumainLangagePage: React.FC = () => {
           <PRCard number="06" title="Où mobiliser ces références ?">
             <div className="space-y-4 text-sm md:text-base">
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le langage</strong>&nbsp;» — sujet frontal classique.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Sommes-nous parlés ou parlons-nous&nbsp;?</strong>&nbsp;» — Benveniste central.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le langage est-il propre à l&apos;humain&nbsp;?</strong>&nbsp;» — articulation avec l&apos;article «&nbsp;humain et animal&nbsp;».</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Penser, est-ce parler&nbsp;?</strong>&nbsp;» — Saussure, Benveniste.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le silence</strong>&nbsp;» — Wittgenstein du <em>Tractatus</em>, ce dont on ne peut parler.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;intelligence artificielle peut-elle parler&nbsp;?</strong>&nbsp;» — Wittgenstein sur la forme de vie.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le langage</strong>&nbsp;» — sujet frontal classique.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Sommes-nous parlés ou parlons-nous&nbsp;?</strong>&nbsp;» — Benveniste central.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le langage est-il propre à l&apos;humain&nbsp;?</strong>&nbsp;» — articulation avec l&apos;article «&nbsp;humain et animal&nbsp;».</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Penser, est-ce parler&nbsp;?</strong>&nbsp;» — Saussure, Benveniste.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le silence</strong>&nbsp;» — Wittgenstein du <em>Tractatus</em>, ce dont on ne peut parler.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;intelligence artificielle peut-elle parler&nbsp;?</strong>&nbsp;» — Wittgenstein sur la forme de vie.</li>
               </ul>
             </div>
           </PRCard>
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/articles">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des articles
               </Button>
             </Link>

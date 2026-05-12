@@ -638,7 +638,7 @@ const GenetifExercicesPage = () => {
         <div className="text-center mb-10">
           <div className="flex justify-center mb-6">
             <Link to="/formation/allemand-genitif">
-              <Button variant="outline" className="flex items-center gap-2 border-orange-300 text-pr-orange-dark hover:bg-orange-50">
+              <Button variant="outline" className="flex items-center gap-2 border-orange-300 text-pr-black hover:bg-gray-50">
                 <ArrowLeft className="h-4 w-4" />
                 Retour au génitif
               </Button>
@@ -646,7 +646,7 @@ const GenetifExercicesPage = () => {
           </div>
 
           <div className="mb-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-pr-orange-dark text-white rounded-xl mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-pr-black-dark text-white rounded-xl mb-4">
               <Target className="h-8 w-8" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-3">
@@ -663,7 +663,7 @@ const GenetifExercicesPage = () => {
           <Button
             variant={examMode ? "default" : "outline"}
             onClick={() => setExamMode(prev => !prev)}
-            className={examMode ? "bg-pr-orange hover:bg-pr-orange-dark text-white" : "border-pr-orange text-pr-orange hover:bg-pr-orange-pale"}
+            className={examMode ? "bg-pr-black hover:bg-pr-black-dark text-white" : "border-pr-black text-pr-black hover:bg-pr-gray-bg"}
           >
             {examMode ? "Désactiver le Mode Examen" : "Activer le Mode Examen"}
           </Button>
@@ -671,11 +671,11 @@ const GenetifExercicesPage = () => {
 
         {/* Exam Timer and Controls */}
         {examMode && (
-          <Card className="mb-8 border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-indigo-50">
+          <Card className="mb-8 border-2 border-carnet-red/30 bg-carnet-paper-2 border-carnet-rule">
             <CardContent className="py-4">
               {!examStarted ? (
                 <div className="flex items-center justify-center gap-4">
-                  <Button onClick={startExam} className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2">
+                  <Button onClick={startExam} className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2">
                     <CheckCircle className="h-4 w-4 mr-2" />Commencer l'examen
                   </Button>
                   <p className="text-sm text-gray-600">⚠️ Le feedback sera désactivé.</p>
@@ -698,8 +698,8 @@ const GenetifExercicesPage = () => {
         <Card className="mb-8 border border-gray-200 bg-white shadow-sm">
           <CardHeader className="pb-4">
             <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
-              <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                <Target className="h-4 w-4 text-pr-orange-dark" />
+              <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                <Target className="h-4 w-4 text-pr-black" />
               </div>
               Filtrer les exercices
             </CardTitle>
@@ -709,7 +709,7 @@ const GenetifExercicesPage = () => {
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700">Type</label>
                 <select value={selectedExerciseType} onChange={(e) => setSelectedExerciseType(e.target.value as 'qcm' | 'complet' | 'toutes')}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange" disabled={examStarted}>
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carnet-red/30 focus:border-pr-black" disabled={examStarted}>
                   <option value="qcm">QCM</option>
                   <option value="complet">Mots à compléter</option>
                   <option value="toutes">Tous les types</option>
@@ -718,7 +718,7 @@ const GenetifExercicesPage = () => {
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700">Catégorie</label>
                 <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange" disabled={examStarted}>
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carnet-red/30 focus:border-pr-black" disabled={examStarted}>
                   <option value="toutes">Toutes les catégories</option>
                   <option value="Formation du génitif">Formation du génitif</option>
                   <option value="Génitif avec noms propres">Génitif avec noms propres</option>
@@ -743,7 +743,7 @@ const GenetifExercicesPage = () => {
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700">Niveau</label>
                 <select value={selectedLevel} onChange={(e) => setSelectedLevel(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange" disabled={examStarted}>
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carnet-red/30 focus:border-pr-black" disabled={examStarted}>
                   <option value="tous">Tous les niveaux</option>
                   <option value="intermédiaire">Intermédiaire</option>
                   <option value="avancé">Avancé</option>
@@ -757,8 +757,8 @@ const GenetifExercicesPage = () => {
           <div className="mb-12">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <FileText className="h-5 w-5 text-pr-orange-dark" />
+                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <FileText className="h-5 w-5 text-pr-black" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -789,14 +789,14 @@ const GenetifExercicesPage = () => {
                     </h3>
                     <div className="space-y-2">
                       {currentExercise.options.map((option, index) => (
-                        <label key={index} className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-orange-300 hover:bg-orange-50 cursor-pointer transition-colors">
+                        <label key={index} className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-orange-300 hover:bg-gray-50 cursor-pointer transition-colors">
                           <input
                             type="radio"
                             name={currentExercise.id}
                             value={option}
                             checked={userAnswers[currentExercise.id] === option}
                             onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                            className="text-pr-orange-dark focus:ring-pr-orange"
+                            className="text-pr-black focus:ring-carnet-red/30"
                           />
                           <span className="text-gray-800 flex-1">{option}</span>
                         </label>
@@ -812,7 +812,7 @@ const GenetifExercicesPage = () => {
                       type="text"
                       value={userAnswers[currentExercise.id] || ''}
                       onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange text-gray-800 placeholder-gray-500"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carnet-red/30 focus:border-pr-black text-gray-800 placeholder-gray-500"
                       placeholder="Tapez votre réponse ici..."
                     />
                   </div>
@@ -822,7 +822,7 @@ const GenetifExercicesPage = () => {
                   <Button
                     onClick={() => validateAnswer(currentExercise.id)}
                     disabled={!userAnswers[currentExercise.id]}
-                    className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white flex items-center gap-2 px-6 py-2"
+                    className="bg-pr-black-dark hover:bg-pr-black-dark text-white flex items-center gap-2 px-6 py-2"
                   >
                     <CheckCircle className="h-4 w-4" />
                     Valider ma réponse
@@ -830,7 +830,7 @@ const GenetifExercicesPage = () => {
                   <Button
                     variant="outline"
                     onClick={() => toggleCorrections(currentExercise.id)}
-                    className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-orange-50 px-6 py-2"
+                    className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-gray-50 px-6 py-2"
                   >
                     <Eye className="h-4 w-4" />
                     Voir la correction
@@ -891,7 +891,7 @@ const GenetifExercicesPage = () => {
             {/* Boutons de navigation */}
             <div className="flex justify-between items-center mt-8 pt-6 border-t border-gray-200">
               <Button onClick={() => setCurrentExerciseIndex(prev => Math.max(0, prev - 1))} disabled={currentExerciseIndex === 0 || examStarted}
-                variant="outline" className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-orange-50">
+                variant="outline" className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-gray-50">
                 <ArrowLeft className="h-4 w-4" />Question précédente
               </Button>
               <div className="flex items-center gap-4">
@@ -904,12 +904,12 @@ const GenetifExercicesPage = () => {
                 <div className="flex gap-2">
                   {filteredExercises.map((_, index) => (
                     <button key={index} onClick={() => !examStarted && setCurrentExerciseIndex(index)} disabled={examStarted}
-                      className={`w-2 h-2 rounded-full transition-colors ${index === currentExerciseIndex ? 'bg-pr-orange-dark' : 'bg-gray-300 hover:bg-gray-400'}`} />
+                      className={`w-2 h-2 rounded-full transition-colors ${index === currentExerciseIndex ? 'bg-pr-black-dark' : 'bg-gray-300 hover:bg-gray-400'}`} />
                   ))}
                 </div>
               </div>
               <Button onClick={() => setCurrentExerciseIndex(prev => Math.min(filteredExercises.length - 1, prev + 1))} disabled={currentExerciseIndex === filteredExercises.length - 1 || examStarted}
-                variant="outline" className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-orange-50">
+                variant="outline" className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-gray-50">
                 Question suivante<ChevronRight className="h-4 w-4" />
               </Button>
             </div>
@@ -917,9 +917,9 @@ const GenetifExercicesPage = () => {
         )}
 
         {filteredExercises.length === 0 && (
-          <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+          <Card className="border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-amber-50">
             <CardContent className="text-center py-8">
-              <p className="text-pr-orange-dark text-lg">Aucun exercice trouvé avec les filtres actuels. Modifiez vos critères de recherche.</p>
+              <p className="text-pr-black text-lg">Aucun exercice trouvé avec les filtres actuels. Modifiez vos critères de recherche.</p>
             </CardContent>
           </Card>
         )}
@@ -927,10 +927,10 @@ const GenetifExercicesPage = () => {
         {/* Boutons de contrôle (globaux si pas en mode examen) */}
         {!examMode && (
           <div className="flex justify-center gap-4 mt-10">
-            <Button onClick={calculateScore} className="bg-pr-orange hover:bg-pr-orange-dark text-white px-8 py-3 text-lg flex items-center gap-2">
+            <Button onClick={calculateScore} className="bg-pr-black hover:bg-pr-black-dark text-white px-8 py-3 text-lg flex items-center gap-2">
               <CheckCircle className="h-5 w-5" />Terminer et voir le score
             </Button>
-            <Button onClick={resetQuiz} variant="outline" className="px-8 py-3 text-lg flex items-center gap-2 border-pr-orange text-pr-orange hover:bg-pr-orange-pale">
+            <Button onClick={resetQuiz} variant="outline" className="px-8 py-3 text-lg flex items-center gap-2 border-pr-black text-pr-black hover:bg-pr-gray-bg">
               <X className="h-5 w-5" />Réinitialiser
             </Button>
           </div>
@@ -938,9 +938,9 @@ const GenetifExercicesPage = () => {
 
         {/* Score affiché */}
         {showScore && score !== null && (
-          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-orange-pale' : 'border-orange-200 bg-orange-50'}`}>
+          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-gray-bg' : 'border-gray-200 bg-gray-50'}`}>
             <CardHeader className="text-center">
-              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-carnet-red-deep' : 'text-orange-800'}`}>
+              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-carnet-red-deep' : 'text-gray-800'}`}>
                 <Award className="h-8 w-8" />{examMode ? 'Résultats de l\'Examen' : 'Votre Score'} : {score}%
               </CardTitle>
             </CardHeader>
@@ -950,7 +950,7 @@ const GenetifExercicesPage = () => {
                   <p className="text-carnet-red-deep font-medium">⏱️ Temps total : {formatTime(examTime)}</p>
                 </div>
               )}
-              <div className={`text-lg ${examMode ? 'text-carnet-red' : 'text-pr-orange-dark'}`}>
+              <div className={`text-lg ${examMode ? 'text-carnet-red' : 'text-pr-black'}`}>
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
                     <Trophy className="h-6 w-6 text-yellow-500" />
@@ -969,7 +969,7 @@ const GenetifExercicesPage = () => {
                 )}
               </div>
               {examMode && (
-                <div className="mt-4 p-3 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
+                <div className="mt-4 p-3 bg-pr-gray-bg rounded-lg border border-carnet-red/30">
                   <p className="text-carnet-red text-sm">💡 En mode normal, vous pouvez voir les corrections détaillées de chaque exercice.</p>
                 </div>
               )}

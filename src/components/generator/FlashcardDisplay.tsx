@@ -57,11 +57,11 @@ export const FlashcardDisplay = ({ flashcards, language, onRegenerate }: Flashca
 
   return (
     <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-      <div className="h-[3px] w-full bg-pr-orange" />
+      <div className="h-[3px] w-full bg-pr-black" />
       <div className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5 sm:px-8">
         <div className="flex justify-between items-center flex-wrap gap-3">
           <h3 className="flex items-center gap-3 font-dm-serif text-xl text-pr-black">
-            <Library className="h-5 w-5 text-pr-orange" />
+            <Library className="h-5 w-5 text-pr-black" />
             {language === 'fr' ? 'Flashcards (format Anki)' : 'Flashcards (Anki format)'}
             <span className="text-sm font-normal text-pr-gray-mid font-dm-sans">
               ({flashcardData.length} {language === 'fr' ? 'cartes' : 'cards'})
@@ -73,7 +73,7 @@ export const FlashcardDisplay = ({ flashcards, language, onRegenerate }: Flashca
                 onClick={onRegenerate}
                 variant="outline"
                 size="sm"
-                className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft"
+                className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft"
               >
                 <RefreshCw className="h-4 w-4 mr-1" />
                 {language === 'fr' ? 'Régénérer' : 'Regenerate'}
@@ -82,7 +82,7 @@ export const FlashcardDisplay = ({ flashcards, language, onRegenerate }: Flashca
             <Button
               onClick={handleDownloadCSV}
               size="sm"
-              className="bg-pr-orange hover:bg-pr-orange-dark text-white"
+              className="bg-pr-black hover:bg-pr-black-dark text-white"
             >
               <Download className="h-4 w-4 mr-1" />
               CSV
@@ -91,7 +91,7 @@ export const FlashcardDisplay = ({ flashcards, language, onRegenerate }: Flashca
               onClick={handleDownloadPDF}
               variant="outline"
               size="sm"
-              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft"
+              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft"
             >
               <Download className="h-4 w-4 mr-1" />
               PDF
@@ -101,8 +101,8 @@ export const FlashcardDisplay = ({ flashcards, language, onRegenerate }: Flashca
       </div>
       <div className="p-6 sm:p-8">
         <div className="space-y-4">
-          <div className="bg-pr-orange-pale border-l-4 border-pr-orange p-4 rounded-r-lg">
-            <p className="text-sm text-pr-orange-dark font-dm-sans">
+          <div className="bg-pr-gray-bg border-l-4 border-pr-black p-4 rounded-r-lg">
+            <p className="text-sm text-pr-black font-dm-sans">
               {language === 'fr'
                 ? "Ces flashcards sont au format Anki. Vous pouvez importer le fichier CSV directement dans Anki ou utiliser le PDF pour réviser."
                 : "These flashcards are in Anki format. You can import the CSV file directly into Anki or use the PDF for review."
@@ -132,7 +132,7 @@ export const FlashcardDisplay = ({ flashcards, language, onRegenerate }: Flashca
                   <TableCell className="font-medium text-pr-black font-dm-sans">{card.front}</TableCell>
                   <TableCell className="text-pr-gray-dark font-dm-sans">{card.back}</TableCell>
                   <TableCell>
-                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-pr-orange-pale text-pr-orange-dark font-dm-sans uppercase tracking-[0.06em]">
+                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-pr-gray-bg text-pr-black font-dm-sans uppercase tracking-[0.06em]">
                       {card.type}
                     </span>
                   </TableCell>

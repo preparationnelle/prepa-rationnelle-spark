@@ -111,9 +111,9 @@ const LyceeTerminalePage = () => {
 
   /* Modern color palette using Tailwind classes dynamically */
   const colorClasses: Record<string, { bg: string, border: string, text: string, icon: string, shadow: string, gradient: string }> = {
-    blue: { bg: 'bg-pr-orange-pale', border: 'border-carnet-red/20', text: 'text-carnet-red-deep', icon: 'text-carnet-red', shadow: 'shadow-carnet-red/50', gradient: 'from-carnet-red to-pr-orange' },
+    blue: { bg: 'bg-pr-gray-bg', border: 'border-carnet-red/20', text: 'text-carnet-red-deep', icon: 'text-carnet-red', shadow: 'shadow-carnet-red/50', gradient: 'from-carnet-red to-pr-black' },
     emerald: { bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-900', icon: 'text-emerald-600', shadow: 'shadow-emerald-200/50', gradient: 'from-emerald-500 to-emerald-600' },
-    orange: { bg: 'bg-orange-50', border: 'border-orange-100', text: 'text-orange-900', icon: 'text-pr-orange-dark', shadow: 'shadow-orange-200/50', gradient: 'from-pr-orange to-pr-orange-dark' },
+    orange: { bg: 'bg-gray-50', border: 'border-orange-100', text: 'text-orange-900', icon: 'text-pr-black', shadow: 'shadow-orange-200/50', gradient: 'from-pr-orange to-pr-black' },
     violet: { bg: 'bg-violet-50', border: 'border-violet-100', text: 'text-violet-900', icon: 'text-violet-600', shadow: 'shadow-violet-200/50', gradient: 'from-violet-500 to-violet-600' },
     pink: { bg: 'bg-pink-50', border: 'border-pink-100', text: 'text-pink-900', icon: 'text-pink-600', shadow: 'shadow-pink-200/50', gradient: 'from-pink-500 to-pink-600' },
     rose: { bg: 'bg-rose-50', border: 'border-rose-100', text: 'text-rose-900', icon: 'text-rose-600', shadow: 'shadow-rose-200/50', gradient: 'from-rose-500 to-rose-600' },
@@ -133,7 +133,7 @@ const LyceeTerminalePage = () => {
         {/* Modern Abstract Background - Red/Orange Theme */}
         <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-red-50/50 to-transparent -z-10" />
         <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-red-100/30 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-orange-100/30 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-[10%] left-[-10%] w-[500px] h-[500px] bg-gray-100/30 rounded-full blur-3xl -z-10" />
 
         <div className="container mx-auto px-4 sm:px-6 py-12 relative z-10">
           <div className="max-w-7xl mx-auto">
@@ -145,7 +145,7 @@ const LyceeTerminalePage = () => {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-carnet-ink mb-6">
-                Classe de <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-orange-dark">Terminale</span>
+                Classe de <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-black">Terminale</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-carnet-ink-soft max-w-3xl mx-auto leading-relaxed font-light">
@@ -205,7 +205,7 @@ const LyceeTerminalePage = () => {
             {/* Options Section */}
             <div className="mb-20">
               <h2 className="text-2xl font-bold text-carnet-ink mb-6 flex items-center gap-2">
-                <div className="w-1.5 h-8 bg-pr-orange rounded-full"></div>
+                <div className="w-1.5 h-8 bg-pr-black rounded-full"></div>
                 Options spécifiques à la Terminale
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -244,7 +244,7 @@ const LyceeTerminalePage = () => {
               {/* Detailed Info Card */}
               <div className="md:col-span-8">
                 <Card className="h-full border-0 shadow-xl shadow-slate-200/60 overflow-hidden bg-white">
-                  <div className="h-2 bg-gradient-to-r from-red-500 to-pr-orange-dark"></div>
+                  <div className="h-2 bg-gradient-to-r from-red-500 to-pr-black"></div>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3 text-2xl font-bold text-carnet-ink">
                       <Award className="h-6 w-6 text-red-600" />
@@ -302,7 +302,7 @@ const LyceeTerminalePage = () => {
 
               {/* Call to Action Card */}
               <div className="md:col-span-4 flex flex-col">
-                <Card className="flex-1 border-0 shadow-xl shadow-red-200/50 relative overflow-hidden bg-gradient-to-br from-red-600 to-pr-orange-dark text-white">
+                <Card className="flex-1 border-0 shadow-xl shadow-red-200/50 relative overflow-hidden bg-gradient-to-br from-red-600 to-pr-black text-white">
                   {/* Decorative circles */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                   <div className="absolute bottom-0 left-0 w-32 h-32 bg-white opacity-10 rounded-full translate-y-1/2 -translate-x-1/2"></div>

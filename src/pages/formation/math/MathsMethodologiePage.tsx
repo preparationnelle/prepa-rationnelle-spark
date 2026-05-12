@@ -92,7 +92,7 @@ const MathsMethodologiePage = () => {
       {/* Floating elements - Refined & Sober */}
       <div className="absolute -z-10 top-20 left-10 w-64 h-64 bg-carnet-red/10/40 rounded-full blur-3xl"></div>
       <div className="absolute -z-10 bottom-20 right-10 w-96 h-96 bg-indigo-100/30 rounded-full blur-3xl"></div>
-      <div className="absolute -z-10 top-40 right-1/4 w-72 h-72 bg-pr-orange-pale/80 rounded-full blur-2xl"></div>
+      <div className="absolute -z-10 top-40 right-1/4 w-72 h-72 bg-pr-gray-bg/80 rounded-full blur-2xl"></div>
 
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
@@ -111,7 +111,7 @@ const MathsMethodologiePage = () => {
               Parcours Maths
             </Link>
             <ChevronRight className="h-3 w-3 mx-2 text-gray-300" />
-            <span className="text-carnet-red bg-pr-orange-pale px-2 py-0.5 rounded-full">Méthodologie</span>
+            <span className="text-carnet-red bg-pr-gray-bg px-2 py-0.5 rounded-full">Méthodologie</span>
           </div>
         </div>
       </nav>
@@ -136,7 +136,7 @@ const MathsMethodologiePage = () => {
 
         {/* Points clés */}
         <div className="max-w-5xl mx-auto mb-20 bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-pr-orange-pale rounded-bl-full -mr-8 -mt-8 opacity-50"></div>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-pr-gray-bg rounded-bl-full -mr-8 -mt-8 opacity-50"></div>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
             <Target className="h-6 w-6 text-carnet-red" />
@@ -190,13 +190,13 @@ const MathsMethodologiePage = () => {
                 className="group bg-white rounded-2xl p-6 border border-gray-100 shadow-[0_2px_8px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 cursor-pointer relative overflow-hidden"
                 onClick={() => window.location.href = article.link}
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gray-50 rounded-bl-full -mr-6 -mt-6 group-hover:bg-pr-orange-pale transition-colors duration-300"></div>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gray-50 rounded-bl-full -mr-6 -mt-6 group-hover:bg-pr-gray-bg transition-colors duration-300"></div>
 
                 <div className="flex items-start justify-between mb-4 relative z-10">
-                  <div className="w-12 h-12 bg-pr-orange-pale/50 rounded-xl flex items-center justify-center text-carnet-red group-hover:bg-carnet-red group-hover:text-white transition-all duration-300">
+                  <div className="w-12 h-12 bg-pr-gray-bg/50 rounded-xl flex items-center justify-center text-carnet-red group-hover:bg-carnet-red group-hover:text-white transition-all duration-300">
                     {article.icon}
                   </div>
-                  <Badge variant="secondary" className="bg-gray-50 text-gray-500 border-gray-100 group-hover:bg-pr-orange-pale group-hover:text-carnet-red transition-colors">
+                  <Badge variant="secondary" className="bg-gray-50 text-gray-500 border-gray-100 group-hover:bg-pr-gray-bg group-hover:text-carnet-red transition-colors">
                     {article.badge}
                   </Badge>
                 </div>

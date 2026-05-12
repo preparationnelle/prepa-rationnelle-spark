@@ -178,15 +178,15 @@ export const ResponseTabs = ({ answer, activeTab, language, onTabChange }: Respo
         </div>
       </TabsContent>
       
-      <TabsContent value="exercise" className="bg-pr-orange-pale p-6 rounded-xl border border-pr-orange/20">
-        <h3 className="font-semibold mb-4 text-pr-orange-dark uppercase tracking-[0.06em] font-dm-sans">
+      <TabsContent value="exercise" className="bg-pr-gray-bg p-6 rounded-xl border border-pr-black/20">
+        <h3 className="font-semibold mb-4 text-pr-black uppercase tracking-[0.06em] font-dm-sans">
           {language === 'fr' ? "Exercice d'entraînement" : 'Training exercise'}
         </h3>
         <p className="text-pr-gray-dark font-dm-sans leading-relaxed">{answer.exercise}</p>
       </TabsContent>
 
       <TabsContent value="similarQuestions" className="bg-pr-gray-bg p-6 rounded-xl border border-pr-gray-light">
-        <h3 className="font-semibold mb-4 text-pr-orange-dark uppercase tracking-[0.06em] font-dm-sans">
+        <h3 className="font-semibold mb-4 text-pr-black uppercase tracking-[0.06em] font-dm-sans">
           {language === 'fr' ? 'Questions similaires à préparer' : 'Similar questions to prepare'}
         </h3>
         <ul className="list-disc pl-5 space-y-2">

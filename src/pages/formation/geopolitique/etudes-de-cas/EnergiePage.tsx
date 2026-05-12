@@ -61,7 +61,7 @@ const EnergiePage = () => {
       <div className="container mx-auto px-4 py-8">
 
         {/* Header */}
-        <Card className="mb-8 bg-gradient-to-r from-pr-orange-dark to-red-600 text-white">
+        <Card className="mb-8 bg-gradient-to-r from-pr-black to-red-600 text-white">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Zap className="h-8 w-8" />
@@ -99,7 +99,7 @@ const EnergiePage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Fuel className="h-5 w-5 text-pr-orange-dark" />
+              <Fuel className="h-5 w-5 text-pr-black" />
               Mix énergétique mondial
             </CardTitle>
           </CardHeader>
@@ -112,8 +112,8 @@ const EnergiePage = () => {
                   bien qu'en baisse depuis 1990. Le charbon représente <strong>29%</strong> 
                   (principalement en Chine), tandis que les renouvelables progressent.
                 </p>
-                <div className="bg-orange-50 p-3 rounded-lg">
-                  <p className="text-sm text-orange-800">
+                <div className="bg-gray-50 p-3 rounded-lg">
+                  <p className="text-sm text-gray-800">
                     <strong>Consommation :</strong> Volume x1.6 en 25 ans. Chine 24% (charbon), US 17% (gaz-pétrole), BRICS 40%.
                   </p>
                 </div>
@@ -121,12 +121,12 @@ const EnergiePage = () => {
               
               <div className="space-y-3">
                 {energyMix.map((energy, index) => (
-                  <div key={index} className="bg-orange-50 p-3 rounded-lg border border-orange-200">
+                  <div key={index} className="bg-gray-50 p-3 rounded-lg border border-gray-200">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-orange-800">{energy.source}</span>
-                      <span className="font-bold text-pr-orange-dark">{energy.percentage}</span>
+                      <span className="text-sm font-medium text-gray-800">{energy.source}</span>
+                      <span className="font-bold text-pr-black">{energy.percentage}</span>
                     </div>
-                    <div className="text-xs text-pr-orange-dark mt-1">{energy.trend} • {energy.note}</div>
+                    <div className="text-xs text-pr-black mt-1">{energy.trend} • {energy.note}</div>
                   </div>
                 ))}
               </div>
@@ -180,7 +180,7 @@ const EnergiePage = () => {
             <CardContent>
               <div className="space-y-3">
                 {nuclearCountries.map((country, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
+                  <div key={index} className="flex items-center justify-between p-3 bg-pr-gray-bg rounded-lg border border-carnet-red/30">
                     <div>
                       <div className="font-semibold text-carnet-red-deep">{country.country}</div>
                       <div className="text-sm text-carnet-red">{country.share} mondial</div>
@@ -227,7 +227,7 @@ const EnergiePage = () => {
                 </ul>
               </div>
               
-              <div className="bg-pr-orange-pale p-4 rounded-lg border border-carnet-red/30">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border border-carnet-red/30">
                 <div className="flex items-center gap-2 mb-3">
                   <Wind className="h-5 w-5 text-carnet-red" />
                   <h4 className="font-semibold text-carnet-red-deep">Éolien offshore</h4>
@@ -283,9 +283,9 @@ const EnergiePage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-orange-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-orange-800 mb-2">Producteurs d'uranium</h4>
-                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-semibold text-gray-800 mb-2">Producteurs d'uranium</h4>
+                      <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Kazakhstan :</strong> 43% production mondiale</li>
                         <li><strong>Canada :</strong> 13% (mines Saskatchewan)</li>
                         <li><strong>Australie :</strong> 12% (Olympic Dam)</li>
@@ -312,7 +312,7 @@ const EnergiePage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-pr-orange-pale p-4 rounded-lg">
+                    <div className="bg-pr-gray-bg p-4 rounded-lg">
                       <h4 className="font-semibold text-carnet-red-deep mb-2">Transition énergétique</h4>
                       <ul className="list-disc list-inside text-sm text-carnet-red space-y-1">
                         <li><strong>Hydrogène vert :</strong> Europe face aux tensions géopolitiques</li>
@@ -345,7 +345,7 @@ const EnergiePage = () => {
                       </div>
                     </div>
 
-                    <div className="border-l-4 border-carnet-red/40 bg-pr-orange-pale p-4 rounded-r-lg">
+                    <div className="border-l-4 border-carnet-red/40 bg-pr-gray-bg p-4 rounded-r-lg">
                       <h4 className="font-semibold text-carnet-red-deep mb-3">
                         <Zap className="inline h-4 w-4 mr-2" />
                         Débats nucléaires

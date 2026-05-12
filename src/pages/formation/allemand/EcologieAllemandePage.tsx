@@ -24,12 +24,12 @@ const VocabWord = ({ word, explanation }: { word: string; explanation: string })
 
   return (
     <span className="relative inline-block" ref={tooltipRef}>
-      <span className="font-bold text-pr-orange-dark cursor-pointer hover:text-orange-900 transition-colors" onClick={() => setShowTooltip(!showTooltip)}>
+      <span className="font-bold text-pr-black cursor-pointer hover:text-orange-900 transition-colors" onClick={() => setShowTooltip(!showTooltip)}>
         {word}
       </span>
       {showTooltip && (
         <span className="absolute z-50 top-full left-0 mt-2 w-72 p-3 bg-white border-2 border-orange-400 rounded-lg shadow-xl text-sm text-gray-700">
-          <span className="font-semibold text-pr-orange-dark block mb-1">Erklärung:</span>
+          <span className="font-semibold text-pr-black block mb-1">Erklärung:</span>
           <span className="text-gray-800">{explanation}</span>
           <span className="absolute bottom-full left-4 border-8 border-transparent border-b-orange-400"></span>
         </span>
@@ -184,7 +184,7 @@ const EcologieAllemandePage: React.FC = () => {
             <Card key={topic.id} className="border shadow-sm">
               <CardHeader className="border-b bg-gray-50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-orange-50 rounded-lg border border-orange-200 text-pr-orange-dark">
+                  <div className="p-2 bg-gray-50 rounded-lg border border-gray-200 text-pr-black">
                     {topic.icon}
                   </div>
                   <CardTitle className="text-lg font-semibold text-gray-900">

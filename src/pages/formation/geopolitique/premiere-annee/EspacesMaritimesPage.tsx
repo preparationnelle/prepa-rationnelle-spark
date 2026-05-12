@@ -4,34 +4,34 @@ import { Home, ChevronRight } from 'lucide-react';
 
 const EspacesMaritimesPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="relative">
       {/* Breadcrumb */}
-      <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
+      <div className="sticky top-0 z-40 bg-carnet-paper/95 backdrop-blur-sm border-b border-carnet-rule/60">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-gray-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-800 transition-colors">
+          <div className="flex items-center text-[11px] uppercase tracking-[0.08em] text-carnet-ink-soft font-semibold">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/geopolitique" className="hover:text-gray-800 transition-colors">Géopolitique</Link>
+            <Link to="/formation/geopolitique" className="hover:text-carnet-ink transition-colors">Géopolitique</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/geopolitique/premiere-annee" className="hover:text-gray-800 transition-colors">Première année</Link>
+            <Link to="/formation/geopolitique/premiere-annee" className="hover:text-carnet-ink transition-colors">Première année</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <span className="text-gray-800 font-medium">Les espaces maritimes</span>
+            <span className="text-carnet-ink">Les espaces maritimes</span>
           </div>
         </div>
       </div>
 
       <div className="container mx-auto px-4 pt-12 pb-16">
-        <div className="max-w-4xl mx-auto bg-white border rounded-xl p-6">
+        <div className="max-w-4xl mx-auto bg-carnet-paper-2 border border-carnet-rule rounded-xl p-6">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-900">Les espaces maritimes</h1>
             <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
           <div className="max-w-none text-gray-900 space-y-8">
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+            <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4">
               <p className="leading-relaxed">Autrefois vierges, les espaces maritimes font l’objet d’une appropriation croissante par les États. ⇒ territorialisation sans précédent dont l’extension du droit de la mer est la conséquence. Les espaces maritimes apparaissent ainsi comme des espaces à conquérir (fronts) et à délimiter pour exercer pleinement une souveraineté. Leur appropriation les transforme en territoires propices aux rivalités, aux tensions et au jeu des puissances.</p>
             </div>
 
@@ -99,7 +99,7 @@ const EspacesMaritimesPage: React.FC = () => {
               <p>Passage de la protection du territoire à la projection de puissance. Enjeux liés aux systèmes d’alliance et à la dimension maritime de l’exercice de la puissance.</p>
               <p>Sécurité maritime et sauvetage en mer (Méditerranée) — nouveaux enjeux. Recours à des moyens navals contre des menaces asymétriques (piraterie, trafics, terrorisme…).</p>
 
-              <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 mt-4">
+              <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4 mt-4">
                 <h4 className="font-semibold text-carnet-red mb-2">Compléments</h4>
                 <p><strong>Porte‑avions chinois</strong> : Liaoning (ex‑soviétique, 1er en service 2017), Shandong (1er construit en RPC), Fujian (Type 003, 2022).</p>
                 <p><strong>US Navy</strong> : 11 porte‑avions (classe Nimitz puis Gerald Ford). « Atout majeur des grandes puissances maritimes… » (Bernard Prézelin, <em>Flottes de combat</em>, 2016).</p>

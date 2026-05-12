@@ -98,7 +98,7 @@ const PuissancesPage = () => {
               <div className="space-y-6">
                 
                 {/* Position économique */}
-                <Card className="bg-pr-orange-pale border-carnet-red/30">
+                <Card className="bg-pr-gray-bg border-carnet-red/30">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-carnet-red-deep">
                       <DollarSign className="h-5 w-5" />
@@ -233,7 +233,7 @@ const PuissancesPage = () => {
                 </Card>
 
                 {/* Soft Power */}
-                <Card className="bg-pr-orange-pale border-carnet-red/30">
+                <Card className="bg-pr-gray-bg border-carnet-red/30">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-carnet-red-deep">
                       <Users className="h-5 w-5" />
@@ -334,9 +334,9 @@ const PuissancesPage = () => {
                 </Card>
 
                 {/* Désindustrialisation */}
-                <Card className="bg-orange-50 border-orange-200">
+                <Card className="bg-gray-50 border-gray-200">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-orange-800">
+                    <CardTitle className="flex items-center gap-2 text-gray-800">
                       <TrendingUp className="h-5 w-5" />
                       Désindustrialisation et reconversion
                     </CardTitle>
@@ -344,16 +344,16 @@ const PuissancesPage = () => {
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-semibold text-orange-800 mb-3">Recul industriel</h4>
-                        <ul className="text-sm text-pr-orange-dark space-y-2">
+                        <h4 className="font-semibold text-gray-800 mb-3">Recul industriel</h4>
+                        <ul className="text-sm text-pr-black space-y-2">
                           <li><strong>Part PIB :</strong> 17% (contre 30% en 1970)</li>
                           <li><strong>Emplois :</strong> 3 millions (contre 5M en 1980)</li>
                           <li><strong>Balance :</strong> Déficit manufactures depuis 2005</li>
                           <li><strong>Fermetures :</strong> Arcelor (Lorraine), reconversions</li>
                         </ul>
                         
-                        <h4 className="font-semibold text-orange-800 mb-3 mt-4">Secteurs leader UE</h4>
-                        <ul className="text-sm text-pr-orange-dark space-y-1">
+                        <h4 className="font-semibold text-gray-800 mb-3 mt-4">Secteurs leader UE</h4>
+                        <ul className="text-sm text-pr-black space-y-1">
                           <li>• Aéronautique (Airbus)</li>
                           <li>• Nucléaire (EDF 56 réacteurs)</li>
                           <li>• Chimie, Agroalimentaire (Danone)</li>
@@ -361,16 +361,16 @@ const PuissancesPage = () => {
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-orange-800 mb-3">Pôles d'excellence</h4>
-                        <ul className="text-sm text-pr-orange-dark space-y-2">
+                        <h4 className="font-semibold text-gray-800 mb-3">Pôles d'excellence</h4>
+                        <ul className="text-sm text-pr-black space-y-2">
                           <li><strong>IDF :</strong> 25% PIB, 400 000 emplois industriels</li>
                           <li><strong>Lyon :</strong> Chimie, Part-Dieu (TGV)</li>
                           <li><strong>Toulouse :</strong> Aerospace Valley (150 000 emplois)</li>
                           <li><strong>Jura :</strong> Systèmes locaux mécanique</li>
                         </ul>
                         
-                        <h4 className="font-semibold text-orange-800 mb-3 mt-4">Innovation</h4>
-                        <ul className="text-sm text-pr-orange-dark space-y-1">
+                        <h4 className="font-semibold text-gray-800 mb-3 mt-4">Innovation</h4>
+                        <ul className="text-sm text-pr-black space-y-1">
                           <li>• Sophia Antipolis (1969)</li>
                           <li>• 70 pôles compétitivité (2004)</li>
                           <li>• 8 000 PME dans les pôles</li>

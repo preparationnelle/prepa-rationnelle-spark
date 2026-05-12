@@ -167,7 +167,7 @@ const VocabulairePolititiqueFlashcardsPage = () => {
       "Droits": "bg-emerald-100 text-emerald-800",
       "Droit": "bg-emerald-100 text-emerald-800",
       "Relations internationales": "bg-teal-100 text-teal-800",
-      "Idéologies": "bg-amber-100 text-orange-800",
+      "Idéologies": "bg-amber-100 text-gray-800",
       "Acteurs politiques": "bg-pink-100 text-pink-800",
       "Partis": "bg-violet-100 text-violet-800",
       "Opinion": "bg-cyan-100 text-cyan-800",
@@ -177,7 +177,7 @@ const VocabulairePolititiqueFlashcardsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale via-white to-purple-50">
+    <div className="min-h-screen bg-transparent font-dm-sans">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
@@ -230,7 +230,7 @@ const VocabulairePolititiqueFlashcardsPage = () => {
         <div className="max-w-2xl mx-auto mb-6">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm font-medium text-gray-700">Progression</span>
-            <span className="text-sm font-medium text-orange-800">{currentIndex + 1} / {cards.length}</span>
+            <span className="text-sm font-medium text-gray-800">{currentIndex + 1} / {cards.length}</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2.5">
             <div 
@@ -271,7 +271,7 @@ const VocabulairePolititiqueFlashcardsPage = () => {
 
           {/* Aide aux raccourcis */}
           {showHelp && (
-            <Card className="mb-4 bg-pr-orange-pale border-carnet-red/30">
+            <Card className="mb-4 bg-carnet-paper-2 border-carnet-red/30">
               <CardContent className="p-4">
                 <h3 className="font-semibold text-carnet-red-deep mb-3">Raccourcis clavier :</h3>
                 <div className="grid grid-cols-2 gap-2 text-sm text-carnet-red">
@@ -308,8 +308,8 @@ const VocabulairePolititiqueFlashcardsPage = () => {
                   </>
                 ) : (
                   <>
-                    <EyeOff className="h-4 w-4 text-orange-800" />
-                    <span className="text-sm font-medium text-orange-800">Français</span>
+                    <EyeOff className="h-4 w-4 text-gray-800" />
+                    <span className="text-sm font-medium text-gray-800">Français</span>
                   </>
                 )}
               </div>
@@ -364,7 +364,7 @@ const VocabulairePolititiqueFlashcardsPage = () => {
 
         {/* Section informative */}
         <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-purple-50 shadow-lg">
+          <Card className="border-2 border-carnet-red/30 bg-carnet-paper-2 border-carnet-rule">
             <CardContent className="p-6">
               <h3 className="text-xl font-bold text-carnet-red-deep mb-4">💡 Conseils pour l'apprentissage</h3>
               <div className="grid md:grid-cols-2 gap-6">

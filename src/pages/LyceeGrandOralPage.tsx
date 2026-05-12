@@ -53,7 +53,7 @@ const LyceeGrandOralPage = () => {
               </div>
 
               <div className="prose prose-lg max-w-none text-gray-700">
-                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-red-400 mb-8">
+                <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-red-400 mb-8">
                   <p className="text-carnet-red-deep font-medium text-lg">
                     <strong>Objectif principal :</strong> Réussir le Grand Oral du baccalauréat en démontrant une maîtrise du sujet (connaissances solides), une capacité d'argumentation claire et convaincante, une aisance à l'oral et au contact du jury.
                   </p>
@@ -194,7 +194,7 @@ const LyceeGrandOralPage = () => {
                   <li><strong>Authenticité :</strong> montrer votre intérêt et votre personnalité à travers le sujet</li>
                 </ul>
 
-                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-red-400">
+                <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-red-400">
                   <p className="text-carnet-red-deep font-medium">
                     Bien préparé, le Grand Oral devient une véritable opportunité de valoriser votre travail et votre personnalité. Bonne réussite !
                   </p>
@@ -204,7 +204,7 @@ const LyceeGrandOralPage = () => {
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <div className="bg-gradient-to-br from-red-50 to-pr-orange-pale border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-carnet-red/40 hover:bg-gradient-to-br hover:from-carnet-paper-2 hover:to-red-50 transition-all duration-300 group p-8 rounded-lg">
+              <div className="bg-gradient-to-br from-red-50 to-pr-black-pale border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-carnet-red/40 hover:bg-gradient-to-br hover:from-carnet-paper-2 hover:to-red-50 transition-all duration-300 group p-8 rounded-lg">
                 <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-carnet-red/10 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
                   <Award className="h-8 w-8 text-carnet-red group-hover:text-carnet-red transition-colors duration-300" />
                 </div>

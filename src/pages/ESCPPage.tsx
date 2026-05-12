@@ -1,222 +1,230 @@
 import React, { useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Separator } from '@/components/ui/separator';
-import { GraduationCap, Clock, Star, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import {
+  ArrowLeft, Users, Clock, Award, CheckCircle, XCircle, Lightbulb,
+  Target, Home, ChevronRight, GraduationCap, AlertTriangle, Globe,
+} from 'lucide-react';
 import { useProgress } from '@/context/ProgressContext';
+
+const questions = [
+  'Quels sont vos centres d\'intérêt ou activités extrascolaires ?',
+  'Citez un projet, une réalisation ou une prise de responsabilités dont vous êtes fier(e).',
+  'Avez-vous déjà travaillé ? Quelle expérience avez-vous du monde du travail ?',
+  'Quelles sont vos expériences de différentes cultures ?',
+  'Décrivez une expérience marquante. Que vous a-t-elle appris sur vous-même ?',
+  'Quelles autres informations souhaitez-vous communiquer au jury ?',
+];
+
+const campuses = [
+  { c: 'Paris', d: 'Hub finance, conseil, luxe — capital européen de référence.' },
+  { c: 'Berlin', d: 'Tech, startup ecosystem, politique européenne. Idéal pour profils entrepreneuriaux.' },
+  { c: 'Londres', d: 'Finance internationale, City, consulting mondial. Argument géopolitique post-Brexit.' },
+  { c: 'Madrid', d: 'Amérique latine comme débouché, marché hispanique, secteur énergie.' },
+  { c: 'Turin', d: 'Design, industrie automobile, luxe et mode italiens.' },
+  { c: 'Varsovie', d: 'Europe de l\'Est émergente, hub logistique et tech — profil atypique valorisé.' },
+];
+
+const traps = [
+  ['Le discours générique sur l\'ESCP', '"C\'est une grande école internationale avec un bon réseau." — 0 impact. Citez le séminaire Parlement européen, un campus précis, une association (Blue Factory), une chaire.'],
+  ['Le questionnaire surchargé', 'Trop long, trop liste. Chaque élément mentionné doit pouvoir être développé 5 minutes à l\'oral.'],
+  ['Incohérence questionnaire/oral', 'Si vous écrivez "passion pour la Chine", vous devrez en parler 20 minutes. Ne mentez pas, n\'embellissez pas.'],
+  ['Le projet professionnel inventé', 'Le jury détecte en 2 questions. Mieux vaut dire "je ne suis pas encore fixé mais voilà la direction que j\'explore et pourquoi."'],
+  ['Ignorer la dimension européenne', 'Ne pas mentionner l\'Europe dans "pourquoi l\'ESCP" est une erreur élémentaire. L\'européité est l\'identité centrale de l\'ESCP.'],
+  ['Paniquer au basculement en anglais', 'Le jury évalue l\'aisance du switch, pas la perfection. Répondre lentement mais avec assurance vaut mieux que bafouiller.'],
+];
 
 const ESCPPage = () => {
   const { trackPageVisit } = useProgress();
-  
-  // Suivre la visite de la page
-  useEffect(() => {
-    trackPageVisit('school');
-  }, [trackPageVisit]);
-  
-  return <div className="container mx-auto py-8 px-4">
-      <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8">
-        <div>
-          <h1 className="text-3xl font-bold">ESCP Business School</h1>
-          <p className="text-muted-foreground">Fiche école - Entretien de personnalité</p>
+  useEffect(() => { trackPageVisit('school'); }, [trackPageVisit]);
+
+  return (
+    <div className="relative carnet-paper min-h-screen overflow-hidden">
+      <div className="carnet-margin-line" />
+      <div className="carnet-hole" style={{ top: 80 }} />
+      <div className="carnet-hole" style={{ top: 220 }} />
+      <div className="carnet-hole" style={{ top: 360 }} />
+
+      <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-10">
+        <nav className="mb-10">
+          <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute gap-2">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors"><Home className="h-3.5 w-3.5" /><span>Accueil</span></Link>
+            <ChevronRight className="h-3 w-3 opacity-50" />
+            <Link to="/methodologie/entretiens-personnalite" className="hover:text-carnet-red transition-colors">Entretiens</Link>
+            <ChevronRight className="h-3 w-3 opacity-50" />
+            <span className="carnet-eyebrow text-[11px]">ESCP</span>
+          </div>
+        </nav>
+
+        <div className="mb-10">
+          <Link to="/methodologie/entretiens-personnalite">
+            <Button variant="ghost" className="group text-carnet-ink-soft hover:text-carnet-red px-3 font-instrument text-[13px] font-semibold uppercase tracking-[0.1em]">
+              <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />Retour aux fiches écoles
+            </Button>
+          </Link>
         </div>
-        <Button variant="outline" asChild>
-          <Link to="/">Retour à l'accueil</Link>
-        </Button>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        <Card className="md:col-span-2">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <GraduationCap className="h-5 w-5" />
-              Présentation de l'entretien
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">
-              <span className="font-semibold">Un entretien classique mais très exigeant :</span> À l'ESCP,
-              l'entretien de personnalité dure <span className="font-semibold">25 à 30 minutes</span> (coefficient 12 —
-              soit près de 40 % de la note globale à l'oral). C'est l'épreuve phare des oraux ESCP, et depuis 2026 elle
-              comporte une <span className="font-semibold">note éliminatoire fixée à 7/20</span> : en dessous de cette note,
-              le candidat est éliminé du concours quelle que soit sa performance dans les autres épreuves.
-            </p>
-            <p className="mb-4">
-              Avant l'entretien, vous remplissez un <span className="font-semibold">questionnaire de personnalité composé d'une page de présentation
-              et de 6 questions</span> (disponible à la publication des résultats d'admissibilité). Vous le remettez en
-              <span className="font-semibold"> 3 exemplaires</span> le jour J — un par membre du jury. Tout l'entretien
-              s'articule autour de ce questionnaire, qui sert de trame principale.
-            </p>
-            <p>
-              Le jury est composé de <span className="font-semibold">3 personnes</span> : 1 membre du corps enseignant ESCP,
-              1 ancien élève (alumni), et 1 représentant du monde économique.
-            </p>
-
-            <Separator className="my-6" />
-
-            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-              <Star className="h-5 w-5 text-amber-500" />
-              Ce que l'ESCP valorise
-            </h3>
-            <p className="mb-4">
-              L'ESCP, en tant qu'école multicampus européenne (Paris, Londres, Berlin, Turin, Madrid et Varsovie), valorise les profils ouverts sur le monde, 
-              capables de s'adapter à des environnements variés. Ses valeurs mises en avant incluent l'excellence 
-              académique, la créativité, la pluralité culturelle et l'humilité.
-            </p>
-            <p className="mb-4">
-              Concrètement, à travers l'entretien, l'ESCP veut des candidats qui collent à ces valeurs d'ouverture 
-              et de diversité. Ils apprécient particulièrement les candidats avec une expérience internationale 
-              (séjours linguistiques, double culture…) et ceux qui font preuve d'originalité dans leur parcours 
-              ou leurs passions (sans être farfelus).
-            </p>
-            <p>
-              Mais attention, l'ESCP reste une "parisienne" sélective : elle attend aussi    
-           beaucoup de motivation pour l'école (montrez-leur que 
-              l'ESCP n'est pas un choix par défaut mais votre choix).
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Clock className="h-5 w-5" />
-              Points clés
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-3">
-              <li className="flex gap-2">
-                <div className="bg-primary/10 p-1 rounded-full flex items-center justify-center h-6 w-6 mt-0.5">
-                  <span className="text-sm font-semibold text-primary">1</span>
-                </div>
+        <div className="mb-16 max-w-[760px]">
+          <span className="carnet-eyebrow inline-flex items-center gap-2 mb-6"><Award className="h-3.5 w-3.5" />Fiche école · BCE</span>
+          <h1 className="font-lora text-[38px] sm:text-[52px] lg:text-[60px] leading-[1.05] text-carnet-ink tracking-tight mb-5">
+            ESCP <em className="text-carnet-red not-italic">Business School</em>
+          </h1>
+          <hr className="carnet-divider mb-5" />
+          <p className="font-instrument text-[17px] lg:text-[18px] leading-[1.6] text-carnet-ink-soft mb-8">
+            L'école multicampus européenne par excellence — 6 campus, une note éliminatoire, et un questionnaire qui structure tout l'entretien.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { icon: Clock, label: 'Durée', value: '30 minutes' },
+              { icon: Award, label: 'Coefficient', value: '12 (~40% oral)' },
+              { icon: AlertTriangle, label: 'Note éliminatoire', value: '< 7/20 = éliminé' },
+            ].map(({ icon: Icon, label, value }) => (
+              <div key={label} className="carnet-card px-5 py-3 flex items-center gap-3">
+                <Icon className="h-4 w-4 text-carnet-red flex-shrink-0" strokeWidth={1.8} />
                 <div>
-                  <p className="font-medium">Durée : 30 minutes</p>
-                  <p className="text-sm text-muted-foreground">Coefficient 12</p>
+                  <div className="font-instrument text-[11px] text-carnet-ink-mute uppercase tracking-[0.1em]">{label}</div>
+                  <div className="font-lora text-[17px] text-carnet-ink">{value}</div>
                 </div>
-              </li>
-              <li className="flex gap-2">
-                <div className="bg-primary/10 p-1 rounded-full flex items-center justify-center h-6 w-6 mt-0.5">
-                  <span className="text-sm font-semibold text-primary">2</span>
-                </div>
-                <div>
-                  <p className="font-medium">Questionnaire préalable</p>
-                  <p className="text-sm text-muted-foreground">Sert de trame à l'entretien</p>
-                </div>
-              </li>
-              <li className="flex gap-2">
-                <div className="bg-primary/10 p-1 rounded-full flex items-center justify-center h-6 w-6 mt-0.5">
-                  <span className="text-sm font-semibold text-primary">3</span>
-                </div>
-                <div>
-                  <p className="font-medium">Jury de 3 personnes</p>
-                  <p className="text-sm text-muted-foreground">Corps enseignant + alumni + professionnel</p>
-                </div>
-              </li>
-              <li className="flex gap-2">
-                <div className="bg-primary/10 p-1 rounded-full flex items-center justify-center h-6 w-6 mt-0.5">
-                  <span className="text-sm font-semibold text-primary">4</span>
-                </div>
-                <div>
-                  <p className="font-medium">Note éliminatoire : 7/20</p>
-                  <p className="text-sm text-muted-foreground">Nouveau depuis 2026 — en dessous = élimination du concours</p>
-                </div>
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
-      </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Award className="h-5 w-5" />
-              Style de l'entretien
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">
-              Le jury de 3 personnes — 1 professeur ESCP, 1 alumni et 1 professionnel extérieur — lit votre questionnaire
-              quelques minutes avant de vous faire entrer. L’entretien s’articule ensuite quasi exclusivement autour
-              de vos 6 réponses écrites, que le jury reprend une à une.
+        {/* Questionnaire */}
+        <section className="mb-16">
+          <div className="mb-8">
+            <span className="carnet-eyebrow inline-flex items-center gap-1.5 mb-3">Section 01 · Questionnaire</span>
+            <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight">Le questionnaire — trame de tout l'entretien</h2>
+            <hr className="carnet-divider mt-4" />
+          </div>
+          <div className="carnet-card p-7 mb-6">
+            <div className="flex items-start gap-4">
+              <Lightbulb className="w-5 h-5 text-carnet-red flex-shrink-0 mt-0.5" strokeWidth={1.8} />
+              <div>
+                <h3 className="font-lora text-[18px] text-carnet-ink mb-3">Format physique : 1 page recto, 3 exemplaires agrafés + photo</h3>
+                <hr className="carnet-divider mb-4" />
+                <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-4">
+                  Le questionnaire est fourni avec les résultats d'admissibilité. Vous le remplissez chez vous, apportez
+                  <strong className="text-carnet-ink"> 3 exemplaires agrafés</strong> (un par membre du jury) avec une
+                  <strong className="text-carnet-ink"> photo d'identité</strong> collée en haut à droite. Le jury le lit avant votre entrée dans la salle —
+                  l'entretien est donc personnalisé depuis le premier instant.
+                </p>
+                <p className="font-instrument text-[13px] text-carnet-ink-mute">
+                  Note éliminatoire depuis 2026 : toute note {'<'} 7/20 entraîne l'élimination automatique du concours, quels que soient vos autres résultats.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="space-y-3">
+            {questions.map((q, i) => (
+              <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+                <span className="font-lora text-[24px] text-carnet-red leading-none flex-shrink-0 w-8 text-center">{i + 1}</span>
+                <p className="font-instrument text-[14px] text-carnet-ink leading-[1.6]">{q}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-5 bg-white border border-carnet-rule/30 border-l-4 border-l-amber-500 rounded-r-lg p-5">
+            <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65]">
+              <strong className="text-carnet-ink">La question 6 est stratégique</strong> : c'est votre espace de valorisation libre. Mentionnez un projet entrepreneurial,
+              un engagement associatif, une distinction sportive ou une expérience atypique qui vous différencie vraiment.
             </p>
-            <p className="mb-4">
-              Attendez-vous à des questions directes sur chaque réponse : si vous avez écrit pratiquer la voile,
-              on vous demandera de développer ; si vous indiquez un secteur cible, attendez-vous à justifier votre choix
-              en profondeur. Le jury creuse méthodiquement chaque réponse.
-            </p>
-            <p className="mb-4">
-              Le rythme est rapide : 25-30 minutes pour 6 questions, les jurés peuvent vous interrompre pour passer à
-              la suivante — c’est normal, ils veulent tout couvrir dans le temps imparti. Entraînez-vous à répondre
-              de façon concise et structurée.
-            </p>
-            <p>
-              Point clé depuis 2026 : une note inférieure à <span className="font-semibold">7/20 entraîne l’élimination automatique du concours</span>,
-              quels que soient vos autres résultats. Cet entretien pèse près de 40 % de votre note orale totale —
-              préparez-le avec une rigueur absolue.
-            </p>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Astuces pour réussir</CardTitle>
-            <CardDescription>Conseils pratiques pour l'entretien ESCP</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger>Préparez votre questionnaire</AccordionTrigger>
-                <AccordionContent>
-                  Travaillez votre questionnaire très en amont. Il comporte une page de présentation (état civil, filière)
-                  et 6 questions de personnalité (centres d'intérêt, expériences, projet professionnel, actualité, etc.).
-                  Vous devez remettre 3 exemplaires le jour J — 1 par membre du jury. Soignez chaque réponse : pas de
-                  faute, des réponses précises et développées. Tout ce que vous écrivez sera passé en revue.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>Soyez cohérent</AccordionTrigger>
-                <AccordionContent>
-                  L'ESCP attache beaucoup d'importance à la cohérence de votre discours – ne vous contredisez pas. 
-                  Si vous dites aimer le travail en équipe dans une réponse, ne dites plus tard préférer travailler seul.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger>Montrez votre dimension internationale</AccordionTrigger>
-                <AccordionContent>
-                  Mettez en avant votre dimension internationale si vous en avez une (cours en langue, voyages, 
-                  curiosité pour d'autres cultures), car l'ESCP a des campus dans plusieurs pays.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-4">
-                <AccordionTrigger>Soyez concis et structuré</AccordionTrigger>
-                <AccordionContent>
-                  Vu le peu de temps, soyez concis dans vos réponses le jour J : entraînez-vous à répondre en allant 
-                  à l'essentiel dès le début (technique du « front-loading » : annoncez tout de suite l'idée principale 
-                  avant de détailler). Chaque réponse doit être bien structurée car ils n'hésiteront pas à vous couper 
-                  au bout d'1-2 minutes pour passer à la suite.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-5">
-                <AccordionTrigger>Soignez la forme</AccordionTrigger>
-                <AccordionContent>
-                  Soyez impeccable sur la forme : questionnaire parfait, tenue professionnelle, etc., car l'attention 
-                  aux détails compte dans une école prônant l'excellence.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </CardContent>
-        </Card>
-      </div>
+        {/* Structure entretien */}
+        <section className="mb-16">
+          <div className="mb-8">
+            <span className="carnet-eyebrow inline-flex items-center gap-1.5 mb-3">Section 02 · Structure</span>
+            <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight">Déroulement en 5 phases</h2>
+            <hr className="carnet-divider mt-4" />
+          </div>
+          <div className="space-y-4">
+            {[
+              { n: '01', t: 'Parcours & personnalité (~10-12 min)', d: 'Le jury rebondit sur les éléments du questionnaire. Dialogue construit depuis vos écrits — pas de question générique.' },
+              { n: '02', t: 'Motivations & projet (~8-10 min)', d: 'Pourquoi l\'ESCP spécifiquement ? Quels campus et pourquoi ? Quel projet professionnel ? Cohérence du choix.' },
+              { n: '03', t: 'Actualité (~3-5 min)', d: 'Une ou deux questions sur l\'actualité récente. Le jury teste la pensée spontanée — pas de récitation, une réflexion en direct.' },
+              { n: '04', t: 'Question en anglais (~2-3 min)', d: 'Systématiquement en fin d\'entretien. Souvent une question de personnalité reformulée. Le jury observe l\'aisance du basculement, pas la perfection grammaticale.' },
+            ].map((s) => (
+              <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-carnet-red rounded-r-lg p-5 flex items-baseline gap-4">
+                <span className="font-lora text-[28px] text-carnet-red leading-none flex-shrink-0">{s.n}</span>
+                <div>
+                  <h4 className="font-lora text-[17px] text-carnet-ink mb-1">{s.t}</h4>
+                  <p className="font-instrument text-[13.5px] text-carnet-ink-soft leading-[1.55]">{s.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      <div className="flex justify-center mt-10">
-        <Button asChild>
-          <Link to="/generator">Générer un plan d'entraînement</Link>
-        </Button>
+        {/* Campuses */}
+        <section className="mb-16">
+          <div className="mb-8">
+            <span className="carnet-eyebrow inline-flex items-center gap-1.5 mb-3">Section 03 · Les campus</span>
+            <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight">Valoriser les 6 campus intelligemment</h2>
+            <hr className="carnet-divider mt-4" />
+          </div>
+          <div className="carnet-card p-6 mb-5">
+            <div className="flex items-start gap-4">
+              <Globe className="w-5 h-5 text-carnet-red flex-shrink-0 mt-0.5" strokeWidth={1.8} />
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65]">
+                Ne pas lister les campus mécaniquement. Construire un récit : <em>"J'ai choisi Berlin en M1 car mon projet dans la greentech nécessite d'être au cœur de l'écosystème startup européen, et Madrid en M2 pour ouvrir ce marché vers l'Amérique latine."</em>
+                Mentionner le séminaire "Designing Europe" au Parlement européen = signal fort de connaissance réelle de l'école.
+              </p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 gap-3">
+            {campuses.map(({ c, d }) => (
+              <div key={c} className="bg-white border border-carnet-rule/30 rounded-lg p-4">
+                <h4 className="font-lora text-[17px] text-carnet-ink mb-1">{c}</h4>
+                <p className="font-instrument text-[13px] text-carnet-ink-soft">{d}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Pièges */}
+        <section className="mb-16">
+          <div className="mb-8">
+            <span className="carnet-eyebrow inline-flex items-center gap-1.5 mb-3">Section 04 · Pièges</span>
+            <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight">Les 6 erreurs les plus fréquentes</h2>
+            <hr className="carnet-divider mt-4" />
+          </div>
+          <div className="space-y-3">
+            {traps.map(([titre, raison], i) => (
+              <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+                <div className="font-lora text-[28px] text-carnet-red leading-none flex-shrink-0 w-10 text-center">{String(i + 1).padStart(2, '0')}</div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <XCircle className="w-3.5 h-3.5 text-carnet-red flex-shrink-0" strokeWidth={1.8} />
+                    <h5 className="font-lora text-[16px] text-carnet-ink">{titre}</h5>
+                  </div>
+                  <p className="font-instrument text-[13.5px] text-carnet-ink-soft">{raison}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <div className="mt-12 carnet-card px-8 py-10 flex flex-col items-start">
+          <span className="carnet-eyebrow mb-4"><GraduationCap className="inline h-3.5 w-3.5 mr-1.5" />Accompagnement</span>
+          <h3 className="font-lora text-[26px] sm:text-[30px] text-carnet-ink mb-3">Préparez votre entretien ESCP</h3>
+          <hr className="carnet-divider w-full mb-5" />
+          <p className="font-instrument text-[15px] text-carnet-ink-soft leading-[1.6] mb-8 max-w-xl">
+            Nos coachs vous aident à rédiger chaque réponse du questionnaire, préparer le switch anglais et simuler l'entretien complet.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link to="/methodologie/entretiens-personnalite">
+              <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold py-6 px-8 rounded-full border-0">Voir toutes les fiches</Button>
+            </Link>
+            <Link to="/contact">
+              <Button variant="ghost" className="font-instrument font-semibold text-carnet-ink hover:text-carnet-red py-6 px-8">Coaching personnalisé →</Button>
+            </Link>
+          </div>
+        </div>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default ESCPPage;

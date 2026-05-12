@@ -1,232 +1,230 @@
 import React from 'react';
-import { 
-  Card, 
-  CardContent, 
-  CardHeader, 
-  CardTitle, 
-  CardDescription 
-} from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Separator } from '@/components/ui/separator';
-import { GraduationCap, Clock, Star, Award, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import {
+  ArrowLeft, Users, Clock, Award, CheckCircle, XCircle, Lightbulb,
+  Target, Home, ChevronRight, GraduationCap, Zap,
+} from 'lucide-react';
 import { RandomWordGenerator } from '@/components/RandomWordGenerator';
 
-const EMLyonPage = () => {
-  return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8">
-        <div>
-          <h1 className="text-3xl font-bold">EM Lyon Business School</h1>
-          <p className="text-muted-foreground">Fiche école - Entretien de personnalité</p>
+const cards = [
+  { theme: 'Expérience', color: 'bg-blue-50 border-blue-200', desc: 'Votre vécu, vos anecdotes, ce que vous avez traversé', examples: ['"Racontez une expérience où vous vous êtes senti(e) utile."', '"Quelle est la chose la plus difficile que vous ayez dû affronter ?"', '"Avec quel entrepreneur aimeriez-vous passer une journée et pourquoi ?"'] },
+  { theme: 'Personnalité', color: 'bg-purple-50 border-purple-200', desc: 'Qui vous êtes, vos traits de caractère, vos valeurs', examples: ['"Si votre personnalité était un logo, lequel serait-il ?"', '"Quelle est la chose la plus folle que vous ayez faite ?"', '"Aimez-vous ne rien faire ?"'] },
+  { theme: 'Créativité', color: 'bg-amber-50 border-amber-200', desc: 'Votre imagination, votre capacité à penser hors des sentiers battus', examples: ['"Si vous étiez un parfum, quel serait votre nom ?"', '"Inventez un concept de téléréalité qui favoriserait la créativité."', '"Vous avez 1 million d\'euros — dans quelle startup investissez-vous ?"'] },
+  { theme: 'Projet', color: 'bg-green-50 border-green-200', desc: 'Votre vision d\'avenir, vos ambitions, votre projet professionnel', examples: ['"Quel serait le titre de votre biographie ?"', '"Si vous pouviez envoyer une lettre à votre vous de dans 10 ans, que diriez-vous ?"', '"Quel est votre plus grand rêve et que faites-vous pour le réaliser ?"'] },
+];
+
+const traps = [
+  ['Paraître "trop préparé"', 'Emlyon conçoit délibérément le format pour que les réponses apprises par cœur sonnent faux. Préparez des idées et des anecdotes, pas des textes.'],
+  ['Improviser dans le vide', 'L\'inverse du premier piège. S\'il faut avoir l\'air naturel, cela ne veut pas dire improviser sans structure. Une réponse bien pensée mais formulée naturellement est l\'objectif.'],
+  ['Ignorer le juré observateur', 'Un juré parle, l\'autre observe. Les candidats s\'adressent uniquement au juré qui parle — erreur fatale. Maintenez le contact visuel avec les deux.'],
+  ['Le pitch trop "CV"', 'Énumérer ses notes et distinctions académiques pendant 2 minutes. Le jury veut voir une personnalité, pas un relevé de notes.'],
+  ['Réponses trop courtes aux cartes créativité', 'Ces questions semblent légères mais mesurent la richesse intellectuelle. Une réponse banale révèle un manque de profondeur.'],
+  ['Méconnaître l\'école', 'Ne pas savoir ce qu\'est un "early maker" ou ne pas connaître les spécificités du PGE emlyon (makers\' labs, cursus hybridé) = signal négatif lors de la phase libre.'],
+];
+
+const EMLyonPage = () => (
+  <div className="relative carnet-paper min-h-screen overflow-hidden">
+    <div className="carnet-margin-line" />
+    <div className="carnet-hole" style={{ top: 80 }} />
+    <div className="carnet-hole" style={{ top: 220 }} />
+    <div className="carnet-hole" style={{ top: 360 }} />
+
+    <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-10">
+      <nav className="mb-10">
+        <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute gap-2">
+          <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors"><Home className="h-3.5 w-3.5" /><span>Accueil</span></Link>
+          <ChevronRight className="h-3 w-3 opacity-50" />
+          <Link to="/methodologie/entretiens-personnalite" className="hover:text-carnet-red transition-colors">Entretiens</Link>
+          <ChevronRight className="h-3 w-3 opacity-50" />
+          <span className="carnet-eyebrow text-[11px]">EM Lyon</span>
         </div>
-        <Button variant="outline" asChild>
-          <Link to="/">Retour à l'accueil</Link>
-        </Button>
-      </div>
+      </nav>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        <Card className="md:col-span-2">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <GraduationCap className="h-5 w-5" />
-              Présentation de l'entretien
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">
-              <span className="font-semibold">Entretien "Flash" et cartes surprises :</span> L'EM Lyon a opté pour un 
-              format d'entretien assez atypique et ludique. Durée environ 25 minutes (coef. 9).
-            </p>
-            <p className="mb-4">
-              Le déroulé est le suivant :
-            </p>
-            <ol className="list-decimal pl-5 space-y-2 mb-4">
-              <li>Présentation personnelle en 1 minute chrono ! (oui, seulement 60 secondes pour vous présenter, c'est très court)</li>
-              <li>Tirage de 4 cartes thématiques, une par thème : <span className="font-semibold">Expérience, Personnalité, Créativité, Projet</span>. Chaque carte contient une question imprévue liée à son thème.</li>
-              <li>Vous disposez de quelques minutes pour parcourir les 4 cartes et organiser votre réflexion, puis vous répondez dans l'ordre de votre choix</li>
-              <li>Si du temps reste, l'entretien se poursuit de façon classique par quelques questions additionnelles du jury</li>
-            </ol>
-            <p>
-              L'originalité vient donc des questions improbables des cartes, souvent déstabilisantes pour tester votre imagination. 
-              Exemples réels de cartes EMLyon : « Si vous étiez une créature mythique, laquelle seriez-vous ? », « Quand avez-vous 
-              dû faire preuve de créativité de manière inattendue pour résoudre un problème ? », « Si vous deviez construire une 
-              maison avec des aliments, lesquels choisiriez-vous et quels dangers ? ». Attendez-vous à tout !
-            </p>
-
-            <Separator className="my-6" />
-
-            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-              <Star className="h-5 w-5 text-amber-500" />
-              Ce que l'emlyon valorise
-            </h3>
-            <p className="mb-4">
-              Fidèle à sa signature "early makers", emlyon business school valorise les profils créatifs, agiles et entreprenants. 
-              Via cet entretien ludique, l'école veut voir chez vous de la créativité, de la spontanéité et une capacité à penser 
-              autrement.
-            </p>
-            <p className="mb-4">
-              Ils apprécient les candidats avec un certain grain de folie intellectuelle, capables de sortir des sentiers battus 
-              tout en restant cohérents. Attention, l'EM Lyon reste une business school sérieuse : au-delà de l'originalité, ils 
-              cherchent aussi de la cohérence dans le projet et de la motivation.
-            </p>
-            <p>
-              L'entretien cartes permet de voir comment vous réfléchissez sous pression et comment vous vous adaptez à l'inattendu 
-              – des qualités importantes pour un entrepreneur ou un "early maker". En résumé, l'EM Lyon valorise l'imagination 
-              structurée : des idées nouvelles, mais qui ont du sens.
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Clock className="h-5 w-5" />
-              Points clés
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-3">
-              <li className="flex gap-2">
-                <div className="bg-primary/10 p-1 rounded-full flex items-center justify-center h-6 w-6 mt-0.5">
-                  <span className="text-sm font-semibold text-primary">1</span>
-                </div>
-                <div>
-                  <p className="font-medium">Durée : 25 minutes</p>
-                  <p className="text-sm text-muted-foreground">Coefficient 9</p>
-                </div>
-              </li>
-              <li className="flex gap-2">
-                <div className="bg-primary/10 p-1 rounded-full flex items-center justify-center h-6 w-6 mt-0.5">
-                  <span className="text-sm font-semibold text-primary">2</span>
-                </div>
-                <div>
-                  <p className="font-medium">Présentation en 1 minute</p>
-                  <p className="text-sm text-muted-foreground">Extrêmement concise</p>
-                </div>
-              </li>
-              <li className="flex gap-2">
-                <div className="bg-primary/10 p-1 rounded-full flex items-center justify-center h-6 w-6 mt-0.5">
-                  <span className="text-sm font-semibold text-primary">3</span>
-                </div>
-                <div>
-                  <p className="font-medium">4 cartes thématiques</p>
-                  <p className="text-sm text-muted-foreground">Expérience · Personnalité · Créativité · Projet</p>
-                </div>
-              </li>
-              <li className="flex gap-2">
-                <div className="bg-primary/10 p-1 rounded-full flex items-center justify-center h-6 w-6 mt-0.5">
-                  <span className="text-sm font-semibold text-primary">4</span>
-                </div>
-                <div>
-                  <p className="font-medium">Format ludique</p>
-                  <p className="text-sm text-muted-foreground">Test de créativité et spontanéité</p>
-                </div>
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <FileText className="h-5 w-5" />
-              Style de l'entretien
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">
-              Clairement atypique et déstabilisant, mais bienveillant. Les jurys EMLyon (souvent un prof + un diplômé) mettent 
-              les candidats assez à l'aise, car ils savent que cet exercice n'est pas conventionnel. Ils expliquent les règles, 
-              tirent les cartes avec vous, etc.
-            </p>
-            <p className="mb-4">
-              Le rythme est volontairement rapide (1 minute de présentation, ça file !) – l'idée est de vous sortir de votre 
-              format prépa classique. Cela se rapproche presque d'un jeu. Les jurés observent autant votre réaction que le 
-              fond de vos réponses.
-            </p>
-            <p className="mb-4">
-              Ils peuvent sourire ou rire de vos idées (pas pour se moquer, mais parce que l'exercice s'y prête). C'est 
-              généralement un entretien dynamique, pas du tout un interrogatoire figé.
-            </p>
-            <p>
-              Cependant, ne sous-estimez pas la préparation : beaucoup de candidats se font surprendre et bafouillent sur les 
-              cartes. Les jurés attendent que vous jouiez le jeu à fond, avec enthousiasme. Si vous êtes trop sérieux ou secoué, 
-              ça peut vous pénaliser. L'ambiance est donc assez cool et stimulante, reflétant l'esprit entrepreneurial de l'école.
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Astuces pour réussir</CardTitle>
-            <CardDescription>Conseils pratiques pour l'entretien EM Lyon</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger>Entraînez-vous aux questions inattendues</AccordionTrigger>
-                <AccordionContent>
-                  Entraînez-vous intensivement à répondre à l'imprévu. Vous pouvez trouver en ligne des listes de questions 
-                  "originales" posées en entretien EML les années précédentes. Exercez-vous à y répondre en temps limité.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>Structurez vos réponses farfelues</AccordionTrigger>
-                <AccordionContent>
-                  Apprenez à structurer vos réponses à une question farfelue : c'est la clé. Par exemple, pour « Si vous deviez 
-                  faire visiter la Terre à un extraterrestre, que lui montreriez-vous ? », une réponse structurée pourrait être 
-                  en trois parties cohérentes : un lieu naturel d'abord, puis un monument culturel, enfin un défi contemporain. 
-                  Ne cherchez pas la perfection sur ces questions : mieux vaut une réponse simple mais claire que de longues 
-                  hésitations.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger>Priorisez l'ordre des cartes</AccordionTrigger>
-                <AccordionContent>
-                  Sur place, vous aurez quelques secondes/minutes de réflexion après avoir tiré les cartes : mettez-les à profit 
-                  pour noter mentalement un plan pour chaque carte. Choisissez l'ordre de réponse judicieusement : par exemple, 
-                  commencez par la carte où vous êtes le plus à l'aise pour vous mettre en confiance, et gardez la question la 
-                  plus bizarre pour la fin, une fois que le jury vous connaîtra un peu mieux.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-4">
-                <AccordionTrigger>Présentez-vous en version "tweet"</AccordionTrigger>
-                <AccordionContent>
-                  Pour la présentation 1 minute : entraînez-vous avec un chronomètre ! 60 secondes, c'est extrêmement court pour 
-                  se présenter sans parler à toute vitesse. Il faudra faire des choix sur ce que vous dites. Préparez une version 
-                  "tweet" de votre présentation, qui tient en quelques phrases concises et percutantes.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-5">
-                <AccordionTrigger>Montrez votre enthousiasme joueur</AccordionTrigger>
-                <AccordionContent>
-                  Montrez pendant tout l'entretien votre enthousiasme joueur : souriez quand vous découvrez une carte insolite, 
-                  dites même « Ah, originale comme question ! » (sincèrement) avant de répondre. Le jury verra que vous ne perdez 
-                  pas votre bonne humeur, ce qui est un excellent point. L'EM Lyon veut des makers positifs, qui voient les 
-                  challenges comme des opportunités – montrez exactement cela.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Générateur de questions EM Lyon */}
       <div className="mb-10">
-        <RandomWordGenerator type="emlyon" />
+        <Link to="/methodologie/entretiens-personnalite">
+          <Button variant="ghost" className="group text-carnet-ink-soft hover:text-carnet-red px-3 font-instrument text-[13px] font-semibold uppercase tracking-[0.1em]">
+            <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />Retour aux fiches écoles
+          </Button>
+        </Link>
       </div>
 
-      <div className="flex justify-center mt-10">
-        <Button asChild>
-          <Link to="/generator">Générer un plan d'entraînement</Link>
-        </Button>
+      <div className="mb-16 max-w-[760px]">
+        <span className="carnet-eyebrow inline-flex items-center gap-2 mb-6"><Award className="h-3.5 w-3.5" />Fiche école · BCE</span>
+        <h1 className="font-lora text-[38px] sm:text-[52px] lg:text-[60px] leading-[1.05] text-carnet-ink tracking-tight mb-5">
+          emlyon <em className="text-carnet-red not-italic">business school</em>
+        </h1>
+        <hr className="carnet-divider mb-5" />
+        <p className="font-instrument text-[17px] lg:text-[18px] leading-[1.6] text-carnet-ink-soft mb-8">
+          L'entretien "early makers" : 25 minutes, 4 cartes tirées au sort, un tirage totalement aléatoire — la créativité et la spontanéité sont testées en temps réel.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          {[
+            { icon: Clock, label: 'Durée', value: '25 minutes' },
+            { icon: Award, label: 'Coefficient', value: '9 (60% oral)' },
+            { icon: Users, label: 'Jury', value: '2 membres' },
+          ].map(({ icon: Icon, label, value }) => (
+            <div key={label} className="carnet-card px-5 py-3 flex items-center gap-3">
+              <Icon className="h-4 w-4 text-carnet-red flex-shrink-0" strokeWidth={1.8} />
+              <div>
+                <div className="font-instrument text-[11px] text-carnet-ink-mute uppercase tracking-[0.1em]">{label}</div>
+                <div className="font-lora text-[17px] text-carnet-ink">{value}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Structure */}
+      <section className="mb-16">
+        <div className="mb-8">
+          <span className="carnet-eyebrow inline-flex items-center gap-1.5 mb-3">Section 01 · Structure</span>
+          <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight">Les 4 étapes en 25 minutes</h2>
+          <hr className="carnet-divider mt-4" />
+        </div>
+        <div className="carnet-card p-7 mb-8">
+          <div className="flex items-start gap-4">
+            <Lightbulb className="w-5 h-5 text-carnet-red flex-shrink-0 mt-0.5" strokeWidth={1.8} />
+            <div>
+              <h3 className="font-lora text-[18px] text-carnet-ink mb-3">Le jury emlyon : 1 juré interrogateur + 1 juré observateur</h3>
+              <hr className="carnet-divider mb-4" />
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65]">
+                Un membre du jury pose les questions, l'autre prend des notes et observe la communication non-verbale.
+                Regardez les deux jurés en alternance tout au long de l'entretien.
+                Le tirage des cartes est <strong className="text-carnet-ink">totalement aléatoire</strong> — aucun choix possible pour le candidat.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="space-y-4">
+          {[
+            { n: '01', t: 'Pitch de 1-2 minutes', d: 'Le jury se présente brièvement, puis le candidat fait son pitch. Structure recommandée : Personnalité (1-2 qualités clés) → Parcours (anecdotes qui illustrent ces qualités) → Projet (ambitions + pourquoi emlyon). Ne pas réciter un CV — le jury veut une personnalité.' },
+            { n: '02', t: 'Tirage des 4 cartes', d: 'Le candidat tire lui-même 4 cartes au hasard dans le jeu. Les 4 thèmes sont fixes : Expérience, Personnalité, Créativité, Projet. Mais chaque carte contient une question spécifique et imprévisible.' },
+            { n: '03', t: 'Réponses aux 4 cartes (~15 min)', d: 'Aucun temps de préparation entre le tirage et les réponses. Le candidat choisit l\'ordre dans lequel il traite les cartes. Le jury peut relancer sur chaque réponse.' },
+            { n: '04', t: 'Échange libre (~5 min)', d: 'Le jury reprend la main : parcours académique, projet pro, motivations pour emlyon, engagement associatif/sportif. Une question de fond sur l\'école peut intervenir ici.' },
+          ].map((s) => (
+            <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-carnet-red rounded-r-lg p-5 flex items-baseline gap-4">
+              <span className="font-lora text-[28px] text-carnet-red leading-none flex-shrink-0">{s.n}</span>
+              <div>
+                <h4 className="font-lora text-[17px] text-carnet-ink mb-1">{s.t}</h4>
+                <p className="font-instrument text-[13.5px] text-carnet-ink-soft leading-[1.55]">{s.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 4 cartes */}
+      <section className="mb-16">
+        <div className="mb-8">
+          <span className="carnet-eyebrow inline-flex items-center gap-1.5 mb-3">Section 02 · Les cartes</span>
+          <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight">Les 4 thèmes — exemples réels</h2>
+          <hr className="carnet-divider mt-4" />
+        </div>
+        <div className="space-y-4">
+          {cards.map((card) => (
+            <div key={card.theme} className={`bg-white border rounded-lg p-6 ${card.color}`}>
+              <div className="flex items-start gap-4">
+                <div>
+                  <h4 className="font-lora text-[20px] text-carnet-ink mb-1">{card.theme}</h4>
+                  <p className="font-instrument text-[13px] text-carnet-ink-mute mb-4">{card.desc}</p>
+                  <ul className="space-y-2">
+                    {card.examples.map((ex) => (
+                      <li key={ex} className="flex items-start gap-2 font-instrument text-[13.5px] text-carnet-ink-soft italic">
+                        <CheckCircle className="w-3.5 h-3.5 text-carnet-red mt-0.5 flex-shrink-0" strokeWidth={1.8} />{ex}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Pièges */}
+      <section className="mb-16">
+        <div className="mb-8">
+          <span className="carnet-eyebrow inline-flex items-center gap-1.5 mb-3">Section 03 · Pièges</span>
+          <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight">Les 6 erreurs qui pénalisent</h2>
+          <hr className="carnet-divider mt-4" />
+        </div>
+        <div className="space-y-3">
+          {traps.map(([titre, raison], i) => (
+            <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+              <div className="font-lora text-[28px] text-carnet-red leading-none flex-shrink-0 w-10 text-center">{String(i + 1).padStart(2, '0')}</div>
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <XCircle className="w-3.5 h-3.5 text-carnet-red flex-shrink-0" strokeWidth={1.8} />
+                  <h5 className="font-lora text-[16px] text-carnet-ink">{titre}</h5>
+                </div>
+                <p className="font-instrument text-[13.5px] text-carnet-ink-soft">{raison}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Valeurs */}
+      <section className="mb-16">
+        <div className="mb-8">
+          <span className="carnet-eyebrow inline-flex items-center gap-1.5 mb-3">Section 04 · Valeurs</span>
+          <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight">La philosophie "early makers"</h2>
+          <hr className="carnet-divider mt-4" />
+        </div>
+        <div className="carnet-card p-7 mb-6">
+          <div className="flex items-start gap-4">
+            <Target className="w-5 h-5 text-carnet-red flex-shrink-0 mt-0.5" strokeWidth={1.8} />
+            <div>
+              <h3 className="font-lora text-[18px] text-carnet-ink mb-3">"Make to learn, learn to make"</h3>
+              <hr className="carnet-divider mb-4" />
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65] mb-3">
+                Un early maker est un individu acteur de sa propre existence — conscient des enjeux contemporains,
+                entrepreneur au sens large de sa propre vie. Emlyon valorise les <strong className="text-carnet-ink">profils atypiques</strong>,
+                capables de penser hors des sentiers battus avec une trajectoire singulière et cohérente.
+              </p>
+              <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65]">
+                Les 5 valeurs officielles : <strong className="text-carnet-ink">Exigence · Responsabilité · Intégrité · Diversité · Solidarité</strong>. Le jury cherche à les évaluer dans chaque réponse.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Générateur */}
+      <section className="mb-16">
+        <div className="mb-8">
+          <span className="carnet-eyebrow inline-flex items-center gap-1.5 mb-3">Section 05 · Entraînement</span>
+          <h2 className="font-lora text-[26px] sm:text-[32px] text-carnet-ink leading-tight">Générateur de questions EM Lyon</h2>
+          <hr className="carnet-divider mt-4" />
+        </div>
+        <div className="carnet-card p-7">
+          <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.6] mb-6">
+            Tirez une question aléatoire, donnez-vous 0 secondes de préparation, et répondez à voix haute. Répétez jusqu'à ce que l'exercice devienne naturel.
+          </p>
+          <RandomWordGenerator type="emlyon" />
+        </div>
+      </section>
+
+      {/* CTA */}
+      <div className="mt-12 carnet-card px-8 py-10 flex flex-col items-start">
+        <span className="carnet-eyebrow mb-4"><GraduationCap className="inline h-3.5 w-3.5 mr-1.5" />Accompagnement</span>
+        <h3 className="font-lora text-[26px] sm:text-[30px] text-carnet-ink mb-3">Préparez votre entretien EM Lyon</h3>
+        <hr className="carnet-divider w-full mb-5" />
+        <p className="font-instrument text-[15px] text-carnet-ink-soft leading-[1.6] mb-8 max-w-xl">
+          Nos coachs vous entraînent aux cartes : banque d'anecdotes, structure des réponses et simulations complètes en conditions réelles.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <Link to="/methodologie/entretiens-personnalite">
+            <Button className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold py-6 px-8 rounded-full border-0">Voir toutes les fiches</Button>
+          </Link>
+          <Link to="/contact">
+            <Button variant="ghost" className="font-instrument font-semibold text-carnet-ink hover:text-carnet-red py-6 px-8">Coaching personnalisé →</Button>
+          </Link>
+        </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default EMLyonPage;

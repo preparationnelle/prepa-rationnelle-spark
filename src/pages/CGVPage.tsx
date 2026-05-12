@@ -358,7 +358,7 @@ export default function CGVPage() {
 
             {/* Section Liens utiles */}
             <div className="mt-6 space-y-4">
-              <Card className="bg-gradient-to-r from-carnet-paper-2 to-pr-orange-pale border-2 border-carnet-red/30">
+              <Card className="bg-gradient-to-r from-carnet-paper-2 to-pr-black-pale border-2 border-carnet-red/30">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-xl text-center text-primary">
                     🌟 Découvrez nos formations
@@ -460,7 +460,7 @@ export default function CGVPage() {
               </Card>
 
               {/* Cours gratuit */}
-              <Card className="bg-gradient-to-r from-pr-orange-pale to-carnet-paper-2 border-2 border-orange-200">
+              <Card className="bg-gradient-to-r from-pr-orange-pale to-carnet-paper-2 border-2 border-gray-200">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg text-center text-primary">
                     🎁 Réservez votre cours gratuit !
@@ -485,7 +485,7 @@ export default function CGVPage() {
                     </div>
                     <a
                       href="/offre/gratuite"
-                      className="inline-block bg-pr-orange text-white px-4 py-2 rounded-lg hover:bg-pr-orange-dark transition-colors font-semibold text-sm"
+                      className="inline-block bg-pr-black text-white px-4 py-2 rounded-lg hover:bg-pr-black-dark transition-colors font-semibold text-sm"
                     >
                       📅 Cours gratuit
                     </a>

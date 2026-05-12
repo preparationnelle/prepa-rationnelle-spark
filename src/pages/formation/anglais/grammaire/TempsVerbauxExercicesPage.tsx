@@ -334,7 +334,7 @@ const TempsVerbauxExercicesPage = () => {
           <Button
             variant={examMode ? "default" : "outline"}
             onClick={() => setExamMode(prev => !prev)}
-            className={examMode ? "bg-carnet-red hover:bg-carnet-red-deep text-white" : "border-carnet-red text-carnet-red hover:bg-pr-orange-pale"}
+            className={examMode ? "bg-carnet-red hover:bg-carnet-red-deep text-white" : "border-carnet-red text-carnet-red hover:bg-pr-gray-bg"}
           >
             {examMode ? "Désactiver le Mode Examen" : "Activer le Mode Examen"}
           </Button>
@@ -435,21 +435,21 @@ const TempsVerbauxExercicesPage = () => {
                 <Button
                   variant={selectedExerciseType === 'qcm' ? 'default' : 'outline'}
                   onClick={() => setSelectedExerciseType('qcm')}
-                  className={selectedExerciseType === 'qcm' ? 'bg-carnet-red hover:bg-carnet-red-deep text-white' : 'border-carnet-red text-carnet-red hover:bg-pr-orange-pale'}
+                  className={selectedExerciseType === 'qcm' ? 'bg-carnet-red hover:bg-carnet-red-deep text-white' : 'border-carnet-red text-carnet-red hover:bg-pr-gray-bg'}
                 >
                   QCM ({getTensesExercisesByType('qcm').length})
                 </Button>
                 <Button
                   variant={selectedExerciseType === 'choix' ? 'default' : 'outline'}
                   onClick={() => setSelectedExerciseType('choix')}
-                  className={selectedExerciseType === 'choix' ? 'bg-carnet-red hover:bg-carnet-red-deep text-white' : 'border-carnet-red text-carnet-red hover:bg-pr-orange-pale'}
+                  className={selectedExerciseType === 'choix' ? 'bg-carnet-red hover:bg-carnet-red-deep text-white' : 'border-carnet-red text-carnet-red hover:bg-pr-gray-bg'}
                 >
                   Choix multiples ({getTensesExercisesByType('choix').length})
                 </Button>
                 <Button
                   variant={selectedExerciseType === 'complet' ? 'default' : 'outline'}
                   onClick={() => setSelectedExerciseType('complet')}
-                  className={selectedExerciseType === 'complet' ? 'bg-carnet-red hover:bg-carnet-red-deep text-white' : 'border-carnet-red text-carnet-red hover:bg-pr-orange-pale'}
+                  className={selectedExerciseType === 'complet' ? 'bg-carnet-red hover:bg-carnet-red-deep text-white' : 'border-carnet-red text-carnet-red hover:bg-pr-gray-bg'}
                 >
                   Mots à compléter ({getTensesExercisesByType('complet').length})
                 </Button>
@@ -502,7 +502,7 @@ const TempsVerbauxExercicesPage = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="bg-pr-orange-pale rounded-lg p-4 border border-carnet-red/30">
+                  <div className="bg-pr-gray-bg rounded-lg p-4 border border-carnet-red/30">
                     <h4 className="font-semibold text-carnet-red-deep mb-2">✍️ Votre réponse :</h4>
                     <input
                       type="text"
@@ -579,7 +579,7 @@ const TempsVerbauxExercicesPage = () => {
             <Button
               onClick={resetQuiz}
               variant="outline"
-              className="px-8 py-3 text-lg flex items-center gap-2 border-carnet-red text-carnet-red hover:bg-pr-orange-pale"
+              className="px-8 py-3 text-lg flex items-center gap-2 border-carnet-red text-carnet-red hover:bg-pr-gray-bg"
             >
               <RotateCcw className="h-5 w-5" />
               Réinitialiser
@@ -589,7 +589,7 @@ const TempsVerbauxExercicesPage = () => {
 
         {/* Score affiché */}
         {showScore && score !== null && (
-          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-orange-pale' : 'border-carnet-red/30 bg-pr-orange-pale'}`}>
+          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-gray-bg' : 'border-carnet-red/30 bg-pr-gray-bg'}`}>
             <CardHeader className="text-center">
               <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-carnet-red-deep' : 'text-carnet-red-deep'}`}>
                 <Award className="h-8 w-8" />
@@ -624,7 +624,7 @@ const TempsVerbauxExercicesPage = () => {
                 )}
               </div>
               {examMode && (
-                <div className="mt-4 p-3 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
+                <div className="mt-4 p-3 bg-pr-gray-bg rounded-lg border border-carnet-red/30">
                   <p className="text-carnet-red text-sm">
                     💡 En mode normal, vous pouvez voir les corrections détaillées de chaque exercice.
                   </p>

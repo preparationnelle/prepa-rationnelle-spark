@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -26,13 +26,13 @@ const HumainMortPage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Article
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               L&apos;humain face à la mort&nbsp;: la condition mortelle comme épreuve de l&apos;humanité
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Épicure, Heidegger, Jankélévitch. Trois manières d&apos;habiter ce que
               l&apos;humain est seul à savoir&nbsp;: qu&apos;il va mourir.
@@ -56,8 +56,8 @@ const HumainMortPage: React.FC = () => {
                 problème est moins que nous mourions que la manière dont nous refusons
                 de le savoir.
               </p>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Tension à retenir</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Tension à retenir</h3>
                 <p>
                   La mort est-elle ce qui <em>dévoile</em> l&apos;humain à lui-même
                   (Heidegger), ce qu&apos;il faut <em>dissoudre</em> par un raisonnement
@@ -75,16 +75,16 @@ const HumainMortPage: React.FC = () => {
                 la consolation philosophique la plus radicale jamais formulée. Sa
                 stratégie&nbsp;: dissoudre la peur de la mort par un argument logique.
               </p>
-              <p className="italic pl-4 border-l-2 border-pr-orange">
+              <p className="italic pl-4 border-l-2 border-pr-black">
                 «&nbsp;La mort n&apos;est rien pour nous&nbsp;: car ce qui est dissous est sans
                 sensation, et ce qui est sans sensation n&apos;est rien pour nous. Quand
                 nous sommes, la mort n&apos;est pas&nbsp;; quand la mort est, nous ne sommes
                 plus.&nbsp;»
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Fondement atomiste</strong>. L&apos;âme, comme le corps, est faite d&apos;atomes. Quand le corps meurt, ils se dispersent. Il n&apos;y a personne pour souffrir d&apos;être mort.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Le tetrapharmakon</strong>. Le quadruple remède épicurien&nbsp;: les dieux ne sont pas à craindre, la mort ne se fait pas sentir, le bien est facile à obtenir, le mal est facile à supporter.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Sagesse de la finitude</strong>. Le sage ne désire pas l&apos;immortalité (ce serait un faux désir, car l&apos;intensité du plaisir n&apos;est pas dans sa durée). Il cultive l&apos;ataraxie&nbsp;: la tranquillité de l&apos;âme.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Fondement atomiste</strong>. L&apos;âme, comme le corps, est faite d&apos;atomes. Quand le corps meurt, ils se dispersent. Il n&apos;y a personne pour souffrir d&apos;être mort.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Le tetrapharmakon</strong>. Le quadruple remède épicurien&nbsp;: les dieux ne sont pas à craindre, la mort ne se fait pas sentir, le bien est facile à obtenir, le mal est facile à supporter.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Sagesse de la finitude</strong>. Le sage ne désire pas l&apos;immortalité (ce serait un faux désir, car l&apos;intensité du plaisir n&apos;est pas dans sa durée). Il cultive l&apos;ataraxie&nbsp;: la tranquillité de l&apos;âme.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Épicure ne nie pas la mort&nbsp;: il
@@ -109,10 +109,10 @@ const HumainMortPage: React.FC = () => {
                 (<em>Sein-zum-Tode</em>).
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Possibilité la plus propre</strong>. Personne ne peut mourir à ma place. La mort est ce que j&apos;ai de plus singulier, ce qui m&apos;individue absolument.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Indépassable et certaine</strong>. À la différence des autres possibles, la mort ne sera dépassée par aucune autre. Et je ne sais ni quand, ni comment.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Existence inauthentique</strong>. La plupart du temps, je vis dans le «&nbsp;On&nbsp;»&nbsp;: «&nbsp;on meurt&nbsp;», disent les gens, comme si la mort était l&apos;affaire de tout le monde — donc de personne. Le bavardage du quotidien dilue la mort.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Existence authentique</strong>. Devancer sa mort, l&apos;assumer comme <em>mienne</em>, c&apos;est se rendre disponible à l&apos;angoisse — et, par là, à une vie pleinement à soi.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Possibilité la plus propre</strong>. Personne ne peut mourir à ma place. La mort est ce que j&apos;ai de plus singulier, ce qui m&apos;individue absolument.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Indépassable et certaine</strong>. À la différence des autres possibles, la mort ne sera dépassée par aucune autre. Et je ne sais ni quand, ni comment.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Existence inauthentique</strong>. La plupart du temps, je vis dans le «&nbsp;On&nbsp;»&nbsp;: «&nbsp;on meurt&nbsp;», disent les gens, comme si la mort était l&apos;affaire de tout le monde — donc de personne. Le bavardage du quotidien dilue la mort.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Existence authentique</strong>. Devancer sa mort, l&apos;assumer comme <em>mienne</em>, c&apos;est se rendre disponible à l&apos;angoisse — et, par là, à une vie pleinement à soi.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Pour Heidegger, l&apos;humain n&apos;est
@@ -137,9 +137,9 @@ const HumainMortPage: React.FC = () => {
                 d&apos;un proche, celle d&apos;un inconnu — elle change radicalement de visage.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Mort à la troisième personne</strong>. La mort statistique, abstraite&nbsp;: «&nbsp;les gens meurent&nbsp;». Lointaine, étrangère, gérable.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Mort à la première personne</strong>. Ma mort. Indicible, car je ne pourrai jamais la vivre comme expérience. Elle est mon horizon, jamais ma rencontre.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Mort à la deuxième personne</strong>. La mort du proche. C&apos;est elle, dit Jankélévitch, qui est <em>scandale absolu</em>. Elle me laisse vivant et amputé. Aucune philosophie n&apos;en console.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Mort à la troisième personne</strong>. La mort statistique, abstraite&nbsp;: «&nbsp;les gens meurent&nbsp;». Lointaine, étrangère, gérable.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Mort à la première personne</strong>. Ma mort. Indicible, car je ne pourrai jamais la vivre comme expérience. Elle est mon horizon, jamais ma rencontre.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Mort à la deuxième personne</strong>. La mort du proche. C&apos;est elle, dit Jankélévitch, qui est <em>scandale absolu</em>. Elle me laisse vivant et amputé. Aucune philosophie n&apos;en console.</li>
               </ul>
               <p>
                 <strong>Critique de la modernité.</strong> Jankélévitch dénonce la
@@ -160,8 +160,8 @@ const HumainMortPage: React.FC = () => {
 
           <PRCard number="05" title="Paraperso prêt à l'emploi">
             <div className="space-y-4 text-sm md:text-base">
-              <div className="bg-pr-orange-pale rounded-xl p-5">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">
+              <div className="bg-pr-gray-bg rounded-xl p-5">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">
                   La mortalité, condition de l&apos;humain
                 </h3>
                 <p className="text-xs italic mb-3">
@@ -210,19 +210,19 @@ const HumainMortPage: React.FC = () => {
           <PRCard number="06" title="Où mobiliser ces références ?">
             <div className="space-y-4 text-sm md:text-base">
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>La mort</strong>&nbsp;» — sujet frontal classique.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Faut-il craindre la mort&nbsp;?</strong>&nbsp;» — Épicure central.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>La finitude</strong>&nbsp;» — Heidegger en pivot.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le sens de la vie</strong>&nbsp;» — la mort comme révélateur.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le deuil</strong>&nbsp;» — Jankélévitch sur la mort de l&apos;autre.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Faut-il vouloir l&apos;immortalité&nbsp;?</strong>&nbsp;» — articulation transhumanisme.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>La mort</strong>&nbsp;» — sujet frontal classique.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Faut-il craindre la mort&nbsp;?</strong>&nbsp;» — Épicure central.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>La finitude</strong>&nbsp;» — Heidegger en pivot.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le sens de la vie</strong>&nbsp;» — la mort comme révélateur.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le deuil</strong>&nbsp;» — Jankélévitch sur la mort de l&apos;autre.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Faut-il vouloir l&apos;immortalité&nbsp;?</strong>&nbsp;» — articulation transhumanisme.</li>
               </ul>
             </div>
           </PRCard>
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/articles">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des articles
               </Button>
             </Link>

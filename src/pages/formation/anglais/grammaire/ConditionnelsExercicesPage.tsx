@@ -214,7 +214,7 @@ const ConditionnelsExercicesPage = () => {
                             ? 'border-red-300 bg-red-50 text-red-800'
                             : 'border-gray-200 bg-white'
                         : isSelected
-                          ? 'border-carnet-red/40 bg-pr-orange-pale text-carnet-red-deep'
+                          ? 'border-carnet-red/40 bg-pr-gray-bg text-carnet-red-deep'
                           : 'border-gray-200 bg-white hover:border-gray-300'
                     }`}
                   >
@@ -264,7 +264,7 @@ const ConditionnelsExercicesPage = () => {
                             ? 'border-red-300 bg-red-50 text-red-800'
                             : 'border-gray-200 bg-white'
                         : isSelected
-                          ? 'border-carnet-red/40 bg-pr-orange-pale text-carnet-red-deep'
+                          ? 'border-carnet-red/40 bg-pr-gray-bg text-carnet-red-deep'
                           : 'border-gray-200 bg-white hover:border-gray-300'
                     }`}
                   >
@@ -322,7 +322,7 @@ const ConditionnelsExercicesPage = () => {
 
           {/* Correction */}
           {showCorrections[exercise.id] && (
-            <div className="mt-4 p-3 bg-pr-orange-pale border border-carnet-red/30 rounded-lg">
+            <div className="mt-4 p-3 bg-pr-gray-bg border border-carnet-red/30 rounded-lg">
               <p className="text-carnet-red-deep">
                 <strong>✅ Réponse correcte :</strong> {exercise.correctAnswer}
               </p>
@@ -559,7 +559,7 @@ const ConditionnelsExercicesPage = () => {
             <Button
               onClick={resetQuiz}
               variant="outline"
-              className="px-8 py-3 text-lg flex items-center gap-2 border-carnet-red text-carnet-red hover:bg-pr-orange-pale"
+              className="px-8 py-3 text-lg flex items-center gap-2 border-carnet-red text-carnet-red hover:bg-pr-gray-bg"
             >
               <RotateCcw className="h-5 w-5" />
               Reset
@@ -569,7 +569,7 @@ const ConditionnelsExercicesPage = () => {
 
         {/* Score affiché */}
         {showScore && score !== null && (
-          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-orange-pale' : 'border-carnet-red/30 bg-pr-orange-pale'}`}>
+          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-gray-bg' : 'border-carnet-red/30 bg-pr-gray-bg'}`}>
             <CardHeader className="text-center">
               <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-carnet-red-deep' : 'text-carnet-red-deep'}`}>
                 <Award className="h-8 w-8" />
@@ -599,7 +599,7 @@ const ConditionnelsExercicesPage = () => {
                   </div>
                 ) : ( // Less than 50%
                   <div className="flex items-center justify-center gap-2">
-                    <BarChart3 className="h-6 w-6 text-pr-orange" />
+                    <BarChart3 className="h-6 w-6 text-pr-black" />
                     {examMode ? 'Keep practicing! Review the material and try again.' : 'Keep practicing! Review conditional structures and try again.'}
                   </div>
                 )}

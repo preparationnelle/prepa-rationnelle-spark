@@ -140,7 +140,7 @@ const ArticlesPrepaECGPage = () => {
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <div className="bg-gradient-to-br from-purple-50 to-pr-orange-pale border-2 border-purple-200 hover:shadow-2xl hover:scale-105 hover:border-carnet-red/40 hover:bg-gradient-to-br hover:from-carnet-paper-2 hover:to-purple-50 transition-all duration-300 group p-8 rounded-lg">
+              <div className="bg-gradient-to-br from-purple-50 to-pr-black-pale border-2 border-purple-200 hover:shadow-2xl hover:scale-105 hover:border-carnet-red/40 hover:bg-gradient-to-br hover:from-carnet-paper-2 hover:to-purple-50 transition-all duration-300 group p-8 rounded-lg">
                 <div className="w-16 h-16 bg-purple-100 group-hover:bg-carnet-red/10 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
                   <Calculator className="h-8 w-8 text-purple-600 group-hover:text-carnet-red transition-colors duration-300" />
                 </div>

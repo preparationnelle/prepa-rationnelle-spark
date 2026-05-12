@@ -5,7 +5,7 @@ import { PRFormationLayout } from '@/components/formation/PRFormationLayout';
 const H2 = ({ children }: { children: React.ReactNode }) => (
   <>
     <h2 className="font-dm-serif text-2xl text-pr-black mt-10 mb-3 leading-tight">{children}</h2>
-    <div className="w-10 h-[2px] bg-pr-orange mb-5" />
+    <div className="w-10 h-[2px] bg-pr-black mb-5" />
   </>
 );
 
@@ -19,13 +19,13 @@ const P = ({ children, className = '' }: { children: React.ReactNode; className?
 
 const LI = ({ children }: { children: React.ReactNode }) => (
   <li className="flex gap-2 text-pr-gray-dark/90 leading-relaxed">
-    <span className="text-pr-orange mt-[2px]">→</span>
+    <span className="text-pr-black mt-[2px]">→</span>
     <span>{children}</span>
   </li>
 );
 
 const Connector = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-xs uppercase tracking-[0.08em] font-dm-sans font-semibold text-pr-orange-dark mb-4">
+  <p className="text-xs uppercase tracking-[0.08em] font-dm-sans font-semibold text-pr-black mb-4">
     {children}
   </p>
 );
@@ -150,7 +150,7 @@ const EssaiQuestion2Page = () => {
           <P className="font-medium text-pr-black">
             Do you think that companies should take public stances and act in the public sphere?
           </P>
-          <div className="bg-pr-orange-pale/30 border border-pr-orange-pale rounded-xl p-5 my-4 text-pr-gray-dark/90 leading-relaxed space-y-3 text-[15px]">
+          <div className="bg-pr-gray-bg/30 border border-pr-black-pale rounded-xl p-5 my-4 text-pr-gray-dark/90 leading-relaxed space-y-3 text-[15px]">
             <p>
               In February 2018 US retailer Walmart decided to stop selling guns after a mass school shooting in Florida.
               Such stance taking might seem detrimental to their bottom line and not in keeping with their core selling
@@ -181,7 +181,7 @@ const EssaiQuestion2Page = () => {
               companies and political leaders jump on the same bandwagon.
             </p>
             <p>
-              <strong className="text-pr-orange-dark">Therefore, companies should definitely be true activists.</strong>
+              <strong className="text-pr-black">Therefore, companies should definitely be true activists.</strong>
             </p>
           </div>
 
@@ -193,7 +193,7 @@ const EssaiQuestion2Page = () => {
           <P>
             Consulter le glossaire :{' '}
             <a
-              className="text-pr-orange-dark hover:text-pr-orange underline underline-offset-2"
+              className="text-pr-black hover:text-pr-black underline underline-offset-2"
               href="https://urlz.fr/iLTN"
               target="_blank"
               rel="noreferrer"
@@ -213,7 +213,7 @@ const EssaiQuestion2Page = () => {
             <LI>
               Grammarly (extension) :{' '}
               <a
-                className="text-pr-orange-dark hover:text-pr-orange underline underline-offset-2"
+                className="text-pr-black hover:text-pr-black underline underline-offset-2"
                 href="https://www.grammarly.com/"
                 target="_blank"
                 rel="noreferrer"
@@ -225,7 +225,7 @@ const EssaiQuestion2Page = () => {
             <LI>
               Hemingway App :{' '}
               <a
-                className="text-pr-orange-dark hover:text-pr-orange underline underline-offset-2"
+                className="text-pr-black hover:text-pr-black underline underline-offset-2"
                 href="https://hemingwayapp.com/"
                 target="_blank"
                 rel="noreferrer"

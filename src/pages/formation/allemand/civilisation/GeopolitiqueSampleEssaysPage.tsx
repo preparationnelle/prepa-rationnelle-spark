@@ -26,14 +26,14 @@ const VocabWord = ({ word, explanation }: { word: string; explanation: string })
     return (
         <span className="relative inline-block" ref={tooltipRef}>
             <span
-                className="font-bold text-pr-orange-dark cursor-pointer hover:text-orange-900 transition-colors"
+                className="font-bold text-pr-black cursor-pointer hover:text-orange-900 transition-colors"
                 onClick={() => setShowTooltip(!showTooltip)}
             >
                 {word}
             </span>
             {showTooltip && (
                 <span className="absolute z-50 top-full left-0 mt-2 w-72 p-3 bg-white border-2 border-orange-400 rounded-lg shadow-xl text-sm text-gray-700">
-                    <span className="font-semibold text-pr-orange-dark block mb-1">Erklärung:</span>
+                    <span className="font-semibold text-pr-black block mb-1">Erklärung:</span>
                     <span className="text-gray-800">{explanation}</span>
                     <span className="absolute bottom-full left-4 border-8 border-transparent border-b-orange-400"></span>
                 </span>
@@ -55,7 +55,7 @@ const GeopolitiqueSampleEssaysPage = () => {
                         </Link>
                         <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
                         <Link to="/formation/allemand" className="hover:text-foreground transition-colors">
-                            Formation <span className="text-pr-orange-dark">Allemand</span>
+                            Formation <span className="text-pr-black">Allemand</span>
                         </Link>
                         <ChevronRight className="h-3 w-3 text-muted-foreground/50 mx-1" />
                         <Link to="/formation/allemand/civilisation" className="hover:text-foreground transition-colors">
@@ -71,8 +71,8 @@ const GeopolitiqueSampleEssaysPage = () => {
                 <div className="max-w-4xl mx-auto bg-white rounded-lg border shadow-sm">
                     <div className="sticky top-0 bg-white border-b p-6 flex items-center justify-between rounded-t-lg">
                         <div className="flex items-center gap-3">
-                            <div className="p-2 rounded-lg bg-orange-100">
-                                <BookOpen className="h-5 w-5 text-pr-orange-dark" />
+                            <div className="p-2 rounded-lg bg-gray-100">
+                                <BookOpen className="h-5 w-5 text-pr-black" />
                             </div>
                             <div>
                                 <h2 className="text-xl font-bold text-gray-900">Deutschlands Rolle in der Europäischen Union</h2>

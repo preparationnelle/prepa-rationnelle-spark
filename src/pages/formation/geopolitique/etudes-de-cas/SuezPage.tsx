@@ -96,28 +96,28 @@ const SuezPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-pr-orange-dark" />
+                  <Calendar className="h-5 w-5 text-pr-black" />
                   Dates marquantes
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">1869</div>
                       <div className="text-gray-700">Ouverture du canal</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">1956</div>
                       <div className="text-gray-700">Crise de Suez et nationalisation</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2021</div>
                       <div className="text-gray-700">Incident Ever Given - blocage du canal</div>
@@ -140,15 +140,15 @@ const SuezPage = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  <div className="text-center p-3 bg-pr-orange-pale rounded-lg">
+                  <div className="text-center p-3 bg-pr-gray-bg rounded-lg">
                     <div className="text-2xl font-bold text-carnet-red">12%</div>
                     <div className="text-sm text-gray-600">Commerce mondial</div>
                   </div>
-                  <div className="text-center p-3 bg-pr-orange-pale rounded-lg">
+                  <div className="text-center p-3 bg-pr-gray-bg rounded-lg">
                     <div className="text-2xl font-bold text-carnet-red">50 000</div>
                     <div className="text-sm text-gray-600">Navires par an</div>
                   </div>
-                  <div className="text-center p-3 bg-pr-orange-pale rounded-lg">
+                  <div className="text-center p-3 bg-pr-gray-bg rounded-lg">
                     <div className="text-2xl font-bold text-carnet-red">9M$</div>
                     <div className="text-sm text-gray-600">Pertes/jour (Ever Given)</div>
                   </div>

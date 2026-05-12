@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -26,13 +26,13 @@ const PerfectibiliteProgresPage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Article
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               La perfectibilité et l&apos;idée de progrès&nbsp;: l&apos;humain, un être en devenir
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Rousseau, Kant, Condorcet. Trois manières de penser que l&apos;humain n&apos;est pas
               ce qu&apos;il est, mais ce qu&apos;il peut devenir.
@@ -54,8 +54,8 @@ const PerfectibiliteProgresPage: React.FC = () => {
                 Auschwitz, Hiroshima, l&apos;effondrement écologique ont rendu suspecte
                 l&apos;idée même que l&apos;humanité va «&nbsp;mieux&nbsp;» en avançant.
               </p>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Tension à retenir</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Tension à retenir</h3>
                 <p>
                   La perfectibilité humaine est-elle une <em>promesse</em> qui définit
                   notre dignité (Kant, Condorcet) ou une <em>malédiction</em> qui nous a
@@ -74,15 +74,15 @@ const PerfectibiliteProgresPage: React.FC = () => {
                 distingue véritablement l&apos;humain de l&apos;animal — bien plus que la
                 raison ou le langage.
               </p>
-              <p className="italic pl-4 border-l-2 border-pr-orange">
+              <p className="italic pl-4 border-l-2 border-pr-black">
                 «&nbsp;Faculté qui, à l&apos;aide des circonstances, développe successivement
                 toutes les autres, et réside parmi nous tant dans l&apos;espèce que dans
                 l&apos;individu.&nbsp;»
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Définition</strong>. La perfectibilité est la capacité à se transformer indéfiniment, à apprendre, à se modifier en fonction du milieu. L&apos;animal, lui, reste ce qu&apos;il est&nbsp;: au bout de quelques mois, il a atteint sa nature.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Une faculté de toutes les facultés</strong>. C&apos;est la perfectibilité qui produit la raison, le langage, la technique, la société. Elle est leur condition, non leur conséquence.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Ambivalence radicale</strong>. Cette faculté qui élève est aussi celle qui dégrade. C&apos;est elle qui a fait sortir l&apos;humain de l&apos;état de nature, inventé la propriété, créé l&apos;inégalité, multiplié les besoins artificiels.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Définition</strong>. La perfectibilité est la capacité à se transformer indéfiniment, à apprendre, à se modifier en fonction du milieu. L&apos;animal, lui, reste ce qu&apos;il est&nbsp;: au bout de quelques mois, il a atteint sa nature.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Une faculté de toutes les facultés</strong>. C&apos;est la perfectibilité qui produit la raison, le langage, la technique, la société. Elle est leur condition, non leur conséquence.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Ambivalence radicale</strong>. Cette faculté qui élève est aussi celle qui dégrade. C&apos;est elle qui a fait sortir l&apos;humain de l&apos;état de nature, inventé la propriété, créé l&apos;inégalité, multiplié les besoins artificiels.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Rousseau invente le concept
@@ -113,9 +113,9 @@ const PerfectibiliteProgresPage: React.FC = () => {
                 penser la justice.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>La nature est rusée</strong>. Elle utilise la discorde des humains pour faire émerger l&apos;ordre. Le mal lui-même travaille au progrès.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>L&apos;humanité progresse, pas l&apos;individu</strong>. La 8<sup>e</sup> proposition est claire&nbsp;: c&apos;est dans l&apos;espèce que les dispositions naturelles se développent pleinement, sur des générations.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Horizon cosmopolitique</strong>. La 9<sup>e</sup> proposition annonce une «&nbsp;société des nations&nbsp;» (préfiguration de la SDN, puis de l&apos;ONU). Le progrès achevé serait une humanité juridiquement unifiée, en paix.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>La nature est rusée</strong>. Elle utilise la discorde des humains pour faire émerger l&apos;ordre. Le mal lui-même travaille au progrès.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>L&apos;humanité progresse, pas l&apos;individu</strong>. La 8<sup>e</sup> proposition est claire&nbsp;: c&apos;est dans l&apos;espèce que les dispositions naturelles se développent pleinement, sur des générations.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Horizon cosmopolitique</strong>. La 9<sup>e</sup> proposition annonce une «&nbsp;société des nations&nbsp;» (préfiguration de la SDN, puis de l&apos;ONU). Le progrès achevé serait une humanité juridiquement unifiée, en paix.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Kant articule progrès moral et
@@ -141,9 +141,9 @@ const PerfectibiliteProgresPage: React.FC = () => {
                 inébranlable dans le progrès humain.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Dix époques</strong>. Condorcet découpe l&apos;histoire en dix âges, du clan tribal à l&apos;avenir où l&apos;humanité saura enfin gouverner par la raison.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Trois inégalités à abolir</strong>&nbsp;: entre les nations, entre les classes, entre les sexes. Condorcet plaide explicitement pour l&apos;égalité politique des femmes — geste rare et décisif au XVIII<sup>e</sup>.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>L&apos;instruction publique</strong>. Le moteur du progrès est l&apos;éducation universelle. Tant que les humains ignorent, ils sont manipulables. Tant qu&apos;ils savent, ils sont libres.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Dix époques</strong>. Condorcet découpe l&apos;histoire en dix âges, du clan tribal à l&apos;avenir où l&apos;humanité saura enfin gouverner par la raison.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Trois inégalités à abolir</strong>&nbsp;: entre les nations, entre les classes, entre les sexes. Condorcet plaide explicitement pour l&apos;égalité politique des femmes — geste rare et décisif au XVIII<sup>e</sup>.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>L&apos;instruction publique</strong>. Le moteur du progrès est l&apos;éducation universelle. Tant que les humains ignorent, ils sont manipulables. Tant qu&apos;ils savent, ils sont libres.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Condorcet incarne la version la
@@ -164,8 +164,8 @@ const PerfectibiliteProgresPage: React.FC = () => {
 
           <PRCard number="05" title="Paraperso prêt à l'emploi">
             <div className="space-y-4 text-sm md:text-base">
-              <div className="bg-pr-orange-pale rounded-xl p-5">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">
+              <div className="bg-pr-gray-bg rounded-xl p-5">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">
                   L&apos;humain comme être en devenir
                 </h3>
                 <p className="text-xs italic mb-3">
@@ -216,19 +216,19 @@ const PerfectibiliteProgresPage: React.FC = () => {
           <PRCard number="06" title="Où mobiliser ces références ?">
             <div className="space-y-4 text-sm md:text-base">
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;humanité progresse-t-elle&nbsp;?</strong>&nbsp;» — sujet frontal.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le progrès est-il une illusion&nbsp;?</strong>&nbsp;» — Adorno-Rousseau contre Condorcet.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;humain est-il un être de nature ou de culture&nbsp;?</strong>&nbsp;» — perfectibilité comme charnière.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;histoire a-t-elle un sens&nbsp;?</strong>&nbsp;» — Kant central.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Faut-il croire au progrès&nbsp;?</strong>&nbsp;» — articulation Lumières / XX<sup>e</sup> siècle.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;éducation</strong>&nbsp;» — Condorcet et l&apos;instruction publique comme moteur.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;humanité progresse-t-elle&nbsp;?</strong>&nbsp;» — sujet frontal.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le progrès est-il une illusion&nbsp;?</strong>&nbsp;» — Adorno-Rousseau contre Condorcet.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;humain est-il un être de nature ou de culture&nbsp;?</strong>&nbsp;» — perfectibilité comme charnière.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;histoire a-t-elle un sens&nbsp;?</strong>&nbsp;» — Kant central.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Faut-il croire au progrès&nbsp;?</strong>&nbsp;» — articulation Lumières / XX<sup>e</sup> siècle.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;éducation</strong>&nbsp;» — Condorcet et l&apos;instruction publique comme moteur.</li>
               </ul>
             </div>
           </PRCard>
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/articles">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des articles
               </Button>
             </Link>

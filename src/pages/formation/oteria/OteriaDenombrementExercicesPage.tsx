@@ -167,7 +167,7 @@ const OteriaDenombrementExercicesPage = () => {
             <LatexRenderer latex="\boxed{\frac{1}{12\,265\,344\,000\,000}} \approx 8{,}15 \times 10^{-14}" block={true} />
             <p className="text-sm mt-2 text-slate-600">Une chance sur 12 mille milliards - pratiquement impossible !</p>
           </div>
-          <div className="bg-pr-orange-pale border border-carnet-red/30 rounded p-4 mt-4">
+          <div className="bg-pr-gray-bg border border-carnet-red/30 rounded p-4 mt-4">
             <p className="font-semibold text-carnet-red-deep mb-2">🔐 Remarques pédagogiques</p>
             <ul className="text-sm space-y-1 list-disc ml-5 text-slate-700">
               <li>Quand l'ordre est rendu "invisible", on divise par la factorielle de la taille du groupe concerné (ex. 3! pour 3 lettres).</li>
@@ -391,7 +391,7 @@ const OteriaDenombrementExercicesPage = () => {
             <LatexRenderer latex="\approx 0.493" block={true} />
             <p className="mb-2 mt-3">Probabilité qu'au moins deux personnes aient le même anniversaire :</p>
             <LatexRenderer latex="P(\text{collision}) = 1 - 0.493 \approx 0.507" block={true} />
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded p-3 mt-3">
+            <div className="bg-pr-gray-bg border border-carnet-red/30 rounded p-3 mt-3">
               <p className="font-semibold text-carnet-red-deep">🎉 Le paradoxe !</p>
               <p className="text-sm mt-1 text-slate-700">Avec seulement 23 personnes, il y a plus de 50% de chances que deux personnes aient le même anniversaire !</p>
               <p className="text-sm mt-1 text-slate-500">Application en cryptographie : attaques par collision sur les fonctions de hachage.</p>

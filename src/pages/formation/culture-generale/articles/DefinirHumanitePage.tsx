@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -26,13 +26,13 @@ const DefinirHumanitePage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Article
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               Définir l&apos;humanité : entre essence et indétermination
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Aristote, Pic de la Mirandole, Sartre. Trois réponses au sujet le plus
               vertigineux du programme : <em>qu&apos;est-ce qui fait de nous des humains&nbsp;?</em>
@@ -57,8 +57,8 @@ const DefinirHumanitePage: React.FC = () => {
                 définit par son indétermination, sa liberté, sa capacité à se faire
                 lui-même.
               </p>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Tension à retenir</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Tension à retenir</h3>
                 <p>
                   L&apos;humanité est-elle une <em>nature donnée</em> (Aristote) ou un
                   <em> projet à inventer</em> (Pic de la Mirandole, Sartre)&nbsp;? Toute la
@@ -76,9 +76,9 @@ const DefinirHumanitePage: React.FC = () => {
                 marqueurs en font une espèce à part.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Animal raisonnable</strong>&nbsp;: l&apos;humain est doué de <em>logos</em>, qu&apos;Aristote pense comme la parole et la raison à la fois. Il ne crie pas, il argumente. Il ne ressent pas seulement, il distingue le juste de l&apos;injuste.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Animal politique</strong>&nbsp;: l&apos;humain n&apos;atteint sa pleine humanité que dans la cité, c&apos;est-à-dire dans une communauté délibérante. Hors de la cité, dit Aristote, on n&apos;est qu&apos;une bête ou un dieu.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Animal en quête de bonheur</strong>&nbsp;: la nature humaine se réalise par la vertu et l&apos;activité contemplative.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Animal raisonnable</strong>&nbsp;: l&apos;humain est doué de <em>logos</em>, qu&apos;Aristote pense comme la parole et la raison à la fois. Il ne crie pas, il argumente. Il ne ressent pas seulement, il distingue le juste de l&apos;injuste.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Animal politique</strong>&nbsp;: l&apos;humain n&apos;atteint sa pleine humanité que dans la cité, c&apos;est-à-dire dans une communauté délibérante. Hors de la cité, dit Aristote, on n&apos;est qu&apos;une bête ou un dieu.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Animal en quête de bonheur</strong>&nbsp;: la nature humaine se réalise par la vertu et l&apos;activité contemplative.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> L&apos;humanité, ici, est une essence.
@@ -144,9 +144,9 @@ const DefinirHumanitePage: React.FC = () => {
                 <strong>Trois conséquences.</strong>
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>L&apos;humain est <strong>liberté</strong>. Il est «&nbsp;condamné à être libre&nbsp;», dit Sartre&nbsp;: il ne peut pas ne pas choisir.</li>
-                <li><span className="text-pr-orange mr-2">→</span>L&apos;humain est <strong>responsable</strong>. Choisir pour soi, c&apos;est aussi proposer un modèle d&apos;humanité aux autres.</li>
-                <li><span className="text-pr-orange mr-2">→</span>L&apos;humain est <strong>angoisse</strong>. Sans essence pour le guider, il porte le poids de ses décisions.</li>
+                <li><span className="text-pr-black mr-2">→</span>L&apos;humain est <strong>liberté</strong>. Il est «&nbsp;condamné à être libre&nbsp;», dit Sartre&nbsp;: il ne peut pas ne pas choisir.</li>
+                <li><span className="text-pr-black mr-2">→</span>L&apos;humain est <strong>responsable</strong>. Choisir pour soi, c&apos;est aussi proposer un modèle d&apos;humanité aux autres.</li>
+                <li><span className="text-pr-black mr-2">→</span>L&apos;humain est <strong>angoisse</strong>. Sans essence pour le guider, il porte le poids de ses décisions.</li>
               </ul>
               <p>
                 <strong>Continuité avec Pic.</strong> Sartre laïcise la thèse renaissante.
@@ -159,8 +159,8 @@ const DefinirHumanitePage: React.FC = () => {
 
           <PRCard number="05" title="Paraperso prêt à l'emploi">
             <div className="space-y-4 text-sm md:text-base">
-              <div className="bg-pr-orange-pale rounded-xl p-5">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">
+              <div className="bg-pr-gray-bg rounded-xl p-5">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">
                   L&apos;humanité comme indétermination radicale
                 </h3>
                 <p className="text-xs italic mb-3">
@@ -207,19 +207,19 @@ const DefinirHumanitePage: React.FC = () => {
           <PRCard number="06" title="Où mobiliser ces références ?">
             <div className="space-y-4 text-sm md:text-base">
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Qu&apos;est-ce que l&apos;humanité&nbsp;?</strong>&nbsp;» — sujet d&apos;essence par excellence.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Naît-on humain ou le devient-on&nbsp;?</strong>&nbsp;» — l&apos;humanité comme projet.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;humanité est-elle une donnée ou une construction&nbsp;?</strong>&nbsp;» — Aristote vs Pic/Sartre.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Y a-t-il une nature humaine&nbsp;?</strong>&nbsp;» — convoquer la rupture renaissante.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;humain peut-il se choisir&nbsp;?</strong>&nbsp;» — Sartre central, Pic en amont.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>La dignité humaine</strong>&nbsp;» — Pic fonde la dignité moderne.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Qu&apos;est-ce que l&apos;humanité&nbsp;?</strong>&nbsp;» — sujet d&apos;essence par excellence.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Naît-on humain ou le devient-on&nbsp;?</strong>&nbsp;» — l&apos;humanité comme projet.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;humanité est-elle une donnée ou une construction&nbsp;?</strong>&nbsp;» — Aristote vs Pic/Sartre.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Y a-t-il une nature humaine&nbsp;?</strong>&nbsp;» — convoquer la rupture renaissante.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;humain peut-il se choisir&nbsp;?</strong>&nbsp;» — Sartre central, Pic en amont.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>La dignité humaine</strong>&nbsp;» — Pic fonde la dignité moderne.</li>
               </ul>
             </div>
           </PRCard>
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/articles">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des articles
               </Button>
             </Link>

@@ -36,12 +36,12 @@ export const CurrentEventsDisplay = ({ currentEvents, language, onRegenerate }: 
       // Détection d'un nouvel événement (ligne qui semble être un titre)
       if (trimmedLine.length > 20 && trimmedLine.length < 150 && !trimmedLine.includes('Source:') && !trimmedLine.includes('Date:')) {
         return (
-          <div key={index} className="bg-orange-50 border border-orange-200 p-4 rounded-lg mb-4">
+          <div key={index} className="bg-gray-50 border border-gray-200 p-4 rounded-lg mb-4">
             <div className="flex items-center gap-2 mb-2">
-              <span className="bg-pr-orange text-white text-xs px-2 py-1 rounded-full font-bold">
+              <span className="bg-pr-black text-white text-xs px-2 py-1 rounded-full font-bold">
                 {eventNumber++}
               </span>
-              <h4 className="font-semibold text-orange-800">{trimmedLine}</h4>
+              <h4 className="font-semibold text-gray-800">{trimmedLine}</h4>
             </div>
           </div>
         );
@@ -93,8 +93,8 @@ export const CurrentEventsDisplay = ({ currentEvents, language, onRegenerate }: 
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded">
-            <p className="text-sm text-orange-800">
+          <div className="bg-gray-50 border-l-4 border-orange-400 p-4 rounded">
+            <p className="text-sm text-gray-800">
               {language === 'fr' 
                 ? "Faits d'actualité récents en lien avec le cours, avec sources et dates."
                 : "Recent current events related to the course, with sources and dates."

@@ -105,14 +105,14 @@ export const PlanGenerator = ({ subjectFromParent, mode = 'geopolitics' }: PlanG
   return (
     <div className="space-y-6">
       <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-        <div className="h-[3px] w-full bg-pr-orange" />
+        <div className="h-[3px] w-full bg-pr-black" />
         <CardHeader className="px-6 pt-5 pb-4 bg-pr-gray-bg border-b border-pr-gray-light">
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl bg-white border border-pr-orange-soft flex items-center justify-center">
-              <ListChecks className="h-5 w-5 text-pr-orange-dark" />
+            <div className="w-11 h-11 rounded-xl bg-white border border-pr-black-soft flex items-center justify-center">
+              <ListChecks className="h-5 w-5 text-pr-black" />
             </div>
             <div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
                 {mode === 'culture-generale' ? 'Culture générale' : 'Géopolitique'}
               </div>
               <CardTitle className="font-dm-serif text-2xl text-pr-black leading-none">
@@ -128,12 +128,12 @@ export const PlanGenerator = ({ subjectFromParent, mode = 'geopolitics' }: PlanG
           <div className="space-y-3">
             <div className="flex items-center justify-between gap-3">
               <Label htmlFor="topic" className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-orange-pale text-pr-orange-dark text-[11px] font-bold">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-gray-bg text-pr-black text-[11px] font-bold">
                   1
                 </span>
                 Sujet
               </Label>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark bg-pr-orange-pale px-2.5 py-1 rounded-full">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-black bg-pr-gray-bg px-2.5 py-1 rounded-full">
                 Requis
               </span>
             </div>
@@ -142,7 +142,7 @@ export const PlanGenerator = ({ subjectFromParent, mode = 'geopolitics' }: PlanG
               placeholder="Ex : La puissance américaine aujourd'hui, La Chine puissance révisionniste…"
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
-              className="h-12 border-pr-gray-light focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 transition-colors rounded-xl text-[15px] bg-white text-pr-black placeholder:text-pr-gray-mid"
+              className="h-12 border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 transition-colors rounded-xl text-[15px] bg-white text-pr-black placeholder:text-pr-gray-mid"
             />
           </div>
 
@@ -150,7 +150,7 @@ export const PlanGenerator = ({ subjectFromParent, mode = 'geopolitics' }: PlanG
             <Button
               onClick={handleGenerate}
               disabled={isGenerating || !topic.trim()}
-              className="flex-1 bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold rounded-xl h-12 text-[15px] shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
+              className="flex-1 bg-pr-black hover:bg-pr-black-dark text-white font-semibold rounded-xl h-12 text-[15px] shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
             >
               {isGenerating ? (
                 <>
@@ -167,14 +167,14 @@ export const PlanGenerator = ({ subjectFromParent, mode = 'geopolitics' }: PlanG
 
             <Button
               onClick={loadExample}
-              className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-xl h-12 px-5 font-medium transition-colors"
+              className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-5 font-medium transition-colors"
             >
               Exemple
             </Button>
           </div>
 
           <Alert className="bg-pr-gray-bg border-pr-gray-light rounded-xl">
-            <Info className="h-4 w-4 text-pr-orange" />
+            <Info className="h-4 w-4 text-pr-black" />
             <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
               <strong className="text-pr-black">Comment ça marche :</strong> entrez un sujet, le système génère un plan structuré en 3 parties avec sous-parties.
               Chiffres précis, statistiques, dates exactes et exemples concrets sont inclus pour chaque partie.
@@ -186,15 +186,15 @@ export const PlanGenerator = ({ subjectFromParent, mode = 'geopolitics' }: PlanG
       {/* Affichage du plan généré */}
       {plan && (
         <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)] overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="h-[3px] w-full bg-pr-orange" />
+          <div className="h-[3px] w-full bg-pr-black" />
           <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-white border border-pr-orange-soft flex items-center justify-center">
-                  <FileText className="h-5 w-5 text-pr-orange-dark" />
+                <div className="w-10 h-10 rounded-xl bg-white border border-pr-black-soft flex items-center justify-center">
+                  <FileText className="h-5 w-5 text-pr-black" />
                 </div>
                 <div>
-                  <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
                     Plan généré
                   </div>
                   <CardTitle className="font-dm-serif text-xl text-pr-black leading-none">
@@ -211,8 +211,8 @@ export const PlanGenerator = ({ subjectFromParent, mode = 'geopolitics' }: PlanG
           </CardHeader>
           <CardContent className="p-6 sm:p-7 space-y-5">
             {/* Titre */}
-            <div className="bg-pr-orange-pale/60 rounded-xl p-5 border border-pr-orange-pale">
-              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-1">Sujet</div>
+            <div className="bg-pr-gray-bg/60 rounded-xl p-5 border border-pr-black-pale">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-1">Sujet</div>
               <h2 className="font-dm-serif text-xl text-pr-black leading-snug">{plan.title}</h2>
             </div>
 
@@ -229,8 +229,8 @@ export const PlanGenerator = ({ subjectFromParent, mode = 'geopolitics' }: PlanG
               <div className="space-y-5">
                 {plan.parts.map((part, partIndex) => (
                   <div key={partIndex} className="space-y-3">
-                    <div className="rounded-xl p-4 bg-white border border-pr-gray-light border-l-[3px] border-l-pr-orange">
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-1">
+                    <div className="rounded-xl p-4 bg-white border border-pr-gray-light border-l-[3px] border-l-pr-black">
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-1">
                         Partie {partIndex + 1}
                       </div>
                       <h3 className="font-dm-serif text-lg text-pr-black leading-snug">

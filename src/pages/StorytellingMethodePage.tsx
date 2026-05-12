@@ -37,7 +37,7 @@ const StorytellingMethodePage = () => {
             ["Différencier", "deux dossiers se ressemblent, deux histoires jamais."],
           ].map(([k, v]) => (
             <li key={k} className="flex items-start gap-2">
-              <Heart className="w-4 h-4 text-pr-orange mt-1 flex-shrink-0" strokeWidth={1.8} />
+              <Heart className="w-4 h-4 text-pr-black mt-1 flex-shrink-0" strokeWidth={1.8} />
               <span><strong className="text-pr-black">{k} :</strong> {v}</span>
             </li>
           ))}
@@ -48,16 +48,16 @@ const StorytellingMethodePage = () => {
       <MethodSection label="Section 01" title="Les 5 briques d'un récit efficace · méthode C-C-A-R-E" icon={BookOpen}>
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
           {careSteps.map((s, i) => (
-            <div key={i} className="bg-white border border-pr-gray-light rounded-lg p-5 hover:border-pr-orange transition-colors">
+            <div key={i} className="bg-white border border-pr-gray-light rounded-lg p-5 hover:border-pr-black transition-colors">
               <div className="flex items-baseline justify-between mb-2">
-                <span className="font-dm-serif text-5xl text-pr-orange leading-none">{s.l}</span>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+                <span className="font-dm-serif text-5xl text-pr-black leading-none">{s.l}</span>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-black bg-pr-gray-bg px-2 py-1 rounded">
                   {s.w}
                 </span>
               </div>
               <h4 className="font-dm-serif text-lg text-pr-black mt-3">{s.t}</h4>
               <p className="text-xs text-pr-gray-mid mb-2">{s.role}</p>
-              <div className="h-px w-6 bg-pr-orange mb-3" />
+              <div className="h-px w-6 bg-pr-black mb-3" />
               <p className="text-xs text-pr-gray-dark leading-relaxed italic">{s.q}</p>
             </div>
           ))}
@@ -76,7 +76,7 @@ const StorytellingMethodePage = () => {
               "Moments charnières : déménagement, changement d'orientation, rencontre inspirante.",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3 text-pr-gray-dark">
-                <Clock className="w-4 h-4 text-pr-orange mt-1 flex-shrink-0" strokeWidth={1.8} />
+                <Clock className="w-4 h-4 text-pr-black mt-1 flex-shrink-0" strokeWidth={1.8} />
                 <span>{item}</span>
               </li>
             ))}
@@ -87,7 +87,7 @@ const StorytellingMethodePage = () => {
       {/* Mauvais exemple */}
       <MethodSection label="Section 03" title="Exemple « factuel » à NE PAS reproduire" icon={MessageCircle}>
         <div className="bg-white border border-pr-gray-light rounded-lg p-6">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-pr-orange-pale px-2 py-1 rounded">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-black bg-pr-gray-bg px-2 py-1 rounded">
             Avant
           </span>
           <p className="italic text-pr-gray-dark mt-4 leading-relaxed">
@@ -97,11 +97,11 @@ const StorytellingMethodePage = () => {
           </p>
           <div className="mt-5 grid sm:grid-cols-2 gap-3">
             <div className="bg-pr-gray-bg rounded p-3 flex items-start gap-2">
-              <BadgeCheck className="w-4 h-4 text-pr-orange mt-0.5 flex-shrink-0" strokeWidth={1.8} />
+              <BadgeCheck className="w-4 h-4 text-pr-black mt-0.5 flex-shrink-0" strokeWidth={1.8} />
               <p className="text-sm text-pr-gray-dark">Chiffres clairs.</p>
             </div>
             <div className="bg-pr-gray-bg rounded p-3 flex items-start gap-2">
-              <span className="font-dm-serif text-pr-orange-dark text-base leading-none mt-0.5">×</span>
+              <span className="font-dm-serif text-pr-black text-base leading-none mt-0.5">×</span>
               <p className="text-sm text-pr-gray-dark">Aucun suspense ; émotions absentes ; on ne VOIT pas la scène.</p>
             </div>
           </div>
@@ -110,34 +110,34 @@ const StorytellingMethodePage = () => {
 
       {/* Bon exemple */}
       <MethodSection label="Section 04" title="Exemple de storytelling réussi · même expérience" icon={MessageCircle}>
-        <div className="bg-pr-orange-pale border-l-4 border-pr-orange rounded-r-lg p-7">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-orange-dark bg-white px-2 py-1 rounded">
+        <div className="bg-pr-gray-bg border-l-4 border-pr-black rounded-r-lg p-7">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-pr-black bg-white px-2 py-1 rounded">
             Après
           </span>
           <div className="space-y-3 text-pr-gray-dark mt-4 leading-relaxed">
             <p>
-              <strong className="text-pr-orange-dark">Contexte —</strong> « Un vendredi de mars, la météo annonce
+              <strong className="text-pr-black">Contexte —</strong> « Un vendredi de mars, la météo annonce
               des rafales de 70 km/h ; je suis devant le gymnase, 7 h du matin, carton de dossards sous
               le bras. Ma course solidaire, préparée depuis quatre mois, risque de s'envoler au sens propre… »
             </p>
             <p>
-              <strong className="text-pr-orange-dark">Conflit —</strong> « À 8 h, le traiteur annule. Sans
+              <strong className="text-pr-black">Conflit —</strong> « À 8 h, le traiteur annule. Sans
               ravitaillement, 200 coureurs peuvent rentrer chez eux. Mes deux co-équipiers me regardent :
               "On fait quoi ?" »
             </p>
             <p>
-              <strong className="text-pr-orange-dark">Actions —</strong> « Je dégoupille : je publie un SOS
+              <strong className="text-pr-black">Actions —</strong> « Je dégoupille : je publie un SOS
               sur le groupe Facebook des "Mamans sportives" du quartier ; en dix minutes, cinq personnes
               proposent gâteaux et thermos. Je réaffecte le budget traiteur à la sécurité (doubler les
               bénévoles sur le parcours venteux). »
             </p>
             <p>
-              <strong className="text-pr-orange-dark">Résultat —</strong> « À 10 h, le départ est donné ;
+              <strong className="text-pr-black">Résultat —</strong> « À 10 h, le départ est donné ;
               sur la ligne d'arrivée, les gobelets de chocolat chaud font un tabac. Nous collectons 3 257 €,
               soit +8 % par rapport à l'objectif. L'association finance 130 kits scolaires supplémentaires. »
             </p>
             <p>
-              <strong className="text-pr-orange-dark">Émotion / Leçon —</strong> « Ce matin-là, j'ai compris
+              <strong className="text-pr-black">Émotion / Leçon —</strong> « Ce matin-là, j'ai compris
               que le leadership, c'est parfois juste accepter de demander de l'aide et de réécrire le plan
               en 15 minutes. »
             </p>
@@ -158,8 +158,8 @@ const StorytellingMethodePage = () => {
             "Mesurez l'impact : chiffre, prix, feedback (« Merci » écrit, mail…).",
             "Formulez la leçon : elle doit servir votre projet en école (apprendre à pivoter, gérer le stress, inspirer une équipe internationale).",
           ].map((step, i) => (
-            <div key={i} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-4 flex items-baseline gap-4">
-              <span className="font-dm-serif text-3xl text-pr-orange leading-none">{String(i + 1).padStart(2, '0')}</span>
+            <div key={i} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-black rounded-r-lg p-4 flex items-baseline gap-4">
+              <span className="font-dm-serif text-3xl text-pr-black leading-none">{String(i + 1).padStart(2, '0')}</span>
               <p className="text-sm text-pr-gray-dark">{step}</p>
             </div>
           ))}
@@ -178,7 +178,7 @@ const StorytellingMethodePage = () => {
               "Souhaitez-vous plutôt un coaching individuel ou un modèle de fiche à remplir pour chaque histoire ?",
             ].map((q) => (
               <li key={q} className="flex items-start gap-3 text-pr-gray-dark">
-                <MessageCircle className="w-4 h-4 text-pr-orange mt-1 flex-shrink-0" strokeWidth={1.8} />
+                <MessageCircle className="w-4 h-4 text-pr-black mt-1 flex-shrink-0" strokeWidth={1.8} />
                 <span>{q}</span>
               </li>
             ))}
@@ -187,15 +187,15 @@ const StorytellingMethodePage = () => {
       </MethodSection>
 
       {/* À retenir */}
-      <div className="bg-pr-orange-pale border-l-4 border-pr-orange rounded-r-lg p-7 mb-8">
+      <div className="bg-pr-gray-bg border-l-4 border-pr-black rounded-r-lg p-7 mb-8">
         <h3 className="font-dm-serif text-xl text-pr-black mb-4">À retenir</h3>
         <ul className="space-y-3">
           <li className="flex items-start gap-2 text-pr-gray-dark">
-            <BadgeCheck className="w-5 h-5 text-pr-orange-dark mt-0.5 flex-shrink-0" strokeWidth={1.8} />
+            <BadgeCheck className="w-5 h-5 text-pr-black mt-0.5 flex-shrink-0" strokeWidth={1.8} />
             Un bon storytelling = émotion + structure + preuve.
           </li>
           <li className="flex items-start gap-2 text-pr-gray-dark">
-            <BadgeCheck className="w-5 h-5 text-pr-orange-dark mt-0.5 flex-shrink-0" strokeWidth={1.8} />
+            <BadgeCheck className="w-5 h-5 text-pr-black mt-0.5 flex-shrink-0" strokeWidth={1.8} />
             Avec la méthode C-C-A-R-E, chaque expérience devient un film de 90 secondes qui marquera
             votre jury — et fera de vous le candidat dont on se rappelle.
           </li>

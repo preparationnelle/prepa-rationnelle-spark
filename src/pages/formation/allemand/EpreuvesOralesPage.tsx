@@ -39,8 +39,8 @@ const EpreuvesOralesPage = () => {
         <div className="mb-8">
 
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
-              <Target className="h-6 w-6 text-pr-orange-dark" />
+            <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center border border-gray-200">
+              <Target className="h-6 w-6 text-pr-black" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Épreuves orales</h1>
           </div>
@@ -253,8 +253,8 @@ const EpreuvesOralesPage = () => {
           </section>
 
           {/* Section pratique */}
-          <section className="bg-orange-50 rounded-lg p-6 border border-orange-200">
-            <h3 className="text-lg font-semibold text-orange-800 mb-3">💡 Conseils pratiques</h3>
+          <section className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">💡 Conseils pratiques</h3>
             <div className="text-gray-700 space-y-2">
               <p>• <strong>Temps de préparation :</strong> 15-20 minutes maximum</p>
               <p>• <strong>Structure rigoureuse :</strong> Respectez le timing indiqué pour chaque partie</p>

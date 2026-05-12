@@ -248,12 +248,12 @@ export default function PolitiqueConfidentialitePage() {
                     <li><strong>Droit à la limitation :</strong> Demander la limitation du traitement de vos données</li>
                   </ul>
 
-                  <div className="mt-4 p-4 bg-orange-50 rounded-lg">
-                    <p className="font-medium text-orange-800 mb-2">Pour exercer vos droits :</p>
-                    <p className="text-pr-orange-dark">
+                  <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                    <p className="font-medium text-gray-800 mb-2">Pour exercer vos droits :</p>
+                    <p className="text-pr-black">
                       Contactez-nous par email : <a href="mailto:preparationnelle@gmail.com" className="underline">preparationnelle@gmail.com</a>
                     </p>
-                    <p className="text-pr-orange-dark text-sm mt-2">
+                    <p className="text-pr-black text-sm mt-2">
                       Nous répondrons à votre demande dans un délai d'un mois maximum.
                     </p>
                   </div>
@@ -285,7 +285,7 @@ export default function PolitiqueConfidentialitePage() {
                     </div>
                   </div>
 
-                  <div className="mt-4 p-4 bg-pr-orange-pale rounded-lg">
+                  <div className="mt-4 p-4 bg-pr-gray-bg rounded-lg">
                     <p className="font-medium text-carnet-red-deep mb-2">Réclamation auprès de la CNIL :</p>
                     <p className="text-carnet-red text-sm">
                       Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la Commission Nationale de l'Informatique et des Libertés (CNIL) :
@@ -320,7 +320,7 @@ export default function PolitiqueConfidentialitePage() {
 
             {/* Section Liens utiles */}
             <div className="mt-6 space-y-4">
-              <Card className="bg-gradient-to-r from-carnet-paper-2 to-pr-orange-pale border-2 border-carnet-red/30">
+              <Card className="bg-gradient-to-r from-carnet-paper-2 to-pr-black-pale border-2 border-carnet-red/30">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-xl text-center text-primary">
                     🌟 Découvrez nos formations
@@ -422,7 +422,7 @@ export default function PolitiqueConfidentialitePage() {
               </Card>
 
               {/* Cours gratuit */}
-              <Card className="bg-gradient-to-r from-pr-orange-pale to-carnet-paper-2 border-2 border-orange-200">
+              <Card className="bg-gradient-to-r from-pr-orange-pale to-carnet-paper-2 border-2 border-gray-200">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg text-center text-primary">
                     🎁 Réservez votre cours gratuit !
@@ -447,7 +447,7 @@ export default function PolitiqueConfidentialitePage() {
                     </div>
                     <a
                       href="/offre/gratuite"
-                      className="inline-block bg-pr-orange text-white px-4 py-2 rounded-lg hover:bg-pr-orange-dark transition-colors font-semibold text-sm"
+                      className="inline-block bg-pr-black text-white px-4 py-2 rounded-lg hover:bg-pr-black-dark transition-colors font-semibold text-sm"
                     >
                       📅 Cours gratuit
                     </a>

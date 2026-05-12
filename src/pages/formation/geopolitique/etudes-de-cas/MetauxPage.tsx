@@ -118,7 +118,7 @@ const MetauxPage = () => {
                   <li>• Zinc : Galvanisation, alliages</li>
                 </ul>
               </div>
-              <div className="bg-pr-orange-pale p-4 rounded-lg">
+              <div className="bg-pr-gray-bg p-4 rounded-lg">
                 <h4 className="font-semibold text-carnet-red-deep mb-3">Métaux critiques</h4>
                 <ul className="text-sm text-carnet-red space-y-1">
                   <li>• Lithium : Batteries véhicules électriques</li>
@@ -184,7 +184,7 @@ const MetauxPage = () => {
           <CardContent>
             <div className="space-y-4">
               {criticalMetals.map((metal, index) => (
-                <div key={index} className="p-4 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
+                <div key={index} className="p-4 bg-pr-gray-bg rounded-lg border border-carnet-red/30">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="font-semibold text-carnet-red-deep mb-1">{metal.metal}</div>
@@ -240,9 +240,9 @@ const MetauxPage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-orange-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-orange-800 mb-2">Risques d'approvisionnement</h4>
-                      <ul className="list-disc list-inside text-sm text-pr-orange-dark space-y-1">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-semibold text-gray-800 mb-2">Risques d'approvisionnement</h4>
+                      <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Tensions géopolitiques :</strong> Guerre commerciale, sanctions</li>
                         <li><strong>Instabilité politique :</strong> Coups d'État (Mali, Niger, uranium)</li>
                         <li><strong>Conflits armés :</strong> RDC, Myanmar (étain, tungstène)</li>
@@ -269,7 +269,7 @@ const MetauxPage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-pr-orange-pale p-4 rounded-lg">
+                    <div className="bg-pr-gray-bg p-4 rounded-lg">
                       <h4 className="font-semibold text-carnet-red-deep mb-2">Technologies émergentes</h4>
                       <ul className="list-disc list-inside text-sm text-carnet-red space-y-1">
                         <li><strong>Éoliennes :</strong> Terres rares (néodyme) pour aimants permanents</li>
@@ -288,7 +288,7 @@ const MetauxPage = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-6">
-                    <div className="border-l-4 border-carnet-red/40 bg-pr-orange-pale p-4 rounded-r-lg">
+                    <div className="border-l-4 border-carnet-red/40 bg-pr-gray-bg p-4 rounded-r-lg">
                       <h4 className="font-semibold text-carnet-red-deep mb-3">
                         <MapPin className="inline h-4 w-4 mr-2" />
                         Triangle du lithium (Bolivie)

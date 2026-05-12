@@ -28,7 +28,7 @@ const BricsPage = () => {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <Globe className="h-8 w-8 text-pr-orange-dark" />
+            <Globe className="h-8 w-8 text-pr-black" />
             <h1 className="text-4xl font-bold text-gray-900">
               BRICS
             </h1>
@@ -46,7 +46,7 @@ const BricsPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Globe className="h-5 w-5 text-pr-orange-dark" />
+                  <Globe className="h-5 w-5 text-pr-black" />
                   Présentation géopolitique
                 </CardTitle>
               </CardHeader>
@@ -102,35 +102,35 @@ const BricsPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-pr-orange-dark" />
+                  <Calendar className="h-5 w-5 text-pr-black" />
                   Dates importantes
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2009</div>
                       <div className="text-gray-700">Fondation des BRICS</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2023</div>
                       <div className="text-gray-700">Invitations d'expansion</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2024</div>
                       <div className="text-gray-700">Admission de 5 nouveaux membres</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2025</div>
                       <div className="text-gray-700">Sommet au Brésil, admission Indonésie</div>
@@ -147,22 +147,22 @@ const BricsPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-pr-orange-dark" />
+                  <TrendingUp className="h-5 w-5 text-pr-black" />
                   Chiffres clés
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  <div className="text-center p-3 bg-orange-50 rounded-lg">
-                    <div className="text-2xl font-bold text-pr-orange-dark">10</div>
+                  <div className="text-center p-3 bg-gray-50 rounded-lg">
+                    <div className="text-2xl font-bold text-pr-black">10</div>
                     <div className="text-sm text-gray-600">Membres</div>
                   </div>
-                  <div className="text-center p-3 bg-orange-50 rounded-lg">
-                    <div className="text-2xl font-bold text-pr-orange-dark">55%</div>
+                  <div className="text-center p-3 bg-gray-50 rounded-lg">
+                    <div className="text-2xl font-bold text-pr-black">55%</div>
                     <div className="text-sm text-gray-600">Population mondiale</div>
                   </div>
-                  <div className="text-center p-3 bg-orange-50 rounded-lg">
-                    <div className="text-2xl font-bold text-pr-orange-dark">46%</div>
+                  <div className="text-center p-3 bg-gray-50 rounded-lg">
+                    <div className="text-2xl font-bold text-pr-black">46%</div>
                     <div className="text-sm text-gray-600">PIB (PPA)</div>
                   </div>
                 </div>

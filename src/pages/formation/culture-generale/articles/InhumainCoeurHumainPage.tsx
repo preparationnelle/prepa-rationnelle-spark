@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -26,13 +26,13 @@ const InhumainCoeurHumainPage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Article
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               L&apos;inhumain au cœur de l&apos;humain
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Banalité du mal, zone grise, soumission à l&apos;autorité. Arendt, Levi, Milgram&nbsp;:
               trois enquêtes qui montrent que la barbarie n&apos;est pas l&apos;autre de l&apos;humain.
@@ -56,8 +56,8 @@ const InhumainCoeurHumainPage: React.FC = () => {
                 entières. Le scandale est là&nbsp;: la barbarie ne vient pas du dehors.
                 <strong> Elle gît au cœur même de l&apos;humain.</strong>
               </p>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Thèse-clé</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Thèse-clé</h3>
                 <p>
                   L&apos;inhumain n&apos;est pas l&apos;envers extérieur de l&apos;humain. C&apos;est sa
                   possibilité ordinaire, qui ne réclame pour s&apos;actualiser que la
@@ -90,8 +90,8 @@ const InhumainCoeurHumainPage: React.FC = () => {
                 ordres reçus, les normes en vigueur, les routines de l&apos;institution.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Ce que la formule ne dit pas&nbsp;:</strong> que le mal serait sans gravité. Le mal reste monstrueux dans ses effets.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Ce qu&apos;elle dit&nbsp;:</strong> que ses agents peuvent être affreusement ordinaires. Et que l&apos;humanité est toujours à un pas de la démission qui rend la barbarie possible.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Ce que la formule ne dit pas&nbsp;:</strong> que le mal serait sans gravité. Le mal reste monstrueux dans ses effets.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Ce qu&apos;elle dit&nbsp;:</strong> que ses agents peuvent être affreusement ordinaires. Et que l&apos;humanité est toujours à un pas de la démission qui rend la barbarie possible.</li>
               </ul>
               <p>
                 Arendt prolonge cette thèse dans <em>Les Origines du totalitarisme</em>,
@@ -179,8 +179,8 @@ const InhumainCoeurHumainPage: React.FC = () => {
 
           <PRCard number="05" title="Paraperso prêt à l'emploi">
             <div className="space-y-4 text-sm md:text-base">
-              <div className="bg-pr-orange-pale rounded-xl p-5">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">
+              <div className="bg-pr-gray-bg rounded-xl p-5">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">
                   La barbarie comme possibilité ordinaire de l&apos;humain
                 </h3>
                 <p className="text-xs italic mb-3">
@@ -226,19 +226,19 @@ const InhumainCoeurHumainPage: React.FC = () => {
           <PRCard number="06" title="Où mobiliser ces références ?">
             <div className="space-y-4 text-sm md:text-base">
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Peut-on être inhumain&nbsp;?</strong>&nbsp;» — sujet directement traité par Arendt et Levi.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>La barbarie est-elle une régression ou une possibilité moderne&nbsp;?</strong>&nbsp;» — totalitarisme + Shoah.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;humanité a-t-elle progressé&nbsp;?</strong>&nbsp;» — contre-exemple massif au mythe du progrès moral.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Obéir, est-ce abdiquer son humanité&nbsp;?</strong>&nbsp;» — Milgram + Arendt.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Faut-il juger&nbsp;?</strong>&nbsp;» — la zone grise de Levi complique tout jugement rapide.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Qu&apos;est-ce qu&apos;un crime contre l&apos;humanité&nbsp;?</strong>&nbsp;» — Eichmann fonde la catégorie juridique moderne.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Peut-on être inhumain&nbsp;?</strong>&nbsp;» — sujet directement traité par Arendt et Levi.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>La barbarie est-elle une régression ou une possibilité moderne&nbsp;?</strong>&nbsp;» — totalitarisme + Shoah.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;humanité a-t-elle progressé&nbsp;?</strong>&nbsp;» — contre-exemple massif au mythe du progrès moral.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Obéir, est-ce abdiquer son humanité&nbsp;?</strong>&nbsp;» — Milgram + Arendt.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Faut-il juger&nbsp;?</strong>&nbsp;» — la zone grise de Levi complique tout jugement rapide.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Qu&apos;est-ce qu&apos;un crime contre l&apos;humanité&nbsp;?</strong>&nbsp;» — Eichmann fonde la catégorie juridique moderne.</li>
               </ul>
             </div>
           </PRCard>
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/articles">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des articles
               </Button>
             </Link>

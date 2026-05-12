@@ -84,8 +84,8 @@ const TeacherSidebar: React.FC = () => {
                 className={({ isActive }) => cn(
                   "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                    ? "bg-black text-white"
+                    : "text-muted-foreground hover:bg-black/5 hover:text-foreground"
                 )}
               >
                 <item.icon className="h-4 w-4" />
@@ -101,8 +101,8 @@ const TeacherSidebar: React.FC = () => {
                       className={({ isActive }) => cn(
                         "flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs transition-colors",
                         isActive
-                          ? "bg-primary/20 text-primary"
-                          : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                          ? "bg-black/10 text-foreground font-medium"
+                          : "text-muted-foreground hover:bg-black/5 hover:text-foreground"
                       )}
                     >
                       <subItem.icon className="h-3 w-3" />

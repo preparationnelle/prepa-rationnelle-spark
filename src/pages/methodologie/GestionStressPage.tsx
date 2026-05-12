@@ -101,7 +101,7 @@ const GestionStressPage = () => (
     <MethodSection label="Section 02" title="Préparation chronologique : J-7 au jour J" icon={Clock}>
       <div className="grid md:grid-cols-3 gap-5">
         {phases.map((p, i) => (
-          <div key={p.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+          <div key={p.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
             <span className="font-dm-serif text-3xl text-red-600">{String(i + 1).padStart(2, '0')}</span>
             <h4 className="font-dm-serif text-lg text-carnet-ink mt-1">{p.t}</h4>
             <p className="text-xs uppercase tracking-wider text-carnet-ink-mute mb-3">{p.sub}</p>
@@ -147,7 +147,7 @@ const GestionStressPage = () => (
             l: ["Surestimer le niveau des autres candidats", "Ruminer les entretiens précédents ratés", "S'imaginer le jury hostile ou partial", "Se persuader qu'on n'est pas légitime"],
           },
         ].map((g) => (
-          <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+          <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
             <h4 className="font-dm-serif text-lg text-carnet-ink mb-4 flex items-center gap-2">
               <AlertTriangle className="w-5 h-5 text-red-700" strokeWidth={1.8} />
               {g.t}

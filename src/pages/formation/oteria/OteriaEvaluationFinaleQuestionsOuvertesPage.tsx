@@ -45,7 +45,7 @@ const questionsOuvertesData = {
       title: "Chapitre 2 : Programmation Python",
       icon: Code,
       color: "text-carnet-red",
-      bgColor: "bg-pr-orange-pale",
+      bgColor: "bg-pr-gray-bg",
       borderColor: "border-carnet-red/30",
       questions: [
         {
@@ -100,9 +100,9 @@ const questionsOuvertesData = {
       id: 4,
       title: "Chapitre 4 : Suites et Fonctions",
       icon: Network,
-      color: "text-pr-orange-dark",
-      bgColor: "bg-orange-50",
-      borderColor: "border-orange-200",
+      color: "text-pr-black",
+      bgColor: "bg-gray-50",
+      borderColor: "border-gray-200",
       questions: [
         {
           id: 10,
@@ -184,7 +184,7 @@ const OteriaEvaluationFinaleQuestionsOuvertesPage: React.FC = () => {
               <CheckCircle className="mr-2 h-4 w-4" />
               {totalPoints} points
             </Badge>
-            <Badge variant="secondary" className="bg-orange-100 text-orange-800 px-4 py-2">
+            <Badge variant="secondary" className="bg-gray-100 text-gray-800 px-4 py-2">
               <Clock className="mr-2 h-4 w-4" />
               {questionsOuvertesData.estimatedTime}
             </Badge>
@@ -266,7 +266,7 @@ const OteriaEvaluationFinaleQuestionsOuvertesPage: React.FC = () => {
               </Button>
             </Link>
             <Link to="/formation/oteria/fiche-evaluation-finale">
-              <Button variant="outline" className="border-carnet-red text-carnet-red hover:bg-pr-orange-pale px-8 py-3">
+              <Button variant="outline" className="border-carnet-red text-carnet-red hover:bg-pr-gray-bg px-8 py-3">
                 <BookOpen className="mr-2 h-5 w-5" />
                 Fiche récapitulative
               </Button>

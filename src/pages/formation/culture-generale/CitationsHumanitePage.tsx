@@ -40,13 +40,13 @@ const CitationsHumanitePage: React.FC = () => {
         <div className="container mx-auto max-w-5xl">
           {/* Header */}
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Citations
             </p>
             <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black leading-tight mb-5">
               Banque de citations — L&apos;humanité
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-2xl mx-auto leading-relaxed">
               Citations classées par sous-thème, chacune accompagnée d&apos;une
               glose pour la mobiliser le jour J. Quand un paraperso de la
@@ -57,7 +57,7 @@ const CitationsHumanitePage: React.FC = () => {
               <span className="px-3 py-1 bg-white border border-pr-gray-light text-pr-gray-dark rounded-full text-xs font-semibold uppercase tracking-wider">
                 {citationsHumanite.length} citations
               </span>
-              <span className="px-3 py-1 bg-pr-orange-pale text-pr-orange-dark rounded-full text-xs font-semibold uppercase tracking-wider">
+              <span className="px-3 py-1 bg-pr-gray-bg text-pr-black rounded-full text-xs font-semibold uppercase tracking-wider">
                 À mémoriser
               </span>
             </div>
@@ -70,7 +70,7 @@ const CitationsHumanitePage: React.FC = () => {
               placeholder="Rechercher une citation, un auteur, une œuvre…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full px-5 py-3 bg-white border border-pr-gray-light rounded-xl text-sm text-pr-gray-dark placeholder-pr-gray-medium focus:outline-none focus:border-pr-orange transition-colors"
+              className="w-full px-5 py-3 bg-white border border-pr-gray-light rounded-xl text-sm text-pr-gray-dark placeholder-pr-gray-medium focus:outline-none focus:border-pr-black transition-colors"
             />
           </div>
 
@@ -81,8 +81,8 @@ const CitationsHumanitePage: React.FC = () => {
               onClick={() => setFilter('all')}
               className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors ${
                 filter === 'all'
-                  ? 'bg-pr-orange text-white border border-pr-orange'
-                  : 'bg-white text-pr-gray-dark border border-pr-gray-light hover:border-pr-orange'
+                  ? 'bg-pr-black text-white border border-pr-black'
+                  : 'bg-white text-pr-gray-dark border border-pr-gray-light hover:border-pr-black'
               }`}
             >
               Toutes ({citationsHumanite.length})
@@ -94,8 +94,8 @@ const CitationsHumanitePage: React.FC = () => {
                 onClick={() => setFilter(st.key)}
                 className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors ${
                   filter === st.key
-                    ? 'bg-pr-orange text-white border border-pr-orange'
-                    : 'bg-white text-pr-gray-dark border border-pr-gray-light hover:border-pr-orange'
+                    ? 'bg-pr-black text-white border border-pr-black'
+                    : 'bg-white text-pr-gray-dark border border-pr-gray-light hover:border-pr-black'
                 }`}
               >
                 {st.label} ({countBySousTheme.get(st.key) ?? 0})
@@ -117,9 +117,9 @@ const CitationsHumanitePage: React.FC = () => {
               return (
                 <article
                   key={c.slug}
-                  className="bg-white rounded-2xl p-6 md:p-7 border border-pr-gray-light hover:border-pr-orange hover:shadow-md transition-all duration-300"
+                  className="bg-white rounded-2xl p-6 md:p-7 border border-pr-gray-light hover:border-pr-black hover:shadow-md transition-all duration-300"
                 >
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark mb-3">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-black mb-3">
                     {sousTheme?.label}
                   </p>
                   <blockquote className="font-dm-serif text-xl md:text-2xl text-pr-black leading-snug mb-3 italic">
@@ -138,7 +138,7 @@ const CitationsHumanitePage: React.FC = () => {
                   {c.parapersoSlug && (
                     <Link
                       to={`/formation/culture-generale/references/${c.parapersoSlug}`}
-                      className="inline-flex items-center mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-pr-orange-dark hover:text-pr-orange transition-colors"
+                      className="inline-flex items-center mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-pr-black hover:text-pr-black transition-colors"
                     >
                       Voir le paraperso lié →
                     </Link>
@@ -152,7 +152,7 @@ const CitationsHumanitePage: React.FC = () => {
           <div className="mt-12 text-center">
             <Link
               to="/formation/culture-generale"
-              className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark hover:text-pr-orange transition-colors"
+              className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black hover:text-pr-black transition-colors"
             >
               ← Retour à la culture générale
             </Link>

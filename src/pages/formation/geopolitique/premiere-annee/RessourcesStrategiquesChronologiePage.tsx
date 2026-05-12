@@ -117,12 +117,12 @@ const RessourcesStrategiquesChronologiePage = () => {
         {/* Events by decade */}
         {Object.entries(groupedEvents).map(([decade, decadeEvents]) => (
           <div key={decade} className="mb-10">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-teal-300 pb-2">
+            <h2 className="font-dm-serif text-2xl text-carnet-ink mb-6 border-b border-carnet-rule pb-2">
               {decade}
             </h2>
             <div className="space-y-6">
               {decadeEvents.map((item, index) => (
-                <Card key={index} className="border-l-4 border-teal-500 shadow-sm hover:shadow-md transition-shadow bg-white">
+                <Card key={index} className="border-l-4 border-carnet-red shadow-none bg-carnet-paper-2">
                   <CardContent className="p-4">
                     <div className="flex items-start">
                       <span className="flex-shrink-0 w-24 text-lg font-semibold text-teal-700 mr-4">

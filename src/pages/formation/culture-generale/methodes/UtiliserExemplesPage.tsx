@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -28,12 +28,12 @@ const Paraperso: React.FC<{
   date: string;
   body: React.ReactNode;
 }> = ({ num, title, author, oeuvre, date, body }) => (
-  <div className="border-l-2 border-pr-orange pl-4 py-2">
+  <div className="border-l-2 border-pr-black pl-4 py-2">
     <div className="flex items-baseline gap-2 mb-1">
-      <span className="font-dm-serif text-pr-orange text-base">{num}</span>
+      <span className="font-dm-serif text-pr-black text-base">{num}</span>
       <h4 className="font-dm-serif text-base text-pr-black">{title}</h4>
     </div>
-    <p className="text-xs text-pr-orange-dark mb-1">
+    <p className="text-xs text-pr-black mb-1">
       {author}, <em>{oeuvre}</em>, {date}
     </p>
     <p className="text-sm leading-relaxed">{body}</p>
@@ -55,13 +55,13 @@ const UtiliserExemplesPage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Méthode
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               Utiliser efficacement les exemples
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Constituer un stock de 30 parapersos sur <em>l&apos;humanité</em> et les
               mobiliser avec précision le jour J.
@@ -83,8 +83,8 @@ const UtiliserExemplesPage: React.FC = () => {
                 œuvre, date) et <strong>mobilisées</strong> (expliquées, articulées),
                 pas de l&apos;érudition floue ni des noms jetés en l&apos;air.
               </p>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">L&apos;intuition centrale</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">L&apos;intuition centrale</h3>
                 <p>
                   Improviser des exemples le jour J est une stratégie perdante. Préparer
                   un <em>stock</em> de 30 parapersos rédigés à l&apos;avance, appris,
@@ -114,9 +114,9 @@ const UtiliserExemplesPage: React.FC = () => {
                 de quoi traiter chaque sous-partie.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Densité</strong>. Chaque paraperso doit valoir un point sur 20. Pas d&apos;exemples mous, pas de paraphrase de manuel. Une référence puissante, expliquée jusqu&apos;à sa thèse.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Variété des registres</strong>. Mélanger philosophie classique (Aristote, Kant, Rousseau), littérature (Pascal, Montaigne, Levi), sciences humaines (Arendt, Foucault, Lévi-Strauss), arts (Goya, films), actualité contemporaine (anthropocène, IA, biotech).</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Transversalité</strong>. Couvrir les 8 sous-axes du programme «&nbsp;humanité&nbsp;»&nbsp;: essence, construction, inhumanité, nature, technique, solidarité, frontières, idéal. Un paraperso bien construit doit pouvoir resservir sur plusieurs sujets.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Densité</strong>. Chaque paraperso doit valoir un point sur 20. Pas d&apos;exemples mous, pas de paraphrase de manuel. Une référence puissante, expliquée jusqu&apos;à sa thèse.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Variété des registres</strong>. Mélanger philosophie classique (Aristote, Kant, Rousseau), littérature (Pascal, Montaigne, Levi), sciences humaines (Arendt, Foucault, Lévi-Strauss), arts (Goya, films), actualité contemporaine (anthropocène, IA, biotech).</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Transversalité</strong>. Couvrir les 8 sous-axes du programme «&nbsp;humanité&nbsp;»&nbsp;: essence, construction, inhumanité, nature, technique, solidarité, frontières, idéal. Un paraperso bien construit doit pouvoir resservir sur plusieurs sujets.</li>
               </ul>
               <p>
                 Astuce de tri&nbsp;: classez vos 30 parapersos par sous-axe, puis dans
@@ -135,14 +135,14 @@ const UtiliserExemplesPage: React.FC = () => {
                 <em> apprenable</em> et <em> reconnaissable</em> par le correcteur.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Phrase d&apos;annonce</strong>. Une à deux phrases qui posent l&apos;idée directrice, ton affirmatif. Pas de question rhétorique d&apos;ouverture.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Développement de l&apos;idée</strong>. 3 à 5 phrases courtes qui déroulent l&apos;argument. Définir, opposer, graduer.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Introduction de la référence</strong>. Une transition naturelle&nbsp;: «&nbsp;cette intuition trouve son écho chez…&nbsp;», «&nbsp;à cette question, X répond…&nbsp;».</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Référence expliquée</strong>. Auteur + <em>œuvre en italiques</em> + date. 4 à 6 phrases pour exposer la thèse, sa logique, et la relier à l&apos;idée directrice. Citation courte autorisée, en français, moins de 15 mots.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Phrase de conclusion</strong>. Reformule l&apos;idée directrice, légèrement déplacée par la référence. On doit sentir qu&apos;on a <em>gagné un cran</em>.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Phrase d&apos;annonce</strong>. Une à deux phrases qui posent l&apos;idée directrice, ton affirmatif. Pas de question rhétorique d&apos;ouverture.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Développement de l&apos;idée</strong>. 3 à 5 phrases courtes qui déroulent l&apos;argument. Définir, opposer, graduer.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Introduction de la référence</strong>. Une transition naturelle&nbsp;: «&nbsp;cette intuition trouve son écho chez…&nbsp;», «&nbsp;à cette question, X répond…&nbsp;».</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Référence expliquée</strong>. Auteur + <em>œuvre en italiques</em> + date. 4 à 6 phrases pour exposer la thèse, sa logique, et la relier à l&apos;idée directrice. Citation courte autorisée, en français, moins de 15 mots.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Phrase de conclusion</strong>. Reformule l&apos;idée directrice, légèrement déplacée par la référence. On doit sentir qu&apos;on a <em>gagné un cran</em>.</li>
               </ul>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Règles de style non négociables</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Règles de style non négociables</h3>
                 <ul className="space-y-1 text-sm">
                   <li>• Phrases courtes ou moyennes (5 à 25 mots). Aucune phrase de plus de 30 mots.</li>
                   <li>• 1 à 2 références par paraperso. Si 2, elles dialoguent (s&apos;opposent, se complètent).</li>
@@ -162,10 +162,10 @@ const UtiliserExemplesPage: React.FC = () => {
                 en quatre semaines.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Semaine 1 — Rédaction</strong>. Écrire les 30 parapersos en suivant la structure des 5 temps. Une fiche par paraperso&nbsp;: titre, auteur+œuvre+date, mots-clés, citation courte.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Semaine 2 — Récitation orale</strong>. Réciter chaque paraperso à voix haute, fiche cachée. Repérer les trous. Reformuler avec ses mots avant de remettre la version finale.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Semaine 3 — Espacement (Ebbinghaus)</strong>. Réviser à J+1, J+3, J+7. Un paraperso revu trois fois espacées tient en mémoire long terme.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Semaine 4 — Mise en situation</strong>. Tirer un sujet au hasard, choisir 6 parapersos pertinents, écrire l&apos;intro et un paragraphe en conditions réelles. Chronomètre&nbsp;: 12 minutes par paraperso à l&apos;écrit.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Semaine 1 — Rédaction</strong>. Écrire les 30 parapersos en suivant la structure des 5 temps. Une fiche par paraperso&nbsp;: titre, auteur+œuvre+date, mots-clés, citation courte.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Semaine 2 — Récitation orale</strong>. Réciter chaque paraperso à voix haute, fiche cachée. Repérer les trous. Reformuler avec ses mots avant de remettre la version finale.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Semaine 3 — Espacement (Ebbinghaus)</strong>. Réviser à J+1, J+3, J+7. Un paraperso revu trois fois espacées tient en mémoire long terme.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Semaine 4 — Mise en situation</strong>. Tirer un sujet au hasard, choisir 6 parapersos pertinents, écrire l&apos;intro et un paragraphe en conditions réelles. Chronomètre&nbsp;: 12 minutes par paraperso à l&apos;écrit.</li>
               </ul>
               <p>
                 <strong>Test ultime.</strong> Vous pouvez restituer le paraperso au mot
@@ -471,7 +471,7 @@ const UtiliserExemplesPage: React.FC = () => {
                 />
               </Axis>
 
-              <div className="bg-pr-orange-pale rounded-xl p-4 mt-4">
+              <div className="bg-pr-gray-bg rounded-xl p-4 mt-4">
                 <p className="text-sm">
                   <strong>Mémo.</strong> Ces 30 entrées sont des <em>graines</em>. Pour
                   chacune, écrivez le paraperso complet de 270 à 300 mots en suivant la
@@ -488,13 +488,13 @@ const UtiliserExemplesPage: React.FC = () => {
                 Le sujet tombe à 8h. Vous avez quatre heures. Voici la séquence.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>0 à 30 min</strong>. Analyse du sujet, problématique, plan détaillé. <em>Sélection</em> de 6 à 8 parapersos parmi vos 30, un par sous-partie. Notez les numéros de votre stock dans la marge.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>30 à 50 min</strong>. Rédaction de l&apos;introduction au propre (5 temps&nbsp;: accroche, définitions, paradoxe, problématique, annonce du plan).</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>50 min à 3h30</strong>. Rédaction des sous-parties. <strong>Comptez 12 minutes par paraperso</strong>, soit environ 25 à 30 minutes par sous-partie (paraperso + transition + analyse).</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>3h30 à 4h</strong>. Conclusion (bilan + ouverture) et relecture orthographique.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>0 à 30 min</strong>. Analyse du sujet, problématique, plan détaillé. <em>Sélection</em> de 6 à 8 parapersos parmi vos 30, un par sous-partie. Notez les numéros de votre stock dans la marge.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>30 à 50 min</strong>. Rédaction de l&apos;introduction au propre (5 temps&nbsp;: accroche, définitions, paradoxe, problématique, annonce du plan).</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>50 min à 3h30</strong>. Rédaction des sous-parties. <strong>Comptez 12 minutes par paraperso</strong>, soit environ 25 à 30 minutes par sous-partie (paraperso + transition + analyse).</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>3h30 à 4h</strong>. Conclusion (bilan + ouverture) et relecture orthographique.</li>
               </ul>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Éviter le plaquage</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Éviter le plaquage</h3>
                 <p>
                   Un paraperso plaqué se reconnaît à la rupture stylistique entre lui et
                   le reste. Solution&nbsp;: <strong>reformulez la phrase d&apos;annonce</strong>
@@ -520,7 +520,7 @@ const UtiliserExemplesPage: React.FC = () => {
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/methodes">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des méthodes
               </Button>
             </Link>

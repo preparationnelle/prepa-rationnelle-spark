@@ -39,7 +39,7 @@ const OteriaPythonReferencesPage = () => {
 
           {/* Informations de référence */}
           <div className="max-w-xl mx-auto mb-6">
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 shadow-sm">
+            <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4 shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
                 <div className="flex flex-col items-center">
                   <span className="text-sm text-carnet-red font-medium mb-1">Modules</span>
@@ -64,7 +64,7 @@ const OteriaPythonReferencesPage = () => {
         </div>
 
         {/* Section 1: Importation des modules */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 mb-8">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
               <Code className="h-6 w-6" />
@@ -94,7 +94,7 @@ const OteriaPythonReferencesPage = () => {
         </Card>
 
         {/* Section 2: Fonctions mathématiques de base */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 mb-8">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
               <Calculator className="h-6 w-6" />
@@ -103,31 +103,31 @@ const OteriaPythonReferencesPage = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.abs()</code>
                 <p className="text-xs mt-1">Valeur absolue</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.cos()</code>
                 <p className="text-xs mt-1">Cosinus</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.sin()</code>
                 <p className="text-xs mt-1">Sinus</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.log()</code>
                 <p className="text-xs mt-1">Logarithme népérien</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.exp()</code>
                 <p className="text-xs mt-1">Exponentielle</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.sqrt()</code>
                 <p className="text-xs mt-1">Racine carrée</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.floor()</code>
                 <p className="text-xs mt-1">Partie entière</p>
               </div>
@@ -136,7 +136,7 @@ const OteriaPythonReferencesPage = () => {
         </Card>
 
         {/* Section 3: Constantes */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 mb-8">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
               <Target className="h-6 w-6" />
@@ -158,7 +158,7 @@ const OteriaPythonReferencesPage = () => {
         </Card>
 
         {/* Section 4: Création de vecteurs */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 mb-8">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
               <Database className="h-6 w-6" />
@@ -167,23 +167,23 @@ const OteriaPythonReferencesPage = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold text-xs">np.array([u1,...,un])</code>
                 <p className="text-xs mt-1">Créer un vecteur-ligne</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.arange(a,b,r)</code>
                 <p className="text-xs mt-1">Progression arithmétique de raison r</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.linspace(a,b,n)</code>
                 <p className="text-xs mt-1">n éléments équirépartis de a à b</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.ones(n)</code>
                 <p className="text-xs mt-1">Vecteur de n éléments égaux à 1</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.zeros(n)</code>
                 <p className="text-xs mt-1">Vecteur de n éléments égaux à 0</p>
               </div>
@@ -192,7 +192,7 @@ const OteriaPythonReferencesPage = () => {
         </Card>
 
         {/* Section 5: Création de matrices */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 mb-8">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
               <Database className="h-6 w-6" />
@@ -206,15 +206,15 @@ const OteriaPythonReferencesPage = () => {
                 <p className="text-sm mt-1">Création d'une matrice</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+                <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                   <code className="text-carnet-red font-semibold">np.ones((n,p))</code>
                   <p className="text-xs mt-1">Matrice n×p de 1</p>
                 </div>
-                <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+                <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                   <code className="text-carnet-red font-semibold">np.zeros((n,p))</code>
                   <p className="text-xs mt-1">Matrice n×p de 0</p>
                 </div>
-                <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+                <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                   <code className="text-carnet-red font-semibold">np.eye(n,p)</code>
                   <p className="text-xs mt-1">Matrice avec 1 sur la diagonale</p>
                 </div>
@@ -224,7 +224,7 @@ const OteriaPythonReferencesPage = () => {
         </Card>
 
         {/* Section 6: Opérations sur matrices/vecteurs */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 mb-8">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
               <Zap className="h-6 w-6" />
@@ -233,35 +233,35 @@ const OteriaPythonReferencesPage = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.shape(A)</code>
                 <p className="text-xs mt-1">Dimensions de la matrice A</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.dot(A,B)</code>
                 <p className="text-xs mt-1">Produit matriciel</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.transpose(A)</code>
                 <p className="text-xs mt-1">Transposée de A</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.sum(A)</code>
                 <p className="text-xs mt-1">Somme de tous les éléments</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.mean(A)</code>
                 <p className="text-xs mt-1">Moyenne de tous les éléments</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.min(A)</code>
                 <p className="text-xs mt-1">Minimum des éléments</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.max(A)</code>
                 <p className="text-xs mt-1">Maximum des éléments</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">np.cumsum(A)</code>
                 <p className="text-xs mt-1">Sommes cumulées</p>
               </div>
@@ -270,7 +270,7 @@ const OteriaPythonReferencesPage = () => {
         </Card>
 
         {/* Section 7: Algèbre linéaire */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 mb-8">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
               <Calculator className="h-6 w-6" />
@@ -279,23 +279,23 @@ const OteriaPythonReferencesPage = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">al.inv(A)</code>
                 <p className="text-xs mt-1">Inverse de la matrice A</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">al.matrix_rank(A)</code>
                 <p className="text-xs mt-1">Rang de la matrice A</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">al.matrix_power(A,n)</code>
                 <p className="text-xs mt-1">Puissance n-ième de A</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">al.solve(A,b)</code>
                 <p className="text-xs mt-1">Résolution du système Ax = b</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">al.eig(A)</code>
                 <p className="text-xs mt-1">Valeurs propres et vecteurs propres</p>
               </div>
@@ -304,7 +304,7 @@ const OteriaPythonReferencesPage = () => {
         </Card>
 
         {/* Section 8: Variables aléatoires */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 mb-8">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
               <Target className="h-6 w-6" />
@@ -313,35 +313,35 @@ const OteriaPythonReferencesPage = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">rd.uniform(a,b)</code>
                 <p className="text-xs mt-1">Loi uniforme sur [a,b]</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">rd.randint(a,b)</code>
                 <p className="text-xs mt-1">Entier uniforme sur [a,b-1]</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">rd.binomial(n,p)</code>
                 <p className="text-xs mt-1">Loi binomiale B(n,p)</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">rd.geometric(p)</code>
                 <p className="text-xs mt-1">Loi géométrique de paramètre p</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">rd.exponential(1/lambda)</code>
                 <p className="text-xs mt-1">Loi exponentielle</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">rd.normal(m,sigma)</code>
                 <p className="text-xs mt-1">Loi normale N(m,σ²)</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">rd.poisson(lambda)</code>
                 <p className="text-xs mt-1">Loi de Poisson P(λ)</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">rd.gamma(nu)</code>
                 <p className="text-xs mt-1">Loi gamma de paramètre ν</p>
               </div>
@@ -350,7 +350,7 @@ const OteriaPythonReferencesPage = () => {
         </Card>
 
         {/* Section 9: Représentations graphiques */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 mb-8">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
               <BarChart3 className="h-6 w-6" />
@@ -359,51 +359,51 @@ const OteriaPythonReferencesPage = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">plt.plot(x,y)</code>
                 <p className="text-xs mt-1">Tracer une courbe</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">plt.plot(x,y,'x')</code>
                 <p className="text-xs mt-1">Nuage de points avec des croix</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">plt.show()</code>
                 <p className="text-xs mt-1">Afficher le graphique</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">plt.figure(n)</code>
                 <p className="text-xs mt-1">Créer une nouvelle figure</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">plt.clf()</code>
                 <p className="text-xs mt-1">Effacer le contenu</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">plt.axis('scaled')</code>
                 <p className="text-xs mt-1">Repère orthonormé</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">plt.grid()</code>
                 <p className="text-xs mt-1">Ajouter une grille</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">plt.xlabel('texte')</code>
                 <p className="text-xs mt-1">Légende axe x</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">plt.ylabel('texte')</code>
                 <p className="text-xs mt-1">Légende axe y</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">plt.title('texte')</code>
                 <p className="text-xs mt-1">Titre du graphique</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">plt.hist(data)</code>
                 <p className="text-xs mt-1">Histogramme</p>
               </div>
-              <div className="bg-white border-l-4 border-carnet-red/40 p-3 rounded">
+              <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-3 rounded">
                 <code className="text-carnet-red font-semibold">plt.scatter(x,y)</code>
                 <p className="text-xs mt-1">Nuage de points</p>
               </div>
@@ -412,7 +412,7 @@ const OteriaPythonReferencesPage = () => {
         </Card>
 
         {/* Section 10: Conseils d'utilisation */}
-        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 mb-8">
+        <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 mb-8">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
               <BookOpen className="h-6 w-6" />
@@ -420,7 +420,7 @@ const OteriaPythonReferencesPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-6">
+            <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-6">
               <h4 className="font-semibold text-carnet-red-deep mb-3">Bonnes pratiques :</h4>
               <ul className="text-sm text-gray-700 space-y-2">
                 <li>• <strong>Importez toujours</strong> numpy as np en début de programme</li>

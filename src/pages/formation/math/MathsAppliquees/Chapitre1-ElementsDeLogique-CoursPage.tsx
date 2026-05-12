@@ -153,7 +153,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Négation des quantificateurs</p>
               <div className="mt-2 space-y-2">
                 <ul className="space-y-2 ml-4">
@@ -186,7 +186,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Démonstration directe</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -195,7 +195,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Démonstration par contraposée</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -207,7 +207,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Démonstration par l'absurde</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -216,7 +216,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Démonstration par récurrence</p>
               <div className="mt-2 space-y-2">
                 <p>
@@ -230,7 +230,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-orange-pale border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Disjonction de cas</p>
               <div className="mt-2 space-y-2">
                 <p>

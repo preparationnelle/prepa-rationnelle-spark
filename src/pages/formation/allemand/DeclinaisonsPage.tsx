@@ -11,14 +11,14 @@ const DeclinaisonsPage = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-4 mb-4">
-              <Link to="/formation/allemand-grammaire" className="flex items-center gap-2 text-gray-600 hover:text-pr-orange-dark transition-colors">
+              <Link to="/formation/allemand-grammaire" className="flex items-center gap-2 text-gray-600 hover:text-pr-black transition-colors">
                 <ArrowLeft className="h-4 w-4" />
                 <span className="text-sm">Retour à la grammaire</span>
         </Link>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center border border-orange-100">
-                <BookOpen className="h-6 w-6 text-pr-orange-dark" />
+              <div className="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center border border-orange-100">
+                <BookOpen className="h-6 w-6 text-pr-black" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">Les Déclinaisons de l'Adjectif en Allemand</h1>
@@ -37,8 +37,8 @@ const DeclinaisonsPage = () => {
           <section className="mb-10">
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <span className="text-pr-orange-dark font-bold text-sm">1</span>
+                <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <span className="text-pr-black font-bold text-sm">1</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">
                   Trois types de d&eacute;clinaison : quand les utiliser ?
@@ -80,8 +80,8 @@ const DeclinaisonsPage = () => {
           <section className="mb-10">
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <span className="text-pr-orange-dark font-bold text-sm">2</span>
+                <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <span className="text-pr-black font-bold text-sm">2</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">
                   Tableaux des terminaisons
@@ -98,7 +98,7 @@ const DeclinaisonsPage = () => {
                   <div className="overflow-x-auto">
                     <table className="w-full border-collapse border border-gray-300 bg-white">
                       <thead>
-                        <tr className="bg-orange-50">
+                        <tr className="bg-gray-50">
                           <th className="border border-gray-300 p-3 text-left font-semibold text-gray-900">Cas</th>
                           <th className="border border-gray-300 p-3 text-left font-semibold text-gray-900">Masculin</th>
                           <th className="border border-gray-300 p-3 text-left font-semibold text-gray-900">F&eacute;minin</th>
@@ -139,8 +139,8 @@ const DeclinaisonsPage = () => {
                     </table>
                   </div>
 
-                  <div className="mt-3 p-3 bg-orange-50 rounded-lg border border-orange-200">
-                    <p className="text-sm text-orange-800 italic">
+                  <div className="mt-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <p className="text-sm text-gray-800 italic">
                       À retenir : article = terminaison forte ; l&apos;adjectif reste discret (-e/-en).
                     </p>
                   </div>
@@ -212,7 +212,7 @@ const DeclinaisonsPage = () => {
                   <div className="overflow-x-auto">
                     <table className="w-full border-collapse border border-gray-300 bg-white">
                       <thead>
-                        <tr className="bg-orange-50">
+                        <tr className="bg-gray-50">
                           <th className="border border-gray-300 p-3 text-left font-semibold text-gray-900">Cas</th>
                           <th className="border border-gray-300 p-3 text-left font-semibold text-gray-900">Masculin</th>
                           <th className="border border-gray-300 p-3 text-left font-semibold text-gray-900">F&eacute;minin</th>
@@ -253,8 +253,8 @@ const DeclinaisonsPage = () => {
                     </table>
                   </div>
 
-                  <div className="mt-3 p-3 bg-orange-50 rounded-lg border border-orange-200">
-                    <p className="text-sm text-orange-800 italic">
+                  <div className="mt-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                    <p className="text-sm text-gray-800 italic">
                       Multiples adjectifs : frischer süßer Bio-Kaffee : tous les adjectifs reçoivent la même désinence forte.
                     </p>
                   </div>
@@ -267,8 +267,8 @@ const DeclinaisonsPage = () => {
           <section className="mb-10">
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <span className="text-pr-orange-dark font-bold text-sm">3</span>
+                <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <span className="text-pr-black font-bold text-sm">3</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">
                   R&egrave;gles et m&eacute;mos &eacute;clair
@@ -307,23 +307,23 @@ const DeclinaisonsPage = () => {
                 </div>
               </div>
 
-              <div className="mt-6 p-4 bg-orange-50 rounded-lg border border-orange-200">
-                <h4 className="font-bold text-orange-800 mb-3">Mémo mnémotechnique pour la forte</h4>
+              <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <h4 className="font-bold text-gray-800 mb-3">Mémo mnémotechnique pour la forte</h4>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   <div className="text-center">
-                    <div className="font-bold text-pr-orange-dark mb-1">NOM.</div>
+                    <div className="font-bold text-pr-black mb-1">NOM.</div>
                     <div className="text-sm text-gray-700">-er / -e / -es / -e</div>
                   </div>
                   <div className="text-center">
-                    <div className="font-bold text-pr-orange-dark mb-1">ACC.</div>
+                    <div className="font-bold text-pr-black mb-1">ACC.</div>
                     <div className="text-sm text-gray-700">seul masculin change → -en</div>
                   </div>
                   <div className="text-center">
-                    <div className="font-bold text-pr-orange-dark mb-1">DAT.</div>
+                    <div className="font-bold text-pr-black mb-1">DAT.</div>
                     <div className="text-sm text-gray-700">m pour masculin/neutre (em), r pour féminin (er), n pour pluriel (en)</div>
                   </div>
                   <div className="text-center">
-                    <div className="font-bold text-pr-orange-dark mb-1">GEN.</div>
+                    <div className="font-bold text-pr-black mb-1">GEN.</div>
                     <div className="text-sm text-gray-700">-en / -er / -en / -er</div>
                   </div>
                 </div>
@@ -335,8 +335,8 @@ const DeclinaisonsPage = () => {
           <section className="mb-10">
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <span className="text-pr-orange-dark font-bold text-sm">4</span>
+                <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <span className="text-pr-black font-bold text-sm">4</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900">
                   Exercices conseill&eacute;s (pour s&apos;entra&icirc;ner)
@@ -348,7 +348,7 @@ const DeclinaisonsPage = () => {
                   <h4 className="font-bold text-gray-900 mb-3">Transformez :</h4>
                   <div>
                     <p className="text-gray-700">Ich trinke ___ (frisch, stark) Kaffee</p>
-                    <p className="font-mono text-pr-orange-dark font-semibold">→ Ich trinke frischen starken Kaffee</p>
+                    <p className="font-mono text-pr-black font-semibold">→ Ich trinke frischen starken Kaffee</p>
                     <span className="text-xs text-gray-600">(forte, masculin accusatif)</span>
                   </div>
                 </div>
@@ -357,7 +357,7 @@ const DeclinaisonsPage = () => {
                   <h4 className="font-bold text-gray-900 mb-3">Traduisez en allemand :</h4>
                   <div>
                     <p className="text-gray-700">"Je n'achète pas de vieux vins."</p>
-                    <p className="font-mono text-pr-orange-dark font-semibold">→ Ich kaufe keine alten Weine.</p>
+                    <p className="font-mono text-pr-black font-semibold">→ Ich kaufe keine alten Weine.</p>
                     <span className="text-xs text-gray-600">(mixte, pluriel accusatif)</span>
                   </div>
                 </div>
@@ -366,7 +366,7 @@ const DeclinaisonsPage = () => {
                   <h4 className="font-bold text-gray-900 mb-3">Remplissez le datif :</h4>
                   <div>
                     <p className="text-gray-700">mit ___ (neu) Freunden</p>
-                    <p className="font-mono text-pr-orange-dark font-semibold">→ mit neuen Freunden</p>
+                    <p className="font-mono text-pr-black font-semibold">→ mit neuen Freunden</p>
                     <span className="text-xs text-gray-600">(faible, pluriel datif)</span>
                   </div>
                 </div>
@@ -376,10 +376,10 @@ const DeclinaisonsPage = () => {
 
           {/* 5. Verdict */}
           <section className="mb-10">
-            <div className="bg-orange-50 rounded-lg p-6 border border-orange-200">
+            <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <span className="text-pr-orange-dark font-bold text-sm">5</span>
+                <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <span className="text-pr-black font-bold text-sm">5</span>
                 </div>
                 <h2 className="text-xl font-bold text-orange-900">Verdict</h2>
               </div>
@@ -394,7 +394,7 @@ const DeclinaisonsPage = () => {
                   <li>• <strong>Pas d'article → adjectif complet.</strong></li>
                 </ul>
                 <div className="mt-4 p-4 bg-white rounded-lg border border-orange-300">
-                  <p className="font-semibold text-orange-800">
+                  <p className="font-semibold text-gray-800">
                     Entraînez-vous régulièrement : la régularité vaut mieux que les listes apprises par cœur !
                   </p>
                 </div>

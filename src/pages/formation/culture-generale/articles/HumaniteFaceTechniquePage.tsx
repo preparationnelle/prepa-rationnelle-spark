@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -26,13 +26,13 @@ const HumaniteFaceTechniquePage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Article
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               L&apos;humanité face à la technique
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Heidegger, Anders, transhumanisme. La technique tient-elle sa promesse
               d&apos;augmentation de l&apos;humain&nbsp;? Ou nous fait-elle perdre ce qui constitue
@@ -58,12 +58,12 @@ const HumaniteFaceTechniquePage: React.FC = () => {
                 Trois positions structurent le débat contemporain.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Heidegger</strong>&nbsp;: la technique moderne est une manière de regarder le monde qui réduit tout à du disponible, et nous compris.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Anders</strong>&nbsp;: nous avons fabriqué des machines qui nous dépassent, et nous en éprouvons une honte. Nous ne sommes plus à la hauteur de nos propres œuvres.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Transhumanisme</strong>&nbsp;: au lieu de craindre la technique, embrassons-la. Augmentons l&apos;humain, repoussons la mort, fusionnons avec la machine.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Heidegger</strong>&nbsp;: la technique moderne est une manière de regarder le monde qui réduit tout à du disponible, et nous compris.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Anders</strong>&nbsp;: nous avons fabriqué des machines qui nous dépassent, et nous en éprouvons une honte. Nous ne sommes plus à la hauteur de nos propres œuvres.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Transhumanisme</strong>&nbsp;: au lieu de craindre la technique, embrassons-la. Augmentons l&apos;humain, repoussons la mort, fusionnons avec la machine.</li>
               </ul>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Tension à retenir</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Tension à retenir</h3>
                 <p>
                   Promesse d&apos;émancipation ou perte de soi&nbsp;? La technique ne pose pas
                   seulement la question de ce que nous pouvons faire. Elle pose la
@@ -140,9 +140,9 @@ const HumaniteFaceTechniquePage: React.FC = () => {
                 humaines se sont désynchronisées&nbsp;:
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>Ce que nous pouvons <strong>fabriquer</strong>&nbsp;: tout, ou presque.</li>
-                <li><span className="text-pr-orange mr-2">→</span>Ce que nous pouvons <strong>sentir</strong>&nbsp;: bien moins que ce que nous fabriquons.</li>
-                <li><span className="text-pr-orange mr-2">→</span>Ce que nous pouvons <strong>responsabiliser</strong>&nbsp;: presque rien à l&apos;échelle des effets engendrés.</li>
+                <li><span className="text-pr-black mr-2">→</span>Ce que nous pouvons <strong>fabriquer</strong>&nbsp;: tout, ou presque.</li>
+                <li><span className="text-pr-black mr-2">→</span>Ce que nous pouvons <strong>sentir</strong>&nbsp;: bien moins que ce que nous fabriquons.</li>
+                <li><span className="text-pr-black mr-2">→</span>Ce que nous pouvons <strong>responsabiliser</strong>&nbsp;: presque rien à l&apos;échelle des effets engendrés.</li>
               </ul>
               <p>
                 <strong>Conséquence.</strong> L&apos;humain devient <em>obsolète</em> face à
@@ -178,9 +178,9 @@ const HumaniteFaceTechniquePage: React.FC = () => {
                 <strong>Trois critiques majeures.</strong>
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Critique anthropologique</strong>&nbsp;: la finitude (la vulnérabilité, la mort) n&apos;est pas un défaut à corriger. Elle est ce qui donne sens à l&apos;existence humaine. Supprimer la mort, c&apos;est supprimer l&apos;humain qui la pense.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Critique politique</strong>&nbsp;: l&apos;augmentation coûte cher. Elle ne profitera qu&apos;à une élite, fabriquant une humanité à deux vitesses. Le transhumanisme menace l&apos;égalité fondamentale entre humains.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Critique philosophique</strong>&nbsp;: ce projet rejoint exactement ce qu&apos;Anders décrivait. Avoir honte de l&apos;humain ordinaire au point de vouloir le remplacer. Une humanité qui ne se supporte plus elle-même.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Critique anthropologique</strong>&nbsp;: la finitude (la vulnérabilité, la mort) n&apos;est pas un défaut à corriger. Elle est ce qui donne sens à l&apos;existence humaine. Supprimer la mort, c&apos;est supprimer l&apos;humain qui la pense.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Critique politique</strong>&nbsp;: l&apos;augmentation coûte cher. Elle ne profitera qu&apos;à une élite, fabriquant une humanité à deux vitesses. Le transhumanisme menace l&apos;égalité fondamentale entre humains.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Critique philosophique</strong>&nbsp;: ce projet rejoint exactement ce qu&apos;Anders décrivait. Avoir honte de l&apos;humain ordinaire au point de vouloir le remplacer. Une humanité qui ne se supporte plus elle-même.</li>
               </ul>
               <p>
                 <strong>À retenir.</strong> Le transhumanisme n&apos;est pas seulement une
@@ -195,8 +195,8 @@ const HumaniteFaceTechniquePage: React.FC = () => {
 
           <PRCard number="05" title="Paraperso prêt à l'emploi">
             <div className="space-y-4 text-sm md:text-base">
-              <div className="bg-pr-orange-pale rounded-xl p-5">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">
+              <div className="bg-pr-gray-bg rounded-xl p-5">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">
                   La technique comme honte de l&apos;humain
                 </h3>
                 <p className="text-xs italic mb-3">
@@ -243,19 +243,19 @@ const HumaniteFaceTechniquePage: React.FC = () => {
           <PRCard number="06" title="Où mobiliser ces références ?">
             <div className="space-y-4 text-sm md:text-base">
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>La technique nous augmente-t-elle&nbsp;?</strong>&nbsp;» — opposition Heidegger/Anders vs transhumanisme.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Faut-il vouloir dépasser l&apos;humain&nbsp;?</strong>&nbsp;» — sujet typiquement transhumaniste.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;humanité est-elle menacée par ses propres œuvres&nbsp;?</strong>&nbsp;» — Anders central.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Sommes-nous encore maîtres de la technique&nbsp;?</strong>&nbsp;» — Heidegger sur l&apos;arraisonnement.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Une humanité augmentée serait-elle encore humaine&nbsp;?</strong>&nbsp;» — convoquer la finitude.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;humanité a-t-elle un avenir&nbsp;?</strong>&nbsp;» — articuler anthropocène, IA, posthumain.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>La technique nous augmente-t-elle&nbsp;?</strong>&nbsp;» — opposition Heidegger/Anders vs transhumanisme.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Faut-il vouloir dépasser l&apos;humain&nbsp;?</strong>&nbsp;» — sujet typiquement transhumaniste.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;humanité est-elle menacée par ses propres œuvres&nbsp;?</strong>&nbsp;» — Anders central.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Sommes-nous encore maîtres de la technique&nbsp;?</strong>&nbsp;» — Heidegger sur l&apos;arraisonnement.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Une humanité augmentée serait-elle encore humaine&nbsp;?</strong>&nbsp;» — convoquer la finitude.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;humanité a-t-elle un avenir&nbsp;?</strong>&nbsp;» — articuler anthropocène, IA, posthumain.</li>
               </ul>
             </div>
           </PRCard>
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/articles">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des articles
               </Button>
             </Link>

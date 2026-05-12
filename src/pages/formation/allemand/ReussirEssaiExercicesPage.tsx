@@ -451,7 +451,7 @@ const ReussirEssaiExercicesPage = () => {
           </Link>
 
           <div className="mb-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-pr-orange-dark text-white rounded-xl mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-pr-black-dark text-white rounded-xl mb-4">
               <BookOpen className="h-8 w-8" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-3">
@@ -465,7 +465,7 @@ const ReussirEssaiExercicesPage = () => {
           <div className="flex justify-center gap-3">
             <Badge variant="secondary" className="px-3 py-1">Niveau Intermédiaire - Avancé</Badge>
             <Badge variant="outline" className="px-3 py-1 border-gray-300">{filteredEssaiData.length} expressions</Badge>
-            <Badge className="bg-pr-orange-dark px-3 py-1">Préparation Bac</Badge>
+            <Badge className="bg-pr-black-dark px-3 py-1">Préparation Bac</Badge>
           </div>
         </div>
 
@@ -474,7 +474,7 @@ const ReussirEssaiExercicesPage = () => {
           <Button
             variant={examMode ? "default" : "outline"}
             onClick={() => setExamMode(prev => !prev)}
-            className={examMode ? "bg-pr-orange hover:bg-pr-orange-dark text-white" : "border-pr-orange text-pr-orange hover:bg-pr-orange-pale"}
+            className={examMode ? "bg-pr-black hover:bg-pr-black-dark text-white" : "border-pr-black text-pr-black hover:bg-pr-gray-bg"}
           >
             {examMode ? "Désactiver le Mode Révision" : "Activer le Mode Révision"}
           </Button>
@@ -482,11 +482,11 @@ const ReussirEssaiExercicesPage = () => {
 
         {/* Exam Timer and Controls */}
         {examMode && (
-          <Card className="mb-8 border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-indigo-50">
+          <Card className="mb-8 border-2 border-carnet-red/30 bg-carnet-paper-2 border-carnet-rule">
             <CardContent className="py-4">
               {!examStarted ? (
                 <div className="flex items-center justify-center gap-4">
-                  <Button onClick={startExam} className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2">
+                  <Button onClick={startExam} className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2">
                     <CheckCircle className="h-4 w-4 mr-2" />Commencer la révision
                   </Button>
                   <p className="text-sm text-gray-600">⚠️ Mode concentré pour mémoriser les expressions.</p>
@@ -509,8 +509,8 @@ const ReussirEssaiExercicesPage = () => {
         <Card className="mb-8 border border-gray-200 bg-white shadow-sm">
           <CardHeader className="pb-4">
             <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
-              <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                <Target className="h-4 w-4 text-pr-orange-dark" />
+              <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                <Target className="h-4 w-4 text-pr-black" />
               </div>
               Filtrer les expressions
             </CardTitle>
@@ -520,7 +520,7 @@ const ReussirEssaiExercicesPage = () => {
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700">Catégorie</label>
                 <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange" disabled={examStarted}>
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carnet-red/30 focus:border-pr-black" disabled={examStarted}>
                   <option value="toutes">Toutes les catégories</option>
                   <option value="I. Introduction - Présenter le sujet">Introduction - Présenter le sujet</option>
                   <option value="I. Introduction - Énoncer sa thèse">Introduction - Énoncer sa thèse</option>
@@ -536,7 +536,7 @@ const ReussirEssaiExercicesPage = () => {
               <div className="space-y-2">
                 <label className="block text-sm font-medium text-gray-700">Niveau</label>
                 <select value={selectedLevel} onChange={(e) => setSelectedLevel(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange" disabled={examStarted}>
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carnet-red/30 focus:border-pr-black" disabled={examStarted}>
                   <option value="tous">Tous les niveaux</option>
                   <option value="intermédiaire">Intermédiaire</option>
                   <option value="avancé">Avancé</option>
@@ -550,10 +550,10 @@ const ReussirEssaiExercicesPage = () => {
         <div className="mb-8">
 
           {/* Informations pratiques */}
-          <div className="bg-orange-50 rounded-lg p-4 border border-orange-200 mb-8">
+          <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <Target className="h-5 w-5 text-pr-orange-dark" />
-              <span className="font-medium text-orange-800">Objectif :</span>
+              <Target className="h-5 w-5 text-pr-black" />
+              <span className="font-medium text-gray-800">Objectif :</span>
             </div>
             <p className="text-gray-700">
               Ces flashcards vous aideront à mémoriser les expressions clés pour structurer et argumenter vos essais.
@@ -573,27 +573,27 @@ const ReussirEssaiExercicesPage = () => {
           <h2 className="text-xl font-semibold text-gray-900 mb-6">📋 Récapitulatif des sections couvertes</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="bg-gray-50 rounded p-4">
-              <h4 className="font-medium text-orange-800 mb-2">I. Introduction</h4>
+              <h4 className="font-medium text-gray-800 mb-2">I. Introduction</h4>
               <p className="text-sm text-gray-600">Présenter le sujet et énoncer sa thèse</p>
             </div>
             <div className="bg-gray-50 rounded p-4">
-              <h4 className="font-medium text-orange-800 mb-2">II. Critique contre-thèse</h4>
+              <h4 className="font-medium text-gray-800 mb-2">II. Critique contre-thèse</h4>
               <p className="text-sm text-gray-600">Argumenter contre l'opinion opposée</p>
             </div>
             <div className="bg-gray-50 rounded p-4">
-              <h4 className="font-medium text-orange-800 mb-2">III. Développement</h4>
+              <h4 className="font-medium text-gray-800 mb-2">III. Développement</h4>
               <p className="text-sm text-gray-600">Développer sa propre position</p>
             </div>
             <div className="bg-gray-50 rounded p-4">
-              <h4 className="font-medium text-orange-800 mb-2">IV. Exemples & Chiffres</h4>
+              <h4 className="font-medium text-gray-800 mb-2">IV. Exemples & Chiffres</h4>
               <p className="text-sm text-gray-600">Illustrer ses arguments</p>
             </div>
             <div className="bg-gray-50 rounded p-4">
-              <h4 className="font-medium text-orange-800 mb-2">V. Critique & Commentaire</h4>
+              <h4 className="font-medium text-gray-800 mb-2">V. Critique & Commentaire</h4>
               <p className="text-sm text-gray-600">Analyser et commenter</p>
             </div>
             <div className="bg-gray-50 rounded p-4">
-              <h4 className="font-medium text-orange-800 mb-2">VI. Conclusion</h4>
+              <h4 className="font-medium text-gray-800 mb-2">VI. Conclusion</h4>
               <p className="text-sm text-gray-600">Résumer et conclure</p>
             </div>
           </div>
@@ -611,7 +611,7 @@ const ReussirEssaiExercicesPage = () => {
 
             <Link
               to="/formation/allemand/reussir-essai"
-              className="inline-flex items-center px-4 py-2 bg-pr-orange-dark hover:bg-pr-orange-dark text-white rounded-md font-medium transition-colors"
+              className="inline-flex items-center px-4 py-2 bg-pr-black-dark hover:bg-pr-black-dark text-white rounded-md font-medium transition-colors"
             >
               <BookOpen className="mr-2 h-4 w-4" />
               Méthodologie complète
@@ -624,7 +624,7 @@ const ReussirEssaiExercicesPage = () => {
           <div className="flex justify-center gap-4 mt-10">
             <Button
               onClick={() => setScore(90)}
-              className="bg-pr-orange hover:bg-pr-orange-dark text-white px-8 py-3 text-lg flex items-center gap-2"
+              className="bg-pr-black hover:bg-pr-black-dark text-white px-8 py-3 text-lg flex items-center gap-2"
             >
               <CheckCircle className="h-5 w-5" />
               Terminer la révision
@@ -632,7 +632,7 @@ const ReussirEssaiExercicesPage = () => {
             <Button
               onClick={resetQuiz}
               variant="outline"
-              className="px-8 py-3 text-lg flex items-center gap-2 border-pr-orange text-pr-orange hover:bg-pr-orange-pale"
+              className="px-8 py-3 text-lg flex items-center gap-2 border-pr-black text-pr-black hover:bg-pr-gray-bg"
             >
               <X className="h-5 w-5" />
               Réinitialiser
@@ -642,9 +642,9 @@ const ReussirEssaiExercicesPage = () => {
 
         {/* Score affiché */}
         {showScore && score !== null && (
-          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-orange-pale' : 'border-orange-200 bg-orange-50'}`}>
+          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-gray-bg' : 'border-gray-200 bg-gray-50'}`}>
             <CardHeader className="text-center">
-              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-carnet-red-deep' : 'text-orange-800'}`}>
+              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-carnet-red-deep' : 'text-gray-800'}`}>
                 <Award className="h-8 w-8" />
                 {examMode ? 'Résultats de la Révision' : 'Votre Score'} : {score}%
               </CardTitle>
@@ -658,7 +658,7 @@ const ReussirEssaiExercicesPage = () => {
                 </div>
               )}
               <div className={`text-lg ${
-                examMode ? 'text-carnet-red' : 'text-pr-orange-dark'
+                examMode ? 'text-carnet-red' : 'text-pr-black'
               }`}>
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
@@ -678,7 +678,7 @@ const ReussirEssaiExercicesPage = () => {
                 )}
               </div>
               {examMode && (
-                <div className="mt-4 p-3 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
+                <div className="mt-4 p-3 bg-pr-gray-bg rounded-lg border border-carnet-red/30">
                   <p className="text-carnet-red text-sm">
                     💡 Pour l'épreuve d'essai, concentrez-vous sur la structure logique et l'utilisation appropriée des connecteurs.
                   </p>

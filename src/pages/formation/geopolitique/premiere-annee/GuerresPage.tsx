@@ -4,33 +4,33 @@ import { Home, ChevronRight } from 'lucide-react';
 
 const GuerresPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
-      <div className="sticky top-0 z-40 bg-gray-50/90 backdrop-blur-sm border-b">
+    <div className="relative">
+      <div className="sticky top-0 z-40 bg-carnet-paper/95 backdrop-blur-sm border-b border-carnet-rule/60">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs text-gray-500">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-800 transition-colors">
+          <div className="flex items-center text-[11px] uppercase tracking-[0.08em] text-carnet-ink-soft font-semibold">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/geopolitique" className="hover:text-gray-800 transition-colors">Géopolitique</Link>
+            <Link to="/formation/geopolitique" className="hover:text-carnet-ink transition-colors">Géopolitique</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <Link to="/formation/geopolitique/premiere-annee" className="hover:text-gray-800 transition-colors">Première année</Link>
+            <Link to="/formation/geopolitique/premiere-annee" className="hover:text-carnet-ink transition-colors">Première année</Link>
             <ChevronRight className="h-3 w-3 mx-1" />
-            <span className="text-gray-800 font-medium">Les guerres</span>
+            <span className="text-carnet-ink">Les guerres</span>
           </div>
         </div>
       </div>
 
       <div className="container mx-auto px-4 pt-12 pb-16">
-        <div className="max-w-4xl mx-auto bg-white border rounded-xl p-6">
+        <div className="max-w-4xl mx-auto bg-carnet-paper-2 border border-carnet-rule rounded-xl p-6">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-gray-900">Les guerres</h1>
             <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
           <div className="space-y-8 text-gray-900">
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+            <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4">
               <p className="italic">« Soumettre l’ennemi par la force n’est pas le summum de l’art de la guerre, le summum de cet art est de soumettre l’ennemi sans verser une seule goutte de sang » — Sun Tzu, L’Art de la guerre.</p>
               <p className="italic">« La guerre, c’est la guerre des hommes ; la paix, c’est la guerre des idées » — Victor Hugo.</p>
               <p className="italic">« La guerre n’est que la continuation de la politique par d’autres moyens » — Carl von Clausewitz.</p>
@@ -99,7 +99,7 @@ const GuerresPage: React.FC = () => {
               <p>Nouveau cycle nucléaire : essais nord‑coréens, retrait US du JCPoA; égalisation des arsenaux (B. Tertrais); instabilités accrues vs guerre froide.</p>
             </div>
 
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4">
+            <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4">
               <h3 className="text-lg font-semibold text-carnet-red mb-2">Conclusion</h3>
               <p className="italic">« La guerre est semblable au feu, lorsqu’elle se prolonge, elle met en péril ceux qui l’ont provoqué » — Sun Tzu.</p>
               <p className="italic">« Être inerte, c’est être battu. » — Charles de Gaulle.</p>

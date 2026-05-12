@@ -10,13 +10,13 @@ const ReferencesParapersosPage: React.FC = () => {
         <div className="container mx-auto max-w-5xl">
           {/* Header */}
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Références
             </p>
             <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black leading-tight mb-5">
               Références
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-2xl mx-auto leading-relaxed">
               Banque de parapersos sur le thème <em>l&apos;humanité</em>. Chaque
               titre ouvre un paragraphe autonome et puissant, prêt à être
@@ -27,7 +27,7 @@ const ReferencesParapersosPage: React.FC = () => {
               <span className="px-3 py-1 bg-white border border-pr-gray-light text-pr-gray-dark rounded-full text-xs font-semibold uppercase tracking-wider">
                 {parapersosHumanite.length} paragraphes
               </span>
-              <span className="px-3 py-1 bg-pr-orange-pale text-pr-orange-dark rounded-full text-xs font-semibold uppercase tracking-wider">
+              <span className="px-3 py-1 bg-pr-gray-bg text-pr-black rounded-full text-xs font-semibold uppercase tracking-wider">
                 À apprendre par cœur
               </span>
             </div>
@@ -41,16 +41,16 @@ const ReferencesParapersosPage: React.FC = () => {
                 to={`/formation/culture-generale/references/${p.slug}`}
                 className="block group"
               >
-                <article className="relative bg-white rounded-2xl p-6 md:p-7 border border-pr-gray-light hover:border-pr-orange hover:shadow-md transition-all duration-300 overflow-hidden">
-                  <div className="absolute top-0 left-0 bottom-0 w-[3px] bg-pr-orange opacity-0 group-hover:opacity-100 transition-opacity" />
+                <article className="relative bg-white rounded-2xl p-6 md:p-7 border border-pr-gray-light hover:border-pr-black hover:shadow-md transition-all duration-300 overflow-hidden">
+                  <div className="absolute top-0 left-0 bottom-0 w-[3px] bg-pr-black opacity-0 group-hover:opacity-100 transition-opacity" />
 
                   <div className="flex flex-col md:flex-row md:items-center gap-5">
                     <div className="flex items-start gap-5 md:flex-1">
-                      <span className="font-dm-serif text-pr-orange text-5xl leading-none flex-shrink-0 w-14">
+                      <span className="font-dm-serif text-pr-black text-5xl leading-none flex-shrink-0 w-14">
                         {String(p.number).padStart(2, '0')}
                       </span>
                       <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark mb-1.5">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-black mb-1.5">
                           {p.sousTheme}
                         </p>
                         <h3 className="font-dm-serif text-xl md:text-2xl text-pr-black leading-tight mb-2">
@@ -65,7 +65,7 @@ const ReferencesParapersosPage: React.FC = () => {
                       className="md:ml-auto md:pl-4"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-5 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+                      <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-5 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                         Lire le paragraphe →
                       </Button>
                     </div>
@@ -79,7 +79,7 @@ const ReferencesParapersosPage: React.FC = () => {
           <div className="mt-12 text-center">
             <Link
               to="/formation/culture-generale"
-              className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark hover:text-pr-orange transition-colors"
+              className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black hover:text-pr-black transition-colors"
             >
               ← Retour à la culture générale
             </Link>

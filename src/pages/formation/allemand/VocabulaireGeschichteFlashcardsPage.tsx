@@ -312,7 +312,7 @@ const VocabulaireGeschichteFlashcardsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-carnet-ink mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+            <div className="p-3 rounded-lg bg-carnet-red/10 text-carnet-red-deep">
               <BookOpen className="h-9 w-9" />
             </div>
             Vocabulaire Histoire et Mémoire
@@ -323,7 +323,7 @@ const VocabulaireGeschichteFlashcardsPage = () => {
           <div className="flex justify-center gap-2 mt-4">
             <Badge variant="secondary">{cards.length} mots</Badge>
             <Badge variant="outline">Module 10 - Geschichte und Erinnerungskultur</Badge>
-            <Badge className="bg-pr-orange-dark">Flashcards</Badge>
+            <Badge className="bg-carnet-red hover:bg-carnet-red-deep text-white border-0">Flashcards</Badge>
           </div>
         </div>
 
@@ -335,7 +335,7 @@ const VocabulaireGeschichteFlashcardsPage = () => {
           </div>
           <div className="w-full bg-carnet-rule/40 rounded-full h-2.5">
             <div 
-              className="bg-gradient-to-r from-pr-orange to-pr-orange-dark h-2.5 rounded-full transition-all duration-300"
+              className="bg-carnet-red h-2.5 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             ></div>
           </div>

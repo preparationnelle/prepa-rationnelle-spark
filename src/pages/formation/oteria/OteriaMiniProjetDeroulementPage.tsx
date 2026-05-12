@@ -4,9 +4,9 @@ import { Home, ChevronRight, ArrowLeft, Users, Target, Calendar, CheckSquare, Pr
 
 const OteriaMiniProjetDeroulementPage = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="relative">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/95 backdrop-blur border-b border-carnet-rule/60">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-carnet-red">
             <Link to="/" className="flex items-center gap-1 hover:text-carnet-red transition-colors">
@@ -42,7 +42,7 @@ const OteriaMiniProjetDeroulementPage = () => {
 
           {/* Informations de séance */}
           <div className="max-w-2xl mx-auto mb-6">
-            <div className="bg-pr-orange-pale border border-carnet-red/30 rounded-lg p-4 shadow-sm">
+            <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4 shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                 <div className="flex flex-col items-center">
                   <span className="text-sm text-carnet-red font-medium mb-1">Numéro de séance</span>
@@ -64,7 +64,7 @@ const OteriaMiniProjetDeroulementPage = () => {
 
           {/* Navigation vers autres ressources */}
           <div className="max-w-4xl mx-auto mb-6">
-            <div className="bg-white border border-carnet-red/30 rounded-lg p-6 shadow-sm">
+            <div className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Link to="/formation/oteria/mini-projet" className="group">
                   <button className="w-full bg-carnet-red text-white px-4 py-3 rounded-lg hover:bg-carnet-red-deep transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
@@ -85,7 +85,7 @@ const OteriaMiniProjetDeroulementPage = () => {
         <div className="max-w-4xl mx-auto">
 
           {/* Section 1: Choix de la thématique */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-carnet-red/30">
+          <div className="bg-carnet-paper-2 rounded-xl p-8 mb-8 border border-carnet-rule">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-carnet-red/10 rounded-full flex items-center justify-center">
                 <span className="text-carnet-red-deep font-bold text-lg">1</span>
@@ -94,7 +94,7 @@ const OteriaMiniProjetDeroulementPage = () => {
             </div>
 
             <div className="space-y-4">
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Lightbulb className="h-5 w-5" />
                   Quels sont les domaines ou sujets qui nous intéressent tous ?
@@ -105,7 +105,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Target className="h-5 w-5" />
                   En quoi ce sujet est pertinent par rapport au cours ou à nos objectifs ?
@@ -116,7 +116,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Calendar className="h-5 w-5" />
                   Est-il faisable dans le temps et avec les ressources disponibles ?
@@ -127,7 +127,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Cog className="h-5 w-5" />
                   Apporte-t-il une dimension originale (innovation, approche différente) ?
@@ -138,7 +138,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Award className="h-5 w-5" />
                   Quels sont les résultats attendus (rapport, présentation, prototype…) ?
@@ -152,7 +152,7 @@ const OteriaMiniProjetDeroulementPage = () => {
           </div>
 
           {/* Section 2: Recherche et cadrage */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-carnet-red/30">
+          <div className="bg-carnet-paper-2 rounded-xl p-8 mb-8 border border-carnet-rule">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-carnet-red/10 rounded-full flex items-center justify-center">
                 <span className="text-carnet-red-deep font-bold text-lg">2</span>
@@ -161,7 +161,7 @@ const OteriaMiniProjetDeroulementPage = () => {
             </div>
 
             <div className="space-y-4">
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Search className="h-5 w-5" />
                   Quelles informations devons-nous collecter (sources, données, études) ?
@@ -172,7 +172,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <FileText className="h-5 w-5" />
                   Quelles sont les références ou projets similaires déjà existants ?
@@ -183,7 +183,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Target className="h-5 w-5" />
                   Quel problème voulons-nous résoudre ou quelle question voulons-nous explorer ?
@@ -194,7 +194,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Cog className="h-5 w-5" />
                   Quels outils allons-nous utiliser (logiciels, bibliographie, enquêtes) ?
@@ -205,7 +205,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <CheckSquare className="h-5 w-5" />
                   Quels critères permettront de juger la qualité de notre travail ?
@@ -219,7 +219,7 @@ const OteriaMiniProjetDeroulementPage = () => {
           </div>
 
           {/* Section 3: Planification et organisation */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-carnet-red/30">
+          <div className="bg-carnet-paper-2 rounded-xl p-8 mb-8 border border-carnet-rule">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-carnet-red/10 rounded-full flex items-center justify-center">
                 <span className="text-carnet-red-deep font-bold text-lg">3</span>
@@ -228,7 +228,7 @@ const OteriaMiniProjetDeroulementPage = () => {
             </div>
 
             <div className="space-y-4">
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Calendar className="h-5 w-5" />
                   Quel est notre calendrier (étapes clés, deadlines intermédiaires) ?
@@ -239,7 +239,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Target className="h-5 w-5" />
                   Comment allons-nous suivre l'avancement (tableau Trello, Gantt, réunions) ?
@@ -250,7 +250,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Users className="h-5 w-5" />
                   Qui est responsable de quoi (rédaction, recherche, oral, design…) ?
@@ -261,7 +261,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <CheckSquare className="h-5 w-5" />
                   Comment valider les étapes avant de passer à la suivante ?
@@ -272,7 +272,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <FileText className="h-5 w-5" />
                   Avons-nous prévu un plan B si un élément bloque ?
@@ -286,7 +286,7 @@ const OteriaMiniProjetDeroulementPage = () => {
           </div>
 
           {/* Section 4: Réalisation */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-carnet-red/30">
+          <div className="bg-carnet-paper-2 rounded-xl p-8 mb-8 border border-carnet-rule">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-carnet-red/10 rounded-full flex items-center justify-center">
                 <span className="text-carnet-red-deep font-bold text-lg">4</span>
@@ -295,7 +295,7 @@ const OteriaMiniProjetDeroulementPage = () => {
             </div>
 
             <div className="space-y-4">
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <CheckSquare className="h-5 w-5" />
                   Le travail respecte-t-il le plan et le cahier des charges ?
@@ -306,7 +306,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <FileText className="h-5 w-5" />
                   Nos décisions sont-elles justifiées par des sources ou arguments solides ?
@@ -317,7 +317,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Users className="h-5 w-5" />
                   Est-ce que la charge de travail est équitablement répartie ?
@@ -328,7 +328,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Target className="h-5 w-5" />
                   Comment testons-nous et corrigeons-nous nos livrables ?
@@ -342,7 +342,7 @@ const OteriaMiniProjetDeroulementPage = () => {
           </div>
 
           {/* Section 5: Finalisation et présentation */}
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 border border-carnet-red/30">
+          <div className="bg-carnet-paper-2 rounded-xl p-8 mb-8 border border-carnet-rule">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-carnet-red/10 rounded-full flex items-center justify-center">
                 <span className="text-carnet-red-deep font-bold text-lg">5</span>
@@ -351,7 +351,7 @@ const OteriaMiniProjetDeroulementPage = () => {
             </div>
 
             <div className="space-y-4">
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <FileText className="h-5 w-5" />
                   Avons-nous respecté le format demandé (longueur, support, délai) ?
@@ -362,7 +362,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Users className="h-5 w-5" />
                   Notre projet est-il clair et compréhensible pour un public extérieur ?
@@ -373,7 +373,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <CheckSquare className="h-5 w-5" />
                   Avons-nous vérifié la cohérence entre toutes les parties (forme et fond) ?
@@ -384,7 +384,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Presentation className="h-5 w-5" />
                   Qui présente quoi à l'oral, et avec quel support (slides, démo) ?
@@ -395,7 +395,7 @@ const OteriaMiniProjetDeroulementPage = () => {
                 </p>
               </div>
 
-              <div className="bg-pr-orange-pale p-4 rounded-lg border-l-4 border-carnet-red">
+              <div className="bg-pr-gray-bg p-4 rounded-lg border-l-4 border-carnet-red">
                 <h3 className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2">
                   <Lightbulb className="h-5 w-5" />
                   Quelles questions anticipons-nous du jury/professeur ?
@@ -409,7 +409,7 @@ const OteriaMiniProjetDeroulementPage = () => {
           </div>
 
           {/* Checklist finale */}
-          <div className="bg-gradient-to-r from-pr-orange-pale to-pr-orange-pale/60 rounded-xl shadow-lg p-8 mb-8 border-2 border-carnet-red/40">
+          <div className="bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 rounded-xl shadow-lg p-8 mb-8 border-2 border-carnet-red/40">
             <div className="flex items-center gap-3 mb-6">
               <Award className="h-8 w-8 text-carnet-red" />
               <h2 className="text-2xl font-bold text-carnet-red-deep">Checklist de validation finale</h2>
@@ -456,7 +456,7 @@ const OteriaMiniProjetDeroulementPage = () => {
           </div>
 
           {/* Navigation */}
-          <div className="flex justify-between items-center bg-pr-orange-pale p-6 rounded-lg">
+          <div className="flex justify-between items-center bg-pr-gray-bg p-6 rounded-lg">
             <Link to="/formation/oteria/recurrence-recursivite-qcm">
               <div className="text-carnet-red hover:text-carnet-red">← Séance précédente</div>
             </Link>

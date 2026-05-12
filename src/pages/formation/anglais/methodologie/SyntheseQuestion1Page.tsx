@@ -41,7 +41,7 @@ const SyntheseQuestion1Page = () => {
       <div className="container mx-auto px-4 pt-12 pb-16">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-pr-orange-pale rounded-full flex items-center justify-center border border-carnet-red/30">
+            <div className="w-12 h-12 bg-pr-gray-bg rounded-full flex items-center justify-center border border-carnet-red/30">
               <FileText className="h-6 w-6 text-carnet-red" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Partie synthèse (question 1)</h1>

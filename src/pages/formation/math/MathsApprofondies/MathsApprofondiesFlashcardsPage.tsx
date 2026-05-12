@@ -121,7 +121,7 @@ const MathsApprofondiesFlashcardsPage: React.FC = () => {
         previousChapter={previousChapter}
         nextChapter={nextChapter}
       >
-        <div className="bg-pr-orange-pale border border-carnet-red/30 text-carnet-red-deep rounded-lg p-6">
+        <div className="bg-pr-gray-bg border border-carnet-red/30 text-carnet-red-deep rounded-lg p-6">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center">
               <span className="text-carnet-red font-bold text-sm">📚</span>

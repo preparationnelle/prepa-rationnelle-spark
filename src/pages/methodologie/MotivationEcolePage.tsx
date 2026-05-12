@@ -65,7 +65,7 @@ const MotivationEcolePage = () => {
             { t: "International", l: ["Partenariats internationaux", "Campus à l'étranger", "Programmes d'échange", "Cours en anglais"] },
             { t: "Professionnalisation", l: ["Réseau d'alumni", "Partenariats entreprises", "Incubateur / start-up studio", "Stages obligatoires"] },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-2">{g.t}</h4>
               <div className="h-px w-8 bg-red-600 mb-4" />
               <ul className="space-y-2 text-sm text-carnet-ink-soft">
@@ -83,7 +83,7 @@ const MotivationEcolePage = () => {
             { t: "Motivations génériques", l: ['"C\'est une grande école"', '"Elle a une bonne réputation"', '"Pour avoir un bon salaire"', '"Mes parents m\'ont conseillé"'] },
             { t: "Manque de préparation", l: ["Ne pas connaître le programme", "Confondre avec une autre école", "Ne pas mentionner de spécificités", "Réponse trop courte ou trop longue"] },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-4 flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5 text-red-700" strokeWidth={1.8} />
                 {g.t}

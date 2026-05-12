@@ -96,28 +96,28 @@ const CanadaPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-pr-orange-dark" />
+                  <Calendar className="h-5 w-5 text-pr-black" />
                   Dates marquantes
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2018</div>
                       <div className="text-gray-700">Début de la guerre commerciale US-Chine impactant le Canada</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2022</div>
                       <div className="text-gray-700">Stratégie indo-pacifique du Canada</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-pr-orange-dark rounded-full mt-2"></div>
+                    <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2025</div>
                       <div className="text-gray-700">Impacts de Trump 2.0 sur les tariffs</div>

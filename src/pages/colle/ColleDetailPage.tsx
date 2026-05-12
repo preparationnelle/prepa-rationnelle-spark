@@ -213,7 +213,7 @@ const ColleDetailPage: React.FC = () => {
               </Badge>
               <Badge
                 variant={isTerminee ? 'default' : 'secondary'}
-                className={`text-xs ${isTerminee ? 'bg-emerald-100 text-emerald-800 border-emerald-200' : 'bg-orange-100 text-orange-800 border-orange-200'}`}
+                className={`text-xs ${isTerminee ? 'bg-emerald-100 text-emerald-800 border-emerald-200' : 'bg-gray-100 text-gray-800 border-gray-200'}`}
               >
                 {isTerminee ? 'Terminee' : 'En cours'}
               </Badge>
@@ -232,7 +232,7 @@ const ColleDetailPage: React.FC = () => {
         ) : (
           <Card className="max-w-lg mx-auto">
             <CardContent className="p-10 text-center space-y-4">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto">
                 <Loader2 className="h-8 w-8 text-[#F4845F]" />
               </div>
               <h2 className="text-lg font-bold text-gray-900">

@@ -1402,8 +1402,8 @@ const UnionEuropeennePageSimple = () => {
           <Link to="/formation/geopolitique/union-europeenne/flashcards">
             <Card className="h-full hover:shadow-lg transition-all duration-200 cursor-pointer border-2 border-transparent hover:border-orange-300">
               <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Target className="h-6 w-6 text-pr-orange-dark" />
+                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Target className="h-6 w-6 text-pr-black" />
                 </div>
                 <h3 className="font-semibold mb-2">Flashcards</h3>
                 <p className="text-sm text-gray-600">Révision interactive</p>

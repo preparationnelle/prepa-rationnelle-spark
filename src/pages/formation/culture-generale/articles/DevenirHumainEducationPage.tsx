@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -26,13 +26,13 @@ const DevenirHumainEducationPage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Article
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               Devenir humain&nbsp;: l&apos;éducation et la culture comme seconde naissance
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Rousseau, Kant, Arendt. Trois manières de penser que l&apos;humanité ne se
               donne pas&nbsp;: elle se transmet.
@@ -56,8 +56,8 @@ const DevenirHumainEducationPage: React.FC = () => {
                 personne humaine. Mais qui éduque, comment, à quelles fins&nbsp;? Et que
                 fait-on quand on transmet&nbsp;: répéter le passé, ou ouvrir l&apos;avenir&nbsp;?
               </p>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Tension à retenir</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Tension à retenir</h3>
                 <p>
                   L&apos;humanité est-elle un <em>don de naissance</em> qu&apos;il suffit de
                   laisser éclore, ou le <em>fruit d&apos;une transmission</em> sans laquelle
@@ -75,14 +75,14 @@ const DevenirHumainEducationPage: React.FC = () => {
                 la naissance à l&apos;âge adulte, l&apos;éducation d&apos;un enfant imaginaire,
                 Émile.
               </p>
-              <p className="italic pl-4 border-l-2 border-pr-orange">
+              <p className="italic pl-4 border-l-2 border-pr-black">
                 «&nbsp;Tout est bien, sortant des mains de l&apos;Auteur des choses&nbsp;: tout
                 dégénère entre les mains de l&apos;homme.&nbsp;»
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Trois maîtres</strong>. La nature développe le corps, les choses enseignent l&apos;expérience, les hommes transmettent les habitudes. Une éducation réussie articule ces trois sources sans les laisser se contredire.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Éducation négative</strong>. Avant douze ans, ne rien forcer, ne rien moraliser. Laisser l&apos;enfant rencontrer le monde, faire ses propres erreurs, apprendre par les conséquences. La précipitation pédagogique est la pire ennemie.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Apprendre à vivre</strong>. La fin n&apos;est ni le savoir, ni la carrière, ni la vertu pour la vertu. «&nbsp;Vivre est le métier que je veux lui apprendre.&nbsp;» Faire un humain avant de faire un citoyen ou un savant.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Trois maîtres</strong>. La nature développe le corps, les choses enseignent l&apos;expérience, les hommes transmettent les habitudes. Une éducation réussie articule ces trois sources sans les laisser se contredire.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Éducation négative</strong>. Avant douze ans, ne rien forcer, ne rien moraliser. Laisser l&apos;enfant rencontrer le monde, faire ses propres erreurs, apprendre par les conséquences. La précipitation pédagogique est la pire ennemie.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Apprendre à vivre</strong>. La fin n&apos;est ni le savoir, ni la carrière, ni la vertu pour la vertu. «&nbsp;Vivre est le métier que je veux lui apprendre.&nbsp;» Faire un humain avant de faire un citoyen ou un savant.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Rousseau invente l&apos;enfance
@@ -106,16 +106,16 @@ const DevenirHumainEducationPage: React.FC = () => {
                 partir de cours donnés à Königsberg) condensent la pensée pédagogique
                 d&apos;Emmanuel Kant. La formule centrale est limpide.
               </p>
-              <p className="italic pl-4 border-l-2 border-pr-orange">
+              <p className="italic pl-4 border-l-2 border-pr-black">
                 «&nbsp;L&apos;homme est la seule créature qui doive être éduquée. (…) L&apos;homme
                 ne peut devenir homme que par l&apos;éducation. Il n&apos;est rien que ce que
                 l&apos;éducation fait de lui.&nbsp;»
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Discipline</strong>. D&apos;abord, contenir l&apos;animalité. L&apos;enfant doit apprendre à différer son désir, sans quoi aucune liberté n&apos;est possible.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Culture</strong>. Ensuite, développer les capacités&nbsp;: raison, langage, savoir-faire. La culture ouvre le champ des possibles.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Civilisation</strong>. Apprendre les usages, savoir vivre avec les autres en société.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Moralisation</strong>. Le sommet&nbsp;: choisir des fins bonnes, pas seulement les moyens efficaces. La moralité est ce que l&apos;éducation peut <em>orienter</em>, jamais imposer.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Discipline</strong>. D&apos;abord, contenir l&apos;animalité. L&apos;enfant doit apprendre à différer son désir, sans quoi aucune liberté n&apos;est possible.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Culture</strong>. Ensuite, développer les capacités&nbsp;: raison, langage, savoir-faire. La culture ouvre le champ des possibles.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Civilisation</strong>. Apprendre les usages, savoir vivre avec les autres en société.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Moralisation</strong>. Le sommet&nbsp;: choisir des fins bonnes, pas seulement les moyens efficaces. La moralité est ce que l&apos;éducation peut <em>orienter</em>, jamais imposer.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Pour Kant, l&apos;humanité n&apos;est
@@ -134,16 +134,16 @@ const DevenirHumainEducationPage: React.FC = () => {
                 l&apos;école moderne. Sa thèse&nbsp;: la pédagogie progressiste, en abandonnant
                 l&apos;autorité, finit par abandonner les enfants au monde tel qu&apos;il est.
               </p>
-              <p className="italic pl-4 border-l-2 border-pr-orange">
+              <p className="italic pl-4 border-l-2 border-pr-black">
                 «&nbsp;L&apos;éducation est le point où se décide si nous aimons assez le
                 monde pour en assumer la responsabilité, et de plus, le sauver de cette
                 ruine qui serait inévitable sans ce renouvellement et sans cette arrivée
                 de jeunes et de nouveaux venus.&nbsp;»
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Conservatisme nécessaire</strong>. L&apos;éducation est, par nature, conservatrice — au sens où elle <em>conserve</em> un monde qu&apos;elle transmet. Cela n&apos;empêche pas la révolution&nbsp;: cela la rend possible. On ne change un monde qu&apos;on commence par recevoir.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Autorité</strong>. Sans elle, pas de transmission. L&apos;éducateur n&apos;est pas un tyran, mais quelqu&apos;un qui accepte de répondre du monde devant ceux qui n&apos;y sont pas encore arrivés.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Critique du pédagogisme</strong>. Refuser à l&apos;enfant la difficulté, la confrontation au passé, la rigueur de l&apos;apprentissage, c&apos;est le priver des outils qui lui permettront de juger un jour le monde — et de le changer.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Conservatisme nécessaire</strong>. L&apos;éducation est, par nature, conservatrice — au sens où elle <em>conserve</em> un monde qu&apos;elle transmet. Cela n&apos;empêche pas la révolution&nbsp;: cela la rend possible. On ne change un monde qu&apos;on commence par recevoir.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Autorité</strong>. Sans elle, pas de transmission. L&apos;éducateur n&apos;est pas un tyran, mais quelqu&apos;un qui accepte de répondre du monde devant ceux qui n&apos;y sont pas encore arrivés.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Critique du pédagogisme</strong>. Refuser à l&apos;enfant la difficulté, la confrontation au passé, la rigueur de l&apos;apprentissage, c&apos;est le priver des outils qui lui permettront de juger un jour le monde — et de le changer.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Pour Arendt, transmettre un
@@ -162,8 +162,8 @@ const DevenirHumainEducationPage: React.FC = () => {
 
           <PRCard number="05" title="Paraperso prêt à l'emploi">
             <div className="space-y-4 text-sm md:text-base">
-              <div className="bg-pr-orange-pale rounded-xl p-5">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">
+              <div className="bg-pr-gray-bg rounded-xl p-5">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">
                   L&apos;humanité comme seconde naissance
                 </h3>
                 <p className="text-xs italic mb-3">
@@ -216,19 +216,19 @@ const DevenirHumainEducationPage: React.FC = () => {
           <PRCard number="06" title="Où mobiliser ces références ?">
             <div className="space-y-4 text-sm md:text-base">
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;éducation</strong>&nbsp;» — sujet frontal classique.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Naît-on humain ou le devient-on&nbsp;?</strong>&nbsp;» — Kant central.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>La transmission</strong>&nbsp;» — Arendt, sujet éminemment contemporain.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;enfance</strong>&nbsp;» — Rousseau et l&apos;invention de l&apos;âge propre.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;autorité</strong>&nbsp;» — Arendt comme condition de la liberté.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>La culture est-elle ce qui fait l&apos;humanité&nbsp;?</strong>&nbsp;» — articulation des trois auteurs.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;éducation</strong>&nbsp;» — sujet frontal classique.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Naît-on humain ou le devient-on&nbsp;?</strong>&nbsp;» — Kant central.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>La transmission</strong>&nbsp;» — Arendt, sujet éminemment contemporain.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;enfance</strong>&nbsp;» — Rousseau et l&apos;invention de l&apos;âge propre.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;autorité</strong>&nbsp;» — Arendt comme condition de la liberté.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>La culture est-elle ce qui fait l&apos;humanité&nbsp;?</strong>&nbsp;» — articulation des trois auteurs.</li>
               </ul>
             </div>
           </PRCard>
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/articles">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des articles
               </Button>
             </Link>

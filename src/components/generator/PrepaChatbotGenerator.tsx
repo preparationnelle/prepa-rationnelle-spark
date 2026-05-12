@@ -141,22 +141,22 @@ export const PrepaChatbotGenerator: React.FC<PrepaChatbotGeneratorProps> = ({ va
         "w-full bg-white overflow-hidden flex flex-col",
         isEmbedded ? "h-full rounded-none border-0" : "max-w-4xl rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)] h-[700px]"
       )}>
-        {!isEmbedded && <div className="h-[3px] w-full bg-pr-orange" />}
+        {!isEmbedded && <div className="h-[3px] w-full bg-pr-black" />}
         {/* Header */}
         <div className="px-6 py-4 bg-pr-gray-bg border-b border-pr-gray-light flex items-center justify-between sticky top-0 z-10">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 bg-white border border-pr-orange-soft rounded-xl flex items-center justify-center">
-              <Bot className="h-5 w-5 text-pr-orange-dark" />
+            <div className="h-10 w-10 bg-white border border-pr-black-soft rounded-xl flex items-center justify-center">
+              <Bot className="h-5 w-5 text-pr-black" />
             </div>
             <div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
                 Assistant IA
               </div>
               <h3 className="font-dm-serif text-pr-black text-lg leading-none">Majora</h3>
               <p className="text-[11px] text-pr-gray-mid font-medium flex items-center gap-1.5 mt-1">
                 <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pr-orange opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-pr-orange"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pr-black opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-pr-black"></span>
                 </span>
                 En ligne
               </p>
@@ -176,15 +176,15 @@ export const PrepaChatbotGenerator: React.FC<PrepaChatbotGeneratorProps> = ({ va
             >
               <div className={cn(
                 "h-9 w-9 rounded-xl flex items-center justify-center shrink-0",
-                msg.role === "user" ? "bg-pr-gray-bg border border-pr-gray-light" : "bg-pr-orange-pale border border-pr-orange-soft"
+                msg.role === "user" ? "bg-pr-gray-bg border border-pr-gray-light" : "bg-pr-gray-bg border border-pr-black-soft"
               )}>
-                {msg.role === "user" ? <User className="h-4 w-4 text-pr-gray-dark" /> : <Bot className="h-4 w-4 text-pr-orange-dark" />}
+                {msg.role === "user" ? <User className="h-4 w-4 text-pr-gray-dark" /> : <Bot className="h-4 w-4 text-pr-black" />}
               </div>
 
               <div className={cn(
                 "px-5 py-3 rounded-2xl text-[14px] sm:text-[15px] leading-relaxed whitespace-pre-line",
                 msg.role === "user"
-                  ? "bg-pr-orange text-white rounded-br-md shadow-[0_4px_14px_rgba(244,132,95,0.25)]"
+                  ? "bg-pr-black text-white rounded-br-md shadow-[0_4px_14px_rgba(244,132,95,0.25)]"
                   : "bg-pr-gray-bg border border-pr-gray-light text-pr-black rounded-bl-md"
               )}>
                 {msg.content}
@@ -194,13 +194,13 @@ export const PrepaChatbotGenerator: React.FC<PrepaChatbotGeneratorProps> = ({ va
 
           {loading && (
             <div className="flex items-end gap-3 max-w-[85%] mr-auto">
-              <div className="h-9 w-9 rounded-xl bg-pr-orange-pale border border-pr-orange-soft flex items-center justify-center shrink-0">
-                <Bot className="h-4 w-4 text-pr-orange-dark" />
+              <div className="h-9 w-9 rounded-xl bg-pr-gray-bg border border-pr-black-soft flex items-center justify-center shrink-0">
+                <Bot className="h-4 w-4 text-pr-black" />
               </div>
               <div className="bg-pr-gray-bg border border-pr-gray-light px-4 py-3 rounded-2xl rounded-bl-md flex items-center gap-1.5">
-                <span className="w-2 h-2 bg-pr-orange rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-                <span className="w-2 h-2 bg-pr-orange rounded-full animate-bounce [animation-delay:-0.15s]"></span>
-                <span className="w-2 h-2 bg-pr-orange rounded-full animate-bounce"></span>
+                <span className="w-2 h-2 bg-pr-black rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+                <span className="w-2 h-2 bg-pr-black rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+                <span className="w-2 h-2 bg-pr-black rounded-full animate-bounce"></span>
               </div>
             </div>
           )}
@@ -215,9 +215,9 @@ export const PrepaChatbotGenerator: React.FC<PrepaChatbotGeneratorProps> = ({ va
                 key={i}
                 onClick={() => handleSuggestion(suggestion)}
                 disabled={loading}
-                className="whitespace-nowrap px-3.5 py-2 bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-full text-[12px] font-medium transition-colors flex items-center gap-2"
+                className="whitespace-nowrap px-3.5 py-2 bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-full text-[12px] font-medium transition-colors flex items-center gap-2"
               >
-                <Sparkles className="h-3 w-3 text-pr-orange" />
+                <Sparkles className="h-3 w-3 text-pr-black" />
                 {suggestion}
               </button>
             ))}
@@ -228,7 +228,7 @@ export const PrepaChatbotGenerator: React.FC<PrepaChatbotGeneratorProps> = ({ va
               value={input}
               onChange={e => setInput(e.target.value)}
               placeholder="Posez votre question sur les maths, la géopolitique, l'anglais…"
-              className="pr-12 h-12 rounded-xl border-pr-gray-light bg-white focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 transition-colors text-[15px] text-pr-black placeholder:text-pr-gray-mid"
+              className="pr-12 h-12 rounded-xl border-pr-gray-light bg-white focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 transition-colors text-[15px] text-pr-black placeholder:text-pr-gray-mid"
               disabled={loading}
             />
             <Button
@@ -237,7 +237,7 @@ export const PrepaChatbotGenerator: React.FC<PrepaChatbotGeneratorProps> = ({ va
               className={cn(
                 "absolute right-1.5 h-9 w-9 rounded-lg p-0 transition-all",
                 input.trim()
-                  ? "bg-pr-orange hover:bg-pr-orange-dark text-white shadow-[0_4px_14px_rgba(244,132,95,0.35)]"
+                  ? "bg-pr-black hover:bg-pr-black-dark text-white shadow-[0_4px_14px_rgba(244,132,95,0.35)]"
                   : "bg-pr-gray-light text-pr-gray-mid"
               )}
             >

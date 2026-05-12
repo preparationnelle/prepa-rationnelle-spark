@@ -667,7 +667,7 @@ const DeclinaisonsExercicesPage = () => {
           <Button
             onClick={() => validateAnswer(exerciseId)}
             disabled={!userAnswers[exerciseId]}
-            className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white flex items-center gap-2 px-6 py-2"
+            className="bg-pr-black-dark hover:bg-pr-black-dark text-white flex items-center gap-2 px-6 py-2"
           >
             <CheckCircle className="h-4 w-4" />
             Valider ma réponse
@@ -675,7 +675,7 @@ const DeclinaisonsExercicesPage = () => {
           <Button
             variant="outline"
             onClick={() => toggleCorrections(exerciseId)}
-            className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-orange-50 px-6 py-2"
+            className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-gray-50 px-6 py-2"
           >
             <Eye className="h-4 w-4" />
             {showCorrections[exerciseId] ? 'Masquer la correction' : 'Voir la correction'}
@@ -769,7 +769,7 @@ const DeclinaisonsExercicesPage = () => {
         <div className="text-center mb-10">
           <div className="flex justify-center mb-6">
             <Link to="/formation/allemand-declinaisons">
-              <Button variant="outline" className="flex items-center gap-2 border-orange-300 text-pr-orange-dark hover:bg-orange-50">
+              <Button variant="outline" className="flex items-center gap-2 border-orange-300 text-pr-black hover:bg-gray-50">
                 <ArrowLeft className="h-4 w-4" />
                 Retour aux déclinaisons
               </Button>
@@ -777,7 +777,7 @@ const DeclinaisonsExercicesPage = () => {
           </div>
 
           <div className="mb-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-pr-orange-dark text-white rounded-xl mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-pr-black-dark text-white rounded-xl mb-4">
               <Target className="h-8 w-8" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-3">
@@ -791,7 +791,7 @@ const DeclinaisonsExercicesPage = () => {
           <div className="flex justify-center gap-3">
             <Badge variant="secondary" className="px-3 py-1">Niveau Intermédiaire - Avancé</Badge>
             <Badge variant="outline" className="px-3 py-1 border-gray-300">{declinaisonsExercises.length} exercices</Badge>
-            <Badge className="bg-pr-orange-dark px-3 py-1">Module essentiel</Badge>
+            <Badge className="bg-pr-black-dark px-3 py-1">Module essentiel</Badge>
           </div>
         </div>
 
@@ -800,7 +800,7 @@ const DeclinaisonsExercicesPage = () => {
           <Button
             variant={examMode ? "default" : "outline"}
             onClick={() => setExamMode(prev => !prev)}
-            className={examMode ? "bg-pr-orange hover:bg-pr-orange-dark text-white" : "border-pr-orange text-pr-orange hover:bg-pr-orange-pale"}
+            className={examMode ? "bg-pr-black hover:bg-pr-black-dark text-white" : "border-pr-black text-pr-black hover:bg-pr-gray-bg"}
           >
             {examMode ? "Désactiver le Mode Examen" : "Activer le Mode Examen"}
           </Button>
@@ -808,13 +808,13 @@ const DeclinaisonsExercicesPage = () => {
 
         {/* Exam Timer and Controls (visible only in exam mode and when started) */}
         {examMode && (
-          <Card className="mb-8 border-2 border-carnet-red/30 bg-gradient-to-r from-pr-orange-pale to-indigo-50">
+          <Card className="mb-8 border-2 border-carnet-red/30 bg-carnet-paper-2 border-carnet-rule">
             <CardContent className="py-4">
               {!examStarted ? (
                 <div className="flex items-center justify-center gap-4">
                   <Button
                     onClick={startExam}
-                    className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2"
+                    className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2"
                   >
                     <CheckCircle className="h-4 w-4 mr-2" />
                     Commencer l'examen
@@ -845,8 +845,8 @@ const DeclinaisonsExercicesPage = () => {
         <Card className="mb-8 border border-gray-200 bg-white shadow-sm">
           <CardHeader className="pb-4">
             <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
-              <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                <Target className="h-4 w-4 text-pr-orange-dark" />
+              <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                <Target className="h-4 w-4 text-pr-black" />
               </div>
               Filtrer les exercices
             </CardTitle>
@@ -860,7 +860,7 @@ const DeclinaisonsExercicesPage = () => {
                 <select
                   value={selectedExerciseType}
                   onChange={(e) => setSelectedExerciseType(e.target.value as 'qcm' | 'complet')}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carnet-red/30 focus:border-pr-black"
                   disabled={examStarted}
                 >
                   <option value="qcm">QCM</option>
@@ -875,7 +875,7 @@ const DeclinaisonsExercicesPage = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carnet-red/30 focus:border-pr-black"
                   disabled={examStarted}
                 >
                   <option value="toutes">Toutes les catégories</option>
@@ -898,7 +898,7 @@ const DeclinaisonsExercicesPage = () => {
                 <select
                   value={selectedLevel}
                   onChange={(e) => setSelectedLevel(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carnet-red/30 focus:border-pr-black"
                   disabled={examStarted}
                 >
                   <option value="tous">Tous les niveaux</option>
@@ -915,8 +915,8 @@ const DeclinaisonsExercicesPage = () => {
           <div className="mb-12">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <FileText className="h-5 w-5 text-pr-orange-dark" />
+                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <FileText className="h-5 w-5 text-pr-black" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -927,7 +927,7 @@ const DeclinaisonsExercicesPage = () => {
                   </p>
                 </div>
               </div>
-              <Badge variant="outline" className="border-orange-300 text-pr-orange-dark">
+              <Badge variant="outline" className="border-orange-300 text-pr-black">
                 {selectedExerciseType === 'qcm' ? 'QCM' : 'Mots à compléter'}
               </Badge>
             </div>
@@ -952,14 +952,14 @@ const DeclinaisonsExercicesPage = () => {
                     </h3>
                     <div className="space-y-2">
                       {currentExercise.options.map((option, index) => (
-                        <label key={index} className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-orange-300 hover:bg-orange-50 cursor-pointer transition-colors">
+                        <label key={index} className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-orange-300 hover:bg-gray-50 cursor-pointer transition-colors">
                           <input
                             type="radio"
                             name={currentExercise.id}
                             value={option}
                             checked={userAnswers[currentExercise.id] === option}
                             onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                            className="text-pr-orange-dark focus:ring-pr-orange"
+                            className="text-pr-black focus:ring-carnet-red/30"
                             disabled={examMode && examStarted}
                           />
                           <span className="text-gray-800 flex-1">{option}</span>
@@ -976,7 +976,7 @@ const DeclinaisonsExercicesPage = () => {
                       type="text"
                       value={userAnswers[currentExercise.id] || ''}
                       onChange={(e) => handleAnswerChange(currentExercise.id, e.target.value)}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pr-orange focus:border-pr-orange text-gray-800 placeholder-gray-500"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-carnet-red/30 focus:border-pr-black text-gray-800 placeholder-gray-500"
                       placeholder="Tapez votre réponse ici..."
                       disabled={examMode && examStarted}
                     />
@@ -1011,7 +1011,7 @@ const DeclinaisonsExercicesPage = () => {
                 onClick={() => setCurrentExerciseIndex(prev => Math.max(0, prev - 1))}
                 disabled={currentExerciseIndex === 0 || examStarted}
                 variant="outline"
-                className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-orange-50"
+                className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-gray-50"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Question précédente
@@ -1033,7 +1033,7 @@ const DeclinaisonsExercicesPage = () => {
                       disabled={examStarted}
                       className={`w-2 h-2 rounded-full transition-colors ${
                         index === currentExerciseIndex
-                          ? 'bg-pr-orange-dark'
+                          ? 'bg-pr-black-dark'
                           : 'bg-gray-300 hover:bg-gray-400'
                       }`}
                     />
@@ -1045,7 +1045,7 @@ const DeclinaisonsExercicesPage = () => {
                 onClick={() => setCurrentExerciseIndex(prev => Math.min(filteredExercises.length - 1, prev + 1))}
                 disabled={currentExerciseIndex === filteredExercises.length - 1 || examStarted}
                 variant="outline"
-                className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-orange-50"
+                className="flex items-center gap-2 border-gray-300 hover:border-orange-300 hover:bg-gray-50"
               >
                 Question suivante
                 <ChevronRight className="h-4 w-4" />
@@ -1055,9 +1055,9 @@ const DeclinaisonsExercicesPage = () => {
         )}
 
         {filteredExercises.length === 0 && (
-          <Card className="border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+          <Card className="border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-amber-50">
             <CardContent className="text-center py-8">
-              <p className="text-pr-orange-dark text-lg">
+              <p className="text-pr-black text-lg">
                 Aucun exercice trouvé avec les filtres actuels. Modifiez vos critères de recherche.
               </p>
             </CardContent>
@@ -1069,7 +1069,7 @@ const DeclinaisonsExercicesPage = () => {
           <div className="flex justify-center gap-4 mt-10">
             <Button
               onClick={calculateScore}
-              className="bg-pr-orange hover:bg-pr-orange-dark text-white px-8 py-3 text-lg flex items-center gap-2"
+              className="bg-pr-black hover:bg-pr-black-dark text-white px-8 py-3 text-lg flex items-center gap-2"
             >
               <CheckCircle className="h-5 w-5" />
               Terminer et voir le score
@@ -1077,7 +1077,7 @@ const DeclinaisonsExercicesPage = () => {
             <Button
               onClick={resetQuiz}
               variant="outline"
-              className="px-8 py-3 text-lg flex items-center gap-2 border-pr-orange text-pr-orange hover:bg-pr-orange-pale"
+              className="px-8 py-3 text-lg flex items-center gap-2 border-pr-black text-pr-black hover:bg-pr-gray-bg"
             >
               <X className="h-5 w-5" />
               Réinitialiser
@@ -1087,9 +1087,9 @@ const DeclinaisonsExercicesPage = () => {
 
         {/* Score affiché */}
         {showScore && score !== null && (
-          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-orange-pale' : 'border-orange-200 bg-orange-50'}`}>
+          <Card className={`mt-10 border-2 ${examMode ? 'border-carnet-red/30 bg-pr-gray-bg' : 'border-gray-200 bg-gray-50'}`}>
             <CardHeader className="text-center">
-              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-carnet-red-deep' : 'text-orange-800'}`}>
+              <CardTitle className={`text-3xl flex items-center justify-center gap-3 ${examMode ? 'text-carnet-red-deep' : 'text-gray-800'}`}>
                 <Award className="h-8 w-8" />
                 {examMode ? 'Résultats de l\'Examen' : 'Votre Score'} : {score}%
               </CardTitle>
@@ -1103,7 +1103,7 @@ const DeclinaisonsExercicesPage = () => {
                 </div>
               )}
               <div className={`text-lg ${
-                examMode ? 'text-carnet-red' : 'text-pr-orange-dark'
+                examMode ? 'text-carnet-red' : 'text-pr-black'
               }`}>
                 {score >= 80 ? (
                   <div className="flex items-center justify-center gap-2">
@@ -1123,7 +1123,7 @@ const DeclinaisonsExercicesPage = () => {
                 )}
               </div>
               {examMode && (
-                <div className="mt-4 p-3 bg-pr-orange-pale rounded-lg border border-carnet-red/30">
+                <div className="mt-4 p-3 bg-pr-gray-bg rounded-lg border border-carnet-red/30">
                   <p className="text-carnet-red text-sm">
                     💡 En mode normal, vous pouvez voir les corrections détaillées de chaque exercice.
                   </p>

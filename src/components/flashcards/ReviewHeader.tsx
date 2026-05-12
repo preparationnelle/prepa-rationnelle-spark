@@ -32,20 +32,20 @@ export const ReviewHeader = ({
 }: ReviewHeaderProps) => {
   return (
     <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-      <div className="h-[3px] w-full bg-pr-orange" />
+      <div className="h-[3px] w-full bg-pr-black" />
       <div className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5 sm:px-8">
         <div className="flex justify-between items-center flex-wrap gap-4">
           <div>
             <h3 className="flex items-center gap-2 font-dm-serif text-xl text-pr-black flex-wrap">
-              <BookOpen className="h-5 w-5 text-pr-orange" />
+              <BookOpen className="h-5 w-5 text-pr-black" />
               {language === 'fr' ? 'Système de révision intelligent' : 'Intelligent Review System'}
               {showingDueForReview && (
-                <Badge className="bg-pr-orange text-white border-0 font-dm-sans">
+                <Badge className="bg-pr-black text-white border-0 font-dm-sans">
                   {language === 'fr' ? 'À réviser' : 'Due for Review'}
                 </Badge>
               )}
               {showingDifficult && (
-                <Badge className="bg-pr-orange-pale text-pr-orange-dark border border-pr-orange/20 font-dm-sans">
+                <Badge className="bg-pr-gray-bg text-pr-black border border-pr-black/20 font-dm-sans">
                   {language === 'fr' ? 'Mode difficile' : 'Difficult Mode'}
                 </Badge>
               )}
@@ -56,12 +56,12 @@ export const ReviewHeader = ({
                 : `Card ${currentIndex + 1} of ${totalCards}`
               }
               {dueForReviewCount > 0 && !showingDueForReview && (
-                <span className="ml-2 text-pr-orange-dark font-medium">
+                <span className="ml-2 text-pr-black font-medium">
                   ({dueForReviewCount} {language === 'fr' ? 'à réviser' : 'due for review'})
                 </span>
               )}
               {difficultCount > 0 && !showingDifficult && (
-                <span className="ml-2 text-pr-orange font-medium">
+                <span className="ml-2 text-pr-black font-medium">
                   ({difficultCount} {language === 'fr' ? 'difficiles' : 'difficult'})
                 </span>
               )}
@@ -74,8 +74,8 @@ export const ReviewHeader = ({
                 size="sm"
                 className={
                   showingDueForReview
-                    ? 'bg-pr-orange hover:bg-pr-orange-dark text-white'
-                    : 'bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft'
+                    ? 'bg-pr-black hover:bg-pr-black-dark text-white'
+                    : 'bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft'
                 }
               >
                 {language === 'fr' ? 'À réviser' : 'Due for review'} ({dueForReviewCount})
@@ -87,8 +87,8 @@ export const ReviewHeader = ({
                 size="sm"
                 className={
                   showingDifficult
-                    ? 'bg-pr-orange hover:bg-pr-orange-dark text-white'
-                    : 'bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft'
+                    ? 'bg-pr-black hover:bg-pr-black-dark text-white'
+                    : 'bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft'
                 }
               >
                 {language === 'fr' ? 'Difficiles' : 'Difficult'} ({difficultCount})
@@ -98,7 +98,7 @@ export const ReviewHeader = ({
               variant="outline"
               onClick={onReset}
               size="sm"
-              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft"
+              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft"
             >
               <RotateCcw className="h-4 w-4 mr-1" />
               {language === 'fr' ? 'Recommencer' : 'Reset'}
@@ -107,7 +107,7 @@ export const ReviewHeader = ({
               variant="outline"
               onClick={onRefresh}
               size="sm"
-              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft"
+              className="border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft"
             >
               <RefreshCw className="h-4 w-4 mr-1" />
               {language === 'fr' ? 'Actualiser' : 'Refresh'}

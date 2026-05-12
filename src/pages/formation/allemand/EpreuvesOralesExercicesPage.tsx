@@ -290,8 +290,8 @@ const EpreuvesOralesExercicesPage = () => {
           </Link>
 
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center border border-orange-200">
-              <BookOpen className="h-6 w-6 text-pr-orange-dark" />
+            <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center border border-gray-200">
+              <BookOpen className="h-6 w-6 text-pr-black" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900">Exercices - Épreuves orales</h1>
           </div>
@@ -300,10 +300,10 @@ const EpreuvesOralesExercicesPage = () => {
           </p>
 
           {/* Informations pratiques */}
-          <div className="bg-orange-50 rounded-lg p-4 border border-orange-200 mb-8">
+          <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <Target className="h-5 w-5 text-pr-orange-dark" />
-              <span className="font-medium text-orange-800">Objectif :</span>
+              <Target className="h-5 w-5 text-pr-black" />
+              <span className="font-medium text-gray-800">Objectif :</span>
             </div>
                           <p className="text-gray-700">
               Maîtrisez les expressions méthodologiques essentielles pour réussir vos épreuves orales d'allemand.
@@ -348,7 +348,7 @@ const EpreuvesOralesExercicesPage = () => {
         <div className="text-center">
           <Link
             to="/formation/allemand/epreuves-orales"
-            className="inline-flex items-center px-6 py-3 bg-pr-orange-dark hover:bg-pr-orange-dark text-white font-medium rounded-lg transition-all duration-300"
+            className="inline-flex items-center px-6 py-3 bg-pr-black-dark hover:bg-pr-black-dark text-white font-medium rounded-lg transition-all duration-300"
           >
             Retour à la fiche méthodologique
           </Link>

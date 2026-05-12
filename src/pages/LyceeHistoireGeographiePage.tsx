@@ -53,7 +53,7 @@ const LyceeHistoireGeographiePage = () => {
               </div>
 
               <div className="prose prose-lg max-w-none text-gray-700">
-                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-orange-400 mb-8">
+                <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-orange-400 mb-8">
                   <p className="text-carnet-red-deep font-medium text-lg">
                     <strong>Principale recommandation :</strong> Adopter une approche active et structurée qui combine préparation avant le cours, prise de notes intelligente, révision régulière et entraînement à l'écrit et à l'oral.
                   </p>
@@ -61,7 +61,7 @@ const LyceeHistoireGeographiePage = () => {
 
                 <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">1. Avant le cours</h4>
 
-                <h5 className="text-xl font-semibold text-pr-orange-dark mb-3">Repérer le thème et les enjeux</h5>
+                <h5 className="text-xl font-semibold text-pr-black mb-3">Repérer le thème et les enjeux</h5>
                 <p className="mb-4">
                   Consulter le programme officiel pour identifier la période ou la problématique (ex. : « Les sociétés face aux risques »).
                 </p>
@@ -69,7 +69,7 @@ const LyceeHistoireGeographiePage = () => {
                   Lire rapidement le chapitre dans le manuel ou les documents distribués afin de repérer les dates clés, les notions centrales et les mots-clés (géographique, notions de puissance, mondialisation…).
                 </p>
 
-                <h5 className="text-xl font-semibold text-pr-orange-dark mb-3">Préparer des questions</h5>
+                <h5 className="text-xl font-semibold text-pr-black mb-3">Préparer des questions</h5>
                 <p className="mb-6">
                   Formuler deux ou trois questions précises sur les points obscurs (ex. : « Quelle distinction entre développement et croissance ? »).
                 </p>
@@ -79,7 +79,7 @@ const LyceeHistoireGeographiePage = () => {
 
                 <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">2. Pendant le cours</h4>
 
-                <h5 className="text-xl font-semibold text-pr-orange-dark mb-3">Prise de notes active</h5>
+                <h5 className="text-xl font-semibold text-pr-black mb-3">Prise de notes active</h5>
                 <p className="mb-4">
                   Structurer la page : titre du cours, date, plan du professeur (I / II / III).
                 </p>
@@ -95,7 +95,7 @@ const LyceeHistoireGeographiePage = () => {
                   Recenser les questions posées par l'enseignant et y répondre directement sous la forme d'annotations.
                 </p>
 
-                <h5 className="text-xl font-semibold text-pr-orange-dark mb-3">Exploiter les supports visuels</h5>
+                <h5 className="text-xl font-semibold text-pr-black mb-3">Exploiter les supports visuels</h5>
                 <p className="mb-4">
                   Pour chaque carte, schéma ou graphique :
                 </p>
@@ -105,7 +105,7 @@ const LyceeHistoireGeographiePage = () => {
                   <li>Faire un mini-schéma personnel à la marge pour retenir l'organisation spatiale ou géographique</li>
                 </ul>
 
-                <h5 className="text-xl font-semibold text-pr-orange-dark mb-3">Participation et interaction</h5>
+                <h5 className="text-xl font-semibold text-pr-black mb-3">Participation et interaction</h5>
                 <p className="mb-6">
                   Reprendre ses questions préparées pour les poser au professeur dès que possible.
                 </p>
@@ -115,7 +115,7 @@ const LyceeHistoireGeographiePage = () => {
 
                 <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">3. Après le cours</h4>
 
-                <h5 className="text-xl font-semibold text-pr-orange-dark mb-3">Mise au propre et compléments</h5>
+                <h5 className="text-xl font-semibold text-pr-black mb-3">Mise au propre et compléments</h5>
                 <p className="mb-6">
                   Relire ses notes dans les 24 heures pour clarifier la rédaction et corriger les éventuelles coquilles.
                 </p>
@@ -123,7 +123,7 @@ const LyceeHistoireGeographiePage = () => {
                   Ajouter, si besoin, des informations issues de manuels complémentaires ou d'articles (cartes détaillées, données chiffrées…).
                 </p>
 
-                <h5 className="text-xl font-semibold text-pr-orange-dark mb-3">Fiches de révision thématiques</h5>
+                <h5 className="text-xl font-semibold text-pr-black mb-3">Fiches de révision thématiques</h5>
                 <p className="mb-4">
                   Pour chaque notion, créer une fiche regroupant :
                 </p>
@@ -137,7 +137,7 @@ const LyceeHistoireGeographiePage = () => {
                   Classer les fiches par grands chapitres du programme (La France dans l'Union européenne, dynamiques territoriales, puissance continentale…).
                 </p>
 
-                <h5 className="text-xl font-semibold text-pr-orange-dark mb-3">Quiz et auto-évaluation</h5>
+                <h5 className="text-xl font-semibold text-pr-black mb-3">Quiz et auto-évaluation</h5>
                 <p className="mb-6">
                   Élaborer des QCM ou des questions ouvertes sur chaque fiche.
                 </p>
@@ -147,7 +147,7 @@ const LyceeHistoireGeographiePage = () => {
 
                 <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">4. Entraînement aux épreuves écrites et orales</h4>
 
-                <h5 className="text-xl font-semibold text-pr-orange-dark mb-3">Dissertation et étude critique de documents</h5>
+                <h5 className="text-xl font-semibold text-pr-black mb-3">Dissertation et étude critique de documents</h5>
                 <p className="mb-4">
                   Structurer systématiquement l'introduction (accroche, définition des termes, problématique, annonce de plan).
                 </p>
@@ -162,7 +162,7 @@ const LyceeHistoireGeographiePage = () => {
                   Faire relire et corriger ses productions par un camarade ou un professeur.
                 </p>
 
-                <h5 className="text-xl font-semibold text-pr-orange-dark mb-3">Grand oral</h5>
+                <h5 className="text-xl font-semibold text-pr-black mb-3">Grand oral</h5>
                 <p className="mb-4">
                   Travailler la formulation claire de ses idées : préparer des fiches orales de 5 minutes sur chaque thème majeur.
                 </p>
@@ -175,7 +175,7 @@ const LyceeHistoireGeographiePage = () => {
 
                 <h4 className="text-2xl font-semibold text-carnet-red mb-4 border-b-2 border-carnet-red/30 pb-2">5. Gestion du temps et régularité</h4>
 
-                <h5 className="text-xl font-semibold text-pr-orange-dark mb-3">Planifier chaque semaine</h5>
+                <h5 className="text-xl font-semibold text-pr-black mb-3">Planifier chaque semaine</h5>
                 <ul className="list-disc pl-6 mb-4 space-y-1">
                   <li>Deux séances de lecture approfondie (1 h chacune)</li>
                   <li>Deux séances de fiches et QCM (45 min chacune)</li>
@@ -185,7 +185,7 @@ const LyceeHistoireGeographiePage = () => {
                   Alterner travail écrit et oral pour éviter la monotonie et renforcer l'apprentissage multisensoriel.
                 </p>
 
-                <div className="bg-pr-orange-pale p-6 rounded-lg border-l-4 border-orange-400">
+                <div className="bg-pr-gray-bg p-6 rounded-lg border-l-4 border-orange-400">
                   <p className="text-carnet-red-deep font-medium">
                     En combinant préparation, prise de notes active, révisions régulières et entraînements ciblés, vous optimiserez votre maîtrise du programme d'HGG et développerez votre aisance aux différentes épreuves du baccalauréat.
                   </p>
@@ -195,19 +195,19 @@ const LyceeHistoireGeographiePage = () => {
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <div className="bg-gradient-to-br from-carnet-paper-2 to-orange-50 border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-pr-orange hover:bg-gradient-to-br hover:from-orange-50 hover:to-pr-orange-pale transition-all duration-300 group p-8 rounded-lg">
-                <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
-                  <Globe className="h-8 w-8 text-carnet-red group-hover:text-pr-orange transition-colors duration-300" />
+              <div className="bg-gradient-to-br from-carnet-paper-2 to-orange-50 border-2 border-carnet-red/30 hover:shadow-2xl hover:scale-105 hover:border-pr-black hover:bg-gradient-to-br hover:from-orange-50 hover:to-pr-black-pale transition-all duration-300 group p-8 rounded-lg">
+                <div className="w-16 h-16 bg-carnet-red/10 group-hover:bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
+                  <Globe className="h-8 w-8 text-carnet-red group-hover:text-pr-black transition-colors duration-300" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-carnet-red group-hover:text-pr-orange-dark transition-colors duration-300">
+                <h3 className="text-2xl font-bold mb-4 text-carnet-red group-hover:text-pr-black transition-colors duration-300">
                   Besoin d'aide personnalisée en Histoire-Géographie ?
                 </h3>
-                <p className="text-gray-600 group-hover:text-pr-orange-dark transition-colors duration-300 mb-6">
+                <p className="text-gray-600 group-hover:text-pr-black transition-colors duration-300 mb-6">
                   Nos experts vous accompagnent pour maîtriser HGG et réussir vos épreuves du bac.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link to="/contact">
-                    <Button size="lg" className="bg-carnet-red hover:bg-pr-orange-dark text-white transition-all duration-300">
+                    <Button size="lg" className="bg-carnet-red hover:bg-pr-black-dark text-white transition-all duration-300">
                       Nous contacter
                     </Button>
                   </Link>

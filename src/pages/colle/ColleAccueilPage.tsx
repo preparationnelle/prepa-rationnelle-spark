@@ -64,7 +64,7 @@ const ColleAccueilPage: React.FC = () => {
       <div className="container mx-auto max-w-6xl">
         {/* ====== Hero Section ====== */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 bg-orange-100 text-[#F4845F] px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 bg-gray-100 text-[#F4845F] px-4 py-2 rounded-full text-sm font-semibold mb-4">
             <MessageCircle className="h-4 w-4" />
             Colle de Langues
           </div>
@@ -163,7 +163,7 @@ const ColleAccueilPage: React.FC = () => {
                     <div className="pt-2">
                       <Button
                         variant="ghost"
-                        className="w-full text-[#F4845F] hover:text-[#F4845F]/80 hover:bg-orange-50 gap-2"
+                        className="w-full text-[#F4845F] hover:text-[#F4845F]/80 hover:bg-gray-50 gap-2"
                         onClick={() => navigate('/colle/historique')}
                       >
                         Voir tout l'historique

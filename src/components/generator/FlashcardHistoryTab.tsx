@@ -151,7 +151,7 @@ export const FlashcardHistoryTab = ({
   if (isLoading) {
     return (
       <div className="p-16 text-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-pr-orange mx-auto mb-4"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-pr-black mx-auto mb-4"></div>
         <p className="text-gray-500">
           {language === 'fr' ? 'Chargement...' : 'Loading...'}
         </p>
@@ -184,7 +184,7 @@ export const FlashcardHistoryTab = ({
       <div className="flex flex-col gap-6 pb-6 border-b border-gray-100 dark:border-gray-800">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <h3 className="text-xl font-bold flex items-center gap-3 text-gray-900 dark:text-white">
-            <History className="h-5 w-5 text-pr-orange" />
+            <History className="h-5 w-5 text-pr-black" />
             {language === 'fr' ? 'Ma Collection' : 'My Collection'}
             <Badge variant="secondary" className="ml-2 bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300">
               {filteredFlashcards.length} / {flashcards.length}
@@ -256,7 +256,7 @@ export const FlashcardHistoryTab = ({
                 variant={dateFilter === filter ? "default" : "outline"}
                 size="sm"
                 onClick={() => setDateFilter(filter)}
-                className={`flex items-center gap-1 whitespace-nowrap ${dateFilter === filter ? 'bg-pr-orange hover:bg-pr-orange-dark text-white' : 'border-gray-200 dark:border-gray-700'}`}
+                className={`flex items-center gap-1 whitespace-nowrap ${dateFilter === filter ? 'bg-pr-black hover:bg-pr-black-dark text-white' : 'border-gray-200 dark:border-gray-700'}`}
               >
                 <Calendar className="h-3.5 w-3.5" />
                 {filter === 'all' && (language === 'fr' ? 'Tout' : 'All')}
@@ -272,7 +272,7 @@ export const FlashcardHistoryTab = ({
       {/* Flashcards list */}
       <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
         {filteredFlashcards.map((flashcard) => (
-          <div key={flashcard.id} className="group relative border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all hover:shadow-lg bg-white dark:bg-gray-900 hover:border-orange-200 dark:hover:border-orange-900/50">
+          <div key={flashcard.id} className="group relative border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all hover:shadow-lg bg-white dark:bg-gray-900 hover:border-gray-200 dark:hover:border-gray-900/50">
             <div className="flex justify-between items-start">
               <div className="flex-1 space-y-4">
                 {/* Category & Source */}
@@ -281,7 +281,7 @@ export const FlashcardHistoryTab = ({
                     {flashcard.category || 'Vocabulaire'}
                   </Badge>
                   {flashcard.source === 'ai_generated' && (
-                    <Badge variant="secondary" className="text-xs bg-orange-50 text-pr-orange-dark dark:bg-orange-900/20 dark:text-orange-400">
+                    <Badge variant="secondary" className="text-xs bg-gray-50 text-pr-black dark:bg-gray-900/20 dark:text-gray-400">
                       <Sparkles className="w-3 h-3 mr-1" />
                       IA
                     </Badge>
@@ -292,8 +292,8 @@ export const FlashcardHistoryTab = ({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-pr-orange-pale flex items-center justify-center text-pr-orange-dark text-[10px] font-bold">Q</span>
-                      <span className="text-[10px] font-bold tracking-wider text-pr-orange-dark uppercase">
+                      <span className="w-5 h-5 rounded-full bg-pr-gray-bg flex items-center justify-center text-pr-black text-[10px] font-bold">Q</span>
+                      <span className="text-[10px] font-bold tracking-wider text-pr-black uppercase">
                         {language === 'fr' ? 'Question' : 'Question'}
                       </span>
                     </div>
@@ -301,8 +301,8 @@ export const FlashcardHistoryTab = ({
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-pr-orange-pale flex items-center justify-center text-pr-orange text-[10px] font-bold">R</span>
-                      <span className="text-[10px] font-bold tracking-wider text-pr-orange uppercase">
+                      <span className="w-5 h-5 rounded-full bg-pr-gray-bg flex items-center justify-center text-pr-black text-[10px] font-bold">R</span>
+                      <span className="text-[10px] font-bold tracking-wider text-pr-black uppercase">
                         {language === 'fr' ? 'Réponse' : 'Answer'}
                       </span>
                     </div>
@@ -313,7 +313,7 @@ export const FlashcardHistoryTab = ({
                 {/* Hint */}
                 {getCardHint(flashcard) && (
                   <div className="bg-pr-gray-bg p-4 rounded-xl flex items-start gap-2 border border-pr-gray-light">
-                    <Lightbulb className="w-4 h-4 text-pr-orange mt-0.5 shrink-0" />
+                    <Lightbulb className="w-4 h-4 text-pr-black mt-0.5 shrink-0" />
                     <p className="text-sm italic text-pr-gray-mid">
                       {getCardHint(flashcard)}
                     </p>
@@ -364,7 +364,7 @@ export const FlashcardHistoryTab = ({
           <Button
             variant="link"
             onClick={() => { setSearchQuery(''); setCategoryFilter('all'); }}
-            className="mt-2 text-pr-orange"
+            className="mt-2 text-pr-black"
           >
             {language === 'fr' ? 'Réinitialiser les filtres' : 'Reset filters'}
           </Button>

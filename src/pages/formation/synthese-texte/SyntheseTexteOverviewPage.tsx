@@ -63,9 +63,9 @@ const SyntheseTexteOverviewPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="relative">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-pr-gray-light">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/95 backdrop-blur border-b border-carnet-rule/60">
         <div className="container mx-auto px-4 py-2.5">
           <div className="flex items-center text-xs text-pr-gray-mid font-dm-sans">
             <Link to="/" className="hover:text-pr-black transition-colors">
@@ -102,13 +102,13 @@ const SyntheseTexteOverviewPage: React.FC = () => {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="text-[10px] font-dm-sans font-semibold uppercase tracking-[0.18em] text-pr-orange-dark bg-pr-orange-pale px-3 py-1.5 rounded-full">
+          <span className="text-[10px] font-dm-sans font-semibold uppercase tracking-[0.18em] text-pr-black bg-pr-gray-bg px-3 py-1.5 rounded-full">
             Guide complet
           </span>
           <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black mt-6 mb-5 leading-tight">
             La Synthèse de Texte ECG
           </h1>
-          <div className="w-16 h-[3px] bg-pr-orange mx-auto mb-6" />
+          <div className="w-16 h-[3px] bg-pr-black mx-auto mb-6" />
           <p className="font-dm-sans text-lg text-pr-gray-dark max-w-2xl mx-auto leading-relaxed">
             Méthodologie complète pour maîtriser l'épreuve de synthèse aux concours.
           </p>
@@ -121,13 +121,13 @@ const SyntheseTexteOverviewPage: React.FC = () => {
             return (
               <section
                 key={idx}
-                className="bg-white border border-pr-gray-light rounded-lg p-8"
+                className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-8"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-11 h-11 bg-pr-orange-pale rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon className="h-5 w-5 text-pr-orange-dark" strokeWidth={1.5} />
+                  <div className="w-11 h-11 bg-pr-gray-bg rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Icon className="h-5 w-5 text-pr-black" strokeWidth={1.5} />
                   </div>
-                  <div className="border-l-[3px] border-pr-orange pl-4">
+                  <div className="border-l-[3px] border-pr-black pl-4">
                     <h2 className="font-dm-serif text-2xl text-pr-black leading-tight">
                       {section.title}
                     </h2>
@@ -147,7 +147,7 @@ const SyntheseTexteOverviewPage: React.FC = () => {
                         key={i}
                         className="flex items-start gap-3 font-dm-sans text-sm text-pr-gray-dark"
                       >
-                        <span className="text-pr-orange mt-0.5 font-medium">→</span>
+                        <span className="text-pr-black mt-0.5 font-medium">→</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -177,7 +177,7 @@ const SyntheseTexteOverviewPage: React.FC = () => {
                     {section.cards.map((c, i) => (
                       <div
                         key={i}
-                        className="border-l-[2px] border-pr-orange/60 bg-pr-gray-bg/40 rounded-r-md py-3 px-4"
+                        className="border-l-[2px] border-pr-black/60 bg-pr-gray-bg/40 rounded-r-md py-3 px-4"
                       >
                         <h4 className="font-dm-sans font-semibold text-pr-black mb-1 text-sm">
                           {c.title}
@@ -199,12 +199,12 @@ const SyntheseTexteOverviewPage: React.FC = () => {
           <h3 className="font-dm-serif text-2xl text-pr-black mb-3">
             Prêt à maîtriser la synthèse de texte&nbsp;?
           </h3>
-          <div className="w-12 h-[2px] bg-pr-orange mx-auto mb-4" />
+          <div className="w-12 h-[2px] bg-pr-black mx-auto mb-4" />
           <p className="font-dm-sans text-pr-gray-dark mb-6 max-w-xl mx-auto">
             Cette méthodologie vous donne toutes les clés pour réussir l'épreuve aux concours ECG.
           </p>
           <Link to="/formation/synthese-texte/methode">
-            <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white font-dm-sans gap-2">
+            <Button className="bg-pr-black hover:bg-pr-black-dark text-white font-dm-sans gap-2">
               <BookOpen className="w-4 h-4" />
               Commencer l'entraînement
             </Button>

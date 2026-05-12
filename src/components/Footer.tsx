@@ -37,10 +37,10 @@ const legales = [
 ];
 
 const columnTitleClass =
-  'font-dm-sans text-[13px] font-semibold uppercase tracking-[0.08em] text-pr-orange mb-4';
+  'font-instrument text-[13px] font-medium uppercase tracking-[0.08em] text-carnet-paper/50 mb-4';
 
 const linkClass =
-  'font-dm-sans text-sm text-white/80 hover:text-pr-orange transition-colors duration-200';
+  'font-instrument text-sm text-carnet-paper/80 hover:text-carnet-paper transition-colors duration-200';
 
 type LinkItem = { label: string; to: string };
 
@@ -61,24 +61,24 @@ const Column = ({ title, items }: { title: string; items: LinkItem[] }) => (
 
 export const Footer = () => {
   return (
-    <footer className="relative z-10 bg-pr-black border-t-[3px] border-pr-orange">
+    <footer className="relative z-10 bg-carnet-ink border-t border-carnet-paper/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* CTA — cours gratuit */}
-        <div className="py-12 text-center border-b border-white/10">
-          <span className="inline-block px-3 py-1 rounded-full bg-pr-orange-pale text-pr-orange-dark font-dm-sans text-[10px] font-semibold uppercase tracking-[0.08em] mb-5">
+        <div className="py-12 text-center border-b border-carnet-paper/10">
+          <span className="inline-block px-3 py-1 rounded-full bg-carnet-paper/10 text-carnet-paper border border-carnet-paper/20 font-instrument text-[10px] font-medium uppercase tracking-[0.08em] mb-5">
             Offre étudiants ECG
           </span>
-          <h3 className="font-dm-serif text-2xl md:text-3xl text-white max-w-3xl mx-auto leading-snug mb-6">
+          <h3 className="font-lora text-2xl md:text-3xl text-carnet-paper max-w-3xl mx-auto leading-snug mb-6">
             Un cours gratuit pour chaque suggestion utile sur le site.
           </h3>
-          <p className="font-dm-sans text-sm text-white/70 max-w-2xl mx-auto mb-7 leading-relaxed">
+          <p className="font-instrument text-sm text-carnet-paper/70 max-w-2xl mx-auto mb-7 leading-relaxed">
             Tu es en prépa ECG&nbsp;? Aide-nous à améliorer la plateforme et reçois ta première séance offerte.
           </p>
           <a
             href="https://calendly.com/preparationnelle/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-3 rounded-md font-dm-sans font-semibold text-sm transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-carnet-paper hover:bg-white text-carnet-ink px-6 py-3 rounded-md font-instrument font-medium text-sm transition-colors duration-200"
           >
             <Calendar className="h-4 w-4" />
             Réserver mon premier cours gratuit
@@ -94,25 +94,25 @@ export const Footer = () => {
         </div>
 
         {/* Pied de page : marque + copyright + hébergeur */}
-        <div className="py-7 border-t border-white/10 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+        <div className="py-7 border-t border-carnet-paper/10 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
           <div className="flex items-center gap-3">
-            <span className="font-dm-sans text-pr-orange font-semibold uppercase tracking-[0.12em] text-sm">
+            <span className="font-lora text-carnet-paper font-medium uppercase tracking-[0.12em] text-sm">
               Prépa Rationnelle
             </span>
-            <span className="hidden md:inline-block w-6 h-px bg-pr-orange" />
-            <span className="font-dm-sans text-xs text-white/50">
+            <span className="hidden md:inline-block w-6 h-px bg-carnet-paper/30" />
+            <span className="font-instrument text-xs text-carnet-paper/50">
               © 2025 — Tous droits réservés
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 font-dm-sans text-xs text-white/50">
+          <div className="flex items-center gap-1.5 font-instrument text-xs text-carnet-paper/50">
             <Server className="h-3 w-3" />
             <span>Hébergeur&nbsp;: Vercel Inc. —</span>
             <a
               href="https://vercel.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-pr-orange transition-colors"
+              className="hover:text-carnet-paper transition-colors"
             >
               vercel.com
             </a>

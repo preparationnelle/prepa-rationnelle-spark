@@ -18,7 +18,7 @@ const ChatWidget = () => {
 
   return (
     <Button
-      className="fixed bottom-4 right-4 z-50 shadow-lg flex items-center gap-2 pr-4 bg-pr-orange hover:bg-pr-orange-dark text-white"
+      className="fixed bottom-4 right-4 z-50 shadow-md flex items-center gap-2 pr-4 bg-carnet-paper-2 border border-carnet-rule text-carnet-ink hover:bg-carnet-paper"
       onClick={handleWhatsAppRedirect}
       aria-label="Poser une question sur la prépa via WhatsApp"
     >

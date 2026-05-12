@@ -32,7 +32,7 @@ const PersonnalitePage = () => {
           ].map((cat) => (
             <div key={cat.n} className="bg-white border border-carnet-rule/30 rounded-2xl p-6 hover:border-red-200 hover:shadow-md transition-all duration-300">
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="font-dm-serif text-4xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-orange-dark">{cat.n}</span>
+                <span className="font-dm-serif text-4xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-black">{cat.n}</span>
                 <h4 className="font-dm-serif text-xl text-carnet-ink">{cat.t}</h4>
               </div>
               <div className="h-px w-10 bg-red-500 mb-3" />
@@ -55,7 +55,7 @@ const PersonnalitePage = () => {
             { l: 'R', t: 'Résultat', d: 'Impact et apprentissages' },
           ].map((s) => (
             <div key={s.l} className="bg-white border border-carnet-rule/30 rounded-2xl p-6 text-center hover:border-red-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-              <div className="font-dm-serif text-5xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-orange-dark mb-1 leading-none">{s.l}</div>
+              <div className="font-dm-serif text-5xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-black mb-1 leading-none">{s.l}</div>
               <div className="h-px w-6 bg-red-500 mx-auto mb-3 mt-2" />
               <div className="font-medium text-carnet-ink mb-1">{s.t}</div>
               <p className="text-xs text-carnet-ink-mute">{s.d}</p>

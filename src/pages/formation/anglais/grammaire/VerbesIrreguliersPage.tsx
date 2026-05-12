@@ -91,7 +91,7 @@ const VerbesIrreguliersPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+            <div className="p-3 rounded-lg bg-pr-black-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche : Verbes Irréguliers (Base, Prétérit, Participe Passé)
@@ -102,14 +102,14 @@ const VerbesIrreguliersPage = () => {
         </div>
 
         {/* Conseils de mémorisation */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale">
+        <Card className="mb-8 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-pr-black-pale">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <HelpCircle className="h-6 w-6" />
               Conseils de mémorisation
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark space-y-2">
+          <CardContent className="text-pr-black space-y-2">
             <ul className="list-disc pl-6 space-y-1">
               <li>Regrouper par motifs sonores: drink/drank/drunk; sing/sang/sung.</li>
               <li>Identifier les formes identiques: cut/cut/cut; put/put/put.</li>
@@ -122,25 +122,25 @@ const VerbesIrreguliersPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-pr-orange-dark" />
+              <Table className="h-6 w-6 text-pr-black" />
               Liste des verbes irréguliers
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Base</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Prétérit</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Participe Passé</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Traduction</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Base</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Prétérit</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Participe Passé</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Traduction</th>
                   </tr>
                 </thead>
                 <tbody>
                   {verbs.map(([base, past, pp, fr]) => (
                     <tr key={base}>
-                      <td className="border px-3 py-2 text-pr-orange-dark font-medium">{base}</td>
+                      <td className="border px-3 py-2 text-pr-black font-medium">{base}</td>
                       <td className="border px-3 py-2">{past}</td>
                       <td className="border px-3 py-2">{pp}</td>
                       <td className="border px-3 py-2">{fr}</td>
@@ -159,7 +159,7 @@ const VerbesIrreguliersPage = () => {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
-              <li>Confondre prétérit et participe (❌ I have <span className="line-through">wrote</span> → ✅ I have <span className="text-pr-orange-dark font-semibold">written</span>).</li>
+              <li>Confondre prétérit et participe (❌ I have <span className="line-through">wrote</span> → ✅ I have <span className="text-pr-black font-semibold">written</span>).</li>
               <li>Mélanger les modèles proches (begin/began/begun vs drink/drank/drunk).</li>
               <li>Oublier les formes doubles (learned/learnt; got/gotten en AmE).</li>
             </ul>
@@ -167,18 +167,18 @@ const VerbesIrreguliersPage = () => {
         </Card>
 
         {/* CTA exercices */}
-        <Card className="mt-2 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mt-2 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-amber-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <Target className="h-6 w-6" />
               Prêt à mettre en pratique ?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-pr-orange-dark mb-6">Entraînez-vous avec des quiz de conversion base ↔ prétérit ↔ participe.</p>
+            <p className="text-lg text-pr-black mb-6">Entraînez-vous avec des quiz de conversion base ↔ prétérit ↔ participe.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/verbes-irreguliers/exercices">
-                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-black-dark hover:bg-pr-black-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

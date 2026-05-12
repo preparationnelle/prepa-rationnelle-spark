@@ -45,7 +45,7 @@ const ConcordanceTempsPage = () => {
         {/* En-tête */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-3">
-            <div className="p-3 rounded-lg bg-pr-orange-dark text-white">
+            <div className="p-3 rounded-lg bg-pr-black-dark text-white">
               <BookOpen className="h-9 w-9" />
             </div>
             Fiche de Grammaire : Concordance des Temps en Anglais
@@ -56,14 +56,14 @@ const ConcordanceTempsPage = () => {
         </div>
 
         {/* Introduction */}
-        <Card className="mb-8 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-pr-orange-pale">
+        <Card className="mb-8 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-pr-black-pale">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <HelpCircle className="h-6 w-6" />
               Introduction
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-pr-orange-dark space-y-3">
+          <CardContent className="text-pr-black space-y-3">
             <p>En anglais, après un verbe principal au passé, on emploie généralement des temps du passé dans la subordonnée (notion de <span className="font-semibold">backshift</span>), sauf vérités générales ou faits encore vrais.</p>
           </CardContent>
         </Card>
@@ -72,42 +72,42 @@ const ConcordanceTempsPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-pr-orange-dark" />
+              <Table className="h-6 w-6 text-pr-black" />
               1. Schémas de Concordance (Principale au passé)
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Relation temporelle</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Principale (passé)</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Subordonnée</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Relation temporelle</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Principale (passé)</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Subordonnée</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Exemple</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="border px-3 py-2 text-pr-orange-dark font-medium">Simultanéité</td>
+                    <td className="border px-3 py-2 text-pr-black font-medium">Simultanéité</td>
                     <td className="border px-3 py-2">past simple</td>
                     <td className="border px-3 py-2">past simple / past continuous</td>
                     <td className="border px-3 py-2">He said she <span className="font-semibold">was</span> tired.</td>
                   </tr>
                   <tr>
-                    <td className="border px-3 py-2 text-pr-orange-dark font-medium">Antériorité</td>
+                    <td className="border px-3 py-2 text-pr-black font-medium">Antériorité</td>
                     <td className="border px-3 py-2">past simple</td>
                     <td className="border px-3 py-2">past perfect</td>
                     <td className="border px-3 py-2">She said she <span className="font-semibold">had finished</span>.</td>
                   </tr>
                   <tr>
-                    <td className="border px-3 py-2 text-pr-orange-dark font-medium">Postériorité</td>
+                    <td className="border px-3 py-2 text-pr-black font-medium">Postériorité</td>
                     <td className="border px-3 py-2">past simple</td>
                     <td className="border px-3 py-2">would + base</td>
                     <td className="border px-3 py-2">They said they <span className="font-semibold">would come</span>.</td>
                   </tr>
                   <tr>
-                    <td className="border px-3 py-2 text-pr-orange-dark font-medium">Postériorité accomplie</td>
+                    <td className="border px-3 py-2 text-pr-black font-medium">Postériorité accomplie</td>
                     <td className="border px-3 py-2">past simple</td>
                     <td className="border px-3 py-2">would have + Vpp</td>
                     <td className="border px-3 py-2">He said he <span className="font-semibold">would have finished</span> by Friday.</td>
@@ -125,11 +125,11 @@ const ConcordanceTempsPage = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             <ul className="list-disc pl-6 space-y-1">
-              <li><span className="text-pr-orange-dark font-semibold">will → would</span> | <span className="text-pr-orange-dark font-semibold">shall → should</span> (rare) | <span className="text-pr-orange-dark font-semibold">can → could</span> | <span className="text-pr-orange-dark font-semibold">may → might</span> | <span className="text-pr-orange-dark font-semibold">must → had to</span>.</li>
+              <li><span className="text-pr-black font-semibold">will → would</span> | <span className="text-pr-black font-semibold">shall → should</span> (rare) | <span className="text-pr-black font-semibold">can → could</span> | <span className="text-pr-black font-semibold">may → might</span> | <span className="text-pr-black font-semibold">must → had to</span>.</li>
               <li>Formes parfaites : would have + Vpp, could have + Vpp, might have + Vpp.</li>
             </ul>
-            <div className="bg-white/70 rounded-lg p-4 border border-orange-200">
-              <p>Ex : She said she <span className="text-pr-orange-dark font-semibold">would</span> call. / He thought he <span className="text-pr-orange-dark font-semibold">might have</span> lost it.</p>
+            <div className="bg-white/70 rounded-lg p-4 border border-gray-200">
+              <p>Ex : She said she <span className="text-pr-black font-semibold">would</span> call. / He thought he <span className="text-pr-black font-semibold">might have</span> lost it.</p>
             </div>
           </CardContent>
         </Card>
@@ -141,10 +141,10 @@ const ConcordanceTempsPage = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <ul className="list-disc pl-6 space-y-1">
-              <li><span className="text-pr-orange-dark font-semibold">Vérités universelles</span> : The teacher said that water <span className="font-semibold">boils</span> at 100°C.</li>
-              <li><span className="text-pr-orange-dark font-semibold">Situation encore vraie</span> : He said he <span className="font-semibold">lives</span>/<span className="font-semibold">lived</span> in London.</li>
-              <li><span className="text-pr-orange-dark font-semibold">Verbe au présent/futur</span> : She says/She will tell you she <span className="font-semibold">is</span> busy.</li>
-              <li><span className="text-pr-orange-dark font-semibold">Modaux stables</span> : would, could, might, should, ought to ne changent pas.</li>
+              <li><span className="text-pr-black font-semibold">Vérités universelles</span> : The teacher said that water <span className="font-semibold">boils</span> at 100°C.</li>
+              <li><span className="text-pr-black font-semibold">Situation encore vraie</span> : He said he <span className="font-semibold">lives</span>/<span className="font-semibold">lived</span> in London.</li>
+              <li><span className="text-pr-black font-semibold">Verbe au présent/futur</span> : She says/She will tell you she <span className="font-semibold">is</span> busy.</li>
+              <li><span className="text-pr-black font-semibold">Modaux stables</span> : would, could, might, should, ought to ne changent pas.</li>
             </ul>
           </CardContent>
         </Card>
@@ -156,7 +156,7 @@ const ConcordanceTempsPage = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             <ul className="list-disc pl-6 space-y-1">
-              <li><span className="text-pr-orange-dark font-semibold">Présent</span> après when/as soon as/before/after pour sens futur : Call me when you <span className="font-semibold">arrive</span>.</li>
+              <li><span className="text-pr-black font-semibold">Présent</span> après when/as soon as/before/after pour sens futur : Call me when you <span className="font-semibold">arrive</span>.</li>
               <li>Antériorité : When I <span className="font-semibold">had finished</span>, I left.</li>
               <li>Progressif pour simultanéité en arrière-plan : While she <span className="font-semibold">was working</span>, he cooked.</li>
             </ul>
@@ -170,9 +170,9 @@ const ConcordanceTempsPage = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <ul className="list-disc pl-6 space-y-1">
-              <li>Type 1 : If + present, <span className="text-pr-orange-dark font-semibold">will</span> + base.</li>
-              <li>Type 2 : If + past simple, <span className="text-pr-orange-dark font-semibold">would</span> + base.</li>
-              <li>Type 3 : If + past perfect, <span className="text-pr-orange-dark font-semibold">would have</span> + Vpp.</li>
+              <li>Type 1 : If + present, <span className="text-pr-black font-semibold">will</span> + base.</li>
+              <li>Type 2 : If + past simple, <span className="text-pr-black font-semibold">would</span> + base.</li>
+              <li>Type 3 : If + past perfect, <span className="text-pr-black font-semibold">would have</span> + Vpp.</li>
             </ul>
           </CardContent>
         </Card>
@@ -181,18 +181,18 @@ const ConcordanceTempsPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <Table className="h-6 w-6 text-pr-orange-dark" />
+              <Table className="h-6 w-6 text-pr-black" />
               6. Tableau Récapitulatif
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <table className="min-w-full border border-gray-200 bg-white">
-                <thead className="bg-orange-50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Direct</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Concordance (principale au passé)</th>
-                    <th className="border px-3 py-2 text-left text-pr-orange-dark">Exemple indirect</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Direct</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Concordance (principale au passé)</th>
+                    <th className="border px-3 py-2 text-left text-pr-black">Exemple indirect</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -216,7 +216,7 @@ const ConcordanceTempsPage = () => {
           <CardContent>
             <ul className="list-disc pl-6 space-y-1">
               <li>Garder un présent alors que la principale est au passé (sauf exceptions).</li>
-              <li>Employer <span className="text-pr-orange-dark font-semibold">will</span> dans une subordonnée temporelle future (préférer présent) : When she <span className="font-semibold">arrives</span>, we'll start.</li>
+              <li>Employer <span className="text-pr-black font-semibold">will</span> dans une subordonnée temporelle future (préférer présent) : When she <span className="font-semibold">arrives</span>, we'll start.</li>
               <li>Confondre would/would have selon la postériorité.</li>
               <li>Oublier le past perfect pour l'antériorité claire.</li>
             </ul>
@@ -224,18 +224,18 @@ const ConcordanceTempsPage = () => {
         </Card>
 
         {/* CTA exercices */}
-        <Card className="mt-2 border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50">
+        <Card className="mt-2 border-2 border-gray-200 bg-gradient-to-r from-orange-50 to-amber-50">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2 text-orange-800">
+            <CardTitle className="text-2xl flex items-center gap-2 text-gray-800">
               <Target className="h-6 w-6" />
               Prêt à mettre en pratique ?
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-lg text-pr-orange-dark mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
+            <p className="text-lg text-pr-black mb-6">Après avoir étudié la fiche, lancez-vous dans les exercices pour consolider vos acquis.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/formation/anglais/grammaire/concordance/exercices">
-                <Button className="bg-pr-orange-dark hover:bg-pr-orange-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
+                <Button className="bg-pr-black-dark hover:bg-pr-black-dark text-white px-8 py-3 text-lg w-full sm:w-auto">
                   <Target className="h-5 w-5 mr-2" />
                   Exercices
                 </Button>

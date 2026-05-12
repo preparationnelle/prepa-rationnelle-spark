@@ -302,20 +302,20 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
         "w-full flex flex-col overflow-hidden",
         isEmbedded ? "h-full border-0 shadow-none rounded-none" : "max-w-4xl rounded-2xl shadow-[0_2px_12px_rgba(26,26,24,0.04)] border border-pr-gray-light bg-white"
       )}>
-        {!isEmbedded && <div className="h-[3px] w-full bg-pr-orange" />}
+        {!isEmbedded && <div className="h-[3px] w-full bg-pr-black" />}
         <CardHeader className={cn(
           "bg-pr-gray-bg border-b border-pr-gray-light",
           isEmbedded ? "px-5 py-3" : "px-6 py-5"
         )}>
           <div className="flex items-center gap-3">
             <div className={cn(
-              "bg-white border border-pr-orange-soft rounded-xl flex items-center justify-center",
+              "bg-white border border-pr-black-soft rounded-xl flex items-center justify-center",
               isEmbedded ? "w-10 h-10" : "w-12 h-12"
             )}>
-              <Calculator className={cn("text-pr-orange-dark", isEmbedded ? "h-5 w-5" : "h-6 w-6")} />
+              <Calculator className={cn("text-pr-black", isEmbedded ? "h-5 w-5" : "h-6 w-6")} />
             </div>
             <div className="flex-1">
-              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-orange-dark mb-0.5">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
                 Assistant IA
               </div>
               <CardTitle className={cn("font-dm-serif text-pr-black leading-none", isEmbedded ? "text-lg" : "text-2xl")}>
@@ -344,19 +344,19 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
                 <div className={cn(
                   "flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center",
                   message.role === "user"
-                    ? "bg-pr-orange"
-                    : "bg-pr-orange-pale border border-pr-orange-soft"
+                    ? "bg-pr-black"
+                    : "bg-pr-gray-bg border border-pr-black-soft"
                 )}>
                   {message.role === "user" ? (
                     <span className="text-white text-sm font-semibold">U</span>
                   ) : (
-                    <Calculator className="h-4 w-4 text-pr-orange-dark" />
+                    <Calculator className="h-4 w-4 text-pr-black" />
                   )}
                 </div>
                 <div className={cn(
                   "rounded-2xl px-5 py-4 max-w-2xl break-words",
                   message.role === "user"
-                    ? "bg-pr-orange text-white shadow-[0_4px_14px_rgba(244,132,95,0.25)]"
+                    ? "bg-pr-black text-white shadow-[0_4px_14px_rgba(244,132,95,0.25)]"
                     : "bg-pr-gray-bg border border-pr-gray-light"
                 )}>
                   <div className={cn("text-[14px] leading-relaxed", message.role === "user" ? "text-white" : "text-pr-black")}>
@@ -378,12 +378,12 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
             {/* Loading indicator */}
             {loading && (
               <div className="flex gap-3 max-w-3xl">
-                <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-pr-orange-pale border border-pr-orange-soft flex items-center justify-center">
-                  <Calculator className="h-4 w-4 text-pr-orange-dark" />
+                <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-pr-gray-bg border border-pr-black-soft flex items-center justify-center">
+                  <Calculator className="h-4 w-4 text-pr-black" />
                 </div>
                 <div className="bg-pr-gray-bg border border-pr-gray-light rounded-2xl px-5 py-4">
                   <div className="flex items-center gap-3">
-                    <Loader2 className="h-4 w-4 animate-spin text-pr-orange" />
+                    <Loader2 className="h-4 w-4 animate-spin text-pr-black" />
                     <span className="text-[14px] text-pr-gray-dark">Génération de la réponse mathématique…</span>
                   </div>
                 </div>
@@ -401,7 +401,7 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
                   <Button
                     onClick={retryLastMessage}
                     size="sm"
-                    className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-lg"
+                    className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg"
                   >
                     Réessayer
                   </Button>
@@ -422,7 +422,7 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
                     key={index}
                     size="sm"
                     onClick={() => handleSuggestion(suggestion)}
-                    className="whitespace-nowrap text-[12px] bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-orange-pale hover:text-pr-orange-dark hover:border-pr-orange-soft rounded-lg font-medium transition-colors"
+                    className="whitespace-nowrap text-[12px] bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg font-medium transition-colors"
                   >
                     {suggestion}
                   </Button>
@@ -438,12 +438,12 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
               onChange={(e) => setInput(e.target.value)}
               placeholder="Posez votre question mathématique…"
               disabled={loading}
-              className="flex-1 bg-white border-pr-gray-light text-pr-black placeholder:text-pr-gray-mid focus:border-pr-orange focus:ring-2 focus:ring-pr-orange/20 rounded-xl h-12"
+              className="flex-1 bg-white border-pr-gray-light text-pr-black placeholder:text-pr-gray-mid focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 rounded-xl h-12"
             />
             <Button
               type="submit"
               disabled={!input.trim() || loading}
-              className="bg-pr-orange hover:bg-pr-orange-dark text-white px-5 rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 font-semibold h-12 disabled:opacity-50 disabled:shadow-none"
+              className="bg-pr-black hover:bg-pr-black-dark text-white px-5 rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 font-semibold h-12 disabled:opacity-50 disabled:shadow-none"
             >
               {loading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />

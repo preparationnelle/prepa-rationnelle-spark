@@ -62,7 +62,7 @@ const PitchIntroPage = () => {
       <MethodSection label="Section 01" title="Structure PASS pour un pitch efficace" icon={Target}>
         <div className="grid md:grid-cols-2 gap-5">
           {passSteps.map((s, i) => (
-            <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-6 hover:border-red-600 transition-colors">
+            <div key={i} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6 hover:border-carnet-red transition-colors">
               <div className="flex items-baseline gap-3 mb-1">
                 <span className="font-dm-serif text-5xl text-red-600 leading-none">{s.l}</span>
                 <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
@@ -86,7 +86,7 @@ const PitchIntroPage = () => {
             { t: "1m30-2m", k: "Spécificité", d: "Élément différenciant unique" },
             { t: "2m-2m30", k: "Suite", d: "Projet et motivation école" },
           ].map((c) => (
-            <div key={c.t} className="bg-white border border-carnet-rule/30 rounded-lg p-5 text-center">
+            <div key={c.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-5 text-center">
               <div className="font-dm-serif text-2xl text-red-600 mb-1">{c.t}</div>
               <div className="h-px w-6 bg-red-600 mx-auto mb-3" />
               <div className="font-medium text-carnet-ink mb-1">{c.k}</div>
@@ -113,7 +113,7 @@ const PitchIntroPage = () => {
       <MethodSection label="Section 03" title="Exemples de pitch d'introduction réussis" icon={Star}>
         <div className="space-y-5">
           {examples.map((ex, i) => (
-            <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <div key={i} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
                   Exemple {i + 1}
@@ -156,7 +156,7 @@ const PitchIntroPage = () => {
               ],
             },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-4 flex items-center gap-2">
                 <AlertCircle className="w-5 h-5 text-red-700" strokeWidth={1.8} />
                 {g.t}
@@ -181,7 +181,7 @@ const PitchIntroPage = () => {
             { t: "Répétition", l: ["Répétez devant un miroir", "Enregistrez-vous en vidéo", "Testez avec vos proches", "Travaillez la gestuelle"] },
             { t: "Naturalisation", l: ["Intériorisez sans réciter", "Préparez des variantes", "Adaptez selon l'école", "Restez spontané"] },
           ].map((step, i) => (
-            <div key={step.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <div key={step.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <span className="font-dm-serif text-3xl text-red-600">{String(i + 1).padStart(2, '0')}</span>
               <h4 className="font-dm-serif text-lg text-carnet-ink mt-1">Étape — {step.t}</h4>
               <div className="h-px w-8 bg-red-600 mb-4 mt-2" />
@@ -205,7 +205,7 @@ const PitchIntroPage = () => {
             { t: "Contenu validé", l: ["Structure PASS respectée", "Timing entre 2 et 3 minutes", "Élément différenciant mis en avant", "Lien clair avec le projet professionnel", "Cohérence avec le CV"] },
             { t: "Présentation maîtrisée", l: ["Ton naturel et enthousiaste", "Contact visuel maintenu", "Gestuelle appropriée", "Débit adapté et articulé", "Conclusion qui ouvre sur la suite"] },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-lg p-6">
+            <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-2">{g.t}</h4>
               <div className="h-px w-8 bg-red-600 mb-4" />
               <ul className="space-y-3">

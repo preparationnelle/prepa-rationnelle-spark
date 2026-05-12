@@ -47,7 +47,7 @@ const CoachingPythonPage = () => {
           </div>
 
           {/* Offer details section */}
-          <div className="bg-white/90 rounded-xl border border-primary/30 p-6 mb-8">
+          <div className="bg-carnet-paper-2 rounded-xl border border-carnet-rule p-6 mb-8">
             <h3 className="text-xl font-bold text-primary mb-6">
               Découvre notre offre :
             </h3>

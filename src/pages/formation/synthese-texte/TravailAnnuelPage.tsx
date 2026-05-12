@@ -184,9 +184,9 @@ const TravailAnnuelPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="relative">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-pr-gray-light">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/95 backdrop-blur border-b border-carnet-rule/60">
         <div className="container mx-auto px-4 py-2.5">
           <div className="flex items-center text-xs text-pr-gray-mid font-dm-sans">
             <Link to="/" className="hover:text-pr-black transition-colors">
@@ -219,13 +219,13 @@ const TravailAnnuelPage: React.FC = () => {
 
         {/* Header */}
         <div className="text-center mb-14">
-          <span className="text-[10px] font-dm-sans font-semibold uppercase tracking-[0.18em] text-pr-orange-dark bg-pr-orange-pale px-3 py-1.5 rounded-full">
+          <span className="text-[10px] font-dm-sans font-semibold uppercase tracking-[0.18em] text-pr-black bg-pr-gray-bg px-3 py-1.5 rounded-full">
             Planning · 9 mois
           </span>
           <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black mt-6 mb-5 leading-tight">
             Organisation du travail annuel
           </h1>
-          <div className="w-16 h-[3px] bg-pr-orange mx-auto mb-6" />
+          <div className="w-16 h-[3px] bg-pr-black mx-auto mb-6" />
           <p className="font-dm-sans text-lg text-pr-gray-dark max-w-2xl mx-auto leading-relaxed">
             Planning complet sur 9 mois pour maîtriser l'épreuve de synthèse de texte.
           </p>
@@ -239,7 +239,7 @@ const TravailAnnuelPage: React.FC = () => {
         {/* Périodes */}
         <section className="mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <div className="w-1 h-7 bg-pr-black rounded-full" />
             <h2 className="font-dm-serif text-2xl text-pr-black">
               Planning annuel détaillé
             </h2>
@@ -255,21 +255,21 @@ const TravailAnnuelPage: React.FC = () => {
                 >
                   <header className="flex items-center justify-between mb-6 gap-4 flex-wrap">
                     <div className="flex items-center gap-4">
-                      <div className="w-11 h-11 bg-pr-orange-pale rounded-lg flex items-center justify-center">
-                        <Icon className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.5} />
+                      <div className="w-11 h-11 bg-pr-gray-bg rounded-lg flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-pr-black" strokeWidth={1.5} />
                       </div>
                       <h3 className="font-dm-serif text-xl text-pr-black leading-tight">
                         {periode.title}
                       </h3>
                     </div>
-                    <Badge className="bg-pr-orange-pale text-pr-orange-dark hover:bg-pr-orange-pale font-dm-sans text-[10px] uppercase tracking-wider">
+                    <Badge className="bg-pr-gray-bg text-pr-black hover:bg-pr-gray-bg font-dm-sans text-[10px] uppercase tracking-wider">
                       {periode.objectifs.length} objectifs
                     </Badge>
                   </header>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-5">
                     <div>
-                      <h4 className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-orange-dark mb-3">
+                      <h4 className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-black mb-3">
                         Objectifs
                       </h4>
                       <ul className="space-y-2">
@@ -278,7 +278,7 @@ const TravailAnnuelPage: React.FC = () => {
                             key={idx}
                             className="flex items-start gap-2.5 font-dm-sans text-sm text-pr-gray-dark"
                           >
-                            <span className="text-pr-orange mt-0.5">→</span>
+                            <span className="text-pr-black mt-0.5">→</span>
                             <span>{objectif}</span>
                           </li>
                         ))}
@@ -286,7 +286,7 @@ const TravailAnnuelPage: React.FC = () => {
                     </div>
 
                     <div>
-                      <h4 className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-orange-dark mb-3">
+                      <h4 className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-black mb-3">
                         Activités
                       </h4>
                       <ul className="space-y-2">
@@ -295,7 +295,7 @@ const TravailAnnuelPage: React.FC = () => {
                             key={idx}
                             className="flex items-start gap-2.5 font-dm-sans text-sm text-pr-gray-dark"
                           >
-                            <span className="text-pr-orange mt-0.5">→</span>
+                            <span className="text-pr-black mt-0.5">→</span>
                             <span>{activite}</span>
                           </li>
                         ))}
@@ -304,7 +304,7 @@ const TravailAnnuelPage: React.FC = () => {
                   </div>
 
                   <div className="mb-5">
-                    <h4 className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-orange-dark mb-3">
+                    <h4 className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-black mb-3">
                       Outils recommandés
                     </h4>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
@@ -313,16 +313,16 @@ const TravailAnnuelPage: React.FC = () => {
                           key={idx}
                           className="flex items-start gap-2.5 font-dm-sans text-sm text-pr-gray-dark"
                         >
-                          <span className="text-pr-orange mt-0.5">→</span>
+                          <span className="text-pr-black mt-0.5">→</span>
                           <span>{outil}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="border-l-[3px] border-pr-orange bg-pr-orange-pale/40 rounded-r px-4 py-3">
+                  <div className="border-l-[3px] border-pr-black bg-pr-gray-bg/40 rounded-r px-4 py-3">
                     <p className="font-dm-sans text-sm text-pr-gray-dark">
-                      <strong className="text-pr-orange-dark">Évaluation —</strong> {periode.evaluation}
+                      <strong className="text-pr-black">Évaluation —</strong> {periode.evaluation}
                     </p>
                   </div>
                 </article>
@@ -334,7 +334,7 @@ const TravailAnnuelPage: React.FC = () => {
         {/* Planning hebdo */}
         <section className="mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <div className="w-1 h-7 bg-pr-black rounded-full" />
             <h2 className="font-dm-serif text-2xl text-pr-black">
               Planning hebdomadaire par période
             </h2>
@@ -355,7 +355,7 @@ const TravailAnnuelPage: React.FC = () => {
                       key={jour.jour}
                       className="bg-pr-gray-bg/50 border border-pr-gray-light/60 rounded-md px-4 py-3"
                     >
-                      <div className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-orange-dark mb-1">
+                      <div className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-black mb-1">
                         {jour.jour}
                       </div>
                       <div className="font-dm-sans text-sm text-pr-gray-dark">
@@ -372,7 +372,7 @@ const TravailAnnuelPage: React.FC = () => {
         {/* Ressources */}
         <section className="mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <div className="w-1 h-7 bg-pr-black rounded-full" />
             <h2 className="font-dm-serif text-2xl text-pr-black">
               Ressources recommandées
             </h2>
@@ -393,7 +393,7 @@ const TravailAnnuelPage: React.FC = () => {
                       key={idx}
                       className="flex items-start gap-2.5 font-dm-sans text-sm text-pr-gray-dark"
                     >
-                      <span className="text-pr-orange mt-0.5">→</span>
+                      <span className="text-pr-black mt-0.5">→</span>
                       <span>{ressource}</span>
                     </li>
                   ))}
@@ -406,7 +406,7 @@ const TravailAnnuelPage: React.FC = () => {
         {/* Suivi */}
         <section className="mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <div className="w-1 h-7 bg-pr-black rounded-full" />
             <h2 className="font-dm-serif text-2xl text-pr-black">
               Suivi de progression
             </h2>
@@ -418,10 +418,10 @@ const TravailAnnuelPage: React.FC = () => {
                 Journal de bord
               </h3>
               <ul className="space-y-2 font-dm-sans text-sm text-pr-gray-dark">
-                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Date et durée de chaque séance</span></li>
-                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Sujets travaillés</span></li>
-                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Points forts et difficultés rencontrées</span></li>
-                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Objectifs pour la séance suivante</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-black mt-0.5">→</span><span>Date et durée de chaque séance</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-black mt-0.5">→</span><span>Sujets travaillés</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-black mt-0.5">→</span><span>Points forts et difficultés rencontrées</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-black mt-0.5">→</span><span>Objectifs pour la séance suivante</span></li>
               </ul>
             </div>
 
@@ -430,10 +430,10 @@ const TravailAnnuelPage: React.FC = () => {
                 Métriques à suivre
               </h3>
               <ul className="space-y-2 font-dm-sans text-sm text-pr-gray-dark">
-                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Temps moyen par synthèse</span></li>
-                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Nombre de mots respecté</span></li>
-                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Qualité de la structure</span></li>
-                <li className="flex items-start gap-2.5"><span className="text-pr-orange mt-0.5">→</span><span>Fidélité aux textes sources</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-black mt-0.5">→</span><span>Temps moyen par synthèse</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-black mt-0.5">→</span><span>Nombre de mots respecté</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-black mt-0.5">→</span><span>Qualité de la structure</span></li>
+                <li className="flex items-start gap-2.5"><span className="text-pr-black mt-0.5">→</span><span>Fidélité aux textes sources</span></li>
               </ul>
             </div>
           </div>
@@ -442,7 +442,7 @@ const TravailAnnuelPage: React.FC = () => {
         {/* Motivation */}
         <section className="mb-14">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-7 bg-pr-orange rounded-full" />
+            <div className="w-1 h-7 bg-pr-black rounded-full" />
             <h2 className="font-dm-serif text-2xl text-pr-black">
               Maintenir la motivation
             </h2>
@@ -460,7 +460,7 @@ const TravailAnnuelPage: React.FC = () => {
                 <ul className="space-y-2 font-dm-sans text-sm text-pr-gray-dark">
                   {bloc.items.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
-                      <span className="text-pr-orange mt-0.5">→</span>
+                      <span className="text-pr-black mt-0.5">→</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -475,7 +475,7 @@ const TravailAnnuelPage: React.FC = () => {
           <h3 className="font-dm-serif text-2xl text-pr-black mb-3">
             Prêt à commencer votre planning&nbsp;?
           </h3>
-          <div className="w-12 h-[2px] bg-pr-orange mx-auto mb-4" />
+          <div className="w-12 h-[2px] bg-pr-black mx-auto mb-4" />
           <p className="font-dm-sans text-pr-gray-dark mb-6 max-w-xl mx-auto leading-relaxed">
             Cette organisation structurée vous garantit une progression régulière et efficace tout au long de l'année.
           </p>
@@ -483,14 +483,14 @@ const TravailAnnuelPage: React.FC = () => {
             <Link to="/formation/synthese-texte/methode">
               <Button
                 variant="outline"
-                className="font-dm-sans border-pr-gray-light text-pr-gray-dark hover:bg-white hover:border-pr-orange hover:text-pr-orange-dark gap-2"
+                className="font-dm-sans border-pr-gray-light text-pr-gray-dark hover:bg-white hover:border-pr-black hover:text-pr-black gap-2"
               >
                 <Target className="w-4 h-4" />
                 Voir la méthode
               </Button>
             </Link>
             <Link to="/formation/synthese-texte/ressources">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white font-dm-sans gap-2">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white font-dm-sans gap-2">
                 <BookOpen className="w-4 h-4" />
                 Accéder aux ressources
               </Button>

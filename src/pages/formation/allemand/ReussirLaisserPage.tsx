@@ -11,7 +11,7 @@ const ReussirLaisserPage: React.FC = () => {
       title: "Comprendre le sujet",
       icon: <BookOpen className="w-5 h-5" />,
       color: "from-carnet-red to-cyan-600",
-      bgColor: "from-pr-orange-pale to-cyan-50",
+      bgColor: "from-carnet-red-pale to-cyan-50",
       points: [
         "Lisez attentivement le sujet plusieurs fois",
         "Identifiez les mots-clés et la problématique",
@@ -36,7 +36,7 @@ const ReussirLaisserPage: React.FC = () => {
       id: 3,
       title: "Gérer le temps",
       icon: <Clock className="w-5 h-5" />,
-      color: "from-pr-orange-dark to-amber-600",
+      color: "from-carnet-red to-amber-600",
       bgColor: "from-orange-50 to-amber-50",
       points: [
         "5-10 minutes : analyse du sujet et plan",
@@ -65,7 +65,7 @@ const ReussirLaisserPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pr-orange-pale via-white to-cyan-50">
+    <div className="min-h-screen bg-transparent font-dm-sans">
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Header */}
         <div className="mb-8">
@@ -310,8 +310,8 @@ const ReussirLaisserPage: React.FC = () => {
               </div>
 
               {/* KRITIK UND KOMMENTAR */}
-              <div className="bg-white p-4 rounded-lg border border-orange-200">
-                <h4 className="font-bold text-orange-800 text-lg mb-3">KRITIK UND KOMMENTAR / CRITIQUE ET COMMENTAIRE</h4>
+              <div className="bg-white p-4 rounded-lg border border-gray-200">
+                <h4 className="font-bold text-gray-800 text-lg mb-3">KRITIK UND KOMMENTAR / CRITIQUE ET COMMENTAIRE</h4>
                 
                 <div className="space-y-2">
                   <ul className="text-sm text-gray-600 space-y-1 ml-4">

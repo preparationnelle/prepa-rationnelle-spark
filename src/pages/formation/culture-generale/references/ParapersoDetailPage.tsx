@@ -33,31 +33,31 @@ const ParapersoDetailPage: React.FC = () => {
           <div className="mb-8 text-xs font-semibold uppercase tracking-[0.12em] text-pr-gray-dark">
             <Link
               to="/formation/culture-generale"
-              className="hover:text-pr-orange transition-colors"
+              className="hover:text-pr-black transition-colors"
             >
               Culture générale
             </Link>
             <span className="mx-2 text-pr-gray-light">/</span>
             <Link
               to="/formation/culture-generale/references"
-              className="hover:text-pr-orange transition-colors"
+              className="hover:text-pr-black transition-colors"
             >
               Références
             </Link>
             <span className="mx-2 text-pr-gray-light">/</span>
-            <span className="text-pr-orange-dark">
+            <span className="text-pr-black">
               {String(paraperso.number).padStart(2, '0')}
             </span>
           </div>
 
           {/* Header */}
           <div className="mb-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               {paraperso.sousTheme}
             </p>
 
             <div className="flex items-start gap-5 mb-5">
-              <span className="font-dm-serif text-pr-orange text-6xl leading-none flex-shrink-0">
+              <span className="font-dm-serif text-pr-black text-6xl leading-none flex-shrink-0">
                 {String(paraperso.number).padStart(2, '0')}
               </span>
               <h1 className="font-dm-serif text-3xl md:text-4xl text-pr-black leading-tight">
@@ -65,7 +65,7 @@ const ParapersoDetailPage: React.FC = () => {
               </h1>
             </div>
 
-            <div className="h-[3px] w-16 bg-pr-orange mb-5" />
+            <div className="h-[3px] w-16 bg-pr-black mb-5" />
 
             <p className="text-base md:text-lg text-pr-gray-dark italic leading-relaxed">
               {paraperso.glose}
@@ -74,9 +74,9 @@ const ParapersoDetailPage: React.FC = () => {
 
           {/* Carte paragraphe */}
           <Card className="relative bg-white rounded-2xl p-7 md:p-10 border border-pr-gray-light overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
 
-            <div className="text-pr-black text-base md:text-lg leading-[1.85] [&_p]:mb-4 [&_p:last-child]:mb-0 [&_em]:italic [&_em]:text-pr-orange-dark">
+            <div className="text-pr-black text-base md:text-lg leading-[1.85] [&_p]:mb-4 [&_p:last-child]:mb-0 [&_em]:italic [&_em]:text-pr-black">
               {paraperso.body}
             </div>
 
@@ -89,7 +89,7 @@ const ParapersoDetailPage: React.FC = () => {
                 <ul className="space-y-1.5">
                   {paraperso.references.map((ref) => (
                     <li key={ref} className="text-pr-black">
-                      <span className="text-pr-orange mr-2">→</span>
+                      <span className="text-pr-black mr-2">→</span>
                       {ref}
                     </li>
                   ))}
@@ -114,9 +114,9 @@ const ParapersoDetailPage: React.FC = () => {
             {previous ? (
               <Link
                 to={`/formation/culture-generale/references/${previous.slug}`}
-                className="group block bg-white rounded-2xl p-5 border border-pr-gray-light hover:border-pr-orange hover:shadow-md transition-all"
+                className="group block bg-white rounded-2xl p-5 border border-pr-gray-light hover:border-pr-black hover:shadow-md transition-all"
               >
-                <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark mb-2">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-black mb-2">
                   ← Précédent
                 </p>
                 <p className="font-dm-serif text-base text-pr-black leading-snug">
@@ -129,9 +129,9 @@ const ParapersoDetailPage: React.FC = () => {
             {next ? (
               <Link
                 to={`/formation/culture-generale/references/${next.slug}`}
-                className="group block bg-white rounded-2xl p-5 border border-pr-gray-light hover:border-pr-orange hover:shadow-md transition-all md:text-right"
+                className="group block bg-white rounded-2xl p-5 border border-pr-gray-light hover:border-pr-black hover:shadow-md transition-all md:text-right"
               >
-                <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-orange-dark mb-2">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-black mb-2">
                   Suivant →
                 </p>
                 <p className="font-dm-serif text-base text-pr-black leading-snug">
@@ -148,7 +148,7 @@ const ParapersoDetailPage: React.FC = () => {
             <Link to="/formation/culture-generale/references">
               <Button
                 variant="outline"
-                className="border-pr-gray-light text-pr-gray-dark hover:border-pr-orange hover:text-pr-orange-dark px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]"
+                className="border-pr-gray-light text-pr-gray-dark hover:border-pr-black hover:text-pr-black px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]"
               >
                 ← Retour à toutes les références
               </Button>

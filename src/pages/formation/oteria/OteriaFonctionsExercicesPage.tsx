@@ -148,7 +148,7 @@ const OteriaFonctionsExercicesPage = () => {
               </div>
 
               {exercise.tips && exercise.tips.length > 0 && (
-                <div className="mt-4 bg-pr-orange-pale p-4 rounded-md border border-carnet-red/20">
+                <div className="mt-4 bg-pr-gray-bg p-4 rounded-md border border-carnet-red/20">
                   <p className="font-semibold text-carnet-red-deep mb-2 flex items-center gap-2 text-sm">
                     💡 Points clés
                   </p>

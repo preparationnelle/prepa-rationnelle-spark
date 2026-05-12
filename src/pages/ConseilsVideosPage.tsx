@@ -80,8 +80,8 @@ const VideoCard: React.FC<{ video: VideoItem; index: number }> = ({ video, index
             className="scale-in group"
             style={{ animationDelay: `${0.08 * index}s` }}
         >
-            <div className="bg-white border border-pr-gray-light rounded-xl hover:border-pr-orange transition-colors duration-300 overflow-hidden h-full flex flex-col">
-                <div className="h-[3px] w-full bg-pr-orange" />
+            <div className="bg-white border border-pr-gray-light rounded-xl hover:border-pr-black transition-colors duration-300 overflow-hidden h-full flex flex-col">
+                <div className="h-[3px] w-full bg-pr-black" />
 
                 {/* Vignette / lecteur */}
                 <div className="relative aspect-video bg-pr-gray-bg overflow-hidden">
@@ -108,12 +108,12 @@ const VideoCard: React.FC<{ video: VideoItem; index: number }> = ({ video, index
                                 className="absolute inset-0 bg-pr-black/20 group-hover:bg-pr-black/10 transition-colors duration-300 flex items-center justify-center cursor-pointer"
                                 onClick={() => setIsPlaying(true)}
                             >
-                                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-pr-orange rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-pr-black rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <Play className="h-7 w-7 sm:h-8 sm:w-8 text-white ml-1" fill="white" />
                                 </div>
                             </div>
                             <div className="absolute top-3 left-3">
-                                <span className="inline-flex items-center px-3 py-1 rounded text-[10px] font-semibold uppercase tracking-wider text-pr-orange-dark bg-pr-orange-pale border border-pr-orange-soft">
+                                <span className="inline-flex items-center px-3 py-1 rounded text-[10px] font-semibold uppercase tracking-wider text-pr-black bg-pr-gray-bg border border-pr-black-soft">
                                     {categoryLabel}
                                 </span>
                             </div>
@@ -123,7 +123,7 @@ const VideoCard: React.FC<{ video: VideoItem; index: number }> = ({ video, index
 
                 {/* Corps */}
                 <div className="p-5 sm:p-6 flex-1 flex flex-col">
-                    <h3 className="font-serif text-xl text-pr-black mb-2 group-hover:text-pr-orange transition-colors duration-300">
+                    <h3 className="font-serif text-xl text-pr-black mb-2 group-hover:text-pr-black transition-colors duration-300">
                         {video.title}
                     </h3>
                     <p className="text-sm text-pr-black leading-relaxed mb-5 flex-1">
@@ -132,7 +132,7 @@ const VideoCard: React.FC<{ video: VideoItem; index: number }> = ({ video, index
                     <div className="flex items-center justify-between pt-4 border-t border-pr-gray-light">
                         <button
                             onClick={() => setIsPlaying(true)}
-                            className="inline-flex items-center gap-2 text-pr-orange hover:text-pr-orange-dark font-semibold text-sm transition-colors duration-300"
+                            className="inline-flex items-center gap-2 text-pr-black hover:text-pr-black font-semibold text-sm transition-colors duration-300"
                         >
                             <Play className="h-4 w-4" />
                             Regarder la vidéo
@@ -192,7 +192,7 @@ const ConseilsVideosPage: React.FC = () => {
                 <div className="fade-in-up mb-10">
                     <Link
                         to="/"
-                        className="inline-flex items-center gap-2 text-pr-black hover:text-pr-orange transition-colors duration-300 group text-sm font-medium"
+                        className="inline-flex items-center gap-2 text-pr-black hover:text-pr-black transition-colors duration-300 group text-sm font-medium"
                     >
                         <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                         Retour à l'accueil
@@ -201,17 +201,17 @@ const ConseilsVideosPage: React.FC = () => {
 
                 {/* Hero */}
                 <div className="text-center mb-14 sm:mb-20">
-                    <div className="fade-in-up inline-flex items-center gap-2 bg-pr-orange-pale text-pr-orange-dark border border-pr-orange-soft px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
+                    <div className="fade-in-up inline-flex items-center gap-2 bg-pr-gray-bg text-pr-black border border-pr-black-soft px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
                         <Video className="h-3.5 w-3.5" />
                         {videos.length} vidéos disponibles
                     </div>
 
                     <h1 className="fade-in-up font-serif text-5xl sm:text-6xl lg:text-7xl mb-5 text-pr-black leading-tight" style={{ animationDelay: '0.05s' }}>
-                        Tous mes <span className="text-pr-orange">conseils en vidéo</span>
+                        Tous mes <span className="text-pr-black">conseils en vidéo</span>
                     </h1>
 
                     <div className="fade-in-up flex justify-center mb-5" style={{ animationDelay: '0.07s' }}>
-                        <div className="h-[2px] w-16 bg-pr-orange" />
+                        <div className="h-[2px] w-16 bg-pr-black" />
                     </div>
 
                     <p className="fade-in-up text-base sm:text-lg text-pr-black max-w-2xl mx-auto leading-relaxed" style={{ animationDelay: '0.1s' }}>
@@ -222,22 +222,22 @@ const ConseilsVideosPage: React.FC = () => {
                 {/* Stats */}
                 <div className="fade-in-up max-w-3xl mx-auto mb-16" style={{ animationDelay: '0.15s' }}>
                     <div className="bg-white border border-pr-gray-light rounded-xl overflow-hidden">
-                        <div className="h-[3px] w-full bg-pr-orange" />
+                        <div className="h-[3px] w-full bg-pr-black" />
                         <div className="grid grid-cols-3 divide-x divide-[#D8D6CE]">
                             <div className="text-center p-6 sm:p-8">
-                                <div className="font-serif text-4xl sm:text-5xl text-pr-orange mb-2 leading-none">
+                                <div className="font-serif text-4xl sm:text-5xl text-pr-black mb-2 leading-none">
                                     {videos.length}
                                 </div>
                                 <div className="text-[10px] text-pr-black font-semibold uppercase tracking-wider">Vidéos</div>
                             </div>
                             <div className="text-center p-6 sm:p-8">
-                                <div className="font-serif text-4xl sm:text-5xl text-pr-orange mb-2 leading-none">
+                                <div className="font-serif text-4xl sm:text-5xl text-pr-black mb-2 leading-none">
                                     4
                                 </div>
                                 <div className="text-[10px] text-pr-black font-semibold uppercase tracking-wider">Séries de conseils</div>
                             </div>
                             <div className="text-center p-6 sm:p-8">
-                                <div className="font-serif text-4xl sm:text-5xl text-pr-orange mb-2 leading-none">
+                                <div className="font-serif text-4xl sm:text-5xl text-pr-black mb-2 leading-none">
                                     100<span className="text-2xl">%</span>
                                 </div>
                                 <div className="text-[10px] text-pr-black font-semibold uppercase tracking-wider">Gratuit</div>
@@ -256,14 +256,14 @@ const ConseilsVideosPage: React.FC = () => {
                 {/* CTA */}
                 <div className="fade-in-up max-w-2xl mx-auto" style={{ animationDelay: '0.3s' }}>
                     <div className="bg-white border border-pr-gray-light rounded-xl overflow-hidden">
-                        <div className="h-[3px] w-full bg-pr-orange" />
+                        <div className="h-[3px] w-full bg-pr-black" />
                         <div className="p-10 sm:p-12 text-center">
-                            <div className="inline-flex items-center gap-2 bg-pr-orange-pale text-pr-orange-dark border border-pr-orange-soft px-4 py-1.5 rounded-full mb-6">
+                            <div className="inline-flex items-center gap-2 bg-pr-gray-bg text-pr-black border border-pr-black-soft px-4 py-1.5 rounded-full mb-6">
                                 <Sparkles className="h-3.5 w-3.5" />
                                 <span className="font-semibold text-xs uppercase tracking-wider">Envie d'aller plus loin ?</span>
                             </div>
                             <h2 className="font-serif text-3xl sm:text-4xl text-pr-black mb-4 leading-tight">
-                                Rejoins les <span className="text-pr-orange">formations complètes</span>
+                                Rejoins les <span className="text-pr-black">formations complètes</span>
                             </h2>
                             <p className="text-pr-black mb-8 max-w-lg mx-auto">
                                 Accède à toutes les formations : cours, exercices, flashcards, quiz et coaching personnalisé pour réussir tes concours.
@@ -272,7 +272,7 @@ const ConseilsVideosPage: React.FC = () => {
                                 <Link to="/formations">
                                     <Button
                                         size="lg"
-                                        className="w-full sm:w-auto bg-pr-orange hover:bg-pr-orange-dark text-white font-semibold py-6 px-7 text-base rounded-lg shadow-none transition-colors"
+                                        className="w-full sm:w-auto bg-pr-black hover:bg-pr-black-dark text-white font-semibold py-6 px-7 text-base rounded-lg shadow-none transition-colors"
                                     >
                                         Voir les formations
                                         <Sparkles className="ml-2 h-4 w-4" />

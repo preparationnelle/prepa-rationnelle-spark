@@ -9,10 +9,10 @@ const PRCard: React.FC<{ number: string; title: string; children: React.ReactNod
   children,
 }) => (
   <Card className="relative bg-white rounded-2xl border border-pr-gray-light overflow-hidden mt-6 first:mt-0">
-    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-orange" />
+    <div className="absolute top-0 left-0 right-0 h-[3px] bg-pr-black" />
     <CardHeader className="pb-3">
       <CardTitle className="font-dm-serif text-xl md:text-2xl text-pr-black flex items-baseline gap-3">
-        <span className="font-dm-serif text-pr-orange text-3xl leading-none">{number}</span>
+        <span className="font-dm-serif text-pr-black text-3xl leading-none">{number}</span>
         <span>{title}</span>
       </CardTitle>
     </CardHeader>
@@ -26,13 +26,13 @@ const AlteriteAutrePage: React.FC = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-orange-dark mb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-pr-black mb-4">
               Culture générale · Article
             </p>
             <h1 className="font-dm-serif text-3xl md:text-5xl text-pr-black leading-tight mb-5">
               L&apos;altérité et la rencontre de l&apos;autre&nbsp;: l&apos;humanité au miroir de l&apos;étranger
             </h1>
-            <div className="h-[3px] w-16 bg-pr-orange mx-auto mb-6" />
+            <div className="h-[3px] w-16 bg-pr-black mx-auto mb-6" />
             <p className="text-base md:text-lg text-pr-gray-dark max-w-3xl mx-auto leading-relaxed">
               Lévi-Strauss, Todorov, Levinas. Trois penseurs de la rencontre — et de
               l&apos;échec à voir vraiment l&apos;autre.
@@ -55,8 +55,8 @@ const AlteriteAutrePage: React.FC = () => {
                 religion. Reconnaître l&apos;autre comme humain n&apos;est pas un acquis&nbsp;: c&apos;est
                 un combat permanent.
               </p>
-              <div className="bg-pr-orange-pale rounded-xl p-4">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">Tension à retenir</h3>
+              <div className="bg-pr-gray-bg rounded-xl p-4">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">Tension à retenir</h3>
                 <p>
                   L&apos;altérité est-elle une <em>menace pour l&apos;identité</em> dont il
                   faut se protéger, ou la <em>condition même de l&apos;humanité</em>, sans
@@ -74,13 +74,13 @@ const AlteriteAutrePage: React.FC = () => {
                 il n&apos;y a pas de hiérarchie naturelle entre les cultures, et croire le
                 contraire est précisément la marque du barbare.
               </p>
-              <p className="italic pl-4 border-l-2 border-pr-orange">
+              <p className="italic pl-4 border-l-2 border-pr-black">
                 «&nbsp;Le barbare, c&apos;est d&apos;abord l&apos;homme qui croit à la barbarie.&nbsp;»
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Critique de l&apos;ethnocentrisme</strong>. Toute société tend à mesurer les autres à son aune et à voir dans la différence une infériorité. C&apos;est une erreur de méthode autant qu&apos;une faute morale.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Diversité, pas inégalité</strong>. Les cultures sont incomparables, comme des langues. Aucune n&apos;est plus «&nbsp;avancée&nbsp;» qu&apos;une autre&nbsp;: chacune est une réponse cohérente aux problèmes de l&apos;existence.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Faux universalisme</strong>. L&apos;Occident a souvent confondu son particulier avec l&apos;universel. La vraie universalité passe par la reconnaissance des différences.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Critique de l&apos;ethnocentrisme</strong>. Toute société tend à mesurer les autres à son aune et à voir dans la différence une infériorité. C&apos;est une erreur de méthode autant qu&apos;une faute morale.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Diversité, pas inégalité</strong>. Les cultures sont incomparables, comme des langues. Aucune n&apos;est plus «&nbsp;avancée&nbsp;» qu&apos;une autre&nbsp;: chacune est une réponse cohérente aux problèmes de l&apos;existence.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Faux universalisme</strong>. L&apos;Occident a souvent confondu son particulier avec l&apos;universel. La vraie universalité passe par la reconnaissance des différences.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> L&apos;humanité est plurielle par
@@ -110,10 +110,10 @@ const AlteriteAutrePage: React.FC = () => {
                 de reconnaissance.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Plan axiologique</strong>&nbsp;: l&apos;autre est-il bon ou mauvais, mon égal ou mon inférieur&nbsp;?</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Plan praxéologique</strong>&nbsp;: quelle conduite ai-je vis-à-vis de lui — assimilation, ségrégation, indifférence&nbsp;?</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Plan épistémique</strong>&nbsp;: que sais-je de lui, et veux-je vraiment le connaître&nbsp;?</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Plan individuel</strong>&nbsp;: ma rencontre est-elle prise dans une histoire déjà écrite, ou puis-je la laisser me transformer&nbsp;?</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Plan axiologique</strong>&nbsp;: l&apos;autre est-il bon ou mauvais, mon égal ou mon inférieur&nbsp;?</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Plan praxéologique</strong>&nbsp;: quelle conduite ai-je vis-à-vis de lui — assimilation, ségrégation, indifférence&nbsp;?</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Plan épistémique</strong>&nbsp;: que sais-je de lui, et veux-je vraiment le connaître&nbsp;?</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Plan individuel</strong>&nbsp;: ma rencontre est-elle prise dans une histoire déjà écrite, ou puis-je la laisser me transformer&nbsp;?</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Reconnaître l&apos;autre comme
@@ -139,9 +139,9 @@ const AlteriteAutrePage: React.FC = () => {
                 connaissance, il y a la rencontre éthique avec autrui.
               </p>
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span><strong>Le visage</strong>. Le visage d&apos;autrui n&apos;est pas une chose à connaître&nbsp;: il est une <em>épiphanie</em>. Il dit, sans bouche&nbsp;: «&nbsp;tu ne tueras point&nbsp;».</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Altérité absolue</strong>. L&apos;autre n&apos;est pas une variation du Même. Il déborde tous mes concepts. Le réduire à une catégorie («&nbsp;l&apos;étranger&nbsp;», «&nbsp;le migrant&nbsp;»), c&apos;est déjà le tuer.</li>
-                <li><span className="text-pr-orange mr-2">→</span><strong>Responsabilité infinie</strong>. Avant tout choix, je suis déjà obligé par autrui. Sa nudité, sa fragilité, font de moi un otage de sa misère. L&apos;éthique précède la liberté.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Le visage</strong>. Le visage d&apos;autrui n&apos;est pas une chose à connaître&nbsp;: il est une <em>épiphanie</em>. Il dit, sans bouche&nbsp;: «&nbsp;tu ne tueras point&nbsp;».</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Altérité absolue</strong>. L&apos;autre n&apos;est pas une variation du Même. Il déborde tous mes concepts. Le réduire à une catégorie («&nbsp;l&apos;étranger&nbsp;», «&nbsp;le migrant&nbsp;»), c&apos;est déjà le tuer.</li>
+                <li><span className="text-pr-black mr-2">→</span><strong>Responsabilité infinie</strong>. Avant tout choix, je suis déjà obligé par autrui. Sa nudité, sa fragilité, font de moi un otage de sa misère. L&apos;éthique précède la liberté.</li>
               </ul>
               <p>
                 <strong>Ce qu&apos;il faut retenir.</strong> Levinas renverse la philosophie
@@ -159,8 +159,8 @@ const AlteriteAutrePage: React.FC = () => {
 
           <PRCard number="05" title="Paraperso prêt à l'emploi">
             <div className="space-y-4 text-sm md:text-base">
-              <div className="bg-pr-orange-pale rounded-xl p-5">
-                <h3 className="font-dm-serif text-base text-pr-orange-dark mb-1">
+              <div className="bg-pr-gray-bg rounded-xl p-5">
+                <h3 className="font-dm-serif text-base text-pr-black mb-1">
                   L&apos;humanité comme reconnaissance de l&apos;autre
                 </h3>
                 <p className="text-xs italic mb-3">
@@ -208,19 +208,19 @@ const AlteriteAutrePage: React.FC = () => {
           <PRCard number="06" title="Où mobiliser ces références ?">
             <div className="space-y-4 text-sm md:text-base">
               <ul className="space-y-1.5">
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;étranger</strong>&nbsp;» — Todorov, Levinas, sujet classique.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le barbare</strong>&nbsp;» — Lévi-Strauss en pivot.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>L&apos;hospitalité</strong>&nbsp;» — Levinas, Derrida en appui.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Y a-t-il un universel humain&nbsp;?</strong>&nbsp;» — articulation Lévi-Strauss / 1948.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Le racisme</strong>&nbsp;» — Lévi-Strauss central.</li>
-                <li><span className="text-pr-orange mr-2">→</span>«&nbsp;<strong>Soi et l&apos;autre</strong>&nbsp;» — la subjectivité comme constituée par autrui.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;étranger</strong>&nbsp;» — Todorov, Levinas, sujet classique.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le barbare</strong>&nbsp;» — Lévi-Strauss en pivot.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>L&apos;hospitalité</strong>&nbsp;» — Levinas, Derrida en appui.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Y a-t-il un universel humain&nbsp;?</strong>&nbsp;» — articulation Lévi-Strauss / 1948.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Le racisme</strong>&nbsp;» — Lévi-Strauss central.</li>
+                <li><span className="text-pr-black mr-2">→</span>«&nbsp;<strong>Soi et l&apos;autre</strong>&nbsp;» — la subjectivité comme constituée par autrui.</li>
               </ul>
             </div>
           </PRCard>
 
           <div className="flex justify-center mt-12">
             <Link to="/formation/culture-generale/articles">
-              <Button className="bg-pr-orange hover:bg-pr-orange-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
+              <Button className="bg-pr-black hover:bg-pr-black-dark text-white px-6 py-2 rounded-md text-xs font-semibold uppercase tracking-[0.12em]">
                 ← Retour au menu des articles
               </Button>
             </Link>

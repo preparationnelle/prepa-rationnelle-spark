@@ -49,9 +49,9 @@ const CVProjectifPage = () => {
       <MethodSection label="Section 01" title="Structure et contenu du CV projectif" icon={Target}>
         <div className="space-y-4">
           {sections.map((s) => (
-            <div key={s.n} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-orange rounded-r-lg p-6">
+            <div key={s.n} className="bg-white border border-pr-gray-light border-l-4 border-l-pr-black rounded-r-lg p-6">
               <div className="flex items-baseline gap-4 mb-3">
-                <span className="font-dm-serif text-3xl text-pr-orange leading-none">{s.n}</span>
+                <span className="font-dm-serif text-3xl text-pr-black leading-none">{s.n}</span>
                 <h4 className="font-dm-serif text-xl text-pr-black">{s.t}</h4>
               </div>
               <p className="text-sm text-pr-gray-dark mb-3">{s.d}</p>
@@ -72,14 +72,14 @@ const CVProjectifPage = () => {
       <MethodSection label="Section 02" title="Conseils pour réussir son CV projectif" icon={CheckCircle}>
         <div className="grid md:grid-cols-2 gap-5">
           {tips.map((tip, i) => (
-            <div key={tip.t} className="bg-white border border-pr-gray-light rounded-lg p-6 hover:border-pr-orange transition-colors">
+            <div key={tip.t} className="bg-white border border-pr-gray-light rounded-lg p-6 hover:border-pr-black transition-colors">
               <div className="flex items-center gap-3 mb-3">
-                <div className="h-10 w-10 rounded-md bg-pr-orange-pale flex items-center justify-center flex-shrink-0">
-                  <tip.icon className="w-5 h-5 text-pr-orange-dark" strokeWidth={1.6} />
+                <div className="h-10 w-10 rounded-md bg-pr-gray-bg flex items-center justify-center flex-shrink-0">
+                  <tip.icon className="w-5 h-5 text-pr-black" strokeWidth={1.6} />
                 </div>
                 <h4 className="font-dm-serif text-lg text-pr-black">{tip.t}</h4>
               </div>
-              <div className="h-px w-8 bg-pr-orange mb-3" />
+              <div className="h-px w-8 bg-pr-black mb-3" />
               <p className="text-sm text-pr-gray-dark leading-relaxed mb-3">{tip.d}</p>
               {tip.l.length > 0 && (
                 <ul className="space-y-1.5 text-sm text-pr-gray-dark">
