@@ -3,9 +3,10 @@ import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { Separator } from '@/components/ui/separator';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-  <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+  <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
     {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
     <div className="text-center">
       {children}
@@ -35,10 +36,10 @@ const Chapitre7NupletsVariablesAleatoiresCoursPage = () => {
       <div className="space-y-8">
 
         {/* Section 1 - Vecteurs aléatoires */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
               <span className="font-semibold">Vecteurs aléatoires & Lois conjointes</span>
             </CardTitle>
           </CardHeader>
@@ -60,7 +61,7 @@ const Chapitre7NupletsVariablesAleatoiresCoursPage = () => {
 
             <div>
               <h3 className="text-xl font-bold mb-2 text-slate-900">Lois marginales</h3>
-              <div className="bg-slate-50 p-4 rounded border border-slate-100">
+              <div className="bg-carnet-paper p-4 rounded border border-slate-100">
                 <p className="text-slate-700 font-medium mb-2">Pour retrouver la loi de <LatexRenderer latex={"X_k"} /> (loi marginale) à partir de la loi conjointe, on somme sur toutes les autres variables :</p>
                 <div className="text-center py-2">
                   <LatexRenderer latex={"P(X_k = x) = \\sum_{(x_1, \\dots, x_{k-1}, x_{k+1}, \\dots, x_n)} P(X_1=x_1, \\dots, X_k=x, \\dots, X_n=x_n)"} />
@@ -72,10 +73,10 @@ const Chapitre7NupletsVariablesAleatoiresCoursPage = () => {
         </Card>
 
         {/* Section 2 - Espérance & Indépendance */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
               <span className="font-semibold">Espérance & Indépendance</span>
             </CardTitle>
           </CardHeader>
@@ -100,28 +101,30 @@ const Chapitre7NupletsVariablesAleatoiresCoursPage = () => {
                 <LatexRenderer latex={"P(X_1=x_1, \\dots, X_n=x_n) = P(X_1=x_1) \\times \\dots \\times P(X_n=x_n)"} />
               </FormulaBox>
 
-              <div className="grid md:grid-cols-2 gap-4 mt-6">
-                <div className="bg-slate-50 p-4 rounded border border-slate-100">
-                  <span className="font-semibold text-slate-800 block mb-2">Conséquence sur l'Espérance</span>
-                  <p className="text-sm text-slate-600 mb-2">Si indépendantes :</p>
-                  <div className="text-center text-sm"><LatexRenderer latex={"E\\left(\\prod X_i\\right) = \\prod E(X_i)"} /></div>
-                </div>
-                <div className="bg-slate-50 p-4 rounded border border-slate-100">
-                  <span className="font-semibold text-slate-800 block mb-2">Conséquence sur la Variance</span>
-                  <p className="text-sm text-slate-600 mb-2">Si indépendantes :</p>
-                  <div className="text-center text-sm"><LatexRenderer latex={"V\\left(\\sum X_i\\right) = \\sum V(X_i)"} /></div>
-                </div>
-              </div>
+              <ComparisonGrid className="mt-6">
+                <ComparisonCard label="Espérance (produit)">
+                  <p className="text-sm mb-2 italic">Si indépendantes :</p>
+                  <div className="text-center my-2">
+                    <LatexRenderer latex={"E\\left(\\prod X_i\\right) = \\prod E(X_i)"} />
+                  </div>
+                </ComparisonCard>
+                <ComparisonCard label="Variance (somme)">
+                  <p className="text-sm mb-2 italic">Si indépendantes :</p>
+                  <div className="text-center my-2">
+                    <LatexRenderer latex={"V\\left(\\sum X_i\\right) = \\sum V(X_i)"} />
+                  </div>
+                </ComparisonCard>
+              </ComparisonGrid>
             </div>
 
           </CardContent>
         </Card>
 
         {/* Section 3 - Sommes usuelles */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
               <span className="font-semibold">Stabilité des lois usuelles</span>
             </CardTitle>
           </CardHeader>
@@ -129,7 +132,7 @@ const Chapitre7NupletsVariablesAleatoiresCoursPage = () => {
             <p className="text-slate-700 mb-4">Si les <LatexRenderer latex={"X_i"} /> sont <strong>indépendantes</strong> :</p>
             <div className="overflow-x-auto border border-slate-200 rounded-lg">
               <table className="w-full text-sm">
-                <thead className="bg-slate-50 text-slate-700 border-b border-slate-200">
+                <thead className="bg-carnet-paper text-slate-700 border-b border-slate-200">
                   <tr>
                     <th className="py-2 px-4 text-left">Loi des <LatexRenderer latex={"X_i"} /></th>
                     <th className="py-2 px-4 text-left">Loi de la somme <LatexRenderer latex={"S_n = \\sum X_i"} /></th>

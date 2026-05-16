@@ -3,6 +3,7 @@ import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
     return (
@@ -26,10 +27,10 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
             <div className="space-y-8">
 
                 {/* Section A - Opérations sur les ensembles */}
-                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                    <CardHeader className="bg-slate-50 border-b border-slate-100">
+                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                    <CardHeader className="bg-carnet-paper border-b border-slate-100">
                         <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                            <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">
+                            <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">
                                 A
                             </span>
                             <span className="font-semibold">Opérations sur les ensembles</span>
@@ -44,17 +45,17 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
                                 A.1. Comparaison entre ensembles
                             </h3>
                             <div className="space-y-5">
-                                <div className="bg-slate-50 border border-slate-200 rounded-lg p-5">
+                                <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5">
                                     <p className="text-slate-700 leading-relaxed">
                                         On dit qu'un ensemble <LatexRenderer latex="A" /> est <em>contenu</em> dans un ensemble <LatexRenderer latex="B" />, et l'on écrit <LatexRenderer latex="A \subset B" />, lorsque tout élément de <LatexRenderer latex="A" /> appartient également à <LatexRenderer latex="B" />.
                                     </p>
                                 </div>
-                                <div className="bg-white border-l-4 border-slate-400 pl-4 py-2">
+                                <div className="bg-carnet-paper-2 border-l-4 border-slate-400 pl-4 py-2">
                                     <p className="text-slate-700 leading-relaxed">
                                         Deux ensembles <LatexRenderer latex="A" /> et <LatexRenderer latex="B" /> sont déclarés <em>égaux</em>, noté <LatexRenderer latex="A = B" />, dès que <LatexRenderer latex="A \subset B" /> et <LatexRenderer latex="B \subset A" />.
                                     </p>
                                 </div>
-                                <div className="bg-slate-50 border border-slate-200 rounded-lg p-5">
+                                <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5">
                                     <p className="text-slate-700 leading-relaxed">
                                         Un ensemble <LatexRenderer latex="A" /> est une <em>partie</em> (ou <em>sous-ensemble</em>) d'un ensemble <LatexRenderer latex="E" /> dès que <LatexRenderer latex="A \subset E" />. L'ensemble de toutes les parties de <LatexRenderer latex="E" /> se note <LatexRenderer latex="\mathcal{P}(E)" />.
                                     </p>
@@ -71,21 +72,21 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
                                 A.2. Intersection et réunion
                             </h3>
                             <div className="space-y-5">
-                                <div className="border border-slate-200 rounded-lg p-5 bg-white">
+                                <div className="border border-slate-200 rounded-lg p-5 bg-carnet-paper-2">
                                     <p className="font-semibold text-sm text-slate-900 mb-3 flex items-center gap-2 uppercase tracking-wide">
                                         Intersection
                                     </p>
-                                    <div className="bg-slate-50 rounded-md p-3 border border-slate-100">
+                                    <div className="bg-carnet-paper rounded-md p-3 border border-slate-100">
                                         <p className="text-center font-medium text-slate-800">
                                             <LatexRenderer latex="x \in A \cap B \iff x \in A \text{ et } x \in B" />
                                         </p>
                                     </div>
                                 </div>
-                                <div className="border border-slate-200 rounded-lg p-5 bg-white">
+                                <div className="border border-slate-200 rounded-lg p-5 bg-carnet-paper-2">
                                     <p className="font-semibold text-sm text-slate-900 mb-3 flex items-center gap-2 uppercase tracking-wide">
                                         Réunion
                                     </p>
-                                    <div className="bg-slate-50 rounded-md p-3 border border-slate-100">
+                                    <div className="bg-carnet-paper rounded-md p-3 border border-slate-100">
                                         <p className="text-center font-medium text-slate-800">
                                             <LatexRenderer latex="x \in A \cup B \iff x \in A \text{ ou } x \in B" />
                                         </p>
@@ -103,7 +104,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
                                 A.3. Propriétés fondamentales
                             </h3>
                             <div className="space-y-5">
-                                <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 relative overflow-hidden">
+                                <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 relative overflow-hidden">
                                     <div className="absolute top-0 left-0 w-1 h-full bg-slate-300"></div>
                                     <p className="font-semibold text-sm text-slate-900 mb-3">
                                         Commutativité
@@ -114,7 +115,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
                                     </div>
                                 </div>
 
-                                <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 relative overflow-hidden">
+                                <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 relative overflow-hidden">
                                     <div className="absolute top-0 left-0 w-1 h-full bg-slate-300"></div>
                                     <p className="font-semibold text-sm text-slate-900 mb-3">
                                         Associativité
@@ -125,7 +126,7 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
                                     </div>
                                 </div>
 
-                                <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 relative overflow-hidden">
+                                <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 relative overflow-hidden">
                                     <div className="absolute top-0 left-0 w-1 h-full bg-slate-300"></div>
                                     <p className="font-semibold text-sm text-slate-900 mb-3">
                                         Distributivité
@@ -136,15 +137,15 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
                                     </div>
                                 </div>
 
-                                <div className="border border-slate-200 rounded-lg p-5 bg-white">
+                                <div className="border border-slate-200 rounded-lg p-5 bg-carnet-paper-2">
                                     <p className="font-semibold text-sm text-slate-900 mb-3">
                                         Lois de Morgan
                                     </p>
                                     <div className="space-y-3">
-                                        <div className="bg-slate-50 rounded-md p-3 text-center border border-slate-100">
+                                        <div className="bg-carnet-paper rounded-md p-3 text-center border border-slate-100">
                                             <p><LatexRenderer latex="\overline{A \cap B} = \overline{A} \cup \overline{B}" /></p>
                                         </div>
-                                        <div className="bg-slate-50 rounded-md p-3 text-center border border-slate-100">
+                                        <div className="bg-carnet-paper rounded-md p-3 text-center border border-slate-100">
                                             <p><LatexRenderer latex="\overline{A \cup B} = \overline{A} \cap \overline{B}" /></p>
                                         </div>
                                     </div>
@@ -156,10 +157,10 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
                 </Card>
 
                 {/* Section B - Applications et bijections */}
-                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                    <CardHeader className="bg-slate-50 border-b border-slate-100">
+                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                    <CardHeader className="bg-carnet-paper border-b border-slate-100">
                         <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                            <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">
+                            <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">
                                 B
                             </span>
                             <span className="font-semibold">Applications et bijections</span>
@@ -174,17 +175,17 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
                                 B.1. Fonctions et applications
                             </h3>
                             <div className="space-y-5">
-                                <div className="bg-slate-50 border border-slate-200 rounded-lg p-5">
+                                <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5">
                                     <p className="text-slate-700 leading-relaxed">
                                         Une <em>fonction</em> <LatexRenderer latex="f" /> de <LatexRenderer latex="E" /> vers <LatexRenderer latex="F" /> associe à certains éléments de <LatexRenderer latex="E" /> des éléments de <LatexRenderer latex="F" />.
                                     </p>
                                 </div>
-                                <div className="bg-white border-l-4 border-slate-400 pl-4 py-2">
+                                <div className="bg-carnet-paper-2 border-l-4 border-slate-400 pl-4 py-2">
                                     <p className="text-slate-700 leading-relaxed">
                                         Une <em>application</em> <LatexRenderer latex="f : E \to F" /> est une fonction pour laquelle chaque <LatexRenderer latex="x \in E" /> possède exactement une image <LatexRenderer latex="f(x) \in F" />.
                                     </p>
                                 </div>
-                                <div className="bg-slate-50 border border-slate-200 rounded-lg p-5">
+                                <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5">
                                     <p className="font-semibold text-sm text-slate-900 mb-2">Identité</p>
                                     <p className="text-center text-slate-800"><LatexRenderer latex="\forall x \in E, Id_E(x) = x" /></p>
                                 </div>
@@ -199,38 +200,30 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
                                 <span className="w-1 h-6 bg-slate-900 rounded-full"></span>
                                 B.2. Types d'applications
                             </h3>
-                            <div className="grid md:grid-cols-2 gap-5">
-                                <div className="border border-slate-200 rounded-lg p-5 bg-white hover:bg-slate-50 transition-colors">
-                                    <p className="font-semibold text-sm text-slate-900 mb-3 uppercase tracking-wide border-b border-slate-100 pb-2">
-                                        Injection
-                                    </p>
-                                    <p className="text-center font-medium text-slate-800 py-2">
+                            <ComparisonGrid>
+                                <ComparisonCard label="Injection">
+                                    <p className="text-center font-medium py-2">
                                         <LatexRenderer latex="f(x) = f(y) \implies x = y" />
                                     </p>
-                                    <p className="text-xs text-slate-500 text-center mt-2">"Tout élément de l'arrivée a au plus un antécédent"</p>
-                                </div>
-
-                                <div className="border border-slate-200 rounded-lg p-5 bg-white hover:bg-slate-50 transition-colors">
-                                    <p className="font-semibold text-sm text-slate-900 mb-3 uppercase tracking-wide border-b border-slate-100 pb-2">
-                                        Surjection
-                                    </p>
-                                    <p className="text-center font-medium text-slate-800 py-2">
+                                    <p className="text-xs text-center mt-2 italic">« Tout élément de l'arrivée a au plus un antécédent »</p>
+                                </ComparisonCard>
+                                <ComparisonCard label="Surjection">
+                                    <p className="text-center font-medium py-2">
                                         <LatexRenderer latex="\forall y \in F, \exists x \in E, y = f(x)" />
                                     </p>
-                                    <p className="text-xs text-slate-500 text-center mt-2">"Tout élément de l'arrivée a au moins un antécédent"</p>
-                                </div>
-
-                                <div className="col-span-1 md:col-span-2 border border-slate-300 rounded-lg p-5 bg-slate-50">
-                                    <p className="font-bold text-slate-900 mb-3 text-center uppercase tracking-wider">
-                                        Bijection
-                                    </p>
-                                    <p className="text-center font-medium text-slate-800 mb-3">
-                                        <LatexRenderer latex="\forall y \in F, \exists! x \in E, y = f(x)" />
-                                    </p>
-                                    <p className="text-sm text-slate-600 text-center">
-                                        C'est à la fois une injection et une surjection. Elle admet une réciproque <LatexRenderer latex="f^{-1}" />.
-                                    </p>
-                                </div>
+                                    <p className="text-xs text-center mt-2 italic">« Tout élément de l'arrivée a au moins un antécédent »</p>
+                                </ComparisonCard>
+                            </ComparisonGrid>
+                            <div className="col-span-1 md:col-span-2 border border-slate-300 rounded-lg p-5 bg-carnet-paper mt-5">
+                                <p className="font-bold text-slate-900 mb-3 text-center uppercase tracking-wider">
+                                    Bijection
+                                </p>
+                                <p className="text-center font-medium text-slate-800 mb-3">
+                                    <LatexRenderer latex="\forall y \in F, \exists! x \in E, y = f(x)" />
+                                </p>
+                                <p className="text-sm text-slate-600 text-center">
+                                    C'est à la fois une injection et une surjection. Elle admet une réciproque <LatexRenderer latex="f^{-1}" />.
+                                </p>
                             </div>
                         </div>
 

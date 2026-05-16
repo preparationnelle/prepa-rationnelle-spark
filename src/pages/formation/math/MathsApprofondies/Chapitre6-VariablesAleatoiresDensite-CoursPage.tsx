@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { BookOpen, Target, Brain, PenTool } from 'lucide-react';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
   return (
@@ -508,40 +509,24 @@ const Chapitre6VariablesAleatoiresDensiteCoursPage = () => {
           <div
       
     >
-            <h3 className="text-lg font-semibold mb-3">Compatibilité affine</h3
-      
-    >
-            <p className="text-black mb-4"
-      
-    >
+            <h3 className="text-lg font-semibold mb-3">Compatibilité affine</h3>
+            <p className="text-black mb-4">
               Pour <LatexRenderer latex="a,b\in\mathbb{R}" /> :
-            </p
-      
-    >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4"
-      
-    >
-              <div className="bg-pr-gray-bg p-3 rounded-lg text-center"
-      
-    >
-                <LatexRenderer latex="\mathbb{E}(aX+b)=a\,\mathbb{E}(X)+b" /
-      
-    >
-              </div
-      
-    >
-              <div className="bg-pr-gray-bg p-3 rounded-lg text-center"
-      
-    >
-                <LatexRenderer latex="\operatorname{Var}(aX+b)=a^{2}\operatorname{Var}(X)" /
-      
-    >
-              </div
-      
-    >
-            </div
-      
-    >
+            </p>
+            <ComparisonGrid>
+              <ComparisonCard label="Espérance affine">
+                <div className="text-center my-2">
+                  <LatexRenderer latex="\mathbb{E}(aX+b)=a\,\mathbb{E}(X)+b" />
+                </div>
+                <p className="text-sm mt-2 italic">Linéarité totale en <LatexRenderer latex="a" /> et <LatexRenderer latex="b" />.</p>
+              </ComparisonCard>
+              <ComparisonCard label="Variance affine">
+                <div className="text-center my-2">
+                  <LatexRenderer latex="\operatorname{Var}(aX+b)=a^{2}\operatorname{Var}(X)" />
+                </div>
+                <p className="text-sm mt-2 italic">Insensible à la translation <LatexRenderer latex="b" /> ; quadratique en <LatexRenderer latex="a" />.</p>
+              </ComparisonCard>
+            </ComparisonGrid>
           </div
       
     >

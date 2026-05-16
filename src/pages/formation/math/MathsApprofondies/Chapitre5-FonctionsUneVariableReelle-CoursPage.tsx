@@ -3,9 +3,10 @@ import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { Separator } from '@/components/ui/separator';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-  <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+  <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
     {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
     <div className="text-center">
       {children}
@@ -35,10 +36,10 @@ const MathsFonctionsPage = () => {
       <div className="space-y-8">
 
         {/* Section 1 - Généralités */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
               <span className="font-semibold">Généralités sur les fonctions</span>
             </CardTitle>
           </CardHeader>
@@ -47,19 +48,21 @@ const MathsFonctionsPage = () => {
             {/* Parité */}
             <div>
               <h3 className="text-xl font-bold mb-2 text-slate-900">Parité et Symétrie</h3>
-              <p className="mb-2 text-slate-700">Soit <LatexRenderer latex={"I"} /> un intervalle centré en 0 (symétrique par rapport à 0).</p>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                  <span className="font-semibold text-slate-900 block mb-2">Fonction Paire</span>
-                  <LatexRenderer latex={"\\forall x \\in I, f(-x) = f(x)"} />
-                  <p className="text-sm text-slate-600 mt-2">Symétrie par rapport à l'axe des ordonnées <LatexRenderer latex={"(Oy)"} />.</p>
-                </div>
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                  <span className="font-semibold text-slate-900 block mb-2">Fonction Impaire</span>
-                  <LatexRenderer latex={"\\forall x \\in I, f(-x) = -f(x)"} />
-                  <p className="text-sm text-slate-600 mt-2">Symétrie centrale par rapport à l'origine <LatexRenderer latex={"O"} />.</p>
-                </div>
-              </div>
+              <p className="mb-3 text-slate-700">Soit <LatexRenderer latex={"I"} /> un intervalle centré en 0 (symétrique par rapport à 0).</p>
+              <ComparisonGrid>
+                <ComparisonCard label="Fonction paire">
+                  <div className="text-center my-2">
+                    <LatexRenderer latex={"\\forall x \\in I, f(-x) = f(x)"} />
+                  </div>
+                  <p className="text-sm mt-2 italic">Symétrie par rapport à l'axe des ordonnées <LatexRenderer latex={"(Oy)"} />.</p>
+                </ComparisonCard>
+                <ComparisonCard label="Fonction impaire">
+                  <div className="text-center my-2">
+                    <LatexRenderer latex={"\\forall x \\in I, f(-x) = -f(x)"} />
+                  </div>
+                  <p className="text-sm mt-2 italic">Symétrie centrale par rapport à l'origine <LatexRenderer latex={"O"} />.</p>
+                </ComparisonCard>
+              </ComparisonGrid>
             </div>
 
             {/* Périodicité */}
@@ -80,11 +83,11 @@ const MathsFonctionsPage = () => {
                   <LatexRenderer latex={"f"} /> est <strong>bornée</strong> si elle est à la fois majorée et minorée : <LatexRenderer latex={"\\exists m, M \\in \\mathbb{R}, \\forall x, m \\leq f(x) \\leq M"} />.
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-slate-50 p-4 rounded border border-slate-100">
+                  <div className="bg-carnet-paper p-4 rounded border border-slate-100">
                     <span className="font-semibold text-slate-800">Maximum global en <LatexRenderer latex={"x_0"} /></span>
                     <div className="mt-1"><LatexRenderer latex={"\\forall x \\in D_f, f(x) \\leq f(x_0)"} /></div>
                   </div>
-                  <div className="bg-slate-50 p-4 rounded border border-slate-100">
+                  <div className="bg-carnet-paper p-4 rounded border border-slate-100">
                     <span className="font-semibold text-slate-800">Minimum global en <LatexRenderer latex={"x_0"} /></span>
                     <div className="mt-1"><LatexRenderer latex={"\\forall x \\in D_f, f(x) \\geq f(x_0)"} /></div>
                   </div>
@@ -115,10 +118,10 @@ const MathsFonctionsPage = () => {
         </Card>
 
         {/* Section 2 - Continuité */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
               <span className="font-semibold">Continuité</span>
             </CardTitle>
           </CardHeader>
@@ -178,10 +181,10 @@ const MathsFonctionsPage = () => {
         </Card>
 
         {/* Section 3 - Fonctions Trigonométriques */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
               <span className="font-semibold">Fonctions Trigonométriques & Réciproques</span>
             </CardTitle>
           </CardHeader>
@@ -213,16 +216,16 @@ const MathsFonctionsPage = () => {
             <div>
               <h3 className="text-xl font-bold mb-2 text-slate-900">Formules usuelles</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-slate-50 p-3 rounded border border-slate-100">
+                <div className="bg-carnet-paper p-3 rounded border border-slate-100">
                   <LatexRenderer latex={"\\cos(a+b) = \\cos a \\cos b - \\sin a \\sin b"} />
                 </div>
-                <div className="bg-slate-50 p-3 rounded border border-slate-100">
+                <div className="bg-carnet-paper p-3 rounded border border-slate-100">
                   <LatexRenderer latex={"\\sin(a+b) = \\sin a \\cos b + \\sin b \\cos a"} />
                 </div>
-                <div className="bg-slate-50 p-3 rounded border border-slate-100">
+                <div className="bg-carnet-paper p-3 rounded border border-slate-100">
                   <LatexRenderer latex={"\\cos(2a) = 2\\cos^2 a - 1 = 1 - 2\\sin^2 a"} />
                 </div>
-                <div className="bg-slate-50 p-3 rounded border border-slate-100">
+                <div className="bg-carnet-paper p-3 rounded border border-slate-100">
                   <LatexRenderer latex={"\\sin(2a) = 2\\sin a \\cos a"} />
                 </div>
               </div>

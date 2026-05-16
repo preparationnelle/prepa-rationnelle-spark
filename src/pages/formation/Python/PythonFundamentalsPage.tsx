@@ -6,7 +6,7 @@ import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import { usePythonProgress } from '@/hooks/usePythonProgress';
 import { Button } from '@/components/ui/button';
-import { CarnetHero, CarnetSection, CarnetCallout, CarnetCodeBlock } from '@/components/carnet';
+import { CarnetHero, CarnetSection, CarnetCallout, CarnetCodeBlock, ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const PythonFundamentalsPage = () => {
   const { markAsComplete, isChapterComplete } = usePythonProgress();
@@ -341,32 +341,32 @@ for x in L:                   # Itération
           </TableBody>
         </Table>
 
-        <div className="grid md:grid-cols-3 gap-3 mt-6 mb-6">
-          <CarnetCallout variant="exemple" label="Boucle for">
-            <p className="text-[13px] mb-2">Quand on sait combien de fois répéter.</p>
-            <CarnetCodeBlock label="Code">{`n = int(input("n ? "))
+        <ComparisonGrid cols={3} className="mt-6 mb-6">
+          <ComparisonCard label="Boucle for">
+            <p className="mb-2">Quand on sait combien de fois répéter.</p>
+            <CarnetCodeBlock label={null}>{`n = int(input("n ? "))
 S = 0
 for k in range(1, n+1):
     for j in range(1, n+1):
         S += k*j
 print(S)`}</CarnetCodeBlock>
-          </CarnetCallout>
-          <CarnetCallout variant="exemple" label="Structure if">
-            <p className="text-[13px] mb-2">Pour prendre des décisions.</p>
-            <CarnetCodeBlock label="Code">{`n = 5
+          </ComparisonCard>
+          <ComparisonCard label="Structure if">
+            <p className="mb-2">Pour prendre des décisions.</p>
+            <CarnetCodeBlock label={null}>{`n = 5
 if n % 2 == 0:
     print("n est pair")
 else:
     print("n est impair")`}</CarnetCodeBlock>
-          </CarnetCallout>
-          <CarnetCallout variant="exemple" label="Boucle while">
-            <p className="text-[13px] mb-2">Quand on ne sait pas combien de fois.</p>
-            <CarnetCodeBlock label="Code">{`n = 0
+          </ComparisonCard>
+          <ComparisonCard label="Boucle while">
+            <p className="mb-2">Quand on ne sait pas combien de fois.</p>
+            <CarnetCodeBlock label={null}>{`n = 0
 while 3*n + 1 <= 5000:
     n += 1
 print(n, 3*n + 1)`}</CarnetCodeBlock>
-          </CarnetCallout>
-        </div>
+          </ComparisonCard>
+        </ComparisonGrid>
 
         <CarnetCallout variant="propriete" label="Bonnes pratiques">
           <ul className="space-y-1 list-disc list-inside">
@@ -383,23 +383,23 @@ print(n, 3*n + 1)`}</CarnetCodeBlock>
         title={<>Script <em className="font-lora italic text-carnet-red">vs</em> fonction</>}
         tilt="right"
       >
-        <div className="grid sm:grid-cols-2 gap-3 mb-6">
-          <CarnetCallout variant="exemple" label="Script">
-            <p className="text-[13px] mb-2">
+        <ComparisonGrid className="mb-6">
+          <ComparisonCard label="Script">
+            <p className="mb-2">
               Ensemble d'instructions exécutées directement quand on lance le fichier. Effectue une tâche, mais n'est pas conçu pour être réutilisé facilement.
             </p>
-            <CarnetCodeBlock label="Code">{`# Script qui calcule la somme de 1 à n
+            <CarnetCodeBlock label={null}>{`# Script qui calcule la somme de 1 à n
 n = 10
 somme = 0
 for k in range(1, n+1):
     somme += k
 print(f"La somme de 1 à {n} vaut {somme}")`}</CarnetCodeBlock>
-          </CarnetCallout>
-          <CarnetCallout variant="exemple" label="Fonction">
-            <p className="text-[13px] mb-2">
+          </ComparisonCard>
+          <ComparisonCard label="Fonction">
+            <p className="mb-2">
               Bloc de code réutilisable, défini une seule fois, et appelable plusieurs fois avec des paramètres différents.
             </p>
-            <CarnetCodeBlock label="Code">{`# Fonction qui calcule la somme de 1 à n
+            <CarnetCodeBlock label={null}>{`# Fonction qui calcule la somme de 1 à n
 def somme_1_a_n(n):
     somme = 0
     for k in range(1, n+1):
@@ -408,8 +408,8 @@ def somme_1_a_n(n):
 
 print(somme_1_a_n(10))    # Affiche 55
 print(somme_1_a_n(100))   # Affiche 5050`}</CarnetCodeBlock>
-          </CarnetCallout>
-        </div>
+          </ComparisonCard>
+        </ComparisonGrid>
 
         <CarnetCallout variant="propriete" label="L'intérêt principal des fonctions">
           <strong className="text-carnet-ink">Réutilisabilité et clarté du code.</strong> Impossible de réutiliser facilement un script pour une autre valeur sans modifier le code ou relancer l'exécution. Avec une fonction, on peut l'appeler autant de fois qu'on veut avec des paramètres différents.

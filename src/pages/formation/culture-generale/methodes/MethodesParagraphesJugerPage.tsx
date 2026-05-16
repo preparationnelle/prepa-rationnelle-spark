@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const PRCard: React.FC<{ number?: string; title: string; children: React.ReactNode }> = ({
   number,
@@ -119,6 +120,30 @@ const MethodesParagraphesJugerPage: React.FC = () => {
                 </div>
               ))}
             </div>
+          </PRCard>
+
+          <PRCard title="Avant les exemples : un paragraphe, deux mouvements">
+            <p className="mb-4 text-pr-gray-dark">
+              Un plan dialectique repose souvent sur deux paragraphes qui se répondent. Voici, en miniature, ce que signifie opposer une <strong>thèse</strong> et une <strong>antithèse</strong> sur l&apos;humanité — avant de dérouler les exemples rédigés ci-dessous.
+            </p>
+            <ComparisonGrid>
+              <ComparisonCard label="Thèse">
+                <p className="mb-2">
+                  <strong>L&apos;humain se définit par sa liberté radicale.</strong>
+                </p>
+                <p>
+                  Sans essence donnée d&apos;avance, il s&apos;invente lui-même par ses choix. Pic de la Mirandole, puis Sartre, en font la condition même de la dignité humaine&nbsp;: «&nbsp;l&apos;existence précède l&apos;essence&nbsp;».
+                </p>
+              </ComparisonCard>
+              <ComparisonCard label="Antithèse">
+                <p className="mb-2">
+                  <strong>Cette liberté ouvre la possibilité de l&apos;inhumain.</strong>
+                </p>
+                <p>
+                  Pouvoir tout devenir, c&apos;est aussi pouvoir devenir bourreau. Arendt (banalité du mal) et Milgram (soumission à l&apos;autorité) montrent que l&apos;humanité porte la barbarie comme l&apos;une de ses potentialités ordinaires.
+                </p>
+              </ComparisonCard>
+            </ComparisonGrid>
           </PRCard>
 
           <PRCard title="Exemple 1 : « L'humanité comme indétermination radicale »">

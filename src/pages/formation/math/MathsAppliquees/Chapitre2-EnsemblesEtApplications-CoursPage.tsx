@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { BookOpen, Target, PenTool } from 'lucide-react';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
   return (
@@ -101,8 +102,8 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="font-medium text-gray-700 mb-2">Ensembles usuels :</p>
+            <div className="bg-carnet-paper p-4 rounded-lg">
+              <p className="font-medium text-carnet-ink mb-2">Ensembles usuels :</p>
               <ul className="space-y-1 ml-4">
                 <li>• <LatexRenderer latex="\mathbb{N}" block={false} /> : entiers naturels (0, 1, 2, ...)</li>
                 <li>• <LatexRenderer latex="\mathbb{Z}" block={false} /> : entiers relatifs (..., -1, 0, 1, ...)</li>
@@ -155,35 +156,30 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
-              <p className="font-semibold">Définition — Application injective</p>
-              <div className="mt-2 space-y-2">
-                <p>
+            <ComparisonGrid>
+              <ComparisonCard label="Application injective">
+                <p className="mb-2">
                   Une application <LatexRenderer latex="f : E \to F" block={false} /> est <strong>injective</strong> si :
                 </p>
                 <div className="text-center py-2">
                   <LatexRenderer latex="\forall (x,y) \in E^2, f(x) = f(y) \Rightarrow x = y" />
                 </div>
-                <p className="text-sm text-carnet-red">
-                  Équivalent : <LatexRenderer latex="\forall (x,y) \in E^2, x \neq y \Rightarrow f(x) \neq f(y)" block={false} />
+                <p className="text-sm mt-2 italic">
+                  Équivalent : <LatexRenderer latex="x \neq y \Rightarrow f(x) \neq f(y)" block={false} />
                 </p>
-              </div>
-            </div>
-
-            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
-              <p className="font-semibold">Définition — Application surjective</p>
-              <div className="mt-2 space-y-2">
-                <p>
+              </ComparisonCard>
+              <ComparisonCard label="Application surjective">
+                <p className="mb-2">
                   Une application <LatexRenderer latex="f : E \to F" block={false} /> est <strong>surjective</strong> si :
                 </p>
                 <div className="text-center py-2">
                   <LatexRenderer latex="\forall y \in F, \exists x \in E : f(x) = y" />
                 </div>
-                <p className="text-sm text-carnet-red">
+                <p className="text-sm mt-2 italic">
                   Équivalent : <LatexRenderer latex="f(E) = F" block={false} />
                 </p>
-              </div>
-            </div>
+              </ComparisonCard>
+            </ComparisonGrid>
 
             <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold">Définition — Application bijective</p>
@@ -268,8 +264,8 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="font-medium text-gray-700 mb-2">Exemple — Congruence modulo n :</p>
+            <div className="bg-carnet-paper p-4 rounded-lg">
+              <p className="font-medium text-carnet-ink mb-2">Exemple — Congruence modulo n :</p>
               <p>
                 Sur <LatexRenderer latex="\mathbb{Z}" block={false} />, la relation <LatexRenderer latex="a \equiv b \pmod{n}" block={false} /> 
                 (si <LatexRenderer latex="n" block={false} /> divise <LatexRenderer latex="a-b" block={false} />) est une relation d'équivalence.
@@ -282,11 +278,11 @@ const Chapitre2EnsemblesEtApplicationsCoursPage = () => {
       </Card>
 
       {/* Navigation secondaire */}
-      <Card className="border-0 shadow-lg bg-gray-50">
+      <Card className="border-0 shadow-lg bg-carnet-paper">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-appliquees">
-              <Button variant="outline" className="border-gray-300 text-gray-600 hover:bg-gray-50">
+              <Button variant="outline" className="border-gray-300 text-carnet-ink-soft hover:bg-carnet-paper">
                 Retour aux chapitres
               </Button>
             </Link>

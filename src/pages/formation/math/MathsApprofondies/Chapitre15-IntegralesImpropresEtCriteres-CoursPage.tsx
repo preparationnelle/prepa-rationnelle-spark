@@ -2,9 +2,10 @@ import React from 'react';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-        <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+        <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
                 {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
                 <div className="text-center">
                         {children}
@@ -32,10 +33,10 @@ const MathsIntegrationIntervallePage = () => {
                 >
                         <div className="space-y-8">
                                 {/* Section 1: Nature et convergence */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
                                                         <span className="font-semibold">Nature et convergence</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -48,7 +49,7 @@ const MathsIntegrationIntervallePage = () => {
                                                                 <LatexRenderer latex="\displaystyle \lim\limits_{x \to b^{-}} \int\limits_{a}^{x} f(t) \, dt" />
                                                         </FormulaBox>
 
-                                                        <div className="mt-4 bg-slate-50 p-4 rounded-lg border-l-4 border-slate-400">
+                                                        <div className="mt-4 bg-carnet-paper p-4 rounded-lg border-l-4 border-slate-400">
                                                                 <h4 className="font-semibold text-slate-800 mb-2">Théorème du Reste</h4>
                                                                 <p className="text-slate-700 text-sm">
                                                                         Si <LatexRenderer latex="\int_{a}^{b} f" /> converge, alors <LatexRenderer latex="\lim\limits_{x \to b} \int_{x}^{b} f(t) \, dt = 0" />.
@@ -59,10 +60,10 @@ const MathsIntegrationIntervallePage = () => {
                                 </Card>
 
                                 {/* Section 2: Critères de convergence */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
                                                         <span className="font-semibold">Critères de comparaison</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -71,20 +72,17 @@ const MathsIntegrationIntervallePage = () => {
                                                         <p className="text-slate-700 mb-4">
                                                                 Pour des fonctions <strong>positives</strong> au voisinage de la borne critique <LatexRenderer latex="b" /> :
                                                         </p>
-                                                        <div className="space-y-4">
-                                                                <div className="border border-slate-200 rounded p-4">
-                                                                        <p className="font-semibold text-slate-800 mb-1">Comparaison</p>
-                                                                        <p className="text-slate-700 text-sm">Si <LatexRenderer latex="0 \le f \le g" /> et <LatexRenderer latex="\int g" /> CV, alors <LatexRenderer latex="\int f" /> CV.</p>
-                                                                </div>
-                                                                <div className="border border-slate-200 rounded p-4">
-                                                                        <p className="font-semibold text-slate-800 mb-1">Équivalence</p>
-                                                                        <p className="text-slate-700 text-sm">Si <LatexRenderer latex="f \sim g" /> (<LatexRenderer latex="g \ge 0" />), alors les intégrales sont de même nature.</p>
-                                                                </div>
-                                                                <div className="border border-slate-200 rounded p-4">
-                                                                        <p className="font-semibold text-slate-800 mb-1">Négligeabilité</p>
-                                                                        <p className="text-slate-700 text-sm">Si <LatexRenderer latex="f = o(g)" /> (<LatexRenderer latex="g \ge 0" />) et <LatexRenderer latex="\int g" /> CV, alors <LatexRenderer latex="\int f" /> CV.</p>
-                                                                </div>
-                                                        </div>
+                                                        <ComparisonGrid cols={3}>
+                                                                <ComparisonCard label="Comparaison">
+                                                                        <p>Si <LatexRenderer latex="0 \le f \le g" /> et <LatexRenderer latex="\int g" /> CV, alors <LatexRenderer latex="\int f" /> CV.</p>
+                                                                </ComparisonCard>
+                                                                <ComparisonCard label="Équivalence">
+                                                                        <p>Si <LatexRenderer latex="f \sim g" /> (<LatexRenderer latex="g \ge 0" />), alors les intégrales sont <strong>de même nature</strong>.</p>
+                                                                </ComparisonCard>
+                                                                <ComparisonCard label="Négligeabilité">
+                                                                        <p>Si <LatexRenderer latex="f = o(g)" /> (<LatexRenderer latex="g \ge 0" />) et <LatexRenderer latex="\int g" /> CV, alors <LatexRenderer latex="\int f" /> CV.</p>
+                                                                </ComparisonCard>
+                                                        </ComparisonGrid>
 
                                                         <p className="text-slate-700 mt-6 mb-2">
                                                                 <strong>Convergence Absolue :</strong>
@@ -97,10 +95,10 @@ const MathsIntegrationIntervallePage = () => {
                                 </Card>
 
                                 {/* Section 3: Intégrales de référence */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
                                                         <span className="font-semibold">Intégrales de référence</span>
                                                 </CardTitle>
                                         </CardHeader>

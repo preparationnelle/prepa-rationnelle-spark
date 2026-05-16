@@ -3,9 +3,10 @@ import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { Separator } from '@/components/ui/separator';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-        <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+        <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
                 {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
                 <div className="text-center">
                         {children}
@@ -35,10 +36,10 @@ const MathsPolynomesPage = () => {
                         <div className="space-y-8">
 
                                 {/* Section 1: Définitions & Opérations */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
                                                         <span className="font-semibold">Définitions & Opérations</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -65,16 +66,20 @@ const MathsPolynomesPage = () => {
                                                 {/* Opérations */}
                                                 <div>
                                                         <h3 className="text-xl font-bold mb-2 text-slate-900">Opérations sur les degrés</h3>
-                                                        <div className="grid md:grid-cols-2 gap-4">
-                                                                <div className="bg-slate-50 p-4 rounded border border-slate-100">
-                                                                        <span className="font-semibold text-slate-800 block mb-2">Somme</span>
-                                                                        <div className="text-center text-sm"><LatexRenderer latex="\deg(P + Q) \leq \max(\deg P, \deg Q)" /></div>
-                                                                </div>
-                                                                <div className="bg-slate-50 p-4 rounded border border-slate-100">
-                                                                        <span className="font-semibold text-slate-800 block mb-2">Produit</span>
-                                                                        <div className="text-center text-sm"><LatexRenderer latex="\deg(PQ) = \deg P + \deg Q" /></div>
-                                                                </div>
-                                                        </div>
+                                                        <ComparisonGrid>
+                                                                <ComparisonCard label="Somme : inégalité">
+                                                                        <div className="text-center my-2">
+                                                                                <LatexRenderer latex="\deg(P + Q) \leq \max(\deg P, \deg Q)" />
+                                                                        </div>
+                                                                        <p className="text-sm mt-2 italic">Égalité si <LatexRenderer latex="\deg P \neq \deg Q" />.</p>
+                                                                </ComparisonCard>
+                                                                <ComparisonCard label="Produit : égalité">
+                                                                        <div className="text-center my-2">
+                                                                                <LatexRenderer latex="\deg(PQ) = \deg P + \deg Q" />
+                                                                        </div>
+                                                                        <p className="text-sm mt-2 italic">Toujours, sur un corps intègre comme <LatexRenderer latex="\mathbb{R}" />.</p>
+                                                                </ComparisonCard>
+                                                        </ComparisonGrid>
                                                 </div>
 
                                                 <Separator />
@@ -92,10 +97,10 @@ const MathsPolynomesPage = () => {
                                 </Card>
 
                                 {/* Section 2: Dérivation & Taylor */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
                                                         <span className="font-semibold">Dérivation & Taylor</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -111,10 +116,10 @@ const MathsPolynomesPage = () => {
                                 </Card>
 
                                 {/* Section 3: Racines & Factorisation */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
                                                         <span className="font-semibold">Racines & Factorisation</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -123,7 +128,7 @@ const MathsPolynomesPage = () => {
                                                 {/* Racines */}
                                                 <div>
                                                         <h3 className="text-xl font-bold mb-2 text-slate-900">Racines</h3>
-                                                        <div className="bg-slate-50 p-4 rounded border border-slate-100 space-y-3">
+                                                        <div className="bg-carnet-paper p-4 rounded border border-slate-100 space-y-3">
                                                                 <p className="text-slate-700"><span className="font-semibold">Définition :</span> <LatexRenderer latex="r" /> est racine si <LatexRenderer latex="P(r)=0" />.</p>
                                                                 <p className="text-slate-700"><span className="font-semibold">Propriété :</span> <LatexRenderer latex="P(r)=0 \iff (x-r)" /> divise <LatexRenderer latex="P" />.</p>
                                                                 <p className="text-slate-700"><span className="font-semibold">Multiplicité :</span> <LatexRenderer latex="r" /> est d'ordre <LatexRenderer latex="m" /> si <LatexRenderer latex="(x-r)^m" /> divise <LatexRenderer latex="P" /> et <LatexRenderer latex="(x-r)^{m+1}" /> ne divise pas <LatexRenderer latex="P" />.</p>

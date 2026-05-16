@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface CarnetCodeBlockProps {
-  label?: string;
+  label?: string | null;
   language?: string;
   children: string;
   className?: string;
@@ -60,14 +60,29 @@ export const CarnetCodeBlock: React.FC<CarnetCodeBlockProps> = ({
   const code = (children ?? '').replace(/^\n/, '').replace(/\n$/, '');
   const highlighted = language === 'python' ? highlightPython(code) : code;
 
+  const isDecorativeTape = label === null;
+
   return (
     <div className={`relative my-4 ${className}`}>
-      <div
-        className="absolute -top-3 left-6 bg-carnet-red text-carnet-paper-2 px-3 py-0.5 carnet-hand text-[15px] font-semibold z-10"
-        style={{ transform: 'rotate(-3deg)' }}
-      >
-        {label}
-      </div>
+      {isDecorativeTape ? (
+        <div
+          className="absolute -top-2.5 left-6 bg-carnet-red z-10"
+          style={{
+            width: 56,
+            height: 18,
+            transform: 'rotate(-4deg)',
+            boxShadow: '0 1px 2px rgba(31,23,20,0.25)',
+          }}
+          aria-hidden="true"
+        />
+      ) : (
+        <div
+          className="absolute -top-3 left-6 bg-carnet-red text-carnet-paper-2 px-3 py-0.5 carnet-hand text-[15px] font-semibold z-10"
+          style={{ transform: 'rotate(-3deg)' }}
+        >
+          {label}
+        </div>
+      )}
       <pre
         className="bg-carnet-ink rounded-md p-6 pt-7 overflow-x-auto border border-[rgba(78,55,30,0.25)]"
         style={{

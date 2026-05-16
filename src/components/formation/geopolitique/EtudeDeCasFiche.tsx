@@ -1,6 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, ChevronRight, Quote, Star, type LucideIcon } from 'lucide-react';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
+
+export interface ComparaisonEntry {
+  titre: string;
+  gauche: { label: string; contenu: React.ReactNode };
+  droite: { label: string; contenu: React.ReactNode };
+}
 
 export interface EtudeDeCasFicheProps {
   titre: string;
@@ -10,20 +17,21 @@ export interface EtudeDeCasFicheProps {
   chiffres: { value: string; label: string }[];
   noms: { nom: string; detail: string }[];
   tensions: { a: string; b: string }[];
+  comparaisons?: ComparaisonEntry[];
   sujets: { theme: string; angle: string }[];
   phraseTiroir: string;
 }
 
 const EtudeDeCasFiche: React.FC<EtudeDeCasFicheProps> = ({
-  titre, accroche, icon: Icon, miseEnContexte, chiffres, noms, tensions, sujets, phraseTiroir,
+  titre, accroche, icon: Icon, miseEnContexte, chiffres, noms, tensions, comparaisons, sujets, phraseTiroir,
 }) => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-carnet-paper">
       {/* Trait orange signature en haut de page */}
       <div className="h-[3px] w-full bg-pr-orange" />
 
       {/* Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-pr-gray-light">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2 border-b border-pr-gray-light">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-pr-gray-mid">
             <Link to="/" className="flex items-center gap-1 hover:text-pr-orange-dark transition-colors">
@@ -99,7 +107,21 @@ const EtudeDeCasFiche: React.FC<EtudeDeCasFicheProps> = ({
           </ul>
         </Section>
 
-        {/* 4. Tensions */}
+        {/* 4. Comparaisons côte-à-côte (optionnelles) */}
+        {comparaisons?.map((comp, i) => (
+          <Section key={i} title={comp.titre}>
+            <ComparisonGrid>
+              <ComparisonCard label={comp.gauche.label}>
+                {comp.gauche.contenu}
+              </ComparisonCard>
+              <ComparisonCard label={comp.droite.label}>
+                {comp.droite.contenu}
+              </ComparisonCard>
+            </ComparisonGrid>
+          </Section>
+        ))}
+
+        {/* 5. Tensions */}
         <Section title="Tensions clés">
           <div className="space-y-2.5">
             {tensions.map((t, i) => (

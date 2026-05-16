@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { Target, PenTool } from 'lucide-react';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const Chapitre21ChainesDeMarkovCoursPage = () => {
   return (
@@ -159,43 +160,38 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
             
-            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
-              <p className="font-semibold">Définition — Loi stationnaire</p>
-              <div className="mt-2 space-y-2">
-                <p>
+            <ComparisonGrid>
+              <ComparisonCard label="Loi stationnaire">
+                <p className="mb-2">
                   Un vecteur-ligne stochastique <LatexRenderer latex="U" block={false} /> est dit <strong>stationnaire</strong> pour <LatexRenderer latex="A" block={false} /> si
                 </p>
                 <div className="text-center py-2">
                   <LatexRenderer latex="UA = U" />
                 </div>
-              </div>
-            </div>
-
-            <div className="bg-pr-gray-bg border-l-4 border-carnet-red/40 p-4">
-              <p className="font-semibold">Propriété — État stable</p>
-              <div className="mt-2 space-y-2">
-                <p>Soit <LatexRenderer latex="A" block={false} /> la matrice de transition.</p>
-                <ol className="space-y-2 ml-4">
-                  <li>1. Un état stable <LatexRenderer latex="U" block={false} /> est un vecteur propre de <LatexRenderer latex="A^T" block={false} /> associé à la valeur propre <LatexRenderer latex="1" block={false} />.</li>
-                  <li>2. La loi limite, si elle existe, est un état stable :
+              </ComparisonCard>
+              <ComparisonCard label="État stable">
+                <p className="mb-2">Soit <LatexRenderer latex="A" block={false} /> la matrice de transition.</p>
+                <ol className="space-y-2 ml-4 list-decimal">
+                  <li>Un état stable <LatexRenderer latex="U" block={false} /> est un vecteur propre de <LatexRenderer latex="A^T" block={false} /> associé à la valeur propre <LatexRenderer latex="1" block={false} />.</li>
+                  <li>La loi limite, si elle existe, est un état stable :
                     <div className="text-center py-2 mt-2">
                       <LatexRenderer latex="\lim_{n\to+\infty} U_n = U" />
                     </div>
                   </li>
                 </ol>
-              </div>
-            </div>
+              </ComparisonCard>
+            </ComparisonGrid>
 
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="font-medium text-gray-700 mb-2">Interprétation :</p>
+            <div className="bg-carnet-paper p-4 rounded-lg">
+              <p className="font-medium text-carnet-ink mb-2">Interprétation :</p>
               <p>
                 Une chaîne de Markov modélise un processus aléatoire où l'état futur ne dépend que de l'état présent (propriété de Markov). 
                 Le comportement limite nous indique vers quelle distribution de probabilité la chaîne converge à long terme.
               </p>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="font-medium text-gray-700 mb-2">Applications :</p>
+            <div className="bg-carnet-paper p-4 rounded-lg">
+              <p className="font-medium text-carnet-ink mb-2">Applications :</p>
               <ul className="space-y-1 ml-4">
                 <li>• Modélisation de phénomènes économiques</li>
                 <li>• Analyse de réseaux sociaux</li>
@@ -210,11 +206,11 @@ const Chapitre21ChainesDeMarkovCoursPage = () => {
       </Card>
 
       {/* Navigation secondaire */}
-      <Card className="border-0 shadow-lg bg-gray-50">
+      <Card className="border-0 shadow-lg bg-carnet-paper">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-appliquees">
-              <Button variant="outline" className="border-gray-300 text-gray-600 hover:bg-gray-50">
+              <Button variant="outline" className="border-gray-300 text-carnet-ink-soft hover:bg-carnet-paper">
                 Retour aux chapitres
               </Button>
             </Link>

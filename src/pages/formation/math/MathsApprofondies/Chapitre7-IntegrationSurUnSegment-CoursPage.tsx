@@ -3,9 +3,10 @@ import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { Separator } from '@/components/ui/separator';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-        <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+        <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
                 {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
                 <div className="text-center">
                         {children}
@@ -35,10 +36,10 @@ const MathsIntegrationPage = () => {
                         <div className="space-y-8">
 
                                 {/* Section 1 - Définitions et Primitives */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
                                                         <span className="font-semibold">Primitives & Intégrale définie</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -61,7 +62,7 @@ const MathsIntegrationPage = () => {
                                                         <FormulaBox>
                                                                 <LatexRenderer latex={"\\int_a^b f(x)\\,dx = F(b) - F(a)"} />
                                                         </FormulaBox>
-                                                        <div className="bg-slate-50 p-4 rounded border border-slate-100 mt-4">
+                                                        <div className="bg-carnet-paper p-4 rounded border border-slate-100 mt-4">
                                                                 <span className="font-semibold text-slate-800 mb-2 block">Fonction définie par une intégrale</span>
                                                                 <p className="text-sm text-slate-600 mb-2">
                                                                         La fonction <LatexRenderer latex={"x \\mapsto \\int_a^x f(t)\\,dt"} /> est l'unique primitive de <LatexRenderer latex={"f"} /> qui s'annule en <LatexRenderer latex={"a"} />.
@@ -76,7 +77,7 @@ const MathsIntegrationPage = () => {
                                                         <h3 className="text-xl font-bold mb-4 text-slate-900">Primitives usuelles</h3>
                                                         <div className="overflow-x-auto border border-slate-200 rounded-lg">
                                                                 <table className="w-full text-sm">
-                                                                        <thead className="bg-slate-50 text-slate-700 border-b border-slate-200">
+                                                                        <thead className="bg-carnet-paper text-slate-700 border-b border-slate-200">
                                                                                 <tr>
                                                                                         <th className="py-2 px-4 text-left">Fonction <LatexRenderer latex={"f(x)"} /></th>
                                                                                         <th className="py-2 px-4 text-left">Primitive <LatexRenderer latex={"F(x)"} /></th>
@@ -133,41 +134,43 @@ const MathsIntegrationPage = () => {
                                 </Card>
 
                                 {/* Section 2 - Propriétés */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
                                                         <span className="font-semibold">Propriétés fondamentales</span>
                                                 </CardTitle>
                                         </CardHeader>
                                         <CardContent className="space-y-8 pt-6">
 
-                                                <div className="grid md:grid-cols-2 gap-8">
-                                                        <div>
-                                                                <h3 className="text-lg font-bold mb-2 text-slate-900">Linéarité & Chasles</h3>
-                                                                <div className="space-y-4">
-                                                                        <div className="bg-slate-50 p-3 rounded border border-slate-100">
+                                                <ComparisonGrid>
+                                                        <ComparisonCard label="Linéarité & Chasles">
+                                                                <div className="space-y-3 mt-2">
+                                                                        <div className="text-center">
                                                                                 <LatexRenderer latex={"\\int_a^b (\\lambda f + \\mu g) = \\lambda \\int f + \\mu \\int g"} />
                                                                         </div>
-                                                                        <div className="bg-slate-50 p-3 rounded border border-slate-100">
+                                                                        <div className="text-center">
                                                                                 <LatexRenderer latex={"\\int_a^b f = \\int_a^c f + \\int_c^b f"} />
                                                                         </div>
                                                                 </div>
-                                                        </div>
-                                                        <div>
-                                                                <h3 className="text-lg font-bold mb-2 text-slate-900">Ordre & Inégalités</h3>
-                                                                <div className="space-y-4">
-                                                                        <div className="bg-slate-50 p-3 rounded border border-slate-100">
-                                                                                <span className="text-sm font-semibold text-slate-700 block mb-1">Croissance</span>
-                                                                                <LatexRenderer latex={"f \\leq g \\implies \\int_a^b f \\leq \\int_a^b g \\quad (a \\leq b)"} />
+                                                        </ComparisonCard>
+                                                        <ComparisonCard label="Ordre & Inégalités">
+                                                                <div className="space-y-3 mt-2">
+                                                                        <div>
+                                                                                <p className="text-xs uppercase tracking-wider mb-1 font-semibold">Croissance</p>
+                                                                                <div className="text-center">
+                                                                                        <LatexRenderer latex={"f \\leq g \\implies \\int_a^b f \\leq \\int_a^b g \\quad (a \\leq b)"} />
+                                                                                </div>
                                                                         </div>
-                                                                        <div className="bg-slate-50 p-3 rounded border border-slate-100">
-                                                                                <span className="text-sm font-semibold text-slate-700 block mb-1">Inégalité triangulaire</span>
-                                                                                <LatexRenderer latex={"|\\int_a^b f| \\leq \\int_a^b |f| \\quad (a \\leq b)"} />
+                                                                        <div>
+                                                                                <p className="text-xs uppercase tracking-wider mb-1 font-semibold">Inégalité triangulaire</p>
+                                                                                <div className="text-center">
+                                                                                        <LatexRenderer latex={"|\\int_a^b f| \\leq \\int_a^b |f| \\quad (a \\leq b)"} />
+                                                                                </div>
                                                                         </div>
                                                                 </div>
-                                                        </div>
-                                                </div>
+                                                        </ComparisonCard>
+                                                </ComparisonGrid>
 
                                                 <Separator />
 
@@ -183,10 +186,10 @@ const MathsIntegrationPage = () => {
                                 </Card>
 
                                 {/* Section 3 - Techniques de calcul */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
                                                         <span className="font-semibold">Techniques d'intégration</span>
                                                 </CardTitle>
                                         </CardHeader>

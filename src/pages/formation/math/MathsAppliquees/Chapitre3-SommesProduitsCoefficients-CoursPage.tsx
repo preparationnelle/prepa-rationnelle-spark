@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { Target, PenTool, Code } from 'lucide-react';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const Chapitre3SommesProduitsCoefficientsCoursPage = () => {
   return (
@@ -94,17 +95,17 @@ const Chapitre3SommesProduitsCoefficientsCoursPage = () => {
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4 rounded">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4 rounded">
               <p className="font-semibold mb-2 text-carnet-red">Rappel mathématique</p>
               <p className="text-base">
                 La notation <LatexRenderer latex="\sum_{k=1}^{n} u_k" block={false} /> signifie : <LatexRenderer latex="u_1 + u_2 + u_3 + \cdots + u_n" block={false} />
               </p>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-carnet-ink-soft mt-1">
                 Exemples : <LatexRenderer latex="\sum_{k=1}^{5} k = 1+2+3+4+5 = 15" block={false} /> ou <LatexRenderer latex="\sum_{k=1}^{5} k^2 = 1+4+9+16+25 = 55" block={false} />
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Exemple de base détaillé</p>
               <p className="mb-2">Calculons pas à pas la somme <LatexRenderer latex="\sum_{k=1}^{4} k" block={false} /> :</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
@@ -130,13 +131,13 @@ print(f"Après k=4 : S = {S}")  # S = 10
 
 # Résultat final : 1+2+3+4 = 10`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Explication :</strong> À chaque étape, on <strong>ajoute</strong> la valeur de k à S. 
                 On commence toujours avec <span className="font-mono">S = 0</span> pour une somme.
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Méthode 1 – Boucle avec variable initialisée</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                 <pre>{`n = 5
@@ -146,10 +147,10 @@ for k in range(1, n+1):
 print(S)  # Affiche 55`}</pre>
               </div>
               <p className="mt-2 text-green-700"> Méthode simple et lisible. Fonctionne dans tous les cas, même avec des doubles sommes.</p>
-              <p className="mt-1 text-sm text-gray-600"> Attention : <span className="font-mono">range(1, n+1)</span> va de 1 à n inclus.</p>
+              <p className="mt-1 text-sm text-carnet-ink-soft"> Attention : <span className="font-mono">range(1, n+1)</span> va de 1 à n inclus.</p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Méthode 2 – Liste & sum()</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                 <pre>{`n = 5
@@ -161,10 +162,10 @@ print(S)  # Affiche 55
 S = sum([k**2 for k in range(1, n+1)])`}</pre>
               </div>
               <p className="mt-2 text-green-700"> Plus concis. Permet de manipuler la liste des termes si besoin (affichage, tracé).</p>
-              <p className="mt-1 text-sm text-gray-600"> Utilise la compréhension de liste Python.</p>
+              <p className="mt-1 text-sm text-carnet-ink-soft"> Utilise la compréhension de liste Python.</p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Méthode 3 – Vectorisation avec NumPy</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                 <pre>{`import numpy as np
@@ -178,7 +179,7 @@ print(S)  # Affiche 55`}</pre>
               <p className="mt-1 text-carnet-red"> Moins intuitif pour débutants. Nécessite l'import de NumPy.</p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Exemple pratique : comprendre range()</p>
               <p className="mb-2">Une erreur fréquente est de mal utiliser <span className="font-mono">range()</span>. Voici les cas courants :</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
@@ -200,13 +201,13 @@ print(f"Somme {m} à {n} : {S3}")
 S_faux = sum([k for k in range(1, n)])  # Oublie le +1 : 1+2+3+4 = 10
 print(f"Erreur (oubli +1) : {S_faux}")  #  Donne 10 au lieu de 15`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Règle à retenir :</strong> <span className="font-mono">range(a, b)</span> va de <strong>a inclus</strong> à <strong>b exclu</strong>. 
                 Pour aller jusqu'à n inclus, utilisez <span className="font-mono">range(1, n+1)</span>.
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Exemple pratique : visualiser les termes</p>
               <p className="mb-2">Pour bien comprendre ce qui se passe, il est utile d'afficher les termes :</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
@@ -235,12 +236,12 @@ print(f"Vérification avec sum() : {sum(termes)}")
 # Somme totale : 55
 # Vérification avec sum() : 55`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Astuce :</strong> Afficher les termes et sommes partielles aide à <strong>débugger</strong> et comprendre le calcul étape par étape.
               </p>
             </div>
 
-            <div className="bg-white p-4 rounded-lg border border-carnet-red/30">
+            <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-red/30">
               <p className="font-semibold mb-3">Comparatif synthétique</p>
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
@@ -276,7 +277,7 @@ print(f"Vérification avec sum() : {sum(termes)}")
               </div>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Exemples guidés — Sommes usuelles</p>
               <p className="mb-3">Calculons ces trois sommes :</p>
               <ul className="space-y-1 ml-4 mb-4">
@@ -346,7 +347,7 @@ print(f"S3 = {S3}")  # 555`}</pre>
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-lg border border-carnet-red/30">
+            <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-red/30">
               <p className="font-semibold mb-3"> Formules mathématiques utiles</p>
               <p className="mb-2">Ces formules permettent de vérifier vos résultats :</p>
               <ul className="space-y-1 ml-4 text-base">
@@ -357,7 +358,7 @@ print(f"S3 = {S3}")  # 555`}</pre>
               </ul>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Application détaillée : vérifier une formule</p>
               <p className="mb-2">
                 Vérifions la formule <LatexRenderer latex="\sum_{k=1}^n k = \frac{n(n+1)}{2}" block={false} /> pour n=10 :
@@ -375,13 +376,13 @@ print(f"Formule : {somme_formule}")  # 55
 
 # Pour n = 1,000,000, la formule est ~40000x plus rapide`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Leçon importante :</strong> Quand une formule mathématique directe existe, elle est <strong>toujours</strong> plus efficace qu'une boucle,
                 surtout pour de grandes valeurs de n. C'est pourquoi il est crucial de connaître ces formules !
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Exercice guidé : somme arithmétique personnalisée</p>
               <p className="mb-2">
                 <strong>Problème :</strong> Une entreprise verse des primes mensuelles croissantes : 100€ le 1er mois, 150€ le 2e mois,
@@ -412,13 +413,13 @@ print(f"Formule : {somme_formule}€")  # 4500€
 primes = [premier_mois + k * raison for k in range(nb_mois)]
 print(f"Liste : {sum(primes)}€")  # 4500€`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Application :</strong> Les suites arithmétiques modélisent de nombreuses situations réelles :
                 économie (intérêts simples), physique (mouvement uniforme), ou encore les remboursements d'emprunts.
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Exercice guidé : somme géométrique</p>
               <p className="mb-2">
                 <strong>Problème :</strong> Une bactérie se divise en 2 chaque heure. On part d'une bactérie.
@@ -447,7 +448,7 @@ import numpy as np
 h = np.arange(n_heures + 1)
 print(f"NumPy : {np.sum(raison ** h)}")  # 2047`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Application :</strong> Les suites géométriques modélisent la croissance exponentielle :
                 populations de bactéries, intérêts composés, propagation virale, radioactivité, etc.
               </p>
@@ -476,17 +477,17 @@ print(f"NumPy : {np.sum(raison ** h)}")  # 2047`}</pre>
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4 rounded">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4 rounded">
               <p className="font-semibold mb-2 text-carnet-red">Rappel mathématique</p>
               <p className="text-base">
                 La notation <LatexRenderer latex="\prod_{k=1}^{n} u_k" block={false} /> signifie : <LatexRenderer latex="u_1 \times u_2 \times u_3 \times \cdots \times u_n" block={false} />
               </p>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-carnet-ink-soft mt-1">
                 Exemple : <LatexRenderer latex="\prod_{k=1}^{5} k = 1 \times 2 \times 3 \times 4 \times 5 = 120" block={false} /> (factorielle de 5)
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Exemple de base détaillé</p>
               <p className="mb-2">Calculons pas à pas le produit <LatexRenderer latex="\prod_{k=1}^{4} k" block={false} /> :</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
@@ -512,7 +513,7 @@ print(f"Après k=4 : P = {P}")  # P = 24
 
 # Résultat final : 1×2×3×4 = 24`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Explication :</strong> À chaque étape, on <strong>multiplie</strong> P par k. 
                 On commence toujours avec <span className="font-mono">P = 1</span> pour un produit (jamais 0 !).
               </p>
@@ -522,7 +523,7 @@ print(f"Après k=4 : P = {P}")  # P = 24
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Méthode 1 – Boucle avec variable initialisée</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                 <pre>{`n = 5
@@ -535,7 +536,7 @@ print(P)  # Affiche 120`}</pre>
               <p className="mt-1 text-red-600"> <strong>ATTENTION :</strong> Toujours initialiser <span className="font-mono">P = 1</span> (et non 0) pour un produit !</p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Méthode 2 – Avec NumPy (np.prod)</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                 <pre>{`import numpy as np
@@ -546,10 +547,10 @@ P = np.prod(k)
 print(P)  # Affiche 120 (factorielle de 5)`}</pre>
               </div>
               <p className="mt-2 text-green-700"> Très rapide pour de grandes tailles.</p>
-              <p className="mt-1 text-sm text-gray-600"> NumPy gère automatiquement l'initialisation à 1.</p>
+              <p className="mt-1 text-sm text-carnet-ink-soft"> NumPy gère automatiquement l'initialisation à 1.</p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Factorielle : calcul et fonction built-in</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                 <pre>{`# Méthode manuelle
@@ -567,7 +568,7 @@ print(factorial(5))  # 120`}</pre>
               </div>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Comparaison Somme vs Produit</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                 <pre>{`n = 5
@@ -584,21 +585,19 @@ for k in range(1, n+1):
     produit *= k
 print(f"Produit : {produit}")  # 120`}</pre>
               </div>
-              <div className="mt-3 grid grid-cols-2 gap-4 text-sm">
-                <div className="bg-pr-gray-bg p-2 rounded">
-                  <p className="font-semibold">Somme</p>
-                  <p className="font-mono">S = 0</p>
-                  <p className="font-mono">S += k</p>
-                </div>
-                <div className="bg-pr-gray-bg p-2 rounded">
-                  <p className="font-semibold">Produit</p>
-                  <p className="font-mono">P = 1</p>
-                  <p className="font-mono">P *= k</p>
-                </div>
-              </div>
+              <ComparisonGrid className="mt-3">
+                <ComparisonCard label="Somme : initialiser à 0">
+                  <p className="font-mono text-sm">S = 0</p>
+                  <p className="font-mono text-sm">S += k</p>
+                </ComparisonCard>
+                <ComparisonCard label="Produit : initialiser à 1">
+                  <p className="font-mono text-sm">P = 1</p>
+                  <p className="font-mono text-sm">P *= k</p>
+                </ComparisonCard>
+              </ComparisonGrid>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Exemples guidés — Produits usuels</p>
               <p className="mb-3">Calculons ces trois produits :</p>
               <ul className="space-y-1 ml-4 mb-4">
@@ -648,7 +647,7 @@ print(f"P3 = {P3}")  # 6.0`}</pre>
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-lg border border-carnet-red/30">
+            <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-red/30">
               <p className="font-semibold mb-3"> Points d'attention</p>
               <ul className="space-y-2 ml-4">
                 <li>• <strong>Initialisation :</strong> Toujours initialiser un produit à <span className="font-mono">P = 1</span> (et non 0, sinon le résultat sera toujours 0 !)</li>
@@ -680,7 +679,7 @@ print(f"P3 = {P3}")  # 6.0`}</pre>
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4 rounded">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4 rounded">
               <p className="font-semibold mb-2 text-carnet-red">Rappel mathématique</p>
               <p className="text-base mb-2">
                 Le coefficient binomial <LatexRenderer latex="\binom{n}{k}" block={false} /> (lu "k parmi n") représente le nombre de façons 
@@ -689,12 +688,12 @@ print(f"P3 = {P3}")  # 6.0`}</pre>
               <p className="text-base">
                 Formule : <LatexRenderer latex="\binom{n}{k} = \frac{n!}{k!(n-k)!}" block={false} />
               </p>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-carnet-ink-soft mt-2">
                 Exemple : <LatexRenderer latex="\binom{5}{2} = \frac{5!}{2! \cdot 3!} = \frac{120}{2 \cdot 6} = 10" block={false} />
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Exemple concret : combinaisons</p>
               <p className="mb-2">
                 <strong>Problème :</strong> Dans une classe de 5 élèves (Alice, Bob, Carol, David, Eve), combien de groupes de 2 élèves peut-on former ?
@@ -720,12 +719,12 @@ eleves = ["Alice", "Bob", "Carol", "David", "Eve"]
 groupes = list(combinations(eleves, 2))
 print(f"Nombre de groupes : {len(groupes)}")  # 10`}</pre>
               </div>
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-carnet-ink">
                 <strong> Application :</strong> Les coefficients binomiaux servent à compter les combinaisons (poker, loto, équipes, etc.).
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Calcul de C(5,2)</p>
               <p className="mb-2">Formule : <LatexRenderer latex="\binom{5}{2} = \frac{5!}{2! \times 3!} = \frac{120}{2 \times 6} = 10" block={false} /></p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
@@ -735,12 +734,12 @@ n, k = 5, 2
 resultat = factorial(n) // (factorial(k) * factorial(n-k))
 print(f"C({n},{k}) = {resultat}")  # 10`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Astuce :</strong> Utiliser <span className="font-mono">//</span> (division entière) pour obtenir un entier.
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Méthode 1 – Calcul avec factorielles (math.factorial)</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                 <pre>{`from math import factorial
@@ -760,7 +759,7 @@ print(binomial(10, 5))  # 252`}</pre>
               <p className="mt-1 text-carnet-red"> Utiliser <span className="font-mono">//</span> (division entière) pour obtenir un résultat entier.</p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Méthode 2 – Avec math.comb (Python 3.8+)</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                 <pre>{`from math import comb
@@ -778,7 +777,7 @@ print(comb(5, 6))   # 0`}</pre>
               <p className="mt-2 text-green-700"> Méthode recommandée : simple, optimisée, gère les cas limites.</p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Méthode 3 – Avec SciPy (pour calculs scientifiques)</p>
               <div className="bg-carnet-ink text-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                 <pre>{`from scipy.special import comb
@@ -793,10 +792,10 @@ print(comb(100, 50, exact=False))  # 1.0089134e+29`}</pre>
               <p className="mt-2 text-green-700"> Très efficace pour de très grandes valeurs de n.</p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Application : Génération du triangle de Pascal</p>
               <p className="mb-2">Le triangle de Pascal contient tous les coefficients binomiaux :</p>
-              <div className="bg-gray-50 p-3 rounded text-center font-mono text-sm mb-3">
+              <div className="bg-carnet-paper p-3 rounded text-center font-mono text-sm mb-3">
                 <div>1</div>
                 <div>1   1</div>
                 <div>1   2   1</div>
@@ -833,7 +832,7 @@ def triangle_recursif(n):
               </div>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Application : Formule du binôme de Newton</p>
               <p className="mb-2">
                 La formule <LatexRenderer latex="(a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k" block={false} /> permet 
@@ -872,7 +871,7 @@ developper_binome(5)
               </div>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Exemple : développer (x+2)³</p>
               <p className="mb-2">
                 Développons <LatexRenderer latex="(x+2)^3" block={false} /> avec la formule du binôme :
@@ -895,12 +894,12 @@ def binome(a, b, n):
 print(binome(2, 3, 4))  # 625
 print((2+3)**4)         # 625 (vérification)`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Observation :</strong> Les coefficients [1, 3, 3, 1] correspondent à la ligne 3 du triangle de Pascal.
               </p>
             </div>
 
-            <div className="bg-white p-4 rounded-lg border border-carnet-red/30">
+            <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-red/30">
               <p className="font-semibold mb-3"> Propriétés importantes</p>
               <ul className="space-y-2 ml-4 text-base">
                 <li>• <strong>Symétrie :</strong> <LatexRenderer latex="\binom{n}{k} = \binom{n}{n-k}" block={false} /></li>
@@ -918,7 +917,7 @@ print(f"Somme ligne {n} : {somme} = 2^{n} = {2**n}")  # 32 = 32`}</pre>
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-lg border border-carnet-red/30">
+            <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-red/30">
               <p className="font-semibold mb-3"> Points d'attention</p>
               <ul className="space-y-2 ml-4">
                 <li>• <strong>Division entière :</strong> Utiliser <span className="font-mono">//</span> et non <span className="font-mono">/</span> pour obtenir un résultat entier</li>
@@ -928,7 +927,7 @@ print(f"Somme ligne {n} : {somme} = 2^{n} = {2**n}")  # 32 = 32`}</pre>
               </ul>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Application en probabilités : le problème du loto</p>
               <p className="mb-2">
                 <strong>Problème :</strong> Au loto, on choisit 5 numéros parmi 49. Quelle est la probabilité de gagner le gros lot
@@ -946,13 +945,13 @@ proba = 1 / nb_combinaisons
 print(f"Probabilité : 1/{nb_combinaisons:,}")
 print(f"Soit : {proba * 100:.6f}%")  # 0.000052%`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Leçon :</strong> Les coefficients binomiaux permettent de calculer des probabilités dans les jeux de hasard.
                 Ils montrent aussi pourquoi les loteries sont si difficiles à gagner !
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Application en combinatoire : le poker</p>
               <p className="mb-2">
                 <strong>Problème :</strong> Au poker, chaque joueur reçoit 5 cartes d'un jeu de 52 cartes.
@@ -975,13 +974,13 @@ print(f"Probabilité paire : {proba_paire*100:.2f}%")  # 42.26%
 brelan = 13 * comb(4, 3) * comb(12, 2) * (4**2)
 print(f"Probabilité brelan : {brelan/nb_mains*100:.2f}%")  # 2.11%`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Application :</strong> Les coefficients binomiaux sont essentiels pour calculer les probabilités
                 au poker, et comprendre pourquoi certaines mains sont plus rares que d'autres.
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Application pratique : problème des anniversaires</p>
               <p className="mb-2">
                 <strong>Paradoxe célèbre :</strong> Dans un groupe de 23 personnes, quelle est la probabilité que deux personnes
@@ -1006,13 +1005,13 @@ for n in [10, 23, 30, 50]:
 # 30 personnes : 70.6%
 # 50 personnes : 97.0%`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Ce paradoxe</strong> illustre comment notre intuition peut nous tromper en probabilités.
                 Les coefficients binomiaux nous aident à comprendre pourquoi ce résultat est correct !
               </p>
             </div>
 
-            <div className="bg-white border-l-4 border-carnet-red/40 p-4">
+            <div className="bg-carnet-paper-2 border-l-4 border-carnet-red/40 p-4">
               <p className="font-semibold mb-3">Optimisation : méthode efficace pour calculer C(n,k)</p>
               <p className="mb-2">
                 Calculer les factorielles peut être lent pour de grandes valeurs. Voici une méthode optimisée :
@@ -1036,7 +1035,7 @@ from math import comb
 print(binomial_optimise(100, 50))  # Calcul direct
 print(comb(100, 50))  # Fonction built-in (recommandée)`}</pre>
               </div>
-              <p className="mt-3 text-sm text-gray-700">
+              <p className="mt-3 text-sm text-carnet-ink">
                 <strong> Leçon :</strong> Pour de grandes valeurs, utilisez toujours <span className="font-mono">math.comb()</span> qui est
                 optimisé en C. Pour comprendre l'algorithme, la méthode optimisée montre comment éviter les débordements.
               </p>
@@ -1047,11 +1046,11 @@ print(comb(100, 50))  # Fonction built-in (recommandée)`}</pre>
       </Card>
 
       {/* Navigation secondaire */}
-      <Card className="border-0 shadow-lg bg-gray-50">
+      <Card className="border-0 shadow-lg bg-carnet-paper">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-appliquees">
-              <Button variant="outline" className="border-gray-300 text-gray-600 hover:bg-gray-50">
+              <Button variant="outline" className="border-gray-300 text-carnet-ink-soft hover:bg-carnet-paper">
                 Retour aux chapitres
               </Button>
             </Link>

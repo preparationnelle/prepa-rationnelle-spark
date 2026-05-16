@@ -2,9 +2,10 @@ import React from 'react';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-        <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+        <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
                 {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
                 <div className="text-center">
                         {children}
@@ -32,10 +33,10 @@ const MathsInegalitesPage = () => {
                 >
                         <div className="space-y-8">
                                 {/* Section 1: Inégalités fondamentales */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
                                                         <span className="font-semibold">Inégalités fondamentales</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -57,39 +58,40 @@ const MathsInegalitesPage = () => {
                                 </Card>
 
                                 {/* Section 2: Convergences */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
                                                         <span className="font-semibold">Types de convergence</span>
                                                 </CardTitle>
                                         </CardHeader>
                                         <CardContent className="space-y-6 pt-6">
-                                                <div>
-                                                        <div className="mb-6">
-                                                                <h4 className="font-semibold text-slate-800 mb-2">Convergence en Probabilité (<LatexRenderer latex="\xrightarrow{\mathbb{P}}" />)</h4>
-                                                                <p className="text-slate-700 mb-2">
-                                                                        <LatexRenderer latex="\forall \varepsilon > 0, \lim_{n \to \infty} \mathbb{P}(|Z_n - Z| \ge \varepsilon) = 0" />.
+                                                <ComparisonGrid>
+                                                        <ComparisonCard label={<>Convergence en probabilité&nbsp;(<LatexRenderer latex="\xrightarrow{\mathbb{P}}" />)</>}>
+                                                                <p className="mb-2">
+                                                                        <LatexRenderer latex="\forall \varepsilon > 0, \lim_{n \to \infty} \mathbb{P}(|Z_n - Z| \ge \varepsilon) = 0" />
                                                                 </p>
-                                                                <FormulaBox title="Loi Faible des Grands Nombres (LFGN)">
-                                                                        Si <LatexRenderer latex="(Y_k)" /> i.i.d intégrables :
-                                                                        <div className="my-1" />
-                                                                        <LatexRenderer latex="\overline{Y}_n = \frac{1}{n}\sum Y_k \xrightarrow{\mathbb{P}} \mathbb{E}(Y_1)" />
-                                                                </FormulaBox>
-                                                        </div>
-
-                                                        <div>
-                                                                <h4 className="font-semibold text-slate-800 mb-2">Convergence en Loi (<LatexRenderer latex="\xrightarrow{\mathcal{L}}" />)</h4>
-                                                                <p className="text-slate-700 mb-2">
+                                                                <div className="mt-3 pt-3 border-t border-dashed border-carnet-red/30">
+                                                                        <p className="text-xs uppercase tracking-wider font-semibold mb-1">Loi faible des grands nombres</p>
+                                                                        <p className="text-sm">Si <LatexRenderer latex="(Y_k)" /> i.i.d intégrables :</p>
+                                                                        <div className="text-center mt-1">
+                                                                                <LatexRenderer latex="\overline{Y}_n = \frac{1}{n}\sum Y_k \xrightarrow{\mathbb{P}} \mathbb{E}(Y_1)" />
+                                                                        </div>
+                                                                </div>
+                                                        </ComparisonCard>
+                                                        <ComparisonCard label={<>Convergence en loi&nbsp;(<LatexRenderer latex="\xrightarrow{\mathcal{L}}" />)</>}>
+                                                                <p className="mb-2">
                                                                         Convergence des fonctions de répartition en tout point de continuité de la limite.
                                                                 </p>
-                                                                <FormulaBox title="Théorème Central Limite (TCL)">
-                                                                        Si <LatexRenderer latex="(Y_k)" /> i.i.d (<LatexRenderer latex="\mu, \sigma^2" />) :
-                                                                        <div className="my-1" />
-                                                                        <LatexRenderer latex="\frac{\sqrt{n}(\overline{Y}_n - \mu)}{\sigma} \xrightarrow{\mathcal{L}} \mathcal{N}(0,1)" />
-                                                                </FormulaBox>
-                                                        </div>
-                                                </div>
+                                                                <div className="mt-3 pt-3 border-t border-dashed border-carnet-red/30">
+                                                                        <p className="text-xs uppercase tracking-wider font-semibold mb-1">Théorème central limite</p>
+                                                                        <p className="text-sm">Si <LatexRenderer latex="(Y_k)" /> i.i.d (<LatexRenderer latex="\mu, \sigma^2" />) :</p>
+                                                                        <div className="text-center mt-1">
+                                                                                <LatexRenderer latex="\frac{\sqrt{n}(\overline{Y}_n - \mu)}{\sigma} \xrightarrow{\mathcal{L}} \mathcal{N}(0,1)" />
+                                                                        </div>
+                                                                </div>
+                                                        </ComparisonCard>
+                                                </ComparisonGrid>
                                         </CardContent>
                                 </Card>
                         </div>

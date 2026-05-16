@@ -28,6 +28,31 @@ const PanamaPage = () => (
       { a: 'Influence chinoise (BRI, Hutchison)', b: 'Reprise en main US' },
       { a: 'Croissance du trafic', b: 'Limites hydriques climatiques' },
     ]}
+    comparaisons={[
+      {
+        titre: 'Deux puissances en concurrence sur le canal',
+        gauche: {
+          label: 'États-Unis',
+          contenu: (
+            <p>
+              Constructeurs historiques (1914), rétrocession par les traités Torrijos-Carter (1999).
+              Trump menace en janvier 2025 de « reprendre » le canal au nom d'une présence
+              chinoise contestée. Doctrine Monroe réactivée, pression sur Hutchison Ports.
+            </p>
+          ),
+        },
+        droite: {
+          label: 'Chine',
+          contenu: (
+            <p>
+              Panama avait rejoint les Routes de la Soie en 2017, premier État latino-américain.
+              Hutchison Ports (CK Hutchison, Hong Kong) gère deux ports d'extrémité. Sortie de
+              la BRI en mars 2025 sous pression de Marco Rubio : recul stratégique majeur.
+            </p>
+          ),
+        },
+      },
+    ]}
     sujets={[
       { theme: 'Espaces maritimes & choke points', angle: 'Panama, Suez, Malacca, Ormuz' },
       { theme: 'Réchauffement climatique', angle: 'sécheresse comme arme géopo de facto' },

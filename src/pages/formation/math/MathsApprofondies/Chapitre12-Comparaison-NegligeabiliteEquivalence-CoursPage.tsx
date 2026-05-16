@@ -2,9 +2,10 @@ import React from 'react';
 import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-  <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+  <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
     {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
     <div className="text-center">
       {children}
@@ -32,10 +33,10 @@ const MathsComparaisonsPage = () => {
     >
       <div className="space-y-8">
         {/* Section 1: Négligeabilité */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
               <span className="font-semibold">Négligeabilité</span>
             </CardTitle>
           </CardHeader>
@@ -45,26 +46,24 @@ const MathsComparaisonsPage = () => {
                 Une fonction <LatexRenderer latex="f" /> est négligeable devant <LatexRenderer latex="g" /> au voisinage de <LatexRenderer latex="a" /> si <LatexRenderer latex="f" /> est "beaucoup plus petite" que <LatexRenderer latex="g" />.
               </p>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-slate-800 mb-2">Pour les fonctions</h4>
-                  <FormulaBox>
-                    <LatexRenderer latex="f(x) = o(g(x)) \iff f(x) = g(x)\varepsilon(x) \quad \text{avec } \lim_{x \to a} \varepsilon(x) = 0" />
-                    <div className="mt-2 pt-2 border-t border-slate-200">
-                      <LatexRenderer latex="\iff \lim_{x \to a} \frac{f(x)}{g(x)} = 0 \quad (g \neq 0)" />
-                    </div>
-                  </FormulaBox>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-slate-800 mb-2">Pour les suites</h4>
-                  <FormulaBox>
-                    <LatexRenderer latex="u_n = o(v_n) \iff u_n = v_n\varepsilon_n \quad \text{avec } \lim_{n \to \infty} \varepsilon_n = 0" />
-                    <div className="mt-2 pt-2 border-t border-slate-200">
-                      <LatexRenderer latex="\iff \lim_{n \to \infty} \frac{u_n}{v_n} = 0 \quad (v_n \neq 0)" />
-                    </div>
-                  </FormulaBox>
-                </div>
-              </div>
+              <ComparisonGrid>
+                <ComparisonCard label="Pour les fonctions">
+                  <div className="text-center my-2">
+                    <LatexRenderer latex="f(x) = o(g(x)) \iff f(x) = g(x)\varepsilon(x), \; \lim_{x \to a} \varepsilon(x) = 0" />
+                  </div>
+                  <div className="text-center my-2 pt-2 border-t border-dashed border-carnet-red/30">
+                    <LatexRenderer latex="\iff \lim_{x \to a} \frac{f(x)}{g(x)} = 0 \quad (g \neq 0)" />
+                  </div>
+                </ComparisonCard>
+                <ComparisonCard label="Pour les suites">
+                  <div className="text-center my-2">
+                    <LatexRenderer latex="u_n = o(v_n) \iff u_n = v_n\varepsilon_n, \; \lim_{n \to \infty} \varepsilon_n = 0" />
+                  </div>
+                  <div className="text-center my-2 pt-2 border-t border-dashed border-carnet-red/30">
+                    <LatexRenderer latex="\iff \lim_{n \to \infty} \frac{u_n}{v_n} = 0 \quad (v_n \neq 0)" />
+                  </div>
+                </ComparisonCard>
+              </ComparisonGrid>
             </div>
 
             <div>
@@ -79,10 +78,10 @@ const MathsComparaisonsPage = () => {
         </Card>
 
         {/* Section 2: Équivalence */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
               <span className="font-semibold">Équivalence</span>
             </CardTitle>
           </CardHeader>
@@ -122,10 +121,10 @@ const MathsComparaisonsPage = () => {
         </Card>
 
         {/* Section 3: Équivalents usuels */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
               <span className="font-semibold">Équivalents usuels (en 0)</span>
             </CardTitle>
           </CardHeader>

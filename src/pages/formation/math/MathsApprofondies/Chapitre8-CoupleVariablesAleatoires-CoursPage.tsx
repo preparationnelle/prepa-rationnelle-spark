@@ -3,9 +3,10 @@ import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { Separator } from '@/components/ui/separator';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-  <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+  <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
     {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
     <div className="text-center">
       {children}
@@ -35,10 +36,10 @@ const Chapitre8CoupleVariablesAleatoiresCoursPage = () => {
       <div className="space-y-8">
 
         {/* Section 1: Lois conjointes & Marginales */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
               <span className="font-semibold">Lois conjointes & Marginales</span>
             </CardTitle>
           </CardHeader>
@@ -56,7 +57,7 @@ const Chapitre8CoupleVariablesAleatoiresCoursPage = () => {
 
             <div>
               <h3 className="text-xl font-bold mb-2 text-slate-900">Lois marginales</h3>
-              <div className="bg-slate-50 p-4 rounded border border-slate-100">
+              <div className="bg-carnet-paper p-4 rounded border border-slate-100">
                 <p className="text-slate-700 font-medium mb-2">On retrouve la loi de <LatexRenderer latex="X" /> (resp. <LatexRenderer latex="Y" />) en sommant sur l'autre variable :</p>
                 <div className="text-center py-2 space-y-2">
                   <div><LatexRenderer latex="P(X=x_i) = \sum_j P(X=x_i, Y=y_j)" /></div>
@@ -79,10 +80,10 @@ const Chapitre8CoupleVariablesAleatoiresCoursPage = () => {
         </Card>
 
         {/* Section 2: Indépendance & Espérance */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
               <span className="font-semibold">Indépendance & Fonctions</span>
             </CardTitle>
           </CardHeader>
@@ -102,16 +103,20 @@ const Chapitre8CoupleVariablesAleatoiresCoursPage = () => {
             {/* Indépendance */}
             <div>
               <h3 className="text-xl font-bold mb-2 text-slate-900">Variables Indépendantes</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-slate-50 p-4 rounded border border-slate-100">
-                  <span className="font-semibold text-slate-800 block mb-2">Définition</span>
-                  <div className="text-center text-sm"><LatexRenderer latex="P(X=x, Y=y) = P(X=x)P(Y=y)" /></div>
-                </div>
-                <div className="bg-slate-50 p-4 rounded border border-slate-100">
-                  <span className="font-semibold text-slate-800 block mb-2">Produit</span>
-                  <div className="text-center text-sm"><LatexRenderer latex="E(XY) = E(X)E(Y)" /></div>
-                </div>
-              </div>
+              <ComparisonGrid>
+                <ComparisonCard label="Indépendance (déf.)">
+                  <div className="text-center my-2">
+                    <LatexRenderer latex="P(X=x, Y=y) = P(X=x)P(Y=y)" />
+                  </div>
+                  <p className="text-sm mt-2 italic">Pour tout couple <LatexRenderer latex="(x,y)" />.</p>
+                </ComparisonCard>
+                <ComparisonCard label="Espérance du produit">
+                  <div className="text-center my-2">
+                    <LatexRenderer latex="E(XY) = E(X)E(Y)" />
+                  </div>
+                  <p className="text-sm mt-2 italic">Conséquence (et non équivalence) de l'indépendance.</p>
+                </ComparisonCard>
+              </ComparisonGrid>
               <div className="mt-4 bg-pr-gray-bg border border-carnet-red/20 p-4 rounded text-carnet-red-deep text-sm">
                 <strong>Stabilité :</strong> Somme de Poissons indép. est Poisson. Somme de Binomiales (même p) indép. est Binomiale.
               </div>
@@ -121,10 +126,10 @@ const Chapitre8CoupleVariablesAleatoiresCoursPage = () => {
         </Card>
 
         {/* Section 3: Covariance & Corrélation */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
               <span className="font-semibold">Covariance & Corrélation</span>
             </CardTitle>
           </CardHeader>

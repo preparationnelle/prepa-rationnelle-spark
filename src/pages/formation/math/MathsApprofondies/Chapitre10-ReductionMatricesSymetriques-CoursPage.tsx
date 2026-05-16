@@ -3,9 +3,10 @@ import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LatexRenderer } from '@/components/LatexRenderer';
 import { Separator } from '@/components/ui/separator';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-  <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+  <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
     {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
     <div className="text-center">
       {children}
@@ -35,10 +36,10 @@ const Chapitre10ReductionMatricesSymetriquesCoursPage = () => {
       <div className="space-y-8">
 
         {/* Section 1 - Endomorphismes Symétriques */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
               <span className="font-semibold">Endomorphismes Symétriques</span>
             </CardTitle>
           </CardHeader>
@@ -57,10 +58,10 @@ const Chapitre10ReductionMatricesSymetriquesCoursPage = () => {
         </Card>
 
         {/* Section 2 - Théorème Spectral */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
               <span className="font-semibold">Théorème Spectral</span>
             </CardTitle>
           </CardHeader>
@@ -81,10 +82,10 @@ const Chapitre10ReductionMatricesSymetriquesCoursPage = () => {
         </Card>
 
         {/* Section 3 - Formes Quadratiques */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
               <span className="font-semibold">Formes Quadratiques</span>
             </CardTitle>
           </CardHeader>
@@ -92,17 +93,15 @@ const Chapitre10ReductionMatricesSymetriquesCoursPage = () => {
             <div>
               <p className="mb-4 text-slate-700">Associée à une matrice symétrique <LatexRenderer latex="A" /> : <LatexRenderer latex="q(x) = x^T A x" />.</p>
 
-              <h3 className="text-xl font-bold mb-2 text-slate-900">Signe de la forme quadratique</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-slate-50 p-4 rounded border border-slate-100">
-                  <span className="font-semibold text-slate-800 block mb-2">Positive <LatexRenderer latex="q(x) \geq 0" /></span>
-                  <div className="text-sm text-slate-700">SSI toutes les valeurs propres sont <LatexRenderer latex="\geq 0" />.</div>
-                </div>
-                <div className="bg-slate-50 p-4 rounded border border-slate-100">
-                  <span className="font-semibold text-slate-800 block mb-2">Définie Positive <LatexRenderer latex="q(x) > 0" /> (pour <LatexRenderer latex="x \neq 0" />)</span>
-                  <div className="text-sm text-slate-700">SSI toutes les valeurs propres sont strictement positives.</div>
-                </div>
-              </div>
+              <h3 className="text-xl font-bold mb-3 text-slate-900">Signe de la forme quadratique</h3>
+              <ComparisonGrid>
+                <ComparisonCard label={<>Positive&nbsp;<LatexRenderer latex="(q(x) \geq 0)" /></>}>
+                  <p>SSI toutes les valeurs propres sont <LatexRenderer latex="\geq 0" />.</p>
+                </ComparisonCard>
+                <ComparisonCard label={<>Définie positive&nbsp;<LatexRenderer latex="(q(x) > 0)" /></>}>
+                  <p>SSI toutes les valeurs propres sont <strong>strictement</strong> positives. Vrai pour tout <LatexRenderer latex="x \neq 0" />.</p>
+                </ComparisonCard>
+              </ComparisonGrid>
             </div>
 
             <Separator />

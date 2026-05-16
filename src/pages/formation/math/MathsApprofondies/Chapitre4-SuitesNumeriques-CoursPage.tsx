@@ -3,9 +3,10 @@ import { MathChapterTemplate } from '@/components/formation/MathChapterTemplate'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { LatexRenderer } from '@/components/LatexRenderer';
+import { ComparisonCard, ComparisonGrid } from '@/components/carnet';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-    <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+    <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
         {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
         <div className="text-center">
             {children}
@@ -35,10 +36,10 @@ const MathsSuitesPage = () => {
             <div className="space-y-8">
 
                 {/* Section 1 - Généralités */}
-                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                    <CardHeader className="bg-slate-50 border-b border-slate-100">
+                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                    <CardHeader className="bg-carnet-paper border-b border-slate-100">
                         <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                            <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+                            <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
                             <span className="font-semibold">Définitions et vocabulaire</span>
                         </CardTitle>
                     </CardHeader>
@@ -49,15 +50,15 @@ const MathsSuitesPage = () => {
                             <h3 className="text-xl font-bold mb-2 text-slate-900">Majorants, minorants</h3>
                             <p className="mb-2 text-slate-700">Une suite réelle peut être limitée par des valeurs maximales ou minimales. Pour une suite <LatexRenderer latex={"(u_n)"} />, on dit qu'elle est :</p>
                             <div className="grid md:grid-cols-3 gap-4">
-                                <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                <div className="bg-carnet-paper p-4 rounded-lg border border-slate-100">
                                     <span className="font-semibold text-slate-900 block mb-2">Majorée</span>
                                     <LatexRenderer latex={"\\exists M \\in \\mathbb{R}, \\; \\forall n \\in \\mathbb{N}, \\; u_n \\leq M"} />
                                 </div>
-                                <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                <div className="bg-carnet-paper p-4 rounded-lg border border-slate-100">
                                     <span className="font-semibold text-slate-900 block mb-2">Minorée</span>
                                     <LatexRenderer latex={"\\exists m \\in \\mathbb{R}, \\; \\forall n \\in \\mathbb{N}, \\; u_n \\geq m"} />
                                 </div>
-                                <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                <div className="bg-carnet-paper p-4 rounded-lg border border-slate-100">
                                     <span className="font-semibold text-slate-900 block mb-2">Bornée</span>
                                     <LatexRenderer latex={"\\exists m, M \\in \\mathbb{R}, \\; \\forall n \\in \\mathbb{N}, \\; m \\leq u_n \\leq M"} />
                                 </div>
@@ -69,16 +70,16 @@ const MathsSuitesPage = () => {
                             <h3 className="text-xl font-bold mb-2 text-slate-900">Sens de variation</h3>
                             <p className="mb-4 text-slate-700">Une suite <LatexRenderer latex={"(u_n)"} /> est dite :</p>
                             <div className="grid sm:grid-cols-2 gap-4">
-                                <div className="bg-slate-50 p-4 rounded border border-slate-100">
+                                <div className="bg-carnet-paper p-4 rounded border border-slate-100">
                                     <span className="font-semibold text-slate-800">Croissante</span> : <LatexRenderer latex={"\\forall n \\in \\mathbb{N},\\ u_{n+1} \\geq u_n"} />
                                 </div>
-                                <div className="bg-slate-50 p-4 rounded border border-slate-100">
+                                <div className="bg-carnet-paper p-4 rounded border border-slate-100">
                                     <span className="font-semibold text-slate-800">Décroissante</span> : <LatexRenderer latex={"\\forall n \\in \\mathbb{N},\\ u_{n+1} \\leq u_n"} />
                                 </div>
-                                <div className="bg-slate-50 p-4 rounded border border-slate-100">
+                                <div className="bg-carnet-paper p-4 rounded border border-slate-100">
                                     <span className="font-semibold text-slate-800">Strictement croissante</span> : <LatexRenderer latex={"\\forall n \\in \\mathbb{N},\\ u_{n+1} > u_n"} />
                                 </div>
-                                <div className="bg-slate-50 p-4 rounded border border-slate-100">
+                                <div className="bg-carnet-paper p-4 rounded border border-slate-100">
                                     <span className="font-semibold text-slate-800">Strictement décroissante</span> : <LatexRenderer latex={"\\forall n \\in \\mathbb{N},\\ u_{n+1} < u_n"} />
                                 </div>
                             </div>
@@ -91,10 +92,10 @@ const MathsSuitesPage = () => {
                 </Card>
 
                 {/* Section 2 - Convergence */}
-                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                    <CardHeader className="bg-slate-50 border-b border-slate-100">
+                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                    <CardHeader className="bg-carnet-paper border-b border-slate-100">
                         <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                            <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+                            <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
                             <span className="font-semibold">Convergence et Divergence</span>
                         </CardTitle>
                     </CardHeader>
@@ -111,28 +112,26 @@ const MathsSuitesPage = () => {
 
                         {/* Limite infinie */}
                         <div>
-                            <h3 className="text-xl font-bold mb-2 text-slate-900">Limites insolites (Divergence vers l'infini)</h3>
-                            <div className="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <p className="mb-2 font-semibold text-slate-800">Vers <LatexRenderer latex={"+ \\infty"} /></p>
-                                    <FormulaBox>
+                            <h3 className="text-xl font-bold mb-3 text-slate-900">Limites insolites (Divergence vers l'infini)</h3>
+                            <ComparisonGrid>
+                                <ComparisonCard label={<>Vers&nbsp;<LatexRenderer latex={"+ \\infty"} /></>}>
+                                    <div className="text-center my-2">
                                         <LatexRenderer latex={'\\forall A > 0, \\; \\exists n_0 \\in \\mathbb{N}, \\; \\forall n \\geq n_0, \\; u_n \\geq A'} />
-                                    </FormulaBox>
-                                </div>
-                                <div>
-                                    <p className="mb-2 font-semibold text-slate-800">Vers <LatexRenderer latex={"- \\infty"} /></p>
-                                    <FormulaBox>
+                                    </div>
+                                </ComparisonCard>
+                                <ComparisonCard label={<>Vers&nbsp;<LatexRenderer latex={"- \\infty"} /></>}>
+                                    <div className="text-center my-2">
                                         <LatexRenderer latex={'\\forall A < 0, \\; \\exists n_0 \\in \\mathbb{N}, \\; \\forall n \\geq n_0, \\; u_n \\leq A'} />
-                                    </FormulaBox>
-                                </div>
-                            </div>
+                                    </div>
+                                </ComparisonCard>
+                            </ComparisonGrid>
                         </div>
 
                         {/* Opérations */}
                         <div>
                             <h3 className="text-xl font-bold mb-2 text-slate-900">Opérations sur les limites</h3>
                             <p className="mb-4 text-slate-700">Si <LatexRenderer latex={"u_n \\to \\ell"} /> et <LatexRenderer latex={"v_n \\to \\ell'"} /> :</p>
-                            <div className="space-y-2 bg-slate-50 p-4 rounded border border-slate-100">
+                            <div className="space-y-2 bg-carnet-paper p-4 rounded border border-slate-100">
                                 <div className="flex justify-between items-center border-b border-slate-200 pb-2">
                                     <span className="font-semibold">Somme</span>
                                     <LatexRenderer latex={"u_n + v_n \\to \\ell + \\ell'"} />
@@ -155,10 +154,10 @@ const MathsSuitesPage = () => {
                 </Card>
 
                 {/* Section 3 - Théorèmes importants */}
-                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                    <CardHeader className="bg-slate-50 border-b border-slate-100">
+                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                    <CardHeader className="bg-carnet-paper border-b border-slate-100">
                         <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                            <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+                            <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
                             <span className="font-semibold">Théorèmes de convergence</span>
                         </CardTitle>
                     </CardHeader>
@@ -229,7 +228,7 @@ const MathsSuitesPage = () => {
                         <div>
                             <h3 className="text-xl font-bold mb-2 text-slate-900">Suites extraites</h3>
                             <p className="mb-2 text-slate-700">Si <LatexRenderer latex={"(u_n)"} /> converge vers <LatexRenderer latex={"\\ell"} />, toute suite extraite <LatexRenderer latex={"(u_{\\varphi(n)})"} /> converge vers <LatexRenderer latex={"\\ell"} />.</p>
-                            <div className="bg-slate-50 border border-slate-200 p-4 rounded">
+                            <div className="bg-carnet-paper border border-slate-200 p-4 rounded">
                                 <p className="font-semibold text-slate-800 mb-2">Exemple classique :</p>
                                 <LatexRenderer latex={"(u_{2n}) \\to \\ell \\quad \\text{et} \\quad (u_{2n+1}) \\to \\ell \\implies (u_n) \\to \\ell"} />
                             </div>
