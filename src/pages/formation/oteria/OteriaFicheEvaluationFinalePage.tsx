@@ -54,35 +54,35 @@ const OteriaFicheEvaluationFinalePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
                 <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
                   <div className="font-semibold text-carnet-red-deep mb-2">Partie 1 : QCM</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-carnet-ink-soft">
                     Questions à choix multiples sur les concepts théoriques
                   </div>
                 </div>
 
                 <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
                   <div className="font-semibold text-carnet-red-deep mb-2">Partie 2 : Questions ouvertes</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-carnet-ink-soft">
                     Réponses développées sur les notions mathématiques et algorithmiques
                   </div>
                 </div>
 
                 <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
                   <div className="font-semibold text-carnet-red-deep mb-2">Partie 3 : Compréhension de code</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-carnet-ink-soft">
                     Analyse et explication de programmes Python fournis
                   </div>
                 </div>
 
                 <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
                   <div className="font-semibold text-carnet-red-deep mb-2">Partie 4 : Analyse de résultats</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-carnet-ink-soft">
                     Interprétation des sorties et comportements des programmes
                   </div>
                 </div>
 
                 <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
                   <div className="font-semibold text-carnet-red-deep mb-2">Partie 5 : Écriture de programme</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-carnet-ink-soft">
                     Développement de solutions algorithmiques en Python
                   </div>
                 </div>
@@ -90,7 +90,7 @@ const OteriaFicheEvaluationFinalePage = () => {
                 <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule text-center">
                   <div className="font-semibold text-carnet-red-deep mb-2">Durée totale</div>
                   <div className="text-2xl font-bold text-carnet-red-deep">2h30</div>
-                  <div className="text-sm text-gray-600">Seuil de réussite : 30/50</div>
+                  <div className="text-sm text-carnet-ink-soft">Seuil de réussite : 30/50</div>
                 </div>
               </div>
             </div>
@@ -115,7 +115,7 @@ const OteriaFicheEvaluationFinalePage = () => {
         {/* Contenu de la fiche */}
         <div className="space-y-6">
           {/* Conseils */}
-          <Card className="border-0 shadow-lg bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60">
+          <Card className="border-0 shadow-sm bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-carnet-red flex items-center gap-2">
                 Conseils pour réussir
@@ -125,7 +125,7 @@ const OteriaFicheEvaluationFinalePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <h4 className="font-semibold text-carnet-red-deep">Gestion du temps :</h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
+                  <ul className="text-sm text-carnet-ink space-y-1">
                     <li>• QCM : 30-35 min (questions rapides)</li>
                     <li>• Questions ouvertes : 30-35 min</li>
                     <li>• Compréhension code : 20-25 min</li>
@@ -135,7 +135,7 @@ const OteriaFicheEvaluationFinalePage = () => {
                   </ul>
 
                   <h4 className="font-semibold text-carnet-red-deep">Préparation :</h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
+                  <ul className="text-sm text-carnet-ink space-y-1">
                     <li>• Réviser les concepts théoriques</li>
                     <li>• Pratiquer l'écriture de code</li>
                     <li>• Comprendre les algorithmes</li>
@@ -145,7 +145,7 @@ const OteriaFicheEvaluationFinalePage = () => {
 
                 <div className="space-y-3">
                   <h4 className="font-semibold text-carnet-red-deep">Conseils par partie :</h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
+                  <ul className="text-sm text-carnet-ink space-y-1">
                     <li>• QCM : Éliminer rapidement les mauvaises réponses</li>
                     <li>• Questions ouvertes : Montrer le raisonnement</li>
                     <li>• Code : Respecter l'indentation et la syntaxe</li>
@@ -153,7 +153,7 @@ const OteriaFicheEvaluationFinalePage = () => {
                   </ul>
 
                   <h4 className="font-semibold text-carnet-red-deep">Répartition estimée :</h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
+                  <ul className="text-sm text-carnet-ink space-y-1">
                     <li>• QCM : 30% (concepts de base)</li>
                     <li>• Questions ouvertes : 20%</li>
                     <li>• Compréhension code : 15%</li>
@@ -166,16 +166,16 @@ const OteriaFicheEvaluationFinalePage = () => {
           </Card>
 
           {/* Corrigé */}
-          <Card className="border-0 shadow-lg bg-gradient-to-r from-green-50 to-green-100">
+          <Card className="border-0 shadow-sm bg-gradient-to-r from-green-50 to-green-100">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-green-600 flex items-center gap-2">
                 Corrigé et Débriefing
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="bg-white p-4 rounded-lg border border-carnet-rule">
+              <div className="bg-carnet-paper-2 p-4 rounded-lg border border-carnet-rule">
                 <h4 className="font-semibold text-green-800 mb-2">Après l'évaluation :</h4>
-                <ul className="text-sm text-gray-700 space-y-1">
+                <ul className="text-sm text-carnet-ink space-y-1">
                   <li>• <strong>Corrigé détaillé</strong> : Analyse complète de toutes les parties</li>
                   <li>• <strong>Explications</strong> : Raisonnement derrière chaque réponse</li>
                   <li>• <strong>Points clés</strong> : Concepts importants à retenir</li>

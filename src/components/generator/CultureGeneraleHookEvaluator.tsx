@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Badge } from '@/components/ui/badge';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import {
     Target,
     Loader2,
     Sparkles,
-    Info,
     CheckCircle2,
     AlertTriangle,
     TrendingUp,
@@ -52,12 +47,12 @@ export const CultureGeneraleHookEvaluator = ({ subjectFromParent, year }: Cultur
 
     const loadExample = () => {
         if (!subjectFromParent) {
-            setSubject(year === 1 ? "La liberté est-elle absence de contraintes ?" : "Peut-on se juger soi-même ?");
+            setSubject(year === 1 ? "La liberté est-elle absence de contraintes ?" : "L'homme est-il un animal comme les autres ?");
         }
         if (year === 1) {
             setHook('Rousseau affirme dans Le Contrat social que « l\'obéissance à la loi qu\'on s\'est prescrite est liberté ». Cette formule paradoxale nous invite à repenser la liberté non comme simple absence d\'entraves, mais comme autonomie rationnelle. Comment concilier la soumission à des contraintes et l\'exercice d\'une liberté authentique ?');
         } else {
-            setHook('Montaigne, dans ses Essais, confesse qu\'« il y a des défauts qui, bien employés, valent mieux que des vertus », suggérant que le jugement sur soi-même oscille entre lucidité et complaisance. Comment être à la fois juge et partie dans l\'évaluation de sa propre existence ? La connaissance de soi permet-elle vraiment un jugement impartial ?');
+            setHook('Lorsque Pascal écrit que « l\'homme n\'est ni ange ni bête, et le malheur veut que qui veut faire l\'ange fait la bête », il dessine la frontière vacillante de notre humanité. Si l\'éthologie contemporaine prête aux grands singes culture, deuil et empathie, qu\'est-ce qui sépare encore l\'humain de l\'animal ? Le propre de l\'homme tient-il à une nature, ou à une vigilance toujours à reconquérir ?');
         }
     };
 
@@ -113,76 +108,76 @@ export const CultureGeneraleHookEvaluator = ({ subjectFromParent, year }: Cultur
 
     return (
         <div className="space-y-6">
-            {/* Input Card */}
-            <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-                <div className="h-[3px] w-full bg-pr-black" />
-                <CardHeader className="px-6 pt-5 pb-4">
-                    <div className="flex items-center gap-3">
-                        <div className="w-11 h-11 rounded-xl bg-pr-gray-bg border border-pr-black-soft flex items-center justify-center">
-                            <Target className="h-5 w-5 text-pr-black" />
-                        </div>
-                        <div>
-                            <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
-                                Culture générale
-                            </div>
-                            <CardTitle className="font-dm-serif text-2xl text-pr-black leading-none">
-                                Évaluateur d'accroche
-                            </CardTitle>
-                            <div className="text-pr-gray-mid text-[13px] mt-1">
-                                Évaluez la pertinence de votre accroche de dissertation.
-                            </div>
-                        </div>
+            {/* Header + form card — style carnet */}
+            <div className="carnet-card overflow-hidden">
+                <div className="px-7 pt-7 pb-5 flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                        <Target className="h-5 w-5 text-carnet-red" />
                     </div>
-                </CardHeader>
-                <CardContent className="space-y-6 px-6 pb-6">
+                    <div>
+                        <div className="carnet-eyebrow text-[11px] mb-1">Culture générale</div>
+                        <h2 className="font-lora text-[26px] text-carnet-ink leading-none">
+                            Évaluateur <em className="font-lora italic text-carnet-red">d'accroche</em>
+                        </h2>
+                        <p className="text-carnet-ink-mute font-instrument text-sm mt-1.5">
+                            Évalue la pertinence de ton accroche de dissertation.
+                        </p>
+                    </div>
+                </div>
+
+                <hr className="carnet-divider mx-7" />
+
+                <div className="px-7 pt-6 pb-7 space-y-6">
                     {/* Subject */}
                     <div className="space-y-3">
-                        <div className="flex items-center justify-between gap-3">
-                            <Label htmlFor="subject" className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
-                                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-gray-bg text-pr-black text-[11px] font-bold">
-                                    1
-                                </span>
-                                Sujet de dissertation
-                            </Label>
+                        <div className="flex items-baseline justify-between gap-3 flex-wrap">
+                            <div className="flex items-baseline gap-3">
+                                <span className="carnet-hand text-[28px] text-carnet-red leading-none font-semibold">1</span>
+                                <label htmlFor="hook-subject" className="font-lora text-[18px] text-carnet-ink">
+                                    Sujet <em className="font-lora italic text-carnet-red">de dissertation</em>
+                                </label>
+                            </div>
                             {subjectFromParent && (
-                                <Badge className="bg-pr-gray-bg text-pr-black border border-pr-black-soft hover:bg-pr-gray-bg rounded-full font-semibold text-[11px] uppercase tracking-wider">
+                                <span className="carnet-eyebrow text-[10px] inline-flex items-center px-2.5 py-1 bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.25)] rounded-full">
                                     Sujet imposé
-                                </Badge>
+                                </span>
                             )}
                         </div>
-                        <Input
-                            id="subject"
-                            placeholder="Saisissez votre sujet…"
-                            value={subject}
-                            onChange={(e) => setSubject(e.target.value)}
-                            readOnly={!!subjectFromParent}
-                            className={`text-[15px] h-12 rounded-xl ${subjectFromParent ? 'bg-pr-gray-bg/40 border-pr-black-pale text-pr-gray-dark' : 'bg-white border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20'} text-pr-black placeholder:text-pr-gray-mid transition-colors`}
-                        />
+                        <div className={`flex bg-carnet-paper-2 rounded-md border border-dashed transition-colors ${subjectFromParent ? 'border-[rgba(78,55,30,0.14)] opacity-90' : 'border-[rgba(78,55,30,0.18)] focus-within:border-carnet-red'}`}>
+                            <Input
+                                id="hook-subject"
+                                placeholder="Saisis ton sujet…"
+                                value={subject}
+                                onChange={(e) => setSubject(e.target.value)}
+                                readOnly={!!subjectFromParent}
+                                className="flex-1 border-0 bg-transparent h-12 py-3 px-4 text-base placeholder:text-carnet-ink-mute focus-visible:ring-0 rounded-md font-instrument text-carnet-ink"
+                            />
+                        </div>
                     </div>
 
                     {/* Hook */}
                     <div className="space-y-3">
-                        <div className="flex items-center justify-between gap-3">
-                            <Label htmlFor="hook" className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
-                                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-gray-bg text-pr-black text-[11px] font-bold">
-                                    2
-                                </span>
-                                Votre accroche
-                            </Label>
+                        <div className="flex items-baseline justify-between gap-3 flex-wrap">
+                            <div className="flex items-baseline gap-3">
+                                <span className="carnet-hand text-[28px] text-carnet-red leading-none font-semibold">2</span>
+                                <label htmlFor="hook" className="font-lora text-[18px] text-carnet-ink">
+                                    Ton <em className="font-lora italic text-carnet-red">accroche</em>
+                                </label>
+                            </div>
                             <Button
                                 type="button"
                                 size="sm"
                                 onClick={() => setIsVoiceMode(!isVoiceMode)}
-                                className="flex items-center gap-2 bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg"
+                                className="bg-carnet-paper-2 text-carnet-ink-soft border border-dashed border-[rgba(78,55,30,0.18)] hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-[rgba(193,68,58,0.25)] rounded-md font-instrument text-sm flex items-center gap-2 h-8 px-3"
                             >
                                 {isVoiceMode ? (
                                     <>
-                                        <Keyboard className="h-4 w-4" />
+                                        <Keyboard className="h-3.5 w-3.5" />
                                         <span>Écrit</span>
                                     </>
                                 ) : (
                                     <>
-                                        <Mic className="h-4 w-4" />
+                                        <Mic className="h-3.5 w-3.5" />
                                         <span>Oral</span>
                                     </>
                                 )}
@@ -190,7 +185,7 @@ export const CultureGeneraleHookEvaluator = ({ subjectFromParent, year }: Cultur
                         </div>
 
                         {isVoiceMode ? (
-                            <div className="min-h-[140px] flex items-center justify-center border border-pr-gray-light bg-pr-gray-bg rounded-xl">
+                            <div className="min-h-[140px] flex items-center justify-center bg-carnet-paper-2 rounded-md border border-dashed border-[rgba(78,55,30,0.18)]">
                                 <VoiceRecorder
                                     language="fr"
                                     onTranscriptionComplete={(text) => {
@@ -200,17 +195,19 @@ export const CultureGeneraleHookEvaluator = ({ subjectFromParent, year }: Cultur
                                 />
                             </div>
                         ) : (
-                            <Textarea
-                                id="hook"
-                                placeholder="Entrez votre accroche ici…"
-                                value={hook}
-                                onChange={(e) => setHook(e.target.value)}
-                                className="min-h-[140px] resize-y border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 bg-white rounded-xl text-[15px] leading-relaxed p-4 transition-colors text-pr-black placeholder:text-pr-gray-mid"
-                            />
+                            <div className="bg-carnet-paper-2 rounded-md border border-dashed border-[rgba(78,55,30,0.18)] focus-within:border-carnet-red transition-colors">
+                                <Textarea
+                                    id="hook"
+                                    placeholder="Écris ton accroche ici…"
+                                    value={hook}
+                                    onChange={(e) => setHook(e.target.value)}
+                                    className="min-h-[140px] resize-y border-0 bg-transparent rounded-md text-[15px] leading-relaxed p-4 focus-visible:ring-0 font-instrument text-carnet-ink placeholder:text-carnet-ink-mute"
+                                />
+                            </div>
                         )}
 
-                        <div className="text-[13px] text-pr-gray-mid">
-                            <span className="font-semibold text-pr-black tabular-nums">{hook.length}</span> caractères · ~{Math.ceil(hook.length / 100)} lignes estimées
+                        <div className="text-[13px] text-carnet-ink-mute font-instrument">
+                            <span className="font-semibold text-carnet-ink tabular-nums">{hook.length}</span> caractères · ~{Math.ceil(hook.length / 100)} lignes estimées
                         </div>
                     </div>
 
@@ -219,7 +216,7 @@ export const CultureGeneraleHookEvaluator = ({ subjectFromParent, year }: Cultur
                         <Button
                             onClick={handleEvaluate}
                             disabled={isEvaluating || !hook.trim() || !subject.trim()}
-                            className="flex-1 bg-pr-black hover:bg-pr-black-dark text-white font-semibold rounded-xl h-12 text-[15px] shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
+                            className="flex-1 bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper rounded-md h-12 text-[15px] font-instrument font-semibold transition-all duration-200 disabled:opacity-50"
                         >
                             {isEvaluating ? (
                                 <>
@@ -236,52 +233,52 @@ export const CultureGeneraleHookEvaluator = ({ subjectFromParent, year }: Cultur
 
                         <Button
                             onClick={loadExample}
-                            className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-5 font-medium transition-colors"
+                            className="bg-carnet-paper-2 text-carnet-ink-soft border border-dashed border-[rgba(78,55,30,0.18)] hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-[rgba(193,68,58,0.25)] rounded-md h-12 px-5 font-instrument font-medium transition-colors"
                         >
                             Exemple
                         </Button>
                     </div>
-                </CardContent>
-            </Card>
+                </div>
+            </div>
 
             {/* Results */}
             {evaluation && (
                 <div className="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     {/* Fatal Errors */}
                     {evaluation.fatalErrors.length > 0 && (
-                        <Alert className="border border-pr-black bg-pr-black text-white rounded-2xl">
-                            <AlertTriangle className="h-5 w-5 text-white" />
-                            <AlertDescription className="text-white">
-                                <div className="font-semibold mb-2 uppercase tracking-[0.10em] text-[12px]">Erreurs critiques détectées</div>
-                                <ul className="list-disc list-inside space-y-1 text-[14px] opacity-90">
-                                    {evaluation.fatalErrors.map((error, idx) => (
-                                        <li key={idx}>{error}</li>
-                                    ))}
-                                </ul>
-                            </AlertDescription>
-                        </Alert>
+                        <div className="carnet-card overflow-hidden border-l-[3px] border-l-carnet-red">
+                            <div className="px-6 py-5 flex items-start gap-3">
+                                <AlertTriangle className="h-5 w-5 text-carnet-red flex-shrink-0 mt-0.5" />
+                                <div className="flex-1">
+                                    <div className="carnet-eyebrow text-[10px] mb-2">Erreurs critiques détectées</div>
+                                    <ul className="space-y-1.5 font-instrument text-[14px] text-carnet-ink-soft">
+                                        {evaluation.fatalErrors.map((error, idx) => (
+                                            <li key={idx} className="flex gap-2">
+                                                <span className="text-carnet-red mt-1">·</span>
+                                                <span>{error}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     )}
 
                     {/* Global Score */}
-                    <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-                        <div className={`h-[3px] w-full ${(evaluation.globalScore / 20) * 100 >= 70 ? 'bg-pr-black' : 'bg-pr-black-soft'}`} />
-                        <CardContent className="p-6 sm:p-8">
-                            <div className="flex items-center justify-between gap-4 flex-wrap">
-                                <div>
-                                    <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-1">
-                                        Score global
-                                    </div>
-                                    <div className="text-[14px] text-pr-gray-mid">
-                                        Type d'accroche : <span className="font-semibold text-pr-black">{evaluation.hookType}</span>
-                                    </div>
-                                </div>
-                                <div className="font-dm-serif text-pr-black leading-none">
-                                    <span className="text-5xl">{evaluation.globalScore}</span>
-                                    <span className="text-2xl text-pr-gray-mid">/20</span>
+                    <div className="carnet-card overflow-hidden">
+                        <div className="p-7 flex items-center justify-between gap-4 flex-wrap">
+                            <div>
+                                <div className="carnet-eyebrow text-[10px] mb-1">Score global</div>
+                                <div className="text-[14px] text-carnet-ink-mute font-instrument">
+                                    Type d'accroche : <span className="carnet-hl font-lora italic text-carnet-ink">{evaluation.hookType}</span>
                                 </div>
                             </div>
-                        </CardContent>
-                    </Card>
+                            <div className="leading-none flex items-baseline">
+                                <span className="carnet-hand text-[68px] text-carnet-red font-semibold leading-none">{evaluation.globalScore}</span>
+                                <span className="font-lora italic text-2xl text-carnet-ink-mute ml-1">/20</span>
+                            </div>
+                        </div>
+                    </div>
 
                     {/* Detailed Scores */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -290,108 +287,104 @@ export const CultureGeneraleHookEvaluator = ({ subjectFromParent, year }: Cultur
                             { label: 'Efficacité', value: evaluation.efficaciteScore, max: 6, hint: 'Concision & dynamisme' },
                             { label: 'Originalité', value: evaluation.originaliteScore, max: 6, hint: 'Culture & démarquage' },
                         ].map((s, idx) => (
-                            <Card key={idx} className="rounded-2xl border border-pr-gray-light bg-white shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-                                <CardContent className="p-5 text-center">
-                                    <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-2">
-                                        {s.label}
-                                    </div>
-                                    <div className="font-dm-serif text-pr-black leading-none">
-                                        <span className="text-4xl">{s.value}</span>
-                                        <span className="text-xl text-pr-gray-mid">/{s.max}</span>
-                                    </div>
-                                    <div className="text-[12px] text-pr-gray-mid mt-2">{s.hint}</div>
-                                </CardContent>
-                            </Card>
+                            <div key={idx} className="carnet-card p-5 text-center">
+                                <div className="carnet-eyebrow text-[10px] mb-2">{s.label}</div>
+                                <div className="leading-none flex items-baseline justify-center">
+                                    <span className="carnet-hand text-[44px] text-carnet-red font-semibold">{s.value}</span>
+                                    <span className="font-lora italic text-xl text-carnet-ink-mute ml-1">/{s.max}</span>
+                                </div>
+                                <div className="text-[12px] text-carnet-ink-mute mt-2 font-instrument">{s.hint}</div>
+                            </div>
                         ))}
                     </div>
 
                     {/* Strengths */}
                     {evaluation.strengths.length > 0 && (
-                        <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-                            <CardHeader className="px-6 pt-5 pb-3">
-                                <CardTitle className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                                    <CheckCircle2 className="h-3.5 w-3.5 text-pr-black" />
+                        <div className="carnet-card overflow-hidden">
+                            <div className="px-6 pt-5 pb-3">
+                                <div className="carnet-eyebrow text-[10px] flex items-center gap-2">
+                                    <CheckCircle2 className="h-3.5 w-3.5 text-carnet-red" />
                                     Points forts
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent className="px-6 pb-6">
+                                </div>
+                            </div>
+                            <div className="px-6 pb-6">
                                 <ul className="space-y-2.5">
                                     {evaluation.strengths.map((strength, idx) => (
-                                        <li key={idx} className="flex items-start gap-3 text-pr-gray-dark text-[14px]">
-                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-pr-black flex-shrink-0"></span>
+                                        <li key={idx} className="flex items-start gap-3 font-instrument text-carnet-ink-soft text-[14px]">
+                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-carnet-red flex-shrink-0" />
                                             <span className="leading-relaxed">{strength}</span>
                                         </li>
                                     ))}
                                 </ul>
-                            </CardContent>
-                        </Card>
+                            </div>
+                        </div>
                     )}
 
                     {/* Improvements */}
                     {evaluation.improvements.length > 0 && (
-                        <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-                            <CardHeader className="px-6 pt-5 pb-3">
-                                <CardTitle className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                                    <TrendingUp className="h-3.5 w-3.5 text-pr-black" />
+                        <div className="carnet-card overflow-hidden">
+                            <div className="px-6 pt-5 pb-3">
+                                <div className="carnet-eyebrow text-[10px] flex items-center gap-2">
+                                    <TrendingUp className="h-3.5 w-3.5 text-carnet-red" />
                                     Axes d'amélioration
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent className="px-6 pb-6">
+                                </div>
+                            </div>
+                            <div className="px-6 pb-6">
                                 <ul className="space-y-2.5">
                                     {evaluation.improvements.map((improvement, idx) => (
-                                        <li key={idx} className="flex items-start gap-3 text-pr-gray-dark text-[14px]">
-                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-pr-black-soft flex-shrink-0"></span>
+                                        <li key={idx} className="flex items-start gap-3 font-instrument text-carnet-ink-soft text-[14px]">
+                                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-carnet-red flex-shrink-0" />
                                             <span className="leading-relaxed">{improvement}</span>
                                         </li>
                                     ))}
                                 </ul>
-                            </CardContent>
-                        </Card>
+                            </div>
+                        </div>
                     )}
 
                     {/* Suggestions */}
                     {evaluation.suggestions.length > 0 && (
-                        <Card className="bg-white rounded-2xl border border-pr-gray-light border-l-[3px] border-l-pr-black shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-                            <CardHeader className="px-6 pt-5 pb-3">
-                                <CardTitle className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                                    <Lightbulb className="h-3.5 w-3.5 text-pr-black" />
+                        <div className="carnet-card overflow-hidden border-l-[3px] border-l-carnet-red">
+                            <div className="px-6 pt-5 pb-3">
+                                <div className="carnet-eyebrow text-[10px] flex items-center gap-2">
+                                    <Lightbulb className="h-3.5 w-3.5 text-carnet-red" />
                                     Suggestions concrètes
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent className="px-6 pb-6">
+                                </div>
+                            </div>
+                            <div className="px-6 pb-6">
                                 <ul className="space-y-2.5">
                                     {evaluation.suggestions.map((suggestion, idx) => (
-                                        <li key={idx} className="flex items-start gap-3 text-pr-gray-dark text-[14px]">
-                                            <Lightbulb className="h-4 w-4 text-pr-black mt-0.5 shrink-0" />
+                                        <li key={idx} className="flex items-start gap-3 font-instrument text-carnet-ink-soft text-[14px]">
+                                            <Lightbulb className="h-4 w-4 text-carnet-red mt-0.5 shrink-0" />
                                             <span className="leading-relaxed">{suggestion}</span>
                                         </li>
                                     ))}
                                 </ul>
-                            </CardContent>
-                        </Card>
+                            </div>
+                        </div>
                     )}
 
                     {/* Improved Proposal */}
                     {evaluation.improvedProposal && (
-                        <Card className="bg-pr-gray-bg/60 border border-pr-black-pale rounded-2xl overflow-hidden">
-                            <CardHeader className="px-6 pt-5 pb-3">
-                                <CardTitle className="text-[11px] font-semibold text-pr-black uppercase tracking-[0.14em] flex items-center gap-2">
-                                    <Sparkles className="h-3.5 w-3.5 text-pr-black" />
+                        <div className="carnet-card overflow-hidden">
+                            <div className="px-6 pt-5 pb-3">
+                                <div className="carnet-eyebrow text-[10px] flex items-center gap-2">
+                                    <Sparkles className="h-3.5 w-3.5 text-carnet-red" />
                                     Proposition d'accroche améliorée
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent className="px-6 pb-6">
-                                <div className="bg-white p-6 rounded-xl border border-pr-black-soft">
-                                    <p className="font-lora italic text-[16px] leading-[1.6] text-pr-black">
+                                </div>
+                            </div>
+                            <div className="px-6 pb-6 space-y-3">
+                                <div className="bg-carnet-paper-2 p-6 rounded-md border border-dashed border-[rgba(193,68,58,0.3)]">
+                                    <p className="font-lora italic text-[17px] leading-[1.65] text-carnet-ink">
                                         « {evaluation.improvedProposal} »
                                     </p>
                                 </div>
-                                <div className="mt-3 text-[12px] text-pr-black flex items-center gap-2 font-medium">
+                                <div className="text-[12px] text-carnet-red flex items-center gap-2 font-instrument font-medium">
                                     <CheckCircle2 className="h-3.5 w-3.5" />
                                     Version corrigée et optimisée
                                 </div>
-                            </CardContent>
-                        </Card>
+                            </div>
+                        </div>
                     )}
                 </div>
             )}

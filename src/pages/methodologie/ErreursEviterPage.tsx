@@ -125,7 +125,7 @@ const ErreursEviterPage = () => {
       <MethodSection label="Section 01" title="Les erreurs fatales par catégorie" icon={XCircle}>
         <div className="space-y-5">
           {errorCategories.map((cat) => (
-            <div key={cat.title} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6">
+            <div key={cat.title} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6">
               <h4 className="font-dm-serif text-xl text-carnet-ink mb-5 flex items-center gap-2">
                 <cat.icon className="w-5 h-5 text-red-700" strokeWidth={1.6} />
                 {cat.title}
@@ -156,7 +156,7 @@ const ErreursEviterPage = () => {
       <MethodSection label="Section 02" title="Top 10 des erreurs qui éliminent instantanément" icon={AlertTriangle}>
         <div className="space-y-3">
           {top10.map(([err, cons], i) => (
-            <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+            <div key={i} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
               <div className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0 w-12 text-center">
                 {String(i + 1).padStart(2, '0')}
               </div>

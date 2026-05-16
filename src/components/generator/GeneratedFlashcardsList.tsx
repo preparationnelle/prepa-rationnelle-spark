@@ -19,13 +19,13 @@ export const GeneratedFlashcardsList = ({
   if (generatedFlashcards.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
-        <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-full mb-4">
-          <Sparkles className="h-8 w-8 text-gray-400" />
+        <div className="bg-carnet-paper dark:bg-gray-800/50 p-4 rounded-full mb-4">
+          <Sparkles className="h-8 w-8 text-carnet-ink-soft" />
         </div>
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200">
           {language === 'fr' ? 'Aucune flashcard générée' : 'No flashcards generated'}
         </h3>
-        <p className="text-gray-500 max-w-sm mt-2">
+        <p className="text-carnet-ink-soft max-w-sm mt-2">
           {language === 'fr'
             ? 'Créez votre première carte ci-dessus.'
             : 'Create your first card above.'}
@@ -36,13 +36,13 @@ export const GeneratedFlashcardsList = ({
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center pb-4 border-b border-gray-100 dark:border-gray-800">
+      <div className="flex justify-between items-center pb-4 border-b border-carnet-rule/50 dark:border-gray-800">
         <div>
           <h3 className="text-lg font-bold flex items-center gap-2 text-gray-900 dark:text-white">
             <History className="h-4 w-4 text-pr-black" />
             {language === 'fr' ? 'Flashcards générées' : 'Generated Flashcards'}
           </h3>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-carnet-ink-soft mt-1">
             {generatedFlashcards.length} {language === 'fr' ? 'carte(s) dans cette session' : 'card(s) in this session'}
           </p>
         </div>
@@ -60,9 +60,9 @@ export const GeneratedFlashcardsList = ({
         {generatedFlashcards.map((flashcard, index) => (
           <div
             key={flashcard.id || index}
-            className={`relative border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all hover:shadow-md ${index === 0
-                ? 'bg-gray-50/50 dark:bg-gray-900/10 border-gray-200/50 dark:border-gray-800/30'
-                : 'bg-white dark:bg-gray-900'
+            className={`relative border border-carnet-rule/50 dark:border-gray-800 rounded-2xl p-6 transition-all hover:shadow-sm ${index === 0
+                ? 'bg-carnet-paper dark:bg-gray-900/10 border-carnet-rule dark:border-gray-800/30'
+                : 'bg-carnet-paper-2 dark:bg-gray-900'
               }`}
           >
             {index === 0 && (
@@ -75,7 +75,7 @@ export const GeneratedFlashcardsList = ({
             {flashcard.category && (
               <Badge
                 variant="outline"
-                className="mb-3 text-xs bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                className="mb-3 text-xs bg-carnet-paper dark:bg-gray-800 border-carnet-rule dark:border-gray-700"
               >
                 {flashcard.category}
               </Badge>
@@ -112,7 +112,7 @@ export const GeneratedFlashcardsList = ({
             {/* Tags */}
             {flashcard.tags && flashcard.tags.length > 0 && (
               <div className="mt-4 flex items-center gap-2 flex-wrap">
-                <Tag className="w-3 h-3 text-gray-400" />
+                <Tag className="w-3 h-3 text-carnet-ink-soft" />
                 {flashcard.tags.map((tag, i) => (
                   <Badge
                     key={i}
@@ -126,7 +126,7 @@ export const GeneratedFlashcardsList = ({
             )}
 
             {/* Source indicator */}
-            <div className="mt-3 text-xs text-gray-400 flex items-center gap-1">
+            <div className="mt-3 text-xs text-carnet-ink-soft flex items-center gap-1">
               {flashcard.source === 'ai_generated' ? (
                 <>
                   <Sparkles className="w-3 h-3" />

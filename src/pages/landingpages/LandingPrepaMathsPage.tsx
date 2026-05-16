@@ -147,8 +147,7 @@ const faqs = [
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
+  animate: { opacity: 1, y: 0 },
   transition: { duration: 0.55, delay },
 });
 
@@ -463,8 +462,7 @@ export default function LandingPrepaMathsPage() {
                     <motion.li
                       key={item}
                       initial={{ opacity: 0, x: 16 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
+                      animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.4, delay: i * 0.06 }}
                       className="flex items-start gap-3.5"
                     >

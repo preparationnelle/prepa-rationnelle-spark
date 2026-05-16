@@ -32,7 +32,7 @@ const Chapitre1LogiqueEtRaisonnementFondamentauxQuizPage = () => {
           </h2
       
     >
-          <p className="text-gray-700 mb-4"
+          <p className="text-carnet-ink mb-4"
       
     >
             Testez vos connaissances sur les éléments de logique, les connecteurs logiques, 
@@ -43,21 +43,21 @@ const Chapitre1LogiqueEtRaisonnementFondamentauxQuizPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm"
       
     >
-            <div className="bg-white p-3 rounded border border-purple-100"
+            <div className="bg-carnet-paper-2 p-3 rounded border border-purple-100"
       
     >
               <span className="font-semibold text-purple-700">Questions :</span> 5
             </div
       
     >
-            <div className="bg-white p-3 rounded border border-purple-100"
+            <div className="bg-carnet-paper-2 p-3 rounded border border-purple-100"
       
     >
               <span className="font-semibold text-purple-700">Temps estimé :</span> 10-15 min
             </div
       
     >
-            <div className="bg-white p-3 rounded border border-purple-100"
+            <div className="bg-carnet-paper-2 p-3 rounded border border-purple-100"
       
     >
               <span className="font-semibold text-purple-700">Niveau :</span> Intermédiaire

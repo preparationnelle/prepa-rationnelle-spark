@@ -81,7 +81,7 @@ const Chapitre1LogiqueEtRaisonnementFondamentauxExercicesPage = () => {
     const isOpen = visibleCorrections[id];
 
     return (
-      <div className="mb-6 border border-stone-200 rounded-xl bg-white shadow-sm p-6">
+      <div className="mb-6 border border-stone-200 rounded-xl bg-carnet-paper-2 shadow-sm p-6">
         {/* En-tête de l'exercice */}
         <div className="flex items-start justify-between gap-4 mb-5">
           <div className="flex items-baseline gap-3">
@@ -157,11 +157,11 @@ const Chapitre1LogiqueEtRaisonnementFondamentauxExercicesPage = () => {
               <div>
                 <p className="mb-2">Donner la négation :</p>
                 <div className="space-y-2 mt-4">
-                  <div className="bg-slate-50 p-3 rounded border border-slate-100">
+                  <div className="bg-carnet-paper p-3 rounded border border-slate-100">
                     <span className="font-mono text-xs text-slate-500 mr-2">a)</span>
                     « Tous les élèves de la classe ECG sont grands. »
                   </div>
-                  <div className="bg-slate-50 p-3 rounded border border-slate-100">
+                  <div className="bg-carnet-paper p-3 rounded border border-slate-100">
                     <span className="font-mono text-xs text-slate-500 mr-2">b)</span>
                     « Il existe un mouton écossais dont au moins un côté est noir. »
                   </div>
@@ -206,8 +206,8 @@ const Chapitre1LogiqueEtRaisonnementFondamentauxExercicesPage = () => {
               <div>
                 <p className="mb-2">Soit <LatexRenderer latex="n \in \mathbb{N}^*" />.</p>
                 <div className="flex gap-4 my-4 justify-center">
-                  <div className="px-3 py-1 bg-slate-50 rounded border border-slate-200"><LatexRenderer latex="P" /> : « <LatexRenderer latex="n" /> est multiple de 6 »</div>
-                  <div className="px-3 py-1 bg-slate-50 rounded border border-slate-200"><LatexRenderer latex="Q" /> : « <LatexRenderer latex="n" /> est pair »</div>
+                  <div className="px-3 py-1 bg-carnet-paper rounded border border-slate-200"><LatexRenderer latex="P" /> : « <LatexRenderer latex="n" /> est multiple de 6 »</div>
+                  <div className="px-3 py-1 bg-carnet-paper rounded border border-slate-200"><LatexRenderer latex="Q" /> : « <LatexRenderer latex="n" /> est pair »</div>
                 </div>
                 <p>Indiquer si <LatexRenderer latex="P" /> est nécessaire, suffisante ou équivalente à <LatexRenderer latex="Q" />.</p>
               </div>
@@ -278,7 +278,7 @@ const Chapitre1LogiqueEtRaisonnementFondamentauxExercicesPage = () => {
             content={
               <div>
                 <p>Traduire en français la proposition suivante, puis donner sa négation :</p>
-                <div className="text-center py-4 my-2 bg-slate-50 rounded-lg border border-slate-100">
+                <div className="text-center py-4 my-2 bg-carnet-paper rounded-lg border border-slate-100">
                   <LatexRenderer latex="\forall x \in \mathbb{R},\; x^2 \geq 0" />
                 </div>
               </div>
@@ -374,7 +374,7 @@ const Chapitre1LogiqueEtRaisonnementFondamentauxExercicesPage = () => {
 
                 <div className="overflow-hidden rounded border border-slate-200 mb-4">
                   <table className="w-full text-sm text-center">
-                    <thead className="bg-slate-50 text-slate-700">
+                    <thead className="bg-carnet-paper text-slate-700">
                       <tr>
                         <th className="p-2 border-r border-slate-200">P</th>
                         <th className="p-2 border-r border-slate-200">Q</th>
@@ -410,7 +410,7 @@ const Chapitre1LogiqueEtRaisonnementFondamentauxExercicesPage = () => {
             content={
               <div>
                 <p className="mb-2">La proposition suivante est-elle vraie ?</p>
-                <p className="text-center py-2 bg-slate-50 rounded border border-slate-100 my-2">
+                <p className="text-center py-2 bg-carnet-paper rounded border border-slate-100 my-2">
                   « Tout nombre premier est impair. »
                 </p>
                 <p>Si elle est fausse, donner un contre-exemple.</p>
@@ -494,7 +494,7 @@ const Chapitre1LogiqueEtRaisonnementFondamentauxExercicesPage = () => {
             content={
               <div>
                 <p className="mb-2">Décider la vérité de la proposition suivante. Si elle est fausse, écrire sa négation.</p>
-                <p className="text-center py-4 bg-slate-50 rounded border border-slate-100 my-3">
+                <p className="text-center py-4 bg-carnet-paper rounded border border-slate-100 my-3">
                   <LatexRenderer latex="\forall x \in \mathbb{R},\; \exists y \in \mathbb{R},\; x^2 - y^2 = 1" />
                 </p>
               </div>
@@ -560,7 +560,7 @@ const Chapitre1LogiqueEtRaisonnementFondamentauxExercicesPage = () => {
                 <p className="mt-2 mb-3 text-sm text-slate-600">Vérification par table de vérité :</p>
                 <div className="overflow-hidden rounded border border-slate-200">
                   <table className="w-full text-sm text-center">
-                    <thead className="bg-slate-50 text-slate-700">
+                    <thead className="bg-carnet-paper text-slate-700">
                       <tr>
                         <th className="p-2 border-r border-slate-200">P</th>
                         <th className="p-2 border-r border-slate-200">Q</th>

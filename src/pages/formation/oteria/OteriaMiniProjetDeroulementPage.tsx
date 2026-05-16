@@ -67,12 +67,12 @@ const OteriaMiniProjetDeroulementPage = () => {
             <div className="bg-carnet-paper-2 border border-carnet-rule rounded-lg p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Link to="/formation/oteria/mini-projet" className="group">
-                  <button className="w-full bg-carnet-red text-white px-4 py-3 rounded-lg hover:bg-carnet-red-deep transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
+                  <button className="w-full bg-carnet-red text-white px-4 py-3 rounded-lg hover:bg-carnet-red-deep transition-all duration-300 font-medium group-hover:scale-105 shadow-sm hover:shadow-lg">
                     <Target className="h-5 w-5 mx-auto mb-2" />
                     Mini Projet - Ateliers
                   </button>
                 </Link>
-                <button className="w-full bg-carnet-red text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
+                <button className="w-full bg-carnet-red text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-sm">
                   <FileText className="h-5 w-5 mx-auto mb-2" />
                   Déroulement du projet
                 </button>
@@ -409,7 +409,7 @@ const OteriaMiniProjetDeroulementPage = () => {
           </div>
 
           {/* Checklist finale */}
-          <div className="bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 rounded-xl shadow-lg p-8 mb-8 border-2 border-carnet-red/40">
+          <div className="bg-gradient-to-r from-pr-orange-pale to-pr-black-pale/60 rounded-xl shadow-sm p-8 mb-8 border-2 border-carnet-red/40">
             <div className="flex items-center gap-3 mb-6">
               <Award className="h-8 w-8 text-carnet-red" />
               <h2 className="text-2xl font-bold text-carnet-red-deep">Checklist de validation finale</h2>

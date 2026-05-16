@@ -32,10 +32,10 @@ const CriminalitePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-carnet-paper">
       <div className="container mx-auto px-4 py-8">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -75,19 +75,19 @@ const CriminalitePage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">2000Md$</div>
                 <div className="text-sm text-red-100">Économie criminelle</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">1,5%</div>
                 <div className="text-sm text-red-100">PIB mondial</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">8%</div>
                 <div className="text-sm text-red-100">Exports mondiales</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">50M</div>
                 <div className="text-sm text-red-100">Victimes traite</div>
               </div>
@@ -158,16 +158,16 @@ const CriminalitePage = () => {
             <AccordionContent>
               <div className="space-y-6">
 
-                <Card className="bg-gray-50 border-gray-200">
+                <Card className="bg-carnet-paper border-carnet-rule">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-gray-800">
+                    <CardTitle className="flex items-center gap-2 text-carnet-ink">
                       <Zap className="h-5 w-5" />
                       Cartographie des trafics contemporains
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="bg-gray-100 p-4 rounded-lg mb-6">
-                      <h4 className="font-semibold text-gray-800 mb-2">Volume global et tendances</h4>
+                    <div className="bg-carnet-paper p-4 rounded-lg mb-6">
+                      <h4 className="font-semibold text-carnet-ink mb-2">Volume global et tendances</h4>
                       <ul className="text-sm text-pr-black space-y-2">
                         <li><strong>500-1 000 milliards $</strong> flux illicites totaux annuels</li>
                         <li><strong>Pierre-Arnaud Chouvy (2002) :</strong> "Espaces narcotiques réappropriés par acteurs étatiques/non-étatiques"</li>
@@ -178,14 +178,14 @@ const CriminalitePage = () => {
 
                     <div className="space-y-4">
                       {illicitFlows.map((flow, index) => (
-                        <div key={index} className="p-4 bg-gray-100 rounded-lg border border-orange-300">
+                        <div key={index} className="p-4 bg-carnet-paper rounded-lg border border-orange-300">
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <div className="flex items-center gap-3 mb-2">
                                 <Badge className="bg-pr-black-dark text-white font-semibold">
                                   {flow.category}
                                 </Badge>
-                                <span className="font-bold text-gray-800">{flow.value}</span>
+                                <span className="font-bold text-carnet-ink">{flow.value}</span>
                               </div>
                               <div className="text-sm text-pr-black space-y-1">
                                 <div><strong>Statut :</strong> {flow.detail}</div>
@@ -320,8 +320,8 @@ const CriminalitePage = () => {
                               coopération bilatérale, intervention Amérique latine.
                             </div>
                           </div>
-                          <div className="p-3 bg-gray-100 rounded-lg border border-gray-200">
-                            <div className="font-semibold text-gray-800 mb-1">ASEANAPOL</div>
+                          <div className="p-3 bg-carnet-paper rounded-lg border border-carnet-rule">
+                            <div className="font-semibold text-carnet-ink mb-1">ASEANAPOL</div>
                             <div className="text-sm text-pr-black">
                               Coopération policière ASEAN. Lutte terrorisme, 
                               trafic drogue, cybercriminalité régionale.
@@ -359,7 +359,7 @@ const CriminalitePage = () => {
             <CardTitle className="text-lg">Références et sources</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-sm text-gray-600 space-y-2">
+            <div className="text-sm text-carnet-ink-soft space-y-2">
               <p><strong>Laurent Carroué (2002)</strong> : <em>"Géoéconomie criminelle"</em> - Enjeu géoéconomique influent</p>
               <p><strong>Pierre-Arnaud Chouvy (2002)</strong> : <em>"Espaces narcotiques"</em> - Réappropriation territoriale</p>
               <p><strong>UNODC</strong> : Rapports criminalité organisée transnationale 2024</p>

@@ -138,7 +138,7 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
   return (
     <div className="space-y-6">
       {/* Introduction */}
-      <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+      <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
         <div className="h-[3px] w-full bg-pr-black" />
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
@@ -168,7 +168,7 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
       </Card>
 
       {/* Input form */}
-      <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+      <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
         <CardHeader className="px-6 pt-5 pb-4">
           <CardTitle className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
             <Target className="h-4 w-4 text-pr-black" />
@@ -196,7 +196,7 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
               onChange={(e) => setSubject(e.target.value)}
               readOnly={!!subjectFromParent}
               placeholder="Ex : La puissance américaine aujourd'hui"
-              className={`min-h-[60px] text-[15px] resize-y rounded-xl p-4 transition-colors text-pr-black placeholder:text-pr-gray-mid ${subjectFromParent ? 'bg-pr-gray-bg/40 border-pr-black-pale' : 'bg-white border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20'}`}
+              className={`min-h-[60px] text-[15px] resize-y rounded-xl p-4 transition-colors text-pr-black placeholder:text-pr-gray-mid ${subjectFromParent ? 'bg-pr-gray-bg/40 border-pr-black-pale' : 'bg-carnet-paper-2 border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20'}`}
             />
             {!subjectFromParent && (
               <p className="text-[13px] text-pr-gray-mid">Saisissez le sujet sur lequel vous travaillez.</p>
@@ -215,7 +215,7 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
               value={userParadox}
               onChange={(e) => setUserParadox(e.target.value)}
               placeholder="Ex : Les États-Unis sont simultanément la puissance dominante et une puissance en déclin relatif…"
-              className="min-h-[160px] text-[15px] border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 rounded-xl resize-y p-4 transition-colors text-pr-black placeholder:text-pr-gray-mid bg-white"
+              className="min-h-[160px] text-[15px] border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 rounded-xl resize-y p-4 transition-colors text-pr-black placeholder:text-pr-gray-mid bg-carnet-paper-2"
             />
           </div>
 
@@ -242,12 +242,12 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
       {/* Evaluation result */}
       {evaluation && (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)] overflow-hidden">
+          <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)] overflow-hidden">
             <div className="h-[3px] w-full bg-pr-black" />
             <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-pr-black-soft flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-carnet-paper-2 border border-pr-black-soft flex items-center justify-center">
                     <CheckCircle className="h-5 w-5 text-pr-black" />
                   </div>
                   <div>
@@ -259,7 +259,7 @@ export const GeopoliticsParadoxGenerator = ({ subjectFromParent }: GeopoliticsPa
                     </CardTitle>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 bg-white px-4 py-2 rounded-xl border border-pr-black-soft">
+                <div className="flex items-center gap-3 bg-carnet-paper-2 px-4 py-2 rounded-xl border border-pr-black-soft">
                   <span className="text-[10px] font-semibold text-pr-gray-mid uppercase tracking-[0.12em]">Total</span>
                   <span className="font-dm-serif text-2xl text-pr-black leading-none">
                     {evaluation.notes.total}<span className="text-pr-gray-mid text-base">/20</span>

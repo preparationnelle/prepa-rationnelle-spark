@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import { LatexRenderer } from '@/components/LatexRenderer';
@@ -10,16 +8,11 @@ import PythonCodeEditor, { EvaluationResult } from '@/components/python/PythonCo
 import CodeEvaluationResult from '@/components/python/CodeEvaluationResult';
 import {
   PythonExerciseHero,
-  PythonExerciseTopBar,
-  PythonExerciseDetailHeader,
-  PythonExerciseFooterNav,
-  PythonStatementCard,
-  PythonCorrectionToggle,
-  PythonCorrectionPanel,
   PythonCodeBlock,
   PythonExerciseGrid,
   PythonQCMLauncher,
   PythonSectionHeading,
+  PythonExerciseWorkspace,
 } from '@/components/formation/python/PythonExercisePage';
 import PythonQCMPanel from '@/components/formation/python/PythonQCMPanel';
 
@@ -27,10 +20,6 @@ const PythonMatricesExercicesPage = () => {
   const [searchParams] = useSearchParams();
   const { markExerciseAsSeen, markAsComplete } = usePythonProgress();
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
-  const [showSolution, setShowSolution] = useState<{
-    [key: string]: boolean;
-  }>({});
-  const [showCorrections, setShowCorrections] = useState<Set<number>>(new Set());
   const [showQCM, setShowQCM] = useState(false);
 
   // États pour le QCM d'évaluation
@@ -50,50 +39,13 @@ const PythonMatricesExercicesPage = () => {
     }
   }, [searchParams]);
 
-  // Navigation clavier
+  // Marquer l'exercice comme vu dès son ouverture (corrigé toujours visible)
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!selectedExercise) return;
-
-      if (e.key === 'ArrowLeft' && selectedExercise > 1) {
-        setSelectedExercise(selectedExercise - 1);
-        window.scrollTo(0, 0);
-      } else if (e.key === 'ArrowRight' && selectedExercise < exercices.length) {
-        setSelectedExercise(selectedExercise + 1);
-        window.scrollTo(0, 0);
-      } else if (e.key === 'Escape') {
-        setSelectedExercise(null);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedExercise]);
-
-
-  const toggleSolution = (exerciseId: string) => {
-    setShowSolution(prev => {
-      const isShowing = !prev[exerciseId];
-      if (isShowing) {
-        markExerciseAsSeen(`python-matrices-exo-${exerciseId}`);
-      }
-      return {
-        ...prev,
-        [exerciseId]: isShowing
-      };
-    });
-  };
-
-  const toggleCorrection = (index: number) => {
-    const newShowCorrections = new Set(showCorrections);
-    if (newShowCorrections.has(index)) {
-      newShowCorrections.delete(index);
-    } else {
-      newShowCorrections.add(index);
-      markExerciseAsSeen(`python-matrices-exo-${index}`);
+    if (selectedExercise) {
+      markExerciseAsSeen(`python-matrices-exo-${selectedExercise}`);
     }
-    setShowCorrections(newShowCorrections);
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedExercise]);
 
   // Fonction pour gérer les réponses du QCM
   const handleQCMAnswer = (questionId: number, answer: string) => {
@@ -838,11 +790,6 @@ print(combi(M, A))`
               handleNavigate(nextExerciseId);
             }
             break;
-          case 'ArrowDown':
-            event.preventDefault();
-            // Révéler/masquer la correction
-            toggleCorrection(selectedExercise);
-            break;
           case 'Escape':
             event.preventDefault();
             // Retourner à la liste des exercices
@@ -856,310 +803,8 @@ print(combi(M, A))`
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [selectedExercise, exercises, handleNavigate, toggleCorrection]);
+  }, [selectedExercise, exercises, handleNavigate]);
 
-  const renderQCMContent = () => <div className="space-y-6">
-    {qcmQuestions.map((q, index) => <Card key={q.id} className="border-gray-200">
-      <CardContent className="pt-6">
-        <h3 className="font-semibold mb-4 text-lg">Question {q.id}</h3>
-        <p className="mb-4">{q.question}</p>
-        <div className="space-y-2 mb-4">
-          {q.options.map((option, optIndex) => <div key={optIndex} className="p-2 bg-gray-50 rounded">
-            {option}
-          </div>)}
-        </div>
-        <Button variant="outline" size="sm" onClick={() => toggleSolution(`qcm-${q.id}`)} className="flex items-center gap-2 border-gray-200 text-gray-600 hover:bg-gray-50">
-          {showSolution[`qcm-${q.id}`] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-          {showSolution[`qcm-${q.id}`] ? 'Masquer' : 'Voir'} la réponse
-        </Button>
-        {showSolution[`qcm-${q.id}`] && <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded">
-          <div className="flex items-center gap-2 text-gray-600">
-            <CheckCircle className="h-4 w-4" />
-            <span className="font-semibold">Réponse correcte : {q.answer}</span>
-          </div>
-        </div>}
-      </CardContent>
-    </Card>)}
-  </div>;
-  const renderExerciseContent = () => {
-    const exercise = exercises[selectedExercise! - 1];
-    if (exercise.id === 2) {
-      return <div className="space-y-6">
-        <Card className="border border-gray-200 bg-white shadow-sm">
-          <CardHeader className="border-b border-gray-100 bg-gray-50/50 px-6 py-4">
-            <CardTitle className="text-gray-800 text-lg flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-carnet-red" />
-              Exercice 1.1
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-6">
-            <p className="mb-6 text-gray-700">Créer une matrice 3×4 contenant uniquement des zéros, puis une matrice 2×3 contenant uniquement des uns.</p>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => toggleSolution('ex1-1')}
-              className="flex items-center gap-2 mb-4 text-carnet-red border-[rgba(193,68,58,0.3)] hover:bg-[rgba(193,68,58,0.06)]"
-            >
-              {showSolution['ex1-1'] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              {showSolution['ex1-1'] ? 'Masquer' : 'Voir'} la solution
-            </Button>
-            {showSolution['ex1-1'] && <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-lg animate-in fade-in slide-in-from-top-2">
-              <pre className="text-sm font-mono mb-2 text-gray-800">
-                {`import numpy as np
-
-M1 = np.zeros((3, 4))   # matrice 3×4 de zéros
-M2 = np.ones((2, 3))    # matrice 2×3 de uns
-print(M1)
-print(M2)`}
-              </pre>
-              <div className="mt-4 space-y-3">
-                <div>
-                  <p className="font-semibold text-xs text-gray-500 uppercase mb-1">M1</p>
-                  <pre className="text-sm bg-white p-3 border rounded shadow-sm">
-                    {`[[0. 0. 0. 0.]
- [0. 0. 0. 0.]
- [0. 0. 0. 0.]]`}
-                  </pre>
-                </div>
-                <div>
-                  <p className="font-semibold text-xs text-gray-500 uppercase mb-1">M2</p>
-                  <pre className="text-sm bg-white p-3 border rounded shadow-sm">
-                    {`[[1. 1. 1.]
- [1. 1. 1.]]`}
-                  </pre>
-                </div>
-              </div>
-            </div>}
-          </CardContent>
-        </Card>
-
-        <Card className="border border-gray-200 bg-white shadow-sm">
-          <CardHeader className="border-b border-gray-100 bg-gray-50/50 px-6 py-4">
-            <CardTitle className="text-gray-800 text-lg flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-carnet-red" />
-              Exercice 1.2
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-6">
-            <p className="mb-6 text-gray-700">Soit A = np.array([[1,2,3],[4,5,6]]). Extraire l'élément de la deuxième ligne et troisième colonne.</p>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => toggleSolution('ex1-2')}
-              className="flex items-center gap-2 mb-4 text-carnet-red border-[rgba(193,68,58,0.3)] hover:bg-[rgba(193,68,58,0.06)]"
-            >
-              {showSolution['ex1-2'] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              {showSolution['ex1-2'] ? 'Masquer' : 'Voir'} la solution
-            </Button>
-            {showSolution['ex1-2'] && <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-lg animate-in fade-in slide-in-from-top-2">
-              <pre className="text-sm font-mono mb-2 text-gray-800">
-                {`A = np.array([[1, 2, 3],
-              [4, 5, 6]])
-element = A[1, 2]       # deuxième ligne, troisième colonne
-print(element)`}
-              </pre>
-              <div className="mt-2">
-                <p className="font-semibold text-xs text-gray-500 uppercase mb-1">Affichage</p>
-                <div className="bg-white p-3 border rounded shadow-sm flex items-center gap-2">
-                  <span className="font-mono text-sm">6</span>
-                  <span className="text-sm text-gray-500 ml-auto">L'élément demandé est 6</span>
-                </div>
-              </div>
-            </div>}
-          </CardContent>
-        </Card>
-      </div>;
-    }
-    if (exercise.id === 3) {
-      return <div className="space-y-6">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-gray-700">Exercice 2.1</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">Créer un vecteur contenant 10 valeurs uniformément réparties entre 0 et 1.</p>
-            <Button variant="outline" size="sm" onClick={() => toggleSolution('ex2-1')} className="flex items-center gap-2 mb-4">
-              {showSolution['ex2-1'] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              {showSolution['ex2-1'] ? 'Masquer' : 'Voir'} la solution
-            </Button>
-            {showSolution['ex2-1'] && <div className="mt-4 p-4 bg-gray-50 border rounded">
-              <pre className="text-sm font-mono mb-2">
-                {`v = np.linspace(0, 1, 10)   # 10 valeurs uniformément réparties entre 0 et 1
-print(v)`}
-              </pre>
-              <div className="mt-2">
-                <p className="font-semibold">Vecteur obtenu :</p>
-                <pre className="text-sm bg-white p-2 border rounded">
-                  {`[0.         0.11111111 0.22222222 0.33333333 0.44444444
- 0.55555556 0.66666667 0.77777778 0.88888889 1.        ]`}
-                </pre>
-              </div>
-            </div>}
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-gray-700">Exercice 2.2</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">Pour la matrice B = np.array([[10,20,30],[40,50,60]]), calculer la somme de chaque ligne et de chaque colonne.</p>
-            <Button variant="outline" size="sm" onClick={() => toggleSolution('ex2-2')} className="flex items-center gap-2 mb-4">
-              {showSolution['ex2-2'] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              {showSolution['ex2-2'] ? 'Masquer' : 'Voir'} la solution
-            </Button>
-            {showSolution['ex2-2'] && <div className="mt-4 p-4 bg-gray-50 border rounded">
-              <pre className="text-sm font-mono mb-2">
-                {`B = np.array([[10, 20, 30],
-              [40, 50, 60]])
-row_sums = B.sum(axis=1)      # sommes par ligne
-col_sums = B.sum(axis=0)      # sommes par colonne
-print("Sommes des lignes :", row_sums)
-print("Sommes des colonnes :", col_sums)`}
-              </pre>
-              <div className="mt-2">
-                <p className="font-semibold">Résultats :</p>
-                <pre className="text-sm bg-white p-2 border rounded">
-                  {`Sommes des lignes : [ 60 150]
-Sommes des colonnes : [50 70 90]`}
-                </pre>
-                <ul className="mt-2 text-sm">
-                  <li>• Somme ligne 1 : <strong>60</strong></li>
-                  <li>• Somme ligne 2 : <strong>150</strong></li>
-                  <li>• Sommes colonnes : <strong>50</strong>, <strong>70</strong>, <strong>90</strong></li>
-                </ul>
-              </div>
-            </div>}
-          </CardContent>
-        </Card>
-      </div>;
-    }
-    if (exercise.id === 4) {
-      return <div className="space-y-6">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-gray-700">Exercice 3.1</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">Soient A = np.array([[1,2],[3,4]]) et B = np.array([[2,1],[1,2]]). Calculer A + B, A * B et np.dot(A,B).</p>
-            <Button variant="outline" size="sm" onClick={() => toggleSolution('ex3-1')} className="flex items-center gap-2 mb-4">
-              {showSolution['ex3-1'] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              {showSolution['ex3-1'] ? 'Masquer' : 'Voir'} la solution
-            </Button>
-            {showSolution['ex3-1'] && <div className="mt-4 p-4 bg-gray-50 border rounded">
-              <pre className="text-sm font-mono mb-2">
-                {`A = np.array([[1, 2],
-              [3, 4]])
-B = np.array([[2, 1],
-              [1, 2]])
-
-S = A + B          # addition
-P_el = A * B       # produit terme à terme
-P_mat = np.dot(A, B)  # produit matriciel
-
-print("A + B =\\n", S)
-print("A * B =\\n", P_el)
-print("np.dot(A, B) =\\n", P_mat)`}
-              </pre>
-              <div className="mt-2 space-y-2">
-                <div>
-                  <span className="font-semibold">A + B = </span>
-                  <span className="font-mono">[[3 3][4 6]]</span>
-                </div>
-                <div>
-                  <span className="font-semibold">A * B = </span>
-                  <span className="font-mono">[[2 2][3 8]]</span>
-                </div>
-                <div>
-                  <span className="font-semibold">np.dot(A,B) = </span>
-                  <span className="font-mono">[[4 5][10 11]]</span>
-                </div>
-              </div>
-            </div>}
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-gray-700">Exercice 3.2</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">Calculer la transposée de la matrice C = np.array([[1,2,3],[4,5,6],[7,8,9]]).</p>
-            <Button variant="outline" size="sm" onClick={() => toggleSolution('ex3-2')} className="flex items-center gap-2 mb-4">
-              {showSolution['ex3-2'] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              {showSolution['ex3-2'] ? 'Masquer' : 'Voir'} la solution
-            </Button>
-            {showSolution['ex3-2'] && <div className="mt-4 p-4 bg-gray-50 border rounded">
-              <pre className="text-sm font-mono mb-2">
-                {`C = np.array([[1, 2, 3],
-              [4, 5, 6],
-              [7, 8, 9]])
-C_T = C.T          # transposée
-print(C_T)`}
-              </pre>
-              <div className="mt-2">
-                <p className="font-semibold">Transposée de C :</p>
-                <pre className="text-sm bg-white p-2 border rounded">
-                  {`[[1 4 7]
- [2 5 8]
- [3 6 9]]`}
-                </pre>
-              </div>
-            </div>}
-          </CardContent>
-        </Card>
-      </div>;
-    }
-    if (exercise.id === 10) {
-      return <div className="space-y-6">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-gray-700">Matrices nilpotentes</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="mb-4">
-              <p className="mb-4">
-                On rappelle qu'une matrice A∈Mn(ℝ) est dite nilpotente s'il existe un entier p∈{'{'}1,…,n{'}'} tel que A^p = 0.
-                Le plus petit de ces entiers est appelé indice de nilpotence de A.
-              </p>
-              <p className="mb-4">Expliquer comment fonctionne le programme suivant. </p>
-            </div>
-            <Button variant="outline" size="sm" onClick={() => toggleSolution('ex-nilp')} className="flex items-center gap-2 mb-4">
-              {showSolution['ex-nilp'] ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              {showSolution['ex-nilp'] ? 'Masquer' : 'Voir'} la solution
-            </Button>
-            {showSolution['ex-nilp'] && <div className="mt-4 p-4 bg-gray-50 border rounded">
-              <pre className="text-sm font-mono">
-                {`import numpy as np
-
-def Nilp(A):
-    n = np.size(A, 0)
-    B = np.copy(A)
-    p = 1
-    while np.sum(np.abs(B)) != 0 and p <= n:
-        B = np.dot(B, A)
-        p += 1
-    if np.sum(np.abs(B)) == 0:
-        print("La matrice est nilpotente d'indice", p)
-    else:
-        print("La matrice n'est pas nilpotente")`}
-              </pre>
-              <div className="mt-4">
-                <p className="text-sm text-muted-foreground">
-                  Cette fonction teste si une matrice est nilpotente en calculant ses puissances successives jusqu'à obtenir la matrice nulle ou dépasser l'ordre n.
-                </p>
-              </div>
-            </div>}
-          </CardContent>
-        </Card>
-      </div>;
-    }
-    return <Card>
-      <CardContent className="pt-6">
-        <p className="text-muted-foreground">Contenu de l'exercice à venir...</p>
-      </CardContent>
-    </Card>;
-  };
   if (selectedExercise) {
     const exercise = exercises.find(ex => ex.id === selectedExercise);
     if (!exercise) return null;
@@ -1169,89 +814,60 @@ def Nilp(A):
 
     return (
       <PythonModuleLayout>
-        <PythonExerciseTopBar
-          current={selectedExercise}
-          total={exercises.length}
-          onBack={() => setSelectedExercise(null)}
-          onPrev={() => {
-            if (hasPrevious) {
-              setSelectedExercise(selectedExercise - 1);
-              window.scrollTo(0, 0);
-            }
-          }}
-          onNext={() => {
-            if (hasNext) {
-              setSelectedExercise(selectedExercise + 1);
-              window.scrollTo(0, 0);
-            }
-          }}
-          hasPrev={hasPrevious}
-          hasNext={hasNext}
-        />
-
-        <PythonExerciseDetailHeader
-          number={selectedExercise}
-          title={exercise.title}
-          difficulty={exercise.difficulty}
-        />
-
         {exercise.content ? (
-          <>
-            <PythonStatementCard>
-              {exercise.content.enonce_latex ? (
+          <PythonExerciseWorkspace
+            current={selectedExercise}
+            total={exercises.length}
+            title={exercise.title}
+            difficulty={exercise.difficulty}
+            description={exercise.description}
+            onBack={() => setSelectedExercise(null)}
+            onPrev={() => {
+              if (hasPrevious) {
+                setSelectedExercise(selectedExercise - 1);
+                window.scrollTo(0, 0);
+              }
+            }}
+            onNext={() => {
+              if (hasNext) {
+                setSelectedExercise(selectedExercise + 1);
+                window.scrollTo(0, 0);
+              }
+            }}
+            hasPrev={hasPrevious}
+            hasNext={hasNext}
+            objective={
+              exercise.content.enonce_latex ? (
                 <LatexRenderer latex={exercise.content.enonce_latex} />
               ) : (
                 <div style={{ whiteSpace: 'pre-wrap' }}>{exercise.content.enonce}</div>
-              )}
-            </PythonStatementCard>
-
-            <PythonCodeEditor
-              exerciseStatement={exercise.content.enonce_latex || exercise.content.enonce || exercise.content.objective}
-              expectedSolution={exercise.content.correction || ''}
-              moduleId={moduleId}
-              exerciseId={String(selectedExercise)}
-              onEvaluationComplete={(result) => {
-                setEvaluationResults(prev => ({ ...prev, [selectedExercise]: result }));
-                markExerciseAsSeen(`python-${moduleId}-exo-${selectedExercise}`);
-              }}
-            />
-
-            {evaluationResults[selectedExercise] && (
-              <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
-            )}
-
-            <PythonCorrectionToggle
-              isOpen={showCorrections.has(selectedExercise)}
-              onToggle={() => toggleCorrection(selectedExercise)}
-            />
-
-            {showCorrections.has(selectedExercise) && exercise.content.correction && (
-              <PythonCorrectionPanel>
+              )
+            }
+            editor={
+              <PythonCodeEditor
+                embedded
+                minHeight={240}
+                exerciseStatement={exercise.content.enonce_latex || exercise.content.enonce || exercise.content.objective}
+                expectedSolution={exercise.content.correction || ''}
+                moduleId={moduleId}
+                exerciseId={String(selectedExercise)}
+                onEvaluationComplete={(result) => {
+                  setEvaluationResults(prev => ({ ...prev, [selectedExercise]: result }));
+                  markExerciseAsSeen(`python-${moduleId}-exo-${selectedExercise}`);
+                }}
+              />
+            }
+            evaluationResult={
+              evaluationResults[selectedExercise] ? (
+                <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
+              ) : undefined
+            }
+            correction={
+              exercise.content.correction ? (
                 <PythonCodeBlock code={exercise.content.correction} />
-              </PythonCorrectionPanel>
-            )}
-
-            <PythonExerciseFooterNav
-              current={selectedExercise}
-              total={exercises.length}
-              onPrev={() => {
-                if (hasPrevious) {
-                  setSelectedExercise(selectedExercise - 1);
-                  window.scrollTo(0, 0);
-                }
-              }}
-              onNext={() => {
-                if (hasNext) {
-                  setSelectedExercise(selectedExercise + 1);
-                  window.scrollTo(0, 0);
-                } else {
-                  setSelectedExercise(null);
-                }
-              }}
-              hasPrev={hasPrevious}
-              hasNext={hasNext}
-            />
-          </>
+              ) : undefined
+            }
+          />
         ) : (
           <div className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl p-10 text-center text-carnet-ink-mute">
             Le contenu de cet exercice sera bientôt disponible.

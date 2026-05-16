@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LatexRenderer } from '@/components/LatexRenderer';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-        <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+        <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
                 {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
                 <div className="text-center">
                         {children}
@@ -32,10 +32,10 @@ const MathsVariablesAleatoiresPage = () => {
                 >
                         <div className="space-y-8">
                                 {/* Section 1: Généralités */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
                                                         <span className="font-semibold">Variables Aléatoires Discrètes</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -51,7 +51,7 @@ const MathsVariablesAleatoiresPage = () => {
                                                                 <LatexRenderer latex="\mathbb{P}(a < X \le b) = F_X(b) - F_X(a)" />
                                                         </FormulaBox>
 
-                                                        <div className="mt-4 bg-slate-50 p-4 rounded-lg border-l-4 border-slate-400">
+                                                        <div className="mt-4 bg-carnet-paper p-4 rounded-lg border-l-4 border-slate-400">
                                                                 <h4 className="font-semibold text-slate-800 mb-2">Loi de probabilité</h4>
                                                                 <p className="text-slate-700 text-sm">
                                                                         La loi est entièrement déterminée par les probabilités <LatexRenderer latex="\mathbb{P}(X = x_k)" /> pour tout <LatexRenderer latex="x_k \in X(\Omega)" />.
@@ -62,10 +62,10 @@ const MathsVariablesAleatoiresPage = () => {
                                 </Card>
 
                                 {/* Section 2: Espérance et Variance */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
                                                         <span className="font-semibold">Moments</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -91,10 +91,10 @@ const MathsVariablesAleatoiresPage = () => {
                                 </Card>
 
                                 {/* Section 3: Lois usuelles */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
                                                         <span className="font-semibold">Lois Usuelles</span>
                                                 </CardTitle>
                                         </CardHeader>

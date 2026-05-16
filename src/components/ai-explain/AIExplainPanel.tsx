@@ -124,7 +124,7 @@ const AIExplainPanel: React.FC<AIExplainPanelProps> = ({
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed right-0 top-0 bottom-0 w-full sm:w-[450px] bg-carnet-paper shadow-2xl z-[201] flex flex-col border-l border-carnet-rule"
+                        className="fixed right-0 top-0 bottom-0 w-full sm:w-[450px] bg-carnet-paper shadow-lg z-[201] flex flex-col border-l border-carnet-rule"
                     >
                         {/* Header */}
                         <div className={cn(
@@ -151,8 +151,8 @@ const AIExplainPanel: React.FC<AIExplainPanelProps> = ({
                         {/* Selected text */}
                         <div className="px-5 py-3 bg-carnet-paper-2 border-b border-carnet-rule">
                             <div className="flex items-start gap-2">
-                                <Quote className="h-4 w-4 text-gray-400 mt-0.5 shrink-0" />
-                                <p className="text-sm text-gray-600 italic line-clamp-3">
+                                <Quote className="h-4 w-4 text-carnet-ink-soft mt-0.5 shrink-0" />
+                                <p className="text-sm text-carnet-ink-soft italic line-clamp-3">
                                     {selectedText}
                                 </p>
                             </div>
@@ -180,11 +180,11 @@ const AIExplainPanel: React.FC<AIExplainPanelProps> = ({
                                 </div>
                             ) : (
                                 <div className="prose prose-sm max-w-none">
-                                    <div className="text-gray-800 leading-relaxed whitespace-pre-line text-sm">
+                                    <div className="text-carnet-ink leading-relaxed whitespace-pre-line text-sm">
                                         {explanation}
                                     </div>
                                     {loading && (
-                                        <div className="flex items-center gap-2 mt-4 text-gray-400">
+                                        <div className="flex items-center gap-2 mt-4 text-carnet-ink-soft">
                                             <Loader2 className="h-4 w-4 animate-spin" />
                                             <span className="text-xs">Génération en cours...</span>
                                         </div>

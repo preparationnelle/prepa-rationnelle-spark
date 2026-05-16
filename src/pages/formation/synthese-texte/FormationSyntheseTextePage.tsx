@@ -58,7 +58,7 @@ const FormationSyntheseTextePage = () => {
       <div className="text-center">
         <Link
           to="/formation/synthese-texte/overview"
-          className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-pr-gray-light bg-white hover:border-pr-black text-pr-black font-semibold text-sm transition-colors"
+          className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-pr-gray-light bg-carnet-paper-2 hover:border-pr-black text-pr-black font-semibold text-sm transition-colors"
         >
           Voir le guide complet de l’épreuve
         </Link>

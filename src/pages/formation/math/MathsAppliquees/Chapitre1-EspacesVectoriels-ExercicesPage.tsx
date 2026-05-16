@@ -28,7 +28,7 @@ const Chapitre1EspacesVectorielsExercicesPage = () => {
         stars: number;
     }) => (
         <div className="flex items-center gap-4 mb-6 mt-8 pb-4 border-b border-slate-200">
-            <div className={`p-2 bg-slate-50 text-slate-700 rounded-lg border border-slate-200`}>
+            <div className={`p-2 bg-carnet-paper text-slate-700 rounded-lg border border-slate-200`}>
                 <Icon className="w-5 h-5" />
             </div>
             <div>
@@ -58,16 +58,16 @@ const Chapitre1EspacesVectorielsExercicesPage = () => {
         correction: React.ReactNode;
         difficulty: string;
     }) => (
-        <Card className="mb-6 border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200 bg-white">
+        <Card className="mb-6 border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200 bg-carnet-paper-2">
             <div className="p-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                     <div className="flex items-center gap-3">
-                        <div className="h-8 w-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 font-semibold text-sm">
+                        <div className="h-8 w-8 rounded-full bg-carnet-paper border border-slate-200 flex items-center justify-center text-slate-500 font-semibold text-sm">
                             {id.replace(/[^0-9]/g, '')}
                         </div>
                         <h3 className="font-semibold text-slate-900 text-lg">{title}</h3>
                     </div>
-                    <span className="text-xs font-medium text-slate-500 bg-slate-50 px-3 py-1 rounded-full border border-slate-100">
+                    <span className="text-xs font-medium text-slate-500 bg-carnet-paper px-3 py-1 rounded-full border border-slate-100">
                         {difficulty}
                     </span>
                 </div>
@@ -81,7 +81,7 @@ const Chapitre1EspacesVectorielsExercicesPage = () => {
                         onClick={() => toggleCorrection(id)}
                         variant="ghost"
                         size="sm"
-                        className="w-fit text-slate-500 hover:text-slate-900 hover:bg-slate-50 self-start -ml-2"
+                        className="w-fit text-slate-500 hover:text-slate-900 hover:bg-carnet-paper self-start -ml-2"
                     >
                         {visibleCorrections[id] ? (
                             <>
@@ -97,7 +97,7 @@ const Chapitre1EspacesVectorielsExercicesPage = () => {
                     </Button>
 
                     {visibleCorrections[id] && (
-                        <div className="bg-slate-50 border-l-2 border-emerald-500 p-6 rounded-r-lg animate-in fade-in slide-in-from-top-2 duration-300">
+                        <div className="bg-carnet-paper border-l-2 border-emerald-500 p-6 rounded-r-lg animate-in fade-in slide-in-from-top-2 duration-300">
                             <h4 className="font-semibold text-emerald-800 mb-3 text-sm uppercase tracking-wider">Solution détaillée</h4>
                             <div className="text-slate-700 leading-relaxed space-y-2">
                                 {correction}

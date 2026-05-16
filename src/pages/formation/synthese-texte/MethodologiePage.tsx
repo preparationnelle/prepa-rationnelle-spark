@@ -243,7 +243,7 @@ const MethodologiePage: React.FC = () => {
             {problematiques.map((prob, index) => (
               <div
                 key={index}
-                className="bg-white border border-pr-gray-light rounded-md p-4"
+                className="bg-carnet-paper-2 border border-pr-gray-light rounded-md p-4"
               >
                 <p className="font-dm-sans text-[10px] uppercase tracking-wider font-semibold text-pr-black mb-2">
                   {prob.type}
@@ -437,7 +437,7 @@ const MethodologiePage: React.FC = () => {
             <Link to="/formation/synthese-texte/travail-annuel">
               <Button
                 variant="outline"
-                className="font-dm-sans border-pr-gray-light text-pr-gray-dark hover:bg-white hover:border-pr-black hover:text-pr-black gap-2"
+                className="font-dm-sans border-pr-gray-light text-pr-gray-dark hover:bg-carnet-paper-2 hover:border-pr-black hover:text-pr-black gap-2"
               >
                 <Calendar className="w-4 h-4" />
                 Voir le travail annuel

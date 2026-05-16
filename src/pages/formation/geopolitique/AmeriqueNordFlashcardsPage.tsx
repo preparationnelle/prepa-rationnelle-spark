@@ -164,31 +164,31 @@ const AmeriqueNordFlashcardsPage = () => {
   return (
     <div className="relative">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/90 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper-2/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center text-xs font-medium text-carnet-ink-soft">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formations" className="hover:text-gray-900 transition-colors">
+            <Link to="/formations" className="hover:text-carnet-ink transition-colors">
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/geopolitique" className="hover:text-gray-900 transition-colors">
+            <Link to="/formation/geopolitique" className="hover:text-carnet-ink transition-colors">
               Formation Géopolitique
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/geopolitique/deuxieme-annee" className="hover:text-gray-900 transition-colors">
+            <Link to="/formation/geopolitique/deuxieme-annee" className="hover:text-carnet-ink transition-colors">
               Deuxième Année
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/geopolitique/amerique-nord" className="hover:text-gray-900 transition-colors">
+            <Link to="/formation/geopolitique/amerique-nord" className="hover:text-carnet-ink transition-colors">
               Amérique du Nord
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Flashcards</span>
+            <span className="text-carnet-ink font-bold">Flashcards</span>
           </div>
         </div>
       </nav>
@@ -196,10 +196,10 @@ const AmeriqueNordFlashcardsPage = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-carnet-ink mb-4">
             Flashcards - Amérique du Nord
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-carnet-ink-soft max-w-2xl mx-auto">
             Révisez les concepts clés de l'Amérique du Nord avec ces flashcards interactives.
           </p>
         </div>
@@ -227,14 +227,14 @@ const AmeriqueNordFlashcardsPage = () => {
         {showAllCards ? (
           <div className="max-w-4xl mx-auto space-y-4">
             {flashcards.map((card, index) => (
-              <div key={card.id} className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+              <div key={card.id} className="bg-carnet-paper-2 rounded-lg shadow-sm p-6 border border-carnet-rule">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-carnet-red/10 rounded-full flex items-center justify-center text-carnet-red font-bold text-sm flex-shrink-0">
                     {index + 1}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-2">{card.question}</h3>
-                    <p className="text-gray-600">{card.answer}</p>
+                    <h3 className="font-semibold text-carnet-ink mb-2">{card.question}</h3>
+                    <p className="text-carnet-ink-soft">{card.answer}</p>
                   </div>
                 </div>
               </div>
@@ -245,7 +245,7 @@ const AmeriqueNordFlashcardsPage = () => {
           <div className="max-w-2xl mx-auto">
             {/* Progress bar */}
             <div className="mb-6">
-              <div className="flex justify-between text-sm text-gray-600 mb-2">
+              <div className="flex justify-between text-sm text-carnet-ink-soft mb-2">
                 <span>Carte {currentCardIndex + 1} sur {flashcards.length}</span>
                 <span>{Math.round(((currentCardIndex + 1) / flashcards.length) * 100)}%</span>
               </div>
@@ -258,12 +258,12 @@ const AmeriqueNordFlashcardsPage = () => {
             </div>
 
             {/* Flashcard */}
-            <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+            <div className="bg-carnet-paper-2 rounded-xl shadow-lg border border-carnet-rule overflow-hidden">
               <div className="p-8 min-h-[300px] flex flex-col justify-center">
                 <div className="text-center">
                   {!showAnswer ? (
                     <div>
-                      <h2 className="text-xl font-semibold text-gray-900 mb-6">
+                      <h2 className="text-xl font-semibold text-carnet-ink mb-6">
                         {currentCard.question}
                       </h2>
                       <button
@@ -276,11 +276,11 @@ const AmeriqueNordFlashcardsPage = () => {
                     </div>
                   ) : (
                     <div>
-                      <h2 className="text-lg font-medium text-gray-700 mb-4">
+                      <h2 className="text-lg font-medium text-carnet-ink mb-4">
                         {currentCard.question}
                       </h2>
-                      <div className="border-t border-gray-200 pt-4">
-                        <p className="text-gray-900 leading-relaxed">
+                      <div className="border-t border-carnet-rule pt-4">
+                        <p className="text-carnet-ink leading-relaxed">
                           {currentCard.answer}
                         </p>
                       </div>

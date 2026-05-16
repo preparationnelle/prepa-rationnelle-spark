@@ -291,31 +291,31 @@ const UnionEuropeenneAuteursPage = () => {
   return (
     <div className="relative">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/90 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper-2/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center text-xs font-medium text-carnet-ink-soft">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formations" className="hover:text-gray-900 transition-colors">
+            <Link to="/formations" className="hover:text-carnet-ink transition-colors">
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/geopolitique" className="hover:text-gray-900 transition-colors">
+            <Link to="/formation/geopolitique" className="hover:text-carnet-ink transition-colors">
               Formation Géopolitique
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/geopolitique/deuxieme-annee" className="hover:text-gray-900 transition-colors">
+            <Link to="/formation/geopolitique/deuxieme-annee" className="hover:text-carnet-ink transition-colors">
               Deuxième Année
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/geopolitique/union-europeenne" className="hover:text-gray-900 transition-colors">
+            <Link to="/formation/geopolitique/union-europeenne" className="hover:text-carnet-ink transition-colors">
               Union européenne
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Auteurs et ouvrages</span>
+            <span className="text-carnet-ink font-bold">Auteurs et ouvrages</span>
           </div>
         </div>
       </nav>
@@ -327,11 +327,11 @@ const UnionEuropeenneAuteursPage = () => {
             <div className="p-4 bg-green-600 rounded-full">
               <Book className="h-12 w-12 text-white" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-bold text-carnet-ink">
               Auteurs et ouvrages - Union européenne
             </h1>
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-carnet-ink-soft max-w-3xl mx-auto mb-8">
             Bibliographie essentielle pour l'étude géopolitique de l'Union européenne.
           </p>
 
@@ -379,7 +379,7 @@ const UnionEuropeenneAuteursPage = () => {
                 <CardContent>
                   <div className="grid md:grid-cols-1 gap-4">
                     {auteur.ouvrages.map((ouvrage, ouvrageIndex) => (
-                      <div key={ouvrageIndex} className="bg-white p-4 rounded-lg border border-green-200 hover:shadow-md transition-shadow cursor-pointer"
+                      <div key={ouvrageIndex} className="bg-carnet-paper-2 p-4 rounded-lg border border-green-200 hover:shadow-md transition-shadow cursor-pointer"
                            onClick={() => openModal(ouvrage)}>
                         <div className="flex items-start gap-3">
                           {ouvrage.important ? (
@@ -390,10 +390,10 @@ const UnionEuropeenneAuteursPage = () => {
                           <div className="flex-1">
                             <div className="flex items-start justify-between">
                               <div>
-                                <h4 className="font-medium text-gray-900 mb-1">
+                                <h4 className="font-medium text-carnet-ink mb-1">
                                   "{ouvrage.titre}"
                                 </h4>
-                                <p className="text-sm text-gray-600 mb-2">
+                                <p className="text-sm text-carnet-ink-soft mb-2">
                                   {ouvrage.annee}
                                 </p>
                               </div>
@@ -449,16 +449,16 @@ const UnionEuropeenneAuteursPage = () => {
         <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
           <DialogContent className="sm:max-w-[700px]">
             <DialogHeader>
-              <DialogTitle className="text-2xl font-bold text-gray-900">
+              <DialogTitle className="text-2xl font-bold text-carnet-ink">
                 "{selectedOuvrage?.titre}"
               </DialogTitle>
-              <DialogDescription className="text-gray-600 mt-2">
+              <DialogDescription className="text-carnet-ink-soft mt-2">
                 {selectedOuvrage?.annee} • {selectedOuvrage?.theme}
                 {selectedOuvrage?.important && " • Ouvrage essentiel"}
               </DialogDescription>
             </DialogHeader>
             {selectedOuvrage && (
-              <div className="mt-4 text-base text-gray-800 leading-relaxed">
+              <div className="mt-4 text-base text-carnet-ink leading-relaxed">
                 {selectedOuvrage.description}
               </div>
             )}

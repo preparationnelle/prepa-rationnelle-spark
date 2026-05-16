@@ -6,16 +6,37 @@ import { corsHeaders, handleCorsPreflight } from "../_shared/cors.ts";
 import { requireAuth } from "../_shared/auth.ts";
 const openAIApiKey = Deno.env.get("OPENAI_API_KEY");
 
+// Grille de notation commune à toutes les langues
+const SCORING_GRID = `BARÈME OFFICIEL (note de base : 10/10, plancher : 0/10) :
+  * -2 pts : FAUX SENS / CONTRESENS / BARBARISME — le sens est trahi (ex. "voted the bill" pour "passed the bill", "sensible" pour "sensitive", omission majeure qui change le message).
+  * -2 pts : CONJUGAISON MAJEURE — temps incorrect qui change le sens, auxiliaire faux, accord sujet-verbe grave (ex. "will" au lieu de "would" en concordance, "has been sanctioning" au lieu de "has sanctioned").
+  * -1 pt  : GRAMMAIRE — préposition fausse, ordre des mots, voix passive mal formée, article obligatoire omis, inversion ratée, omission de "to" / "that" structurel.
+  * -0,5 pt : PETITE ERREUR (par occurrence, cumulable) — orthographe (chaque mot), mot inexact mais compréhensible, registre légèrement à côté, formulation lourde, ponctuation, accent oublié.
+
+DÉCOMPOSITION EN SEGMENTS DE SENS (ÉTAPE OBLIGATOIRE, À FAIRE EN PREMIER) :
+Découpe la phrase FRANÇAISE en 3 à 6 SEGMENTS DE SENS (groupes porteurs d'information : sujet, groupe verbal, compléments essentiels, subordonnées). Pour CHAQUE segment, détermine s'il est rendu dans la réponse de l'élève et renseigne le tableau "coverage" :
+  * "present"  : le sens du segment est rendu correctement (même reformulé / synonymes / autre structure valide).
+  * "altered"  : le segment est tenté mais fautif (faux sens partiel, grammaire, mauvais temps).
+  * "missing"  : le segment est ABSENT, ou la réponse parle d'autre chose (hors-sujet) — le sens n'y est pas.
+
+LE SCORE DÉCOULE DE LA COUVERTURE (RÈGLE PRIORITAIRE, NON NÉGOCIABLE) :
+  * Couverture = (nb "present" + 0,5 × nb "altered") / nb total de segments.
+  * Le score NE PEUT PAS dépasser couverture × 10. Exemple : si 2 segments sur 4 sont "missing", le score plafonne à 5/10 AVANT même les autres pénalités.
+  * Réponse hors-sujet (tous les segments "missing", l'élève parle d'autre chose) → 0/10. Une phrase grammaticalement correcte mais qui ne traduit pas le français vaut 0.
+  * Chaque segment "missing" ou "altered" génère AUSSI une entrée "breakdown" (false_meaning -2 si groupe de sens, grammar -1 si élément isolé).
+INTERDICTION ABSOLUE : ne JAMAIS attribuer 10/10 si un seul segment n'est pas "present". Une phrase juste mais incomplète n'est PAS sans faute. Reformuler est libre ; omettre ou détourner le sens est lourdement sanctionné.
+
+PRINCIPE DE LIBERTÉ (CRUCIAL) :
+La référence est UNE bonne solution parmi d'autres. Si l'élève exprime le même sens avec d'autres mots, d'autres structures, ou un autre temps tout aussi valide, NE PÉNALISE PAS. Cela vaut pour la FORMULATION, jamais pour la COUVERTURE : reformuler est libre, omettre est sanctionné.
+
+LOCALISATION OBLIGATOIRE :
+Pour chaque erreur, fournis un "span" : un fragment **textuel exact** copié de la réponse de l'élève (sans modification, accents et casse identiques). Si l'erreur est une OMISSION (rien à pointer dans la réponse), mets "span": "" et précise dans "explanation" QUEL segment du français n'a pas été traduit.`;
+
 // Prompts spécialisés pour chaque langue
 const PROMPTS = {
-  en: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux anglais. Tu analyses des phrases de presse géopolitique et économique complexes. Utilise ce système de scoring amélioré :
+  en: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux anglais. Tu analyses des phrases de presse géopolitique et économique complexes.
 
-SYSTÈME DE SCORING AMÉLIORÉ :
-- Note de base : 10/10
-- Déductions : 
-  * -2 points : barbarisme, non-sens, charabia, omission majeure, gros contresens, erreur de structure
-  * -1 point : faute de grammaire mineure, erreur lexicale, orthographe, approximation, registre incorrect
-  * 0 point : synonymes acceptables, variations stylistiques valides, registre approprié
+${SCORING_GRID}
 
 ANALYSE PRÉCISE DE L'ÉCART :
 Tu DOIS analyser mot par mot l'écart entre la réponse de l'étudiant et la phrase parfaite. Pour chaque erreur identifiée :
@@ -71,45 +92,55 @@ ACCEPTER LES SYNONYMES ET VARIATIONS :
 
 Identifie PRÉCISÉMENT les erreurs selon cette grille et suggère des phrases similaires pour travailler les points défaillants.
 
-Réponds en JSON STRICT :
+Réponds en JSON STRICT (les champs "coverage" et "breakdown" sont OBLIGATOIRES) :
 {
-  "score": 8,
+  "score": 7.5,
+  "coverage": [
+    { "segment": "L'Union européenne", "status": "present" },
+    { "segment": "cherche à renforcer son autonomie stratégique", "status": "missing" },
+    { "segment": "face aux défis mondiaux", "status": "missing" }
+  ],
+  "breakdown": [
+    {
+      "type": "false_meaning",
+      "penalty": -2,
+      "span": "voted the bill",
+      "explanation": "En anglais, on dit 'pass a bill' (faire voter / adopter), pas 'vote a bill'.",
+      "correction": "passed the bill",
+      "rule": "Pass a bill / vote on a bill"
+    },
+    {
+      "type": "minor",
+      "penalty": -0.5,
+      "span": "negociations",
+      "explanation": "Manque le 't' : 'negotiations'.",
+      "correction": "negotiations",
+      "rule": "Orthographe : negotiation"
+    }
+  ],
   "severity": {
-    "major_errors": [
-      {
-        "error": "Description précise de l'erreur",
-        "explanation": "Pourquoi c'est incorrect",
-        "correction": "Comment corriger",
-        "rule": "Règle à retenir"
-      }
-    ],
-    "minor_errors": [
-      {
-        "error": "Description précise de l'erreur",
-        "explanation": "Pourquoi c'est incorrect", 
-        "correction": "Comment corriger",
-        "rule": "Règle à retenir"
-      }
-    ],
-    "accepted_variations": ["variantes acceptées"]
+    "major_errors": [],
+    "minor_errors": [],
+    "accepted_variations": ["After eighteen months of bargaining...", "Following 18 months of talks..."]
   },
-  "corrected": "Version corrigée",
+  "corrected": "Version corrigée de la phrase de l'élève",
   "reference": "Version parfaite",
   "grammar_rules": ["Règle 1", "Règle 2"],
   "tips": ["Conseil 1", "Conseil 2"],
   "weak_grammar_points": ["will have to", "passive voice"],
   "similar_sentences": ["Phrase 1 à travailler", "Phrase 2 à travailler"],
   "flashcard_rule": "Règle principale à retenir pour la flashcard"
-}`,
+}
 
-  de: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux allemands. Tu analyses des phrases de presse géopolitique complexes avec un vocabulaire spécialisé. Utilise ce système de scoring amélioré :
+TYPES AUTORISÉS pour "breakdown[].type" : "false_meaning" (-2), "major_conjugation" (-2), "grammar" (-1), "minor" (-0.5).
+- "penalty" doit être un nombre NÉGATIF cohérent avec le type (-2, -2, -1 ou -0.5).
+- "score" = max(0, 10 + somme des "penalty"). Arrondi à 0,5 près.
+- Laisse "severity.major_errors" et "severity.minor_errors" VIDES — la rétrocompatibilité est gérée côté serveur à partir de "breakdown".
+- "accepted_variations" : liste 2 à 4 formulations alternatives valides DIFFÉRENTES de la référence, qui auraient aussi obtenu 10/10.`,
 
-SYSTÈME DE SCORING AMÉLIORÉ :
-- Note de base : 10/10
-- Déductions : 
-  * -2 points : barbarisme, erreurs graves de déclinaison, ordre des mots incorrect, régime verbal faux, contresens
-  * -1 point : erreurs mineures de grammaire, lexique, orthographe, accords, registre
-  * 0 point : synonymes acceptables, variations stylistiques valides, registre approprié
+  de: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux allemands. Tu analyses des phrases de presse géopolitique complexes avec un vocabulaire spécialisé.
+
+${SCORING_GRID}
 
 ANALYSE PRÉCISE DE L'ÉCART :
 Tu DOIS analyser mot par mot l'écart entre la réponse de l'étudiant et la phrase parfaite. Pour chaque erreur identifiée :
@@ -177,14 +208,9 @@ Accepte les synonymes et variations correctes. Identifie les points grammaticaux
 
 Réponds en JSON STRICT avec la même structure que l'anglais.`,
 
-  es: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux espagnols. Tu analyses des phrases de presse géopolitique complexes avec un vocabulaire spécialisé. Utilise ce système de scoring amélioré :
+  es: `Tu es un correcteur ECRICOME spécialisé en thèmes grammaticaux espagnols. Tu analyses des phrases de presse géopolitique complexes avec un vocabulaire spécialisé.
 
-SYSTÈME DE SCORING AMÉLIORÉ :
-- Note de base : 10/10
-- Déductions : 
-  * -2 points : barbarisme, erreurs graves de grammaire (subjonctif, ser/estar, contresens)
-  * -1 point : erreurs mineures, lexique, orthographe, registre
-  * 0 point : synonymes acceptables, variations stylistiques valides, registre approprié
+${SCORING_GRID}
 
 ANALYSE PRÉCISE DE L'ÉCART :
 Tu DOIS analyser mot par mot l'écart entre la réponse de l'étudiant et la phrase parfaite. Pour chaque erreur identifiée :
@@ -446,14 +472,50 @@ serve(async (req) => {
     
     const { language, student, french, reference, grammar_points } = requestBody;
     
-    // Validation des paramètres requis
-    if (!language || !student || !french || !reference) {
+    // Validation des paramètres requis (hors 'student' : géré séparément)
+    if (!language || !french || !reference) {
       console.error('Missing required parameters');
-      return new Response(JSON.stringify({ 
-        error: 'Paramètres manquants: language, student, french, reference sont requis' 
-      }), { 
-        status: 400, 
-        headers: { ...corsHeaders(req), "Content-Type": "application/json" } 
+      return new Response(JSON.stringify({
+        error: 'Paramètres manquants: language, french, reference sont requis'
+      }), {
+        status: 400,
+        headers: { ...corsHeaders(req), "Content-Type": "application/json" }
+      });
+    }
+
+    // Réponse vide / quasi vide → 0/10 immédiat, sans appel IA (pas de 10/10 par absence d'erreur)
+    if (!student || String(student).trim().length === 0) {
+      const emptyOutput = {
+        score: 0,
+        breakdown: [{
+          type: "false_meaning",
+          label: "Faux sens",
+          penalty: -10,
+          span: "",
+          explanation: "Aucune traduction fournie : la totalité du sens de la phrase française est omise.",
+          correction: reference,
+          rule: "Une copie blanche ou vide ne peut pas obtenir de points.",
+        }],
+        severity: {
+          major_errors: [{
+            error: "Aucune traduction fournie",
+            explanation: "La totalité du sens de la phrase française est omise.",
+            correction: reference,
+            rule: "Une copie blanche ne peut pas obtenir de points.",
+          }],
+          minor_errors: [],
+          accepted_variations: [],
+        },
+        corrected: reference,
+        reference,
+        grammar_rules: [],
+        tips: ["Propose une traduction, même imparfaite : une copie blanche vaut 0."],
+        weak_grammar_points: [],
+        similar_sentences: [],
+        flashcard_rule: "Toujours tenter une traduction complète.",
+      };
+      return new Response(JSON.stringify(emptyOutput), {
+        headers: { ...corsHeaders(req), "Content-Type": "application/json" }
       });
     }
 
@@ -479,10 +541,11 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
+        response_format: { type: "json_object" },
         messages: [
           { role: "system", content: systemPrompt },
-          { 
-            role: "user", 
+          {
+            role: "user",
             content: `ANALYSE PRÉCISE REQUISE :
 
 PHRASE FRANÇAISE : ${french}
@@ -491,18 +554,16 @@ PHRASE PARFAITE (RÉFÉRENCE) : ${reference}
 RÉPONSE DE L'ÉTUDIANT : ${student}
 POINTS GRAMMATICAUX TRAVAILLÉS : ${grammar_points?.join(', ') || 'Non spécifiés'}
 
-INSTRUCTIONS D'ANALYSE :
-1. COMPARE mot par mot la réponse de l'étudiant avec la phrase parfaite
-2. IDENTIFIE chaque erreur spécifique (mot manquant, temps incorrect, structure fausse)
-3. POUR CHAQUE ERREUR, donne :
-   - L'erreur précise
-   - L'explication grammaticale
-   - La correction exacte
-   - La règle à retenir
-4. CALCULE le score : 10 points - 2 points par erreur grave - 1 point par erreur mineure
-5. ACCEPTE les variations correctes et synonymes valides
+PROCESSUS D'ANALYSE :
+1. Juge d'abord l'ÉQUIVALENCE SÉMANTIQUE : la phrase de l'élève dit-elle la même chose que le français ? Si OUI, n'invente pas d'erreur juste parce que les mots diffèrent de la référence.
+2. Identifie chaque erreur réelle et classe-la dans une des 4 catégories du barème :
+   - false_meaning (-2), major_conjugation (-2), grammar (-1), minor (-0.5).
+3. Pour chaque erreur, donne un "span" qui est un fragment textuel EXACT de la réponse de l'élève (copie-colle, casse identique). Pour une OMISSION, mets "span": "".
+4. Calcule score = max(0, 10 + somme des penalties). Arrondi à 0,5 près.
+5. Renseigne "accepted_variations" : 2 à 4 formulations alternatives valides qui auraient eu 10/10, différentes de la référence.
+6. Si la traduction est parfaite ou sémantiquement équivalente sans faute, "breakdown" doit être un tableau VIDE et "score" = 10.
 
-Analyse précisément selon les critères ECRICOME et identifie TOUTES les erreurs spécifiques aux constructions de presse géopolitique.` 
+Sois RIGOUREUX sur les pénalités, GÉNÉREUX sur l'équivalence sémantique.`
           }
         ],
         max_tokens: 1500,
@@ -559,34 +620,215 @@ Analyse précisément selon les critères ECRICOME et identifie TOUTES les erreu
       }
     }
     
+    // === Normalisation du breakdown ===
+    const ALLOWED_TYPES: Record<string, number> = {
+      false_meaning: -2,
+      major_conjugation: -2,
+      grammar: -1,
+      minor: -0.5,
+    };
+    const TYPE_LABELS: Record<string, string> = {
+      false_meaning: "Faux sens",
+      major_conjugation: "Conjugaison majeure",
+      grammar: "Grammaire",
+      minor: "Petite erreur",
+    };
+    const rawBreakdown = Array.isArray(output.breakdown) ? output.breakdown : [];
+    let breakdown = rawBreakdown
+      .map((item: any) => {
+        const type = typeof item?.type === "string" && item.type in ALLOWED_TYPES ? item.type : null;
+        if (!type) return null;
+        const expectedPenalty = ALLOWED_TYPES[type];
+        const rawPenalty = Number(item?.penalty);
+        const penalty = Number.isFinite(rawPenalty) && rawPenalty < 0 ? rawPenalty : expectedPenalty;
+        return {
+          type,
+          label: TYPE_LABELS[type],
+          penalty,
+          span: typeof item?.span === "string" ? item.span : "",
+          explanation: typeof item?.explanation === "string" ? item.explanation : "",
+          correction: typeof item?.correction === "string" ? item.correction : "",
+          rule: typeof item?.rule === "string" ? item.rule : "",
+        };
+      })
+      .filter(Boolean);
+
+    // Fallback : si gpt-4o-mini a renvoyé l'ancien format (uniquement severity.{major,minor}_errors),
+    // on reconstruit un breakdown approximatif pour que le front affiche quand même quelque chose.
+    if (breakdown.length === 0) {
+      const fallbackMajors = Array.isArray(output.severity?.major_errors) ? output.severity.major_errors : [];
+      const fallbackMinors = Array.isArray(output.severity?.minor_errors) ? output.severity.minor_errors : [];
+      const toEntry = (e: any, isMajor: boolean) => {
+        const text = typeof e === "string" ? e : "";
+        const explanation = typeof e?.explanation === "string" ? e.explanation : text;
+        const correction = typeof e?.correction === "string" ? e.correction : "";
+        const rule = typeof e?.rule === "string" ? e.rule : "";
+        const errorLabel = typeof e?.error === "string" ? e.error : "";
+        // Heuristique pour le type : si "conjug" dans la description → major_conjugation,
+        // sinon major = false_meaning, minor = grammar par défaut.
+        const haystack = `${errorLabel} ${explanation} ${rule}`.toLowerCase();
+        let type: keyof typeof ALLOWED_TYPES;
+        if (isMajor) {
+          type = /conjug|temps|tense|auxiliaire/.test(haystack) ? "major_conjugation" : "false_meaning";
+        } else {
+          type = /orthographe|spelling|accent|registre/.test(haystack) ? "minor" : "grammar";
+        }
+        return {
+          type,
+          label: TYPE_LABELS[type],
+          penalty: ALLOWED_TYPES[type],
+          span: "",
+          explanation: explanation || errorLabel,
+          correction,
+          rule,
+        };
+      };
+      breakdown = [
+        ...fallbackMajors.map((e: any) => toEntry(e, true)),
+        ...fallbackMinors.map((e: any) => toEntry(e, false)),
+      ];
+    }
+
+    // Score préliminaire : si l'IA en a donné un, on le respecte. Sinon on le recalcule.
+    const computedScore = breakdown.reduce((acc: number, e: any) => acc + e.penalty, 10);
+    const llmScore = Number(output.score);
+    let preliminaryScore = Math.max(
+      0,
+      Math.min(10, Number.isFinite(llmScore) ? llmScore : computedScore)
+    );
+
+    // === GARDE-FOU COUVERTURE SÉMANTIQUE (déterministe, prioritaire) ===
+    // Le score ne peut PAS dépasser (couverture du sens) × 10. Un hors-sujet = 0.
+    const rawCoverage = Array.isArray(output.coverage) ? output.coverage : [];
+    const coverageSegments = rawCoverage
+      .map((c: any) => {
+        const status = typeof c?.status === "string" ? c.status.toLowerCase() : "";
+        const segment = typeof c?.segment === "string" ? c.segment : "";
+        if (!segment) return null;
+        if (status !== "present" && status !== "altered" && status !== "missing") return null;
+        return { segment, status };
+      })
+      .filter(Boolean);
+
+    if (coverageSegments.length > 0) {
+      const total = coverageSegments.length;
+      const weight = coverageSegments.reduce(
+        (acc: number, s: any) => acc + (s.status === "present" ? 1 : s.status === "altered" ? 0.5 : 0),
+        0
+      );
+      const semanticCoverage = weight / total;
+      const cap = Math.round(semanticCoverage * 10 * 2) / 2; // plafond, arrondi 0,5
+      const missing = coverageSegments.filter((s: any) => s.status === "missing");
+      const altered = coverageSegments.filter((s: any) => s.status === "altered");
+
+      if (preliminaryScore > cap) {
+        // Liste explicite des segments non rendus, visible dans le détail du score
+        const missingList = missing.map((s: any) => `« ${s.segment} »`).join(" ; ");
+        breakdown.push({
+          type: "false_meaning",
+          label: TYPE_LABELS["false_meaning"],
+          penalty: -(Math.round((preliminaryScore - cap) * 2) / 2) || -0.5,
+          span: "",
+          explanation:
+            missing.length === total
+              ? `Hors-sujet : la traduction ne rend AUCUN des segments de sens de la phrase française.`
+              : `Segments du sens non traduits (omis ou détournés) : ${missingList}. Couverture du sens ≈ ${Math.round(semanticCoverage * 100)} %.`,
+          correction: reference,
+          rule: "Le score est plafonné par la part du sens réellement rendue. Une phrase juste mais incomplète, ou hors-sujet, ne peut pas obtenir une bonne note.",
+        });
+        preliminaryScore = cap;
+      }
+    } else {
+      // FALLBACK (coverage absent) : garde-fou grossier par nombre de mots, durci.
+      const countWords = (s: string) => (s || "").trim().split(/\s+/).filter(Boolean).length;
+      const wRef = countWords(reference);
+      const wStu = countWords(student);
+      const coverageRatio = wRef > 0 ? Math.min(1, wStu / wRef) : 1;
+      if (coverageRatio < 0.7) {
+        const cap = Math.max(0, Math.min(10, Math.round(coverageRatio * 10 * 2) / 2));
+        if (preliminaryScore > cap) {
+          breakdown.push({
+            type: "false_meaning",
+            label: TYPE_LABELS["false_meaning"],
+            penalty: -(Math.round((preliminaryScore - cap) * 2) / 2) || -0.5,
+            span: "",
+            explanation: `Traduction manifestement incomplète : ≈ ${Math.round(coverageRatio * 100)} % de la longueur attendue seulement. Les segments non traduits comptent comme des omissions.`,
+            correction: reference,
+            rule: "Une traduction doit rendre l'intégralité du sens. Toute omission est pénalisée.",
+          });
+          preliminaryScore = cap;
+        }
+      }
+    }
+
+    // === PLANCHER LEXICAL DÉTERMINISTE (toujours actif, indépendant de l'IA) ===
+    // Mesure brute : quelle part des mots de contenu de la référence se retrouve
+    // dans la réponse de l'élève ? Détecte les hors-sujet même si l'IA est trop gentille.
+    {
+      const STOP = new Set([
+        "the","a","an","of","to","in","on","at","for","and","or","but","is","are","was","were",
+        "be","been","being","by","with","as","that","this","it","its","their","his","her","they",
+        "le","la","les","un","une","des","de","du","et","ou","à","au","aux","en","dans","sur","ce",
+        "der","die","das","ein","eine","und","oder","zu","den","dem","im","el","los","las","y","o",
+      ]);
+      const norm = (s: string) =>
+        (s || "")
+          .toLowerCase()
+          .replace(/[^\p{L}\p{N}\s]/gu, " ")
+          .split(/\s+/)
+          .filter((w) => w.length > 2 && !STOP.has(w));
+      const refTokens = norm(reference);
+      const stuSet = new Set(norm(student));
+      if (refTokens.length >= 3 && stuSet.size > 0) {
+        const shared = refTokens.filter((t) => stuSet.has(t)).length;
+        const lexCoverage = shared / refTokens.length; // 0 = aucun mot-clé commun
+        // En dessous de 30 % de mots-clés communs : presque sûrement hors-sujet/omission massive.
+        if (lexCoverage < 0.3) {
+          const lexCap = Math.round(lexCoverage * 10 * 2) / 2; // ex. 0% -> 0, 20% -> 2
+          if (preliminaryScore > lexCap) {
+            breakdown.push({
+              type: "false_meaning",
+              label: TYPE_LABELS["false_meaning"],
+              penalty: -(Math.round((preliminaryScore - lexCap) * 2) / 2) || -0.5,
+              span: "",
+              explanation: `Très faible recouvrement avec la phrase attendue (≈ ${Math.round(lexCoverage * 100)} % des mots-clés). La réponse omet l'essentiel du sens ou est hors-sujet.`,
+              correction: reference,
+              rule: "Une traduction qui ne reprend presque aucun élément de sens de la phrase source ne peut pas obtenir de points.",
+            });
+            preliminaryScore = lexCap;
+          }
+        }
+      }
+    }
+
+    const finalScore = Math.max(0, Math.min(10, preliminaryScore));
+
+    // Rétrocompat : dériver severity.major_errors / minor_errors depuis le breakdown
+    const derivedMajor = breakdown
+      .filter((e: any) => e.penalty <= -2)
+      .map((e: any) => ({
+        error: e.span ? `${e.label} : "${e.span}"` : e.label,
+        explanation: e.explanation,
+        correction: e.correction,
+        rule: e.rule,
+      }));
+    const derivedMinor = breakdown
+      .filter((e: any) => e.penalty > -2)
+      .map((e: any) => ({
+        error: e.span ? `${e.label} : "${e.span}"` : e.label,
+        explanation: e.explanation,
+        correction: e.correction,
+        rule: e.rule,
+      }));
+
     // Retourner exactement la structure attendue par le frontend
     const validatedOutput = {
-      score: Math.max(0, Math.min(10, Number(output.score) || 0)),
+      score: finalScore,
+      breakdown,
+      coverage: coverageSegments,
       severity: {
-        major_errors: Array.isArray(output.severity?.major_errors) ? 
-          output.severity.major_errors.map(error => {
-            if (typeof error === 'string') {
-              return {
-                error: error,
-                explanation: "Erreur grammaticale majeure",
-                correction: "Vérifiez la structure de la phrase",
-                rule: "Règle grammaticale à réviser"
-              };
-            }
-            return error;
-          }) : [],
-        minor_errors: Array.isArray(output.severity?.minor_errors) ? 
-          output.severity.minor_errors.map(error => {
-            if (typeof error === 'string') {
-              return {
-                error: error,
-                explanation: "Erreur grammaticale mineure",
-                correction: "Vérifiez le vocabulaire et la grammaire",
-                rule: "Règle grammaticale à réviser"
-              };
-            }
-            return error;
-          }) : [],
+        major_errors: derivedMajor,
+        minor_errors: derivedMinor,
         accepted_variations: Array.isArray(output.severity?.accepted_variations) ? output.severity.accepted_variations : []
       },
       corrected: String(output.corrected || "Correction non disponible"),

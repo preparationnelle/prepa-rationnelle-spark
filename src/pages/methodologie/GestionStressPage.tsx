@@ -87,7 +87,7 @@ const GestionStressPage = () => (
       <p className="text-carnet-ink-soft mb-6">Quatre techniques testées et approuvées par des coachs en performance mentale.</p>
       <div className="space-y-4">
         {techniques.map((s) => (
-          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+          <div key={s.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
             <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
@@ -122,7 +122,7 @@ const GestionStressPage = () => (
     <MethodSection label="Section 03" title="Gérer les signes de stress pendant l'entretien" icon={Activity}>
       <div className="space-y-3">
         {signs.map(([signe, remede], i) => (
-          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+          <div key={i} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
             <div className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0 w-12 text-center">
               {String(i + 1).padStart(2, '0')}
             </div>

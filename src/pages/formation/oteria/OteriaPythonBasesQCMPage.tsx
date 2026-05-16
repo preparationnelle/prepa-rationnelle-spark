@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { CheckCircle, XCircle, Eye, EyeOff, RotateCcw } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { CheckCircle, XCircle, RotateCcw } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
-import { OteriaChapterTemplate } from '@/components/formation/OteriaChapterTemplate';
+import { OteriaPythonChapterTemplate } from '@/components/formation/OteriaPythonChapterTemplate';
 import { cn } from '@/lib/utils';
 
 interface Question {
@@ -181,8 +180,7 @@ const questions: Question[] = [
 const OteriaPythonBasesQCMPage = () => {
   const { currentUser } = useAuth();
   const [answers, setAnswers] = useState<Record<number, number>>({});
-  const [showResults, setShowResults] = useState(false);
-  const [showExplanations, setShowExplanations] = useState(false);
+  const [validated, setValidated] = useState(false);
   const [saveMessage, setSaveMessage] = useState('');
 
   const handleAnswerSelect = (questionId: number, optionIndex: number) => {
@@ -203,7 +201,7 @@ const OteriaPythonBasesQCMPage = () => {
   };
 
   const handleValidation = async () => {
-    setShowResults(true);
+    setValidated(true);
     const { correct, total } = calculateScore();
     const scorePercentage = Math.round((correct / total) * 100);
 
@@ -231,8 +229,7 @@ const OteriaPythonBasesQCMPage = () => {
 
   const resetQCM = () => {
     setAnswers({});
-    setShowResults(false);
-    setShowExplanations(false);
+    setValidated(false);
     setSaveMessage('');
   };
 
@@ -241,7 +238,7 @@ const OteriaPythonBasesQCMPage = () => {
   const answeredCount = Object.keys(answers).length;
 
   return (
-    <OteriaChapterTemplate
+    <OteriaPythonChapterTemplate
       sessionNumber={2}
       sessionTitle="Bases de Python & Algorithmique"
       description="Testez vos connaissances sur les bases de Python avec ce QCM interactif."
@@ -257,59 +254,45 @@ const OteriaPythonBasesQCMPage = () => {
       <div className="max-w-4xl mx-auto space-y-8">
 
         {/* Header du QCM */}
-        <div className="border border-carnet-rule rounded-lg p-6 bg-carnet-paper-2">
+        <div className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-md p-6 bg-carnet-paper-2">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-slate-900">
+            <h2 className="font-lora text-[24px] text-carnet-ink">
               QCM : Bases de Python
             </h2>
-            {showResults && (
-              <div className={cn(
-                "px-4 py-2 rounded-full text-sm font-bold",
-                scorePercentage >= 80 && "bg-emerald-100 text-emerald-800",
-                scorePercentage >= 60 && scorePercentage < 80 && "bg-amber-100 text-amber-800",
-                scorePercentage < 60 && "bg-red-100 text-red-800"
-              )}>
+            {validated && (
+              <div className="px-4 py-2 rounded-full font-instrument text-[14px] font-bold bg-carnet-ink text-carnet-paper">
                 {correct}/{total} ({scorePercentage}%)
               </div>
             )}
           </div>
 
           <div className="flex flex-wrap gap-3">
-            {!showResults ? (
-              <Button
+            {!validated ? (
+              <button
+                type="button"
                 onClick={handleValidation}
                 disabled={answeredCount < questions.length}
-                className="bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper"
+                className="inline-flex items-center gap-2 bg-carnet-ink hover:bg-carnet-red text-carnet-paper rounded-full font-instrument font-semibold px-5 h-10 text-[14px] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <CheckCircle className="h-4 w-4 mr-2" />
+                <CheckCircle className="h-4 w-4" />
                 Valider ({answeredCount}/{questions.length})
-              </Button>
+              </button>
             ) : (
-              <>
-                <Button
-                  onClick={() => setShowExplanations(!showExplanations)}
-                  variant="outline"
-                  className="border-carnet-rule text-carnet-ink hover:bg-carnet-paper"
-                >
-                  {showExplanations ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
-                  {showExplanations ? 'Masquer' : 'Afficher'} les explications
-                </Button>
-                <Button
-                  onClick={resetQCM}
-                  variant="outline"
-                  className="border-carnet-rule text-carnet-ink hover:bg-carnet-paper"
-                >
-                  <RotateCcw className="h-4 w-4 mr-2" />
-                  Recommencer
-                </Button>
-              </>
+              <button
+                type="button"
+                onClick={resetQCM}
+                className="inline-flex items-center gap-2 bg-transparent border border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:text-carnet-red hover:border-carnet-red rounded-full font-instrument font-semibold px-5 h-10 text-[14px] transition-colors"
+              >
+                <RotateCcw className="h-4 w-4" />
+                Recommencer
+              </button>
             )}
           </div>
 
           {saveMessage && (
             <div className={cn(
-              "mt-4 text-sm font-medium",
-              saveMessage.includes('Erreur') ? 'text-red-600' : 'text-emerald-600'
+              "mt-4 font-instrument text-[14px] font-medium",
+              saveMessage.includes('Erreur') ? 'text-carnet-ink-mute' : 'text-carnet-red'
             )}>
               {saveMessage}
             </div>
@@ -319,22 +302,21 @@ const OteriaPythonBasesQCMPage = () => {
         {/* Questions */}
         {questions.map((question, index) => {
           const userAnswer = answers[question.id];
-          const isAnswered = userAnswer !== undefined;
 
           return (
-            <div key={question.id} className="border border-carnet-rule rounded-lg overflow-hidden bg-carnet-paper-2">
+            <div key={question.id} className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-md overflow-hidden bg-carnet-paper-2">
               {/* Question header */}
-              <div className="bg-carnet-paper border-b border-carnet-rule px-6 py-4">
+              <div className="carnet-paper-2 border-b border-dashed border-[rgba(78,55,30,0.18)] px-6 py-4">
                 <div className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 bg-carnet-red text-carnet-paper rounded-full flex items-center justify-center text-sm font-bold">
+                  <span className="flex-shrink-0 w-7 h-7 bg-carnet-ink text-carnet-paper rounded-full flex items-center justify-center font-instrument text-[13px] font-bold">
                     {index + 1}
                   </span>
                   <div className="flex-1">
-                    <h3 className="text-slate-900 font-medium leading-relaxed">
+                    <h3 className="font-lora text-[18px] text-carnet-ink leading-snug">
                       {question.question}
                     </h3>
                     <div className="mt-1">
-                      <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-carnet-paper text-carnet-ink-soft">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded font-instrument text-[11px] uppercase tracking-[0.12em] font-semibold text-carnet-red bg-[rgba(193,68,58,0.08)]">
                         {question.category}
                       </span>
                     </div>
@@ -347,59 +329,57 @@ const OteriaPythonBasesQCMPage = () => {
                 {question.options.map((option, optionIndex) => {
                   const isSelected = userAnswer === optionIndex;
                   const isCorrect = optionIndex === question.correctAnswer;
-                  const showCorrectAnswer = showResults && isCorrect;
-                  const showWrongAnswer = showResults && isSelected && !isCorrect;
+                  const showCorrectAnswer = validated && isCorrect;
+                  const showWrongAnswer = validated && isSelected && !isCorrect;
 
                   return (
                     <div
                       key={optionIndex}
-                      onClick={() => !showResults && handleAnswerSelect(question.id, optionIndex)}
+                      onClick={() => !validated && handleAnswerSelect(question.id, optionIndex)}
                       className={cn(
-                        "p-4 rounded-lg border-2 transition-all duration-200",
-                        !showResults && "cursor-pointer hover:border-carnet-red/40",
-                        showResults && "cursor-default",
-                        showCorrectAnswer && "border-emerald-500 bg-emerald-50",
-                        showWrongAnswer && "border-red-500 bg-red-50",
-                        !showCorrectAnswer && !showWrongAnswer && isSelected && "border-carnet-red/60 bg-carnet-paper",
-                        !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-carnet-rule bg-carnet-paper-2"
+                        "p-4 rounded-md border transition-all duration-200",
+                        !validated && "cursor-pointer hover:border-carnet-red",
+                        validated && "cursor-default",
+                        showCorrectAnswer && "border-carnet-red bg-[rgba(193,68,58,0.08)] carnet-hl",
+                        showWrongAnswer && "border-[rgba(78,55,30,0.18)] bg-carnet-paper",
+                        !showCorrectAnswer && !showWrongAnswer && isSelected && "border-carnet-red bg-carnet-paper",
+                        !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-[rgba(78,55,30,0.18)] bg-carnet-paper-2"
                       )}
                     >
                       <div className="flex items-center gap-3">
                         <div className={cn(
-                          "w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0",
-                          showCorrectAnswer && "border-emerald-600 bg-emerald-600",
-                          showWrongAnswer && "border-red-600 bg-red-600",
+                          "w-5 h-5 rounded-full border flex items-center justify-center flex-shrink-0",
+                          showCorrectAnswer && "border-carnet-red bg-carnet-red",
+                          showWrongAnswer && "border-carnet-ink-mute",
                           !showCorrectAnswer && !showWrongAnswer && isSelected && "border-carnet-red bg-carnet-red",
-                          !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-carnet-rule"
+                          !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-[rgba(78,55,30,0.18)]"
                         )}>
                           {(isSelected || showCorrectAnswer) && (
-                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                            <div className="w-2 h-2 bg-carnet-paper rounded-full"></div>
                           )}
                         </div>
                         <span className={cn(
-                          "text-sm font-medium flex-1",
-                          showCorrectAnswer && "text-emerald-900",
-                          showWrongAnswer && "text-red-900",
-                          !showCorrectAnswer && !showWrongAnswer && "text-slate-700"
+                          "font-instrument text-[14px] font-medium flex-1",
+                          showCorrectAnswer && "text-carnet-ink",
+                          showWrongAnswer && "text-carnet-ink-mute line-through",
+                          !showCorrectAnswer && !showWrongAnswer && "text-carnet-ink"
                         )}>
                           {option}
                         </span>
-                        {showCorrectAnswer && <CheckCircle className="h-5 w-5 text-emerald-600 flex-shrink-0" />}
-                        {showWrongAnswer && <XCircle className="h-5 w-5 text-red-600 flex-shrink-0" />}
+                        {showCorrectAnswer && <CheckCircle className="h-5 w-5 text-carnet-red flex-shrink-0" />}
+                        {showWrongAnswer && <XCircle className="h-5 w-5 text-carnet-ink-mute flex-shrink-0" />}
                       </div>
                     </div>
                   );
                 })}
               </div>
 
-              {/* Explication */}
-              {showResults && showExplanations && (
+              {/* Explication — toujours visible après validation */}
+              {validated && (
                 <div className="px-6 pb-6">
-                  <div className="bg-slate-50 border border-carnet-rule rounded-lg p-4">
-                    <h4 className="text-sm font-bold text-slate-900 mb-2 uppercase tracking-wide">
-                      💡 Explication
-                    </h4>
-                    <p className="text-sm text-slate-700 leading-relaxed">
+                  <div className="bg-carnet-paper border border-dashed border-[rgba(78,55,30,0.18)] rounded-md p-4">
+                    <div className="carnet-eyebrow mb-2">Explication</div>
+                    <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.65]">
                       {question.explanation}
                     </p>
                   </div>
@@ -410,7 +390,7 @@ const OteriaPythonBasesQCMPage = () => {
         })}
 
       </div>
-    </OteriaChapterTemplate>
+    </OteriaPythonChapterTemplate>
   );
 };
 

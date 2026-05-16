@@ -44,7 +44,7 @@ const ProjetProfessionnelPage = () => {
             { n: "03", t: "Étapes intermédiaires", d: "Votre plan d'action : premiers postes, secteurs, compétences à développer." },
             { n: "04", t: "Lien avec vos expériences", d: "Comment vos expériences passées nourrissent et valident votre projet." },
           ].map((s) => (
-            <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+            <div key={s.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
               <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
               <div>
                 <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>

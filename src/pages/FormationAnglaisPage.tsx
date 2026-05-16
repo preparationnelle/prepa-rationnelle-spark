@@ -128,8 +128,7 @@ const FormationAnglaisPage = () => {
                 <motion.div
                   key={module.to}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: Math.min(idx * 0.06, 0.3) }}
                   className={tilt}
                 >

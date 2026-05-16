@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Module3IntegraleImpropreExercicesPage: React.FC = () => {
   return (
     <div className="min-h-screen carnet-paper carnet-cours-skin">
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
             <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
@@ -40,8 +40,8 @@ const Module3IntegraleImpropreExercicesPage: React.FC = () => {
             <div className="w-20 h-20 bg-carnet-red/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <Construction className="w-10 h-10 text-carnet-red" />
             </div>
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Contenu en construction</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto mb-8">Les exercices dédiés seront ajoutés prochainement.</p>
+            <h2 className="text-2xl font-semibold text-carnet-ink mb-4">Contenu en construction</h2>
+            <p className="text-carnet-ink-soft max-w-2xl mx-auto mb-8">Les exercices dédiés seront ajoutés prochainement.</p>
             <Link to="/formation/math/premiere-vers-deuxieme" className="inline-flex items-center justify-center px-6 py-3 bg-carnet-red text-white font-semibold rounded-lg hover:bg-carnet-red-deep transition-colors">
               Retourner aux chapitres
             </Link>

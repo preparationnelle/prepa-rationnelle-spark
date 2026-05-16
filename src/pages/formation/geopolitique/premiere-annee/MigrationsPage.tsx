@@ -25,11 +25,11 @@ const MigrationsPage: React.FC = () => {
       <div className="container mx-auto px-4 pt-12 pb-16">
         <div className="max-w-4xl mx-auto bg-carnet-paper-2 border border-carnet-rule rounded-xl p-6">
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-gray-900">Les migrations</h1>
+            <h1 className="text-3xl font-bold text-carnet-ink">Les migrations</h1>
             <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
-          <div className="space-y-8 text-gray-900">
+          <div className="space-y-8 text-carnet-ink">
             <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4">
               <p>Crise migratoire de 2015 : arrivée incontrôlée d’environ 1,5 M de migrants du Moyen‑Orient et d’Afrique subsaharienne — incapacité des membres de l’UE à adopter une réponse commune (accueil vs murs).</p>
               <p className="mt-2">Migration : internationale (entre pays) ou interne (au sein d’un pays). ≈ 280 M de migrants internationaux (≈3,5% de la population mondiale en 2022). Dans la mondialisation contemporaine : dynamiques push/pull, rejets xénophobes/populistes ou élans de solidarité, rééquilibrages démographiques, main‑d’œuvre, remises…</p>

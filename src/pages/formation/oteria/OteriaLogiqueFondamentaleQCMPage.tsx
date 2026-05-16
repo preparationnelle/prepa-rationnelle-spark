@@ -324,7 +324,7 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
         {/* Header du QCM */}
         <div className="border border-carnet-rule rounded-lg p-6 bg-carnet-paper-2">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-slate-900">
+            <h2 className="text-xl font-bold text-carnet-ink">
               {qcmData.title}
             </h2>
             {showResults && (
@@ -394,7 +394,7 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
                   <span className="flex-shrink-0 w-7 h-7 bg-carnet-red text-carnet-paper rounded-full flex items-center justify-center text-sm font-bold">
                     {question.id}
                   </span>
-                  <h3 className="text-slate-900 font-medium leading-relaxed">
+                  <h3 className="text-carnet-ink font-medium leading-relaxed">
                     {question.question}
                   </h3>
                 </div>
@@ -438,7 +438,7 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
                           "text-sm font-medium flex-1",
                           showCorrectAnswer && "text-emerald-900",
                           showWrongAnswer && "text-red-900",
-                          !showCorrectAnswer && !showWrongAnswer && "text-slate-700"
+                          !showCorrectAnswer && !showWrongAnswer && "text-carnet-ink"
                         )}>
                           <span className="font-bold">{choice.key.toUpperCase()})</span> {choice.text}
                         </span>
@@ -453,11 +453,11 @@ const OteriaLogiqueFondamentaleQCMPage = () => {
               {/* Explication */}
               {showResults && showExplanations && (
                 <div className="px-6 pb-6">
-                  <div className="bg-slate-50 border border-carnet-rule rounded-lg p-4">
-                    <h4 className="text-sm font-bold text-slate-900 mb-2 uppercase tracking-wide">
+                  <div className="bg-carnet-paper border border-carnet-rule rounded-lg p-4">
+                    <h4 className="text-sm font-bold text-carnet-ink mb-2 uppercase tracking-wide">
                       💡 Explication
                     </h4>
-                    <p className="text-sm text-slate-700 leading-relaxed">
+                    <p className="text-sm text-carnet-ink leading-relaxed">
                       {question.explanation}
                     </p>
                   </div>

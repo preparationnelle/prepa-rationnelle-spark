@@ -35,7 +35,7 @@ interface FlashcardInputProps {
 }
 
 const fieldClass =
-  "bg-white border-pr-gray-light text-pr-black placeholder:text-pr-gray-mid focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 rounded-lg transition-colors";
+  "bg-carnet-paper-2 border-pr-gray-light text-pr-black placeholder:text-pr-gray-mid focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 rounded-lg transition-colors";
 
 const labelClass =
   "text-[11px] font-semibold uppercase tracking-[0.12em] text-pr-gray-mid";

@@ -1,12 +1,37 @@
+import React from 'react';
 import { CheckCircle } from 'lucide-react';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { matricesQuizQuestions } from '@/data/pythonQuizQuestions';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
+import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
 import { usePythonProgress } from '@/hooks/usePythonProgress';
 import { Button } from '@/components/ui/button';
 import { CarnetHero, CarnetSection, CarnetCallout, CarnetCodeBlock } from '@/components/carnet';
+
+/* ── Tableau carnet (bordures rgba(78,55,30,*), zéro slate) ── */
+const Table = ({ children }: { children: React.ReactNode }) => (
+  <div className="relative w-full overflow-x-auto rounded-md border border-[rgba(78,55,30,0.18)]">
+    <table className="w-full border-collapse font-instrument text-[14px] text-carnet-ink-soft">
+      {children}
+    </table>
+  </div>
+);
+const TableHeader = ({ children }: { children: React.ReactNode }) => (
+  <thead className="bg-carnet-paper-2">{children}</thead>
+);
+const TableBody = ({ children }: { children: React.ReactNode }) => <tbody>{children}</tbody>;
+const TableRow = ({ children }: { children: React.ReactNode }) => (
+  <tr className="border-b border-[rgba(78,55,30,0.12)] last:border-0">{children}</tr>
+);
+const TableHead = ({ children }: { children: React.ReactNode }) => (
+  <th className="px-4 py-3 text-left font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold border-b border-[rgba(78,55,30,0.18)]">
+    {children}
+  </th>
+);
+const TableCell = ({ children }: { children: React.ReactNode }) => (
+  <td className="px-4 py-3 align-top text-carnet-ink-soft">{children}</td>
+);
 
 const PythonMatricesPage = () => {
   const { markAsComplete, isChapterComplete } = usePythonProgress();
@@ -27,6 +52,8 @@ const PythonMatricesPage = () => {
         highlight="aisance"
         handNote={'↘ np.dot ≠\nA * B'}
       />
+
+      <PythonNavigationTabs className="mb-8" />
 
       {/* Objectifs du module */}
       <section className="carnet-card p-8 sm:p-10 mb-12">
@@ -289,9 +316,9 @@ np.sqrt(A)     # Racine carrée de chaque élément`}</CarnetCodeBlock>
         </div>
         <hr className="carnet-divider mb-6" />
         <p className="font-instrument text-[15px] text-carnet-ink-soft mb-4">
-          Testez vos connaissances sur les matrices NumPy avec ce quiz interactif.
+          Teste tes connaissances sur les matrices NumPy avec ce quiz interactif.
         </p>
-        <PythonModuleQuiz title="Quiz Matrices NumPy" questions={matricesQuizQuestions} />
+        <PythonModuleQuiz title="Quiz pratique — Module 1" questions={matricesQuizQuestions} />
       </section>
 
       {/* Navigation */}
@@ -300,7 +327,7 @@ np.sqrt(A)     # Racine carrée de chaque élément`}</CarnetCodeBlock>
           id: 1,
           title: 'Matrices',
           slug: 'matrices',
-          color: 'blue',
+          color: 'carnet',
         }}
         isExercisePage={false}
       />

@@ -25,11 +25,11 @@ const GouvernanceMondialePage: React.FC = () => {
       <div className="container mx-auto px-4 pt-12 pb-16">
         <div className="max-w-4xl mx-auto bg-carnet-paper-2 border border-carnet-rule rounded-xl p-6">
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-gray-900">Gouvernance mondiale</h1>
+            <h1 className="text-3xl font-bold text-carnet-ink">Gouvernance mondiale</h1>
             <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
-          <div className="space-y-8 text-gray-900">
+          <div className="space-y-8 text-carnet-ink">
             <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4">
               <p>Quand le monde était bipolaire (guerre froide) et unipolaire (domination exclusive des États‑Unis en 1991), les rapports de force paraissaient bordés par un jeu d’alliances bien défini (OTAN, Pacte de Varsovie…). Depuis l’émergence d’un monde multipolaire, voire apolaire, les rapports de force se sont complexifiés.</p>
               <p className="mt-2">Si des gouvernances régionales semblent avoir acquis une certaine maturité (UE ou ZIR comme le Mercosur), la gouvernance mondiale apparaît en retard (financement, pratiques – consensus laborieux…).</p>

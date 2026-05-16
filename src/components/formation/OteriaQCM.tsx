@@ -90,9 +90,9 @@ export const OteriaQCM: React.FC<OteriaQCMProps> = ({ questions, title, qcmId })
     return (
         <div className="max-w-4xl mx-auto space-y-8">
             {/* Header du QCM */}
-            <div className="border border-slate-200 rounded-lg p-6 bg-white shadow-sm">
+            <div className="border border-carnet-rule rounded-lg p-6 bg-carnet-paper-2 shadow-sm">
                 <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-xl font-bold text-slate-900">
+                    <h2 className="text-xl font-bold text-carnet-ink">
                         {title}
                     </h2>
                     {showResults && (
@@ -112,7 +112,7 @@ export const OteriaQCM: React.FC<OteriaQCMProps> = ({ questions, title, qcmId })
                         <Button
                             onClick={handleValidation}
                             disabled={answeredCount < questions.length}
-                            className="bg-slate-900 hover:bg-slate-800 text-white"
+                            className="bg-carnet-red hover:bg-carnet-red/90 text-carnet-paper"
                         >
                             <CheckCircle className="h-4 w-4 mr-2" />
                             Valider ({answeredCount}/{questions.length})
@@ -122,7 +122,7 @@ export const OteriaQCM: React.FC<OteriaQCMProps> = ({ questions, title, qcmId })
                             <Button
                                 onClick={() => setShowExplanations(!showExplanations)}
                                 variant="outline"
-                                className="border-slate-300 text-slate-700 hover:bg-slate-50"
+                                className="border-carnet-rule text-carnet-ink hover:bg-carnet-paper"
                             >
                                 {showExplanations ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
                                 {showExplanations ? 'Masquer' : 'Afficher'} les explications
@@ -130,7 +130,7 @@ export const OteriaQCM: React.FC<OteriaQCMProps> = ({ questions, title, qcmId })
                             <Button
                                 onClick={resetQCM}
                                 variant="outline"
-                                className="border-slate-300 text-slate-700 hover:bg-slate-50"
+                                className="border-carnet-rule text-carnet-ink hover:bg-carnet-paper"
                             >
                                 <RotateCcw className="h-4 w-4 mr-2" />
                                 Recommencer
@@ -155,14 +155,14 @@ export const OteriaQCM: React.FC<OteriaQCMProps> = ({ questions, title, qcmId })
                 const isAnswered = userAnswer !== undefined;
 
                 return (
-                    <div key={question.id} className="border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                    <div key={question.id} className="border border-carnet-rule rounded-lg overflow-hidden bg-carnet-paper-2 shadow-sm">
                         {/* Question header */}
-                        <div className="bg-slate-50 border-b border-slate-200 px-6 py-4">
+                        <div className="bg-carnet-paper border-b border-carnet-rule px-6 py-4">
                             <div className="flex items-start gap-3">
-                                <span className="flex-shrink-0 w-7 h-7 bg-slate-900 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                                <span className="flex-shrink-0 w-7 h-7 bg-carnet-red text-carnet-paper rounded-full flex items-center justify-center text-sm font-bold">
                                     {index + 1}
                                 </span>
-                                <div className="text-slate-900 font-medium leading-relaxed pt-0.5">
+                                <div className="text-carnet-ink font-medium leading-relaxed pt-0.5">
                                     <LatexRenderer latex={question.question} />
                                 </div>
                             </div>
@@ -186,8 +186,8 @@ export const OteriaQCM: React.FC<OteriaQCMProps> = ({ questions, title, qcmId })
                                             showResults && "cursor-default",
                                             showCorrectAnswer && "border-emerald-500 bg-emerald-50",
                                             showWrongAnswer && "border-red-500 bg-red-50",
-                                            !showCorrectAnswer && !showWrongAnswer && isSelected && "border-slate-400 bg-slate-50",
-                                            !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-slate-200 bg-white"
+                                            !showCorrectAnswer && !showWrongAnswer && isSelected && "border-carnet-rule bg-carnet-paper",
+                                            !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-carnet-rule bg-carnet-paper-2"
                                         )}
                                     >
                                         <div className="flex items-center gap-3">
@@ -195,8 +195,8 @@ export const OteriaQCM: React.FC<OteriaQCMProps> = ({ questions, title, qcmId })
                                                 "w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0",
                                                 showCorrectAnswer && "border-emerald-600 bg-emerald-600",
                                                 showWrongAnswer && "border-red-600 bg-red-600",
-                                                !showCorrectAnswer && !showWrongAnswer && isSelected && "border-slate-600 bg-slate-600",
-                                                !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-slate-300"
+                                                !showCorrectAnswer && !showWrongAnswer && isSelected && "border-carnet-ink bg-carnet-ink",
+                                                !showCorrectAnswer && !showWrongAnswer && !isSelected && "border-carnet-rule"
                                             )}>
                                                 {(isSelected || showCorrectAnswer) && (
                                                     <div className="w-2 h-2 bg-white rounded-full"></div>
@@ -206,7 +206,7 @@ export const OteriaQCM: React.FC<OteriaQCMProps> = ({ questions, title, qcmId })
                                                 "text-sm font-medium flex-1",
                                                 showCorrectAnswer && "text-emerald-900",
                                                 showWrongAnswer && "text-red-900",
-                                                !showCorrectAnswer && !showWrongAnswer && "text-slate-700"
+                                                !showCorrectAnswer && !showWrongAnswer && "text-carnet-ink"
                                             )}>
                                                 <LatexRenderer latex={option.text} />
                                             </span>
@@ -221,11 +221,11 @@ export const OteriaQCM: React.FC<OteriaQCMProps> = ({ questions, title, qcmId })
                         {/* Explication */}
                         {showResults && showExplanations && (
                             <div className="px-6 pb-6">
-                                <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
-                                    <h4 className="text-sm font-bold text-slate-900 mb-2 uppercase tracking-wide">
+                                <div className="bg-carnet-paper border border-carnet-rule rounded-lg p-4">
+                                    <h4 className="text-sm font-bold text-carnet-ink mb-2 uppercase tracking-wide">
                                         💡 Explication
                                     </h4>
-                                    <div className="text-sm text-slate-700 leading-relaxed">
+                                    <div className="text-sm text-carnet-ink leading-relaxed">
                                         <LatexRenderer latex={question.explanation} />
                                     </div>
                                 </div>

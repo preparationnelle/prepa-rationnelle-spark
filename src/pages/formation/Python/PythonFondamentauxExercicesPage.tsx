@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { ChevronDown, ChevronUp } from 'lucide-react';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import { LatexRenderer } from '@/components/LatexRenderer';
@@ -10,24 +7,20 @@ import { usePythonProgress } from '@/hooks/usePythonProgress';
 import PythonCodeEditor, { EvaluationResult } from '@/components/python/PythonCodeEditor';
 import CodeEvaluationResult from '@/components/python/CodeEvaluationResult';
 import {
-  PythonExerciseTopBar,
-  PythonExerciseDetailHeader,
-  PythonExerciseFooterNav,
   PythonStatementCard,
-  PythonCorrectionToggle,
   PythonCorrectionPanel,
   PythonCodeBlock,
   PythonExerciseGrid,
   PythonQCMLauncher,
   PythonExerciseHero,
   PythonSectionHeading,
+  PythonExerciseWorkspace,
 } from '@/components/formation/python/PythonExercisePage';
 import PythonQCMPanel from '@/components/formation/python/PythonQCMPanel';
 
 const PythonFondamentauxExercicesPage = () => {
   const [searchParams] = useSearchParams();
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
-  const [showCorrections, setShowCorrections] = useState<Set<number>>(new Set());
   const [showQCM, setShowQCM] = useState(false);
 
   // Progress tracking
@@ -79,19 +72,6 @@ const PythonFondamentauxExercicesPage = () => {
     setQcmAnswers({});
     setQcmSubmitted(false);
     setQcmScore(null);
-  };
-
-  const toggleCorrection = (exerciseIndex: number) => {
-    const newShowCorrections = new Set(showCorrections);
-    if (newShowCorrections.has(exerciseIndex)) {
-      newShowCorrections.delete(exerciseIndex);
-    } else {
-      newShowCorrections.add(exerciseIndex);
-      // Mark exercise as seen when showing correction (1-indexed)
-      const exerciseId = `python-${moduleId}-exo-${exerciseIndex + 1}`;
-      markExerciseAsSeen(exerciseId);
-    }
-    setShowCorrections(newShowCorrections);
   };
 
   const handleNavigate = (exerciseId: number) => {
@@ -801,16 +781,55 @@ print("Liste triée :", tri_insertion(L))`
     }
   }];
 
+  // Mark the exercise as seen as soon as it is opened (corrigé toujours visible)
+  useEffect(() => {
+    if (selectedExercise) {
+      markExerciseAsSeen(`python-${moduleId}-exo-${selectedExercise}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedExercise]);
+
+  // Keyboard navigation: ← / → between exercises
+  useEffect(() => {
+    if (!selectedExercise) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+      const tag = target.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || (target as HTMLElement).isContentEditable) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+      if (e.key === 'ArrowRight' && selectedExercise < exercises.length) {
+        e.preventDefault();
+        setSelectedExercise(selectedExercise + 1);
+        window.scrollTo(0, 0);
+      } else if (e.key === 'ArrowLeft' && selectedExercise > 1) {
+        e.preventDefault();
+        setSelectedExercise(selectedExercise - 1);
+        window.scrollTo(0, 0);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+    // `exercises` is a static literal (length never changes), so rebinding
+    // only on selectedExercise is correct.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedExercise]);
+
   if (selectedExercise) {
     const ex = exercises[selectedExercise - 1];
     const hasPrev = selectedExercise > 1;
     const hasNext = selectedExercise < exercises.length;
+    const isMultiPart = Boolean(ex.content.enonce_complet || ex.content.exercices);
 
     return (
       <PythonModuleLayout>
-        <PythonExerciseTopBar
+        <PythonExerciseWorkspace
           current={selectedExercise}
           total={exercises.length}
+          title={ex.title}
+          difficulty={ex.difficulty}
+          description={ex.description}
           onBack={() => setSelectedExercise(null)}
           onPrev={() => {
             if (hasPrev) {
@@ -826,42 +845,38 @@ print("Liste triée :", tri_insertion(L))`
           }}
           hasPrev={hasPrev}
           hasNext={hasNext}
+          objective={
+            ex.content.isLatex ? (
+              <LatexRenderer latex={ex.content.objective} />
+            ) : (
+              <p>{ex.content.objective}</p>
+            )
+          }
+          editor={
+            <PythonCodeEditor
+              embedded
+              minHeight={240}
+              exerciseStatement={ex.content.objective}
+              expectedSolution={ex.content.code || ''}
+              moduleId={String(moduleId)}
+              exerciseId={String(selectedExercise)}
+              onEvaluationComplete={(result) => {
+                setEvaluationResults(prev => ({ ...prev, [selectedExercise]: result }));
+                markExerciseAsSeen(`python-${moduleId}-exo-${selectedExercise}`);
+              }}
+            />
+          }
+          evaluationResult={
+            evaluationResults[selectedExercise] ? (
+              <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
+            ) : undefined
+          }
+          correction={
+            !isMultiPart && ex.content.code ? (
+              <PythonCodeBlock code={ex.content.code} />
+            ) : undefined
+          }
         />
-
-        <PythonExerciseDetailHeader
-          number={selectedExercise}
-          title={ex.title}
-          difficulty={ex.difficulty}
-        />
-
-        {ex.description && (
-          <p className="text-base md:text-lg text-carnet-ink-soft leading-relaxed mb-8 -mt-2">
-            {ex.description}
-          </p>
-        )}
-
-        <PythonStatementCard label="Objectif" icon="target">
-          {ex.content.isLatex ? (
-            <LatexRenderer latex={ex.content.objective} />
-          ) : (
-            <p>{ex.content.objective}</p>
-          )}
-        </PythonStatementCard>
-
-        <PythonCodeEditor
-          exerciseStatement={ex.content.objective}
-          expectedSolution={ex.content.code || ''}
-          moduleId={String(moduleId)}
-          exerciseId={String(selectedExercise)}
-          onEvaluationComplete={(result) => {
-            setEvaluationResults(prev => ({ ...prev, [selectedExercise]: result }));
-            markExerciseAsSeen(`python-${moduleId}-exo-${selectedExercise}`);
-          }}
-        />
-
-        {evaluationResults[selectedExercise] && (
-          <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
-        )}
 
         {ex.content.enonce_complet && (
           <>
@@ -890,35 +905,26 @@ print("Liste triée :", tri_insertion(L))`
               </div>
             </PythonStatementCard>
 
-            <PythonCorrectionToggle
-              isOpen={showCorrections.has(selectedExercise)}
-              onToggle={() => toggleCorrection(selectedExercise)}
-              labelClosed="Voir les corrections détaillées"
-              labelOpen="Masquer les corrections"
-            />
-
-            {showCorrections.has(selectedExercise) && (
-              <div className="space-y-5">
-                {Object.entries(ex.content.corrections).map(([key, correction]: [string, any]) => (
-                  <PythonCorrectionPanel key={key} title={correction.titre}>
-                    <div className="px-6 md:px-8 pt-5 pb-1">
-                      <p className="text-carnet-ink-soft text-[15px] leading-relaxed">
-                        {correction.explication}
-                      </p>
+            <div className="space-y-5 mt-6">
+              {Object.entries(ex.content.corrections).map(([key, correction]: [string, any]) => (
+                <PythonCorrectionPanel key={key} title={correction.titre}>
+                  <div className="px-6 md:px-8 pt-5 pb-1">
+                    <p className="text-carnet-ink-soft text-[15px] leading-relaxed">
+                      {correction.explication}
+                    </p>
+                  </div>
+                  <PythonCodeBlock code={correction.code} caption="Code" />
+                  <div className="px-6 md:px-8 py-4 bg-[rgba(193,68,58,0.04)] border-t border-[rgba(193,68,58,0.1)]">
+                    <div className="text-[10px] uppercase tracking-[0.12em] font-semibold text-carnet-red mb-1">
+                      Résultat attendu
                     </div>
-                    <PythonCodeBlock code={correction.code} caption="Code" />
-                    <div className="px-6 md:px-8 py-4 bg-[rgba(193,68,58,0.04)] border-t border-[rgba(193,68,58,0.1)]">
-                      <div className="text-[10px] uppercase tracking-[0.12em] font-semibold text-carnet-red mb-1">
-                        Résultat attendu
-                      </div>
-                      <div className="text-carnet-ink-soft text-[15px]">
-                        <LatexRenderer latex={correction.resultat_latex} />
-                      </div>
+                    <div className="text-carnet-ink-soft text-[15px]">
+                      <LatexRenderer latex={correction.resultat_latex} />
                     </div>
-                  </PythonCorrectionPanel>
-                ))}
-              </div>
-            )}
+                  </div>
+                </PythonCorrectionPanel>
+              ))}
+            </div>
           </>
         )}
 
@@ -941,65 +947,13 @@ print("Liste triée :", tri_insertion(L))`
                   )}
                 </PythonStatementCard>
 
-                <div className="flex justify-center">
-                  <Button
-                    variant="ghost"
-                    onClick={() => toggleCorrection(index + 100)}
-                    className="text-[12px] uppercase tracking-[0.08em] font-semibold text-carnet-red hover:bg-[rgba(193,68,58,0.06)]"
-                  >
-                    {showCorrections.has(index + 100) ? (
-                      <><ChevronUp className="h-4 w-4 mr-2" />Masquer la correction</>
-                    ) : (
-                      <><ChevronDown className="h-4 w-4 mr-2" />Voir la correction</>
-                    )}
-                  </Button>
-                </div>
-
-                {showCorrections.has(index + 100) && (
-                  <PythonCorrectionPanel>
-                    <PythonCodeBlock code={exercice.correction} />
-                  </PythonCorrectionPanel>
-                )}
+                <PythonCorrectionPanel>
+                  <PythonCodeBlock code={exercice.correction} />
+                </PythonCorrectionPanel>
               </div>
             ))}
           </div>
         )}
-
-        {!ex.content.exercices && !ex.content.enonce_complet && (
-          <>
-            <PythonCorrectionToggle
-              isOpen={showCorrections.has(selectedExercise)}
-              onToggle={() => toggleCorrection(selectedExercise)}
-            />
-
-            {showCorrections.has(selectedExercise) && ex.content.code && (
-              <PythonCorrectionPanel>
-                <PythonCodeBlock code={ex.content.code} />
-              </PythonCorrectionPanel>
-            )}
-          </>
-        )}
-
-        <PythonExerciseFooterNav
-          current={selectedExercise}
-          total={exercises.length}
-          onPrev={() => {
-            if (hasPrev) {
-              setSelectedExercise(selectedExercise - 1);
-              window.scrollTo(0, 0);
-            }
-          }}
-          onNext={() => {
-            if (hasNext) {
-              setSelectedExercise(selectedExercise + 1);
-              window.scrollTo(0, 0);
-            } else {
-              setSelectedExercise(null);
-            }
-          }}
-          hasPrev={hasPrev}
-          hasNext={hasNext}
-        />
 
         <ModuleNavigationCards
           currentModule={{

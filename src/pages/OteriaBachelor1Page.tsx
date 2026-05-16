@@ -179,8 +179,7 @@ const SessionCard = ({ session, idx }: { session: any; idx: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: Math.min(idx * 0.04, 0.3) }}
       className={`${tilt} h-full`}
     >
@@ -698,8 +697,7 @@ const OteriaBachelor1Page = () => {
         <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="max-w-[760px] mb-10"
           >
@@ -725,8 +723,7 @@ const OteriaBachelor1Page = () => {
         <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="max-w-[760px] mb-10"
           >
@@ -759,8 +756,7 @@ const OteriaBachelor1Page = () => {
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
                   className={tilt}
                 >

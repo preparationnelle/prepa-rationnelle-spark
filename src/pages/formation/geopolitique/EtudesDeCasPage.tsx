@@ -293,24 +293,24 @@ const EtudesDeCasPage = () => {
       blue: { bg: 'bg-pr-gray-bg', text: 'text-carnet-red', hover: 'hover:bg-carnet-red/10', badge: 'bg-carnet-red/10 text-carnet-red' },
       green: { bg: 'bg-green-50', text: 'text-green-700', hover: 'hover:bg-green-100', badge: 'bg-green-100 text-green-700' },
       purple: { bg: 'bg-purple-50', text: 'text-purple-700', hover: 'hover:bg-purple-100', badge: 'bg-purple-100 text-purple-700' },
-      orange: { bg: 'bg-gray-50', text: 'text-pr-black', hover: 'hover:bg-gray-100', badge: 'bg-gray-100 text-pr-black' },
-      gray: { bg: 'bg-gray-50', text: 'text-gray-700', hover: 'hover:bg-gray-100', badge: 'bg-gray-100 text-gray-700' },
+      orange: { bg: 'bg-carnet-paper', text: 'text-pr-black', hover: 'hover:bg-carnet-paper', badge: 'bg-carnet-paper text-pr-black' },
+      gray: { bg: 'bg-carnet-paper', text: 'text-carnet-ink', hover: 'hover:bg-carnet-paper', badge: 'bg-carnet-paper text-carnet-ink' },
       emerald: { bg: 'bg-emerald-50', text: 'text-emerald-700', hover: 'hover:bg-emerald-100', badge: 'bg-emerald-100 text-emerald-700' },
       yellow: { bg: 'bg-yellow-50', text: 'text-yellow-700', hover: 'hover:bg-yellow-100', badge: 'bg-yellow-100 text-yellow-700' },
       cyan: { bg: 'bg-cyan-50', text: 'text-cyan-700', hover: 'hover:bg-cyan-100', badge: 'bg-cyan-100 text-cyan-700' },
-      indigo: { bg: 'bg-indigo-50', text: 'text-indigo-700', hover: 'hover:bg-indigo-100', badge: 'bg-indigo-100 text-indigo-700' },
+      indigo: { bg: 'bg-carnet-paper', text: 'text-indigo-700', hover: 'hover:bg-indigo-100', badge: 'bg-indigo-100 text-indigo-700' },
       red: { bg: 'bg-red-50', text: 'text-red-700', hover: 'hover:bg-red-100', badge: 'bg-red-100 text-red-700' },
-      slate: { bg: 'bg-slate-50', text: 'text-slate-700', hover: 'hover:bg-slate-100', badge: 'bg-slate-100 text-slate-700' },
-      pr: { bg: 'bg-white', text: 'text-pr-black', hover: 'hover:bg-pr-gray-bg/40', badge: 'bg-pr-gray-bg text-pr-black' }
+      slate: { bg: 'bg-carnet-paper', text: 'text-slate-700', hover: 'hover:bg-carnet-paper', badge: 'bg-carnet-paper text-slate-700' },
+      pr: { bg: 'bg-carnet-paper-2', text: 'text-pr-black', hover: 'hover:bg-pr-gray-bg/40', badge: 'bg-pr-gray-bg text-pr-black' }
     };
     return colorMap[color] || colorMap.gray;
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-carnet-paper">
 
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -336,12 +336,12 @@ const EtudesDeCasPage = () => {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <FileText className="h-8 w-8 text-gray-600" />
-            <h1 className="text-4xl font-bold text-gray-900">
+            <FileText className="h-8 w-8 text-carnet-ink-soft" />
+            <h1 className="text-4xl font-bold text-carnet-ink">
               Thèmes centraux essentiels
             </h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-4xl">
+          <p className="text-lg text-carnet-ink-soft max-w-4xl">
             Maîtrisez les études de cas incontournables pour les concours de géopolitique. 
             Données actualisées 2024-2025, chiffres clés et analyses géopolitiques structurées.
           </p>
@@ -359,7 +359,7 @@ const EtudesDeCasPage = () => {
                 to={study.route}
                 className="block"
               >
-                <Card className={`h-full ${colors.bg} border border-gray-200 ${colors.hover} transition-all duration-200 hover:shadow-md`}>
+                <Card className={`h-full ${colors.bg} border border-carnet-rule ${colors.hover} transition-all duration-200 hover:shadow-md`}>
                   <CardHeader className="pb-3">
                     <div className="flex items-start gap-3">
                       <div className={`p-2 rounded-lg ${colors.badge}`}>
@@ -369,14 +369,14 @@ const EtudesDeCasPage = () => {
                         <CardTitle className={`text-lg ${colors.text} font-semibold`}>
                           {study.title}
                         </CardTitle>
-                        <p className="text-sm text-gray-600 mt-1">
+                        <p className="text-sm text-carnet-ink-soft mt-1">
                           {study.subtitle}
                         </p>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-0">
-                    <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+                    <p className="text-sm text-carnet-ink mb-4 leading-relaxed">
                       {study.description}
                     </p>
                     
@@ -385,7 +385,7 @@ const EtudesDeCasPage = () => {
                         <Badge 
                           key={index} 
                           variant="secondary" 
-                          className="text-xs bg-white border border-gray-300 text-gray-700"
+                          className="text-xs bg-carnet-paper-2 border border-carnet-rule text-carnet-ink"
                         >
                           {stat}
                         </Badge>
@@ -400,15 +400,15 @@ const EtudesDeCasPage = () => {
 
         {/* Information note */}
         <div className="mt-12 max-w-4xl mx-auto">
-          <Card className="border border-gray-200 bg-white">
+          <Card className="border border-carnet-rule bg-carnet-paper-2">
             <CardContent className="p-6">
               <div className="flex items-start gap-3">
-                <FileText className="h-5 w-5 text-gray-600 mt-0.5" />
+                <FileText className="h-5 w-5 text-carnet-ink-soft mt-0.5" />
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">
+                  <h3 className="font-semibold text-carnet-ink mb-2">
                     Contenu structuré pour les concours
                   </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <p className="text-sm text-carnet-ink-soft leading-relaxed">
                     Chaque thème central présente les données essentielles, les enjeux géopolitiques, 
                     et les exemples concrets à maîtriser. Sources actualisées 2024-2025 avec 
                     références d'experts (L. Carroué, M. Stock, H. Védrine, etc.).

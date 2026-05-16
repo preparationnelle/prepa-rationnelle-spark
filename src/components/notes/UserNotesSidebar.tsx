@@ -63,8 +63,8 @@ const NoteCard: React.FC<{
             {/* Selected text */}
             {note.selected_text && (
                 <div className="flex items-start gap-1.5 mb-2">
-                    <Quote className="h-3 w-3 text-gray-400 mt-0.5 shrink-0" />
-                    <p className="text-xs text-gray-500 italic line-clamp-2">
+                    <Quote className="h-3 w-3 text-carnet-ink-soft mt-0.5 shrink-0" />
+                    <p className="text-xs text-carnet-ink-soft italic line-clamp-2">
                         {note.selected_text}
                     </p>
                 </div>
@@ -89,7 +89,7 @@ const NoteCard: React.FC<{
                                     className={cn(
                                         "h-5 w-5 rounded-full border-2 transition-transform",
                                         c.dot,
-                                        note.color === c.value ? "scale-125 border-gray-600" : "border-transparent hover:scale-110"
+                                        note.color === c.value ? "scale-125 border-carnet-ink" : "border-transparent hover:scale-110"
                                     )}
                                 />
                             ))}
@@ -97,7 +97,7 @@ const NoteCard: React.FC<{
                         <div className="flex-1" />
                         <button
                             onClick={() => setIsEditing(false)}
-                            className="text-xs text-gray-500 hover:text-gray-700 px-2 py-1"
+                            className="text-xs text-carnet-ink-soft hover:text-carnet-ink px-2 py-1"
                         >
                             Annuler
                         </button>
@@ -111,8 +111,8 @@ const NoteCard: React.FC<{
                     </div>
                 </div>
             ) : (
-                <p className="text-sm text-gray-800 leading-relaxed">
-                    {note.note_content || <span className="italic text-gray-400">Pas de note</span>}
+                <p className="text-sm text-carnet-ink leading-relaxed">
+                    {note.note_content || <span className="italic text-carnet-ink-soft">Pas de note</span>}
                 </p>
             )}
 
@@ -134,7 +134,7 @@ const NoteCard: React.FC<{
                                 exit={{ height: 0, opacity: 0 }}
                                 className="overflow-hidden"
                             >
-                                <div className="mt-2 p-2 bg-white/60 rounded-lg text-xs text-gray-600 leading-relaxed whitespace-pre-line">
+                                <div className="mt-2 p-2 bg-carnet-paper/60 rounded-lg text-xs text-carnet-ink-soft leading-relaxed whitespace-pre-line">
                                     {note.ai_explanation}
                                 </div>
                             </motion.div>
@@ -145,7 +145,7 @@ const NoteCard: React.FC<{
 
             {/* Footer */}
             <div className="flex items-center justify-between mt-2 pt-2 border-t border-black/5">
-                <span className="text-[10px] text-gray-400 flex items-center gap-1">
+                <span className="text-[10px] text-carnet-ink-soft flex items-center gap-1">
                     <Clock className="h-2.5 w-2.5" />
                     {formatDate(note.created_at)}
                 </span>
@@ -158,7 +158,7 @@ const NoteCard: React.FC<{
                         className="h-6 w-6 rounded-md hover:bg-black/5 flex items-center justify-center transition-colors"
                         title="Modifier"
                     >
-                        <Edit3 className="h-3 w-3 text-gray-400" />
+                        <Edit3 className="h-3 w-3 text-carnet-ink-soft" />
                     </button>
                     <button
                         onClick={onDelete}
@@ -204,17 +204,17 @@ const UserNotesSidebar: React.FC<UserNotesSidebarProps> = ({
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed right-0 top-0 bottom-0 w-full sm:w-[380px] bg-carnet-paper shadow-2xl z-[201] flex flex-col border-l border-carnet-rule"
+                        className="fixed right-0 top-0 bottom-0 w-full sm:w-[380px] bg-carnet-paper shadow-lg z-[201] flex flex-col border-l border-carnet-rule"
                     >
                         {/* Header */}
-                        <div className="px-5 py-4 flex items-center justify-between border-b border-gray-100 bg-amber-50/50">
+                        <div className="px-5 py-4 flex items-center justify-between border-b border-carnet-rule/50 bg-amber-50/50">
                             <div className="flex items-center gap-3">
                                 <div className="h-10 w-10 bg-amber-100 rounded-xl flex items-center justify-center">
                                     <StickyNote className="h-5 w-5 text-amber-600" />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-gray-800 text-base">Mes notes</h3>
-                                    <p className="text-xs text-gray-500">
+                                    <h3 className="font-bold text-carnet-ink text-base">Mes notes</h3>
+                                    <p className="text-xs text-carnet-ink-soft">
                                         {pageNotes.length} note{pageNotes.length !== 1 ? 's' : ''} sur cette page
                                     </p>
                                 </div>
@@ -223,7 +223,7 @@ const UserNotesSidebar: React.FC<UserNotesSidebarProps> = ({
                                 onClick={onClose}
                                 className="h-8 w-8 rounded-lg hover:bg-carnet-paper flex items-center justify-center transition-colors"
                             >
-                                <X className="h-4 w-4 text-gray-500" />
+                                <X className="h-4 w-4 text-carnet-ink-soft" />
                             </button>
                         </div>
 
@@ -234,15 +234,15 @@ const UserNotesSidebar: React.FC<UserNotesSidebarProps> = ({
                                     <div className="h-8 w-8 rounded-full bg-amber-100 flex items-center justify-center animate-pulse">
                                         <StickyNote className="h-4 w-4 text-amber-500" />
                                     </div>
-                                    <p className="text-sm text-gray-400">Chargement...</p>
+                                    <p className="text-sm text-carnet-ink-soft">Chargement...</p>
                                 </div>
                             ) : pageNotes.length === 0 ? (
                                 <div className="flex flex-col items-center justify-center py-12 gap-3 text-center">
-                                    <div className="h-16 w-16 rounded-2xl bg-gray-50 flex items-center justify-center">
+                                    <div className="h-16 w-16 rounded-2xl bg-carnet-paper flex items-center justify-center">
                                         <FileText className="h-8 w-8 text-gray-300" />
                                     </div>
-                                    <p className="text-sm text-gray-500 font-medium">Aucune note sur cette page</p>
-                                    <p className="text-xs text-gray-400 max-w-[200px]">
+                                    <p className="text-sm text-carnet-ink-soft font-medium">Aucune note sur cette page</p>
+                                    <p className="text-xs text-carnet-ink-soft max-w-[200px]">
                                         Sélectionne du texte dans le cours pour ajouter une note ou demander une explication IA
                                     </p>
                                 </div>

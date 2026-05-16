@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ChevronDown, ChevronUp, CheckCircle, Trophy, Play, Target, BookOpen } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronDown, ChevronUp, CheckCircle, Trophy, Play, Target, BookOpen, Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -254,44 +254,7 @@ export const PythonStatementCard: React.FC<PythonStatementCardProps> = ({
 };
 
 /* -------------------------------------------------------------------------- */
-/*  PythonCorrectionToggle                                                      */
-/* -------------------------------------------------------------------------- */
-
-export interface PythonCorrectionToggleProps {
-  isOpen: boolean;
-  onToggle: () => void;
-  labelClosed?: string;
-  labelOpen?: string;
-}
-
-export const PythonCorrectionToggle: React.FC<PythonCorrectionToggleProps> = ({
-  isOpen,
-  onToggle,
-  labelClosed = 'Voir la correction',
-  labelOpen = 'Masquer la correction',
-}) => (
-  <div className="flex justify-center my-8">
-    <Button
-      onClick={onToggle}
-      variant="outline"
-      className={cn(
-        'rounded-full px-6 py-5 h-auto font-instrument text-sm font-semibold transition-all',
-        isOpen
-          ? 'border-[rgba(78,55,30,0.18)] text-carnet-ink-soft bg-[rgba(78,55,30,0.04)] hover:bg-[rgba(78,55,30,0.08)]'
-          : 'border-[rgba(193,68,58,0.3)] text-carnet-red bg-white hover:bg-[rgba(193,68,58,0.06)] hover:border-carnet-red'
-      )}
-    >
-      {isOpen ? (
-        <><ChevronUp className="h-4 w-4 mr-2" />{labelOpen}</>
-      ) : (
-        <><ChevronDown className="h-4 w-4 mr-2" />{labelClosed}</>
-      )}
-    </Button>
-  </div>
-);
-
-/* -------------------------------------------------------------------------- */
-/*  PythonCorrectionPanel                                                       */
+/*  PythonCorrectionPanel — toujours visible (jamais de repli)                  */
 /* -------------------------------------------------------------------------- */
 
 export interface PythonCorrectionPanelProps {
@@ -300,20 +263,18 @@ export interface PythonCorrectionPanelProps {
 }
 
 export const PythonCorrectionPanel: React.FC<PythonCorrectionPanelProps> = ({
-  title = 'Correction',
+  title = 'Corrigé',
   children,
 }) => (
-  <div className="animate-in fade-in slide-in-from-top-4 duration-500">
-    <div className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl overflow-hidden relative">
-      <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-carnet-red" />
-      <div className="px-6 md:px-8 pt-6 pb-3 flex items-center gap-2.5 border-b border-dashed border-[rgba(78,55,30,0.12)]">
-        <CheckCircle className="h-4 w-4 text-carnet-red" />
-        <span className="font-instrument text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-red">
-          {title}
-        </span>
-      </div>
-      <div>{children}</div>
+  <div className="bg-carnet-paper-2 border border-[rgba(78,55,30,0.14)] rounded-2xl overflow-hidden relative">
+    <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-carnet-red" />
+    <div className="px-6 md:px-8 pt-6 pb-3 flex items-center gap-2.5 border-b border-dashed border-[rgba(78,55,30,0.12)]">
+      <CheckCircle className="h-4 w-4 text-carnet-red" />
+      <span className="font-instrument text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-red">
+        {title}
+      </span>
     </div>
+    <div>{children}</div>
   </div>
 );
 
@@ -333,7 +294,7 @@ export const PythonCodeBlock: React.FC<PythonCodeBlockProps> = ({ code, caption 
         {caption}
       </div>
     )}
-    <pre className="px-6 md:px-8 py-5 text-[13px] md:text-sm font-mono leading-[1.75] whitespace-pre text-emerald-400">
+    <pre className="px-6 md:px-8 py-5 text-[13px] md:text-sm font-mono leading-[1.75] whitespace-pre text-carnet-paper/90">
       <code>{code}</code>
     </pre>
   </div>
@@ -491,3 +452,165 @@ export const PythonSectionHeading: React.FC<PythonSectionHeadingProps> = ({
     </h2>
   </div>
 );
+
+/* -------------------------------------------------------------------------- */
+/*  PythonExerciseWorkspace — single-block layout for fast practice           */
+/* -------------------------------------------------------------------------- */
+
+export interface PythonExerciseWorkspaceProps {
+  current: number;
+  total: number;
+  title: string;
+  difficulty?: string;
+  description?: string;
+  onBack: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+  hasPrev: boolean;
+  hasNext: boolean;
+  objective: ReactNode;
+  editor: ReactNode;
+  correction?: ReactNode;
+  /** @deprecated le corrigé est toujours affiché (plus de repli) */
+  showCorrection?: boolean;
+  /** @deprecated le corrigé est toujours affiché (plus de repli) */
+  onToggleCorrection?: () => void;
+  evaluationResult?: ReactNode;
+}
+
+export const PythonExerciseWorkspace: React.FC<PythonExerciseWorkspaceProps> = ({
+  current,
+  total,
+  title,
+  difficulty,
+  description,
+  onBack,
+  onPrev,
+  onNext,
+  hasPrev,
+  hasNext,
+  objective,
+  editor,
+  correction,
+  evaluationResult,
+}) => {
+  const cleanedTitle = title.includes(' - ')
+    ? title.split(' - ').slice(1).join(' - ')
+    : title;
+
+  return (
+    <div className="mb-6">
+      <div className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl overflow-hidden shadow-[0_1px_2px_rgba(78,55,30,0.04)]">
+        {/* Ultra-compact header — single slim row */}
+        <div className="relative flex items-center justify-between gap-3 px-3 md:px-4 py-2 border-b border-dashed border-[rgba(78,55,30,0.18)]">
+          <div className="flex items-center gap-2.5 min-w-0 flex-1">
+            <button
+              onClick={onBack}
+              className="inline-flex items-center gap-1 font-instrument text-[11px] uppercase tracking-[0.1em] font-semibold text-carnet-ink-mute hover:text-carnet-red transition-colors flex-shrink-0"
+              title="Liste des exercices"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Liste</span>
+            </button>
+            <span className="font-instrument text-[11px] tracking-[0.1em] font-semibold text-carnet-ink-mute flex-shrink-0">
+              {String(current).padStart(2, '0')}<span className="opacity-40">/</span>{String(total).padStart(2, '0')}
+            </span>
+            <div className="h-3.5 w-px bg-[rgba(78,55,30,0.18)] flex-shrink-0" />
+            <h2 className="font-lora text-[15px] md:text-base text-carnet-ink leading-tight truncate">
+              {cleanedTitle}
+            </h2>
+            {difficulty && (
+              <span className="hidden md:inline-flex items-center text-[9px] font-semibold uppercase tracking-[0.1em] text-carnet-red bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.2)] rounded-full px-2 py-0.5 flex-shrink-0">
+                {difficulty}
+              </span>
+            )}
+          </div>
+
+          <div className="flex items-center gap-0.5 flex-shrink-0">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={onPrev}
+              disabled={!hasPrev}
+              className="h-7 w-7 p-0 text-carnet-ink-soft hover:text-carnet-red hover:bg-[rgba(193,68,58,0.06)] disabled:opacity-30"
+              title="Précédent (←)"
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={onNext}
+              disabled={!hasNext}
+              className="h-7 w-7 p-0 text-carnet-ink-soft hover:text-carnet-red hover:bg-[rgba(193,68,58,0.06)] disabled:opacity-30"
+              title="Suivant (→)"
+            >
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+
+          {/* Progress as a hairline along the bottom edge of the header */}
+          <div className="absolute left-0 right-0 bottom-0 h-[2px] bg-[rgba(78,55,30,0.06)]">
+            <div
+              className="h-full bg-carnet-red transition-all duration-300"
+              style={{ width: `${(current / total) * 100}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Split content: objectif | éditeur — glued, no gap */}
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+          {/* Énoncé (left) */}
+          <div className="relative px-4 md:px-5 py-4 lg:border-r border-dashed border-[rgba(78,55,30,0.18)]">
+            <div className="absolute left-0 top-3 bottom-3 w-[3px] bg-carnet-red rounded-r" />
+            <div className="flex items-center gap-2 mb-2">
+              <Target className="h-3.5 w-3.5 text-carnet-red" />
+              <span className="font-instrument text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-red">
+                Objectif
+              </span>
+              {difficulty && (
+                <span className="md:hidden ml-auto inline-flex items-center text-[9px] font-semibold uppercase tracking-[0.1em] text-carnet-red bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.2)] rounded-full px-2 py-0.5">
+                  {difficulty}
+                </span>
+              )}
+            </div>
+            <div className="font-instrument text-carnet-ink text-base leading-[1.55]" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+              {objective}
+            </div>
+            {description && (
+              <p className="mt-2 font-instrument text-[13px] text-carnet-ink-soft leading-relaxed">
+                {description}
+              </p>
+            )}
+          </div>
+
+          {/* Éditeur (right) */}
+          <div className="px-4 md:px-5 py-4 bg-[rgba(78,55,30,0.02)] flex flex-col border-t lg:border-t-0 border-dashed border-[rgba(78,55,30,0.18)]">
+            {editor}
+          </div>
+        </div>
+
+        {evaluationResult && (
+          <div className="px-4 md:px-6 pt-0 pb-2">
+            {evaluationResult}
+          </div>
+        )}
+
+        {/* Corrigé — toujours visible, jamais replié */}
+        {correction && (
+          <div className="border-t border-dashed border-[rgba(78,55,30,0.18)]">
+            <div className="px-4 md:px-6 pt-3 pb-1 flex items-center gap-2">
+              <CheckCircle className="h-3.5 w-3.5 text-carnet-red" />
+              <span className="font-instrument text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-red">
+                Corrigé
+              </span>
+            </div>
+            <div className="px-4 md:px-6 pb-5 pt-1">
+              {correction}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};

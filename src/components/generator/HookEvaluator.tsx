@@ -115,7 +115,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
     return (
         <div className="space-y-6">
             {/* Input Card */}
-            <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+            <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
                 <div className="h-[3px] w-full bg-pr-black" />
                 <CardHeader className="px-6 pt-5 pb-4">
                     <div className="flex items-center gap-3">
@@ -158,7 +158,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                                 value={subject}
                                 onChange={(e) => setSubject(e.target.value)}
                                 readOnly={!!subjectFromParent}
-                                className={`text-[15px] h-12 rounded-xl pr-12 ${subjectFromParent ? 'bg-pr-gray-bg/40 border-pr-black-pale text-pr-gray-dark' : 'bg-white border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20'} text-pr-black placeholder:text-pr-gray-mid transition-colors`}
+                                className={`text-[15px] h-12 rounded-xl pr-12 ${subjectFromParent ? 'bg-pr-gray-bg/40 border-pr-black-pale text-pr-gray-dark' : 'bg-carnet-paper-2 border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20'} text-pr-black placeholder:text-pr-gray-mid transition-colors`}
                             />
                             {!subjectFromParent && (
                                 <div className="absolute top-1 right-1">
@@ -166,10 +166,10 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                                         <SelectTrigger className="w-10 h-10 p-0 flex justify-center items-center bg-transparent border-0 hover:bg-pr-gray-bg rounded-lg transition-colors" title="Choisir un sujet prédéfini">
                                             <BookOpenCheck className="h-4 w-4 text-pr-black" />
                                         </SelectTrigger>
-                                        <SelectContent className="max-h-[400px] bg-white border border-pr-gray-light shadow-xl rounded-xl">
+                                        <SelectContent className="max-h-[400px] bg-carnet-paper-2 border border-pr-gray-light shadow-xl rounded-xl">
                                             {Object.entries(subjectsByCategory).map(([category, subjects]) => (
                                                 <SelectGroup key={category}>
-                                                    <SelectLabel className="font-semibold text-pr-black sticky top-0 bg-white z-10 py-2 text-[11px] uppercase tracking-[0.12em]">
+                                                    <SelectLabel className="font-semibold text-pr-black sticky top-0 bg-carnet-paper-2 z-10 py-2 text-[11px] uppercase tracking-[0.12em]">
                                                         {getCategoryName(category as keyof typeof subjectsByCategory)}
                                                     </SelectLabel>
                                                     {subjects.map((subjectText, idx) => (
@@ -199,7 +199,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                             placeholder="Entrez votre accroche ici…"
                             value={hook}
                             onChange={(e) => setHook(e.target.value)}
-                            className="min-h-[140px] resize-y border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 bg-white rounded-xl text-[15px] leading-relaxed p-4 transition-colors text-pr-black placeholder:text-pr-gray-mid"
+                            className="min-h-[140px] resize-y border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 bg-carnet-paper-2 rounded-xl text-[15px] leading-relaxed p-4 transition-colors text-pr-black placeholder:text-pr-gray-mid"
                         />
                         <div className="text-[13px] text-pr-gray-mid">
                             <span className="font-semibold text-pr-black tabular-nums">{hook.length}</span> caractères · ~{Math.ceil(hook.length / 100)} lignes estimées
@@ -228,7 +228,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
 
                         <Button
                             onClick={loadExample}
-                            className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-5 font-medium transition-colors"
+                            className="bg-carnet-paper-2 border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-5 font-medium transition-colors"
                         >
                             Exemple
                         </Button>
@@ -255,7 +255,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                     )}
 
                     {/* Global Score */}
-                    <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+                    <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
                         <div className={`h-[3px] w-full ${(evaluation.globalScore / 20) * 100 >= 70 ? 'bg-pr-black' : 'bg-pr-black-soft'}`} />
                         <CardContent className="p-6 sm:p-8">
                             <div className="flex items-center justify-between gap-4 flex-wrap">
@@ -282,7 +282,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                             { label: 'Efficacité', value: evaluation.efficaciteScore, max: 6, hint: 'Concision & dynamisme' },
                             { label: 'Originalité', value: evaluation.originaliteScore, max: 6, hint: 'Culture & démarquage' },
                         ].map((s, idx) => (
-                            <Card key={idx} className="rounded-2xl border border-pr-gray-light bg-white shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+                            <Card key={idx} className="rounded-2xl border border-pr-gray-light bg-carnet-paper-2 shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
                                 <CardContent className="p-5 text-center">
                                     <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-2">
                                         {s.label}
@@ -299,7 +299,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
 
                     {/* Strengths */}
                     {evaluation.strengths.length > 0 && (
-                        <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+                        <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
                             <CardHeader className="px-6 pt-5 pb-3">
                                 <CardTitle className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
                                     <CheckCircle2 className="h-3.5 w-3.5 text-pr-black" />
@@ -321,7 +321,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
 
                     {/* Improvements */}
                     {evaluation.improvements.length > 0 && (
-                        <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+                        <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
                             <CardHeader className="px-6 pt-5 pb-3">
                                 <CardTitle className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
                                     <TrendingUp className="h-3.5 w-3.5 text-pr-black" />
@@ -343,7 +343,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
 
                     {/* Suggestions */}
                     {evaluation.suggestions.length > 0 && (
-                        <Card className="bg-white rounded-2xl border border-pr-gray-light border-l-[3px] border-l-pr-black shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+                        <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light border-l-[3px] border-l-pr-black shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
                             <CardHeader className="px-6 pt-5 pb-3">
                                 <CardTitle className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
                                     <Lightbulb className="h-3.5 w-3.5 text-pr-black" />
@@ -373,7 +373,7 @@ export const HookEvaluator = ({ subjectFromParent }: HookEvaluatorProps) => {
                                 </CardTitle>
                             </CardHeader>
                             <CardContent className="px-6 pb-6">
-                                <div className="bg-white p-6 rounded-xl border border-pr-black-soft">
+                                <div className="bg-carnet-paper-2 p-6 rounded-xl border border-pr-black-soft">
                                     <p className="font-lora italic text-[16px] leading-[1.6] text-pr-black">
                                         « {evaluation.improvedProposal} »
                                     </p>

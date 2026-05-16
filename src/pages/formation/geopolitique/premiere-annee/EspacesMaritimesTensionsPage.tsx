@@ -26,11 +26,11 @@ const EspacesMaritimesTensionsPage: React.FC = () => {
       <div className="container mx-auto px-4 pt-12 pb-16">
         <div className="max-w-4xl mx-auto bg-carnet-paper-2 border border-carnet-rule rounded-xl p-6">
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-gray-900">Les espaces maritimes, objets de tensions et de conflits entre États</h1>
+            <h1 className="text-3xl font-bold text-carnet-ink">Les espaces maritimes, objets de tensions et de conflits entre États</h1>
             <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
-          <div className="max-w-none text-gray-900 space-y-8">
+          <div className="max-w-none text-carnet-ink space-y-8">
             <div className="border-l-4 border-carnet-red pl-4">
               <h2 className="text-2xl font-semibold text-carnet-red mb-2">I. Attribut classique de la puissance, la maîtrise d’un espace maritime a pu engendrer des tensions latentes tout autant que des conflits manifestes</h2>
 

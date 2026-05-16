@@ -483,7 +483,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
                   <div className="flex flex-col items-center gap-4">
                     <button
                       onClick={startRecording}
-                      className="group relative w-24 h-24 rounded-full bg-pr-black hover:bg-pr-black-dark text-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pr-black-pale"
+                      className="group relative w-24 h-24 rounded-full bg-pr-black hover:bg-pr-black-dark text-white shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pr-black-pale"
                     >
                       <Mic className="h-10 w-10 mx-auto transition-transform group-hover:scale-110" />
                     </button>
@@ -510,7 +510,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
 
                     <button
                       onClick={stopRecording}
-                      className="group relative w-24 h-24 rounded-full bg-pr-black hover:bg-pr-gray-dark text-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pr-gray-light"
+                      className="group relative w-24 h-24 rounded-full bg-pr-black hover:bg-pr-gray-dark text-white shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pr-gray-light"
                     >
                       <Square className="h-8 w-8 mx-auto fill-white" />
                       <div className="absolute -inset-2 rounded-full border-2 border-pr-black animate-ping opacity-30"></div>
@@ -614,7 +614,7 @@ Je suis persuadé que ces éléments, combinés à ma détermination et à ma ca
               onClick={evaluateAnswer}
               disabled={isEvaluating || !userAnswer.trim()}
               size="lg"
-              className="bg-pr-black hover:bg-pr-black-dark text-white shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50"
+              className="bg-pr-black hover:bg-pr-black-dark text-white shadow-sm hover:shadow-lg transition-all duration-300 disabled:opacity-50"
             >
               {isEvaluating ? (
                 <>

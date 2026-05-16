@@ -124,28 +124,28 @@ const ProcheMoyenOrientChronologiePage = () => {
     <div className="relative">
       <div className="container mx-auto px-4 py-8">
         {/* Navigation breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-          <Link to="/" className="hover:text-gray-900 flex items-center gap-1">
+        <div className="flex items-center gap-2 text-sm text-carnet-ink-soft mb-6">
+          <Link to="/" className="hover:text-carnet-ink flex items-center gap-1">
             <Home className="h-4 w-4" />
             Accueil
           </Link>
           <ChevronRight className="h-4 w-4" />
-          <Link to="/formation/geopolitique" className="hover:text-gray-900">
+          <Link to="/formation/geopolitique" className="hover:text-carnet-ink">
             Géopolitique
           </Link>
           <ChevronRight className="h-4 w-4" />
-          <span className="text-gray-900 font-medium">Chronologie - Proche et Moyen-Orient</span>
+          <span className="text-carnet-ink font-medium">Chronologie - Proche et Moyen-Orient</span>
         </div>
 
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <Calendar className="h-8 w-8 text-purple-600" />
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-4xl font-bold text-carnet-ink">
               Chronologie du Proche et Moyen-Orient
             </h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-4xl">
+          <p className="text-lg text-carnet-ink-soft max-w-4xl">
             Une chronologie complète des événements marquants de l'histoire contemporaine du Proche et Moyen-Orient, 
             de l'incident d'Aqaba aux conflits actuels du XXIe siècle.
           </p>
@@ -154,18 +154,18 @@ const ProcheMoyenOrientChronologiePage = () => {
         {/* Events by decade */}
         {Object.entries(groupedEvents).map(([decade, decadeEvents]) => (
           <div key={decade} className="mb-10">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-purple-300 pb-2">
+            <h2 className="text-3xl font-bold text-carnet-ink mb-6 border-b-2 border-purple-300 pb-2">
               {decade}
             </h2>
             <div className="space-y-6">
               {decadeEvents.map((item, index) => (
-                <Card key={index} className="border-l-4 border-purple-500 shadow-sm hover:shadow-md transition-shadow bg-white">
+                <Card key={index} className="border-l-4 border-purple-500 shadow-sm hover:shadow-md transition-shadow bg-carnet-paper-2">
                   <CardContent className="p-4">
                     <div className="flex items-start">
                       <span className="flex-shrink-0 w-24 text-lg font-semibold text-purple-700 mr-4">
                         {item.year}
                       </span>
-                      <p className="flex-grow text-gray-700 leading-relaxed">
+                      <p className="flex-grow text-carnet-ink leading-relaxed">
                         {item.event}
                       </p>
                     </div>

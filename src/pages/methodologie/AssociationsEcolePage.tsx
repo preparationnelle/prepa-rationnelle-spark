@@ -65,7 +65,7 @@ const AssociationsEcolePage = () => {
           ].map((s) => (
             <div
               key={s.n}
-              className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4"
+              className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4"
             >
               <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
               <div>

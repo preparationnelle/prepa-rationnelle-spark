@@ -197,8 +197,7 @@ const MathsChoixOptionPage = () => {
                 <motion.div
                   key={module.id}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: Math.min(idx * 0.06, 0.3) }}
                   className={tilt}
                 >
@@ -268,8 +267,7 @@ const MathsChoixOptionPage = () => {
           <div className="mt-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="max-w-[760px] mb-10"
             >
@@ -286,8 +284,7 @@ const MathsChoixOptionPage = () => {
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-50px' }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: idx * 0.08 }}
                     className={tilt}
                   >
@@ -322,8 +319,7 @@ const MathsChoixOptionPage = () => {
           {/* Générateur IA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="mt-16 relative bg-carnet-ink rounded-lg p-8 sm:p-10 overflow-hidden"
           >

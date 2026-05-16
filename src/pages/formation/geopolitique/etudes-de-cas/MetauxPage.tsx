@@ -29,10 +29,10 @@ const MetauxPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-carnet-paper">
 
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -74,19 +74,19 @@ const MetauxPage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">3,2Md t</div>
                 <div className="text-sm text-gray-100">Production fer</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">70%</div>
                 <div className="text-sm text-gray-100">Terres rares Chine</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">22M t</div>
                 <div className="text-sm text-gray-100">Production cuivre</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">45%</div>
                 <div className="text-sm text-gray-100">Consommation Chine</div>
               </div>
@@ -98,20 +98,20 @@ const MetauxPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Globe className="h-5 w-5 text-gray-600" />
+              <Globe className="h-5 w-5 text-carnet-ink-soft" />
               Production métallique mondiale
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-700 leading-relaxed mb-4">
+            <p className="text-carnet-ink leading-relaxed mb-4">
               La production de <strong>fer a triplé depuis 2000</strong> pour atteindre 3,2 milliards de tonnes en 2024. 
               La Chine domine avec <strong>45% de la consommation mondiale</strong> de fer et cuivre, 
               reflétant son industrialisation massive et sa position centrale dans les chaînes de valeur.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-gray-800 mb-3">Métaux traditionnels</h4>
-                <ul className="text-sm text-gray-700 space-y-1">
+              <div className="bg-carnet-paper p-4 rounded-lg">
+                <h4 className="font-semibold text-carnet-ink mb-3">Métaux traditionnels</h4>
+                <ul className="text-sm text-carnet-ink space-y-1">
                   <li>• Fer : Construction, infrastructure</li>
                   <li>• Cuivre : Électricité, télécommunications</li>
                   <li>• Aluminium : Transport, emballage</li>
@@ -135,17 +135,17 @@ const MetauxPage = () => {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-gray-600" />
+              <TrendingUp className="h-5 w-5 text-carnet-ink-soft" />
               Production des métaux de base 2024
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
               {metalStats.map((metal, index) => (
-                <div key={index} className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                  <div className="text-xl font-bold text-gray-800 mb-1">{metal.metal}</div>
-                  <div className="text-sm font-medium text-gray-700 mb-2">{metal.production}</div>
-                  <div className="text-xs text-gray-600">
+                <div key={index} className="bg-carnet-paper p-4 rounded-lg border border-carnet-rule">
+                  <div className="text-xl font-bold text-carnet-ink mb-1">{metal.metal}</div>
+                  <div className="text-sm font-medium text-carnet-ink mb-2">{metal.production}</div>
+                  <div className="text-xs text-carnet-ink-soft">
                     {metal.evolution && <div>{metal.evolution}</div>}
                     {metal.share && <div>{metal.share}</div>}
                     {metal.consumption && <div>{metal.consumption}</div>}
@@ -158,14 +158,14 @@ const MetauxPage = () => {
               ))}
             </div>
 
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h4 className="font-semibold text-gray-800 mb-2">Producteurs fer par pays (2024)</h4>
+            <div className="bg-carnet-paper p-4 rounded-lg">
+              <h4 className="font-semibold text-carnet-ink mb-2">Producteurs fer par pays (2024)</h4>
               <div className="grid md:grid-cols-5 gap-3">
                 {ironProducers.map((producer, index) => (
                   <div key={index} className="text-center">
-                    <div className="font-bold text-gray-700">{producer.country}</div>
+                    <div className="font-bold text-carnet-ink">{producer.country}</div>
                     <div className="text-sm text-carnet-red">{producer.share}</div>
-                    <div className="text-xs text-gray-600">{producer.note}</div>
+                    <div className="text-xs text-carnet-ink-soft">{producer.note}</div>
                   </div>
                 ))}
               </div>
@@ -240,8 +240,8 @@ const MetauxPage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-gray-800 mb-2">Risques d'approvisionnement</h4>
+                    <div className="bg-carnet-paper p-4 rounded-lg">
+                      <h4 className="font-semibold text-carnet-ink mb-2">Risques d'approvisionnement</h4>
                       <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Tensions géopolitiques :</strong> Guerre commerciale, sanctions</li>
                         <li><strong>Instabilité politique :</strong> Coups d'État (Mali, Niger, uranium)</li>
@@ -343,7 +343,7 @@ const MetauxPage = () => {
             <CardTitle className="text-lg">Références et sources</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-sm text-gray-600 space-y-2">
+            <div className="text-sm text-carnet-ink-soft space-y-2">
               <p><strong>AIE</strong> (Agence internationale de l'énergie) : Critical Minerals Report 2024</p>
               <p><strong>USGS</strong> (United States Geological Survey) : Mineral Commodity Summaries</p>
               <p><strong>Commission européenne</strong> : Critical Raw Materials List 2024</p>

@@ -128,7 +128,7 @@ const InternationalPage = () => (
         {formes.map((f) => {
           const Icon = f.icon;
           return (
-            <div key={f.n} className="bg-white border border-carnet-rule/30 rounded-2xl p-6 hover:border-red-200 hover:shadow-md transition-all duration-300">
+            <div key={f.n} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-6 hover:border-red-200 hover:shadow-sm transition-all duration-300">
               <div className="flex items-start gap-4 mb-4">
                 <span className="font-dm-serif text-4xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-black leading-none flex-shrink-0">{f.n}</span>
                 <div className="flex-1">
@@ -171,7 +171,7 @@ const InternationalPage = () => (
     </MethodSection>
 
     <MethodSection label="Section 02" title="Focus ESCP : l'ancrage européen" icon={Star}>
-      <div className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-2xl p-6">
+      <div className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-2xl p-6">
         <h4 className="font-dm-serif text-xl text-carnet-ink mb-2">{escpFocus.titre}</h4>
         <div className="h-px w-10 bg-red-500 mb-4" />
         <p className="text-sm text-carnet-ink-soft leading-relaxed mb-5">{escpFocus.intro}</p>
@@ -192,7 +192,7 @@ const InternationalPage = () => (
     <MethodSection label="Section 03" title="Pièges à éviter absolument" icon={AlertCircle}>
       <div className="space-y-4">
         {piegesToAvoid.map((item, i) => (
-          <div key={i} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-500 rounded-r-2xl p-5">
+          <div key={i} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-500 rounded-r-2xl p-5">
             <h4 className="font-dm-serif text-lg text-carnet-ink mb-2">"{item.p}"</h4>
             <p className="text-sm text-carnet-ink-mute mb-3 leading-relaxed">
               <span className="font-semibold text-red-700 uppercase text-[10px] tracking-wider">Pourquoi ça ne marche pas · </span>
@@ -219,7 +219,7 @@ const InternationalPage = () => (
           { n: '03', q: 'Quelle forme concrète prenez-vous votre expérience internationale ?', d: "Stage, échange, campus, double culture. Être précis sur la forme évite de sonner vague." },
           { n: '04', q: 'Comment cette école vous permet-elle de le réaliser ?', d: "Partenaire universitaire, campus dédié, programme bilingue, réseau alumni dans ce pays. La boucle se boucle : vous → votre projet → l'école." },
         ].map((item) => (
-          <div key={item.n} className="bg-white border border-carnet-rule/30 rounded-2xl p-5 flex items-start gap-4 hover:border-red-200 hover:shadow-sm transition-all duration-300">
+          <div key={item.n} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-5 flex items-start gap-4 hover:border-red-200 hover:shadow-sm transition-all duration-300">
             <span className="font-dm-serif text-3xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-black leading-none flex-shrink-0">{item.n}</span>
             <div>
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{item.q}</h4>

@@ -101,8 +101,8 @@ const questionsOuvertesData = {
       title: "Chapitre 4 : Suites et Fonctions",
       icon: Network,
       color: "text-pr-black",
-      bgColor: "bg-gray-50",
-      borderColor: "border-gray-200",
+      bgColor: "bg-carnet-paper",
+      borderColor: "border-carnet-rule",
       questions: [
         {
           id: 10,
@@ -184,7 +184,7 @@ const OteriaEvaluationFinaleQuestionsOuvertesPage: React.FC = () => {
               <CheckCircle className="mr-2 h-4 w-4" />
               {totalPoints} points
             </Badge>
-            <Badge variant="secondary" className="bg-gray-100 text-gray-800 px-4 py-2">
+            <Badge variant="secondary" className="bg-carnet-paper text-carnet-ink px-4 py-2">
               <Clock className="mr-2 h-4 w-4" />
               {questionsOuvertesData.estimatedTime}
             </Badge>
@@ -198,7 +198,7 @@ const OteriaEvaluationFinaleQuestionsOuvertesPage: React.FC = () => {
               {questionsOuvertesData.introduction}
             </p>
             <div className="mt-4 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-carnet-ink-soft">
                 <strong>Conseil :</strong> Structurez vos réponses avec une introduction, un développement argumenté et une conclusion.
                 Utilisez des exemples concrets pour illustrer vos explications.
               </p>
@@ -228,16 +228,16 @@ const OteriaEvaluationFinaleQuestionsOuvertesPage: React.FC = () => {
                 <CardContent>
                   <div className="space-y-6">
                     {chapter.questions.map((question) => (
-                      <div key={question.id} className="border-l-4 border-carnet-red/40 pl-4 bg-white p-4 rounded-r-lg">
+                      <div key={question.id} className="border-l-4 border-carnet-red/40 pl-4 bg-carnet-paper-2 p-4 rounded-r-lg">
                         <div className="flex items-start justify-between mb-3">
-                          <h3 className="text-lg font-semibold text-gray-900">
+                          <h3 className="text-lg font-semibold text-carnet-ink">
                             Question {question.id}
                           </h3>
                           <Badge variant="secondary" className="bg-carnet-red/10 text-carnet-red-deep">
                             {question.points} points
                           </Badge>
                         </div>
-                        <p className="text-gray-700 leading-relaxed whitespace-pre-line mb-4">
+                        <p className="text-carnet-ink leading-relaxed whitespace-pre-line mb-4">
                           {question.question}
                         </p>
                         <div className="flex flex-wrap gap-2">

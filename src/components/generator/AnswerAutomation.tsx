@@ -46,7 +46,7 @@ export const AnswerAutomation: React.FC<AnswerAutomationProps> = ({
   onResetFlow,
 }) => (
   <>
-    <Card className="bg-white shadow-sm border border-gray-200 rounded-xl overflow-hidden">
+    <Card className="bg-carnet-paper-2 shadow-sm border border-carnet-rule rounded-xl overflow-hidden">
       <CardHeader className="bg-gradient-to-r from-pr-black to-pr-black text-white">
         <div className="flex justify-between items-start">
           <div className="flex items-center gap-3">

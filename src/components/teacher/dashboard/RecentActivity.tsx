@@ -69,7 +69,7 @@ const RecentActivity: React.FC = () => {
       case 'theme_generation':
         return 'bg-purple-100 text-purple-800';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-carnet-paper text-carnet-ink';
     }
   };
 

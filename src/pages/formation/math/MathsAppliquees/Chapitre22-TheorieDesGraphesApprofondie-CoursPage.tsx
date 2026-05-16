@@ -255,11 +255,11 @@ const Chapitre22TheorieDesGraphesApprofondieCoursPage = () => {
       </Card>
 
       {/* Navigation secondaire */}
-      <Card className="border-0 shadow-lg bg-gray-50">
+      <Card className="border-0 shadow-lg bg-carnet-paper">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-appliquees">
-              <Button variant="outline" className="border-gray-300 text-gray-600 hover:bg-gray-50">
+              <Button variant="outline" className="border-gray-300 text-carnet-ink-soft hover:bg-carnet-paper">
                 Retour aux chapitres
               </Button>
             </Link>

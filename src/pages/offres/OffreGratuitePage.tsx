@@ -66,16 +66,16 @@ const OffreGratuitePage = () => {
       {/* Header */}
       <section className="pt-20 pb-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <Link to="/nos-offres" className="inline-flex items-center text-gray-600 hover:text-gray-800 mb-6">
+          <Link to="/nos-offres" className="inline-flex items-center text-carnet-ink-soft hover:text-carnet-ink mb-6">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Retour aux offres
           </Link>
           
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl font-bold text-carnet-ink mb-4">
               Offre <span className="text-pr-black">Gratuite</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-carnet-ink-soft max-w-2xl mx-auto">
               Participe gratuitement à nos sessions live de préparation à la rentrée !
             </p>
             <div className="mt-4 inline-flex items-center bg-carnet-paper text-carnet-ink px-4 py-2 rounded-full">
@@ -90,7 +90,7 @@ const OffreGratuitePage = () => {
       <section className="pb-16 px-4">
         <div className="max-w-4xl mx-auto">
           <Card className="p-8 bg-carnet-paper-2 border border-carnet-rule rounded-2xl shadow-sm mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
+            <h2 className="text-2xl font-bold text-carnet-ink text-center mb-8">
               Programme des sessions live
             </h2>
             
@@ -153,23 +153,23 @@ const OffreGratuitePage = () => {
             </div>
 
             <div className="bg-carnet-paper rounded-lg p-6">
-              <h3 className="font-bold text-gray-900 mb-4">Au programme :</h3>
+              <h3 className="font-bold text-carnet-ink mb-4">Au programme :</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-pr-black mt-0.5 flex-shrink-0" />
-                  <p className="text-gray-700">Stratégies de révision pour la rentrée</p>
+                  <p className="text-carnet-ink">Stratégies de révision pour la rentrée</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-pr-black mt-0.5 flex-shrink-0" />
-                  <p className="text-gray-700">Planning optimal pour les 14 derniers jours</p>
+                  <p className="text-carnet-ink">Planning optimal pour les 14 derniers jours</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-pr-black mt-0.5 flex-shrink-0" />
-                  <p className="text-gray-700">Points essentiels à revoir en maths</p>
+                  <p className="text-carnet-ink">Points essentiels à revoir en maths</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-pr-black mt-0.5 flex-shrink-0" />
-                  <p className="text-gray-700">Q&A en direct avec Dimitri</p>
+                  <p className="text-carnet-ink">Q&A en direct avec Dimitri</p>
                 </div>
               </div>
             </div>
@@ -177,7 +177,7 @@ const OffreGratuitePage = () => {
 
           {/* Questionnaire */}
           <Card className="p-8 bg-carnet-paper-2 border border-carnet-rule rounded-2xl shadow-sm">
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
+            <h2 className="text-2xl font-bold text-carnet-ink text-center mb-8">
               Accéder à votre session
             </h2>
 
@@ -185,7 +185,7 @@ const OffreGratuitePage = () => {
               <div className="max-w-2xl mx-auto">
                 {questionnaire.selectedOption === null && (
                   <div className="text-center">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-6">
+                    <h3 className="text-lg font-semibold text-carnet-ink mb-6">
                       Choisissez votre situation :
                     </h3>
                     <div className="space-y-4">
@@ -251,18 +251,18 @@ const OffreGratuitePage = () => {
                   
                   {(questionnaire.selectedOption === 'ECG1' || questionnaire.selectedOption === 'ECG2') && (
                     <div className="bg-carnet-paper-2 rounded-lg p-6 mt-4 border border-carnet-rule">
-                      <h4 className="text-lg font-bold text-gray-900 mb-4">
+                      <h4 className="text-lg font-bold text-carnet-ink mb-4">
                         {getZoomInfo().title}
                       </h4>
                       
                       <div className="space-y-4 mb-6">
                         <div className="flex items-center justify-center">
-                          <Calendar className="w-5 h-5 text-gray-600 mr-2" />
+                          <Calendar className="w-5 h-5 text-carnet-ink-soft mr-2" />
                           <span className="font-semibold">{getZoomInfo().date} à {getZoomInfo().time}</span>
                         </div>
                         
                         <div className="bg-carnet-paper border border-carnet-rule rounded-lg p-4 text-center">
-                          <p className="text-gray-800 font-semibold mb-2">Votre lien de session :</p>
+                          <p className="text-carnet-ink font-semibold mb-2">Votre lien de session :</p>
                           <a 
                             href={getZoomInfo().link}
                             target="_blank"

@@ -93,7 +93,7 @@ const QuestionsComportementalesPage = () => (
       <p className="text-carnet-ink-soft mb-6">Une grille en 4 étapes pour structurer n'importe quelle réponse comportementale en moins de 3 minutes.</p>
       <div className="space-y-4">
         {starSteps.map((s) => (
-          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+          <div key={s.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
             <span className="font-dm-serif text-3xl text-red-600 leading-none w-8">{s.n}</span>
             <div>
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
@@ -107,7 +107,7 @@ const QuestionsComportementalesPage = () => (
     <MethodSection label="Section 02" title="Les 4 grandes catégories de questions" icon={Users}>
       <div className="space-y-5">
         {categories.map((cat) => (
-          <div key={cat.t} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6">
+          <div key={cat.t} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6">
             <h4 className="font-dm-serif text-xl text-carnet-ink mb-5">{cat.t}</h4>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -138,7 +138,7 @@ const QuestionsComportementalesPage = () => (
     </MethodSection>
 
     <MethodSection label="Section 03" title="Exemple complet de réponse STAR" icon={Zap}>
-      <div className="bg-white border border-carnet-rule/30 rounded-lg p-7">
+      <div className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-7">
         <div className="flex items-center gap-2 mb-5">
           <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
             Exemple Leadership

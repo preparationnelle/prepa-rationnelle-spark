@@ -21,7 +21,7 @@ const NotesToggleButton: React.FC<NotesToggleButtonProps> = ({ notesCount, onCli
                 "fixed bottom-20 right-4 z-[50] h-12 w-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 group",
                 isOpen
                     ? "bg-amber-500 text-white scale-110"
-                    : "bg-white text-amber-600 hover:bg-amber-50 hover:shadow-xl border border-amber-200"
+                    : "bg-carnet-paper-2 text-amber-600 hover:bg-amber-50 hover:shadow-xl border border-amber-200"
             )}
             title="Mes notes"
         >

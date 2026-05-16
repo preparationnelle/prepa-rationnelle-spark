@@ -56,7 +56,7 @@ export const FlashcardDisplay = ({ flashcards, language, onRegenerate }: Flashca
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+    <div className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
       <div className="h-[3px] w-full bg-pr-black" />
       <div className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5 sm:px-8">
         <div className="flex justify-between items-center flex-wrap gap-3">

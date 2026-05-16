@@ -1048,7 +1048,7 @@ const AmeriqueLatinePage = () => {
                   <div className="space-y-8">
                     
                     {/* Introduction méthodologique */}
-                    <div className="bg-indigo-50 p-6 rounded-lg border-l-4 border-indigo-400">
+                    <div className="bg-carnet-paper p-6 rounded-lg border-l-4 border-indigo-400">
                       <h4 className="font-semibold text-indigo-800 mb-4">Utilisation de cette partie dans une copie</h4>
                       <div className="space-y-3 text-sm text-indigo-700">
                         <p>• Illustrer comment l'Amérique latine est historiquement une économie d'exportation dépendante des cycles mondiaux</p>
@@ -2775,7 +2775,7 @@ const AmeriqueLatinePage = () => {
                   { year: "2024", event: "Intensification de la crise migratoire vénézuélienne" },
                   { year: "2025", event: "Mouvements de mères des disparus en Amérique latine gagnent en visibilité internationale" },
                 ].map((item, index) => (
-                  <div key={index} className="flex items-start border-b border-gray-100 pb-2">
+                  <div key={index} className="flex items-start border-b border-carnet-rule/50 pb-2">
                     <span className="flex-shrink-0 w-20 text-sm font-semibold text-carnet-ink-soft mr-3">
                       {item.year}
                     </span>

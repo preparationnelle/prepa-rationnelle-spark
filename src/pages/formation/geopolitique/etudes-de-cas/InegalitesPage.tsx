@@ -34,10 +34,10 @@ const InegalitesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-carnet-paper">
       <div className="container mx-auto px-4 py-8">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -77,19 +77,19 @@ const InegalitesPage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">900M</div>
                 <div className="text-sm text-red-100">Pauvreté absolue</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">11%</div>
                 <div className="text-sm text-red-100">Population mondiale</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">1Md</div>
                 <div className="text-sm text-red-100">Bidonvilles 2024</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">73 ans</div>
                 <div className="text-sm text-red-100">Espérance vie</div>
               </div>
@@ -106,7 +106,7 @@ const InegalitesPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-700 leading-relaxed mb-6">
+            <p className="text-carnet-ink leading-relaxed mb-6">
               Les inégalités mondiales se mesurent par plusieurs indicateurs complémentaires, 
               chacun révélant des aspects différents de la pauvreté et des exclusions.
             </p>
@@ -157,8 +157,8 @@ const InegalitesPage = () => {
                 </ul>
               </div>
               
-              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                <h4 className="font-semibold text-gray-800 mb-3">Défis persistants</h4>
+              <div className="bg-carnet-paper p-4 rounded-lg border border-carnet-rule">
+                <h4 className="font-semibold text-carnet-ink mb-3">Défis persistants</h4>
                 <ul className="text-sm text-pr-black space-y-2">
                   <li><strong>COVID-19 :</strong> Ralentissement des progrès</li>
                   <li><strong>Concentration :</strong> Principalement Afrique et Asie</li>
@@ -169,7 +169,7 @@ const InegalitesPage = () => {
             </div>
 
             <div className="space-y-4">
-              <h4 className="font-semibold text-gray-800">Répartition géographique de la pauvreté</h4>
+              <h4 className="font-semibold text-carnet-ink">Répartition géographique de la pauvreté</h4>
               {povertyByRegion.map((region, index) => (
                 <div key={index} className="p-3 bg-red-50 rounded-lg border border-red-200">
                   <div className="flex items-start justify-between">
@@ -215,8 +215,8 @@ const InegalitesPage = () => {
                 ))}
               </div>
               
-              <div className="mt-4 p-3 bg-gray-100 rounded-lg">
-                <p className="text-sm text-gray-700">
+              <div className="mt-4 p-3 bg-carnet-paper rounded-lg">
+                <p className="text-sm text-carnet-ink">
                   <strong>Paradoxe :</strong> Malgré les progrès globaux, les écarts entre pays 
                   riches et pauvres restent énormes (facteur 40 pour la mortalité infantile).
                 </p>
@@ -233,8 +233,8 @@ const InegalitesPage = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-4">
-                <h4 className="font-semibold text-gray-800 mb-2">Situation mondiale 2024</h4>
+              <div className="bg-carnet-paper p-4 rounded-lg border border-carnet-rule mb-4">
+                <h4 className="font-semibold text-carnet-ink mb-2">Situation mondiale 2024</h4>
                 <ul className="text-sm text-pr-black space-y-1">
                   <li><strong>Population :</strong> 1 milliard personnes (+200M depuis 2000)</li>
                   <li><strong>Proportion :</strong> 20% des urbains mondiaux</li>
@@ -279,8 +279,8 @@ const InegalitesPage = () => {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="space-y-4">
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-gray-800 mb-2">Paradoxes de la sécurité alimentaire</h4>
+                    <div className="bg-carnet-paper p-4 rounded-lg">
+                      <h4 className="font-semibold text-carnet-ink mb-2">Paradoxes de la sécurité alimentaire</h4>
                       <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Thaïlande :</strong> Premier exportateur riz mondial mais sous-alimentation persistante</li>
                         <li><strong>Brésil :</strong> Géant agro-exportateur, 33 millions de sous-alimentés</li>
@@ -373,8 +373,8 @@ const InegalitesPage = () => {
                         </ul>
                       </div>
                       
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h5 className="font-semibold text-gray-800 mb-2">Afrique : Hétérogène</h5>
+                      <div className="bg-carnet-paper p-4 rounded-lg">
+                        <h5 className="font-semibold text-carnet-ink mb-2">Afrique : Hétérogène</h5>
                         <ul className="text-xs text-pr-black space-y-1">
                           <li>• Afrique Sud, Botswana : Revenus intermédiaires</li>
                           <li>• Nigeria : Géant économique instable</li>
@@ -397,7 +397,7 @@ const InegalitesPage = () => {
             <CardTitle className="text-lg">Références et sources</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-sm text-gray-600 space-y-2">
+            <div className="text-sm text-carnet-ink-soft space-y-2">
               <p><strong>Banque mondiale</strong> : Poverty and Shared Prosperity Report 2024</p>
               <p><strong>PNUD</strong> : Rapport sur le développement humain 2024</p>
               <p><strong>Sylvie Brunel</strong> : <em>"Une aubaine pour le Sud ?"</em> - Différenciation trajectoires développement</p>

@@ -96,7 +96,7 @@ const CoachingMathsPage = () => {
             
             {/* Urgency and Guarantee */}
             <div className="space-y-4">
-              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+              <div className="bg-carnet-paper rounded-lg p-4 border border-carnet-rule">
                 <h4 className="font-semibold text-pr-black mb-2 flex items-center gap-2">
                   <span>⏰</span>
                   Urgence

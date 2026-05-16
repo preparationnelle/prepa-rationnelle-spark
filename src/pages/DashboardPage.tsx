@@ -428,13 +428,7 @@ const DashboardPage = () => {
     );
 
     const elements = document.querySelectorAll('.fade-in-up, .fade-in, .scale-in');
-    elements.forEach((el) => {
-      observerRef.current?.observe(el);
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        el.classList.add('animate-in');
-      }
-    });
+    elements.forEach((el) => el.classList.add('animate-in'));
 
     return () => observerRef.current?.disconnect();
   }, []);

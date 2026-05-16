@@ -162,8 +162,7 @@ const SectionHead: React.FC<{
 }> = ({ eyebrow, title, subtitle, align = 'left' }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: '-80px' }}
+    animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
     className={`max-w-[760px] mb-12 ${align === 'center' ? 'mx-auto text-center' : ''}`}
   >
@@ -289,8 +288,7 @@ const ArticlesTerminalePrepaPage: React.FC = () => {
                 <motion.div
                   key={point.title}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
                   className={tilt}
                 >
@@ -340,8 +338,7 @@ const ArticlesTerminalePrepaPage: React.FC = () => {
                 <motion.div
                   key={methode.title}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
                   className={tilt}
                 >
@@ -395,8 +392,7 @@ const ArticlesTerminalePrepaPage: React.FC = () => {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="carnet-card p-8 sm:p-10 lg:p-12 max-w-5xl"
           >
@@ -493,8 +489,7 @@ const ArticlesTerminalePrepaPage: React.FC = () => {
               <Link key={module.title} to={module.link}>
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: idx * 0.05 }}
                   className="carnet-card p-5 h-full hover:shadow-[0_8px_24px_rgba(78,55,30,0.08)] transition-all group"
                 >
@@ -521,8 +516,7 @@ const ArticlesTerminalePrepaPage: React.FC = () => {
         <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="relative bg-carnet-ink rounded-lg p-8 sm:p-12 lg:p-16 overflow-hidden"
           >

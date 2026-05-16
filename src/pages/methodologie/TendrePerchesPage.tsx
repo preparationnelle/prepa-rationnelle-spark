@@ -31,7 +31,7 @@ const TendrePerchesPage = () => {
             { n: '03', t: 'Rester naturel',             d: "La perche doit s'intégrer naturellement dans votre discours. Elle ne doit jamais paraître forcée." },
             { n: '04', t: 'Préparer la suite',          d: "Ayez toujours une anecdote complète et valorisante prête à développer si le jury mord à l'hameçon." },
           ].map((p) => (
-            <div key={p.n} className="bg-white border border-carnet-rule/30 rounded-2xl p-6 hover:border-red-200 hover:shadow-md transition-all duration-300">
+            <div key={p.n} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-6 hover:border-red-200 hover:shadow-sm transition-all duration-300">
               <div className="flex items-baseline gap-3 mb-2">
                 <span className="font-dm-serif text-4xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-black">{p.n}</span>
                 <h4 className="font-dm-serif text-xl text-carnet-ink">{p.t}</h4>
@@ -63,7 +63,7 @@ const TendrePerchesPage = () => {
               qs:    ['"Parlez-nous de ce projet entrepreneurial"', '"Comment avez-vous créé cette association ?"', '"Quel était exactement ce défi ?"', '"Quels ont été les résultats de votre initiative ?"'],
             },
           ].map((cat) => (
-            <div key={cat.t} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-500 rounded-r-2xl p-6 hover:shadow-md transition-shadow duration-300">
+            <div key={cat.t} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-500 rounded-r-2xl p-6 hover:shadow-sm transition-shadow duration-300">
               <h4 className="font-dm-serif text-2xl text-carnet-ink mb-5">{cat.t}</h4>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -108,7 +108,7 @@ const TendrePerchesPage = () => {
               next: "Parlez-nous de cette expérience au Cambodge, qu'y avez-vous fait exactement ?",
             },
           ].map((ex, i) => (
-            <div key={i} className="bg-white border border-carnet-rule/30 rounded-2xl p-6 hover:shadow-md transition-shadow duration-300">
+            <div key={i} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-6 hover:shadow-sm transition-shadow duration-300">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 border border-red-100 px-2.5 py-1 rounded-full">
                   Exemple {i + 1}
@@ -148,7 +148,7 @@ const TendrePerchesPage = () => {
               ],
             },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-2xl p-6 hover:shadow-md transition-shadow duration-300">
+            <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-6 hover:shadow-sm transition-shadow duration-300">
               <h4 className="font-dm-serif text-xl text-carnet-ink mb-4">{g.t}</h4>
               <ul className="space-y-3">
                 {g.l.map((item) => (
@@ -164,7 +164,7 @@ const TendrePerchesPage = () => {
 
       {/* Stratégie */}
       <MethodSection label="Section 05" title="Stratégie avancée : la carte de perches" icon={Target}>
-        <div className="bg-white border border-carnet-rule/30 rounded-2xl p-7 hover:shadow-md transition-shadow duration-300">
+        <div className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-7 hover:shadow-sm transition-shadow duration-300">
           <h4 className="font-dm-serif text-2xl text-carnet-ink mb-2">Préparez votre arsenal de perches</h4>
           <div className="h-px w-12 bg-red-500 mb-6" />
           <div className="grid md:grid-cols-2 gap-6 mb-6">

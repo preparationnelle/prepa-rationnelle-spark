@@ -169,7 +169,7 @@ const CultureGeneraleUnifiedGeneratorPage = () => {
                       }`}
                     >
                       <span className="font-semibold">2ème année</span>
-                      <span className="text-xs ml-2 opacity-70">(Thème : Juger)</span>
+                      <span className="text-xs ml-2 opacity-70">(Thème : L'humanité)</span>
                     </Button>
                   </div>
                 </div>

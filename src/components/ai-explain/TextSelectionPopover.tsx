@@ -99,7 +99,7 @@ const TextSelectionPopover: React.FC<TextSelectionPopoverProps> = ({
             className="absolute z-[100] animate-in fade-in-0 zoom-in-95 duration-150"
             style={{ top: position.top, left: position.left }}
         >
-            <div className="bg-white rounded-xl shadow-[0_8px_30px_rgba(26,26,24,0.12)] border border-pr-gray-light p-1.5 flex items-center gap-1 font-dm-sans">
+            <div className="bg-carnet-paper-2 rounded-xl shadow-[0_8px_30px_rgba(26,26,24,0.12)] border border-carnet-rule p-1.5 flex items-center gap-1 font-dm-sans">
                 <button
                     onClick={() => {
                         onExplain(selectedText);

@@ -19,7 +19,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
   return (
     <div className="min-h-screen carnet-paper carnet-cours-skin">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs font-medium text-[#2D5BFF]">
             <Link to="/" className="flex items-center gap-1 hover:text-[#1e3a8a] transition-colors">
@@ -53,7 +53,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
        
 
         {/* Exercice 1 */}
-        <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+        <Card className="mb-6 border-0 hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 1</div>
@@ -70,8 +70,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
             </Button>
             {show && (
               <div className="space-y-4">
-                <div className="p-4 bg-white rounded-lg border space-y-2">
-                  <div className="text-sm font-semibold text-gray-700">⇨</div>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-2">
+                  <div className="text-sm font-semibold text-carnet-ink">⇨</div>
                   <p>Supposons que <span className="inline-block align-middle"><LatexRenderer latex={'f^2 = 0_{\\mathcal{L}(E)}'} /></span>. Montrons que <span className="inline-block align-middle"><LatexRenderer latex={'\\operatorname{Im}(f) \\subset \\ker(f)'} /></span>.</p>
                   <p>Soit <span className="inline-block align-middle"><LatexRenderer latex={'y \\in \\operatorname{Im}(f)'} /></span>. Montrons que <span className="inline-block align-middle"><LatexRenderer latex={'y \\in \\ker(f)'} /></span> ; autrement dit, montrons que <span className="inline-block align-middle"><LatexRenderer latex={'f(y) = 0_E'} /></span>.</p>
                   <p>Puisque <span className="inline-block align-middle"><LatexRenderer latex={'y \\in \\operatorname{Im}(f)'} /></span>, il existe <span className="inline-block align-middle"><LatexRenderer latex={'x \\in E'} /></span> tel que <span className="inline-block align-middle"><LatexRenderer latex={'y = f(x)'} /></span>. Ainsi :</p>
@@ -80,8 +80,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                   <div className="text-center"><LatexRenderer block latex={'\\text{Conclusion : } f^2 = 0_{\\mathcal{L}(E)} \\implies \\operatorname{Im}(f) \\subset \\ker(f).'} /></div>
                 </div>
 
-                <div className="p-4 bg-white rounded-lg border space-y-2">
-                  <div className="text-sm font-semibold text-gray-700">⇦</div>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-2">
+                  <div className="text-sm font-semibold text-carnet-ink">⇦</div>
                   <p>Supposons <span className="inline-block align-middle"><LatexRenderer latex={'\\operatorname{Im}(f) \\subset \\ker(f)'} /></span>. Montrons que <span className="inline-block align-middle"><LatexRenderer latex={'f \\circ f = 0_{\\mathcal{L}(E)}'} /></span> ; autrement dit, montrons :</p>
                   <div className="text-center"><LatexRenderer block latex={'\\forall x \\in E, \\quad f \\circ f(x) = 0_E.'} /></div>
                   <p>Soit <span className="inline-block align-middle"><LatexRenderer latex={'x \\in E'} /></span>. Par définition :</p>
@@ -95,7 +95,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                   <div className="text-center"><LatexRenderer block latex={'\\text{Conclusion : } \\operatorname{Im}(f) \\subset \\ker(f) \\implies f^2 = 0_{\\mathcal{L}(E)}.'} /></div>
                 </div>
 
-                <div className="p-4 bg-white rounded-lg border">
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border">
                   <div className="text-center">
                     <LatexRenderer block latex={'\\boxed{\\text{Conclusion : } f^2 = 0_{\\mathcal{L}(E)} \\iff \\operatorname{Im}(f) \\subset \\ker(f).}'} />
                   </div>
@@ -106,14 +106,14 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         </Card>
 
         {/* Exercice 2 */}
-        <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+        <Card className="mb-6 border-0 hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 2</div>
               <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Difficile</div>
             </div>
             <div className="space-y-3 mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">Exercice 2 - Endomorphisme nilpotent</h3>
+              <h3 className="text-lg font-semibold text-carnet-ink">Exercice 2 - Endomorphisme nilpotent</h3>
               <div className="space-y-1">
                 <p>
                   <LatexRenderer latex={'\\text{On suppose que } E \\text{ est de dimension finie égale à } n \\text{ et qu’il existe } k \\in [2; +\\infty[ \\text{ tel que : } f^k = 0_{\\mathcal{L}(E)} \\text{ et } f^{k-1} \\neq 0_{\\mathcal{L}(E)}.'} />
@@ -122,7 +122,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
               <div className="text-center my-4">
                 <LatexRenderer latex={'f^k = 0_{\\mathcal{L}(E)} \\quad \\text{et} \\quad f^{k-1} \\neq 0_{\\mathcal{L}(E)}'} />
               </div>
-              <h4 className="text-base font-semibold text-gray-800">
+              <h4 className="text-base font-semibold text-carnet-ink">
                 1. Justifier qu’il existe un vecteur{' '}
                 <span className="inline-block align-middle"><LatexRenderer latex={'x \\in E'} /></span>{' '}
                 tel que la famille{' '}
@@ -144,7 +144,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Question 1 */}
-                <div className="p-4 bg-white rounded-lg border">
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border">
                   <div className="space-y-3">
                     <p><LatexRenderer latex={'\\text{Puisque } f^{k-1} \\text{ n’est pas l’endomorphisme nul, il existe un vecteur } x \\in E \\text{ tel que } f^{k-1}(x) \\neq 0_E.'} /></p>
                     <p><LatexRenderer latex={'\\text{Considérons donc un tel } x \\text{ et montrons que la famille } (x, f(x), \\dots, f^{k-1}(x)) \\text{ est libre.}'} /></p>
@@ -170,7 +170,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                       <LatexRenderer latex={'a_1 f(x) + \\dots + a_{k-1} f^{k-1}(x) = 0_E'} />
                     </div>
 
-                    <div className="p-3 rounded-lg border bg-gray-50 text-gray-800 border-gray-200">
+                    <div className="p-3 rounded-lg border bg-carnet-paper text-carnet-ink border-carnet-rule">
                       <strong>Astuce</strong> — Réappliquer successivement
                       <span className="inline-block align-middle"> <LatexRenderer latex={'f^{k-2}, f^{k-3}, \\dots'} /></span> pour obtenir
                       <span className="inline-block align-middle"> <LatexRenderer latex={'a_1 = a_2 = \\dots = a_{k-2} = 0'} /></span>.
@@ -186,8 +186,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Question 2 */}
-                <div className="p-4 bg-white rounded-lg border space-y-2">
-                  <h4 className="text-base font-semibold text-gray-800">
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-2">
+                  <h4 className="text-base font-semibold text-carnet-ink">
                     2. En déduire que <span className="inline-block align-middle"><LatexRenderer latex={'k \\leq n'} /></span>.
                   </h4>
                   <p><LatexRenderer latex={'\\text{D’après la question précédente, il existe donc un vecteur } x \\in E \\text{ tel que la famille } (x, f(x), \\dots, f^{k-1}(x)) \\text{ est libre.}'} /></p>
@@ -200,16 +200,16 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         </Card>
 
         {/* Exercice 3 */}
-        <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+        <Card className="mb-6 border-0 hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 3</div>
               <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Intermédiaire</div>
             </div>
             <div className="space-y-3 mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">Exercice 3 — Un peu théorique…</h3>
+              <h3 className="text-lg font-semibold text-carnet-ink">Exercice 3 — Un peu théorique…</h3>
               <div className="space-y-1">
-                <p className="text-sm font-semibold text-gray-700">Exercice 3 — Un peu théorique…</p>
+                <p className="text-sm font-semibold text-carnet-ink">Exercice 3 — Un peu théorique…</p>
                 <ol className="list-decimal pl-5 space-y-2">
                   <li><span className="inline-block align-middle"><LatexRenderer latex={'\\text{Montrer que } \\ker(f) \\subset \\ker(f^{2}).'} /></span></li>
                   <li><span className="inline-block align-middle"><LatexRenderer latex={'\\text{Montrer que } \\ker(f)=\\ker(f^{2}) \\iff \\ker(f) \\cap \\operatorname{Im}(f)=\\{0_{E}\\}.'} /></span></li>
@@ -232,7 +232,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Q1 */}
-                <div className="p-4 bg-white rounded-lg border space-y-2">
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-2">
                   <p><LatexRenderer latex={'\\textbf{1. Montrer que } \\ker(f) \\subset \\ker(f^{2}).'} /></p>
                   <p><LatexRenderer latex={`\\text{Soit } x\\in \\ker(f). \\text{ Ainsi } f(x)=0_{E}. \\text{ Comme } f \\text{ est lin\\'eaire,}`} /></p>
                   <div className="text-center"><LatexRenderer block latex={'f\\bigl(f(x)\\bigr)=f(0_{E})=0_{E}.'} /></div>
@@ -242,7 +242,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Q2 */}
-                <div className="p-4 bg-white rounded-lg border space-y-3">
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-3">
                   <p><LatexRenderer latex={'\\textbf{2. Montrer que } \\ker(f)=\\ker(f^{2}) \\iff \\ker(f) \\cap \\operatorname{Im}(f)=\\{0_{E}\\}.'} /></p>
                   <p><LatexRenderer latex={'\\emph{Sens direct.} \\text{ Supposons } \\ker(f)=\\ker(f^{2}) \\text{ et montrons } \\operatorname{Im}(f)\\cap \\ker(f)=\\{0_{E}\\}.'} /></p>
                   <p><LatexRenderer latex={'\\text{Soit } y\\in \\operatorname{Im}(f)\\cap \\ker(f). \\text{ Alors } y\\in \\operatorname{Im}(f) \\text{ et } y\\in \\ker(f). \\text{ Puisque } y\\in \\operatorname{Im}(f), \\text{ il existe } x\\in E \\text{ tel que } y=f(x). \\text{ Mais } y\\in \\ker(f), \\text{ donc } f(y)=0_{E}.'} /></p>
@@ -256,7 +256,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Q3 */}
-                <div className="p-4 bg-white rounded-lg border space-y-2">
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-2">
                   <p><LatexRenderer latex={'\\textbf{3. Montrer que } \\operatorname{Im}(f^{2}) \\subset \\operatorname{Im}(f).'} /></p>
                   <p><LatexRenderer latex={'\\text{Soit } y\\in \\operatorname{Im}(f^{2}). \\text{ Il existe alors } x\\in E \\text{ tel que }'} /></p>
                   <div className="text-center"><LatexRenderer block latex={'y=f^{2}(x)=f\\bigl(f(x)\\bigr).'} /></div>
@@ -269,14 +269,14 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         </Card>
         
          {/* Exercice 4 */}
-         <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+         <Card className="mb-6 border-0 hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 4</div>
               <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Moyen</div>
             </div>
             <div className="space-y-3 mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">Exercice 4</h3>
+              <h3 className="text-lg font-semibold text-carnet-ink">Exercice 4</h3>
               <p>
                 Soit <span className="inline-block align-middle"><LatexRenderer latex={'A = \\begin{pmatrix}1&2\\\\3&6\\\end{pmatrix}'} /></span> et
                 <span className="inline-block align-middle"> <LatexRenderer latex={'f: M_2(\\mathbb{R}) \\to M_2(\\mathbb{R}),\\ M \\mapsto AM'} /></span>.
@@ -299,8 +299,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Q1 */}
-                <div className="p-4 bg-white rounded-lg border">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-2">1) Linéarité</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border">
+                  <h4 className="text-lg font-semibold text-carnet-ink mb-2">1) Linéarité</h4>
                   <p>Pour <LatexRenderer latex={'\\lambda,\\mu \\in \\mathbb{R}'} /> et <LatexRenderer latex={'M,N \\in M_2(\\mathbb{R})'} /> :</p>
                   <div className="text-center my-2">
                     <LatexRenderer latex={'f(\\lambda M + \\mu N) = A(\\lambda M + \\mu N) = \\lambda AM + \\mu AN = \\lambda f(M) + \\mu f(N)'} />
@@ -309,8 +309,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Q2 */}
-                <div className="p-4 bg-white rounded-lg border">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-2">2) Noyau et bijectivité</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border">
+                  <h4 className="text-lg font-semibold text-carnet-ink mb-2">2) Noyau et bijectivité</h4>
                   <p>
                     Soit <LatexRenderer latex={'M=\\begin{pmatrix}a&b\\\\c&d\\\end{pmatrix}'} />. La condition <LatexRenderer latex={'AM=0'} /> équivaut à
                   </p>
@@ -327,9 +327,9 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Q3 */}
-                <div className="p-4 bg-white rounded-lg border space-y-3">
-                  <h4 className="text-lg font-semibold text-gray-800">3) Image</h4>
-                  <div className="p-3 rounded-lg border bg-gray-50 text-gray-800 border-gray-200">
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-3">
+                  <h4 className="text-lg font-semibold text-carnet-ink">3) Image</h4>
+                  <div className="p-3 rounded-lg border bg-carnet-paper text-carnet-ink border-carnet-rule">
                     <strong>Astuce</strong> — utiliser la base <LatexRenderer latex={'(E_{11},E_{12},E_{21},E_{22})'} /> de <LatexRenderer latex={'M_2(\\mathbb{R})'} /> et calculer <LatexRenderer latex={'AE_{ij}'} />.
                   </div>
                   <div className="text-center">
@@ -348,14 +348,14 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         </Card>
 
         {/* Exercice 5 */}
-        <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+        <Card className="mb-6 border-0 hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 5</div>
               <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Difficile (♥)</div>
             </div>
             <div className="space-y-3 mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">Matrice de l’endomorphisme dans la base canonique</h3>
+              <h3 className="text-lg font-semibold text-carnet-ink">Matrice de l’endomorphisme dans la base canonique</h3>
               <p>
                 Soient <span className="inline-block align-middle"><LatexRenderer latex={'A = \\begin{pmatrix}-1&2\\\\1&0\\\end{pmatrix}'} /></span> et
                 <span className="inline-block align-middle"> <LatexRenderer latex={'f : M_2(\\mathbb{R}) \\to M_2(\\mathbb{R}),\\ M \\mapsto AM'} /></span>.
@@ -377,16 +377,16 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Q1 */}
-                <div className="p-4 bg-white rounded-lg border">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-2">1) Linéarité</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border">
+                  <h4 className="text-lg font-semibold text-carnet-ink mb-2">1) Linéarité</h4>
                   <div className="text-center my-2">
                     <LatexRenderer latex={'f(\\lambda M_1 + M_2) = A(\\lambda M_1 + M_2) = \\lambda AM_1 + AM_2 = \\lambda f(M_1) + f(M_2)'} />
                   </div>
                 </div>
 
                 {/* Q2 */}
-                <div className="p-4 bg-white rounded-lg border space-y-3">
-                  <h4 className="text-lg font-semibold text-gray-800">2) Matrice dans la base canonique</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-3">
+                  <h4 className="text-lg font-semibold text-carnet-ink">2) Matrice dans la base canonique</h4>
                   <p>Calcul des images des vecteurs de base:</p>
                   <div className="text-center">
                     <LatexRenderer latex={'f(E_{11})=\\begin{pmatrix}-1&0\\\\1&0\\\end{pmatrix}=-E_{11}+E_{21}'} />
@@ -411,14 +411,14 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         </Card>
 
         {/* Exercice 6 */}
-        <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+        <Card className="mb-6 border-0 hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 6</div>
               <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Difficile (♥)</div>
             </div>
             <div className="space-y-3 mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">Permutation cyclique sur R^3</h3>
+              <h3 className="text-lg font-semibold text-carnet-ink">Permutation cyclique sur R^3</h3>
               <p>
                 Dans la base canonique <LatexRenderer latex={'\\mathcal B=(e_1,e_2,e_3)'} />, on définit
                 <span className="inline-block align-middle"> <LatexRenderer latex={'f(e_1)=e_2,\\ f(e_2)=e_3,\\ f(e_3)=e_1'} /></span>.
@@ -440,8 +440,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                   <LatexRenderer latex={'A=\\begin{pmatrix}0&0&1\\\\1&0&0\\\\0&1&0\\\end{pmatrix}'} />.
                 </div>
 
-                <div className="p-4 bg-white rounded-lg border space-y-3">
-                  <h4 className="text-lg font-semibold text-gray-800">Correction</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-3">
+                  <h4 className="text-lg font-semibold text-carnet-ink">Correction</h4>
                   <p>On calcule:</p>
                   <div className="text-center"><LatexRenderer latex={'A^2=\\begin{pmatrix}0&1&0\\\\0&0&1\\\\1&0&0\\\end{pmatrix}'} /></div>
                   <div className="text-center"><LatexRenderer latex={'A^3=I_3'} /></div>
@@ -449,7 +449,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                     Ainsi <LatexRenderer latex={'P(x)=x^3-1'} /> annule <LatexRenderer latex={'A'} />, donc annule <LatexRenderer latex={'f'} />:
                     <LatexRenderer latex={'P(f)=f^3-\\mathrm{Id}_{\\mathbb R^3}=0'} />.
                   </p>
-                  <div className="p-3 rounded-lg border bg-gray-50 text-gray-800 border-gray-200">
+                  <div className="p-3 rounded-lg border bg-carnet-paper text-carnet-ink border-carnet-rule">
                     <strong>Conclusion</strong> — polynôme annulateur possible: <LatexRenderer latex={'x^3-1'} />.
                   </div>
                   <p>
@@ -462,14 +462,14 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
           </div>
         </Card>
          {/* Exercice 7 */}
-         <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+         <Card className="mb-6 border-0 hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 7</div>
               <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Intermédiaire</div>
             </div>
             <div className="space-y-3 mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">Exercice 7</h3>
+              <h3 className="text-lg font-semibold text-carnet-ink">Exercice 7</h3>
               <p>
                 Soit <LatexRenderer latex={'n \\in \\mathbb{N}^*'} />. Pour <LatexRenderer latex={'P \\in \\mathbb{R}_n[x]'} />, on définit le polynôme
                 <span className="inline-block align-middle"> <LatexRenderer latex={'u(P)'} /></span> par
@@ -492,8 +492,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
             {show7 && (
               <div className="space-y-4">
                 {/* Q1 */}
-                <div className="p-4 bg-white rounded-lg border space-y-2">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-2">Exercice 7 — Solution</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-2">
+                  <h4 className="text-lg font-semibold text-carnet-ink mb-2">Exercice 7 — Solution</h4>
                   <p className="font-semibold">1.</p>
                   <div className="text-center">
                     <LatexRenderer block latex={'\\deg(u(P)) = \\deg(xP^{\\prime}(x)) = \\deg(x) + \\deg(P^{\\prime}) = 1 + \\deg(P^{\\prime}) \\le 1 + \\deg(P) - 1 \\le n,'} />
@@ -509,7 +509,7 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Q2 */}
-                <div className="p-4 bg-white rounded-lg border space-y-3">
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-3">
                   <p className="font-semibold">2.</p>
                   <p>
                     Soit <LatexRenderer latex={'(\\lambda_1, \\lambda_2, \\lambda_3) \\in \\mathbb{R}^3'} />. Supposons que
@@ -551,14 +551,14 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         </Card>
 
         {/* Exercice 8 */}
-        <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+        <Card className="mb-6 border-0 hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 8</div>
               <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Intermédiaire</div>
             </div>
             <div className="space-y-3 mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">Composition f ∘ g = Id</h3>
+              <h3 className="text-lg font-semibold text-carnet-ink">Composition f ∘ g = Id</h3>
               <p>
                 Soient <LatexRenderer latex={'E'} /> un espace vectoriel et
                 <span className="inline-block align-middle"> <LatexRenderer latex={'f,g \\in \\mathcal L(E)'} /></span> tels que
@@ -579,8 +579,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
             {show6 && (
               <div className="space-y-4">
                 {/* Q1 */}
-                <div className="p-4 bg-white rounded-lg border space-y-2">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-2">1) Image de f et noyau de g</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-2">
+                  <h4 className="text-lg font-semibold text-carnet-ink mb-2">1) Image de f et noyau de g</h4>
                   <p>Comme <LatexRenderer latex={'f\\circ g=\\mathrm{Id}_E'} /> est surjective,</p>
                   <div className="text-center"><LatexRenderer latex={'f \\text{ est surjective } \\Rightarrow \\operatorname{Im} f = E'} /></div>
                   <p>Et <LatexRenderer latex={'f\\circ g'} /> est injective, donc</p>
@@ -588,8 +588,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Q2 */}
-                <div className="p-4 bg-white rounded-lg border space-y-2">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-2">2) Image de g ∘ f</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-2">
+                  <h4 className="text-lg font-semibold text-carnet-ink mb-2">2) Image de g ∘ f</h4>
                   <p>Si <LatexRenderer latex={'y \\in \\operatorname{Im}(g\\circ f)'} />, alors</p>
                   <div className="text-center"><LatexRenderer latex={'y=g(f(x)) \\Rightarrow y \\in \\operatorname{Im} g'} /></div>
                   <p>Réciproquement, si <LatexRenderer latex={'y \\in \\operatorname{Im} g'} />, il existe <LatexRenderer latex={'x \\in E'} /> tel que <LatexRenderer latex={'y=g(x)'} />.</p>
@@ -599,8 +599,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Q3 */}
-                <div className="p-4 bg-white rounded-lg border space-y-2">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-2">3) Noyau de g ∘ f</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-2">
+                  <h4 className="text-lg font-semibold text-carnet-ink mb-2">3) Noyau de g ∘ f</h4>
                   <p>L’inclusion <LatexRenderer latex={'\\ker f \\subset \\ker(g\\circ f)'} /> est immédiate.</p>
                   <p>Réciproquement, si <LatexRenderer latex={'g(f(x))=0_E'} />, alors <LatexRenderer latex={'f(x) \\in \\ker g = \\{0_E\\}'} />.</p>
                   <div className="text-center"><LatexRenderer latex={'\\Rightarrow \\ f(x)=0_E \\Rightarrow x \\in \\ker f'} /></div>
@@ -608,8 +608,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Q4 */}
-                <div className="p-4 bg-white rounded-lg border space-y-2">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-2">4) Intersection triviale</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-2">
+                  <h4 className="text-lg font-semibold text-carnet-ink mb-2">4) Intersection triviale</h4>
                   <p>Si <LatexRenderer latex={'x \\in (\\ker f) \\cap (\\operatorname{Im} g)'} />, écrire <LatexRenderer latex={'x=g(y)'} />.</p>
                   <p>Utiliser <LatexRenderer latex={'f(g(y))=y'} /> pour conclure que <LatexRenderer latex={'x=0_E'} />.</p>
                   <div className="text-center"><LatexRenderer latex={'(\\ker f) \\cap (\\operatorname{Im} g) = \\{0_E\\}'} /></div>
@@ -620,14 +620,14 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         </Card>
 
         {/* Exercice 9 */}
-        <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+        <Card className="mb-6 border-0 hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 9</div>
               <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Intermédiaire</div>
             </div>
             <div className="space-y-3 mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">
+              <h3 className="text-lg font-semibold text-carnet-ink">
                 Supplémentarité et projections dans{' '}
                 <span className="inline-block align-middle"><LatexRenderer latex={'\\mathbb{R}^3'} /></span>
               </h3>
@@ -650,8 +650,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
             {show8 && (
               <div className="space-y-4">
                 {/* Q1 */}
-                <div className="p-4 bg-white rounded-lg border space-y-3">
-                  <h4 className="text-lg font-semibold text-gray-800">1)</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-3">
+                  <h4 className="text-lg font-semibold text-carnet-ink">1)</h4>
                   <p>
                     On sait que <LatexRenderer latex={'\\mathbb{R}^3 = F \\oplus G \\iff (\\forall a \\in \\mathbb{R}^3, \\exists!\\,(b,c) \\in F \\times G, \\ a=b+c)'} />.
                     Raisonnons par analyse-synthèse.
@@ -683,8 +683,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                 </div>
 
                 {/* Q2 */}
-                <div className="p-4 bg-white rounded-lg border space-y-2">
-                  <h4 className="text-lg font-semibold text-gray-800">2)</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-2">
+                  <h4 className="text-lg font-semibold text-carnet-ink">2)</h4>
                   <p>
                     De plus, avec les calculs précédents, pour tout <LatexRenderer latex={'a=(x,y,z) \\in \\mathbb{R}^3'} />, en reprenant les notations ci-dessus,
                     l’écriture <LatexRenderer latex={'a=b+c'} /> est l’unique décomposition de <LatexRenderer latex={'a'} /> comme somme d’un vecteur de <LatexRenderer latex={'F'} /> et d’un vecteur de <LatexRenderer latex={'G'} />.
@@ -706,14 +706,14 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
         </Card>
 
         {/* Exercice 10 */}
-        <Card className="mb-6 border-0 shadow-md hover:shadow-lg transition-shadow">
+        <Card className="mb-6 border-0 hover:shadow-lg transition-shadow">
           <div className="p-6">
             <div className="flex items-start gap-3 mb-4">
               <div className="bg-carnet-red/10 text-carnet-red px-3 py-1 rounded-full text-sm font-semibold">Exercice 10</div>
               <div className="text-xs text-carnet-red bg-pr-gray-bg px-2 py-1 rounded">Avancé</div>
             </div>
             <div className="space-y-3 mb-4">
-              <h3 className="text-lg font-semibold text-gray-800">Décomposition spectrale simple et puissances de f</h3>
+              <h3 className="text-lg font-semibold text-carnet-ink">Décomposition spectrale simple et puissances de f</h3>
               <p>
                 Soit <LatexRenderer latex={'E'} /> un espace vectoriel. Soient <LatexRenderer latex={'a,b \\in \\mathbb R'} /> tels que <LatexRenderer latex={'a \\ne b'} /> et
                 <span className="inline-block align-middle"> <LatexRenderer latex={'f \\in \\mathcal L(E)'} /></span>.
@@ -739,8 +739,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                   <span className="inline-block align-middle"> <LatexRenderer latex={'E_b = \\mathrm{Ker}(f - b\\,\\mathrm{id}_E)'} /></span>.
                 </p>
 
-                <div className="p-4 bg-white rounded-lg border space-y-3">
-                  <h4 className="text-lg font-semibold text-gray-800">1)</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-3">
+                  <h4 className="text-lg font-semibold text-carnet-ink">1)</h4>
                   <p>
                     On veut montrer que pour tout <LatexRenderer latex={'x \\in E'} />, il existe un unique
                     <LatexRenderer latex={'(x_a, x_b) \\in E_a \\times E_b'} /> tel que <LatexRenderer latex={'x = x_a + x_b'} />.
@@ -788,8 +788,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                   <p><LatexRenderer latex={'E = E_a \\oplus E_b.'} /></p>
                 </div>
 
-                <div className="p-4 bg-white rounded-lg border space-y-3">
-                  <h4 className="text-lg font-semibold text-gray-800">2)</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-3">
+                  <h4 className="text-lg font-semibold text-carnet-ink">2)</h4>
                   <p>
                     De plus, on vient de voir que pour tout <LatexRenderer latex={'x \\in E'} />, l’écriture
                   </p>
@@ -805,8 +805,8 @@ const Module1ApplicationsLineairesExercicesPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-4 bg-white rounded-lg border space-y-3">
-                  <h4 className="text-lg font-semibold text-gray-800">3)</h4>
+                <div className="p-4 bg-carnet-paper-2 rounded-lg border space-y-3">
+                  <h4 className="text-lg font-semibold text-carnet-ink">3)</h4>
                   <p>
                     Pour <LatexRenderer latex={'x \\in E'} />, en reprenant la notation <LatexRenderer latex={'x = x_a + x_b'} /> de la question précédente, on a
                     <LatexRenderer latex={'f(x) = a x_a + b x_b'} /> (car <LatexRenderer latex={'x_a \\in E_a'} /> et <LatexRenderer latex={'x_b \\in E_b'} />).

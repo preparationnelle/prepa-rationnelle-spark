@@ -183,7 +183,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
 
   if (!currentCard) {
     return (
-      <div className="max-w-3xl mx-auto p-4 text-center text-slate-500">
+      <div className="max-w-3xl mx-auto p-4 text-center text-carnet-ink-soft">
         Aucune flashcard disponible.
       </div>
     );
@@ -194,18 +194,18 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
     return (
       <div className="max-w-2xl mx-auto px-4 py-12">
         <Card className="border border-carnet-rule shadow-none bg-carnet-paper-2 text-center p-8">
-          <h2 className="text-2xl font-serif text-slate-900 mb-4">Session terminée</h2>
+          <h2 className="text-2xl font-serif text-carnet-ink mb-4">Session terminée</h2>
           <div className="flex justify-center items-center gap-8 mb-8">
             <div className="text-center">
               <div className="text-3xl font-semibold text-emerald-600">{correctCount}</div>
-              <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">Maîtrisées</div>
+              <div className="text-xs text-carnet-ink-soft uppercase tracking-wider mt-1">Maîtrisées</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-semibold text-slate-900">{totalCards}</div>
-              <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">Total</div>
+              <div className="text-3xl font-semibold text-carnet-ink">{totalCards}</div>
+              <div className="text-xs text-carnet-ink-soft uppercase tracking-wider mt-1">Total</div>
             </div>
           </div>
-          <Button onClick={resetProgress} variant="outline" className="border-slate-200 hover:bg-slate-50">
+          <Button onClick={resetProgress} variant="outline" className="border-carnet-rule hover:bg-carnet-paper">
             <RotateCcw className="h-4 w-4 mr-2" />
             Recommencer
           </Button>
@@ -221,12 +221,12 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
       {!hideHeader && (title || chip) && (
         <div className="mb-8 text-center sm:text-left">
           {chip && (
-            <Badge variant="outline" className="mb-3 px-3 py-1 border-slate-200 text-slate-500 font-normal">
+            <Badge variant="outline" className="mb-3 px-3 py-1 border-carnet-rule text-carnet-ink-soft font-normal">
               {chip}
             </Badge>
           )}
           {title && (
-            <h2 className="text-3xl font-serif text-slate-900 tracking-tight">{title}</h2>
+            <h2 className="text-3xl font-serif text-carnet-ink tracking-tight">{title}</h2>
           )}
         </div>
       )}
@@ -237,7 +237,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
             onClick={() => handleCategoryChange('all')}
             className={`text-xs uppercase tracking-wider px-3 py-1.5 rounded-full border transition-colors ${
               selectedCategory === 'all'
-                ? 'bg-slate-900 text-white border-slate-900'
+                ? 'bg-carnet-red text-carnet-paper border-carnet-red'
                 : 'bg-carnet-paper-2 text-carnet-ink-soft border-carnet-rule hover:bg-carnet-paper'
             }`}
           >
@@ -251,7 +251,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
                 onClick={() => handleCategoryChange(cat)}
                 className={`text-xs uppercase tracking-wider px-3 py-1.5 rounded-full border transition-colors ${
                   selectedCategory === cat
-                    ? 'bg-slate-900 text-white border-slate-900'
+                    ? 'bg-carnet-red text-carnet-paper border-carnet-red'
                     : 'bg-carnet-paper-2 text-carnet-ink-soft border-carnet-rule hover:bg-carnet-paper'
                 }`}
               >
@@ -266,7 +266,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
         <span className="text-xs font-medium text-carnet-ink-mute font-mono">
           {currentIndex + 1} / {totalCards}
         </span>
-        <div className="h-[2px] w-full flex-1 bg-slate-100 rounded-full overflow-hidden">
+        <div className="h-[2px] w-full flex-1 bg-carnet-rule/30 rounded-full overflow-hidden">
           <div
             className="h-full bg-carnet-red transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
@@ -276,7 +276,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
           <button
             onClick={shuffle}
             aria-label="Mélanger les cartes"
-            className="text-slate-400 hover:text-slate-700 transition-colors"
+            className="text-carnet-rule hover:text-carnet-ink transition-colors"
           >
             <Shuffle className="h-4 w-4" />
           </button>
@@ -290,7 +290,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
               onClick={toggleReview}
               aria-label="Marquer à revoir"
               className={`absolute top-6 right-6 transition-colors ${
-                isMarked(currentCard) ? 'text-amber-500' : 'text-slate-200 hover:text-slate-300'
+                isMarked(currentCard) ? 'text-amber-500' : 'text-carnet-rule hover:text-carnet-ink-soft'
               }`}
             >
               <Bookmark className="h-5 w-5" fill={isMarked(currentCard) ? 'currentColor' : 'none'} />
@@ -309,11 +309,11 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
               {!showAnswer ? (
                 <div className="animate-in fade-in zoom-in-95 duration-300 w-full">
                   {frontLabel && (
-                    <div className="text-xs uppercase tracking-wider text-slate-400 mb-4">
+                    <div className="text-xs uppercase tracking-wider text-carnet-ink-soft mb-4">
                       {frontLabel}
                     </div>
                   )}
-                  <h3 className="text-2xl sm:text-3xl font-serif text-slate-900 leading-relaxed mb-6">
+                  <h3 className="text-2xl sm:text-3xl font-serif text-carnet-ink leading-relaxed mb-6">
                     {currentCard.front}
                   </h3>
                   <div className="mt-10">
@@ -328,12 +328,12 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
               ) : (
                 <div className="animate-in fade-in slide-in-from-bottom-2 duration-300 w-full">
                   {backLabel && (
-                    <div className="text-xs uppercase tracking-wider text-slate-400 mb-4">
+                    <div className="text-xs uppercase tracking-wider text-carnet-ink-soft mb-4">
                       {backLabel}
                     </div>
                   )}
                   <div className="prose prose-slate max-w-none mb-6">
-                    <div className="text-2xl sm:text-3xl font-serif text-slate-900 leading-relaxed">
+                    <div className="text-2xl sm:text-3xl font-serif text-carnet-ink leading-relaxed">
                       {currentCard.back}
                     </div>
                     {currentCard.hint && (
@@ -395,7 +395,7 @@ export const ThemedFlashcards: React.FC<ThemedFlashcardsProps> = ({
       </div>
 
       <div className="mt-10 text-center">
-        <p className="text-xs text-slate-400 font-medium">
+        <p className="text-xs text-carnet-ink-soft font-medium">
           ESPACE · FLIP &nbsp;|&nbsp; ← → · NAVIGUER &nbsp;|&nbsp; R · MARQUER À REVOIR
         </p>
       </div>

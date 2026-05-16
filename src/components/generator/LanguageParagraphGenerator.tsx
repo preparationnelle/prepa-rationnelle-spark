@@ -1,6 +1,4 @@
-
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
@@ -12,16 +10,22 @@ import {
   Check,
   Sparkles,
   FileText,
-  Target,
   Lightbulb,
   Trash2,
   BookOpen,
-  Compass,
-  Wand2
+  Wand2,
+  Newspaper,
+  LayoutGrid,
+  Target,
 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { downloadAsPDF, downloadAsText } from '@/utils/downloadUtils';
 import { toast } from 'sonner';
+import { MethodologyCard } from './paragraph/MethodologyCard';
+import { ThemeGallery } from './paragraph/ThemeGallery';
+import { AnnotatedParagraph, type BreakdownEntry, type BreakdownRole } from './paragraph/AnnotatedParagraph';
+import { QualityScore } from './paragraph/QualityScore';
+import { ENGLISH_THEMES, type ThemeEntry } from './paragraph/themes';
 
 type SelectedLanguage = 'allemand' | 'anglais' | 'espagnol';
 
@@ -39,6 +43,7 @@ interface GenerationResult {
   angle: string;
   concoursTopics: string[];
   paragraph: string;
+  breakdown: BreakdownEntry[];
   vocabulary: VocabularyItem[];
   variants: string;
 }
@@ -46,46 +51,75 @@ interface GenerationResult {
 const LANGUAGE_MAPPING: Record<SelectedLanguage, 'en' | 'de' | 'es'> = {
   anglais: 'en',
   allemand: 'de',
-  espagnol: 'es'
+  espagnol: 'es',
 };
 
-const PARAGRAPH_LANG_ATTR: Record<SelectedLanguage, string> = {
+const PARAGRAPH_LANG_ATTR: Record<SelectedLanguage, 'en' | 'de' | 'es'> = {
   anglais: 'en',
   allemand: 'de',
-  espagnol: 'es'
+  espagnol: 'es',
 };
 
-const EXAMPLES: Record<SelectedLanguage, { article: string; keywords: string }> = {
-  anglais: {
-    article:
-      "Donald Trump's return to the White House in January 2025 marked a sharp turn toward economic nationalism. Within his first 100 days, his administration unveiled sweeping tariffs on Chinese imports, cutting bilateral trade flows by an estimated 22% in Q2 2025. European partners, alarmed by the so-called 'Liberation Day' tariffs of April 2025, scrambled to draft retaliatory measures while quietly seeking exemptions for German cars and French luxury goods.",
-    keywords: 'Trump 2.0, tariffs, transatlantic relations'
-  },
-  allemand: {
-    article:
-      "Die Bundestagswahl vom Februar 2025 hat Deutschland erschüttert: Friedrich Merz (CDU/CSU) wurde Kanzler, doch die AfD erzielte mit 20,8 % das beste Ergebnis ihrer Geschichte. In Ostdeutschland holte sie über 30 %. Die neue Koalition aus Union und SPD steht unter Druck, die Wirtschaft anzukurbeln, während die deutsche Industrie unter hohen Energiepreisen und chinesischer Konkurrenz leidet.",
-    keywords: 'AfD, Polarisierung, Ostdeutschland'
-  },
-  espagnol: {
-    article:
-      'En 2024, Javier Milei completó su primer año como presidente de Argentina con un fuerte ajuste estatal. Cerró nueve ministerios, devaluó el peso un 54 % y la inflación interanual cayó del 211 % al 117 %. Sin embargo, la pobreza alcanzó un récord del 52,9 % en el primer semestre, y las protestas se multiplicaron en Buenos Aires y Córdoba.',
-    keywords: 'Milei, ajuste, pobreza, motosierra'
-  }
+const EXAMPLES: Record<SelectedLanguage, Array<{ article: string; keywords: string }>> = {
+  anglais: [
+    {
+      article:
+        "Donald Trump's return to the White House in January 2025 marked a sharp turn toward economic nationalism. Within his first 100 days, his administration unveiled sweeping tariffs on Chinese imports, cutting bilateral trade flows by an estimated 22% in Q2 2025. European partners, alarmed by the so-called 'Liberation Day' tariffs of April 2025, scrambled to draft retaliatory measures while quietly seeking exemptions for German cars and French luxury goods.",
+      keywords: 'Trump 2.0, tariffs, transatlantic relations',
+    },
+    {
+      article:
+        "In November 2022, OpenAI unveiled ChatGPT, triggering a $100 billion drop in Google's market value within weeks. The generative AI race has since reshaped Big Tech: Microsoft poured another $10 billion into OpenAI in early 2023, while Alphabet rushed out Bard and then Gemini. Goldman Sachs estimated in 2024 that up to 300 million jobs worldwide could be exposed to automation by generative models.",
+      keywords: 'ChatGPT, Big Tech, generative AI',
+    },
+    {
+      article:
+        "Britain's National Health Service, founded in 1948, has slid into the deepest crisis of its history. By early 2024, more than 7.5 million people were on waiting lists for routine treatment. Junior doctors staged the longest strike in NHS history in January 2024, demanding a 35% pay restoration. Successive Tory governments have failed to reverse a decade of underinvestment, leaving Keir Starmer's incoming Labour cabinet to inherit a service many Britons see as broken.",
+      keywords: 'NHS, healthcare, UK, waiting lists',
+    },
+  ],
+  allemand: [
+    {
+      article:
+        'Die Bundestagswahl vom Februar 2025 hat Deutschland erschüttert: Friedrich Merz (CDU/CSU) wurde Kanzler, doch die AfD erzielte mit 20,8 % das beste Ergebnis ihrer Geschichte. In Ostdeutschland holte sie über 30 %. Die neue Koalition aus Union und SPD steht unter Druck, die Wirtschaft anzukurbeln, während die deutsche Industrie unter hohen Energiepreisen und chinesischer Konkurrenz leidet.',
+      keywords: 'AfD, Polarisierung, Ostdeutschland',
+    },
+    {
+      article:
+        'Die deutsche Energiewende, 2011 nach Fukushima beschleunigt, gilt als eines der ehrgeizigsten Klimaprojekte Europas. Bis 2030 sollen 80 % des Stroms aus erneuerbaren Energien stammen, und der Atomausstieg wurde im April 2023 endgültig vollzogen. Trotzdem hängt Deutschland weiterhin von Kohle und Gas ab, vor allem seit dem russischen Angriffskrieg gegen die Ukraine.',
+      keywords: 'Energiewende, Atomausstieg, Klimapolitik',
+    },
+  ],
+  espagnol: [
+    {
+      article:
+        'En 2024, Javier Milei completó su primer año como presidente de Argentina con un fuerte ajuste estatal. Cerró nueve ministerios, devaluó el peso un 54 % y la inflación interanual cayó del 211 % al 117 %. Sin embargo, la pobreza alcanzó un récord del 52,9 % en el primer semestre, y las protestas se multiplicaron en Buenos Aires y Córdoba.',
+      keywords: 'Milei, ajuste, pobreza, motosierra',
+    },
+    {
+      article:
+        'Claudia Sheinbaum asumió la presidencia de México en octubre de 2024, convirtiéndose en la primera mujer en ocupar el cargo. Heredó del lopezobradorismo una economía estancada, una violencia récord —más de 30 000 homicidios anuales— y la presión arancelaria de Donald Trump. Su agenda combina continuidad con el partido Morena y un giro hacia la energía limpia.',
+      keywords: 'Sheinbaum, México, primera mujer presidenta',
+    },
+  ],
 };
 
 const LANGUAGE_DISPLAY: Record<SelectedLanguage, string> = {
   anglais: 'Anglais',
   allemand: 'Allemand',
-  espagnol: 'Espagnol'
+  espagnol: 'Espagnol',
 };
 
 const emptyResult: GenerationResult = {
   angle: '',
   concoursTopics: [],
   paragraph: '',
+  breakdown: [],
   vocabulary: [],
-  variants: ''
+  variants: '',
 };
+
+const ALLOWED_ROLES: BreakdownRole[] = ['hook', 'context', 'figure', 'tension', 'opening'];
 
 function coerceResult(raw: any): GenerationResult {
   if (!raw || typeof raw !== 'object') return emptyResult;
@@ -99,10 +133,23 @@ function coerceResult(raw: any): GenerationResult {
           }
           return {
             term: typeof item.term === 'string' ? item.term : '',
-            translation: typeof item.translation === 'string' ? item.translation : ''
+            translation: typeof item.translation === 'string' ? item.translation : '',
           };
         })
         .filter((item: VocabularyItem | null): item is VocabularyItem => !!item && !!item.term)
+    : [];
+
+  const breakdown: BreakdownEntry[] = Array.isArray(raw.breakdown)
+    ? raw.breakdown
+        .map((item: any): BreakdownEntry | null => {
+          if (!item || typeof item.sentence !== 'string') return null;
+          const role = typeof item.role === 'string' ? (item.role as BreakdownRole) : null;
+          if (!role || !ALLOWED_ROLES.includes(role)) return null;
+          const sentence = item.sentence.trim();
+          if (!sentence) return null;
+          return { sentence, role };
+        })
+        .filter((item: BreakdownEntry | null): item is BreakdownEntry => !!item)
     : [];
 
   return {
@@ -111,8 +158,9 @@ function coerceResult(raw: any): GenerationResult {
       ? raw.concoursTopics.filter((t: any) => typeof t === 'string' && t.trim()).map((t: string) => t.trim())
       : [],
     paragraph: typeof raw.paragraph === 'string' ? raw.paragraph.trim() : '',
+    breakdown,
     vocabulary: vocab,
-    variants: typeof raw.variants === 'string' ? raw.variants : ''
+    variants: typeof raw.variants === 'string' ? raw.variants : '',
   };
 }
 
@@ -143,6 +191,8 @@ function buildExportContent(result: GenerationResult, languageDisplay: string): 
 }
 
 export const LanguageParagraphGenerator = ({ language, selectedLanguage }: LanguageParagraphGeneratorProps) => {
+  const themeModeAvailable = selectedLanguage === 'anglais';
+  const [mode, setMode] = useState<'article' | 'theme'>('article');
   const [article, setArticle] = useState('');
   const [keywords, setKeywords] = useState('');
   const [loading, setLoading] = useState(false);
@@ -152,23 +202,14 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
   const targetLanguage = LANGUAGE_MAPPING[selectedLanguage];
   const languageDisplay = LANGUAGE_DISPLAY[selectedLanguage];
 
-  const handleGenerate = async () => {
-    if (!article.trim()) {
-      toast.error('Veuillez coller un article pour générer le paragraphe.');
-      return;
-    }
+  const activeMode: 'article' | 'theme' = themeModeAvailable ? mode : 'article';
 
+  const callGenerate = async (payload: Record<string, unknown>) => {
     setLoading(true);
     try {
       const { data, error } = await supabase.functions.invoke('generate-language-paragraph', {
-        body: {
-          article: article.trim(),
-          keywords: keywords.trim() || undefined,
-          language: targetLanguage,
-          mode: 'paragraph'
-        },
+        body: payload,
       });
-
       if (error) throw error;
 
       let parsed: GenerationResult = emptyResult;
@@ -197,6 +238,29 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
     }
   };
 
+  const handleGenerateFromArticle = async () => {
+    if (!article.trim()) {
+      toast.error('Colle un article pour générer le paragraphe.');
+      return;
+    }
+    await callGenerate({
+      article: article.trim(),
+      keywords: keywords.trim() || undefined,
+      language: targetLanguage,
+      mode: 'article',
+    });
+  };
+
+  const handleGenerateFromTheme = async (theme: ThemeEntry, angle: ThemeEntry['angles'][number]) => {
+    await callGenerate({
+      mode: 'theme',
+      theme: theme.title,
+      angle: angle.title,
+      keywords: angle.keywords,
+      language: targetLanguage,
+    });
+  };
+
   const handleDownloadPDF = async () => {
     if (!result) return;
     const timestamp = new Date().toISOString().split('T')[0];
@@ -204,7 +268,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
     await downloadAsPDF(
       content,
       `paragraphe-${selectedLanguage}-${timestamp}`,
-      `Paragraphe d'argumentation — ${languageDisplay}`
+      `Paragraphe d'argumentation — ${languageDisplay}`,
     );
   };
 
@@ -221,7 +285,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
     await navigator.clipboard.writeText(content);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-    toast.success('Paragraphe copié dans le presse-papiers !');
+    toast.success('Paragraphe copié !');
   };
 
   const handleCopyParagraphOnly = async () => {
@@ -233,9 +297,10 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
   };
 
   const loadExample = () => {
-    const ex = EXAMPLES[selectedLanguage];
-    setArticle(ex.article);
-    setKeywords(ex.keywords);
+    const examples = EXAMPLES[selectedLanguage];
+    const random = examples[Math.floor(Math.random() * examples.length)];
+    setArticle(random.article);
+    setKeywords(random.keywords);
   };
 
   const clearAll = () => {
@@ -244,221 +309,269 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
     setResult(null);
   };
 
-  const wordCount = result?.paragraph
-    ? result.paragraph.split(/\s+/).filter(Boolean).length
-    : 0;
-
   return (
-    <div className="space-y-10">
-      {/* ───────────── Bloc Entrée ───────────── */}
-      <div className="space-y-7">
-        {/* Champ Article */}
+    <div className="space-y-8">
+      <MethodologyCard />
+
+      {themeModeAvailable && (
         <div className="space-y-3">
-          <div className="flex items-center justify-between gap-3">
-            <Label htmlFor="article" className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-gray-bg text-pr-black text-[11px] font-bold">
-                1
-              </span>
-              Article de presse
-            </Label>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-black bg-pr-gray-bg px-2.5 py-1 rounded-full">
-              Requis
-            </span>
+          <div className="flex items-center gap-2">
+            <span className="carnet-eyebrow text-[10.5px]">Mode de génération</span>
           </div>
-          <Textarea
-            id="article"
-            placeholder={`Collez ici l'article de presse — le paragraphe sera produit en ${languageDisplay.toLowerCase()}.`}
-            value={article}
-            onChange={(e) => setArticle(e.target.value)}
-            rows={5}
-            className="min-h-[140px] border-pr-gray-light bg-white focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 resize-y text-[15px] leading-relaxed p-4 rounded-xl text-pr-black placeholder:text-pr-gray-mid transition-colors"
-          />
-        </div>
-
-        {/* Champ Mots-clés */}
-        <div className="space-y-3">
-          <div className="flex items-center justify-between gap-3">
-            <Label htmlFor="keywords" className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-gray-bg text-pr-gray-dark text-[11px] font-bold">
-                2
-              </span>
-              Mots-clés / angle
-            </Label>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-gray-mid bg-pr-gray-bg px-2.5 py-1 rounded-full">
-              Optionnel
-            </span>
-          </div>
-          <Input
-            id="keywords"
-            placeholder="Ex. : politique, USA, immigration"
-            value={keywords}
-            onChange={(e) => setKeywords(e.target.value)}
-            className="h-12 border-pr-gray-light bg-white focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 text-[15px] rounded-xl text-pr-black placeholder:text-pr-gray-mid transition-colors"
-          />
-          <p className="text-[13px] text-pr-gray-mid flex items-center gap-1.5 pl-1">
-            <Lightbulb className="w-3.5 h-3.5 text-pr-black" />
-            Séparez par des virgules pour orienter l'angle du paragraphe.
-          </p>
-        </div>
-
-        {/* Boutons d'action */}
-        <div className="flex flex-col sm:flex-row gap-3 pt-2">
-          <Button
-            onClick={handleGenerate}
-            disabled={loading || !article.trim()}
-            className="bg-pr-black hover:bg-pr-black-dark text-white shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 h-12 px-7 text-[15px] font-semibold rounded-xl flex-1 disabled:opacity-50 disabled:shadow-none"
-          >
-            {loading ? (
-              <>
-                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                Génération en cours…
-              </>
-            ) : (
-              <>
-                <Sparkles className="w-5 h-5 mr-2" />
-                Générer le paragraphe
-              </>
-            )}
-          </Button>
-
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              onClick={loadExample}
-              className="border-pr-gray-light bg-white text-pr-gray-dark hover:text-pr-black hover:border-pr-black-soft hover:bg-pr-gray-bg h-12 px-4 rounded-xl font-medium transition-colors"
-              title="Charger un exemple"
+          <div className="grid grid-cols-2 gap-2 bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)] p-1 rounded-md">
+            <button
+              type="button"
+              onClick={() => setMode('article')}
+              className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded transition-all font-instrument text-[13.5px] font-semibold ${
+                activeMode === 'article'
+                  ? 'bg-carnet-red text-carnet-paper'
+                  : 'text-carnet-ink-soft hover:bg-[rgba(78,55,30,0.04)]'
+              }`}
             >
-              <Lightbulb className="w-4 h-4 mr-2" />
-              Exemple
-            </Button>
-            <Button
-              variant="outline"
-              onClick={clearAll}
-              className="border-pr-gray-light bg-white text-pr-gray-mid hover:text-pr-black hover:border-pr-gray-mid hover:bg-pr-gray-bg h-12 px-4 rounded-xl font-medium transition-colors"
-              title="Tout effacer"
+              <Newspaper className="w-4 h-4" />
+              J'ai un article
+            </button>
+            <button
+              type="button"
+              onClick={() => setMode('theme')}
+              className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded transition-all font-instrument text-[13.5px] font-semibold ${
+                activeMode === 'theme'
+                  ? 'bg-carnet-red text-carnet-paper'
+                  : 'text-carnet-ink-soft hover:bg-[rgba(78,55,30,0.04)]'
+              }`}
             >
-              <Trash2 className="w-4 h-4 mr-2" />
-              Effacer
-            </Button>
+              <LayoutGrid className="w-4 h-4" />
+              Je pars d'un thème
+            </button>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* ───────────── Bloc Sortie ───────────── */}
+      {activeMode === 'article' ? (
+        <div className="space-y-6">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between gap-3">
+              <Label
+                htmlFor="article"
+                className="font-instrument text-[14px] font-semibold text-carnet-ink flex items-center gap-2"
+              >
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-carnet-red text-carnet-paper text-[11px] font-bold">
+                  1
+                </span>
+                Article de presse
+              </Label>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-red bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.20)] px-2.5 py-1 rounded-sm font-instrument">
+                Requis
+              </span>
+            </div>
+            <Textarea
+              id="article"
+              placeholder={`Colle ici l'article de presse — le paragraphe sera produit en ${languageDisplay.toLowerCase()}.`}
+              value={article}
+              onChange={(e) => setArticle(e.target.value)}
+              rows={6}
+              className="min-h-[160px] border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2 focus:border-carnet-red focus:ring-2 focus:ring-carnet-red/20 resize-y font-instrument text-[14.5px] leading-relaxed p-4 rounded-md text-carnet-ink placeholder:text-carnet-ink-mute transition-colors"
+            />
+          </div>
+
+          <div className="space-y-3">
+            <div className="flex items-center justify-between gap-3">
+              <Label
+                htmlFor="keywords"
+                className="font-instrument text-[14px] font-semibold text-carnet-ink flex items-center gap-2"
+              >
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[rgba(78,55,30,0.10)] text-carnet-ink-soft text-[11px] font-bold">
+                  2
+                </span>
+                Mots-clés / angle
+              </Label>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-ink-mute bg-[rgba(78,55,30,0.06)] border border-dashed border-[rgba(78,55,30,0.18)] px-2.5 py-1 rounded-sm font-instrument">
+                Optionnel
+              </span>
+            </div>
+            <Input
+              id="keywords"
+              placeholder="Ex. : Trump 2.0, tariffs, transatlantic"
+              value={keywords}
+              onChange={(e) => setKeywords(e.target.value)}
+              className="h-12 border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2 focus:border-carnet-red focus:ring-2 focus:ring-carnet-red/20 font-instrument text-[14.5px] rounded-md text-carnet-ink placeholder:text-carnet-ink-mute transition-colors"
+            />
+            <p className="font-instrument text-[12.5px] text-carnet-ink-mute flex items-center gap-1.5 pl-1">
+              <Lightbulb className="w-3.5 h-3.5 text-carnet-red" />
+              Sépare par des virgules pour orienter l'angle. Optionnel mais conseillé.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <Button
+              onClick={handleGenerateFromArticle}
+              disabled={loading || !article.trim()}
+              className="bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument font-semibold text-[15px] h-12 px-7 rounded-md border-0 transition-colors flex-1 disabled:opacity-50"
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Génération en cours…
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-5 h-5 mr-2" />
+                  Générer le paragraphe
+                </>
+              )}
+            </Button>
+
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                onClick={loadExample}
+                disabled={loading}
+                className="border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2 text-carnet-ink-soft hover:text-carnet-red hover:border-carnet-red hover:bg-[rgba(193,68,58,0.06)] font-instrument h-12 px-4 rounded-md font-medium transition-colors"
+                title="Charger un exemple au hasard"
+              >
+                <Lightbulb className="w-4 h-4 mr-2" />
+                Exemple
+              </Button>
+              <Button
+                variant="outline"
+                onClick={clearAll}
+                disabled={loading}
+                className="border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2 text-carnet-ink-mute hover:text-carnet-red hover:border-carnet-red hover:bg-[rgba(193,68,58,0.06)] font-instrument h-12 px-4 rounded-md font-medium transition-colors"
+                title="Tout effacer"
+              >
+                <Trash2 className="w-4 h-4 mr-2" />
+                Effacer
+              </Button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <ThemeGallery
+          themes={ENGLISH_THEMES}
+          onPick={handleGenerateFromTheme}
+          loading={loading}
+        />
+      )}
+
       {result && (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-            {/* Bandeau supérieur orange */}
-            <div className="h-[3px] w-full bg-pr-black" />
+          <div className="carnet-card overflow-hidden">
+            <div className="h-[3px] w-full bg-carnet-red" />
 
-            <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5 sm:px-8">
+            <div className="px-6 py-5 sm:px-8 border-b border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white border border-pr-black-soft">
-                    <Target className="w-5 h-5 text-pr-black" />
+                  <div className="w-10 h-10 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.20)] flex items-center justify-center flex-shrink-0">
+                    <Target className="w-5 h-5 text-carnet-red" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
-                      Paragraphe ECG
-                    </div>
-                    <CardTitle className="font-dm-serif text-2xl text-pr-black leading-none">
+                    <div className="carnet-eyebrow text-[10.5px] mb-0.5">Paragraphe ECG</div>
+                    <h3 className="font-lora text-[26px] text-carnet-ink leading-none">
                       {languageDisplay}
-                    </CardTitle>
+                    </h3>
                   </div>
                 </div>
                 {result.angle && (
-                  <div className="bg-white border border-pr-gray-light rounded-xl px-4 py-2.5 max-w-full sm:max-w-md">
-                    <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-black mb-1">
-                      Angle
-                    </span>
-                    <span className="block text-[14px] text-pr-black font-medium leading-snug">
+                  <div className="bg-carnet-paper-2 border border-dashed border-[rgba(193,68,58,0.30)] rounded-md px-4 py-2.5 max-w-full sm:max-w-md">
+                    <span className="block carnet-eyebrow text-[10px] mb-1">Angle</span>
+                    <span className="block font-lora italic text-[15px] text-carnet-red leading-snug">
                       {result.angle}
                     </span>
                   </div>
                 )}
               </div>
-            </CardHeader>
+            </div>
 
-            <CardContent className="p-6 sm:p-8 space-y-8">
-              {/* Sujets de concours mobilisables */}
+            <div className="p-6 sm:p-8 space-y-8">
               {result.concoursTopics.length > 0 && (
                 <div className="space-y-3">
-                  <Label className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                    <Compass className="w-3.5 h-3.5 text-pr-black" />
+                  <Label className="carnet-eyebrow text-[10.5px] flex items-center gap-2">
+                    <Target className="w-3.5 h-3.5 text-carnet-red" />
                     Sujets de concours mobilisables
                   </Label>
-                  <div className="bg-pr-gray-bg/60 rounded-xl p-5 border border-pr-black-pale">
-                    <ul className="space-y-2.5">
-                      {result.concoursTopics.map((topic, index) => (
-                        <li key={index} className="flex items-start gap-3">
-                          <span className="w-1.5 h-1.5 bg-pr-black rounded-full mt-2 flex-shrink-0"></span>
-                          <span className="text-pr-black text-[15px] leading-snug">{topic}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {result.concoursTopics.map((topic, index) => {
+                      const tiltClass =
+                        index % 3 === 0
+                          ? 'carnet-tilt-l'
+                          : index % 3 === 1
+                          ? 'carnet-tilt-r'
+                          : '';
+                      return (
+                        <div
+                          key={index}
+                          className={`bg-[rgba(255,225,120,0.30)] border border-dashed border-[rgba(78,55,30,0.20)] rounded-sm p-3 ${tiltClass}`}
+                        >
+                          <p className="font-instrument text-[13px] text-carnet-ink leading-snug italic">
+                            {topic}
+                          </p>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
 
-              {/* Paragraphe */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between gap-3">
-                  <Label className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                    <FileText className="w-3.5 h-3.5 text-pr-black" />
+                  <Label className="carnet-eyebrow text-[10.5px] flex items-center gap-2">
+                    <FileText className="w-3.5 h-3.5 text-carnet-red" />
                     Paragraphe argumentatif
                   </Label>
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.10em] text-pr-gray-mid bg-pr-gray-bg px-2.5 py-1 rounded-full">
-                    {wordCount} mots
-                  </span>
-                </div>
-                <div className="bg-white rounded-xl p-6 sm:p-7 border border-pr-gray-light relative group">
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={handleCopyParagraphOnly}
-                      className="h-8 w-8 text-pr-gray-mid hover:text-pr-black hover:bg-pr-gray-bg"
-                      title="Copier le paragraphe seul"
-                    >
-                      {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                    </Button>
-                  </div>
-                  <p
-                    lang={PARAGRAPH_LANG_ATTR[selectedLanguage]}
-                    className="font-lora text-pr-black leading-[1.7] whitespace-pre-wrap text-[17px]"
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleCopyParagraphOnly}
+                    className="h-8 px-2.5 text-carnet-ink-mute hover:text-carnet-red hover:bg-[rgba(193,68,58,0.06)] font-instrument text-[12px]"
                   >
-                    {result.paragraph}
-                  </p>
+                    {copied ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 mr-1" /> Copié
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5 mr-1" /> Copier
+                      </>
+                    )}
+                  </Button>
                 </div>
+                <AnnotatedParagraph
+                  paragraph={result.paragraph}
+                  breakdown={result.breakdown}
+                  lang={PARAGRAPH_LANG_ATTR[selectedLanguage]}
+                />
               </div>
 
-              {/* Vocabulaire clé */}
+              <QualityScore paragraph={result.paragraph} />
+
               {result.vocabulary.length > 0 && (
                 <div className="space-y-3">
-                  <Label className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                    <BookOpen className="w-3.5 h-3.5 text-pr-black" />
+                  <Label className="carnet-eyebrow text-[10.5px] flex items-center gap-2">
+                    <BookOpen className="w-3.5 h-3.5 text-carnet-red" />
                     Vocabulaire clé à mémoriser
                   </Label>
-                  <div className="bg-pr-gray-bg rounded-xl border border-pr-gray-light overflow-hidden">
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 divide-pr-gray-light">
+                  <div className="bg-carnet-paper-2 rounded-md border border-dashed border-[rgba(78,55,30,0.18)] overflow-hidden">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 divide-y divide-dashed divide-[rgba(78,55,30,0.14)] sm:divide-y-0">
                       {result.vocabulary.map((item, index) => {
                         const colIndex = index % 2;
                         const needsLeftBorder = colIndex === 1;
                         return (
                           <li
                             key={index}
-                            className={`px-4 py-2.5 flex items-baseline gap-2 ${
-                              needsLeftBorder ? 'sm:border-l sm:border-pr-gray-light' : ''
+                            className={`px-4 py-2.5 flex flex-wrap items-baseline gap-2 ${
+                              needsLeftBorder ? 'sm:border-l sm:border-dashed sm:border-[rgba(78,55,30,0.14)]' : ''
                             }`}
                           >
                             <span
                               lang={PARAGRAPH_LANG_ATTR[selectedLanguage]}
-                              className="font-semibold text-pr-black"
+                              className="font-lora italic text-[15px] text-carnet-red"
                             >
                               {item.term}
                             </span>
-                            <span className="text-pr-gray-mid">—</span>
-                            <span className="text-pr-gray-dark text-[14px]">{item.translation}</span>
+                            <span className="text-carnet-ink-mute">—</span>
+                            <span className="font-instrument text-[13.5px] text-carnet-ink-soft">
+                              {item.translation}
+                            </span>
                           </li>
                         );
                       })}
@@ -467,27 +580,25 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
                 </div>
               )}
 
-              {/* Variantes / extensions */}
               {result.variants && (
                 <div className="space-y-3">
-                  <Label className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2">
-                    <Wand2 className="w-3.5 h-3.5 text-pr-black" />
+                  <Label className="carnet-eyebrow text-[10.5px] flex items-center gap-2">
+                    <Wand2 className="w-3.5 h-3.5 text-carnet-red" />
                     Variantes / extensions
                   </Label>
-                  <div className="bg-white rounded-xl p-5 border border-pr-gray-light border-l-[3px] border-l-pr-black">
-                    <p className="text-pr-gray-dark text-[15px] leading-relaxed whitespace-pre-wrap">
+                  <div className="bg-carnet-paper-2 rounded-md p-5 border border-dashed border-[rgba(78,55,30,0.18)] border-l-[3px] border-l-carnet-red">
+                    <p className="font-instrument text-[14.5px] text-carnet-ink-soft leading-relaxed whitespace-pre-wrap">
                       {result.variants}
                     </p>
                   </div>
                 </div>
               )}
 
-              {/* Actions */}
-              <div className="flex flex-wrap gap-2.5 pt-5 border-t border-pr-gray-light">
+              <div className="flex flex-wrap gap-2.5 pt-5 border-t border-dashed border-[rgba(78,55,30,0.18)]">
                 <Button
                   onClick={handleCopy}
                   variant="outline"
-                  className="border-pr-gray-light bg-white text-pr-gray-dark hover:text-pr-black hover:border-pr-black-soft hover:bg-pr-gray-bg h-11 px-4 rounded-xl font-medium transition-colors flex-1 min-w-[140px]"
+                  className="border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2 text-carnet-ink-soft hover:text-carnet-red hover:border-carnet-red hover:bg-[rgba(193,68,58,0.06)] font-instrument h-11 px-4 rounded-md font-medium transition-colors flex-1 min-w-[140px]"
                 >
                   {copied ? (
                     <>
@@ -504,7 +615,7 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
                 <Button
                   onClick={handleDownloadText}
                   variant="outline"
-                  className="border-pr-gray-light bg-white text-pr-gray-dark hover:text-pr-black hover:border-pr-black-soft hover:bg-pr-gray-bg h-11 px-4 rounded-xl font-medium transition-colors flex-1 min-w-[140px]"
+                  className="border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2 text-carnet-ink-soft hover:text-carnet-red hover:border-carnet-red hover:bg-[rgba(193,68,58,0.06)] font-instrument h-11 px-4 rounded-md font-medium transition-colors flex-1 min-w-[140px]"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Télécharger (.txt)
@@ -512,14 +623,14 @@ export const LanguageParagraphGenerator = ({ language, selectedLanguage }: Langu
                 <Button
                   onClick={handleDownloadPDF}
                   variant="outline"
-                  className="border-pr-gray-light bg-white text-pr-gray-dark hover:text-pr-black hover:border-pr-black-soft hover:bg-pr-gray-bg h-11 px-4 rounded-xl font-medium transition-colors flex-1 min-w-[140px]"
+                  className="border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2 text-carnet-ink-soft hover:text-carnet-red hover:border-carnet-red hover:bg-[rgba(193,68,58,0.06)] font-instrument h-11 px-4 rounded-md font-medium transition-colors flex-1 min-w-[140px]"
                 >
                   <FileText className="w-4 h-4 mr-2" />
                   Télécharger (PDF)
                 </Button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       )}
     </div>

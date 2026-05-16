@@ -67,7 +67,7 @@ const QcmAnalytics: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-6">
+      <div className="bg-carnet-paper/10 border border-carnet-rule/20 backdrop-blur-sm rounded-xl p-6">
         <div className="flex items-center gap-2 mb-4">
           <BarChart3 className="h-5 w-5 text-orange-400" />
           <h3 className="text-lg font-semibold text-white">Statistiques QCM</h3>
@@ -80,7 +80,7 @@ const QcmAnalytics: React.FC = () => {
   }
 
   return (
-    <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-6">
+    <div className="bg-carnet-paper/10 border border-carnet-rule/20 backdrop-blur-sm rounded-xl p-6">
       <div className="flex items-center gap-2 mb-4">
         <BarChart3 className="h-5 w-5 text-orange-400" />
         <h3 className="text-lg font-semibold text-white">Statistiques QCM</h3>
@@ -88,17 +88,17 @@ const QcmAnalytics: React.FC = () => {
 
       {/* Stats summary */}
       <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="bg-white/5 rounded-lg p-3 text-center">
+        <div className="bg-carnet-paper/10 rounded-lg p-3 text-center">
           <Target className="h-4 w-4 text-orange-400 mx-auto mb-1" />
           <p className="text-xl font-bold text-white">{stats.totalQcm}</p>
           <p className="text-xs text-white/50">QCM passes</p>
         </div>
-        <div className="bg-white/5 rounded-lg p-3 text-center">
+        <div className="bg-carnet-paper/10 rounded-lg p-3 text-center">
           <TrendingUp className="h-4 w-4 text-green-400 mx-auto mb-1" />
           <p className="text-xl font-bold text-white">{stats.averageScore}%</p>
           <p className="text-xs text-white/50">Score moyen</p>
         </div>
-        <div className="bg-white/5 rounded-lg p-3 text-center">
+        <div className="bg-carnet-paper/10 rounded-lg p-3 text-center">
           <Users className="h-4 w-4 text-cyan-400 mx-auto mb-1" />
           <p className="text-xl font-bold text-white">{stats.uniqueUsers}</p>
           <p className="text-xs text-white/50">Utilisateurs</p>

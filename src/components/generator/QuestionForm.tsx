@@ -35,7 +35,7 @@ export const QuestionForm: React.FC<QuestionFormProps> = ({
             : "Ex: What are your weaknesses? Why this school? Tell me about yourself..."}
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          className="min-h-[100px] border border-gray-300 focus:border-pr-black focus:ring-pr-black bg-gray-50 rounded-lg resize-none"
+          className="min-h-[100px] border border-carnet-rule focus:border-pr-black focus:ring-pr-black bg-carnet-paper rounded-lg resize-none"
         />
       </div>
 
@@ -43,7 +43,7 @@ export const QuestionForm: React.FC<QuestionFormProps> = ({
         <Button 
           onClick={loadExample}
           variant="outline"
-          className="flex items-center gap-2 border border-gray-300 bg-gray-100 text-gray-900 hover:bg-gray-50 hover:border-pr-black rounded-xl h-11 transition-all duration-300 shadow-sm hover:shadow-md"
+          className="flex items-center gap-2 border border-carnet-rule bg-carnet-paper text-carnet-ink hover:bg-carnet-paper hover:border-pr-black rounded-xl h-11 transition-all duration-300 shadow-sm hover:shadow-sm"
           disabled={generating}
         >
           <Lightbulb className="h-4 w-4" />
@@ -53,7 +53,7 @@ export const QuestionForm: React.FC<QuestionFormProps> = ({
         <Button
           onClick={handleGenerate}
           disabled={!question.trim() || generating}
-          className="flex items-center gap-2 flex-1 bg-gradient-to-r from-pr-black to-pr-black hover:from-pr-black hover:to-pr-black text-white rounded-xl h-11 transition-all duration-300 shadow-sm hover:shadow-md"
+          className="flex items-center gap-2 flex-1 bg-gradient-to-r from-pr-black to-pr-black hover:from-pr-black hover:to-pr-black text-white rounded-xl h-11 transition-all duration-300 shadow-sm hover:shadow-sm"
         >
           <Wand2 className="h-4 w-4" />
           {generating 

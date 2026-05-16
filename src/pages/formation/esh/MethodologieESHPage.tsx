@@ -176,8 +176,7 @@ const MethodologieESHPage = () => {
                 <motion.div
                   key={p.title}
                   initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-30px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: idx * 0.08 }}
                   className={`bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)] shadow-[0_1px_2px_rgba(78,55,30,0.04)] ${tilt}`}
                 >
@@ -231,8 +230,7 @@ const MethodologieESHPage = () => {
                 <motion.div
                   key={step.n}
                   initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-20px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: idx * 0.06 }}
                   className={`bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)] ${tilt}`}
                 >

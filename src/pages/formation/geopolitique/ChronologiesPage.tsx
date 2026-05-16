@@ -73,7 +73,7 @@ const ChronologiesPage = () => {
       blue: { bg: 'bg-pr-gray-bg', text: 'text-carnet-red', hover: 'hover:bg-carnet-red/10', badge: 'bg-carnet-red/10 text-carnet-red', border: 'border-carnet-red/30' },
       green: { bg: 'bg-green-50', text: 'text-green-700', hover: 'hover:bg-green-100', badge: 'bg-green-100 text-green-700', border: 'border-green-200' },
       purple: { bg: 'bg-purple-50', text: 'text-purple-700', hover: 'hover:bg-purple-100', badge: 'bg-purple-100 text-purple-700', border: 'border-purple-200' },
-      orange: { bg: 'bg-gray-50', text: 'text-pr-black', hover: 'hover:bg-gray-100', badge: 'bg-gray-100 text-pr-black', border: 'border-gray-200' },
+      orange: { bg: 'bg-carnet-paper', text: 'text-pr-black', hover: 'hover:bg-carnet-paper', badge: 'bg-carnet-paper text-pr-black', border: 'border-carnet-rule' },
       red: { bg: 'bg-red-50', text: 'text-red-700', hover: 'hover:bg-red-100', badge: 'bg-red-100 text-red-700', border: 'border-red-200' },
       yellow: { bg: 'bg-yellow-50', text: 'text-yellow-700', hover: 'hover:bg-yellow-100', badge: 'bg-yellow-100 text-yellow-700', border: 'border-yellow-200' }
     };
@@ -94,7 +94,7 @@ const ChronologiesPage = () => {
             Géopolitique
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <span className="text-gray-600">Chronologies</span>
+          <span className="text-carnet-ink-soft">Chronologies</span>
         </nav>
 
         {/* Header */}
@@ -112,19 +112,19 @@ const ChronologiesPage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">6</div>
                 <div className="text-sm text-indigo-100">Régions couvertes</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">1492</div>
                 <div className="text-sm text-indigo-100">Depuis découvertes</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">2025</div>
                 <div className="text-sm text-indigo-100">Jusqu'à aujourd'hui</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">500+</div>
                 <div className="text-sm text-indigo-100">Événements clés</div>
               </div>
@@ -141,11 +141,11 @@ const ChronologiesPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-700 leading-relaxed mb-4">
+            <p className="text-carnet-ink leading-relaxed mb-4">
               Accédez à toutes les chronologies géopolitiques organisées par région. Chaque chronologie 
               présente les événements majeurs depuis les origines jusqu'aux enjeux contemporains de 2025.
             </p>
-            <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
+            <div className="bg-carnet-paper p-4 rounded-lg border border-carnet-red/30">
               <h4 className="font-semibold text-indigo-800 mb-2">Utilisation recommandée :</h4>
               <ul className="text-sm text-indigo-700 space-y-1">
                 <li>• <strong>Révisions :</strong> Mémoriser les dates clés par région</li>

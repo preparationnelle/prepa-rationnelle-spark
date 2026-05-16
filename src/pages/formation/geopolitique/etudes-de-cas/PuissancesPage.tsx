@@ -24,10 +24,10 @@ const PuissancesPage = () => {
 
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-carnet-paper">
       <div className="container mx-auto px-4 py-8">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -67,19 +67,19 @@ const PuissancesPage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">2900Md$</div>
                 <div className="text-sm text-carnet-paper-2">PIB France</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">10e</div>
                 <div className="text-sm text-carnet-paper-2">Rang PIB PPA</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">50Md€</div>
                 <div className="text-sm text-carnet-paper-2">Défense 2025</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">5e</div>
                 <div className="text-sm text-carnet-paper-2">Rang FTN mondial</div>
               </div>
@@ -169,8 +169,8 @@ const PuissancesPage = () => {
                       ))}
                     </div>
                     
-                    <div className="mt-4 bg-gray-100 p-3 rounded-lg">
-                      <p className="text-sm text-gray-700">
+                    <div className="mt-4 bg-carnet-paper p-3 rounded-lg">
+                      <p className="text-sm text-carnet-ink">
                         <strong>Autres leaders :</strong> Dior, Schneider Electric, Airbus, Carrefour (1000 hypers extérieur), 
                         Renault (150 000 salariés, 60% France), L'Oréal (90% CA extérieur)
                       </p>
@@ -334,9 +334,9 @@ const PuissancesPage = () => {
                 </Card>
 
                 {/* Désindustrialisation */}
-                <Card className="bg-gray-50 border-gray-200">
+                <Card className="bg-carnet-paper border-carnet-rule">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-gray-800">
+                    <CardTitle className="flex items-center gap-2 text-carnet-ink">
                       <TrendingUp className="h-5 w-5" />
                       Désindustrialisation et reconversion
                     </CardTitle>
@@ -344,7 +344,7 @@ const PuissancesPage = () => {
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-semibold text-gray-800 mb-3">Recul industriel</h4>
+                        <h4 className="font-semibold text-carnet-ink mb-3">Recul industriel</h4>
                         <ul className="text-sm text-pr-black space-y-2">
                           <li><strong>Part PIB :</strong> 17% (contre 30% en 1970)</li>
                           <li><strong>Emplois :</strong> 3 millions (contre 5M en 1980)</li>
@@ -352,7 +352,7 @@ const PuissancesPage = () => {
                           <li><strong>Fermetures :</strong> Arcelor (Lorraine), reconversions</li>
                         </ul>
                         
-                        <h4 className="font-semibold text-gray-800 mb-3 mt-4">Secteurs leader UE</h4>
+                        <h4 className="font-semibold text-carnet-ink mb-3 mt-4">Secteurs leader UE</h4>
                         <ul className="text-sm text-pr-black space-y-1">
                           <li>• Aéronautique (Airbus)</li>
                           <li>• Nucléaire (EDF 56 réacteurs)</li>
@@ -361,7 +361,7 @@ const PuissancesPage = () => {
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-gray-800 mb-3">Pôles d'excellence</h4>
+                        <h4 className="font-semibold text-carnet-ink mb-3">Pôles d'excellence</h4>
                         <ul className="text-sm text-pr-black space-y-2">
                           <li><strong>IDF :</strong> 25% PIB, 400 000 emplois industriels</li>
                           <li><strong>Lyon :</strong> Chimie, Part-Dieu (TGV)</li>
@@ -369,7 +369,7 @@ const PuissancesPage = () => {
                           <li><strong>Jura :</strong> Systèmes locaux mécanique</li>
                         </ul>
                         
-                        <h4 className="font-semibold text-gray-800 mb-3 mt-4">Innovation</h4>
+                        <h4 className="font-semibold text-carnet-ink mb-3 mt-4">Innovation</h4>
                         <ul className="text-sm text-pr-black space-y-1">
                           <li>• Sophia Antipolis (1969)</li>
                           <li>• 70 pôles compétitivité (2004)</li>
@@ -382,9 +382,9 @@ const PuissancesPage = () => {
                 </Card>
 
                 {/* Services et faiblesses */}
-                <Card className="bg-gray-50 border-gray-200">
+                <Card className="bg-carnet-paper border-carnet-rule">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-gray-800">
+                    <CardTitle className="flex items-center gap-2 text-carnet-ink">
                       <MapPin className="h-5 w-5" />
                       Tertiarisation et défis structurels
                     </CardTitle>
@@ -392,16 +392,16 @@ const PuissancesPage = () => {
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-semibold text-gray-800 mb-3">Tertiarisation</h4>
-                        <ul className="text-sm text-gray-700 space-y-2">
+                        <h4 className="font-semibold text-carnet-ink mb-3">Tertiarisation</h4>
+                        <ul className="text-sm text-carnet-ink space-y-2">
                           <li><strong>Services :</strong> 80% PIB (contre 70% il y a 20 ans)</li>
                           <li><strong>Emplois :</strong> 80% population active, 90% salariés</li>
                                                       <li><strong>IDF/PACA :</strong> {'>'}80% tertiaire</li>
                           <li><strong>Services marchands :</strong> 50% valeur ajoutée</li>
                         </ul>
                         
-                        <h4 className="font-semibold text-gray-800 mb-3 mt-4">Espaces tertiaires</h4>
-                        <ul className="text-sm text-gray-700 space-y-1">
+                        <h4 className="font-semibold text-carnet-ink mb-3 mt-4">Espaces tertiaires</h4>
+                        <ul className="text-sm text-carnet-ink space-y-1">
                           <li>• La Défense : 80 tours, 4M m² bureaux</li>
                           <li>• Part-Dieu Lyon dynamisé TGV</li>
                           <li>• 75 pôles compétitivité, 10 000 entreprises</li>
@@ -409,16 +409,16 @@ const PuissancesPage = () => {
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-gray-800 mb-3">Faiblesses structurelles</h4>
-                        <ul className="text-sm text-gray-700 space-y-2">
+                        <h4 className="font-semibold text-carnet-ink mb-3">Faiblesses structurelles</h4>
+                        <ul className="text-sm text-carnet-ink space-y-2">
                           <li><strong>Dette publique :</strong> 110% PIB</li>
                           <li><strong>Chômage :</strong> 8% (persistant)</li>
                           <li><strong>Coût salarial :</strong> UE moyenne +15%</li>
                           <li><strong>Port Marseille :</strong> 40e mondial (100M tonnes)</li>
                         </ul>
                         
-                        <h4 className="font-semibold text-gray-800 mb-3 mt-4">Atouts</h4>
-                        <ul className="text-sm text-gray-700 space-y-1">
+                        <h4 className="font-semibold text-carnet-ink mb-3 mt-4">Atouts</h4>
+                        <ul className="text-sm text-carnet-ink space-y-1">
                           <li>• Infrastructures : TGV, autoroutes, fibre</li>
                           <li>• Aquitaine aérospatial</li>
                           <li>• Ouest agroalimentaire</li>
@@ -441,7 +441,7 @@ const PuissancesPage = () => {
             <CardTitle className="text-lg">Références et sources</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-sm text-gray-600 space-y-2">
+            <div className="text-sm text-carnet-ink-soft space-y-2">
               <p><strong>Hubert Védrine</strong> : <em>"Puissance d'influence mondiale"</em> - Concept puissance française</p>
               <p><strong>Davos</strong> : Indice compétitivité mondiale</p>
               <p><strong>INSEE</strong> : Statistiques économiques françaises 2024</p>

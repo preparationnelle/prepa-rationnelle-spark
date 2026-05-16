@@ -66,7 +66,7 @@ const FinirEntretienPage = () => {
             </div>
             <div className="space-y-3">
               {goodQs.map((g) => (
-                <div key={g.t} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r p-4">
+                <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r p-4">
                   <h5 className="font-medium text-carnet-ink mb-2 text-sm">{g.t}</h5>
                   <ul className="text-sm text-carnet-ink-soft space-y-1">
                     {g.l.map((q) => <li key={q}>— {q}</li>)}

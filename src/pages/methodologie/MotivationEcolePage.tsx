@@ -46,7 +46,7 @@ const MotivationEcolePage = () => {
             { n: "03", t: "Adéquation projet-école", d: "En quoi cette école vous permettra de réaliser votre projet." },
             { n: "04", t: "Votre contribution", d: "Ce que vous pourrez apporter à l'école et à la communauté." },
           ].map((s) => (
-            <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+            <div key={s.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
               <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
               <div>
                 <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>

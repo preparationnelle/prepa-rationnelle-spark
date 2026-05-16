@@ -151,7 +151,7 @@ export const ThemeDefinitionGenerator = () => {
   return (
     <div className="space-y-6">
       {/* Header avec explication */}
-      <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+      <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
         <div className="h-[3px] w-full bg-pr-black" />
         <CardHeader className="px-6 pt-5 pb-4">
           <div className="flex items-center gap-3">
@@ -181,7 +181,7 @@ export const ThemeDefinitionGenerator = () => {
 
       {/* Génération du sujet */}
       {!subjectData && (
-        <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+        <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
           <CardHeader className="px-6 pt-5 pb-4">
             <CardTitle className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-pr-black" />
@@ -205,7 +205,7 @@ export const ThemeDefinitionGenerator = () => {
                     className={
                       difficulty === opt.id
                         ? 'bg-pr-black hover:bg-pr-black-dark text-white rounded-xl h-11 font-semibold transition-colors'
-                        : 'bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-11 font-medium transition-colors'
+                        : 'bg-carnet-paper-2 border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-11 font-medium transition-colors'
                     }
                   >
                     {opt.label}
@@ -244,12 +244,12 @@ export const ThemeDefinitionGenerator = () => {
       {subjectData && (
         <>
           {/* Sujet */}
-          <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+          <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
             <div className="h-[3px] w-full bg-pr-black" />
             <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
               <div className="flex items-center justify-between gap-3 flex-wrap">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-pr-black-soft flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-carnet-paper-2 border border-pr-black-soft flex items-center justify-center">
                     <Target className="h-5 w-5 text-pr-black" />
                   </div>
                   <div>
@@ -265,7 +265,7 @@ export const ThemeDefinitionGenerator = () => {
                   type="button"
                   size="sm"
                   onClick={handleReset}
-                  className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg flex items-center gap-2"
+                  className="bg-carnet-paper-2 border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg flex items-center gap-2"
                 >
                   <RefreshCw className="h-4 w-4" />
                   Nouveau sujet
@@ -291,7 +291,7 @@ export const ThemeDefinitionGenerator = () => {
           </Card>
 
           {/* Termes à définir */}
-          <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+          <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
             <CardHeader className="px-6 pt-5 pb-4">
               <CardTitle className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
                 <Lightbulb className="h-4 w-4 text-pr-black" />
@@ -323,7 +323,7 @@ export const ThemeDefinitionGenerator = () => {
                     placeholder={`Définis le terme « ${terme} »…`}
                     value={userDefinitions[terme] || ''}
                     onChange={(e) => handleDefinitionChange(terme, e.target.value)}
-                    className="min-h-[100px] border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 transition-colors rounded-xl resize-y bg-white text-[14px] leading-relaxed p-4 text-pr-black placeholder:text-pr-gray-mid"
+                    className="min-h-[100px] border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 transition-colors rounded-xl resize-y bg-carnet-paper-2 text-[14px] leading-relaxed p-4 text-pr-black placeholder:text-pr-gray-mid"
                   />
 
                   {showAnswers && subjectData.definitions_attendues?.[terme] && (

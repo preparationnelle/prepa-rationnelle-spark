@@ -5,7 +5,7 @@ import { LatexRenderer } from '@/components/LatexRenderer';
 import { Separator } from '@/components/ui/separator';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-        <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+        <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
                 {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
                 <div className="text-center">
                         {children}
@@ -35,10 +35,10 @@ const MathsEspacesVectorielsComplementsPage = () => {
                         <div className="space-y-8">
 
                                 {/* Section 1: Applications linéaires */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
                                                         <span className="font-semibold">Applications linéaires : bases</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -79,10 +79,10 @@ const MathsEspacesVectorielsComplementsPage = () => {
                                 </Card>
 
                                 {/* Section 2: Propriétés et sous-espaces */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
                                                         <span className="font-semibold">Noyau, Image et Rang</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -103,10 +103,10 @@ const MathsEspacesVectorielsComplementsPage = () => {
                                 </Card>
 
                                 {/* Section 3: Projecteurs et Sommes Directes */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
                                                         <span className="font-semibold">Projecteurs & Sommes Directes</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -129,10 +129,10 @@ const MathsEspacesVectorielsComplementsPage = () => {
                                 </Card>
 
                                 {/* Section 4: Matrices et Changement de Base */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">4</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">4</span>
                                                         <span className="font-semibold">Matrices & Changement de Base</span>
                                                 </CardTitle>
                                         </CardHeader>

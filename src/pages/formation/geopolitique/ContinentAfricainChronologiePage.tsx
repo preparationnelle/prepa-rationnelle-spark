@@ -669,20 +669,20 @@ const ContinentAfricainChronologiePage = () => {
       case 'independence': return 'bg-green-100 text-green-800';
       case 'cooperation': return 'bg-carnet-red/10 text-carnet-red-deep';
       case 'economique': return 'bg-purple-100 text-purple-800';
-      case 'politique': return 'bg-gray-100 text-gray-800';
+      case 'politique': return 'bg-carnet-paper text-carnet-ink';
       case 'intervention': return 'bg-yellow-100 text-yellow-800';
       case 'sanitaire': return 'bg-pink-100 text-pink-800';
       case 'environnement': return 'bg-emerald-100 text-emerald-800';
       case 'culture': return 'bg-indigo-100 text-indigo-800';
-      default: return 'bg-gray-100 text-gray-800';
+      default: return 'bg-carnet-paper text-carnet-ink';
     }
   };
 
   const getImportanceStyle = (importance: string) => {
     switch (importance) {
       case 'major': return 'border-l-4 border-carnet-red bg-pr-gray-bg';
-      case 'medium': return 'border-l-4 border-gray-300 bg-gray-50';
-      default: return 'border-l-4 border-gray-200 bg-white';
+      case 'medium': return 'border-l-4 border-carnet-rule bg-carnet-paper';
+      default: return 'border-l-4 border-carnet-rule bg-carnet-paper-2';
     }
   };
 
@@ -710,11 +710,11 @@ const ContinentAfricainChronologiePage = () => {
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <Calendar className="h-8 w-8 text-carnet-red" />
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-4xl font-bold text-carnet-ink">
               Chronologie du Continent Africain
             </h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-4xl">
+          <p className="text-lg text-carnet-ink-soft max-w-4xl">
             Une chronologie complète des événements marquants de l'histoire africaine contemporaine, 
             de la colonisation européenne aux défis actuels du XXIe siècle.
           </p>
@@ -754,7 +754,7 @@ const ContinentAfricainChronologiePage = () => {
         {/* Chronologie par décennies */}
         <div className="space-y-8">
           {Object.entries(groupedEvents).sort().map(([decade, decadeEvents]) => (
-            <Card key={decade} className="border-2 border-gray-200">
+            <Card key={decade} className="border-2 border-carnet-rule">
               <CardHeader className="bg-gradient-to-r from-pr-orange-pale to-slate-50">
                 <CardTitle className="text-2xl text-carnet-red-deep">
                   {decade.replace('-', ' - ')}
@@ -785,10 +785,10 @@ const ContinentAfricainChronologiePage = () => {
                               </Badge>
                             )}
                           </div>
-                          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          <h3 className="text-lg font-semibold text-carnet-ink mb-2">
                             {event.title}
                           </h3>
-                          <p className="text-gray-700 leading-relaxed">
+                          <p className="text-carnet-ink leading-relaxed">
                             {event.description}
                           </p>
                         </div>
@@ -810,23 +810,23 @@ const ContinentAfricainChronologiePage = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div className="p-4 bg-pr-gray-bg rounded-lg">
                 <div className="text-2xl font-bold text-carnet-red">{events.length}</div>
-                <div className="text-sm text-gray-600">Événements</div>
+                <div className="text-sm text-carnet-ink-soft">Événements</div>
               </div>
               <div className="p-4 bg-green-50 rounded-lg">
                 <div className="text-2xl font-bold text-green-600">
                   {events.filter(e => e.importance === 'major').length}
                 </div>
-                <div className="text-sm text-gray-600">Événements majeurs</div>
+                <div className="text-sm text-carnet-ink-soft">Événements majeurs</div>
               </div>
               <div className="p-4 bg-purple-50 rounded-lg">
                 <div className="text-2xl font-bold text-purple-600">140</div>
-                <div className="text-sm text-gray-600">Années couvertes</div>
+                <div className="text-sm text-carnet-ink-soft">Années couvertes</div>
               </div>
-              <div className="p-4 bg-gray-50 rounded-lg">
+              <div className="p-4 bg-carnet-paper rounded-lg">
                 <div className="text-2xl font-bold text-pr-black">
                   {Object.keys(groupedEvents).length}
                 </div>
-                <div className="text-sm text-gray-600">Décennies</div>
+                <div className="text-sm text-carnet-ink-soft">Décennies</div>
               </div>
             </div>
           </CardContent>

@@ -803,43 +803,43 @@ const ChronologieEuropePage = () => {
       case 'Économique': return 'bg-green-100 text-green-800 border-green-200';
       case 'Militaire': return 'bg-red-100 text-red-800 border-red-200';
       case 'Institutionnel': return 'bg-purple-100 text-purple-800 border-purple-200';
-      case 'Élargissement': return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'Élargissement': return 'bg-carnet-paper text-carnet-ink border-carnet-rule';
       case 'Monétaire': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
       case 'Conflit': return 'bg-red-200 text-red-900 border-red-300';
-      case 'Géopolitique': return 'bg-indigo-100 text-indigo-800 border-indigo-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'Géopolitique': return 'bg-indigo-100 text-indigo-800 border-carnet-red/30';
+      default: return 'bg-carnet-paper text-carnet-ink border-carnet-rule';
     }
   };
 
   const getImportanceColor = (importance: string) => {
     switch (importance) {
       case 'high': return 'border-l-red-500 bg-red-50';
-      case 'medium': return 'border-l-pr-black bg-gray-50';
+      case 'medium': return 'border-l-pr-black bg-carnet-paper';
       case 'low': return 'border-l-green-500 bg-green-50';
-      default: return 'border-l-gray-500 bg-gray-50';
+      default: return 'border-l-gray-500 bg-carnet-paper';
     }
   };
 
   return (
     <div className="relative">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/90 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper-2/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center text-xs font-medium text-carnet-ink-soft">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formations" className="hover:text-gray-900 transition-colors">
+            <Link to="/formations" className="hover:text-carnet-ink transition-colors">
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/geopolitique" className="hover:text-gray-900 transition-colors">
+            <Link to="/formation/geopolitique" className="hover:text-carnet-ink transition-colors">
               Formation Géopolitique
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Chronologie de l'Europe</span>
+            <span className="text-carnet-ink font-bold">Chronologie de l'Europe</span>
           </div>
         </div>
       </nav>
@@ -847,10 +847,10 @@ const ChronologieEuropePage = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-carnet-ink mb-4">
             Chronologie de l'Europe
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-carnet-ink-soft max-w-3xl mx-auto">
             Des traités de Westphalie à nos jours : les grandes étapes de la construction européenne
           </p>
         </div>
@@ -860,29 +860,29 @@ const ChronologieEuropePage = () => {
           <Card className="text-center">
             <CardContent className="pt-6">
               <Calendar className="h-8 w-8 text-carnet-red mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">377 ans</div>
-              <div className="text-sm text-gray-600">De 1648 à 2025</div>
+              <div className="text-2xl font-bold text-carnet-ink">377 ans</div>
+              <div className="text-sm text-carnet-ink-soft">De 1648 à 2025</div>
             </CardContent>
           </Card>
           <Card className="text-center">
             <CardContent className="pt-6">
               <Clock className="h-8 w-8 text-green-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">{events.length}</div>
-              <div className="text-sm text-gray-600">Événements majeurs</div>
+              <div className="text-2xl font-bold text-carnet-ink">{events.length}</div>
+              <div className="text-sm text-carnet-ink-soft">Événements majeurs</div>
             </CardContent>
           </Card>
           <Card className="text-center">
             <CardContent className="pt-6">
               <MapPin className="h-8 w-8 text-pr-black mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">27</div>
-              <div className="text-sm text-gray-600">États membres UE</div>
+              <div className="text-2xl font-bold text-carnet-ink">27</div>
+              <div className="text-sm text-carnet-ink-soft">États membres UE</div>
             </CardContent>
           </Card>
           <Card className="text-center">
             <CardContent className="pt-6">
               <Users className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">447M</div>
-              <div className="text-sm text-gray-600">Citoyens européens</div>
+              <div className="text-2xl font-bold text-carnet-ink">447M</div>
+              <div className="text-sm text-carnet-ink-soft">Citoyens européens</div>
             </CardContent>
           </Card>
         </div>
@@ -911,10 +911,10 @@ const ChronologieEuropePage = () => {
                       {event.category}
                     </Badge>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl font-bold text-carnet-ink mb-2">
                     {event.title}
                   </h3>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-carnet-ink leading-relaxed">
                     {event.description}
                   </p>
                 </div>
@@ -924,7 +924,7 @@ const ChronologieEuropePage = () => {
         </Card>
 
         {/* Légende */}
-        <Card className="mt-8 bg-gray-100">
+        <Card className="mt-8 bg-carnet-paper">
           <CardHeader>
             <CardTitle className="text-lg">Légende des catégories</CardTitle>
           </CardHeader>

@@ -115,7 +115,7 @@ const BanqueAnecdotesPage = () => (
       </p>
       <div className="space-y-4">
         {anecdoteTypes.map((a) => (
-          <div key={a.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5">
+          <div key={a.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5">
             <div className="flex items-baseline gap-3 mb-2">
               <span className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0">{a.n}</span>
               <h4 className="font-dm-serif text-lg text-carnet-ink">{a.t}</h4>
@@ -140,7 +140,7 @@ const BanqueAnecdotesPage = () => (
       </p>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {starSteps.map((s) => (
-          <div key={s.l} className="bg-white border border-carnet-rule/30 rounded-2xl p-5 text-center hover:border-red-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+          <div key={s.l} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-5 text-center hover:border-red-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300">
             <div className="font-dm-serif text-5xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-black mb-1 leading-none">{s.l}</div>
             <div className="h-px w-6 bg-red-500 mx-auto mb-3 mt-2" />
             <div className="font-medium text-carnet-ink mb-1 text-sm">{s.t}</div>
@@ -149,7 +149,7 @@ const BanqueAnecdotesPage = () => (
         ))}
       </div>
 
-      <div className="bg-white border border-carnet-rule/30 rounded-2xl p-6">
+      <div className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-6">
         <div className="flex items-center gap-3 mb-4">
           <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0" strokeWidth={1.8} />
           <h4 className="font-dm-serif text-lg text-carnet-ink">Les 3 erreurs de structure les plus fréquentes</h4>
@@ -175,7 +175,7 @@ const BanqueAnecdotesPage = () => (
         selon ce que la question cherche à révéler.
       </p>
 
-      <div className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6 mb-5">
+      <div className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6 mb-5">
         <div className="flex items-center gap-2 mb-3">
           <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 border border-red-100 px-2.5 py-1 rounded-full">
             L'anecdote
@@ -188,7 +188,7 @@ const BanqueAnecdotesPage = () => (
 
       <div className="space-y-3">
         {adaptationExample.questions.map((item, i) => (
-          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+          <div key={i} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
             <span className="font-dm-serif text-2xl text-red-600 leading-none flex-shrink-0 w-8 text-center">{String(i + 1).padStart(2, '0')}</span>
             <div className="flex-1">
               <p className="font-medium text-carnet-ink text-sm mb-1">{item.q}</p>
@@ -205,7 +205,7 @@ const BanqueAnecdotesPage = () => (
       </p>
       <div className="space-y-4">
         {buildingPlan.map((step) => (
-          <div key={step.n} className="bg-white border border-carnet-rule/30 rounded-2xl p-5 flex items-start gap-4 hover:border-red-200 hover:shadow-sm transition-all duration-300">
+          <div key={step.n} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-5 flex items-start gap-4 hover:border-red-200 hover:shadow-sm transition-all duration-300">
             <span className="font-dm-serif text-3xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-black leading-none flex-shrink-0">{step.n}</span>
             <div>
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{step.t}</h4>

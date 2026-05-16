@@ -7,16 +7,12 @@ import PythonCodeEditor, { EvaluationResult } from '@/components/python/PythonCo
 import CodeEvaluationResult from '@/components/python/CodeEvaluationResult';
 import {
   PythonExerciseHero,
-  PythonExerciseTopBar,
-  PythonExerciseDetailHeader,
-  PythonExerciseFooterNav,
-  PythonStatementCard,
-  PythonCorrectionToggle,
   PythonCorrectionPanel,
   PythonCodeBlock,
   PythonExerciseGrid,
   PythonQCMLauncher,
   PythonSectionHeading,
+  PythonExerciseWorkspace,
 } from '@/components/formation/python/PythonExercisePage';
 import PythonQCMPanel from '@/components/formation/python/PythonQCMPanel';
 
@@ -1564,102 +1560,75 @@ print(esp(10000))   # ~0.667 (theorique : 2/3)`
     const hasPrevious = selectedExercise > 1;
     const hasNext = selectedExercise < exercices.length;
 
+    const hasCorrection = Boolean(exercise.content?.correction || exercise.content?.corrections);
+
     return (
       <PythonModuleLayout>
-        <PythonExerciseTopBar
-          current={selectedExercise}
-          total={exercices.length}
-          onBack={handleBackToList}
-          onPrev={() => {
-            if (hasPrevious) {
-              setSelectedExercise(selectedExercise - 1);
-              window.scrollTo(0, 0);
-            }
-          }}
-          onNext={() => {
-            if (hasNext) {
-              setSelectedExercise(selectedExercise + 1);
-              window.scrollTo(0, 0);
-            }
-          }}
-          hasPrev={hasPrevious}
-          hasNext={hasNext}
-        />
-
-        <PythonExerciseDetailHeader
-          number={selectedExercise}
-          title={exercise.title}
-          difficulty={exercise.difficulty}
-          badges={exercise.badge ? [exercise.badge] : undefined}
-        />
-
         {exercise.content ? (
-          <>
-            <PythonStatementCard>
-              {exercise.content.enonce_latex ? (
+          <PythonExerciseWorkspace
+            current={selectedExercise}
+            total={exercices.length}
+            title={exercise.title}
+            difficulty={exercise.difficulty}
+            description={exercise.description}
+            onBack={handleBackToList}
+            onPrev={() => {
+              if (hasPrevious) {
+                setSelectedExercise(selectedExercise - 1);
+                window.scrollTo(0, 0);
+              }
+            }}
+            onNext={() => {
+              if (hasNext) {
+                setSelectedExercise(selectedExercise + 1);
+                window.scrollTo(0, 0);
+              }
+            }}
+            hasPrev={hasPrevious}
+            hasNext={hasNext}
+            objective={
+              exercise.content.enonce_latex ? (
                 <LatexRenderer latex={exercise.content.enonce_latex} />
               ) : (
                 <div style={{ whiteSpace: 'pre-wrap' }}>{exercise.content.enonce}</div>
-              )}
-            </PythonStatementCard>
-
-            <PythonCodeEditor
-              exerciseStatement={exercise.content.enonce_latex || exercise.content.enonce || exercise.content.objective}
-              expectedSolution={exercise.content.correction || ''}
-              moduleId={moduleId}
-              exerciseId={String(selectedExercise)}
-              onEvaluationComplete={(result) => {
-                setEvaluationResults(prev => ({ ...prev, [selectedExercise]: result }));
-                markExerciseAsSeen(`python-${moduleId}-exo-${selectedExercise}`);
-              }}
-            />
-
-            {evaluationResults[selectedExercise] && (
-              <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
-            )}
-
-            <PythonCorrectionToggle
-              isOpen={showCorrections.has(selectedExercise)}
-              onToggle={() => toggleCorrection(selectedExercise)}
-            />
-
-            {showCorrections.has(selectedExercise) && (
-              <div className="space-y-5">
-                {exercise.content.correction && (
-                  <PythonCorrectionPanel>
+              )
+            }
+            editor={
+              <PythonCodeEditor
+                embedded
+                minHeight={240}
+                exerciseStatement={exercise.content.enonce_latex || exercise.content.enonce || exercise.content.objective}
+                expectedSolution={exercise.content.correction || ''}
+                moduleId={moduleId}
+                exerciseId={String(selectedExercise)}
+                onEvaluationComplete={(result) => {
+                  setEvaluationResults(prev => ({ ...prev, [selectedExercise]: result }));
+                  markExerciseAsSeen(`python-${moduleId}-exo-${selectedExercise}`);
+                }}
+              />
+            }
+            evaluationResult={
+              evaluationResults[selectedExercise] ? (
+                <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
+              ) : undefined
+            }
+            correction={
+              hasCorrection ? (
+                <div className="space-y-4">
+                  {exercise.content.correction && (
                     <PythonCodeBlock code={exercise.content.correction} />
-                  </PythonCorrectionPanel>
-                )}
-                {exercise.content.corrections &&
-                  exercise.content.corrections.map((corr, index) => (
+                  )}
+                  {exercise.content.corrections?.map((corr, index) => (
                     <PythonCorrectionPanel key={index} title={corr.title}>
                       <PythonCodeBlock code={corr.code} />
                     </PythonCorrectionPanel>
                   ))}
-              </div>
-            )}
-
-            <PythonExerciseFooterNav
-              current={selectedExercise}
-              total={exercices.length}
-              onPrev={() => {
-                if (hasPrevious) {
-                  setSelectedExercise(selectedExercise - 1);
-                  window.scrollTo(0, 0);
-                }
-              }}
-              onNext={() => {
-                if (hasNext) {
-                  setSelectedExercise(selectedExercise + 1);
-                  window.scrollTo(0, 0);
-                } else {
-                  setSelectedExercise(null);
-                }
-              }}
-              hasPrev={hasPrevious}
-              hasNext={hasNext}
-            />
-          </>
+                </div>
+              ) : undefined
+            }
+            showCorrection={showCorrections.has(selectedExercise)}
+            onToggleCorrection={() => toggleCorrection(selectedExercise)}
+          />
         ) : (
           <div className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl p-10 text-center text-carnet-ink-mute">
             Contenu détaillé de l'exercice sera développé ici…

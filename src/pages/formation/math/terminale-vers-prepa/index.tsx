@@ -135,8 +135,7 @@ const TerminaleVersPrepaPage: React.FC = () => {
                 <motion.div
                   key={chap.id}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: Math.min(idx * 0.04, 0.3) }}
                   className={tilt}
                 >
@@ -226,8 +225,7 @@ const TerminaleVersPrepaPage: React.FC = () => {
           <div className="mt-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="max-w-[760px] mb-10"
             >
@@ -258,8 +256,7 @@ const TerminaleVersPrepaPage: React.FC = () => {
                   <motion.div
                     key={module.title}
                     initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-50px' }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: idx * 0.08 }}
                     className={tilt}
                   >
@@ -297,8 +294,7 @@ const TerminaleVersPrepaPage: React.FC = () => {
           {/* CTA bas de page */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="mt-14 relative bg-carnet-ink rounded-lg p-8 sm:p-10 overflow-hidden"
           >

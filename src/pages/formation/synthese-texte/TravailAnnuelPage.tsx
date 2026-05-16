@@ -483,7 +483,7 @@ const TravailAnnuelPage: React.FC = () => {
             <Link to="/formation/synthese-texte/methode">
               <Button
                 variant="outline"
-                className="font-dm-sans border-pr-gray-light text-pr-gray-dark hover:bg-white hover:border-pr-black hover:text-pr-black gap-2"
+                className="font-dm-sans border-pr-gray-light text-pr-gray-dark hover:bg-carnet-paper-2 hover:border-pr-black hover:text-pr-black gap-2"
               >
                 <Target className="w-4 h-4" />
                 Voir la méthode

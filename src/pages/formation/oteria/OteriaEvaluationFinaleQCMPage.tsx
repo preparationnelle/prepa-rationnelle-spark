@@ -591,19 +591,19 @@ const OteriaEvaluationFinaleQCMPage = () => {
     const gradeInfo = getGrade(score);
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100/50">
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-carnet-paper to-orange-100/50">
         <div className="container mx-auto py-8 px-4">
-          <Card className="max-w-2xl mx-auto border-gray-200">
+          <Card className="max-w-2xl mx-auto border-carnet-rule">
             <CardContent className="p-8 text-center">
               <div className="mb-6">
                 <Trophy className="h-16 w-16 text-pr-black mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">Résultats de l'Évaluation Finale</h2>
-                <p className="text-lg text-gray-600">Bachelor 2 - Mathématiques et Informatique</p>
+                <h2 className="text-3xl font-bold text-carnet-ink mb-2">Résultats de l'Évaluation Finale</h2>
+                <p className="text-lg text-carnet-ink-soft">Bachelor 2 - Mathématiques et Informatique</p>
               </div>
 
               <div className="mb-8">
                 <div className="text-6xl font-bold text-pr-black mb-2">{score}/{questions.length}</div>
-                <div className="text-2xl font-semibold text-gray-700 mb-2">{percentage}%</div>
+                <div className="text-2xl font-semibold text-carnet-ink mb-2">{percentage}%</div>
                 <div className={`text-xl font-medium ${gradeInfo.color}`}>
                   {gradeInfo.grade}
                 </div>
@@ -623,9 +623,9 @@ const OteriaEvaluationFinaleQCMPage = () => {
                       selectedAnswers[q.id] === q.correctAnswer
                     ).length;
                     return (
-                      <div key={chapter} className="bg-gray-50 p-3 rounded-lg">
+                      <div key={chapter} className="bg-carnet-paper p-3 rounded-lg">
                         <div className="font-medium">Chapitre {chapter}</div>
-                        <div className="text-gray-600">{chapterCorrect}/{chapterQuestions.length}</div>
+                        <div className="text-carnet-ink-soft">{chapterCorrect}/{chapterQuestions.length}</div>
                       </div>
                     );
                   })}
@@ -649,10 +649,10 @@ const OteriaEvaluationFinaleQCMPage = () => {
                           {question.category}
                         </Badge>
                       </div>
-                      <div className="text-sm text-gray-600 mb-2">
+                      <div className="text-sm text-carnet-ink-soft mb-2">
                         <strong>Question :</strong> {question.question}
                       </div>
-                      <div className="text-sm text-gray-600 mb-2">
+                      <div className="text-sm text-carnet-ink-soft mb-2">
                         <strong>Votre réponse :</strong> {question.options[userAnswer]}
                       </div>
                       <div className="text-sm text-green-600">
@@ -686,7 +686,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100/30">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-carnet-paper to-orange-100/30">
       {/* Fil d'Ariane */}
       <nav className="sticky top-0 z-50 bg-carnet-paper/95 backdrop-blur border-b border-carnet-rule/60">
         <div className="container mx-auto px-4 py-2">
@@ -713,7 +713,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
+            <div className="w-16 h-16 bg-carnet-paper rounded-full flex items-center justify-center">
               <Award className="h-8 w-8 text-pr-black" />
             </div>
           </div>
@@ -724,7 +724,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
 
           {/* Informations d'évaluation */}
           <div className="max-w-2xl mx-auto mb-6">
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 shadow-sm">
+            <div className="bg-carnet-paper border border-carnet-rule rounded-lg p-4 shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
                 <div className="flex flex-col items-center">
                   <span className="text-sm text-pr-black font-medium mb-1">Questions</span>
@@ -752,7 +752,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
           {/* Barre de progression */}
           <div className="max-w-2xl mx-auto mb-6">
             <Progress value={progress} className="h-2" />
-            <div className="text-center mt-2 text-sm text-gray-600">
+            <div className="text-center mt-2 text-sm text-carnet-ink-soft">
               {currentQuestion + 1} sur {questions.length} questions
             </div>
           </div>
@@ -760,7 +760,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
 
         {/* Question */}
         <div className="max-w-2xl mx-auto mb-8">
-          <Card className="shadow-lg border border-gray-200">
+          <Card className="shadow-sm border border-carnet-rule">
             <CardContent className="p-6">
               <div className="mb-4">
                 <Badge className="mb-3 mr-2" variant="outline">
@@ -769,7 +769,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
                 <Badge className="mb-3" variant="secondary">
                   {currentQ.category}
                 </Badge>
-                <h3 className="text-xl font-bold text-gray-900 leading-relaxed mt-3">
+                <h3 className="text-xl font-bold text-carnet-ink leading-relaxed mt-3">
                   {currentQ.question}
                 </h3>
               </div>
@@ -791,8 +791,8 @@ const OteriaEvaluationFinaleQCMPage = () => {
                         : showIncorrect
                           ? 'border-red-500 bg-red-50 text-red-800'
                           : isSelected
-                            ? 'border-pr-black bg-gray-50 text-gray-800'
-                            : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                            ? 'border-pr-black bg-carnet-paper text-carnet-ink'
+                            : 'border-carnet-rule hover:border-carnet-rule hover:bg-carnet-paper'
                         }`}
                     >
                       <div className="flex items-center gap-3">
@@ -802,7 +802,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
                             ? 'border-red-500 bg-red-500'
                             : isSelected
                               ? 'border-carnet-red bg-carnet-red'
-                              : 'border-gray-400'
+                              : 'border-carnet-rule'
                           }`}>
                           {(showCorrect || (isSelected && !showIncorrect)) && (
                             <div className="w-2 h-2 bg-white rounded-full"></div>
@@ -891,7 +891,7 @@ const OteriaEvaluationFinaleQCMPage = () => {
           </Link>
           <div className="flex gap-3">
             <div className="text-center">
-              <div className="text-sm text-gray-600">Temps restant</div>
+              <div className="text-sm text-carnet-ink-soft">Temps restant</div>
               <div className="text-lg font-bold text-teal-600">{formatTime(timeLeft)}</div>
             </div>
           </div>

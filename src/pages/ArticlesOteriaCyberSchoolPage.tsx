@@ -290,8 +290,7 @@ const ArticlesOteriaCyberSchoolPage = () => {
                 <motion.div
                   key={session.id}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: Math.min(idx * 0.04, 0.3) }}
                   className={tilt}
                 >
@@ -305,8 +304,7 @@ const ArticlesOteriaCyberSchoolPage = () => {
           <div className="mt-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="max-w-[760px] mb-10"
             >
@@ -339,8 +337,7 @@ const ArticlesOteriaCyberSchoolPage = () => {
                   <motion.div
                     key={module.title}
                     initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-50px' }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: idx * 0.08 }}
                     className={tilt}
                   >

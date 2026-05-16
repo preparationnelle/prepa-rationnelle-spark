@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Home, ChevronRight, RefreshCw, HelpCircle, Maximize, Minimize, RotateCcw, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Home, ChevronRight, RefreshCw, Maximize, Minimize, RotateCcw, ArrowRight, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
 import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
@@ -15,7 +15,6 @@ const PythonFlashcardsPage = () => {
   }>>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
-  const [showKeyboardHelp, setShowKeyboardHelp] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
@@ -47,8 +46,7 @@ const PythonFlashcardsPage = () => {
           break;
         case 'Escape':
           event.preventDefault();
-          if (showKeyboardHelp) setShowKeyboardHelp(false);
-          else if (isFullscreen) setIsFullscreen(false);
+          if (isFullscreen) setIsFullscreen(false);
           break;
         case 'f':
         case 'F':
@@ -59,7 +57,7 @@ const PythonFlashcardsPage = () => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex, isFlipped, showKeyboardHelp, isFullscreen, cards.length]);
+  }, [currentIndex, isFlipped, isFullscreen, cards.length]);
 
   const handleShuffle = () => {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
@@ -114,7 +112,7 @@ const PythonFlashcardsPage = () => {
       )}
 
       <div className={`
-        ${isFullscreen ? 'fixed inset-0 z-50 flex items-center justify-center bg-[#FAF8F4] p-8' : 'container mx-auto py-12 px-4 max-w-5xl'}
+        ${isFullscreen ? 'fixed inset-0 z-50 flex items-center justify-center carnet-paper p-8' : 'container mx-auto py-12 px-4 max-w-5xl'}
       `}>
         {/* Header */}
         {!isFullscreen && (
@@ -171,7 +169,7 @@ const PythonFlashcardsPage = () => {
           {/* Card */}
           <div className="relative group">
             <Card
-              className="relative min-h-[400px] flex flex-col justify-center items-center text-center p-8 cursor-pointer transition-all duration-300 border-[rgba(78,55,30,0.14)] shadow-none hover:shadow-[0_8px_24px_rgba(78,55,30,0.08)] bg-white rounded-2xl"
+              className="carnet-card relative min-h-[400px] flex flex-col justify-center items-center text-center p-8 cursor-pointer transition-all duration-300 border-[rgba(78,55,30,0.14)] shadow-none hover:shadow-[0_8px_24px_rgba(78,55,30,0.08)] rounded-2xl"
               onClick={handleFlip}
             >
               <CardContent className="w-full flex flex-col items-center justify-center space-y-8">
@@ -197,7 +195,7 @@ const PythonFlashcardsPage = () => {
                   ) : (
                     <div className="w-full animate-in fade-in zoom-in-95 duration-300">
                       <div className="bg-carnet-ink rounded-xl p-6 w-full shadow-inner text-left overflow-x-auto">
-                        <code className="font-mono text-lg text-emerald-400 block whitespace-pre-wrap">
+                        <code className="font-mono text-lg text-carnet-paper/90 block whitespace-pre-wrap">
                           {currentCard.command}
                         </code>
                       </div>
@@ -208,29 +206,28 @@ const PythonFlashcardsPage = () => {
                   )}
                 </div>
               </CardContent>
-
-              {/* Keyboard help */}
-              <div className="absolute top-4 right-4 z-10">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-carnet-ink-mute hover:text-carnet-ink hover:bg-transparent"
-                  onClick={(e) => { e.stopPropagation(); setShowKeyboardHelp(!showKeyboardHelp); }}
-                >
-                  <HelpCircle className="h-5 w-5" />
-                </Button>
-                {showKeyboardHelp && (
-                  <div className="absolute right-0 top-10 w-64 p-4 carnet-card shadow-xl rounded-xl z-20 font-instrument text-sm text-carnet-ink-soft">
-                    <h4 className="font-semibold text-carnet-ink mb-2">Raccourcis clavier</h4>
-                    <div className="space-y-1">
-                      <div className="flex justify-between"><span>Suivant</span><kbd className="bg-[rgba(78,55,30,0.08)] px-1.5 rounded text-xs">→</kbd></div>
-                      <div className="flex justify-between"><span>Précédent</span><kbd className="bg-[rgba(78,55,30,0.08)] px-1.5 rounded text-xs">←</kbd></div>
-                      <div className="flex justify-between"><span>Retourner</span><kbd className="bg-[rgba(78,55,30,0.08)] px-1.5 rounded text-xs">Espace</kbd></div>
-                    </div>
-                  </div>
-                )}
-              </div>
             </Card>
+          </div>
+
+          {/* Raccourcis clavier — toujours visibles */}
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-instrument text-[13px] text-carnet-ink-soft">
+            <span className="carnet-eyebrow text-[10px]">Raccourcis</span>
+            <span className="flex items-center gap-2">
+              <kbd className="bg-[rgba(78,55,30,0.08)] border border-[rgba(78,55,30,0.18)] px-1.5 rounded text-xs">←</kbd>
+              Précédent
+            </span>
+            <span className="flex items-center gap-2">
+              <kbd className="bg-[rgba(78,55,30,0.08)] border border-[rgba(78,55,30,0.18)] px-1.5 rounded text-xs">→</kbd>
+              Suivant
+            </span>
+            <span className="flex items-center gap-2">
+              <kbd className="bg-[rgba(78,55,30,0.08)] border border-[rgba(78,55,30,0.18)] px-1.5 rounded text-xs">Espace</kbd>
+              Retourner
+            </span>
+            <span className="flex items-center gap-2">
+              <kbd className="bg-[rgba(78,55,30,0.08)] border border-[rgba(78,55,30,0.18)] px-1.5 rounded text-xs">F</kbd>
+              Plein écran
+            </span>
           </div>
 
           {/* Navigation */}

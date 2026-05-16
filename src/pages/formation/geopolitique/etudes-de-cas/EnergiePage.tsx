@@ -30,10 +30,10 @@ const EnergiePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-carnet-paper">
 
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -75,19 +75,19 @@ const EnergiePage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">31%</div>
                 <div className="text-sm text-orange-100">Part du pétrole</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">29%</div>
                 <div className="text-sm text-orange-100">Part du charbon</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">440</div>
                 <div className="text-sm text-orange-100">Réacteurs nucléaires</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">80$</div>
                 <div className="text-sm text-orange-100">Prix baril 2025</div>
               </div>
@@ -106,14 +106,14 @@ const EnergiePage = () => {
           <CardContent>
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
-                <h4 className="font-semibold text-gray-800 mb-3">Répartition énergétique 2024</h4>
-                <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                <h4 className="font-semibold text-carnet-ink mb-3">Répartition énergétique 2024</h4>
+                <p className="text-carnet-ink text-sm leading-relaxed mb-4">
                   Le pétrole reste la première source d'énergie mondiale avec <strong>31%</strong>, 
                   bien qu'en baisse depuis 1990. Le charbon représente <strong>29%</strong> 
                   (principalement en Chine), tandis que les renouvelables progressent.
                 </p>
-                <div className="bg-gray-50 p-3 rounded-lg">
-                  <p className="text-sm text-gray-800">
+                <div className="bg-carnet-paper p-3 rounded-lg">
+                  <p className="text-sm text-carnet-ink">
                     <strong>Consommation :</strong> Volume x1.6 en 25 ans. Chine 24% (charbon), US 17% (gaz-pétrole), BRICS 40%.
                   </p>
                 </div>
@@ -121,9 +121,9 @@ const EnergiePage = () => {
               
               <div className="space-y-3">
                 {energyMix.map((energy, index) => (
-                  <div key={index} className="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                  <div key={index} className="bg-carnet-paper p-3 rounded-lg border border-carnet-rule">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-gray-800">{energy.source}</span>
+                      <span className="text-sm font-medium text-carnet-ink">{energy.source}</span>
                       <span className="font-bold text-pr-black">{energy.percentage}</span>
                     </div>
                     <div className="text-xs text-pr-black mt-1">{energy.trend} • {energy.note}</div>
@@ -160,8 +160,8 @@ const EnergiePage = () => {
                   </p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-gray-100 rounded-lg">
-                <p className="text-sm text-gray-700">
+              <div className="mt-4 p-3 bg-carnet-paper rounded-lg">
+                <p className="text-sm text-carnet-ink">
                   <strong>Géopolitique :</strong> Pétrole = 15% échanges mondiaux. 
                   Demande asiatique +100% depuis 2000. Baril ~80$ en 2025.
                 </p>
@@ -194,8 +194,8 @@ const EnergiePage = () => {
                   </p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-gray-100 rounded-lg">
-                <p className="text-sm text-gray-700">
+              <div className="mt-4 p-3 bg-carnet-paper rounded-lg">
+                <p className="text-sm text-carnet-ink">
                   <strong>Débats :</strong> Allemagne sortie en 2023, Japon relance post-Fukushima. 
                   OCDE concentre 80% des réacteurs.
                 </p>
@@ -283,8 +283,8 @@ const EnergiePage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-gray-800 mb-2">Producteurs d'uranium</h4>
+                    <div className="bg-carnet-paper p-4 rounded-lg">
+                      <h4 className="font-semibold text-carnet-ink mb-2">Producteurs d'uranium</h4>
                       <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Kazakhstan :</strong> 43% production mondiale</li>
                         <li><strong>Canada :</strong> 13% (mines Saskatchewan)</li>
@@ -386,7 +386,7 @@ const EnergiePage = () => {
             <CardTitle className="text-lg">Références et sources</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-sm text-gray-600 space-y-2">
+            <div className="text-sm text-carnet-ink-soft space-y-2">
               <p><strong>AIE</strong> (Agence internationale de l'énergie) : World Energy Outlook 2024</p>
               <p><strong>BP</strong> : Statistical Review of World Energy 2024</p>
               <p><strong>IRENA</strong> : Global Energy Transformation 2024</p>

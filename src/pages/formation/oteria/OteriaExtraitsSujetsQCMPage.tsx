@@ -419,7 +419,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
                     onClick={() => handleAnswer(question.id, choice.key)}
                     className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${answers[question.id] === choice.key
                         ? 'border-carnet-red bg-pr-gray-bg text-carnet-red-deep'
-                        : 'border-gray-200 hover:border-carnet-red/40 hover:bg-carnet-paper-2'
+                        : 'border-carnet-rule hover:border-carnet-red/40 hover:bg-carnet-paper-2'
                       }`}
                   >
                     <span className="font-medium mr-3">{choice.key.toUpperCase()}.</span>
@@ -430,9 +430,9 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
 
               {/* Show explanation if answer selected */}
               {answers[question.id] && (
-                <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <div className="mt-6 p-4 bg-carnet-paper rounded-lg border border-carnet-rule">
                   <div className="flex items-center justify-between mb-2">
-                    <h4 className="font-medium text-gray-900 flex items-center gap-2">
+                    <h4 className="font-medium text-carnet-ink flex items-center gap-2">
                       {answers[question.id] === question.answer ? (
                         <CheckCircle className="h-4 w-4 text-green-600" />
                       ) : (
@@ -461,7 +461,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
                   </div>
 
                   {showExplanations[question.id] && (
-                    <p className="text-gray-700">{question.explanation}</p>
+                    <p className="text-carnet-ink">{question.explanation}</p>
                   )}
                 </div>
               )}
@@ -511,13 +511,13 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
         {/* Progress indicator */}
         {!showResults && (
           <div className="mt-8">
-            <div className="w-full bg-gray-200 rounded-full h-2">
+            <div className="w-full bg-carnet-rule rounded-full h-2">
               <div
                 className="bg-carnet-red h-2 rounded-full transition-all duration-300"
                 style={{ width: `${((currentQuestion + 1) / qcmData.questions.length) * 100}%` }}
               />
             </div>
-            <p className="text-center text-sm text-gray-600 mt-2">
+            <p className="text-center text-sm text-carnet-ink-soft mt-2">
               {Math.round(((currentQuestion + 1) / qcmData.questions.length) * 100)}% terminé
             </p>
           </div>
@@ -525,7 +525,7 @@ const OteriaExtraitsSujetsQCMPage: React.FC = () => {
 
         {/* Warning message */}
         {Object.keys(answers).length !== qcmData.questions.length && !showResults && (
-          <p className="text-gray-500 text-sm text-center mt-4">
+          <p className="text-carnet-ink-soft text-sm text-center mt-4">
             Répondez à toutes les questions pour voir vos résultats
           </p>
         )}

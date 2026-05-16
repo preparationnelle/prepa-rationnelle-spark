@@ -22,18 +22,18 @@ const NvidiaPage = () => {
             Études de cas
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <span className="text-gray-600">NVIDIA - IA</span>
+          <span className="text-carnet-ink-soft">NVIDIA - IA</span>
         </nav>
 
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <Cpu className="h-8 w-8 text-purple-600" />
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-4xl font-bold text-carnet-ink">
               NVIDIA - IA
             </h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-4xl">
+          <p className="text-lg text-carnet-ink-soft max-w-4xl">
             Leader en puces IA. Guerre technologique US-Chine, 80% du marché des GPU IA.
           </p>
         </div>
@@ -51,10 +51,10 @@ const NvidiaPage = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-carnet-ink leading-relaxed">
                   NVIDIA, leader en IA via ses GPU comme Blackwell, est au centre d'enjeux géopolitiques avec une capitalisation boursière dépassant 4 000 milliards USD en 2025, représentant 80 % du marché des puces IA et exposée à la guerre tech US-Chine (restrictions d'exportations depuis 2022). Les acteurs clés incluent Jensen Huang (CEO), le gouvernement US pour les contrôles d'export, et la Chine (via concurrents comme Huawei), avec des politiques comme les sanctions américaines amplifiées en 2023-2025. Des chiffres incluent 30 milliards USD de revenus Q2 2025, dont 26 milliards en data centers ; dates importantes : 2022 (boom IA post-ChatGPT) et 2025 (GTC conference). Cette étude de cas est pertinente pour les sujets suivants : technologie et innovation, économie (semi-conducteurs), sécurité nationale, guerre commerciale, diplomatie tech, et éthique IA.
                 </p>
-                <p className="text-sm text-gray-500 mt-3">
+                <p className="text-sm text-carnet-ink-soft mt-3">
                   <strong>Source :</strong> ainvest.com
                 </p>
               </CardContent>
@@ -71,20 +71,20 @@ const NvidiaPage = () => {
               <CardContent>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-gray-900">Jensen Huang</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Jensen Huang</h4>
+                    <p className="text-carnet-ink">
                       CEO et visionnaire de NVIDIA.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Gouvernement US</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Gouvernement US</h4>
+                    <p className="text-carnet-ink">
                       Contrôles d'exportations et sanctions.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Chine</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Chine</h4>
+                    <p className="text-carnet-ink">
                       Concurrents comme Huawei, cible des restrictions.
                     </p>
                   </div>
@@ -106,21 +106,21 @@ const NvidiaPage = () => {
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2022</div>
-                      <div className="text-gray-700">Boom IA post-ChatGPT</div>
+                      <div className="text-carnet-ink">Boom IA post-ChatGPT</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2023-2025</div>
-                      <div className="text-gray-700">Sanctions américaines amplifiées</div>
+                      <div className="text-carnet-ink">Sanctions américaines amplifiées</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2025</div>
-                      <div className="text-gray-700">GTC conference</div>
+                      <div className="text-carnet-ink">GTC conference</div>
                     </div>
                   </div>
                 </div>
@@ -142,15 +142,15 @@ const NvidiaPage = () => {
                 <div className="space-y-3">
                   <div className="text-center p-3 bg-purple-50 rounded-lg">
                     <div className="text-2xl font-bold text-purple-600">4000M$</div>
-                    <div className="text-sm text-gray-600">Capitalisation boursière</div>
+                    <div className="text-sm text-carnet-ink-soft">Capitalisation boursière</div>
                   </div>
                   <div className="text-center p-3 bg-purple-50 rounded-lg">
                     <div className="text-2xl font-bold text-purple-600">80%</div>
-                    <div className="text-sm text-gray-600">Marché des puces IA</div>
+                    <div className="text-sm text-carnet-ink-soft">Marché des puces IA</div>
                   </div>
                   <div className="text-center p-3 bg-purple-50 rounded-lg">
                     <div className="text-2xl font-bold text-purple-600">30M$</div>
-                    <div className="text-sm text-gray-600">Revenus Q2 2025</div>
+                    <div className="text-sm text-carnet-ink-soft">Revenus Q2 2025</div>
                   </div>
                 </div>
               </CardContent>
@@ -198,12 +198,12 @@ const NvidiaPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="h-5 w-5 text-gray-600" />
+                  <DollarSign className="h-5 w-5 text-carnet-ink-soft" />
                   Sources
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-carnet-ink-soft">
                   ainvest.com
                 </p>
               </CardContent>

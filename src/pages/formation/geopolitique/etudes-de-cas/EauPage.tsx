@@ -23,7 +23,7 @@ const EauPage = () => {
             Thèmes centraux
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <span className="text-gray-600">Eau</span>
+          <span className="text-carnet-ink-soft">Eau</span>
         </nav>
 
         {/* Header */}
@@ -41,19 +41,19 @@ const EauPage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">220M t</div>
                 <div className="text-sm text-cyan-100">Produits halieutiques</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">55%</div>
                 <div className="text-sm text-cyan-100">Aquaculture</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">2%</div>
                 <div className="text-sm text-cyan-100">Eau dessalement</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">20K</div>
                 <div className="text-sm text-cyan-100">Usines dessalement</div>
               </div>
@@ -72,7 +72,7 @@ const EauPage = () => {
           <CardContent>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <p className="text-gray-700 leading-relaxed mb-4">
+                <p className="text-carnet-ink leading-relaxed mb-4">
                   La production de <strong>produits halieutiques</strong> atteint 220 millions de tonnes en 2024, 
                   dont <strong>55% provient de l'aquaculture</strong> (+5%/an). Cette croissance exponentielle 
                   transforme la géographie maritime mondiale.
@@ -129,8 +129,8 @@ const EauPage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-gray-800 mb-2">Stress hydrique</h4>
+                    <div className="bg-carnet-paper p-4 rounded-lg">
+                      <h4 className="font-semibold text-carnet-ink mb-2">Stress hydrique</h4>
                       <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Évolution :</strong> x0,3 disponibilité par personne depuis 1950</li>
                         <li><strong>Régions critiques :</strong> Moyen-Orient, Afrique Nord, Inde</li>
@@ -218,7 +218,7 @@ const EauPage = () => {
             <CardTitle className="text-lg">Références et sources</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-sm text-gray-600 space-y-2">
+            <div className="text-sm text-carnet-ink-soft space-y-2">
               <p><strong>FAO</strong> : État des pêches et aquaculture mondiale 2024</p>
               <p><strong>UNESCO</strong> : Rapport mondial sur la mise en valeur des ressources en eau</p>
               <p><strong>IDA</strong> (International Desalination Association) : Global desalination data</p>

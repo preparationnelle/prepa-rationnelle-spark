@@ -90,12 +90,12 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
   }, []);
 
   return (
-    <Card className="mb-8 border border-pr-gray-light bg-white overflow-hidden rounded-2xl shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+    <Card className="mb-8 border border-pr-gray-light bg-carnet-paper-2 overflow-hidden rounded-2xl shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
       <div className="h-[3px] w-full bg-pr-black" />
       <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl bg-white border border-pr-black-soft flex items-center justify-center">
+            <div className="w-11 h-11 rounded-xl bg-carnet-paper-2 border border-pr-black-soft flex items-center justify-center">
               <Target className="h-5 w-5 text-pr-black" />
             </div>
             <div>
@@ -107,7 +107,7 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
               </CardTitle>
             </div>
           </div>
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-[0.12em] bg-white text-pr-black border border-pr-black-soft">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-[0.12em] bg-carnet-paper-2 text-pr-black border border-pr-black-soft">
             <Sparkles className="w-3 h-3 mr-1.5" />
             IA
           </span>
@@ -118,7 +118,7 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
         {currentPhrase ? (
           <div className="space-y-5">
             {/* Phrase française */}
-            <div className="group relative bg-white border border-pr-gray-light rounded-xl p-6 transition-colors hover:border-pr-black-soft">
+            <div className="group relative bg-carnet-paper-2 border border-pr-gray-light rounded-xl p-6 transition-colors hover:border-pr-black-soft">
               <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Button
                   variant="ghost"
@@ -158,7 +158,7 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
             <div className="grid md:grid-cols-2 gap-4">
               {/* Points grammaticaux */}
               {currentPhrase.grammar_points && currentPhrase.grammar_points.length > 0 && (
-                <div className="bg-white border border-pr-gray-light rounded-xl p-5">
+                <div className="bg-carnet-paper-2 border border-pr-gray-light rounded-xl p-5">
                   <h3 className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2 mb-3">
                     <Target className="h-3.5 w-3.5 text-pr-black" />
                     {language === 'fr' ? 'Points grammaticaux' : 'Grammar points'}
@@ -175,7 +175,7 @@ export const AutoPhraseGenerator = ({ language, onPhraseGenerated }: AutoPhraseG
 
               {/* Notes explicatives */}
               {currentPhrase.notes && currentPhrase.notes.length > 0 && (
-                <div className="bg-white border border-pr-gray-light rounded-xl p-5">
+                <div className="bg-carnet-paper-2 border border-pr-gray-light rounded-xl p-5">
                   <h3 className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] flex items-center gap-2 mb-3">
                     <Lightbulb className="h-3.5 w-3.5 text-pr-black" />
                     {language === 'fr' ? 'Notes explicatives' : 'Explanatory notes'}

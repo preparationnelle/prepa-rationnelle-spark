@@ -46,10 +46,10 @@ const Chapitre23StatistiquesDescriptivesCoursPage = () => {
           <div className="w-20 h-20 bg-carnet-red/10 rounded-full flex items-center justify-center mx-auto mb-6">
             <Construction className="w-10 h-10 text-carnet-red" />
           </div>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h2 className="text-2xl font-semibold text-carnet-ink mb-4">
             Cours en cours de construction
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+          <p className="text-carnet-ink-soft max-w-2xl mx-auto mb-8">
             Le cours sur les statistiques descriptives sera disponible prochainement.
             Nous travaillons actuellement à la création d'un contenu adapté aux besoins spécifiques de la voie appliquée en prépa ECG.
           </p>
@@ -57,11 +57,11 @@ const Chapitre23StatistiquesDescriptivesCoursPage = () => {
       </Card>
 
       {/* Navigation secondaire */}
-      <Card className="border-0 shadow-lg bg-gray-50">
+      <Card className="border-0 shadow-lg bg-carnet-paper">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-appliquees">
-              <Button variant="outline" className="border-gray-300 text-gray-600 hover:bg-gray-50">
+              <Button variant="outline" className="border-gray-300 text-carnet-ink-soft hover:bg-carnet-paper">
                 Retour aux chapitres
               </Button>
             </Link>

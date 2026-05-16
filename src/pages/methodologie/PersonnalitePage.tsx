@@ -30,7 +30,7 @@ const PersonnalitePage = () => {
             { n: '03', t: 'Valeurs et motivations', d: 'Questions sur ce qui vous anime profondément.', l: ['"Quelles sont vos valeurs essentielles ?"', '"Qu\'est-ce qui vous motive au quotidien ?"', '"Quel est votre modèle de réussite ?"'] },
             { n: '04', t: 'Situations hypothétiques', d: 'Questions sur votre réaction face à des dilemmes.', l: ['"Comment gérez-vous le stress ?"', '"Que feriez-vous face à un conflit ?"', '"Comment prenez-vous vos décisions ?"'] },
           ].map((cat) => (
-            <div key={cat.n} className="bg-white border border-carnet-rule/30 rounded-2xl p-6 hover:border-red-200 hover:shadow-md transition-all duration-300">
+            <div key={cat.n} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-6 hover:border-red-200 hover:shadow-sm transition-all duration-300">
               <div className="flex items-baseline gap-3 mb-2">
                 <span className="font-dm-serif text-4xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-black">{cat.n}</span>
                 <h4 className="font-dm-serif text-xl text-carnet-ink">{cat.t}</h4>
@@ -54,7 +54,7 @@ const PersonnalitePage = () => {
             { l: 'A', t: 'Action', d: 'Ce que vous avez fait concrètement' },
             { l: 'R', t: 'Résultat', d: 'Impact et apprentissages' },
           ].map((s) => (
-            <div key={s.l} className="bg-white border border-carnet-rule/30 rounded-2xl p-6 text-center hover:border-red-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+            <div key={s.l} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-6 text-center hover:border-red-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300">
               <div className="font-dm-serif text-5xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-pr-black mb-1 leading-none">{s.l}</div>
               <div className="h-px w-6 bg-red-500 mx-auto mb-3 mt-2" />
               <div className="font-medium text-carnet-ink mb-1">{s.t}</div>
@@ -87,7 +87,7 @@ const PersonnalitePage = () => {
             { t: 'Relations humaines', l: ['Intelligence émotionnelle', 'Empathie', 'Travail en équipe', 'Communication'] },
             { t: 'Adaptabilité',       l: ['Résilience', 'Créativité', 'Curiosité intellectuelle', "Ouverture d'esprit"] },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-2xl p-6 hover:border-red-200 hover:shadow-md transition-all duration-300">
+            <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-6 hover:border-red-200 hover:shadow-sm transition-all duration-300">
               <h4 className="font-dm-serif text-xl text-carnet-ink mb-2">{g.t}</h4>
               <div className="h-px w-10 bg-red-500 mb-4" />
               <ul className="space-y-2.5">
@@ -106,7 +106,7 @@ const PersonnalitePage = () => {
       {/* Défauts */}
       <MethodSection label="Section 04" title="Comment parler de vos défauts intelligemment" icon={AlertCircle}>
         <div className="grid md:grid-cols-2 gap-5 mb-8">
-          <div className="bg-white border border-carnet-rule/30 rounded-2xl p-6">
+          <div className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-4">
               <CheckCircle className="w-5 h-5 text-emerald-600" strokeWidth={1.8} />
               <h4 className="font-dm-serif text-xl text-carnet-ink">Défauts acceptables</h4>
@@ -124,7 +124,7 @@ const PersonnalitePage = () => {
             </ul>
           </div>
 
-          <div className="bg-white border border-carnet-rule/30 rounded-2xl p-6">
+          <div className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-6">
             <div className="flex items-center gap-2 mb-4">
               <AlertCircle className="w-5 h-5 text-red-600" strokeWidth={1.8} />
               <h4 className="font-dm-serif text-xl text-carnet-ink">Défauts à éviter</h4>
@@ -177,7 +177,7 @@ const PersonnalitePage = () => {
               r: "Je ne connais pas les autres candidats et je respecte leurs qualités. Ce que je peux vous dire, c'est que j'apporte une combinaison unique d'expériences, une motivation authentique pour mon projet, et une capacité démontrée à passer à l'action.",
             },
           ].map((item) => (
-            <div key={item.q} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-500 rounded-r-2xl p-5 hover:shadow-md transition-shadow duration-300">
+            <div key={item.q} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-500 rounded-r-2xl p-5 hover:shadow-sm transition-shadow duration-300">
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-3">"{item.q}"</h4>
               <p className="text-sm text-carnet-ink-mute mb-2">
                 <span className="font-semibold text-red-700 uppercase text-[10px] tracking-wider">Piège · </span>
@@ -199,7 +199,7 @@ const PersonnalitePage = () => {
             { t: 'Préparation',   l: ['Listez 5-6 expériences marquantes variées', 'Préparez des exemples pour chaque qualité', 'Identifiez vos valeurs fondamentales', 'Travaillez votre introspection'] },
             { t: 'Communication', l: ['Soyez authentique et sincère', 'Utilisez des exemples concrets', 'Montrez votre évolution personnelle', 'Gardez un ton positif'] },
           ].map((g) => (
-            <div key={g.t} className="bg-white border border-carnet-rule/30 rounded-2xl p-6 hover:border-red-200 hover:shadow-md transition-all duration-300">
+            <div key={g.t} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-2xl p-6 hover:border-red-200 hover:shadow-sm transition-all duration-300">
               <h4 className="font-dm-serif text-xl text-carnet-ink mb-2">{g.t}</h4>
               <div className="h-px w-10 bg-red-500 mb-4" />
               <ul className="space-y-3">

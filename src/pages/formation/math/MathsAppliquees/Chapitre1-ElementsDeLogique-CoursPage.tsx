@@ -32,7 +32,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
 
-            <div className="bg-slate-50 border-l-2 border-slate-300 p-4 rounded-r-md">
+            <div className="bg-carnet-paper border-l-2 border-slate-300 p-4 rounded-r-md">
               <span className="font-semibold text-slate-900 block mb-2">Définition — Proposition</span>
               <div className="text-slate-700">
                 <p>
@@ -41,8 +41,8 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="font-medium text-gray-700 mb-2">Exemples :</p>
+            <div className="bg-carnet-paper p-4 rounded-lg">
+              <p className="font-medium text-carnet-ink mb-2">Exemples :</p>
               <ul className="space-y-1 ml-4">
                 <li>• « <LatexRenderer latex="2 + 3 = 5" block={false} /> » est une proposition vraie</li>
                 <li>• « <LatexRenderer latex="\pi > 4" block={false} /> » est une proposition fausse</li>
@@ -50,7 +50,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </ul>
             </div>
 
-            <div className="bg-slate-50 border-l-2 border-slate-300 p-4 rounded-r-md">
+            <div className="bg-carnet-paper border-l-2 border-slate-300 p-4 rounded-r-md">
               <span className="font-semibold text-slate-900 block mb-2">Définition — Négation</span>
               <div className="text-slate-700">
                 <p>
@@ -59,7 +59,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-slate-50 border-l-2 border-slate-300 p-4 rounded-r-md">
+            <div className="bg-carnet-paper border-l-2 border-slate-300 p-4 rounded-r-md">
               <span className="font-semibold text-slate-900 block mb-2">Définition — Opérations logiques</span>
               <div className="text-slate-700">
                 <p className="mb-2">Soient <LatexRenderer latex="P" block={false} /> et <LatexRenderer latex="Q" block={false} /> deux propositions :</p>
@@ -73,51 +73,51 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
             </div>
 
             <div className="mt-6">
-              <h4 className="text-lg font-semibold text-gray-800 mb-4">Table de vérité des connecteurs</h4>
-              <div className="overflow-x-auto rounded-lg border border-gray-200">
+              <h4 className="text-lg font-semibold text-carnet-ink mb-4">Table de vérité des connecteurs</h4>
+              <div className="overflow-x-auto rounded-lg border border-carnet-rule">
                 <table className="min-w-full text-sm">
-                  <thead className="bg-gray-50">
+                  <thead className="bg-carnet-paper">
                     <tr>
-                      <th className="p-3 text-center font-medium text-gray-600 border-b border-gray-200"><LatexRenderer latex="P" block={false} /></th>
-                      <th className="p-3 text-center font-medium text-gray-600 border-b border-gray-200"><LatexRenderer latex="Q" block={false} /></th>
-                      <th className="p-3 text-center font-medium text-gray-600 border-b border-gray-200"><LatexRenderer latex="\neg P" block={false} /></th>
-                      <th className="p-3 text-center font-medium text-gray-600 border-b border-gray-200"><LatexRenderer latex="P \wedge Q" block={false} /></th>
-                      <th className="p-3 text-center font-medium text-gray-600 border-b border-gray-200"><LatexRenderer latex="P \vee Q" block={false} /></th>
-                      <th className="p-3 text-center font-medium text-gray-600 border-b border-gray-200"><LatexRenderer latex="P \Rightarrow Q" block={false} /></th>
+                      <th className="p-3 text-center font-medium text-carnet-ink-soft border-b border-carnet-rule"><LatexRenderer latex="P" block={false} /></th>
+                      <th className="p-3 text-center font-medium text-carnet-ink-soft border-b border-carnet-rule"><LatexRenderer latex="Q" block={false} /></th>
+                      <th className="p-3 text-center font-medium text-carnet-ink-soft border-b border-carnet-rule"><LatexRenderer latex="\neg P" block={false} /></th>
+                      <th className="p-3 text-center font-medium text-carnet-ink-soft border-b border-carnet-rule"><LatexRenderer latex="P \wedge Q" block={false} /></th>
+                      <th className="p-3 text-center font-medium text-carnet-ink-soft border-b border-carnet-rule"><LatexRenderer latex="P \vee Q" block={false} /></th>
+                      <th className="p-3 text-center font-medium text-carnet-ink-soft border-b border-carnet-rule"><LatexRenderer latex="P \Rightarrow Q" block={false} /></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="hover:bg-gray-50 border-b border-gray-100">
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">F</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
+                    <tr className="hover:bg-carnet-paper border-b border-carnet-rule/50">
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">F</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
                     </tr>
-                    <tr className="hover:bg-gray-50 border-b border-gray-100 bg-gray-50/50">
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">F</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">F</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">F</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">F</td>
+                    <tr className="hover:bg-carnet-paper border-b border-carnet-rule/50 bg-carnet-paper/50">
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">F</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">F</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">F</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">F</td>
                     </tr>
-                    <tr className="hover:bg-gray-50 border-b border-gray-100">
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">F</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">F</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
+                    <tr className="hover:bg-carnet-paper border-b border-carnet-rule/50">
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">F</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">F</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
                     </tr>
-                    <tr className="hover:bg-gray-50 border-b border-gray-100 bg-gray-50/50">
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">F</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">F</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">F</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">F</td>
-                      <td className="p-3 text-center border-r border-gray-100 last:border-r-0">V</td>
+                    <tr className="hover:bg-carnet-paper border-b border-carnet-rule/50 bg-carnet-paper/50">
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">F</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">F</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">F</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">F</td>
+                      <td className="p-3 text-center border-r border-carnet-rule/50 last:border-r-0">V</td>
                     </tr>
                   </tbody>
                 </table>
@@ -138,7 +138,7 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
         <CardContent className="space-y-6">
           <div className="space-y-4 text-lg">
 
-            <div className="bg-slate-50 border-l-2 border-slate-300 p-4 rounded-r-md">
+            <div className="bg-carnet-paper border-l-2 border-slate-300 p-4 rounded-r-md">
               <span className="font-semibold text-slate-900 block mb-2">Définition — Quantificateurs</span>
               <div className="text-slate-700">
                 <p className="mb-2">Soit <LatexRenderer latex="P(x)" block={false} /> une propriété dépendant d'une variable <LatexRenderer latex="x" block={false} /> dans un ensemble <LatexRenderer latex="E" block={false} /> :</p>
@@ -163,8 +163,8 @@ const Chapitre1ElementsDeLogiqueCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="font-medium text-gray-700 mb-2">Exemples :</p>
+            <div className="bg-carnet-paper p-4 rounded-lg">
+              <p className="font-medium text-carnet-ink mb-2">Exemples :</p>
               <ul className="space-y-2 ml-4">
                 <li>• <LatexRenderer latex="\forall n \in \mathbb{N}, n^2 \geq 0" block={false} /> (vraie)</li>
                 <li>• <LatexRenderer latex="\exists x \in \mathbb{R}, x^2 = 2" block={false} /> (vraie, <LatexRenderer latex="x = \pm\sqrt{2}" block={false} />)</li>

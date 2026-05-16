@@ -138,8 +138,8 @@ const CourseContentWrapper: React.FC<CourseContentWrapperProps> = ({
                         className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[300]"
                         onClick={() => setNoteDialogOpen(false)}
                     />
-                    <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[301] w-[90%] max-w-md bg-white rounded-2xl shadow-2xl p-5">
-                        <h3 className="text-base font-bold text-gray-800 mb-3">📝 Ajouter une note</h3>
+                    <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[301] w-[90%] max-w-md bg-carnet-paper-2 rounded-2xl shadow-lg p-5">
+                        <h3 className="text-base font-bold text-carnet-ink mb-3">📝 Ajouter une note</h3>
                         {noteDialogText && (
                             <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-3">
                                 <p className="text-xs text-amber-700 italic line-clamp-2">
@@ -151,14 +151,14 @@ const CourseContentWrapper: React.FC<CourseContentWrapperProps> = ({
                             value={noteInput}
                             onChange={e => setNoteInput(e.target.value)}
                             placeholder="Écris ta note ici..."
-                            className="w-full p-3 text-sm rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/20 resize-none"
+                            className="w-full p-3 text-sm rounded-xl border border-carnet-rule bg-carnet-paper focus:bg-carnet-paper-2 focus:outline-none focus:ring-2 focus:ring-teal-500/20 resize-none"
                             rows={4}
                             autoFocus
                         />
                         <div className="flex justify-end gap-2 mt-3">
                             <button
                                 onClick={() => setNoteDialogOpen(false)}
-                                className="px-4 py-2 text-sm text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-50"
+                                className="px-4 py-2 text-sm text-carnet-ink-soft hover:text-carnet-ink rounded-lg hover:bg-carnet-paper"
                             >
                                 Annuler
                             </button>

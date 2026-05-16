@@ -1,5 +1,5 @@
+import React from 'react';
 import { CheckCircle } from 'lucide-react';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { PythonModuleQuiz } from '@/components/python/PythonModuleQuiz';
 import { analyseQuizQuestions } from '@/data/pythonQuizQuestions';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
@@ -9,6 +9,30 @@ import PythonNavigationTabs from '@/components/formation/PythonNavigationTabs';
 import { usePythonProgress } from '@/hooks/usePythonProgress';
 import { Button } from '@/components/ui/button';
 import { CarnetHero, CarnetSection, CarnetCallout, CarnetCodeBlock } from '@/components/carnet';
+
+/* ── Tableau carnet (bordures rgba(78,55,30,*), zéro slate) ── */
+const Table = ({ children }: { children: React.ReactNode }) => (
+  <div className="relative w-full overflow-x-auto rounded-md border border-[rgba(78,55,30,0.18)]">
+    <table className="w-full border-collapse font-instrument text-[14px] text-carnet-ink-soft">
+      {children}
+    </table>
+  </div>
+);
+const TableHeader = ({ children }: { children: React.ReactNode }) => (
+  <thead className="bg-carnet-paper-2">{children}</thead>
+);
+const TableBody = ({ children }: { children: React.ReactNode }) => <tbody>{children}</tbody>;
+const TableRow = ({ children }: { children: React.ReactNode }) => (
+  <tr className="border-b border-[rgba(78,55,30,0.12)] last:border-0">{children}</tr>
+);
+const TableHead = ({ children }: { children: React.ReactNode }) => (
+  <th className="px-4 py-3 text-left font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold border-b border-[rgba(78,55,30,0.18)]">
+    {children}
+  </th>
+);
+const TableCell = ({ children }: { children: React.ReactNode }) => (
+  <td className="px-4 py-3 align-top text-carnet-ink-soft">{children}</td>
+);
 
 const PythonAnalysePage = () => {
   const { markAsComplete, isChapterComplete } = usePythonProgress();
@@ -32,24 +56,27 @@ const PythonAnalysePage = () => {
 
       <PythonNavigationTabs className="mb-8" />
 
-      {/* Présentation générale */}
+      {/* Objectifs du module */}
       <section className="carnet-card p-8 sm:p-10 mb-12">
-        <div className="carnet-eyebrow mb-4">Présentation générale</div>
+        <div className="carnet-eyebrow mb-4">Objectifs du module</div>
         <hr className="carnet-divider mb-6" />
-        <div className="space-y-4 font-instrument text-[15px] text-carnet-ink-soft leading-[1.7]">
-          <div>
-            <p className="font-semibold text-carnet-ink mb-1">Objectifs du module</p>
-            <p>
-              Ce module couvre les méthodes d'analyse numérique essentielles en Python : calcul de sommes et produits finis, étude des suites par récurrence, et méthodes d'approximation comme la dichotomie.
-            </p>
-          </div>
-          <div>
-            <p className="font-semibold text-carnet-ink mb-1">Prérequis</p>
-            <p>
-              Maîtrise des modules 0 et 1 (fondamentaux Python et matrices NumPy). Connaissances de base en analyse mathématique.
-            </p>
-          </div>
-        </div>
+        <ul className="space-y-3 font-instrument text-[15px] text-carnet-ink-soft leading-[1.7]">
+          {[
+            'Calculer des sommes et des produits finis avec une boucle, une liste ou NumPy.',
+            'Simuler et analyser une suite définie par récurrence.',
+            'Définir et réutiliser ses propres fonctions Python.',
+            'Maîtriser les fonctions et constantes mathématiques de NumPy.',
+            'Implémenter la méthode de dichotomie pour approximer une racine.',
+          ].map((obj, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <CheckCircle className="h-4 w-4 text-carnet-red mt-1 flex-shrink-0" />
+              <span>{obj}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="font-instrument text-[14px] text-carnet-ink-mute leading-[1.7] mt-6">
+          <span className="text-carnet-ink font-semibold">Prérequis —</span> maîtrise des modules 0 et 1 (fondamentaux Python et matrices NumPy) et connaissances de base en analyse mathématique.
+        </p>
       </section>
 
       {/* Section 1 — Calcul de sommes */}
@@ -596,14 +623,25 @@ print(r)  # ≈ 1.618`}</CarnetCodeBlock>
         </Button>
       </div>
 
-      <PythonModuleQuiz title="Quiz pratique - Module 2" questions={analyseQuizQuestions} moduleColor="blue" />
+      {/* Quiz Section */}
+      <section className="carnet-card p-8 sm:p-10 mb-12">
+        <div className="flex items-center gap-3 mb-4">
+          <CheckCircle className="h-5 w-5 text-carnet-red" />
+          <h3 className="font-lora text-[24px] text-carnet-ink">Quiz d'auto-évaluation</h3>
+        </div>
+        <hr className="carnet-divider mb-6" />
+        <p className="font-instrument text-[15px] text-carnet-ink-soft mb-4">
+          Teste tes connaissances sur l'analyse numérique en Python avec ce quiz interactif.
+        </p>
+        <PythonModuleQuiz title="Quiz pratique — Module 2" questions={analyseQuizQuestions} />
+      </section>
 
       <ModuleNavigationCards
         currentModule={{
           id: 2,
           title: 'Analyse',
           slug: 'analyse',
-          color: 'blue',
+          color: 'carnet',
         }}
         isExercisePage={false}
       />

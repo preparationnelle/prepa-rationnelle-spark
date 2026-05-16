@@ -158,7 +158,7 @@ const GeopolitiquesMethodologiePage = () => {
             >
               <div className="flex items-start gap-4">
                 <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 flex-shrink-0 ${
-                  article.disabled ? 'bg-gray-200 text-gray-500' : 'bg-carnet-red/10 text-carnet-red'
+                  article.disabled ? 'bg-gray-200 text-carnet-ink-soft' : 'bg-carnet-red/10 text-carnet-red'
                 }`}>
                   <span className="font-bold text-lg">{idx + 1}</span>
                 </div>
@@ -169,8 +169,8 @@ const GeopolitiquesMethodologiePage = () => {
                       <span className="text-sm text-muted-foreground">{article.readTime} de lecture</span>
                     )}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{article.title}</h3>
-                  <p className="text-gray-600 mb-4">{article.description}</p>
+                  <h3 className="text-xl font-bold text-carnet-ink mb-2">{article.title}</h3>
+                  <p className="text-carnet-ink-soft mb-4">{article.description}</p>
                   <div className="flex gap-3">
                     {article.route && !article.disabled ? (
                       <Link to={article.route}>
@@ -183,7 +183,7 @@ const GeopolitiquesMethodologiePage = () => {
                       <Button
                         disabled={article.disabled}
                         className={`px-4 py-2 rounded-md font-medium ${
-                          article.disabled ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-pr-black hover:bg-pr-black-dark text-white'
+                          article.disabled ? 'bg-gray-200 text-carnet-ink-soft cursor-not-allowed' : 'bg-pr-black hover:bg-pr-black-dark text-white'
                         }`}
                         onClick={() => {
                           if (!article.disabled && !article.route) {
@@ -227,11 +227,11 @@ const GeopolitiquesMethodologiePage = () => {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
-                <div className="bg-white/10 rounded-lg p-4">
+                <div className="bg-carnet-paper-2/10 rounded-lg p-4">
                   <div className="text-3xl font-bold">1</div>
                   <div className="text-sm text-carnet-paper-2">Dissertation complète rédigée ou en plan détaillé</div>
                 </div>
-                <div className="bg-white/10 rounded-lg p-4">
+                <div className="bg-carnet-paper-2/10 rounded-lg p-4">
                   <div className="text-3xl font-bold">1</div>
                   <div className="text-sm text-carnet-paper-2">Fiche sur un thème central</div>
                 </div>
@@ -323,7 +323,7 @@ const GeopolitiquesMethodologiePage = () => {
                     <h4 className="font-semibold mb-4">Exemples de sujets incontournables :</h4>
                     <div className="grid gap-2">
                       {sujetsIncontournables.map((sujet, index) => (
-                        <div key={index} className="flex items-center gap-2 p-2 bg-gray-50 rounded">
+                        <div key={index} className="flex items-center gap-2 p-2 bg-carnet-paper rounded">
                           <Target className="h-4 w-4 text-carnet-red" />
                           <span className="text-sm">{sujet}</span>
                         </div>
@@ -350,7 +350,7 @@ const GeopolitiquesMethodologiePage = () => {
                               <CardContent className="p-3">
                                 <h6 className="font-medium">{partie.partie}</h6>
                                 <p className="text-sm text-muted-foreground">{partie.description}</p>
-                                <p className="text-xs text-gray-500 mt-1">({partie.exemples})</p>
+                                <p className="text-xs text-carnet-ink-soft mt-1">({partie.exemples})</p>
                               </CardContent>
                             </Card>
                           ))}
@@ -424,7 +424,7 @@ const GeopolitiquesMethodologiePage = () => {
                     <h4 className="font-semibold mb-4">Exemples de sujets pour s'entraîner :</h4>
                     <div className="grid gap-2">
                       {sujetsEntrainement.map((sujet, index) => (
-                        <div key={index} className="flex items-center gap-2 p-2 bg-gray-50 rounded">
+                        <div key={index} className="flex items-center gap-2 p-2 bg-carnet-paper rounded">
                           <Clock className="h-4 w-4 text-carnet-red" />
                           <span className="text-sm">{sujet}</span>
                         </div>

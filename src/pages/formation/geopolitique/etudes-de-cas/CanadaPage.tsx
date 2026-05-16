@@ -22,18 +22,18 @@ const CanadaPage = () => {
             Études de cas
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <span className="text-gray-600">Canada - Guerre économique</span>
+          <span className="text-carnet-ink-soft">Canada - Guerre économique</span>
         </nav>
 
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <Shield className="h-8 w-8 text-red-600" />
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-4xl font-bold text-carnet-ink">
               Canada - Guerre économique
             </h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-4xl">
+          <p className="text-lg text-carnet-ink-soft max-w-4xl">
             Ingérences chinoises et tariffs américains. Sécurité économique exposant 10-20% du PIB.
           </p>
         </div>
@@ -51,10 +51,10 @@ const CanadaPage = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-carnet-ink leading-relaxed">
                   Le Canada est au cœur de guerres économiques géopolitiques, confronté à des menaces comme les ingérences chinoises dans ses industries critiques (minéraux rares, technologie) et les tariffs américains sous Trump, avec des enjeux de sécurité économique représentant potentiellement 10-20 % de son PIB exposé aux disruptions de chaînes d'approvisionnement. Les acteurs clés incluent le gouvernement canadien (sous Justin Trudeau puis potentiellement un nouveau leader en 2025), les États-Unis comme allié et rival commercial, la Chine et la Russie comme adversaires, avec des politiques comme la Stratégie indo-pacifique de 2022 et le projet "Canada at Economic War" lancé en 2025 par CIGI. Des dates marquantes sont 2018 (début de la guerre commerciale US-Chine impactant le Canada) et 2025 (impacts de Trump 2.0 sur les tariffs, avec des taux moyens US bas mais ciblés). Cette étude de cas est pertinente pour les sujets suivants : économie et commerce, sécurité nationale, alliances (OTAN, USMCA), ressources critiques, diplomatie, et ingérence étrangère.
                 </p>
-                <p className="text-sm text-gray-500 mt-3">
+                <p className="text-sm text-carnet-ink-soft mt-3">
                   <strong>Source :</strong> atlanticcouncil.org
                 </p>
               </CardContent>
@@ -71,20 +71,20 @@ const CanadaPage = () => {
               <CardContent>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-gray-900">Gouvernement canadien</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Gouvernement canadien</h4>
+                    <p className="text-carnet-ink">
                       Sous Justin Trudeau puis potentiellement un nouveau leader en 2025.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">États-Unis</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">États-Unis</h4>
+                    <p className="text-carnet-ink">
                       Allié et rival commercial, avec des tariffs sous Trump.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Chine et Russie</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Chine et Russie</h4>
+                    <p className="text-carnet-ink">
                       Adversaires avec des stratégies d'ingérence étrangère.
                     </p>
                   </div>
@@ -106,21 +106,21 @@ const CanadaPage = () => {
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2018</div>
-                      <div className="text-gray-700">Début de la guerre commerciale US-Chine impactant le Canada</div>
+                      <div className="text-carnet-ink">Début de la guerre commerciale US-Chine impactant le Canada</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2022</div>
-                      <div className="text-gray-700">Stratégie indo-pacifique du Canada</div>
+                      <div className="text-carnet-ink">Stratégie indo-pacifique du Canada</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2025</div>
-                      <div className="text-gray-700">Impacts de Trump 2.0 sur les tariffs</div>
+                      <div className="text-carnet-ink">Impacts de Trump 2.0 sur les tariffs</div>
                     </div>
                   </div>
                 </div>
@@ -142,7 +142,7 @@ const CanadaPage = () => {
                 <div className="space-y-3">
                   <div className="text-center p-3 bg-red-50 rounded-lg">
                     <div className="text-2xl font-bold text-red-600">10-20%</div>
-                    <div className="text-sm text-gray-600">PIB exposé aux disruptions</div>
+                    <div className="text-sm text-carnet-ink-soft">PIB exposé aux disruptions</div>
                   </div>
                 </div>
               </CardContent>
@@ -190,12 +190,12 @@ const CanadaPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="h-5 w-5 text-gray-600" />
+                  <DollarSign className="h-5 w-5 text-carnet-ink-soft" />
                   Sources
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-carnet-ink-soft">
                   atlanticcouncil.org
                 </p>
               </CardContent>

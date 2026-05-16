@@ -105,7 +105,7 @@ const QuestionsAuJuryPage = () => (
     <MethodSection label="Section 01" title="4 catégories de questions à préparer" icon={Target}>
       <div className="space-y-5">
         {categories.map((cat) => (
-          <div key={cat.t} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6">
+          <div key={cat.t} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6">
             <h4 className="font-dm-serif text-xl text-carnet-ink mb-4">{cat.t}</h4>
             <ul className="space-y-2 text-sm text-carnet-ink-soft">
               {cat.qs.map((q) => (
@@ -124,7 +124,7 @@ const QuestionsAuJuryPage = () => (
       <p className="text-carnet-ink-soft mb-6">Quatre principes pour transformer cette étape en avantage concurrentiel.</p>
       <div className="space-y-4">
         {structure.map((s) => (
-          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+          <div key={s.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
             <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
@@ -138,7 +138,7 @@ const QuestionsAuJuryPage = () => (
     <MethodSection label="Section 03" title="Questions à bannir absolument" icon={XCircle}>
       <div className="space-y-3">
         {bans.map(([question, raison], i) => (
-          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+          <div key={i} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
             <div className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0 w-12 text-center">
               {String(i + 1).padStart(2, '0')}
             </div>
@@ -174,7 +174,7 @@ const QuestionsAuJuryPage = () => (
             tag: "Déclencheur alternatif",
           },
         ].map((item) => (
-          <div key={item.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6">
+          <div key={item.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-6">
             <div className="flex items-center gap-3 mb-3">
               <span className="font-dm-serif text-3xl text-red-600 leading-none">{item.n}</span>
               <div>
@@ -210,7 +210,7 @@ const QuestionsAuJuryPage = () => (
               sujets: ["Vie de campus au quotidien", "Ce qu'il ferait différemment", "Associations ou moments marquants", "Conseil pour la 1re année"],
             },
           ].map((item) => (
-            <div key={item.profil} className="bg-white border border-carnet-rule/30 rounded-lg p-4">
+            <div key={item.profil} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-4">
               <div className="text-2xl mb-2">{item.icon}</div>
               <h5 className="font-medium text-carnet-ink text-sm mb-3">{item.profil}</h5>
               <ul className="space-y-1">

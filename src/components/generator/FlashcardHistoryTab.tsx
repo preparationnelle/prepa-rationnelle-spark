@@ -152,7 +152,7 @@ export const FlashcardHistoryTab = ({
     return (
       <div className="p-16 text-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-pr-black mx-auto mb-4"></div>
-        <p className="text-gray-500">
+        <p className="text-carnet-ink-soft">
           {language === 'fr' ? 'Chargement...' : 'Loading...'}
         </p>
       </div>
@@ -162,13 +162,13 @@ export const FlashcardHistoryTab = ({
   if (flashcards.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
-        <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-full mb-4">
-          <History className="h-8 w-8 text-gray-400" />
+        <div className="bg-carnet-paper dark:bg-gray-800/50 p-4 rounded-full mb-4">
+          <History className="h-8 w-8 text-carnet-ink-soft" />
         </div>
         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-200">
           {language === 'fr' ? 'Aucune flashcard' : 'No flashcards'}
         </h3>
-        <p className="text-gray-500 max-w-sm mt-2">
+        <p className="text-carnet-ink-soft max-w-sm mt-2">
           {language === 'fr'
             ? 'Créez votre première flashcard pour commencer votre collection.'
             : 'Create your first flashcard to start your collection.'
@@ -181,7 +181,7 @@ export const FlashcardHistoryTab = ({
   return (
     <div className="space-y-6">
       {/* Header and Controls */}
-      <div className="flex flex-col gap-6 pb-6 border-b border-gray-100 dark:border-gray-800">
+      <div className="flex flex-col gap-6 pb-6 border-b border-carnet-rule/50 dark:border-gray-800">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <h3 className="text-xl font-bold flex items-center gap-3 text-gray-900 dark:text-white">
             <History className="h-5 w-5 text-pr-black" />
@@ -196,7 +196,7 @@ export const FlashcardHistoryTab = ({
               variant="outline"
               size="sm"
               onClick={handleDownloadCSV}
-              className="flex items-center gap-1 border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
+              className="flex items-center gap-1 border-carnet-rule hover:bg-carnet-paper dark:border-gray-700 dark:hover:bg-gray-800"
             >
               <Download className="h-3.5 w-3.5" />
               CSV
@@ -214,7 +214,7 @@ export const FlashcardHistoryTab = ({
               variant="outline"
               size="sm"
               onClick={handleDownloadPDF}
-              className="flex items-center gap-1 border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
+              className="flex items-center gap-1 border-carnet-rule hover:bg-carnet-paper dark:border-gray-700 dark:hover:bg-gray-800"
             >
               <FileText className="h-3.5 w-3.5" />
               PDF
@@ -225,19 +225,19 @@ export const FlashcardHistoryTab = ({
         {/* Search and filters */}
         <div className="flex flex-col md:flex-row gap-4">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-carnet-ink-soft" />
             <Input
               placeholder={language === 'fr' ? 'Rechercher...' : 'Search...'}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
+              className="pl-10 bg-carnet-paper-2 dark:bg-gray-900 border-carnet-rule dark:border-gray-700"
             />
           </div>
 
           {/* Category Filter */}
           <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-            <SelectTrigger className="w-full md:w-[180px] bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
-              <Filter className="h-4 w-4 mr-2 text-gray-400" />
+            <SelectTrigger className="w-full md:w-[180px] bg-carnet-paper-2 dark:bg-gray-900 border-carnet-rule dark:border-gray-700">
+              <Filter className="h-4 w-4 mr-2 text-carnet-ink-soft" />
               <SelectValue placeholder={language === 'fr' ? 'Catégorie' : 'Category'} />
             </SelectTrigger>
             <SelectContent>
@@ -256,7 +256,7 @@ export const FlashcardHistoryTab = ({
                 variant={dateFilter === filter ? "default" : "outline"}
                 size="sm"
                 onClick={() => setDateFilter(filter)}
-                className={`flex items-center gap-1 whitespace-nowrap ${dateFilter === filter ? 'bg-pr-black hover:bg-pr-black-dark text-white' : 'border-gray-200 dark:border-gray-700'}`}
+                className={`flex items-center gap-1 whitespace-nowrap ${dateFilter === filter ? 'bg-pr-black hover:bg-pr-black-dark text-white' : 'border-carnet-rule dark:border-gray-700'}`}
               >
                 <Calendar className="h-3.5 w-3.5" />
                 {filter === 'all' && (language === 'fr' ? 'Tout' : 'All')}
@@ -272,16 +272,16 @@ export const FlashcardHistoryTab = ({
       {/* Flashcards list */}
       <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
         {filteredFlashcards.map((flashcard) => (
-          <div key={flashcard.id} className="group relative border border-gray-100 dark:border-gray-800 rounded-2xl p-6 transition-all hover:shadow-lg bg-white dark:bg-gray-900 hover:border-gray-200 dark:hover:border-gray-900/50">
+          <div key={flashcard.id} className="group relative border border-carnet-rule/50 dark:border-gray-800 rounded-2xl p-6 transition-all hover:shadow-sm bg-carnet-paper-2 dark:bg-gray-900 hover:border-carnet-rule dark:hover:border-gray-900/50">
             <div className="flex justify-between items-start">
               <div className="flex-1 space-y-4">
                 {/* Category & Source */}
                 <div className="flex items-center gap-2 flex-wrap">
-                  <Badge variant="outline" className="text-xs bg-gray-50 dark:bg-gray-800">
+                  <Badge variant="outline" className="text-xs bg-carnet-paper dark:bg-gray-800">
                     {flashcard.category || 'Vocabulaire'}
                   </Badge>
                   {flashcard.source === 'ai_generated' && (
-                    <Badge variant="secondary" className="text-xs bg-gray-50 text-pr-black dark:bg-gray-900/20 dark:text-gray-400">
+                    <Badge variant="secondary" className="text-xs bg-carnet-paper text-pr-black dark:bg-gray-900/20 dark:text-gray-400">
                       <Sparkles className="w-3 h-3 mr-1" />
                       IA
                     </Badge>
@@ -323,7 +323,7 @@ export const FlashcardHistoryTab = ({
                 {/* Tags */}
                 {flashcard.tags && flashcard.tags.length > 0 && (
                   <div className="flex items-center gap-2 flex-wrap">
-                    <Tag className="w-3 h-3 text-gray-400" />
+                    <Tag className="w-3 h-3 text-carnet-ink-soft" />
                     {flashcard.tags.map((tag, i) => (
                       <Badge key={i} variant="secondary" className="text-xs bg-gray-100 dark:bg-gray-800">
                         {tag}
@@ -333,7 +333,7 @@ export const FlashcardHistoryTab = ({
                 )}
 
                 {/* Creation date */}
-                <div className="flex items-center gap-2 text-xs text-gray-400 mt-2">
+                <div className="flex items-center gap-2 text-xs text-carnet-ink-soft mt-2">
                   <Calendar className="h-3 w-3" />
                   {language === 'fr' ? 'Créée le' : 'Created on'} {new Date(flashcard.created_at).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US')}
                 </div>
@@ -355,7 +355,7 @@ export const FlashcardHistoryTab = ({
       {filteredFlashcards.length === 0 && (searchQuery || categoryFilter !== 'all') && (
         <div className="text-center py-12">
           <Search className="h-12 w-12 text-gray-200 mx-auto mb-3" />
-          <p className="text-gray-500 font-medium">
+          <p className="text-carnet-ink-soft font-medium">
             {language === 'fr'
               ? 'Aucun résultat trouvé'
               : 'No results found'

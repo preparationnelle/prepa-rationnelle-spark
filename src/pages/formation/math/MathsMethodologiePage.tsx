@@ -95,9 +95,9 @@ const MathsMethodologiePage = () => {
       <div className="absolute -z-10 top-40 right-1/4 w-72 h-72 bg-pr-gray-bg/80 rounded-full blur-2xl"></div>
 
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <nav className="sticky top-0 z-50 bg-carnet-paper/80 backdrop-blur-md border-b border-carnet-rule/50">
         <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center text-xs font-medium text-gray-500">
+          <div className="flex items-center text-xs font-medium text-carnet-ink-soft">
             <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
               <Home className="h-3.5 w-3.5" />
               <span>Accueil</span>
@@ -120,7 +120,7 @@ const MathsMethodologiePage = () => {
         {/* Header */}
         <div className="text-center mb-16 max-w-4xl mx-auto">
           <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100 rotate-3">
+            <div className="w-16 h-16 bg-carnet-paper-2 rounded-2xl flex items-center justify-center shadow-sm border border-carnet-rule/50 rotate-3">
               <BookMarked className="h-8 w-8 text-carnet-red" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600 bg-clip-text text-transparent tracking-tight">
@@ -128,14 +128,14 @@ const MathsMethodologiePage = () => {
             </h1>
           </div>
 
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
+          <p className="text-lg text-carnet-ink-soft max-w-2xl mx-auto leading-relaxed mb-8">
             Articles et conseils essentiels pour optimiser votre préparation aux concours,
             gagner en efficacité et maximiser vos notes.
           </p>
         </div>
 
         {/* Points clés */}
-        <div className="max-w-5xl mx-auto mb-20 bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+        <div className="max-w-5xl mx-auto mb-20 bg-carnet-paper-2 rounded-2xl p-8 border border-carnet-rule/50 shadow-sm relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-pr-gray-bg rounded-bl-full -mr-8 -mt-8 opacity-50"></div>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-3">
@@ -149,7 +149,7 @@ const MathsMethodologiePage = () => {
                 <CheckCircle2 className="h-5 w-5" />
                 <h3>Rigueur</h3>
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-carnet-ink-soft text-sm leading-relaxed">
                 Annoncez clairement les théorèmes, vérifiez les hypothèses, justifiez chaque étape. Ne bluffez jamais.
               </p>
             </div>
@@ -159,7 +159,7 @@ const MathsMethodologiePage = () => {
                 <CheckCircle2 className="h-5 w-5" />
                 <h3>Gestion du temps</h3>
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-carnet-ink-soft text-sm leading-relaxed">
                 Commencez par les questions accessibles. Ne bloquez pas plus de 5min. Lisez tout le sujet d'abord.
               </p>
             </div>
@@ -169,7 +169,7 @@ const MathsMethodologiePage = () => {
                 <CheckCircle2 className="h-5 w-5" />
                 <h3>Présentation</h3>
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-carnet-ink-soft text-sm leading-relaxed">
                 Structure claire, résultats encadrés, zéro rature. Gardez 3min pour relire et avoir une copie propre.
               </p>
             </div>
@@ -180,23 +180,23 @@ const MathsMethodologiePage = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-10 px-2">
             <h2 className="text-2xl font-bold text-gray-900">Articles détaillés</h2>
-            <div className="h-px bg-gray-100 flex-1"></div>
+            <div className="h-px bg-carnet-paper flex-1"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {METHODOLOGIE_ARTICLES.map((article) => (
               <div
                 key={article.id}
-                className="group bg-white rounded-2xl p-6 border border-gray-100 shadow-[0_2px_8px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 cursor-pointer relative overflow-hidden"
+                className="group bg-carnet-paper-2 rounded-2xl p-6 border border-carnet-rule/50 shadow-[0_2px_8px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 cursor-pointer relative overflow-hidden"
                 onClick={() => window.location.href = article.link}
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gray-50 rounded-bl-full -mr-6 -mt-6 group-hover:bg-pr-gray-bg transition-colors duration-300"></div>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-carnet-paper rounded-bl-full -mr-6 -mt-6 group-hover:bg-pr-gray-bg transition-colors duration-300"></div>
 
                 <div className="flex items-start justify-between mb-4 relative z-10">
                   <div className="w-12 h-12 bg-pr-gray-bg/50 rounded-xl flex items-center justify-center text-carnet-red group-hover:bg-carnet-red group-hover:text-white transition-all duration-300">
                     {article.icon}
                   </div>
-                  <Badge variant="secondary" className="bg-gray-50 text-gray-500 border-gray-100 group-hover:bg-pr-gray-bg group-hover:text-carnet-red transition-colors">
+                  <Badge variant="secondary" className="bg-carnet-paper text-carnet-ink-soft border-carnet-rule/50 group-hover:bg-pr-gray-bg group-hover:text-carnet-red transition-colors">
                     {article.badge}
                   </Badge>
                 </div>
@@ -205,7 +205,7 @@ const MathsMethodologiePage = () => {
                   {article.title}
                 </h3>
 
-                <p className="text-sm text-gray-500 mb-6 leading-relaxed line-clamp-2">
+                <p className="text-sm text-carnet-ink-soft mb-6 leading-relaxed line-clamp-2">
                   {article.description}
                 </p>
 

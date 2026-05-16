@@ -229,8 +229,7 @@ const EtudesCasESHPage = () => {
                 <motion.div
                   key={c.title}
                   initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-30px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: idx * 0.06 }}
                   className={`bg-carnet-paper-2 rounded-2xl p-6 border border-dashed border-[rgba(78,55,30,0.18)] ${tilt}`}
                 >

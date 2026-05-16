@@ -74,7 +74,7 @@ export const CourseDisplay = ({ structuredCourse, language, onRegenerate }: Cour
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+    <div className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
       <div className="h-[3px] w-full bg-pr-black" />
       <div className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5 sm:px-8">
         <div className="flex justify-between items-center flex-wrap gap-3">
@@ -125,7 +125,7 @@ export const CourseDisplay = ({ structuredCourse, language, onRegenerate }: Cour
             </p>
           </div>
 
-          <div className="prose max-w-none bg-white p-6 rounded-xl border border-pr-gray-light">
+          <div className="prose max-w-none bg-carnet-paper-2 p-6 rounded-xl border border-pr-gray-light">
             {formatCourseContent(structuredCourse)}
           </div>
         </div>

@@ -29,10 +29,10 @@ const AgroalimentairePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-carnet-paper">
 
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -74,19 +74,19 @@ const AgroalimentairePage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">600M</div>
                 <div className="text-sm text-yellow-100">Exploitations</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">x3,5</div>
                 <div className="text-sm text-yellow-100">Exports depuis 2000</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">75%</div>
                 <div className="text-sm text-yellow-100">Exploitations Asie</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">70%</div>
                 <div className="text-sm text-yellow-100">Terres (6% exploitations)</div>
               </div>
@@ -103,7 +103,7 @@ const AgroalimentairePage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-700 leading-relaxed mb-4">
+            <p className="text-carnet-ink leading-relaxed mb-4">
               <strong>3/4 des 600 millions d'exploitations</strong> se trouvent en Asie (35% Chine, 25% Inde). 
               Paradoxalement, seulement <strong>6% des exploitations</strong> de plus de 5 ha contrôlent 
               <strong>70% des terres agricoles</strong>, illustrant la concentration foncière mondiale.
@@ -120,8 +120,8 @@ const AgroalimentairePage = () => {
                 </ul>
               </div>
               
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-gray-800 mb-3">Grandes exploitations</h4>
+              <div className="bg-carnet-paper p-4 rounded-lg">
+                <h4 className="font-semibold text-carnet-ink mb-3">Grandes exploitations</h4>
                 <ul className="text-sm text-pr-black space-y-1">
                                       <li>• Philippines : Dole {'>'}10 000 ha</li>
                     <li>• US : 60 000 farms {'>'}1M$ (65% production)</li>
@@ -161,8 +161,8 @@ const AgroalimentairePage = () => {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 p-3 bg-gray-100 rounded-lg">
-                <p className="text-sm text-gray-700">
+              <div className="mt-4 p-3 bg-carnet-paper rounded-lg">
+                <p className="text-sm text-carnet-ink">
                   <strong>Évolution :</strong> Exports x3,5 depuis 2000. PED représentent 45% du commerce agricole. 
                   Chine devient 2e exportateur mondial.
                 </p>
@@ -190,8 +190,8 @@ const AgroalimentairePage = () => {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 p-3 bg-gray-100 rounded-lg">
-                <p className="text-sm text-gray-700">
+              <div className="mt-4 p-3 bg-carnet-paper rounded-lg">
+                <p className="text-sm text-carnet-ink">
                   <strong>Agrochimiques :</strong> Bayer, Corteva, Syngenta, BASF, FMC dominent 
                   les semences et pesticides mondiaux.
                 </p>
@@ -227,8 +227,8 @@ const AgroalimentairePage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-gray-800 mb-2">Vulnérabilités géopolitiques</h4>
+                    <div className="bg-carnet-paper p-4 rounded-lg">
+                      <h4 className="font-semibold text-carnet-ink mb-2">Vulnérabilités géopolitiques</h4>
                       <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Ukraine :</strong> "Grenier Europe" perturbé par guerre (2022-)</li>
                         <li><strong>Fertilisants :</strong> Russie 20% exports, sanctions impactent production</li>
@@ -329,7 +329,7 @@ const AgroalimentairePage = () => {
             <CardTitle className="text-lg">Références et sources</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-sm text-gray-600 space-y-2">
+            <div className="text-sm text-carnet-ink-soft space-y-2">
               <p><strong>FAO</strong> : État de la sécurité alimentaire mondiale 2024</p>
               <p><strong>Sylvie Brunel</strong> : <em>"Une aubaine pour le Sud ?"</em> - Différenciation trajectoires</p>
               <p><strong>USDA</strong> : Données production et commerce agricoles</p>

@@ -124,7 +124,7 @@ const PreRentreePage = () => {
       {/* Navigation de retour */}
       <nav className="pt-6 pb-4 px-4">
         <div className="max-w-6xl mx-auto">
-          <Button variant="ghost" asChild className="text-gray-600 hover:text-gray-900">
+          <Button variant="ghost" asChild className="text-carnet-ink-soft hover:text-carnet-ink">
             <Link to="/stage-accompagnement">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Retour aux offres
@@ -136,10 +136,10 @@ const PreRentreePage = () => {
       {/* Hero Section */}
       <section className="pb-8 px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-carnet-ink mb-4">
             Stage de Pré-entrée
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-carnet-ink-soft mb-8">
             18-23 août 2025 • 6 jours intensifs • 199€
           </p>
         </div>
@@ -149,7 +149,7 @@ const PreRentreePage = () => {
       <section id="video" className="pb-16 px-4">
         <div className="max-w-4xl mx-auto">
           <Card className="p-6 bg-carnet-paper-2 border border-carnet-rule rounded-2xl shadow-sm">
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-6">
+            <h2 className="text-2xl font-bold text-carnet-ink text-center mb-6">
               Vidéo d'explication du stage
             </h2>
             
@@ -162,7 +162,7 @@ const PreRentreePage = () => {
                     <Button
                       onClick={handleVideoPlay}
                       size="lg"
-                      className="relative z-10 bg-white/90 hover:bg-white text-gray-900 border-0 shadow-lg"
+                      className="relative z-10 bg-carnet-paper/90 hover:bg-carnet-paper text-carnet-ink border-0 shadow-sm"
                       aria-label="Lire la vidéo de présentation du stage"
                     >
                       <Play className="w-8 h-8 mr-2" />
@@ -183,7 +183,7 @@ const PreRentreePage = () => {
               </div>
             </div>
             
-            <p className="text-gray-600 text-center mt-4">
+            <p className="text-carnet-ink-soft text-center mt-4">
               Découvrez en 2 min le déroulé du stage
             </p>
           </Card>
@@ -194,42 +194,42 @@ const PreRentreePage = () => {
       <section id="resume" className="pb-16 px-4">
         <div className="max-w-4xl mx-auto">
           <Card className="p-8 bg-carnet-paper-2 border border-carnet-rule rounded-2xl shadow-sm">
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
+            <h2 className="text-2xl font-bold text-carnet-ink text-center mb-8">
               Pourquoi ce stage change la donne
             </h2>
             
             <div className="space-y-4 mb-8">
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                <p className="text-gray-700">
+                <p className="text-carnet-ink">
                   <strong>Méthode validée concours :</strong> on remplace l'impro totale par un plan clair, des entraînements ciblés et un suivi après le stage.
                 </p>
               </div>
               
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                <p className="text-gray-700">
+                <p className="text-carnet-ink">
                   <strong>Programme en 6 jours :</strong> hacks de copie, analyse concours, proba, algèbre, Python appliqué, sujet live corrigé.
                 </p>
               </div>
               
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                <p className="text-gray-700">
+                <p className="text-carnet-ink">
                   <strong>Tout est prêt :</strong> fiches PDF, scripts Python à copier-coller, WhatsApp réactif, appel individuel post-stage.
                 </p>
               </div>
               
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                <p className="text-gray-700">
+                <p className="text-carnet-ink">
                   <strong>Garantie 48 h :</strong> tu essaies la première séance, remboursement intégral si tu n'es pas convaincu.
                 </p>
               </div>
               
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                <p className="text-gray-700">
+                <p className="text-carnet-ink">
                   <strong>Places limitées :</strong> session du 18–23 août.
                 </p>
               </div>
@@ -255,7 +255,7 @@ const PreRentreePage = () => {
               </Button>
             </div>
 
-            <p className="text-sm text-gray-500 text-center">
+            <p className="text-sm text-carnet-ink-soft text-center">
               199 € tout compris (supports + suivi). Prochaine session en octobre si complet.
             </p>
           </Card>
@@ -267,19 +267,19 @@ const PreRentreePage = () => {
       {/* Section 1 - Inscription au stage */}
       <section id="inscription" className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+          <h2 className="text-3xl font-bold text-carnet-ink text-center mb-12">
             Inscription au Stage de Pré-entrée
           </h2>
 
           <Card className="p-8 max-w-2xl mx-auto">
-            <h3 className="text-xl font-semibold text-gray-900 mb-6">
+            <h3 className="text-xl font-semibold text-carnet-ink mb-6">
               Informations personnelles
             </h3>
             
             <form onSubmit={handleFormSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-carnet-ink mb-1">
                     Prénom *
                   </label>
                   <input
@@ -288,12 +288,12 @@ const PreRentreePage = () => {
                     value={formData.prenom}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-black focus:border-transparent"
+                    className="w-full px-3 py-2 border border-carnet-rule rounded-md focus:outline-none focus:ring-2 focus:ring-pr-black focus:border-transparent"
                     placeholder="Votre prénom"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-carnet-ink mb-1">
                     Nom *
                   </label>
                   <input
@@ -302,14 +302,14 @@ const PreRentreePage = () => {
                     value={formData.nom}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pr-black focus:border-transparent"
+                    className="w-full px-3 py-2 border border-carnet-rule rounded-md focus:outline-none focus:ring-2 focus:ring-pr-black focus:border-transparent"
                     placeholder="Votre nom"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-carnet-ink mb-1">
                   Email *
                 </label>
                 <input
@@ -324,7 +324,7 @@ const PreRentreePage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-carnet-ink mb-1">
                   Téléphone *
                 </label>
                 <input
@@ -340,7 +340,7 @@ const PreRentreePage = () => {
 
               {/* Options de paiement */}
               <div className="mt-6">
-                <h4 className="text-lg font-medium text-gray-900 mb-4">
+                <h4 className="text-lg font-medium text-carnet-ink mb-4">
                   Mode de paiement
                 </h4>
                 
@@ -354,7 +354,7 @@ const PreRentreePage = () => {
                       onChange={(e) => setPaymentMethod(e.target.value as 'stripe')}
                       className="mr-3 text-pr-black focus:ring-pr-black"
                     />
-                    <span className="text-gray-700">Paiement par carte (Stripe) - <strong>Recommandé</strong></span>
+                    <span className="text-carnet-ink">Paiement par carte (Stripe) - <strong>Recommandé</strong></span>
                   </label>
                   
                   <label className="flex items-center">
@@ -366,7 +366,7 @@ const PreRentreePage = () => {
                       onChange={(e) => setPaymentMethod(e.target.value as 'virement')}
                       className="mr-3 text-pr-black focus:ring-pr-black"
                     />
-                    <span className="text-gray-700">Paiement par virement bancaire (RIB)</span>
+                    <span className="text-carnet-ink">Paiement par virement bancaire (RIB)</span>
                   </label>
                 </div>
               </div>
@@ -385,14 +385,14 @@ const PreRentreePage = () => {
       {/* Section 2 - Besoin d'aide ? */}
       <section id="contact-support" className="py-8 px-4 bg-carnet-paper-2">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+          <h2 className="text-3xl font-bold text-carnet-ink text-center mb-12">
             Besoin d'aide ?
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contacts */}
-            <Card className="p-6 bg-white">
-              <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+            <Card className="p-6 bg-carnet-paper-2">
+              <h3 className="text-xl font-semibold text-carnet-ink mb-6 flex items-center">
                 <HelpCircle className="w-5 h-5 text-pr-black mr-2" />
                 Contacts & support
               </h3>
@@ -402,7 +402,7 @@ const PreRentreePage = () => {
                   <Mail className="w-5 h-5 text-pr-black" />
                   <a 
                     href="mailto:preparationnelle@gmail.com"
-                    className="text-gray-700 hover:text-pr-black underline"
+                    className="text-carnet-ink hover:text-pr-black underline"
                   >
                     preparationnelle@gmail.com
                   </a>
@@ -412,7 +412,7 @@ const PreRentreePage = () => {
                   <Phone className="w-5 h-5 text-pr-black" />
                   <a 
                     href="tel:+33609164668"
-                    className="text-gray-700 hover:text-pr-black underline"
+                    className="text-carnet-ink hover:text-pr-black underline"
                   >
                     06 09 16 46 68
                   </a>
@@ -450,8 +450,8 @@ const PreRentreePage = () => {
             </Card>
 
             {/* FAQ */}
-            <Card className="p-6 bg-white">
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">
+            <Card className="p-6 bg-carnet-paper-2">
+              <h3 className="text-xl font-semibold text-carnet-ink mb-6">
                 💡 Questions fréquentes
               </h3>
               
@@ -459,32 +459,32 @@ const PreRentreePage = () => {
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-gray-900">Horaires</p>
-                    <p className="text-sm text-gray-600">9h-17h chaque jour</p>
+                    <p className="font-medium text-carnet-ink">Horaires</p>
+                    <p className="text-sm text-carnet-ink-soft">9h-17h chaque jour</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-gray-900">Support technique</p>
-                    <p className="text-sm text-gray-600">Inclus dans le stage</p>
+                    <p className="font-medium text-carnet-ink">Support technique</p>
+                    <p className="text-sm text-carnet-ink-soft">Inclus dans le stage</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-gray-900">Replays</p>
-                    <p className="text-sm text-gray-600">Enregistrements disponibles</p>
+                    <p className="font-medium text-carnet-ink">Replays</p>
+                    <p className="text-sm text-carnet-ink-soft">Enregistrements disponibles</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-gray-900">Garantie</p>
-                    <p className="text-sm text-gray-600">Satisfaction 48h</p>
+                    <p className="font-medium text-carnet-ink">Garantie</p>
+                    <p className="text-sm text-carnet-ink-soft">Satisfaction 48h</p>
                   </div>
                 </div>
               </div>
@@ -497,11 +497,11 @@ const PreRentreePage = () => {
       {showRIBModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <Card className="p-6 max-w-lg w-full">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">
+            <h3 className="text-xl font-semibold text-carnet-ink mb-4">
               ✅ Inscription enregistrée !
             </h3>
             <div className="space-y-4 mb-6">
-              <p className="text-gray-700">
+              <p className="text-carnet-ink">
                 Merci pour votre inscription ! Nous avons bien reçu votre demande de paiement par virement.
               </p>
               
@@ -515,7 +515,7 @@ const PreRentreePage = () => {
                 </ul>
               </div>
               
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-carnet-ink-soft">
                 Si vous avez des questions, contactez-nous directement par email ou téléphone.
               </p>
             </div>

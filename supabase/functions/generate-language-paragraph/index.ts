@@ -102,10 +102,19 @@ serve(async (req) => {
   if (__authResult.response) return __authResult.response;
 
   try {
-    const { article, keywords, language } = await req.json();
+    const { article, keywords, language, mode, theme, angle } = await req.json();
 
-    if (!article || typeof article !== 'string' || !article.trim()) {
+    const requestMode: 'article' | 'theme' = mode === 'theme' ? 'theme' : 'article';
+
+    if (requestMode === 'article' && (!article || typeof article !== 'string' || !article.trim())) {
       return new Response(JSON.stringify({ error: 'Article requis.' }), {
+        status: 400,
+        headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
+      });
+    }
+
+    if (requestMode === 'theme' && (!theme || typeof theme !== 'string' || !theme.trim())) {
+      return new Response(JSON.stringify({ error: 'Thème requis pour le mode "theme".' }), {
         status: 400,
         headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
       });
@@ -115,23 +124,41 @@ serve(async (req) => {
     const systemPrompt = SYSTEM_PROMPTS[lang];
     const targetLanguageLabel = TARGET_LANGUAGE_LABEL[lang];
 
-    const userPrompt = `Source press article (the source language does NOT matter — the paragraph itself MUST be written in ${targetLanguageLabel}):
+    const focusBlock = keywords && typeof keywords === 'string' && keywords.trim()
+      ? `\n\nFocus / orientation requested by the user (mandatory angles to integrate): ${keywords.trim()}`
+      : '';
+
+    const sourceBlock = requestMode === 'article'
+      ? `Source press article (the source language does NOT matter — the paragraph itself MUST be written in ${targetLanguageLabel}):
 """
-${article.trim()}
-"""${keywords && typeof keywords === 'string' && keywords.trim() ? `\n\nFocus / orientation requested by the user (mandatory angles to integrate): ${keywords.trim()}` : ''}
+${(article || '').trim()}
+"""${focusBlock}
 
 TASK
-1. Pick the SHARPEST angle from this article for an ECG ${targetLanguageLabel} civilisation paragraph. The angle MUST fit the geographic scope defined in the system prompt (Anglosphere / German-speaking world / Hispanic world). If the article is off-scope, anchor the paragraph in the closest in-scope actor, country or event mentioned.
+1. Pick the SHARPEST angle from this article for an ECG ${targetLanguageLabel} civilisation paragraph. The angle MUST fit the geographic scope defined in the system prompt (Anglosphere / German-speaking world / Hispanic world). If the article is off-scope, anchor the paragraph in the closest in-scope actor, country or event mentioned.`
+      : `No press article is provided. The student wants a memorisable ECG civilisation paragraph (in ${targetLanguageLabel}) on:
+- Theme: ${(theme || '').trim()}
+- Specific angle: ${(angle || '').trim() || '(let the model pick the sharpest sub-angle inside the theme)'}${focusBlock}
+
+TASK
+1. Pick the SHARPEST, most recent (last 5 years preferred), most exam-mobilisable angle inside the theme above. The angle MUST fit the geographic scope defined in the system prompt (Anglosphere / German-speaking world / Hispanic world). Anchor in identifiable actors, dates, figures, laws — no generalities.`;
+
+    const userPrompt = `${sourceBlock}
 2. Write the paragraph in ${targetLanguageLabel} following the 5-point structure and the style rules from the system prompt. 100–160 words. Anchored in identifiable actors, dates, figures.
 3. List 3 to 5 ECG concours essay topics (in French) for which this paragraph could be reused.
 4. Extract 5 to 8 key vocabulary items from the paragraph the student should memorise. Each item: { "term": "<expression in ${targetLanguageLabel}>", "translation": "<French translation>" }.
 5. Write 1–2 short variant / extension sentences (in French) explaining how to bend this paragraph to a neighbouring topic.
+6. Provide a "breakdown" array that segments the paragraph sentence-by-sentence and tags each sentence with its structural role. Roles allowed (exact strings): "hook" (striking fact/event/data), "context" (who/when/where/why), "figure" (precise number/amount/percentage/date), "tension" (nuance, counter-point, what makes the example interesting), "opening" (analytical implication, political/economic/social/geopolitical). One entry per sentence of the paragraph (5 to 9 entries). The "sentence" value MUST be the sentence VERBATIM (same punctuation, same casing) as in the paragraph above. If a sentence carries two roles, pick the dominant one.
 
 Return STRICT JSON only, with this exact schema and field names:
 {
   "angle": "<short title in French, e.g. 'L'IRA et la fracture transatlantique'>",
   "concoursTopics": ["<topic 1 in French>", "<topic 2 in French>", "<topic 3 in French>"],
   "paragraph": "<the paragraph itself, in ${targetLanguageLabel}, 100-160 words, no markdown>",
+  "breakdown": [
+    {"sentence": "<verbatim sentence from paragraph>", "role": "hook"},
+    {"sentence": "<verbatim sentence>", "role": "context"}
+  ],
   "vocabulary": [{"term": "<expression>", "translation": "<French>"}],
   "variants": "<1-2 sentences in French>"
 }
@@ -172,15 +199,28 @@ No prose outside the JSON. No markdown fences. No commentary.`;
         angle: '',
         concoursTopics: [],
         paragraph: typeof generatedContent === 'string' ? generatedContent : '',
+        breakdown: [],
         vocabulary: [],
         variants: ''
       };
     }
 
+    const allowedRoles = new Set(['hook', 'context', 'figure', 'tension', 'opening']);
+    const breakdown = Array.isArray(parsed?.breakdown)
+      ? parsed.breakdown
+          .map((item: any) => ({
+            sentence: typeof item?.sentence === 'string' ? item.sentence.trim() : '',
+            role: typeof item?.role === 'string' && allowedRoles.has(item.role) ? item.role : ''
+          }))
+          .filter((item: { sentence: string; role: string }) => item.sentence && item.role)
+      : [];
+    parsed.breakdown = breakdown;
+
     return new Response(JSON.stringify({
       content: generatedContent,
       result: parsed,
-      language: lang
+      language: lang,
+      mode: requestMode
     }), {
       headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
     });

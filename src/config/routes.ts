@@ -144,6 +144,17 @@ const TemporalPage = lazy(() => import('../pages/formation/espagnol/grammaire/Te
 const PronounsPage = lazy(() => import('../pages/formation/espagnol/grammaire/PronounsPage'));
 const AffectiveVerbsPage = lazy(() => import('../pages/formation/espagnol/grammaire/AffectiveVerbsPage'));
 const AdjectivesAdverbsPage = lazy(() => import('../pages/formation/espagnol/grammaire/AdjectivesAdverbsPage'));
+const SubjonctifPage = lazy(() => import('../pages/formation/espagnol/grammaire/SubjonctifPage'));
+const ConcordanceTempsPage = lazy(() => import('../pages/formation/espagnol/grammaire/ConcordanceTempsPage'));
+const ConditionnellesPage = lazy(() => import('../pages/formation/espagnol/grammaire/ConditionnellesPage'));
+const StyleIndirectPage = lazy(() => import('../pages/formation/espagnol/grammaire/StyleIndirectPage'));
+const RelativesPage = lazy(() => import('../pages/formation/espagnol/grammaire/RelativesPage'));
+const PorParaPage = lazy(() => import('../pages/formation/espagnol/grammaire/PorParaPage'));
+const PeriphrasesVerbalesPage = lazy(() => import('../pages/formation/espagnol/grammaire/PeriphrasesVerbalesPage'));
+const ComparatifsSuperlatifsPage = lazy(() => import('../pages/formation/espagnol/grammaire/ComparatifsSuperlatifsPage'));
+const ConnecteursLogiquesPage = lazy(() => import('../pages/formation/espagnol/grammaire/ConnecteursLogiquesPage'));
+const SpanishGrammarQuizPage = lazy(() => import('../pages/formation/espagnol/grammaire/SpanishGrammarQuizPage'));
+const SpanishGrammarFlashcardsPage = lazy(() => import('../pages/formation/espagnol/grammaire/SpanishGrammarFlashcardsPage'));
 const FormationEspagnolCivilisationPage = lazy(() => import('../pages/formation/espagnol/FormationEspagnolCivilisationPage'));
 const Module1PoliticaRegimenesPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module1PoliticaRegimenesPage'));
 const Module2MujeresViolenciaGeneroPage = lazy(() => import('../pages/formation/espagnol/civilisation/Module2MujeresViolenciaGeneroPage'));
@@ -1144,6 +1155,17 @@ export const routes: RouteConfig[] = [
   { path: '/formation/espagnol/grammaire/pronouns', component: PronounsPage, title: 'Pronoms' },
   { path: '/formation/espagnol/grammaire/affective-verbs', component: AffectiveVerbsPage, title: 'Verbes Affectifs' },
   { path: '/formation/espagnol/grammaire/adjectives-adverbs', component: AdjectivesAdverbsPage, title: 'Adjectifs et Adverbes' },
+  { path: '/formation/espagnol/grammaire/subjonctif', component: SubjonctifPage, title: 'Le Subjonctif' },
+  { path: '/formation/espagnol/grammaire/concordance-temps', component: ConcordanceTempsPage, title: 'Concordance des Temps' },
+  { path: '/formation/espagnol/grammaire/conditionnelles', component: ConditionnellesPage, title: 'Conditionnelles & Hypothèse' },
+  { path: '/formation/espagnol/grammaire/style-indirect', component: StyleIndirectPage, title: 'Style Indirect' },
+  { path: '/formation/espagnol/grammaire/relatives', component: RelativesPage, title: 'Subordonnées Relatives' },
+  { path: '/formation/espagnol/grammaire/por-para', component: PorParaPage, title: 'Por vs Para' },
+  { path: '/formation/espagnol/grammaire/periphrases-verbales', component: PeriphrasesVerbalesPage, title: 'Périphrases Verbales' },
+  { path: '/formation/espagnol/grammaire/comparatifs-superlatifs', component: ComparatifsSuperlatifsPage, title: 'Comparatifs & Superlatifs' },
+  { path: '/formation/espagnol/grammaire/connecteurs-logiques', component: ConnecteursLogiquesPage, title: 'Connecteurs Logiques' },
+  { path: '/formation/espagnol/grammaire/:slug/quiz', component: SpanishGrammarQuizPage, title: 'Quiz — Grammaire Espagnole' },
+  { path: '/formation/espagnol/grammaire/:slug/flashcards', component: SpanishGrammarFlashcardsPage, title: 'Flashcards — Grammaire Espagnole' },
   { path: '/formation/espagnol/civilisation', component: FormationEspagnolCivilisationPage, title: 'Civilisation Hispanique' },
   { path: '/formation/espagnol/civilisation/module1', component: Module1PoliticaRegimenesPage, title: 'Política y Regímenes' },
   { path: '/formation/espagnol/civilisation/module2', component: Module2MujeresViolenciaGeneroPage, title: 'Mujeres y Violencia de Género' },

@@ -27,7 +27,7 @@ export const ResponseCard = ({
   onClearAnswer
 }: ResponseCardProps) => {
   return (
-    <Card className="bg-white">
+    <Card className="bg-carnet-paper-2">
       <CardHeader className="border-b pb-4">
         <div className="flex justify-between items-start">
           <div className="flex-1">

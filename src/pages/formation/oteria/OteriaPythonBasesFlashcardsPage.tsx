@@ -1,7 +1,6 @@
-import React from 'react';
-import { OteriaMinimalistChapterTemplate } from '@/components/formation/OteriaMinimalistChapterTemplate';
-import { MathFlashcards } from '@/components/MathFlashcards';
-import { MathFlashcard } from '@/data/mathFlashcardsData';
+import React, { useState } from 'react';
+import { OteriaPythonChapterTemplate } from '@/components/formation/OteriaPythonChapterTemplate';
+import { RotateCcw } from 'lucide-react';
 
 interface PythonCard {
   id: number;
@@ -72,18 +71,50 @@ const pythonData: PythonCard[] = [
   { id: 50, front: "Comment exécuter un script Python depuis le terminal ?", back: "python nom_du_script.py ou python3 nom_du_script.py", category: "Scripts" }
 ];
 
-const OteriaPythonBasesFlashcardsPage: React.FC = () => {
-  const adaptedFlashcards: MathFlashcard[] = pythonData.map(card => ({
-    id: card.id,
-    front: card.front,
-    back: card.back,
-    category: card.category,
-    chapter: 2,
-    difficulty: 'facile', // Default difficulty as not specified in source
-  }));
+const FlashCard: React.FC<{ card: PythonCard }> = ({ card }) => {
+  const [flipped, setFlipped] = useState(false);
 
   return (
-    <OteriaMinimalistChapterTemplate
+    <button
+      type="button"
+      onClick={() => setFlipped((f) => !f)}
+      className="group relative w-full text-left min-h-[200px] rounded-md border border-dashed border-[rgba(78,55,30,0.18)] bg-carnet-paper-2 p-6 transition-colors hover:border-carnet-red focus:outline-none focus:border-carnet-red"
+      aria-label={flipped ? 'Voir la question' : 'Voir la réponse'}
+    >
+      <div className="flex items-center justify-between mb-4">
+        <span className="font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-red font-semibold">
+          {card.category}
+        </span>
+        <span
+          className="carnet-hand text-carnet-red text-[15px]"
+          style={{ transform: 'rotate(-3deg)' }}
+        >
+          {flipped ? 'réponse' : 'question'}
+        </span>
+      </div>
+
+      {!flipped ? (
+        <p className="font-lora text-[19px] leading-[1.4] text-carnet-ink">
+          {card.front}
+        </p>
+      ) : (
+        <p className="font-instrument text-[15px] leading-[1.7] text-carnet-ink-soft">
+          {card.back}
+        </p>
+      )}
+
+      <span className="absolute bottom-4 right-5 font-instrument text-[11px] uppercase tracking-[0.12em] text-carnet-ink-mute opacity-0 group-hover:opacity-100 transition-opacity">
+        Cliquer pour retourner
+      </span>
+    </button>
+  );
+};
+
+const OteriaPythonBasesFlashcardsPage: React.FC = () => {
+  const [resetKey, setResetKey] = useState(0);
+
+  return (
+    <OteriaPythonChapterTemplate
       sessionNumber={2}
       sessionTitle="Types & structures de contrôle Python"
       description="int, float, str, list, erreurs de flottants, Boucles if/for/while, fonctions def, Librairies : math, random, numpy"
@@ -94,13 +125,31 @@ const OteriaPythonBasesFlashcardsPage: React.FC = () => {
       previousSession={{ slug: 'logique-fondamentale', title: 'Logique fondamentale' }}
       nextSession={{ slug: 'recurrence-recursivite', title: 'Récurrence & récursivité' }}
     >
-      <MathFlashcards
-        flashcards={adaptedFlashcards}
-        title="Flashcards — Bases Python"
-        chapterNumber={2}
-        hideHeader={false}
-      />
-    </OteriaMinimalistChapterTemplate>
+      <div className="space-y-8 max-w-none">
+        <div className="carnet-card p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <div className="carnet-eyebrow mb-2">Flashcards — Bases Python</div>
+            <p className="font-instrument text-[14px] text-carnet-ink-soft">
+              {pythonData.length} cartes. Cliquez sur une carte pour révéler la réponse.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setResetKey((k) => k + 1)}
+            className="inline-flex items-center gap-2 self-start bg-transparent border border-[rgba(78,55,30,0.18)] text-carnet-ink-soft hover:text-carnet-red hover:border-carnet-red rounded-full px-4 h-9 font-instrument text-[13px] font-semibold transition-colors"
+          >
+            <RotateCcw className="h-3.5 w-3.5" />
+            Tout retourner côté question
+          </button>
+        </div>
+
+        <div key={resetKey} className="grid sm:grid-cols-2 gap-5">
+          {pythonData.map((card) => (
+            <FlashCard key={card.id} card={card} />
+          ))}
+        </div>
+      </div>
+    </OteriaPythonChapterTemplate>
   );
 };
 

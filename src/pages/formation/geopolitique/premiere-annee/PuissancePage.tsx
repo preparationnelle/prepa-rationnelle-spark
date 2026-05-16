@@ -25,11 +25,11 @@ const PuissancePage: React.FC = () => {
       <div className="container mx-auto px-4 pt-12 pb-16">
         <div className="max-w-4xl mx-auto bg-carnet-paper-2 border border-carnet-rule rounded-xl p-6">
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-gray-900">La puissance</h1>
+            <h1 className="text-3xl font-bold text-carnet-ink">La puissance</h1>
             <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
-          <div className="space-y-8 text-gray-900">
+          <div className="space-y-8 text-carnet-ink">
             <div className="border-l-4 border-carnet-red pl-4">
               <h2 className="text-2xl font-semibold text-carnet-red mb-2">I. Définir la puissance</h2>
               <h3 className="text-xl font-semibold mb-2">A. Définition classique</h3>

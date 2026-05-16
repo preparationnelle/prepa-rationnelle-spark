@@ -86,8 +86,7 @@ const HomePage: React.FC = () => {
   const SectionHead: React.FC<{ eyebrow?: string; eyebrowLink?: string; title: React.ReactNode; subtitle?: string; align?: 'left' | 'center' }> = ({ eyebrow, eyebrowLink, title, subtitle, align = 'left' }) => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       className={`max-w-[760px] mb-14 ${align === 'center' ? 'mx-auto text-center' : ''}`}
     >
@@ -173,8 +172,7 @@ const HomePage: React.FC = () => {
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="carnet-card relative px-8 sm:px-14 py-12 sm:py-14"
           >
@@ -261,8 +259,7 @@ const HomePage: React.FC = () => {
               <motion.div
                 key={formation.title}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className={idx === 1 ? 'carnet-tilt-l' : idx === 2 ? 'carnet-tilt-r' : ''}
               >
@@ -323,8 +320,7 @@ const HomePage: React.FC = () => {
               <motion.div
                 key={g.title}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className={idx === 1 ? 'carnet-tilt-r' : idx === 2 ? 'carnet-tilt-l' : ''}
               >
@@ -649,8 +645,7 @@ const HomePage: React.FC = () => {
         <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="carnet-card relative px-8 sm:px-16 py-16 sm:py-20 carnet-tilt-l"
           >

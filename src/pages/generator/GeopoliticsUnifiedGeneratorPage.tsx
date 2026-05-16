@@ -324,7 +324,7 @@ const GeopoliticsUnifiedGeneratorPage = () => {
                             placeholder="Colle ici des éléments de cours, des articles ou des notes pour guider la génération..."
                             value={courseContent}
                             onChange={(e) => setCourseContent(e.target.value)}
-                            className="min-h-[220px] resize-none border-[rgba(78,55,30,0.18)] bg-carnet-paper-2 focus:bg-white focus:border-carnet-red focus:ring-carnet-red/20 rounded-md text-base shadow-sm leading-relaxed p-4 font-instrument text-carnet-ink"
+                            className="min-h-[220px] resize-none border-[rgba(78,55,30,0.18)] bg-carnet-paper-2 focus:bg-carnet-paper-2 focus:border-carnet-red focus:ring-carnet-red/20 rounded-md text-base shadow-sm leading-relaxed p-4 font-instrument text-carnet-ink"
                           />
                         </div>
 

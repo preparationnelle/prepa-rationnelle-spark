@@ -26,11 +26,11 @@ const EspacesMaritimesPage: React.FC = () => {
       <div className="container mx-auto px-4 pt-12 pb-16">
         <div className="max-w-4xl mx-auto bg-carnet-paper-2 border border-carnet-rule rounded-xl p-6">
           <div className="mb-6">
-            <h1 className="text-3xl font-bold text-gray-900">Les espaces maritimes</h1>
+            <h1 className="text-3xl font-bold text-carnet-ink">Les espaces maritimes</h1>
             <div className="mt-2 h-1 w-24 bg-carnet-red rounded"></div>
           </div>
 
-          <div className="max-w-none text-gray-900 space-y-8">
+          <div className="max-w-none text-carnet-ink space-y-8">
             <div className="bg-pr-gray-bg border border-carnet-red/30 rounded-lg p-4">
               <p className="leading-relaxed">Autrefois vierges, les espaces maritimes font l’objet d’une appropriation croissante par les États. ⇒ territorialisation sans précédent dont l’extension du droit de la mer est la conséquence. Les espaces maritimes apparaissent ainsi comme des espaces à conquérir (fronts) et à délimiter pour exercer pleinement une souveraineté. Leur appropriation les transforme en territoires propices aux rivalités, aux tensions et au jeu des puissances.</p>
             </div>

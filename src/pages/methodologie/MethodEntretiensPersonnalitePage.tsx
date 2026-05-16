@@ -251,8 +251,7 @@ const MethodEntretiensPersonnalitePage = () => {
                 <motion.div
                   key={mod.to}
                   initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: Math.min(idx * 0.02, 0.25) }}
                 >
                   <div
@@ -305,8 +304,7 @@ const MethodEntretiensPersonnalitePage = () => {
                 <motion.div
                   key={fmt.to}
                   initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: idx * 0.06 }}
                 >
                   <Link to={fmt.to} className="block h-full group">
@@ -359,8 +357,7 @@ const MethodEntretiensPersonnalitePage = () => {
                 <motion.div
                   key={tool.to}
                   initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: idx * 0.06 }}
                 >
                   <Link to={tool.to} className="block h-full group">
@@ -407,8 +404,7 @@ const MethodEntretiensPersonnalitePage = () => {
               <motion.div
                 key={school.name}
                 initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: Math.min(idx * 0.03, 0.25) }}
               >
                 <Link to={school.link} className="block h-full group">
@@ -445,8 +441,7 @@ const MethodEntretiensPersonnalitePage = () => {
         <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
             className="mt-12 bg-carnet-paper-2 border border-carnet-rule/60 rounded-md p-8 sm:p-10"
           >

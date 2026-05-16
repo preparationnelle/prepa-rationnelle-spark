@@ -158,7 +158,7 @@ const SeDifferencierPage = () => (
         Un détail concret est unique par définition. Personne d'autre n'a vécu exactement votre scène, avec
         vos mots, dans votre contexte. La précision est la forme la plus simple — et la plus efficace — de différenciation.
       </p>
-      <div className="bg-white border border-carnet-rule/30 rounded-lg p-7 mb-5">
+      <div className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-7 mb-5">
         <div className="flex items-center gap-2 mb-5">
           <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
             {avantApres.question}
@@ -199,7 +199,7 @@ const SeDifferencierPage = () => (
       </p>
       <div className="grid md:grid-cols-2 gap-5">
         {singularite.map((s) => (
-          <div key={s.profil} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5">
+          <div key={s.profil} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5">
             <h4 className="font-dm-serif text-base text-carnet-ink mb-2">{s.profil}</h4>
             <p className="text-sm text-carnet-ink-soft">{s.conseil}</p>
           </div>
@@ -211,7 +211,7 @@ const SeDifferencierPage = () => (
       <p className="text-carnet-ink-soft mb-6">Des principes opérationnels à appliquer lors de votre préparation — et à tester à voix haute.</p>
       <div className="space-y-4">
         {regles.map((r) => (
-          <div key={r.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+          <div key={r.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
             <span className="font-dm-serif text-3xl text-red-600 leading-none">{r.n}</span>
             <div>
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{r.t}</h4>

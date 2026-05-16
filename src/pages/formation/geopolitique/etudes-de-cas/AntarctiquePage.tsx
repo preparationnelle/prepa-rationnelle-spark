@@ -22,18 +22,18 @@ const AntarctiquePage = () => {
             Études de cas
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <span className="text-gray-600">Antarctique</span>
+          <span className="text-carnet-ink-soft">Antarctique</span>
         </nav>
 
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <Snowflake className="h-8 w-8 text-carnet-red" />
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-4xl font-bold text-carnet-ink">
               Antarctique
             </h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-4xl">
+          <p className="text-lg text-carnet-ink-soft max-w-4xl">
             Ressources potentielles et traité de 1959. Tensions croissantes avec expansion chinoise et russe.
           </p>
         </div>
@@ -51,10 +51,10 @@ const AntarctiquePage = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-carnet-ink leading-relaxed">
                   L'Antarctique représente un enjeu géopolitique crucial en raison de ses ressources potentielles (pétrole, minéraux, eau douce) et de son rôle dans la recherche scientifique et le changement climatique, avec des revendications territoriales gelées par le Traité sur l'Antarctique de 1959, qui promeut la paix et la coopération mais fait face à des tensions croissantes dues à l'expansion des bases chinoises et russes. Les acteurs principaux sont les sept pays revendicateurs (Argentine, Australie, Chili, France, Norvège, Nouvelle-Zélande, Royaume-Uni), les États-Unis et la Russie en tant que puissances non-revendicatrices influentes, et la Chine qui investit massivement depuis 2010 pour sécuriser des intérêts stratégiques. Des chiffres clés incluent 90 % des réserves d'eau douce mondiale et une superficie de 14 mill ions de km² ; des dates importantes sont 1959 (signature du Traité) et 1991 (Protocole de Madrid interdisant l'exploitation minière jusqu'en 2048). Cette étude de cas est pertinente pour les sujets suivants : droit international, environnement et climat, ressources naturelles, diplomatie multilatérale, sécurité (militarisation potentielle), et recherche scientifique.
                 </p>
-                <p className="text-sm text-gray-500 mt-3">
+                <p className="text-sm text-carnet-ink-soft mt-3">
                   <strong>Sources :</strong> rfi.fr discoveringantarctica.org.uk
                 </p>
               </CardContent>
@@ -71,20 +71,20 @@ const AntarctiquePage = () => {
               <CardContent>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-gray-900">Sept pays revendicateurs</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Sept pays revendicateurs</h4>
+                    <p className="text-carnet-ink">
                       Argentine, Australie, Chili, France, Norvège, Nouvelle-Zélande, Royaume-Uni.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Puissances influentes</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Puissances influentes</h4>
+                    <p className="text-carnet-ink">
                       États-Unis et Russie en tant que puissances non-revendicatrices influentes.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Chine</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Chine</h4>
+                    <p className="text-carnet-ink">
                       Investit massivement depuis 2010 pour sécuriser des intérêts stratégiques.
                     </p>
                   </div>
@@ -106,21 +106,21 @@ const AntarctiquePage = () => {
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">1959</div>
-                      <div className="text-gray-700">Signature du Traité sur l'Antarctique</div>
+                      <div className="text-carnet-ink">Signature du Traité sur l'Antarctique</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">1991</div>
-                      <div className="text-gray-700">Protocole de Madrid interdisant l'exploitation minière jusqu'en 2048</div>
+                      <div className="text-carnet-ink">Protocole de Madrid interdisant l'exploitation minière jusqu'en 2048</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2010</div>
-                      <div className="text-gray-700">Début des investissements massifs chinois</div>
+                      <div className="text-carnet-ink">Début des investissements massifs chinois</div>
                     </div>
                   </div>
                 </div>
@@ -142,11 +142,11 @@ const AntarctiquePage = () => {
                 <div className="space-y-3">
                   <div className="text-center p-3 bg-pr-gray-bg rounded-lg">
                     <div className="text-2xl font-bold text-carnet-red">90%</div>
-                    <div className="text-sm text-gray-600">Réserves d'eau douce mondiale</div>
+                    <div className="text-sm text-carnet-ink-soft">Réserves d'eau douce mondiale</div>
                   </div>
                   <div className="text-center p-3 bg-pr-gray-bg rounded-lg">
                     <div className="text-2xl font-bold text-carnet-red">14 millions</div>
-                    <div className="text-sm text-gray-600">km² de superficie</div>
+                    <div className="text-sm text-carnet-ink-soft">km² de superficie</div>
                   </div>
                 </div>
               </CardContent>
@@ -194,12 +194,12 @@ const AntarctiquePage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="h-5 w-5 text-gray-600" />
+                  <DollarSign className="h-5 w-5 text-carnet-ink-soft" />
                   Sources
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-carnet-ink-soft">
                   rfi.fr<br/>
                   discoveringantarctica.org.uk
                 </p>

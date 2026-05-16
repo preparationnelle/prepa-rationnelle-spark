@@ -117,8 +117,7 @@ const FormationAllemandCivilisationPage = () => {
                 <motion.div
                   key={m.number}
                   initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-30px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: Math.min(idx * 0.03, 0.25) }}
                   className={tilt}
                 >

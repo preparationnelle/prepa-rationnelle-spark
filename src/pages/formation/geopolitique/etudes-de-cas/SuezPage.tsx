@@ -22,18 +22,18 @@ const SuezPage = () => {
             Études de cas
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <span className="text-gray-600">Canal de Suez</span>
+          <span className="text-carnet-ink-soft">Canal de Suez</span>
         </nav>
 
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <Ship className="h-8 w-8 text-carnet-red" />
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-4xl font-bold text-carnet-ink">
               Canal de Suez
             </h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-4xl">
+          <p className="text-lg text-carnet-ink-soft max-w-4xl">
             Chokepoint vital pour 12% du commerce mondial. Sécurité maritime et enjeux historiques.
           </p>
         </div>
@@ -51,10 +51,10 @@ const SuezPage = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-carnet-ink leading-relaxed">
                   Le Canal de Suez, reliant la Méditerranée à la Mer Rouge depuis son ouverture en 1869, est un chokepoint géopolitique vital pour 12 % du commerce mondial (50 000 navires/an, 1 milliard de tonnes de fret), avec des enjeux passés liés à l'impérialisme (crise de 1956) et présents à la sécurité maritime (blocage Ever Given en 2021 causant 9 milliards USD/jour de pertes). Les acteurs clés incluent l'Égypte (propriétaire depuis la nationalisation de 1956 par Nasser), le Royaume-Uni et la France (anciens contrôles), Israël (fermetures pendant les guerres arabes-israéliennes 1967-1975), et des puissances comme les États-Unis et la Chine pour la sécurisation. Des dates marquantes sont 1869 (ouverture), 1956 (crise de Suez), et 2021 (incident Ever Given). Cette étude de cas est pertinente pour les sujets suivants : commerce international, histoire coloniale, sécurité maritime, économie globale, conflits militaires, et diplomatie régionale.
                 </p>
-                <p className="text-sm text-gray-500 mt-3">
+                <p className="text-sm text-carnet-ink-soft mt-3">
                   <strong>Source :</strong> suezcanal.gov.eg
                 </p>
               </CardContent>
@@ -71,20 +71,20 @@ const SuezPage = () => {
               <CardContent>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-gray-900">Égypte</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Égypte</h4>
+                    <p className="text-carnet-ink">
                       Propriétaire depuis la nationalisation de 1956 par Nasser.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Anciens contrôles</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Anciens contrôles</h4>
+                    <p className="text-carnet-ink">
                       Royaume-Uni et France (anciens contrôles), Israël (fermetures pendant les guerres 1967-1975).
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Puissances actuelles</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Puissances actuelles</h4>
+                    <p className="text-carnet-ink">
                       États-Unis et Chine pour la sécurisation des routes commerciales.
                     </p>
                   </div>
@@ -106,21 +106,21 @@ const SuezPage = () => {
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">1869</div>
-                      <div className="text-gray-700">Ouverture du canal</div>
+                      <div className="text-carnet-ink">Ouverture du canal</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">1956</div>
-                      <div className="text-gray-700">Crise de Suez et nationalisation</div>
+                      <div className="text-carnet-ink">Crise de Suez et nationalisation</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2021</div>
-                      <div className="text-gray-700">Incident Ever Given - blocage du canal</div>
+                      <div className="text-carnet-ink">Incident Ever Given - blocage du canal</div>
                     </div>
                   </div>
                 </div>
@@ -142,15 +142,15 @@ const SuezPage = () => {
                 <div className="space-y-3">
                   <div className="text-center p-3 bg-pr-gray-bg rounded-lg">
                     <div className="text-2xl font-bold text-carnet-red">12%</div>
-                    <div className="text-sm text-gray-600">Commerce mondial</div>
+                    <div className="text-sm text-carnet-ink-soft">Commerce mondial</div>
                   </div>
                   <div className="text-center p-3 bg-pr-gray-bg rounded-lg">
                     <div className="text-2xl font-bold text-carnet-red">50 000</div>
-                    <div className="text-sm text-gray-600">Navires par an</div>
+                    <div className="text-sm text-carnet-ink-soft">Navires par an</div>
                   </div>
                   <div className="text-center p-3 bg-pr-gray-bg rounded-lg">
                     <div className="text-2xl font-bold text-carnet-red">9M$</div>
-                    <div className="text-sm text-gray-600">Pertes/jour (Ever Given)</div>
+                    <div className="text-sm text-carnet-ink-soft">Pertes/jour (Ever Given)</div>
                   </div>
                 </div>
               </CardContent>
@@ -198,12 +198,12 @@ const SuezPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="h-5 w-5 text-gray-600" />
+                  <DollarSign className="h-5 w-5 text-carnet-ink-soft" />
                   Sources
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-carnet-ink-soft">
                   suezcanal.gov.eg
                 </p>
               </CardContent>

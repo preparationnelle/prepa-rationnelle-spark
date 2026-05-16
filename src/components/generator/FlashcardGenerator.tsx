@@ -88,30 +88,28 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
   return (
     <div className="max-w-6xl mx-auto px-4 pb-20 font-dm-sans">
 
-      {/* Header — trait noir signature + titre serif */}
-      <header className="text-center pt-8 pb-10">
-        <div className="inline-flex items-center gap-2 mb-5">
-          <span className="h-px w-8 bg-pr-black" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-black">
-            {language === 'fr' ? 'Générateur de flashcards' : 'Flashcard generator'}
-          </span>
-          <span className="h-px w-8 bg-pr-black" />
+      {/* Header compact — pitch contexte d'abord, titre en éyebrow */}
+      <header className="text-center pt-1 pb-5 max-w-2xl mx-auto">
+        <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-pr-black mb-3">
+          {language === 'fr' ? 'Flashcards Universelles' : 'Universal Flashcards'}
         </div>
 
-        <h1 className="font-dm-serif text-4xl md:text-5xl text-pr-black leading-[1.1] mb-4">
-          {language === 'fr' ? 'Flashcards Universelles' : 'Universal Flashcards'}
+        <h1 className="font-dm-serif text-2xl md:text-3xl text-pr-black leading-[1.15] mb-3">
+          {language === 'fr'
+            ? <>Pas juste le mot — une <em className="italic">phrase entière</em> avec le mot dedans.</>
+            : <>Not just the word — a <em className="italic">full sentence</em> with the word inside.</>}
         </h1>
 
-        <p className="text-[15px] text-pr-gray-dark max-w-xl mx-auto leading-relaxed">
+        <p className="text-[14px] text-pr-gray-dark leading-relaxed">
           {language === 'fr'
-            ? "Créez vos cartes pour n'importe quel sujet — maths, langues, histoire, code — et révisez avec feedback immédiat."
-            : 'Create cards for any subject — math, languages, history, code — and review with instant feedback.'}
+            ? 'Tu retiens en contexte, donc tu retiens mieux. L\'IA génère la carte complète avec toutes les subtilités.'
+            : 'You learn in context, so you remember better. The AI generates the full card with all the nuances.'}
         </p>
       </header>
 
       {/* Carte de saisie */}
-      <section className="max-w-3xl mx-auto mb-12">
-        <div className="relative bg-white border border-pr-gray-light rounded-2xl overflow-hidden">
+      <section className="max-w-3xl mx-auto mb-6">
+        <div className="relative bg-carnet-paper-2 border border-pr-gray-light rounded-2xl overflow-hidden">
           {/* trait noir signature en haut */}
           <div className="h-[3px] bg-pr-black" />
           <div className="p-6 md:p-8">
@@ -142,7 +140,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
       <section className="max-w-5xl mx-auto">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <div className="sticky top-2 z-30 mb-8 flex justify-center">
-            <TabsList className="bg-white/80 backdrop-blur-md border border-pr-gray-light p-1 h-auto rounded-full inline-flex gap-1 shadow-sm overflow-x-auto max-w-full">
+            <TabsList className="bg-carnet-paper/80 backdrop-blur-md border border-pr-gray-light p-1 h-auto rounded-full inline-flex gap-1 shadow-sm overflow-x-auto max-w-full">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -159,7 +157,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
                         <span
                           className={`ml-0 sm:ml-1 px-1.5 min-w-[20px] text-center text-[10px] font-semibold rounded-full ${
                             isActive
-                              ? 'bg-white text-pr-black border border-pr-gray-light/30'
+                              ? 'bg-carnet-paper-2 text-pr-black border border-pr-gray-light/30'
                               : 'bg-pr-gray-bg text-pr-gray-mid border border-pr-gray-light'
                           }`}
                         >
@@ -173,7 +171,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
             </TabsList>
           </div>
 
-          <div className="bg-white border border-pr-gray-light rounded-2xl p-6 md:p-8 min-h-[400px]">
+          <div className="bg-carnet-paper-2 border border-pr-gray-light rounded-2xl p-6 md:p-8 min-h-[400px]">
             <TabsContent value="generated" className="mt-0 focus-visible:outline-none">
               <GeneratedFlashcardsList
                 language={language}
@@ -263,7 +261,7 @@ export const FlashcardGenerator = ({ language, onFlashcardCreated }: FlashcardGe
                                   {percent.toFixed(0)}%
                                 </span>
                               </div>
-                              <div className="h-1.5 bg-white rounded-full overflow-hidden border border-pr-gray-light">
+                              <div className="h-1.5 bg-carnet-paper-2 rounded-full overflow-hidden border border-pr-gray-light">
                                 <div
                                   className="h-full bg-pr-black rounded-full transition-all"
                                   style={{ width: `${percent}%` }}

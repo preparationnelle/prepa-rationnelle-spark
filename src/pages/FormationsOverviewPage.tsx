@@ -193,8 +193,7 @@ const FormationsOverviewPage = () => {
                 <motion.div
                   key={f.to}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: (idx % 3) * 0.08 }}
                   className={tiltClass(idx)}
                 >
@@ -248,8 +247,7 @@ const FormationsOverviewPage = () => {
           <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="carnet-card relative px-8 sm:px-14 py-14 sm:py-16 carnet-tilt-l text-center"
             >

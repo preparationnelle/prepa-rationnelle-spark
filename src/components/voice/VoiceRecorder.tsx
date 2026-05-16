@@ -64,16 +64,54 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
         };
     }, [state]);
 
+    const pickSupportedMimeType = (): string | undefined => {
+        if (typeof MediaRecorder === 'undefined' || typeof MediaRecorder.isTypeSupported !== 'function') {
+            return undefined;
+        }
+        const candidates = [
+            'audio/webm;codecs=opus',
+            'audio/webm',
+            'audio/mp4;codecs=mp4a.40.2',
+            'audio/mp4',
+            'audio/ogg;codecs=opus',
+            'audio/ogg',
+        ];
+        return candidates.find(type => MediaRecorder.isTypeSupported(type));
+    };
+
+    const extensionForMime = (mime: string | undefined): string => {
+        if (!mime) return 'webm';
+        if (mime.startsWith('audio/webm')) return 'webm';
+        if (mime.startsWith('audio/mp4')) return 'm4a';
+        if (mime.startsWith('audio/ogg')) return 'ogg';
+        if (mime.startsWith('audio/wav')) return 'wav';
+        return 'webm';
+    };
+
     const startRecording = async () => {
         try {
+            // Contexte sécurisé requis (HTTPS ou localhost)
+            if (typeof window !== 'undefined' && window.isSecureContext === false) {
+                throw Object.assign(new Error('insecure context'), { name: 'SecurityError' });
+            }
+
+            if (!navigator?.mediaDevices?.getUserMedia) {
+                throw Object.assign(new Error('mediaDevices unavailable'), { name: 'NotSupportedError' });
+            }
+
+            if (typeof MediaRecorder === 'undefined') {
+                throw Object.assign(new Error('MediaRecorder unavailable'), { name: 'NotSupportedError' });
+            }
+
             // Demander la permission du microphone
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
             streamRef.current = stream;
 
-            // Créer le MediaRecorder
-            const mediaRecorder = new MediaRecorder(stream, {
-                mimeType: 'audio/webm' // Format supporté par la plupart des navigateurs
-            });
+            // Choisir un mimeType supporté par le navigateur (Safari ne supporte pas audio/webm)
+            const mimeType = pickSupportedMimeType();
+            const mediaRecorder = mimeType
+                ? new MediaRecorder(stream, { mimeType })
+                : new MediaRecorder(stream);
 
             mediaRecorderRef.current = mediaRecorder;
             audioChunksRef.current = [];
@@ -87,7 +125,8 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
 
             // Gérer la fin de l'enregistrement
             mediaRecorder.onstop = async () => {
-                const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
+                const effectiveType = mediaRecorder.mimeType || mimeType || 'audio/webm';
+                const audioBlob = new Blob(audioChunksRef.current, { type: effectiveType });
 
                 // Vérifier la taille (max 25MB pour Whisper)
                 if (audioBlob.size > 25 * 1024 * 1024) {
@@ -98,7 +137,7 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
                 }
 
                 // Lancer la transcription
-                await transcribeAudio(audioBlob);
+                await transcribeAudio(audioBlob, effectiveType);
 
                 // Arrêter le stream
                 if (streamRef.current) {
@@ -116,14 +155,27 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
             console.error('Erreur lors de l\'accès au microphone:', error);
             setState('error');
 
-            if (error.name === 'NotAllowedError') {
+            const name = error?.name || '';
+            if (name === 'NotAllowedError' || name === 'PermissionDeniedError') {
                 setErrorMessage('Veuillez autoriser l\'accès au microphone dans les paramètres de votre navigateur');
                 toast.error('Permission microphone refusée');
-            } else if (error.name === 'NotFoundError') {
+            } else if (name === 'NotFoundError' || name === 'DevicesNotFoundError') {
                 setErrorMessage('Aucun microphone détecté sur cet appareil');
                 toast.error('Microphone non détecté');
+            } else if (name === 'NotReadableError' || name === 'TrackStartError') {
+                setErrorMessage('Le microphone est déjà utilisé par une autre application');
+                toast.error('Microphone occupé');
+            } else if (name === 'SecurityError') {
+                setErrorMessage('Le micro nécessite une connexion sécurisée (HTTPS) ou localhost');
+                toast.error('Contexte non sécurisé');
+            } else if (name === 'NotSupportedError') {
+                setErrorMessage('Votre navigateur ne supporte pas l\'enregistrement audio — essayez Chrome ou Firefox récent');
+                toast.error('Navigateur non supporté');
+            } else if (name === 'OverconstrainedError') {
+                setErrorMessage('Aucun microphone compatible avec les paramètres demandés');
+                toast.error('Microphone incompatible');
             } else {
-                setErrorMessage('Erreur lors de l\'accès au microphone');
+                setErrorMessage(`Erreur micro : ${error?.message || name || 'inconnue'}`);
                 toast.error('Erreur microphone');
             }
         }
@@ -136,13 +188,14 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
         }
     };
 
-    const transcribeAudio = async (audioBlob: Blob) => {
+    const transcribeAudio = async (audioBlob: Blob, mimeType?: string) => {
         setState('processing');
 
         try {
             // Créer le FormData pour envoyer le fichier
             const formData = new FormData();
-            formData.append('file', audioBlob, 'recording.webm');
+            const ext = extensionForMime(mimeType || audioBlob.type);
+            formData.append('file', audioBlob, `recording.${ext}`);
             formData.append('language', language);
 
             // Appeler la Edge Function Supabase

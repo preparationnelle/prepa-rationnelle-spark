@@ -99,7 +99,7 @@ Référence : Montaigne, Essais`);
   return (
     <div className="space-y-6">
       {/* Header avec explication */}
-      <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+      <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
         <div className="h-[3px] w-full bg-pr-black" />
         <CardHeader className="px-6 pt-5 pb-4">
           <div className="flex items-center gap-3">
@@ -129,7 +129,7 @@ Référence : Montaigne, Essais`);
       </Card>
 
       {/* Formulaire */}
-      <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+      <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
         <CardHeader className="px-6 pt-5 pb-4">
           <CardTitle className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-pr-black" />
@@ -163,7 +163,7 @@ Contexte : Les paragraphes précédents ont montré que l'homme partage de nombr
 Référence : Montaigne, Essais`}
               value={details}
               onChange={(e) => setDetails(e.target.value)}
-              className="min-h-[200px] border-pr-gray-light bg-white focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 text-pr-black placeholder:text-pr-gray-mid rounded-xl resize-y text-[14px] leading-relaxed p-4 transition-colors"
+              className="min-h-[200px] border-pr-gray-light bg-carnet-paper-2 focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 text-pr-black placeholder:text-pr-gray-mid rounded-xl resize-y text-[14px] leading-relaxed p-4 transition-colors"
             />
             <p className="text-[13px] text-pr-gray-mid">
               Plus vous donnez de détails (sujet, argument, contexte, références), mieux sera le paragraphe généré.
@@ -198,7 +198,7 @@ Référence : Montaigne, Essais`}
             <Button
               type="button"
               onClick={loadExample}
-              className="flex items-center gap-2 bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-4 font-medium transition-colors"
+              className="flex items-center gap-2 bg-carnet-paper-2 border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-4 font-medium transition-colors"
               disabled={loading}
             >
               <Info className="h-4 w-4" />
@@ -210,12 +210,12 @@ Référence : Montaigne, Essais`}
 
       {/* Résultat */}
       {paragraph && (
-        <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)] animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)] animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="h-[3px] w-full bg-pr-black" />
           <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-white border border-pr-black-soft flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-carnet-paper-2 border border-pr-black-soft flex items-center justify-center">
                   <BookOpen className="h-5 w-5 text-pr-black" />
                 </div>
                 <div>
@@ -229,14 +229,14 @@ Référence : Montaigne, Essais`}
               </div>
               <div className="flex items-center gap-2">
                 {wordCount > 0 && (
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.10em] text-pr-gray-mid bg-white border border-pr-gray-light px-2.5 py-1 rounded-full">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.10em] text-pr-gray-mid bg-carnet-paper-2 border border-pr-gray-light px-2.5 py-1 rounded-full">
                     {wordCount} mots
                   </span>
                 )}
                 <Button
                   onClick={handleCopy}
                   size="sm"
-                  className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg flex items-center gap-2"
+                  className="bg-carnet-paper-2 border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg flex items-center gap-2"
                 >
                   {copied ? (
                     <>
@@ -254,7 +254,7 @@ Référence : Montaigne, Essais`}
             </div>
           </CardHeader>
           <CardContent className="p-6 sm:p-7 space-y-5">
-            <div className="bg-white rounded-xl p-6 border border-pr-gray-light">
+            <div className="bg-carnet-paper-2 rounded-xl p-6 border border-pr-gray-light">
               <p className="font-lora text-pr-black leading-[1.7] whitespace-pre-wrap text-[16px]">
                 {paragraph}
               </p>

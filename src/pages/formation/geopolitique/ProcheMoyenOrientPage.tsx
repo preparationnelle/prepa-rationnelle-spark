@@ -2128,7 +2128,7 @@ const ProcheMoyenOrientPage = () => {
                     { year: "2025", event: "Crises économiques persistantes dans la région, exacerbées par les conflits, avec haute inflation et chômage en Égypte, Liban et Irak" },
                     { year: "2025", event: "Intensification des tensions régionales avec l'Iran, qui accélère son programme nucléaire en réponse aux sanctions américaines renouvelées" },
                   ].map((item, index) => (
-                    <div key={index} className="flex items-start border-b border-gray-100 pb-2">
+                    <div key={index} className="flex items-start border-b border-carnet-rule/50 pb-2">
                       <span className="flex-shrink-0 w-20 text-sm font-semibold text-carnet-ink-soft mr-3">
                         {item.year}
                       </span>

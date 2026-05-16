@@ -50,7 +50,10 @@ const ParagraphGeneratorPage = () => {
             </h1>
           </div>
           <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.6] text-carnet-ink-soft max-w-[640px]">
-            Colle un article de presse et génère un <span className="carnet-hl font-lora italic">paragraphe argumentatif structuré</span> dans la langue de ton choix.
+            Colle un article de presse <span className="font-instrument text-carnet-ink-mute">ou pioche un thème</span>, et génère un <span className="carnet-hl font-lora italic">paragraphe argumentatif structuré</span> dans la langue de ton choix.
+          </p>
+          <p className="font-instrument text-[14px] lg:text-[15px] text-carnet-ink-mute mt-3 max-w-[640px]">
+            Méthode 5 étapes · 14 banques thématiques anglo-saxonnes · paragraphe annoté prêt à mémoriser.
           </p>
         </header>
 

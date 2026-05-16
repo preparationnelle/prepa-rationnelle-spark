@@ -22,7 +22,7 @@ const ParentPage = () => {
     );
 
     const elements = document.querySelectorAll('.fade-in-up, .scale-in');
-    elements.forEach((el) => observerRef.current?.observe(el));
+    elements.forEach((el) => el.classList.add('animate-in'));
 
     return () => observerRef.current?.disconnect();
   }, []);

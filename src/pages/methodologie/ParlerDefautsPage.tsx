@@ -73,7 +73,7 @@ const ParlerDefautsPage = () => (
       <p className="text-carnet-ink-soft mb-6">Une architecture qui transforme une faiblesse en preuve de maturité.</p>
       <div className="space-y-4">
         {structure.map((s) => (
-          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+          <div key={s.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
             <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
@@ -115,7 +115,7 @@ const ParlerDefautsPage = () => (
     <MethodSection label="Section 03" title="Réponses à bannir absolument" icon={AlertTriangle}>
       <div className="space-y-3">
         {mauvais.map(([rep, raison], i) => (
-          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+          <div key={i} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
             <div className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0 w-12 text-center">
               {String(i + 1).padStart(2, '0')}
             </div>
@@ -129,7 +129,7 @@ const ParlerDefautsPage = () => (
     </MethodSection>
 
     <MethodSection label="Section 04" title="Combien de défauts présenter ?" icon={Layers}>
-      <div className="bg-white border border-carnet-rule/30 rounded-lg p-7">
+      <div className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-7">
         <h4 className="font-dm-serif text-xl text-carnet-ink mb-2">La règle des 1 à 2 défauts</h4>
         <div className="h-px w-12 bg-red-600 mb-6" />
         <div className="grid md:grid-cols-3 gap-5">

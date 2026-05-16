@@ -245,8 +245,8 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="font-medium text-gray-700 mb-2">Méthode générale de résolution :</p>
+            <div className="bg-carnet-paper p-4 rounded-lg">
+              <p className="font-medium text-carnet-ink mb-2">Méthode générale de résolution :</p>
               <ol className="space-y-1 ml-4">
                 <li>1. <strong>Équation homogène</strong> : Résoudre l'équation caractéristique</li>
                 <li>2. <strong>Solution particulière</strong> : Chercher selon la forme du second membre</li>
@@ -255,8 +255,8 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
               </ol>
             </div>
 
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="font-medium text-gray-700 mb-2">Applications physiques :</p>
+            <div className="bg-carnet-paper p-4 rounded-lg">
+              <p className="font-medium text-carnet-ink mb-2">Applications physiques :</p>
               <ul className="space-y-1 ml-4">
                 <li>• <strong>Oscillateur harmonique</strong> : <LatexRenderer latex="y'' + \omega^2 y = 0" block={false} /></li>
                 <li>• <strong>Circuit RLC</strong> : <LatexRenderer latex="L\ddot{q} + R\dot{q} + \frac{q}{C} = E(t)" block={false} /></li>
@@ -271,11 +271,11 @@ const Chapitre19EquationsDifferentiellesCoursPage = () => {
       </Card>
 
       {/* Navigation secondaire */}
-      <Card className="border-0 shadow-lg bg-gray-50">
+      <Card className="border-0 shadow-lg bg-carnet-paper">
         <CardContent className="p-6">
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/formation/maths-appliquees">
-              <Button variant="outline" className="border-gray-300 text-gray-600 hover:bg-gray-50">
+              <Button variant="outline" className="border-gray-300 text-carnet-ink-soft hover:bg-carnet-paper">
                 Retour aux chapitres
               </Button>
             </Link>

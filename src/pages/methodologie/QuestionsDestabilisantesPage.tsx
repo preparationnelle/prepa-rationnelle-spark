@@ -75,7 +75,7 @@ const QuestionsDestabilisantesPage = () => (
     <MethodSection label="Section 01" title="Les 4 types de questions déstabilisantes" icon={Target}>
       <div className="space-y-4">
         {types.map((s) => (
-          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+          <div key={s.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
             <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
@@ -89,7 +89,7 @@ const QuestionsDestabilisantesPage = () => (
     <MethodSection label="Section 02" title="Méthode en 4 étapes pour désamorcer" icon={Shield}>
       <div className="space-y-4">
         {method.map((s) => (
-          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+          <div key={s.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
             <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>

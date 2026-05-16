@@ -43,10 +43,10 @@ const AnnalesGeopolitiquePage = () => {
           </div>
 
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl font-bold text-carnet-ink mb-4">
               Annales Géopolitique
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
+            <p className="text-lg text-carnet-ink-soft max-w-2xl mx-auto mb-4">
               25 ans de sujets d'annales ESSEC HGG et ESCP HGGMC (2000-2025)
             </p>
           </div>
@@ -54,7 +54,7 @@ const AnnalesGeopolitiquePage = () => {
 
         {/* Premier encadré - Sujets ESSEC HGG 2000-2025 */}
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-xl p-8 shadow-md border border-carnet-red/20">
+          <div className="bg-carnet-paper-2 rounded-xl p-8 shadow-sm border border-carnet-red/20">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-gradient-to-br from-carnet-red/10 to-carnet-red/20 rounded-xl flex items-center justify-center">
                 <BookOpen className="h-6 w-6 text-carnet-red" />
@@ -63,7 +63,7 @@ const AnnalesGeopolitiquePage = () => {
                 Les sujets ESSEC HGG 2000-2025
               </h2>
             </div>
-            <p className="text-gray-600 mb-8">
+            <p className="text-carnet-ink-soft mb-8">
               Analyse des sujets d'épreuves ESSEC Histoire-Géographie-Géopolitique des années 2000 à 2025.
             </p>
 
@@ -76,109 +76,109 @@ const AnnalesGeopolitiquePage = () => {
                 <div className="space-y-2">
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2025 :</span>
-                    <span className="text-gray-700 ml-2">Les arcs de crise dans le monde depuis le début de la guerre froide.</span>
+                    <span className="text-carnet-ink ml-2">Les arcs de crise dans le monde depuis le début de la guerre froide.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2024 :</span>
-                    <span className="text-gray-700 ml-2">Globalisation et multiplication des frontières depuis les années 90 : un paradoxe ?</span>
+                    <span className="text-carnet-ink ml-2">Globalisation et multiplication des frontières depuis les années 90 : un paradoxe ?</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2023 :</span>
-                    <span className="text-gray-700 ml-2">La France, puissance d'influence mondiale ?</span>
+                    <span className="text-carnet-ink ml-2">La France, puissance d'influence mondiale ?</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2022 :</span>
-                    <span className="text-gray-700 ml-2">Le contrôle des routes stratégiques depuis 1913, vecteur de domination mondiale pour les Etats</span>
+                    <span className="text-carnet-ink ml-2">Le contrôle des routes stratégiques depuis 1913, vecteur de domination mondiale pour les Etats</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2021 :</span>
-                    <span className="text-gray-700 ml-2">La maîtrise des espaces communs (maritime, aérien, extra-atmosphérique et numérique), enjeu de puissance par les États depuis 1945</span>
+                    <span className="text-carnet-ink ml-2">La maîtrise des espaces communs (maritime, aérien, extra-atmosphérique et numérique), enjeu de puissance par les États depuis 1945</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2020 :</span>
-                    <span className="text-gray-700 ml-2">Le bassin méditerranéen : un espace de crises et de rivalités internationales depuis la fin de la guerre froide</span>
+                    <span className="text-carnet-ink ml-2">Le bassin méditerranéen : un espace de crises et de rivalités internationales depuis la fin de la guerre froide</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2019 :</span>
-                    <span className="text-gray-700 ml-2">La puissance chinoise en Asie orientale</span>
+                    <span className="text-carnet-ink ml-2">La puissance chinoise en Asie orientale</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2018 :</span>
-                    <span className="text-gray-700 ml-2">La construction européenne confrontée à la question de la nation (1951-2018)</span>
+                    <span className="text-carnet-ink ml-2">La construction européenne confrontée à la question de la nation (1951-2018)</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2017 :</span>
-                    <span className="text-gray-700 ml-2">Le développement de l'Afrique à l'épreuve de la guerre (des années 1960 à nos jours)</span>
+                    <span className="text-carnet-ink ml-2">Le développement de l'Afrique à l'épreuve de la guerre (des années 1960 à nos jours)</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2016 :</span>
-                    <span className="text-gray-700 ml-2">La construction européenne face aux défis de la Méditerranée et du monde méditerranéen (1957-2016)</span>
+                    <span className="text-carnet-ink ml-2">La construction européenne face aux défis de la Méditerranée et du monde méditerranéen (1957-2016)</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2015 :</span>
-                    <span className="text-gray-700 ml-2">Nourrir la planète : exigences paradoxales et nouvelle « géopolitique de la faim » (de la chute du mur de Berlin à nos jours)</span>
+                    <span className="text-carnet-ink ml-2">Nourrir la planète : exigences paradoxales et nouvelle « géopolitique de la faim » (de la chute du mur de Berlin à nos jours)</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2014 :</span>
-                    <span className="text-gray-700 ml-2">L'industrie, un enjeu majeur au carrefour des problématiques de la mondialisation contemporaine</span>
+                    <span className="text-carnet-ink ml-2">L'industrie, un enjeu majeur au carrefour des problématiques de la mondialisation contemporaine</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2013 :</span>
-                    <span className="text-gray-700 ml-2">Les Etats-Unis changent : mutations structurelles de l'économie et de la société américaines et conséquences géopolitiques mondiales (1991 à nos jours)</span>
+                    <span className="text-carnet-ink ml-2">Les Etats-Unis changent : mutations structurelles de l'économie et de la société américaines et conséquences géopolitiques mondiales (1991 à nos jours)</span>
                   </div>
                 </div>
                 <div className="space-y-2">
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2012 :</span>
-                    <span className="text-gray-700 ml-2">Croissance, puissance et développement durable : quelles corrélations et implications pour les grands pays et groupes de pays du monde ?</span>
+                    <span className="text-carnet-ink ml-2">Croissance, puissance et développement durable : quelles corrélations et implications pour les grands pays et groupes de pays du monde ?</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2011 :</span>
-                    <span className="text-gray-700 ml-2">La France et les Français face aux grands défis économiques et géopolitiques des trente dernières années</span>
+                    <span className="text-carnet-ink ml-2">La France et les Français face aux grands défis économiques et géopolitiques des trente dernières années</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2010 :</span>
-                    <span className="text-gray-700 ml-2">Quels rôles pour l'Union européenne dans la mondialisation et le jeu des puissances ?</span>
+                    <span className="text-carnet-ink ml-2">Quels rôles pour l'Union européenne dans la mondialisation et le jeu des puissances ?</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2009 :</span>
-                    <span className="text-gray-700 ml-2">L'essor économique et la montée en puissance de la Chine : chances ou menaces pour le reste du monde ?</span>
+                    <span className="text-carnet-ink ml-2">L'essor économique et la montée en puissance de la Chine : chances ou menaces pour le reste du monde ?</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2008 :</span>
-                    <span className="text-gray-700 ml-2">Le pétrole et le gaz naturel, richesses et armes à risques</span>
+                    <span className="text-carnet-ink ml-2">Le pétrole et le gaz naturel, richesses et armes à risques</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2007 :</span>
-                    <span className="text-gray-700 ml-2">L'Afrique, un continent toujours périphérique et en mal développement ?</span>
+                    <span className="text-carnet-ink ml-2">L'Afrique, un continent toujours périphérique et en mal développement ?</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2006 :</span>
-                    <span className="text-gray-700 ml-2">Les enjeux économiques et géopolitiques des flux et de l'organisation du commerce mondial depuis les années 1980</span>
+                    <span className="text-carnet-ink ml-2">Les enjeux économiques et géopolitiques des flux et de l'organisation du commerce mondial depuis les années 1980</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2005 :</span>
-                    <span className="text-gray-700 ml-2">Les difficultés de la construction européenne : obstacles et désaccords</span>
+                    <span className="text-carnet-ink ml-2">Les difficultés de la construction européenne : obstacles et désaccords</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2004 :</span>
-                    <span className="text-gray-700 ml-2">L'ouverture de l'économie japonaise sur le monde (période postérieure à 1945)</span>
+                    <span className="text-carnet-ink ml-2">L'ouverture de l'économie japonaise sur le monde (période postérieure à 1945)</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2003 :</span>
-                    <span className="text-gray-700 ml-2">Deux évolutions du système socialiste : transition en Russie et « voie chinoise » — Comparez et évaluez</span>
+                    <span className="text-carnet-ink ml-2">Deux évolutions du système socialiste : transition en Russie et « voie chinoise » — Comparez et évaluez</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2002 :</span>
-                    <span className="text-gray-700 ml-2">L'industrie a-t-elle encore une place dans l'économie française aujourd'hui ? Ne pas négliger héritages historiques et dimension sociale</span>
+                    <span className="text-carnet-ink ml-2">L'industrie a-t-elle encore une place dans l'économie française aujourd'hui ? Ne pas négliger héritages historiques et dimension sociale</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2001 :</span>
-                    <span className="text-gray-700 ml-2">Population, société, économie dans les pays en développement. Insister sur l'actualité du problème, choix d'exemples libres</span>
+                    <span className="text-carnet-ink ml-2">Population, société, économie dans les pays en développement. Insister sur l'actualité du problème, choix d'exemples libres</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2000 :</span>
-                    <span className="text-gray-700 ml-2">Les mutations de l'agriculture française depuis le début des années 1960 s'expliquent-elles par la libéralisation des échanges dans le monde ?</span>
+                    <span className="text-carnet-ink ml-2">Les mutations de l'agriculture française depuis le début des années 1960 s'expliquent-elles par la libéralisation des échanges dans le monde ?</span>
                   </div>
                 </div>
               </div>
@@ -193,109 +193,109 @@ const AnnalesGeopolitiquePage = () => {
                 <div className="space-y-2">
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2025 :</span>
-                    <span className="text-gray-700 ml-2">La Chine, puissance rattrapée par ses vulnérabilités.</span>
+                    <span className="text-carnet-ink ml-2">La Chine, puissance rattrapée par ses vulnérabilités.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2024 :</span>
-                    <span className="text-gray-700 ml-2">Le changement climatique, facteur de la recomposition de la mondialisation.</span>
+                    <span className="text-carnet-ink ml-2">Le changement climatique, facteur de la recomposition de la mondialisation.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2023 :</span>
-                    <span className="text-gray-700 ml-2">Instabilités et violences en Amérique latine.</span>
+                    <span className="text-carnet-ink ml-2">Instabilités et violences en Amérique latine.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2022 :</span>
-                    <span className="text-gray-700 ml-2">Vers un retour des frontières ?</span>
+                    <span className="text-carnet-ink ml-2">Vers un retour des frontières ?</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2021 :</span>
-                    <span className="text-gray-700 ml-2">Mondialisation et mise en concurrence des pays et des territoires pour attirer les activités économiques.</span>
+                    <span className="text-carnet-ink ml-2">Mondialisation et mise en concurrence des pays et des territoires pour attirer les activités économiques.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2020 :</span>
-                    <span className="text-gray-700 ml-2">La France dans la recomposition des puissances dominantes.</span>
+                    <span className="text-carnet-ink ml-2">La France dans la recomposition des puissances dominantes.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2019 :</span>
-                    <span className="text-gray-700 ml-2">Les matières premières dans les stratégies de puissance des États.</span>
+                    <span className="text-carnet-ink ml-2">Les matières premières dans les stratégies de puissance des États.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2018 :</span>
-                    <span className="text-gray-700 ml-2">États-Unis – Chine : rivalités de pouvoir et d'influence.</span>
+                    <span className="text-carnet-ink ml-2">États-Unis – Chine : rivalités de pouvoir et d'influence.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2017 :</span>
-                    <span className="text-gray-700 ml-2">L'Union européenne face aux effets déstabilisateurs de la mondialisation.</span>
+                    <span className="text-carnet-ink ml-2">L'Union européenne face aux effets déstabilisateurs de la mondialisation.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2016 :</span>
-                    <span className="text-gray-700 ml-2">Influences et ingérences étrangères au Proche et au Moyen-Orient.</span>
+                    <span className="text-carnet-ink ml-2">Influences et ingérences étrangères au Proche et au Moyen-Orient.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2015 :</span>
-                    <span className="text-gray-700 ml-2">Les espaces maritimes, objet de tensions et de conflits entre les États.</span>
+                    <span className="text-carnet-ink ml-2">Les espaces maritimes, objet de tensions et de conflits entre les États.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2014 :</span>
-                    <span className="text-gray-700 ml-2">L'Afrique subsaharienne est-elle à l'écart du monde ?</span>
+                    <span className="text-carnet-ink ml-2">L'Afrique subsaharienne est-elle à l'écart du monde ?</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2013 :</span>
-                    <span className="text-gray-700 ml-2">Les États-Unis et l'exercice de la puissance.</span>
+                    <span className="text-carnet-ink ml-2">Les États-Unis et l'exercice de la puissance.</span>
                   </div>
                 </div>
                 <div className="space-y-2">
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2012 :</span>
-                    <span className="text-gray-700 ml-2">Les zones d'intégration régionale : étape ou alternative au processus de mondialisation ?</span>
+                    <span className="text-carnet-ink ml-2">Les zones d'intégration régionale : étape ou alternative au processus de mondialisation ?</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2011 :</span>
-                    <span className="text-gray-700 ml-2">Rivalités et rapports de puissance en Asie orientale.</span>
+                    <span className="text-carnet-ink ml-2">Rivalités et rapports de puissance en Asie orientale.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2010 :</span>
-                    <span className="text-gray-700 ml-2">Les années 1980-2000 sont-elles en rupture ou en continuité par rapport au processus de mondialisation hérité de la Révolution industrielle ?</span>
+                    <span className="text-carnet-ink ml-2">Les années 1980-2000 sont-elles en rupture ou en continuité par rapport au processus de mondialisation hérité de la Révolution industrielle ?</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2009 :</span>
-                    <span className="text-gray-700 ml-2">Les Amériques entre intégrations et fragmentations.</span>
+                    <span className="text-carnet-ink ml-2">Les Amériques entre intégrations et fragmentations.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2008 :</span>
-                    <span className="text-gray-700 ml-2">Que reste-t-il aujourd'hui du clivage Nord-Sud ?</span>
+                    <span className="text-carnet-ink ml-2">Que reste-t-il aujourd'hui du clivage Nord-Sud ?</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2007 :</span>
-                    <span className="text-gray-700 ml-2">La Méditerranée, jeux d'interfaces économiques et géopolitiques de 1945 à nos jours.</span>
+                    <span className="text-carnet-ink ml-2">La Méditerranée, jeux d'interfaces économiques et géopolitiques de 1945 à nos jours.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2006 :</span>
-                    <span className="text-gray-700 ml-2">Les innovations scientifiques et techniques dans l'organisation et la dynamique de la mondialisation.</span>
+                    <span className="text-carnet-ink ml-2">Les innovations scientifiques et techniques dans l'organisation et la dynamique de la mondialisation.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2005 :</span>
-                    <span className="text-gray-700 ml-2">La mobilité des marchandises, des capitaux et des hommes dans l'espace de l'Europe des 15 de 1945 à nos jours.</span>
+                    <span className="text-carnet-ink ml-2">La mobilité des marchandises, des capitaux et des hommes dans l'espace de l'Europe des 15 de 1945 à nos jours.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2004 :</span>
-                    <span className="text-gray-700 ml-2">Hiérarchies et basculements des rapports de forces mondiaux depuis 1945.</span>
+                    <span className="text-carnet-ink ml-2">Hiérarchies et basculements des rapports de forces mondiaux depuis 1945.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2003 :</span>
-                    <span className="text-gray-700 ml-2">Les problématiques énergétiques de l'Union européenne à 15 de 1945 à nos jours : impacts économiques, technologiques et géopolitiques dans un espace mondialisé.</span>
+                    <span className="text-carnet-ink ml-2">Les problématiques énergétiques de l'Union européenne à 15 de 1945 à nos jours : impacts économiques, technologiques et géopolitiques dans un espace mondialisé.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2002 :</span>
-                    <span className="text-gray-700 ml-2">Transports et mutations économiques de l'espace ouest-européen depuis les années 1920.</span>
+                    <span className="text-carnet-ink ml-2">Transports et mutations économiques de l'espace ouest-européen depuis les années 1920.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2001 :</span>
-                    <span className="text-gray-700 ml-2">L'évolution de l'emploi salarié dans l'espace ouest-européen et aux États-Unis du début des années 1920 au début des années 1970.</span>
+                    <span className="text-carnet-ink ml-2">L'évolution de l'emploi salarié dans l'espace ouest-européen et aux États-Unis du début des années 1920 au début des années 1970.</span>
                   </div>
                   <div className="text-sm">
                     <span className="font-medium text-carnet-red">2000 :</span>
-                    <span className="text-gray-700 ml-2">Les transformations des industries états-unienne et mexicaine depuis les années 1970 dans le cadre de la mondialisation.</span>
+                    <span className="text-carnet-ink ml-2">Les transformations des industries états-unienne et mexicaine depuis les années 1970 dans le cadre de la mondialisation.</span>
                   </div>
                 </div>
               </div>

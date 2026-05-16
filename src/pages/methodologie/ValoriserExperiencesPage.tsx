@@ -92,7 +92,7 @@ const ValoriserExperiencesPage = () => (
       <p className="text-carnet-ink-soft mb-6">Une structure universelle pour présenter n'importe quelle expérience en moins de 2 minutes.</p>
       <div className="space-y-4">
         {methodeVALO.map((s) => (
-          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+          <div key={s.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
             <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
@@ -104,7 +104,7 @@ const ValoriserExperiencesPage = () => (
     </MethodSection>
 
     <MethodSection label="Section 03" title="Avant / après : l'impact de la narration" icon={TrendingUp}>
-      <div className="bg-white border border-carnet-rule/30 rounded-lg p-7">
+      <div className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-7">
         <div className="flex items-center gap-2 mb-5">
           <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-red-700 bg-red-50 px-2 py-1 rounded">
             Même expérience, deux présentations
@@ -126,7 +126,7 @@ const ValoriserExperiencesPage = () => (
     <MethodSection label="Section 04" title="Les 5 poncifs à éviter" icon={AlertTriangle}>
       <div className="space-y-3">
         {poncifs.map(([err, explication], i) => (
-          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+          <div key={i} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
             <div className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0 w-12 text-center">
               {String(i + 1).padStart(2, '0')}
             </div>

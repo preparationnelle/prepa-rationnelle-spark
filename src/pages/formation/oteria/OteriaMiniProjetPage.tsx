@@ -77,7 +77,7 @@ const OteriaMiniProjetPage = () => {
 
           {/* Introduction */}
           <div className="bg-carnet-paper-2 rounded-xl border border-carnet-rule p-8">
-            <p className="text-gray-700 leading-relaxed text-lg">
+            <p className="text-carnet-ink leading-relaxed text-lg">
               Dans le cadre du cours de mathématiques, logique et algorithmique appliqués à l'informatique, les étudiants réalisent un projet de groupe qui constitue un fil conducteur tout au long du semestre. Ce projet vise à relier directement les notions théoriques étudiées en cours avec des applications concrètes et programmables en Python.
             </p>
           </div>
@@ -107,42 +107,42 @@ const OteriaMiniProjetPage = () => {
               <Calendar className="h-6 w-6 text-carnet-red" />
               Organisation et calendrier
             </h2>
-            <p className="text-gray-700 mb-6">
+            <p className="text-carnet-ink mb-6">
               Le projet s'organise en plusieurs étapes intégrées au déroulement des séances.
             </p>
 
             <div className="space-y-4">
               <div className="border-l-4 border-carnet-red/40 pl-4">
                 <h3 className="font-semibold text-carnet-red-deep">Annonce et présentation (séance 1)</h3>
-                <p className="text-gray-700 mt-1">
+                <p className="text-carnet-ink mt-1">
                   Dès la première séance, le projet est présenté aux étudiants. L'enseignant explique le cadre : chaque groupe (2 à 4 étudiants) devra choisir un sujet concret en lien avec le cours, produire un rapport écrit (5 pages) et présenter ses résultats lors d'un oral en fin de semestre. Des exemples de sujets leur sont proposés, mais les étudiants peuvent également suggérer leur propre problématique, à condition qu'elle respecte les critères : application réelle, fondement mathématique et implémentation Python possible.
                 </p>
               </div>
 
               <div className="border-l-4 border-carnet-red/40 pl-4">
                 <h3 className="font-semibold text-carnet-red-deep">Formation des groupes et choix des sujets (séances 2-3)</h3>
-                <p className="text-gray-700 mt-1">
+                <p className="text-carnet-ink mt-1">
                   Les étudiants se répartissent en groupes et commencent à explorer différentes pistes. Chaque équipe doit soumettre une idée de sujet qui sera validée, ajustée ou redirigée par l'enseignant afin de garantir la pertinence et la faisabilité du projet.
                 </p>
               </div>
 
               <div className="border-l-4 border-carnet-red/40 pl-4">
                 <h3 className="font-semibold text-carnet-red-deep">Suivi régulier de l'avancement</h3>
-                <p className="text-gray-700 mt-1">
+                <p className="text-carnet-ink mt-1">
                   À la fin de certaines séances, une dizaine de minutes est consacrée au suivi des projets. Les étudiants échangent sur leurs difficultés et leurs avancées, tandis que l'enseignant joue un rôle de guide : aide aux calculs mathématiques, validation de raisonnements, vérification d'extraits de code Python, conseils pour relier le projet à un usage concret.
                 </p>
               </div>
 
               <div className="border-l-4 border-carnet-red/40 pl-4">
                 <h3 className="font-semibold text-carnet-red-deep">Atelier projet (séance 13)</h3>
-                <p className="text-gray-700 mt-1">
+                <p className="text-carnet-ink mt-1">
                   Une séance entière est dédiée à la finalisation. Les groupes avancent sur leur rapport écrit, leur code et leur présentation orale. L'enseignant circule entre les équipes pour accompagner, clarifier les notions encore floues et s'assurer que chaque étudiant participe activement.
                 </p>
               </div>
 
               <div className="border-l-4 border-carnet-red/40 pl-4">
                 <h3 className="font-semibold text-carnet-red-deep">Présentation finale (séance 14)</h3>
-                <p className="text-gray-700 mt-1">
+                <p className="text-carnet-ink mt-1">
                   Chaque groupe dispose de 10 minutes pour présenter son travail. Tous les membres doivent prendre la parole. L'évaluation porte sur la clarté de l'introduction, la rigueur mathématique, la pertinence du code Python et la mise en avant d'applications concrètes. L'enseignant apporte un retour à la fois sur la solidité scientifique et sur la qualité pédagogique de la présentation.
                 </p>
               </div>
@@ -182,7 +182,7 @@ const OteriaMiniProjetPage = () => {
               <Award className="h-6 w-6 text-carnet-red" />
               Critères d'évaluation
             </h2>
-            <p className="text-gray-700 mb-6 font-medium">
+            <p className="text-carnet-ink mb-6 font-medium">
               L'évaluation du projet repose sur deux parties égales :
             </p>
             <div className="grid md:grid-cols-2 gap-6">
@@ -273,7 +273,7 @@ const OteriaMiniProjetPage = () => {
               <Presentation className="h-6 w-6 text-carnet-red" />
               Rôle de l'enseignant
             </h2>
-            <p className="text-gray-700">
+            <p className="text-carnet-ink">
               Tout au long du projet, l'enseignant agit comme un accompagnateur. Son rôle est d'aider les groupes à choisir un sujet pertinent, de vérifier la rigueur mathématique, de soutenir la mise en œuvre Python et d'assurer une bonne dynamique de groupe où chacun participe activement.
             </p>
           </div>
@@ -287,12 +287,12 @@ const OteriaMiniProjetPage = () => {
               Ressources pour le Mini Projet - Séance 13
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <button className="w-full bg-pr-black-dark text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-md">
+              <button className="w-full bg-pr-black-dark text-white px-4 py-3 rounded-lg cursor-default font-medium shadow-sm">
                 <Target className="h-5 w-5 mx-auto mb-2" />
                 Mini Projet - Ateliers & Répétitions
               </button>
               <Link to="/formation/oteria/mini-projet-deroulement" className="group">
-                <button className="w-full bg-carnet-red text-white px-4 py-3 rounded-lg hover:bg-carnet-red-deep transition-all duration-300 font-medium group-hover:scale-105 shadow-md hover:shadow-lg">
+                <button className="w-full bg-carnet-red text-white px-4 py-3 rounded-lg hover:bg-carnet-red-deep transition-all duration-300 font-medium group-hover:scale-105 shadow-sm hover:shadow-lg">
                   <FileText className="h-5 w-5 mx-auto mb-2" />
                   Déroulement du projet de groupe
                 </button>

@@ -61,7 +61,7 @@ const LangageNonVerbalPage = () => (
       <p className="text-carnet-ink-soft mb-6">Les quatre dimensions corporelles à maîtriser absolument avant votre entretien.</p>
       <div className="space-y-4">
         {pillars.map((s) => (
-          <div key={s.n} className="bg-white border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
+          <div key={s.n} className="bg-carnet-paper-2 border border-carnet-rule/30 border-l-4 border-l-red-600 rounded-r-lg p-5 flex items-baseline gap-4">
             <span className="font-dm-serif text-3xl text-red-600 leading-none">{s.n}</span>
             <div>
               <h4 className="font-dm-serif text-lg text-carnet-ink mb-1">{s.t}</h4>
@@ -88,7 +88,7 @@ const LangageNonVerbalPage = () => (
     <MethodSection label="Section 03" title="Erreurs corporelles à éviter absolument" icon={AlertTriangle}>
       <div className="space-y-3">
         {erreurs.map(({ bad, cons }, i) => (
-          <div key={i} className="bg-white border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
+          <div key={i} className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-4 flex items-start gap-4">
             <div className="font-dm-serif text-3xl text-red-600 leading-none flex-shrink-0 w-12 text-center">
               {String(i + 1).padStart(2, '0')}
             </div>
@@ -102,7 +102,7 @@ const LangageNonVerbalPage = () => (
     </MethodSection>
 
     <MethodSection label="Section 04" title="Plan d'entraînement sur 2 semaines" icon={Smile}>
-      <div className="bg-white border border-carnet-rule/30 rounded-lg p-7">
+      <div className="bg-carnet-paper-2 border border-carnet-rule/30 rounded-lg p-7">
         <h4 className="font-dm-serif text-xl text-carnet-ink mb-2">Développez votre présence corporelle</h4>
         <div className="h-px w-12 bg-red-600 mb-6" />
         <div className="grid md:grid-cols-2 gap-6">

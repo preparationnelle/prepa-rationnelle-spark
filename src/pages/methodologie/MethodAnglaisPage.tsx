@@ -25,10 +25,10 @@ export const MethodAnglaisPage = () => {
           Méthode Complète d'Anglais ECG
         </h1>
 
-        <Card className="mb-8 bg-white border border-carnet-red/20">
+        <Card className="mb-8 bg-carnet-paper-2 border border-carnet-red/20">
           <CardContent className="p-6">
             <p className="text-lg font-semibold mb-2">Prépa Rationnelle : Méthode complète d'anglais en prépa ECG</p>
-            <p className="text-gray-600">
+            <p className="text-carnet-ink-soft">
               Attention, ceci n'est pas une méthode pour apprendre l'anglais, c'est une méthode pour réussir les épreuves d'anglais en prépa HEC.
             </p>
           </CardContent>
@@ -36,7 +36,7 @@ export const MethodAnglaisPage = () => {
 
         {/* Video Section */}
         <div className="mb-8">
-          <Card className="bg-white border border-carnet-red/20">
+          <Card className="bg-carnet-paper-2 border border-carnet-red/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Youtube className="h-5 w-5 text-carnet-red" />
@@ -52,7 +52,7 @@ export const MethodAnglaisPage = () => {
         </div>
 
         <div className="space-y-8">
-          <Card className="bg-white border border-carnet-red/20">
+          <Card className="bg-carnet-paper-2 border border-carnet-red/20">
             <CardHeader>
               <CardTitle className="text-2xl text-carnet-red">1. Organisation et Structure</CardTitle>
             </CardHeader>
@@ -61,7 +61,7 @@ export const MethodAnglaisPage = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-white border border-carnet-red/20">
+          <Card className="bg-carnet-paper-2 border border-carnet-red/20">
             <CardHeader>
               <CardTitle className="text-2xl text-carnet-red">2. Maîtriser la civilisation</CardTitle>
             </CardHeader>
@@ -70,7 +70,7 @@ export const MethodAnglaisPage = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-white border border-carnet-red/20">
+          <Card className="bg-carnet-paper-2 border border-carnet-red/20">
             <CardHeader>
               <CardTitle className="text-2xl text-carnet-red">3. Grammaire Essentielle</CardTitle>
             </CardHeader>
@@ -79,7 +79,7 @@ export const MethodAnglaisPage = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-white border border-carnet-red/20">
+          <Card className="bg-carnet-paper-2 border border-carnet-red/20">
             <CardHeader>
               <CardTitle className="text-2xl text-carnet-red">4. Préparation des Colles</CardTitle>
             </CardHeader>
@@ -88,7 +88,7 @@ export const MethodAnglaisPage = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-white border border-carnet-red/20">
+          <Card className="bg-carnet-paper-2 border border-carnet-red/20">
             <CardHeader>
               <CardTitle className="text-2xl text-carnet-red">5. Essais et Synthèses</CardTitle>
             </CardHeader>
@@ -97,7 +97,7 @@ export const MethodAnglaisPage = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-white border border-carnet-red/20">
+          <Card className="bg-carnet-paper-2 border border-carnet-red/20">
             <CardHeader>
               <CardTitle className="text-2xl text-carnet-red">6. Préparation aux Concours</CardTitle>
             </CardHeader>
@@ -106,7 +106,7 @@ export const MethodAnglaisPage = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-white border border-carnet-red/20">
+          <Card className="bg-carnet-paper-2 border border-carnet-red/20">
             <CardHeader>
               <CardTitle className="text-2xl text-carnet-red">7. Suivi des Progrès</CardTitle>
             </CardHeader>

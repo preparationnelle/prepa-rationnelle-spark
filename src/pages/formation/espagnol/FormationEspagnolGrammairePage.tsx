@@ -2,7 +2,8 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Home, ChevronRight, ArrowRight, PenTool, BookOpen } from 'lucide-react';
+import { Home, ChevronRight, ArrowRight, PenTool, BookOpen, Languages, ListChecks, Layers } from 'lucide-react';
+import { SEOHead } from '@/components/SEOHead';
 
 type Module = {
   number: number;
@@ -23,12 +24,27 @@ const modules: Module[] = [
   { number: 8, title: 'Pronoms', description: 'Maîtrisez l’usage des pronoms personnels, possessifs et démonstratifs', to: '/formation/espagnol/grammaire/pronouns', exercicesTo: '/formation/espagnol/grammaire/pronouns/exercices' },
   { number: 9, title: 'Verbes Particuliers et Tournures Affectives', description: 'Maîtrisez les verbes comme gustar et les constructions affectives', to: '/formation/espagnol/grammaire/affective-verbs', exercicesTo: '/formation/espagnol/grammaire/affective-verbs/exercices' },
   { number: 10, title: 'Adjectifs et Adverbes', description: 'Maîtrisez l’accord des adjectifs, les adverbes et leurs emplois', to: '/formation/espagnol/grammaire/adjectives-adverbs', exercicesTo: '/formation/espagnol/grammaire/adjectives-adverbs/exercices' },
-  { number: 11, title: 'Thème Grammatical', description: 'Techniques de traduction français → espagnol avec pièges classiques et méthodologie', to: '/formation/espagnol/grammaire/theme' },
+  { number: 11, title: 'Le Subjonctif', description: 'Formation, déclencheurs et test de décision indicatif / subjonctif — l’attendu n°1 des correcteurs', to: '/formation/espagnol/grammaire/subjonctif' },
+  { number: 12, title: 'Concordance des Temps', description: 'Axe du présent, axe du passé : accorder le temps de la subordonnée sur la principale', to: '/formation/espagnol/grammaire/concordance-temps' },
+  { number: 13, title: 'Conditionnelles & Hypothèse', description: 'Les trois types de « si » et le système hypothétique sans faute de mode', to: '/formation/espagnol/grammaire/conditionnelles' },
+  { number: 14, title: 'Style Indirect', description: 'Discours rapporté : transposition des temps, des personnes et des déictiques', to: '/formation/espagnol/grammaire/style-indirect' },
+  { number: 15, title: 'Subordonnées Relatives', description: 'que, quien, el cual, cuyo, lo que : choisir le bon relatif et traduire « dont »', to: '/formation/espagnol/grammaire/relatives' },
+  { number: 16, title: 'Por vs Para', description: 'La confusion n°1 des correcteurs : valeurs, paires contrastives et locutions figées', to: '/formation/espagnol/grammaire/por-para' },
+  { number: 17, title: 'Périphrases Verbales', description: 'ir a, acabar de, volver a, llevar + gérondif… pour enrichir l’expression', to: '/formation/espagnol/grammaire/periphrases-verbales' },
+  { number: 18, title: 'Comparatifs & Superlatifs', description: 'Comparatifs, irréguliers (mejor, peor, mayor) et superlatif absolu en -ísimo', to: '/formation/espagnol/grammaire/comparatifs-superlatifs' },
+  { number: 19, title: 'Connecteurs Logiques', description: 'La boîte à outils de l’argumentation pour structurer synthèse et dissertation', to: '/formation/espagnol/grammaire/connecteurs-logiques' },
+  { number: 20, title: 'Thème Grammatical', description: 'Techniques de traduction français → espagnol avec pièges classiques et méthodologie', to: '/formation/espagnol/grammaire/theme' },
 ];
 
 const FormationEspagnolGrammairePage = () => {
   return (
     <div className="carnet-paper min-h-screen">
+      <SEOHead
+        canonical="/formation/espagnol/grammaire"
+        title="Grammaire Espagnole ECG · Prépa Rationnelle"
+        description="Formation complète de grammaire espagnole pour les concours ECG : 20 fiches structurées (subjonctif, concordance, por/para, périphrases…) avec exercices."
+      />
+
       <nav className="sticky top-0 z-40 carnet-paper-plain border-b border-dashed border-[rgba(78,55,30,0.18)]">
         <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16 py-3">
           <div className="flex items-center font-instrument text-[12px] text-carnet-ink-mute flex-wrap">
@@ -50,21 +66,47 @@ const FormationEspagnolGrammairePage = () => {
         </div>
       </nav>
 
-      <section className="relative py-16 lg:py-20">
+      <section className="relative py-20 lg:py-24">
         <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-[820px]">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[820px]"
+          >
             <div className="carnet-eyebrow mb-6">Espagnol · Module 02</div>
-            <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.05] text-carnet-ink tracking-tight mb-6">
-              Grammaire <em className="font-lora italic text-carnet-red">espagnole</em>.
-            </h1>
-            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px]">
-              Maîtrisez les structures grammaticales complexes pour exceller aux épreuves d'espagnol ECG.
+
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+                <Languages className="h-6 w-6 text-carnet-red" />
+              </div>
+              <h1 className="font-lora text-[40px] sm:text-[52px] lg:text-[64px] leading-[1.05] text-carnet-ink tracking-tight">
+                Grammaire <em className="font-lora italic text-carnet-red">espagnole</em>.
+              </h1>
+            </div>
+
+            <p className="font-instrument text-[17px] lg:text-[19px] leading-[1.65] text-carnet-ink-soft max-w-[640px] mb-8">
+              Formation <span className="carnet-hl font-lora italic">complète</span> de grammaire espagnole — 20 fiches structurées pour maîtriser les épreuves des concours des Grandes Écoles de Commerce.
             </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.25)]">
+                <Languages className="h-4 w-4 text-carnet-red" />
+                <span className="font-instrument text-[13px] font-semibold text-carnet-ink">20 fiches</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-carnet-paper-2 border border-dashed border-[rgba(78,55,30,0.18)]">
+                <span className="carnet-eyebrow text-[11px]">Cours · Quiz · Flashcards · Concours ECG</span>
+              </div>
+            </div>
+
+            <div className="carnet-hand text-[24px] mt-8 hidden md:block" style={{ transform: 'rotate(-2deg)' }}>
+              ↓ choisis ton chapitre
+            </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="relative pb-20">
+      <section className="relative pb-24">
         <div className="mx-auto max-w-[1180px] pl-6 pr-6 lg:pl-[200px] lg:pr-16">
           <div className="space-y-4">
             {modules.map((m, idx) => {
@@ -73,8 +115,7 @@ const FormationEspagnolGrammairePage = () => {
                 <motion.div
                   key={m.number}
                   initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-30px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.3) }}
                   className={tilt}
                 >
@@ -84,9 +125,11 @@ const FormationEspagnolGrammairePage = () => {
                         {String(m.number).padStart(2, '0')}
                       </span>
                       <div className="flex-1">
-                        <h3 className="font-lora text-[22px] sm:text-[24px] leading-[1.2] text-carnet-ink mb-2 group-hover:text-carnet-red transition-colors">
-                          {m.title}
-                        </h3>
+                        <Link to={m.to} className="block">
+                          <h3 className="font-lora text-[22px] sm:text-[24px] leading-[1.2] text-carnet-ink mb-2 group-hover:text-carnet-red transition-colors">
+                            {m.title}
+                          </h3>
+                        </Link>
                         <hr className="w-8 h-0.5 bg-carnet-ink border-0 mb-3" />
                         <p className="font-instrument text-[14px] text-carnet-ink-soft leading-[1.6] mb-4">
                           {m.description}
@@ -99,19 +142,26 @@ const FormationEspagnolGrammairePage = () => {
                               <ArrowRight className="ml-1 h-3 w-3" />
                             </Button>
                           </Link>
-                          {m.exercicesTo ? (
+                          {m.exercicesTo && (
                             <Link to={m.exercicesTo}>
                               <Button variant="outline" className="bg-carnet-paper-2 border-dashed border-[rgba(78,55,30,0.25)] text-carnet-ink-soft hover:border-carnet-red hover:text-carnet-red font-instrument font-semibold rounded-full h-10 px-5 text-[13px]">
                                 <PenTool className="mr-2 h-4 w-4" />
                                 Exercices
                               </Button>
                             </Link>
-                          ) : (
-                            <Button variant="outline" className="bg-carnet-paper-2 border-dashed border-[rgba(78,55,30,0.18)] text-carnet-ink-mute font-instrument font-semibold rounded-full h-10 px-5 text-[13px] cursor-not-allowed opacity-70" disabled>
-                              <PenTool className="mr-2 h-4 w-4" />
-                              Exercices bientôt
-                            </Button>
                           )}
+                          <Link to={`${m.to}/quiz`}>
+                            <Button variant="outline" className="bg-carnet-paper-2 border-[rgba(78,55,30,0.2)] text-carnet-ink-soft hover:border-carnet-red hover:text-carnet-red font-instrument font-semibold rounded-full h-10 px-5 text-[13px]">
+                              <ListChecks className="mr-2 h-4 w-4" />
+                              Quiz
+                            </Button>
+                          </Link>
+                          <Link to={`${m.to}/flashcards`}>
+                            <Button variant="outline" className="bg-carnet-paper-2 border-[rgba(78,55,30,0.2)] text-carnet-ink-soft hover:border-carnet-red hover:text-carnet-red font-instrument font-semibold rounded-full h-10 px-5 text-[13px]">
+                              <Layers className="mr-2 h-4 w-4" />
+                              Flashcards
+                            </Button>
+                          </Link>
                         </div>
                       </div>
                     </div>

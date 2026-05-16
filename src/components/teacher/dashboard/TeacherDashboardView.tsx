@@ -116,18 +116,18 @@ const TeacherDashboardView: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[1, 2, 3, 4].map(i => (
-            <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6 animate-pulse">
-              <div className="h-4 w-20 bg-white/10 rounded mb-3"></div>
-              <div className="h-8 w-16 bg-white/10 rounded"></div>
+            <div key={i} className="bg-carnet-paper/10 border border-carnet-rule/20 rounded-xl p-6 animate-pulse">
+              <div className="h-4 w-20 bg-carnet-paper/20 rounded mb-3"></div>
+              <div className="h-8 w-16 bg-carnet-paper/20 rounded"></div>
             </div>
           ))}
         </div>
       ) : (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {statCards.map((card, i) => (
-            <div key={i} className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all">
+            <div key={i} className="bg-carnet-paper/10 border border-carnet-rule/20 backdrop-blur-sm rounded-xl p-6 hover:bg-carnet-paper/20 transition-all">
               <div className="flex items-center justify-between mb-3">
-                <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-carnet-paper/10 rounded-lg flex items-center justify-center">
                   <card.icon className={`h-5 w-5 ${card.color}`} />
                 </div>
                 <span className={`text-2xl font-bold ${card.color}`}>{card.value}</span>
@@ -141,7 +141,7 @@ const TeacherDashboardView: React.FC = () => {
       {/* Activity chart + User growth */}
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Activity chart (dark themed, inline) */}
-        <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-6">
+        <div className="bg-carnet-paper/10 border border-carnet-rule/20 backdrop-blur-sm rounded-xl p-6">
           <div className="flex items-center gap-2 mb-4">
             <Activity className="h-5 w-5 text-orange-400" />
             <h3 className="text-lg font-semibold text-white">Activite (7 jours)</h3>

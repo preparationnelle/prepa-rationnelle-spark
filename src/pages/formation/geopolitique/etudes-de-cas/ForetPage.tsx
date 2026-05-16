@@ -22,10 +22,10 @@ const ForetPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-carnet-paper">
 
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -67,19 +67,19 @@ const ForetPage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">30%</div>
                 <div className="text-sm text-emerald-100">Terres mondiales</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">10</div>
                 <div className="text-sm text-emerald-100">Pays = 65%</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">-5%</div>
                 <div className="text-sm text-emerald-100">Perte 2000-2024</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">6,6M</div>
                 <div className="text-sm text-emerald-100">ha/an déforestation</div>
               </div>
@@ -96,7 +96,7 @@ const ForetPage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-700 leading-relaxed mb-4">
+            <p className="text-carnet-ink leading-relaxed mb-4">
               Les forêts couvrent <strong>30% des terres mondiales</strong>, avec une concentration dans 10 pays 
               qui détiennent <strong>65% de la superficie forestière</strong>. Depuis 2000, le monde a perdu 
               <strong>5% de sa couverture forestière</strong> malgré les efforts de reforestation.
@@ -179,8 +179,8 @@ const ForetPage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-gray-800 mb-2">Asie du Sud-Est</h4>
+                    <div className="bg-carnet-paper p-4 rounded-lg">
+                      <h4 className="font-semibold text-carnet-ink mb-2">Asie du Sud-Est</h4>
                       <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Huile de palme :</strong> Indonésie, Malaisie leaders mondiaux</li>
                         <li><strong>Feux :</strong> Brûlis illégaux, pollution transfrontalière</li>
@@ -268,7 +268,7 @@ const ForetPage = () => {
             <CardTitle className="text-lg">Références et sources</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-sm text-gray-600 space-y-2">
+            <div className="text-sm text-carnet-ink-soft space-y-2">
               <p><strong>FAO</strong> : Global Forest Resources Assessment 2024</p>
               <p><strong>Global Forest Watch</strong> : Données déforestation temps réel</p>
               <p><strong>UNEP</strong> : State of the World's Forests 2024</p>

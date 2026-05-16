@@ -195,18 +195,20 @@ export const AIChatHubPage = () => {
                     </div>
                 </div>
 
-                {/* Zone chat principale */}
-                <div className="flex-1 flex flex-col overflow-hidden relative bg-carnet-paper-2">
+                {/* Zone chat principale — papier visible en arrière-plan, chatbot centré */}
+                <div className="flex-1 flex flex-col overflow-hidden relative">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={selectedAgentId}
-                            initial={{ opacity: 0, scale: 0.99 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.99 }}
-                            transition={{ duration: 0.2, ease: 'easeOut' }}
-                            className="w-full h-full"
+                            initial={{ opacity: 0, y: 6 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -6 }}
+                            transition={{ duration: 0.22, ease: 'easeOut' }}
+                            className="w-full h-full flex items-stretch justify-center px-4 py-5 md:px-10 md:py-8 overflow-hidden"
                         >
-                            {selectedAgent.component}
+                            <div className="w-full max-w-3xl h-full">
+                                {selectedAgent.component}
+                            </div>
                         </motion.div>
                     </AnimatePresence>
                 </div>

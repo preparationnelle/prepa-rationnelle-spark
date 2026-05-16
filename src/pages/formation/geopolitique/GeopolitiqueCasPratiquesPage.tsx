@@ -122,7 +122,7 @@ const GeopolitiqueCasPratiquesPage = () => {
 
       {/* Sticky Breadcrumb */}
       <nav
-        className="sticky top-0 z-50 bg-white"
+        className="sticky top-0 z-50 bg-carnet-paper-2"
         style={{ borderBottom: `1px solid ${PR_GRAY_LIGHT}` }}
       >
         <div className="container mx-auto px-4 py-3">
@@ -183,7 +183,7 @@ const GeopolitiqueCasPratiquesPage = () => {
               <Link
                 key={study.id}
                 to={study.route}
-                className="group block bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-0.5"
+                className="group block bg-carnet-paper-2 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-0.5"
                 style={{
                   border: `1px solid ${PR_GRAY_LIGHT}`,
                   boxShadow: "0 1px 2px rgba(0,0,0,0.02)"

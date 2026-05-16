@@ -22,18 +22,18 @@ const Chapitre11OptimisationMultivarieeAvanceeQuizPage = () => {
             </span>
             Quiz - Optimisation Multivariée Avancée
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-carnet-ink mb-4">
             Testez vos connaissances sur les fonctions de plusieurs variables, la matrice Hessienne,
             les conditions d'ordre 2, les multiplicateurs de Lagrange et l'optimisation sous contraintes.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-            <div className="bg-white p-3 rounded border border-carnet-red/20">
+            <div className="bg-carnet-paper-2 p-3 rounded border border-carnet-red/20">
               <span className="font-semibold text-carnet-red">Questions :</span> 10
             </div>
-            <div className="bg-white p-3 rounded border border-carnet-red/20">
+            <div className="bg-carnet-paper-2 p-3 rounded border border-carnet-red/20">
               <span className="font-semibold text-carnet-red">Temps estimé :</span> 15-20 min
             </div>
-            <div className="bg-white p-3 rounded border border-carnet-red/20">
+            <div className="bg-carnet-paper-2 p-3 rounded border border-carnet-red/20">
               <span className="font-semibold text-carnet-red">Niveau :</span> Avancé
             </div>
           </div>
@@ -59,18 +59,18 @@ const Chapitre11OptimisationMultivarieeAvanceeQuizPage = () => {
         />
 
         {/* Ressources complémentaires */}
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-          <h3 className="text-xl font-bold text-gray-800 mb-4">Ressources complémentaires</h3>
+        <div className="bg-carnet-paper border border-carnet-rule rounded-lg p-6">
+          <h3 className="text-xl font-bold text-carnet-ink mb-4">Ressources complémentaires</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white p-4 rounded border">
+            <div className="bg-carnet-paper-2 p-4 rounded border">
               <h4 className="font-semibold text-carnet-red mb-2">📚 Cours théorique</h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-carnet-ink-soft">
                 Revoyez les concepts fondamentaux : matrice Hessienne, théorème de Schwarz, développement limité d'ordre 2.
               </p>
             </div>
-            <div className="bg-white p-4 rounded border">
+            <div className="bg-carnet-paper-2 p-4 rounded border">
               <h4 className="font-semibold text-green-600 mb-2">✏️ Exercices pratiques</h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-carnet-ink-soft">
                 Pratiquez avec des exercices sur les multiplicateurs de Lagrange et l'optimisation sous contraintes.
               </p>
             </div>

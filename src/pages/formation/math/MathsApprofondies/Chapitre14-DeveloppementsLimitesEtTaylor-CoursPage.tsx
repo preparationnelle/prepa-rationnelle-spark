@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LatexRenderer } from '@/components/LatexRenderer';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-        <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+        <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
                 {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
                 <div className="text-center">
                         {children}
@@ -32,10 +32,10 @@ const MathsDeveloppementsLimitesPage = () => {
                 >
                         <div className="space-y-8">
                                 {/* Section 1: Formule de Taylor */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
                                                         <span className="font-semibold">Formule de Taylor</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -55,10 +55,10 @@ const MathsDeveloppementsLimitesPage = () => {
                                 </Card>
 
                                 {/* Section 2: Développements Limités */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
                                                         <span className="font-semibold">Développements Limités (DL)</span>
                                                 </CardTitle>
                                         </CardHeader>
@@ -67,7 +67,7 @@ const MathsDeveloppementsLimitesPage = () => {
                                                         <p className="text-slate-700 mb-4">
                                                                 <LatexRenderer latex="f(x) = P_n(x-x_0) + o((x-x_0)^n)" />.
                                                         </p>
-                                                        <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-slate-400 mt-4">
+                                                        <div className="bg-carnet-paper p-4 rounded-lg border-l-4 border-slate-400 mt-4">
                                                                 <h4 className="font-semibold text-slate-800 mb-2">Propriétés</h4>
                                                                 <ul className="list-disc list-inside text-slate-700 text-sm space-y-1">
                                                                         <li>Unicité du DL.</li>
@@ -81,10 +81,10 @@ const MathsDeveloppementsLimitesPage = () => {
                                 </Card>
 
                                 {/* Section 3: DL Usuels */}
-                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-                                        <CardHeader className="bg-slate-50 border-b border-slate-100">
+                                <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+                                        <CardHeader className="bg-carnet-paper border-b border-slate-100">
                                                 <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-                                                        <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+                                                        <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
                                                         <span className="font-semibold">DL Usuels en 0</span>
                                                 </CardTitle>
                                         </CardHeader>

@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Calculator, CheckCircle, Calendar, Star, Sparkles, HelpCircle } from 'lucide-react';
+import { CheckCircle, Calendar, Star, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import PythonModuleLayout from '@/components/formation/PythonModuleLayout';
 import ModuleNavigationCards from '@/components/formation/ModuleNavigationCards';
 import { HeroContactForm } from '@/components/HeroContactForm';
 import { LatexRenderer } from '@/components/LatexRenderer';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
 
 import { usePythonProgress } from '@/hooks/usePythonProgress';
 import PythonCodeEditor, { EvaluationResult } from '@/components/python/PythonCodeEditor';
@@ -23,12 +16,12 @@ import {
   PythonExerciseDetailHeader,
   PythonExerciseFooterNav,
   PythonStatementCard,
-  PythonCorrectionToggle,
   PythonCorrectionPanel,
   PythonCodeBlock,
   PythonExerciseGrid,
   PythonQCMLauncher,
   PythonSectionHeading,
+  PythonExerciseWorkspace,
 } from '@/components/formation/python/PythonExercisePage';
 import PythonQCMPanel from '@/components/formation/python/PythonQCMPanel';
 
@@ -36,7 +29,6 @@ const PythonAnalyseExercicesPage = () => {
   const [searchParams] = useSearchParams();
   const { markExerciseAsSeen, markAsComplete } = usePythonProgress();
   const [selectedExercise, setSelectedExercise] = useState<number | null>(null);
-  const [showCorrections, setShowCorrections] = useState<Set<number>>(new Set());
   const [showQCM, setShowQCM] = useState(false);
 
   // États pour le QCM d'évaluation
@@ -56,16 +48,13 @@ const PythonAnalyseExercicesPage = () => {
     }
   }, [searchParams]);
 
-  const toggleCorrection = (index: number) => {
-    const newShowCorrections = new Set(showCorrections);
-    if (newShowCorrections.has(index)) {
-      newShowCorrections.delete(index);
-    } else {
-      newShowCorrections.add(index);
-      markExerciseAsSeen(`python-analyse-exo-${index}`);
+  // Marquer l'exercice comme vu dès son ouverture (corrigé toujours visible)
+  useEffect(() => {
+    if (selectedExercise) {
+      markExerciseAsSeen(`python-analyse-exo-${selectedExercise}`);
     }
-    setShowCorrections(newShowCorrections);
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedExercise]);
 
   // Fonction pour gérer les réponses du QCM
   const handleQCMAnswer = (questionId: number, answer: string) => {
@@ -653,53 +642,53 @@ print(f"Erreur absolue : {abs(approx - exact)}")
 
       {selectedExercise && (
         <>
-          <PythonExerciseTopBar
-            current={selectedExercise}
-            total={exercises.length}
-            onBack={() => setSelectedExercise(null)}
-            onPrev={() => {
-              if (selectedExercise > 1) {
-                setSelectedExercise(selectedExercise - 1);
-                window.scrollTo(0, 0);
-              }
-            }}
-            onNext={() => {
-              if (selectedExercise < exercises.length) {
-                setSelectedExercise(selectedExercise + 1);
-                window.scrollTo(0, 0);
-              }
-            }}
-            hasPrev={selectedExercise > 1}
-            hasNext={selectedExercise < exercises.length}
-          />
-
-          <PythonExerciseDetailHeader
-            number={selectedExercise}
-            title={exercises[selectedExercise - 1].title}
-            difficulty={exercises[selectedExercise - 1].difficulty}
-          />
-
-          <div>
-            {/* GENERIC RENDERER (For all exercises with content) */}
-            {exercises[selectedExercise - 1].content && (
-              <>
-                <PythonStatementCard label="Objectif" icon="target">
+          {exercises[selectedExercise - 1].content ? (
+            <PythonExerciseWorkspace
+              current={selectedExercise}
+              total={exercises.length}
+              title={exercises[selectedExercise - 1].title}
+              difficulty={exercises[selectedExercise - 1].difficulty}
+              description={exercises[selectedExercise - 1].description}
+              onBack={() => setSelectedExercise(null)}
+              onPrev={() => {
+                if (selectedExercise > 1) {
+                  setSelectedExercise(selectedExercise - 1);
+                  window.scrollTo(0, 0);
+                }
+              }}
+              onNext={() => {
+                if (selectedExercise < exercises.length) {
+                  setSelectedExercise(selectedExercise + 1);
+                  window.scrollTo(0, 0);
+                }
+              }}
+              hasPrev={selectedExercise > 1}
+              hasNext={selectedExercise < exercises.length}
+              objective={
+                <>
                   {exercises[selectedExercise - 1].content.isLatex ? (
                     <LatexRenderer latex={exercises[selectedExercise - 1].content.objective} />
                   ) : (
                     <p>{exercises[selectedExercise - 1].content.objective}</p>
                   )}
-                </PythonStatementCard>
-
-                <PythonStatementCard label="Énoncé" icon="book">
-                  {exercises[selectedExercise - 1].content.enonce_latex ? (
-                    <LatexRenderer latex={exercises[selectedExercise - 1].content.enonce_latex} />
-                  ) : (
-                    <p className="whitespace-pre-line">{exercises[selectedExercise - 1].content.enonce}</p>
+                  {(exercises[selectedExercise - 1].content.enonce_latex || exercises[selectedExercise - 1].content.enonce) && (
+                    <div className="mt-3 pt-3 border-t border-dashed border-[rgba(78,55,30,0.15)]">
+                      <div className="font-instrument text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-red mb-1.5">
+                        Énoncé
+                      </div>
+                      {exercises[selectedExercise - 1].content.enonce_latex ? (
+                        <LatexRenderer latex={exercises[selectedExercise - 1].content.enonce_latex} />
+                      ) : (
+                        <p className="whitespace-pre-line">{exercises[selectedExercise - 1].content.enonce}</p>
+                      )}
+                    </div>
                   )}
-                </PythonStatementCard>
-
+                </>
+              }
+              editor={
                 <PythonCodeEditor
+                  embedded
+                  minHeight={240}
                   exerciseStatement={exercises[selectedExercise - 1].content.enonce_latex || exercises[selectedExercise - 1].content.enonce || exercises[selectedExercise - 1].content.objective}
                   expectedSolution={exercises[selectedExercise - 1].content.correction || ''}
                   moduleId={moduleId}
@@ -709,523 +698,292 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                     markExerciseAsSeen(`python-${moduleId}-exo-${selectedExercise}`);
                   }}
                 />
-
-                {evaluationResults[selectedExercise] && (
+              }
+              evaluationResult={
+                evaluationResults[selectedExercise] ? (
                   <CodeEvaluationResult result={evaluationResults[selectedExercise]} />
-                )}
+                ) : undefined
+              }
+              correction={
+                exercises[selectedExercise - 1].content.correction ? (
+                  <PythonCodeBlock code={exercises[selectedExercise - 1].content.correction} />
+                ) : undefined
+              }
+            />
+          ) : (
+            <>
+              <PythonExerciseTopBar
+                current={selectedExercise}
+                total={exercises.length}
+                onBack={() => setSelectedExercise(null)}
+                onPrev={() => {
+                  if (selectedExercise > 1) {
+                    setSelectedExercise(selectedExercise - 1);
+                    window.scrollTo(0, 0);
+                  }
+                }}
+                onNext={() => {
+                  if (selectedExercise < exercises.length) {
+                    setSelectedExercise(selectedExercise + 1);
+                    window.scrollTo(0, 0);
+                  }
+                }}
+                hasPrev={selectedExercise > 1}
+                hasNext={selectedExercise < exercises.length}
+              />
+              <PythonExerciseDetailHeader
+                number={selectedExercise}
+                title={exercises[selectedExercise - 1].title}
+                difficulty={exercises[selectedExercise - 1].difficulty}
+              />
+            </>
+          )}
 
-                <PythonCorrectionToggle
-                  isOpen={showCorrections.has(selectedExercise)}
-                  onToggle={() => toggleCorrection(selectedExercise)}
-                />
-
-                {showCorrections.has(selectedExercise) && exercises[selectedExercise - 1].content.correction && (
-                  <PythonCorrectionPanel>
-                    <PythonCodeBlock code={exercises[selectedExercise - 1].content.correction} />
-                  </PythonCorrectionPanel>
-                )}
-              </>
-            )}
+          <div>
+            {/* Énoncés détaillés + corrigés — toujours visibles (jamais repliés) */}
 
             {selectedExercise === 3 && (
               <>
-                {/* Exercice 3 */}
-                <Card className="mb-8">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-gray-700">
-                      <Calculator className="h-6 w-6" />
-                      Exercice 3
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-6">
+                <PythonStatementCard label="Énoncé · Exercice 3" icon="book">
+                  <p className="font-semibold text-carnet-ink mb-3">Interprétation de commandes</p>
+                  <p className="mb-3">Que calculent les commandes suivantes :</p>
+                  <div className="space-y-3">
+                    <div className="bg-carnet-paper-2 p-3 rounded-lg border border-[rgba(78,55,30,0.14)]">
+                      <p className="font-semibold text-[13px] text-carnet-ink mb-1">(a)</p>
+                      <code className="font-mono text-[13px] text-carnet-ink-soft">x = np.ones(10) ; y = np.cumsum(x)</code>
+                    </div>
+                    <div className="bg-carnet-paper-2 p-3 rounded-lg border border-[rgba(78,55,30,0.14)]">
+                      <p className="font-semibold text-[13px] text-carnet-ink mb-1">(b)</p>
+                      <code className="font-mono text-[13px] text-carnet-ink-soft">x = np.ones(10) ; y = np.sum(np.cumsum(x))</code>
+                    </div>
+                    <div className="bg-carnet-paper-2 p-3 rounded-lg border border-[rgba(78,55,30,0.14)]">
+                      <p className="font-semibold text-[13px] text-carnet-ink mb-1">(c)</p>
+                      <code className="font-mono text-[13px] text-carnet-ink-soft">x = np.ones(10) ; y = np.sum(np.cumsum(np.cumsum(x)))</code>
+                    </div>
+                  </div>
+                </PythonStatementCard>
+
+                <div className="mt-6">
+                  <PythonCorrectionPanel>
+                    <div className="px-6 md:px-8 py-5 space-y-5">
                       <div>
-                        <h3 className="text-lg font-semibold mb-3">Interprétation de commandes</h3>
-                        <div className="p-4 bg-[rgba(78,55,30,0.04)] rounded-lg mb-4">
-                          <p className="text-sm mb-3">Que calculent les commandes suivantes :</p>
-
-                          <div className="space-y-3">
-                            <div className="bg-white p-3 rounded border">
-                              <p className="font-semibold text-sm mb-1">(a)</p>
-                              <code className="text-sm">x = np.ones(10) ; y = np.cumsum(x)</code>
-                            </div>
-
-                            <div className="bg-white p-3 rounded border">
-                              <p className="font-semibold text-sm mb-1">(b)</p>
-                              <code className="text-sm">x = np.ones(10) ; y = np.sum(np.cumsum(x))</code>
-                            </div>
-
-                            <div className="bg-white p-3 rounded border">
-                              <p className="font-semibold text-sm mb-1">(c)</p>
-                              <code className="text-sm">x = np.ones(10) ; y = np.sum(np.cumsum(np.cumsum(x)))</code>
-                            </div>
-                          </div>
-                        </div>
-
-                        <Accordion type="single" collapsible>
-                          <AccordionItem value="correction-3">
-                            <AccordionTrigger className="text-gray-700 font-semibold">
-                              <CheckCircle className="h-4 w-4 mr-2" />
-                              Voir la correction 3
-                            </AccordionTrigger>
-                            <AccordionContent>
-                              <div className="space-y-6">
-                                <div>
-                                  <h4 className="font-semibold text-sm mb-2">(a) x = np.ones(10) ; y = np.cumsum(x)</h4>
-                                  <div className="bg-pr-black rounded-lg p-4 mb-3">
-                                    <pre className="text-gray-600 text-sm">
-                                      <code>x = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</code>
-                                      <br />
-                                      <code>y = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code>
-                                    </pre>
-                                  </div>
-                                  <p className="text-sm text-muted-foreground">
-                                    <code>np.cumsum(x)</code> calcule les sommes cumulées : chaque élément est la somme des éléments précédents.
-                                  </p>
-                                </div>
-
-                                <div>
-                                  <h4 className="font-semibold text-sm mb-2">(b) x = np.ones(10) ; y = np.sum(np.cumsum(x))</h4>
-                                  <div className="bg-pr-black rounded-lg p-4 mb-3">
-                                    <pre className="text-gray-600 text-sm">
-                                      <code>np.cumsum(x) = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code>
-                                      <br />
-                                      <code>y = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55</code>
-                                    </pre>
-                                  </div>
-                                  <p className="text-sm text-muted-foreground">
-                                    Cela calcule la somme des n premiers entiers : ∑(k=1 à 10) k = 10×11/2 = 55
-                                  </p>
-                                </div>
-
-                                <div>
-                                  <h4 className="font-semibold text-sm mb-2">(c) x = np.ones(10) ; y = np.sum(np.cumsum(np.cumsum(x)))</h4>
-                                  <div className="bg-pr-black rounded-lg p-4 mb-3">
-                                    <pre className="text-gray-600 text-sm">
-                                      <code>np.cumsum(x) = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code>
-                                      <br />
-                                      <code>np.cumsum(np.cumsum(x)) = [1, 3, 6, 10, 15, 21, 28, 36, 45, 55]</code>
-                                      <br />
-                                      <code>y = 1 + 3 + 6 + 10 + ... + 55 = 220</code>
-                                    </pre>
-                                  </div>
-                                  <p className="text-sm text-muted-foreground">
-                                    Cela calcule la somme des nombres triangulaires : ∑(k=1 à 10) k(k+1)/2
-                                  </p>
-                                </div>
-
-                                <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                  <p className="text-sm text-gray-700">
-                                    <strong>Astuce :</strong> La double somme cumulative permet de calculer des sommes de sommes,
-                                    très utile pour les séries de nombres triangulaires ou les calculs combinatoires.
-                                  </p>
-                                </div>
-                              </div>
-                            </AccordionContent>
-                          </AccordionItem>
-                        </Accordion>
+                        <h4 className="font-instrument font-semibold text-[14px] text-carnet-ink mb-2">(a) x = np.ones(10) ; y = np.cumsum(x)</h4>
+                        <PythonCodeBlock code={`x = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]\ny = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`} />
+                        <p className="mt-3 font-instrument text-[14px] text-carnet-ink-soft">
+                          <code className="font-mono">np.cumsum(x)</code> calcule les sommes cumulées : chaque élément est la somme des éléments précédents.
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="font-instrument font-semibold text-[14px] text-carnet-ink mb-2">(b) x = np.ones(10) ; y = np.sum(np.cumsum(x))</h4>
+                        <PythonCodeBlock code={`np.cumsum(x) = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\ny = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55`} />
+                        <p className="mt-3 font-instrument text-[14px] text-carnet-ink-soft">
+                          Cela calcule la somme des n premiers entiers : ∑(k=1 à 10) k = 10×11/2 = 55
+                        </p>
+                      </div>
+                      <div>
+                        <h4 className="font-instrument font-semibold text-[14px] text-carnet-ink mb-2">(c) x = np.ones(10) ; y = np.sum(np.cumsum(np.cumsum(x)))</h4>
+                        <PythonCodeBlock code={`np.cumsum(x) = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nnp.cumsum(np.cumsum(x)) = [1, 3, 6, 10, 15, 21, 28, 36, 45, 55]\ny = 1 + 3 + 6 + 10 + ... + 55 = 220`} />
+                        <p className="mt-3 font-instrument text-[14px] text-carnet-ink-soft">
+                          Cela calcule la somme des nombres triangulaires : ∑(k=1 à 10) k(k+1)/2
+                        </p>
+                      </div>
+                      <div className="p-4 bg-[rgba(193,68,58,0.04)] rounded-lg border border-[rgba(193,68,58,0.12)]">
+                        <p className="font-instrument text-[14px] text-carnet-ink-soft">
+                          <strong className="text-carnet-red">Astuce :</strong> La double somme cumulative permet de calculer des sommes de sommes,
+                          très utile pour les séries de nombres triangulaires ou les calculs combinatoires.
+                        </p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </PythonCorrectionPanel>
+                </div>
               </>
             )}
 
-            {/* Nouveaux exercices 10-15 */}
             {selectedExercise === 10 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 10
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Approximation de série</h3>
-                      <div className="p-4 bg-[rgba(78,55,30,0.04)] rounded-lg mb-4">
-                        <p className="text-sm mb-2">On admet que pour tout n ∈ ℕ*, on a :</p>
-                        <div className="text-center text-lg font-mono bg-white p-3 rounded border mb-3">
-                          0 ≤ ∑(k=1 à n) 1/k² + 1/n - S ≤ 1/n²
-                        </div>
-                        <p className="text-sm mb-2">où S = ∑(k=1 à ∞) 1/k²</p>
-                        <p className="text-sm">Écrire un programme Python qui demande à l'utilisateur un réel positif ε (epsilon), puis calcule une valeur approchée de la somme S à ε près.</p>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-10">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 10
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <p className="text-sm">
-                                Voici deux versions du programme :
-                              </p>
-
-                              <div>
-                                <h4 className="font-semibold text-sm mb-2">Version 1 - Avec NumPy</h4>
-                                <div className="bg-pr-black rounded-lg p-4">
-                                  <pre className="text-gray-600 text-sm">
-                                    <code>{`import numpy as np
-
-eps = float(input("Entrer la précision eps : "))
-n = 1
-
-while 1 / n**2 > eps:
-    n += 1
-
-k = np.arange(1, n + 1)
-S_approx = np.sum(1 / k**2) + 1 / n
-
-print("Valeur approchée de S :", S_approx)`}</code>
-                                  </pre>
-                                </div>
-                              </div>
-
-                              <div>
-                                <h4 className="font-semibold text-sm mb-2">Version 2 - Avec boucle</h4>
-                                <div className="bg-pr-black rounded-lg p-4">
-                                  <pre className="text-gray-600 text-sm">
-                                    <code>{`eps = float(input("Entrer la précision eps : "))
-n = 1
-S = 1  # car 1/1^2 = 1
-
-while 1 / n**2 > eps:
-    n += 1
-    S += 1 / n**2
-
-S_approx = S + 1 / n
-print("Valeur approchée de S :", S_approx)`}</code>
-                                  </pre>
-                                </div>
-                              </div>
-
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• On trouve n tel que 1/n² ≤ eps (condition d'arrêt)</li>
-                                  <li>• On calcule ∑(k=1 à n) 1/k²</li>
-                                  <li>• On ajoute 1/n pour obtenir l'approximation</li>
-                                  <li>• L'erreur est majorée par 1/n² ≤ eps</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
+              <>
+                <PythonStatementCard label="Énoncé · Exercice 10" icon="book">
+                  <p className="font-semibold text-carnet-ink mb-3">Approximation de série</p>
+                  <p className="mb-2">On admet que pour tout n ∈ ℕ*, on a :</p>
+                  <div className="text-center font-mono text-[15px] bg-carnet-paper-2 p-3 rounded-lg border border-[rgba(78,55,30,0.14)] mb-3">
+                    0 ≤ ∑(k=1 à n) 1/k² + 1/n - S ≤ 1/n²
                   </div>
-                </CardContent>
-              </Card>
+                  <p className="mb-2">où S = ∑(k=1 à ∞) 1/k²</p>
+                  <p>Écrire un programme Python qui demande à l'utilisateur un réel positif ε (epsilon), puis calcule une valeur approchée de la somme S à ε près.</p>
+                </PythonStatementCard>
+
+                <div className="mt-6">
+                  <PythonCorrectionPanel>
+                    <div className="px-6 md:px-8 py-5 space-y-5">
+                      <p className="font-instrument text-[14px] text-carnet-ink-soft">Voici deux versions du programme :</p>
+                      <div>
+                        <h4 className="font-instrument font-semibold text-[14px] text-carnet-ink mb-2">Version 1 — Avec NumPy</h4>
+                        <PythonCodeBlock code={`import numpy as np\n\neps = float(input("Entrer la précision eps : "))\nn = 1\n\nwhile 1 / n**2 > eps:\n    n += 1\n\nk = np.arange(1, n + 1)\nS_approx = np.sum(1 / k**2) + 1 / n\n\nprint("Valeur approchée de S :", S_approx)`} />
+                      </div>
+                      <div>
+                        <h4 className="font-instrument font-semibold text-[14px] text-carnet-ink mb-2">Version 2 — Avec boucle</h4>
+                        <PythonCodeBlock code={`eps = float(input("Entrer la précision eps : "))\nn = 1\nS = 1  # car 1/1^2 = 1\n\nwhile 1 / n**2 > eps:\n    n += 1\n    S += 1 / n**2\n\nS_approx = S + 1 / n\nprint("Valeur approchée de S :", S_approx)`} />
+                      </div>
+                      <div className="p-4 bg-[rgba(193,68,58,0.04)] rounded-lg border border-[rgba(193,68,58,0.12)]">
+                        <p className="font-instrument text-[14px] text-carnet-ink-soft"><strong className="text-carnet-red">Explication :</strong></p>
+                        <ul className="font-instrument text-[14px] text-carnet-ink-soft mt-2 space-y-1">
+                          <li>• On trouve n tel que 1/n² ≤ eps (condition d'arrêt)</li>
+                          <li>• On calcule ∑(k=1 à n) 1/k²</li>
+                          <li>• On ajoute 1/n pour obtenir l'approximation</li>
+                          <li>• L'erreur est majorée par 1/n² ≤ eps</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </PythonCorrectionPanel>
+                </div>
+              </>
             )}
 
-
             {selectedExercise === 13 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 13
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Factorielle seuil</h3>
-                      <div className="p-4 bg-[rgba(78,55,30,0.04)] rounded-lg mb-4">
-                        <p className="text-sm mb-2">Écrire un script Python qui calcule le plus petit entier naturel k tel que la factorielle de k soit strictement supérieure à un million.</p>
-                        <div className="text-center text-lg font-mono bg-white p-3 rounded border">
-                          Trouver le plus petit k tel que k! &gt; 1 000 000
-                        </div>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-13">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 13
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <p className="text-sm">
-                                Voici le script complet :
-                              </p>
-                              <div className="bg-pr-black rounded-lg p-4">
-                                <pre className="text-gray-600 text-sm">
-                                  <code>{`k = 1
-fact = 1
-
-while fact <= 10**6:
-    k = k + 1
-    fact = fact * k
-
-print(k)`}</code>
-                                </pre>
-                              </div>
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• On initialise k à 1 et fact à 1</li>
-                                  <li>• Tant que fact ≤ 1 000 000, on incrémente k et on calcule k!</li>
-                                  <li>• On calcule la factorielle de manière itérative : fact = fact × k</li>
-                                  <li>• Dès que k! &gt; 1 000 000, on affiche k</li>
-                                </ul>
-                              </div>
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Résultat :</strong> Le plus petit entier k tel que k! &gt; 1 000 000 est k = 10.
-                                </p>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
+              <>
+                <PythonStatementCard label="Énoncé · Exercice 13" icon="book">
+                  <p className="font-semibold text-carnet-ink mb-3">Factorielle seuil</p>
+                  <p className="mb-2">Écrire un script Python qui calcule le plus petit entier naturel k tel que la factorielle de k soit strictement supérieure à un million.</p>
+                  <div className="text-center font-mono text-[15px] bg-carnet-paper-2 p-3 rounded-lg border border-[rgba(78,55,30,0.14)]">
+                    Trouver le plus petit k tel que k! &gt; 1 000 000
                   </div>
-                </CardContent>
-              </Card>
+                </PythonStatementCard>
+
+                <div className="mt-6">
+                  <PythonCorrectionPanel>
+                    <div className="px-6 md:px-8 py-5 space-y-4">
+                      <p className="font-instrument text-[14px] text-carnet-ink-soft">Voici le script complet :</p>
+                      <PythonCodeBlock code={`k = 1\nfact = 1\n\nwhile fact <= 10**6:\n    k = k + 1\n    fact = fact * k\n\nprint(k)`} />
+                      <div className="p-4 bg-[rgba(193,68,58,0.04)] rounded-lg border border-[rgba(193,68,58,0.12)]">
+                        <p className="font-instrument text-[14px] text-carnet-ink-soft"><strong className="text-carnet-red">Explication :</strong></p>
+                        <ul className="font-instrument text-[14px] text-carnet-ink-soft mt-2 space-y-1">
+                          <li>• On initialise k à 1 et fact à 1</li>
+                          <li>• Tant que fact ≤ 1 000 000, on incrémente k et on calcule k!</li>
+                          <li>• On calcule la factorielle de manière itérative : fact = fact × k</li>
+                          <li>• Dès que k! &gt; 1 000 000, on affiche k</li>
+                        </ul>
+                      </div>
+                      <div className="p-4 bg-[rgba(193,68,58,0.04)] rounded-lg border border-[rgba(193,68,58,0.12)]">
+                        <p className="font-instrument text-[14px] text-carnet-ink-soft">
+                          <strong className="text-carnet-red">Résultat :</strong> Le plus petit entier k tel que k! &gt; 1 000 000 est k = 10.
+                        </p>
+                      </div>
+                    </div>
+                  </PythonCorrectionPanel>
+                </div>
+              </>
             )}
 
             {selectedExercise === 14 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 14
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Fonction par cas</h3>
-                      <div className="p-4 bg-[rgba(78,55,30,0.04)] rounded-lg mb-4">
-                        <p className="text-sm mb-2">On considère la fonction g définie sur ℝ par :</p>
-                        <div className="bg-white p-3 rounded border mb-3">
-                          <p className="text-sm font-mono">g(x) = 2 si x &lt; -1</p>
-                          <p className="text-sm font-mono">g(x) = 0 si -1 ≤ x ≤ 1</p>
-                          <p className="text-sm font-mono">g(x) = -2 si x &gt; 1</p>
-                        </div>
-                        <p className="text-sm">Écrire un script Python qui demande à l'utilisateur de saisir un réel x, puis qui affiche la valeur de g(x).</p>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-14">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 14
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <p className="text-sm">
-                                Voici le script complet :
-                              </p>
-                              <div className="bg-pr-black rounded-lg p-4">
-                                <pre className="text-gray-600 text-sm">
-                                  <code>{`x = float(input("Entrer un réel x : "))
-
-if x < -1:
-    print("g(x) =", 2)
-elif x <= 1:
-    print("g(x) =", 0)
-else:
-    print("g(x) =", -2)`}</code>
-                                </pre>
-                              </div>
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• On lit la valeur de x avec <code>float(input())</code></li>
-                                  <li>• On teste les conditions dans l'ordre logique</li>
-                                  <li>• <code>elif x &lt;= 1</code> couvre le cas -1 ≤ x ≤ 1</li>
-                                  <li>• <code>else</code> correspond au cas x &gt; 1</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
+              <>
+                <PythonStatementCard label="Énoncé · Exercice 14" icon="book">
+                  <p className="font-semibold text-carnet-ink mb-3">Fonction par cas</p>
+                  <p className="mb-2">On considère la fonction g définie sur ℝ par :</p>
+                  <div className="bg-carnet-paper-2 p-3 rounded-lg border border-[rgba(78,55,30,0.14)] mb-3 font-mono text-[14px] text-carnet-ink-soft">
+                    <p>g(x) = 2 si x &lt; -1</p>
+                    <p>g(x) = 0 si -1 ≤ x ≤ 1</p>
+                    <p>g(x) = -2 si x &gt; 1</p>
                   </div>
-                </CardContent>
-              </Card>
+                  <p>Écrire un script Python qui demande à l'utilisateur de saisir un réel x, puis qui affiche la valeur de g(x).</p>
+                </PythonStatementCard>
+
+                <div className="mt-6">
+                  <PythonCorrectionPanel>
+                    <div className="px-6 md:px-8 py-5 space-y-4">
+                      <p className="font-instrument text-[14px] text-carnet-ink-soft">Voici le script complet :</p>
+                      <PythonCodeBlock code={`x = float(input("Entrer un réel x : "))\n\nif x < -1:\n    print("g(x) =", 2)\nelif x <= 1:\n    print("g(x) =", 0)\nelse:\n    print("g(x) =", -2)`} />
+                      <div className="p-4 bg-[rgba(193,68,58,0.04)] rounded-lg border border-[rgba(193,68,58,0.12)]">
+                        <p className="font-instrument text-[14px] text-carnet-ink-soft"><strong className="text-carnet-red">Explication :</strong></p>
+                        <ul className="font-instrument text-[14px] text-carnet-ink-soft mt-2 space-y-1">
+                          <li>• On lit la valeur de x avec <code className="font-mono">float(input())</code></li>
+                          <li>• On teste les conditions dans l'ordre logique</li>
+                          <li>• <code className="font-mono">elif x &lt;= 1</code> couvre le cas -1 ≤ x ≤ 1</li>
+                          <li>• <code className="font-mono">else</code> correspond au cas x &gt; 1</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </PythonCorrectionPanel>
+                </div>
+              </>
             )}
 
             {selectedExercise === 15 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 15
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Sommes doubles</h3>
-                      <div className="p-4 bg-[rgba(78,55,30,0.04)] rounded-lg mb-4">
-                        <p className="text-sm mb-2">Écrire des scripts Python pour calculer les sommes doubles suivantes :</p>
-                        <div className="space-y-3">
-                          <div className="bg-white p-3 rounded border">
-                            <p className="font-semibold text-sm mb-1">(a) Somme 1 :</p>
-                            <p className="text-sm font-mono">∑(k=1 à n) ∑(i=1 à k) 1/(k+i)</p>
-                          </div>
-                          <div className="bg-white p-3 rounded border">
-                            <p className="font-semibold text-sm mb-1">(b) Somme 2 :</p>
-                            <p className="text-sm font-mono">∑(k=1 à n) ∑(i=1 à p) k×i</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-15">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 15
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <div>
-                                <h4 className="font-semibold text-sm mb-2">(a) Première somme double</h4>
-                                <div className="bg-pr-black rounded-lg p-4">
-                                  <pre className="text-gray-600 text-sm">
-                                    <code>{`n = int(input("Entrer n : "))
-S = 0
-for k in range(1, n + 1):
-    for j in range(1, k + 1):
-        S += 1 / (k + j)
-print(S)`}</code>
-                                  </pre>
-                                </div>
-                              </div>
-
-                              <div>
-                                <h4 className="font-semibold text-sm mb-2">(b) Deuxième somme double</h4>
-                                <div className="bg-pr-black rounded-lg p-4">
-                                  <pre className="text-gray-600 text-sm">
-                                    <code>{`n = int(input("Entrer n : "))
-p = int(input("Entrer p : "))
-S = 0
-for k in range(1, n + 1):
-    for j in range(1, p + 1):
-        S += k * j
-print(S)`}</code>
-                                  </pre>
-                                </div>
-                              </div>
-
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• Les boucles imbriquées permettent de parcourir tous les couples (k, j)</li>
-                                  <li>• Dans (a), j varie de 1 à k pour chaque k</li>
-                                  <li>• Dans (b), j varie de 1 à p pour chaque k</li>
-                                  <li>• On accumule chaque terme dans la variable S</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
+              <>
+                <PythonStatementCard label="Énoncé · Exercice 15" icon="book">
+                  <p className="font-semibold text-carnet-ink mb-3">Sommes doubles</p>
+                  <p className="mb-2">Écrire des scripts Python pour calculer les sommes doubles suivantes :</p>
+                  <div className="space-y-3">
+                    <div className="bg-carnet-paper-2 p-3 rounded-lg border border-[rgba(78,55,30,0.14)]">
+                      <p className="font-semibold text-[13px] text-carnet-ink mb-1">(a) Somme 1 :</p>
+                      <p className="font-mono text-[13px] text-carnet-ink-soft">∑(k=1 à n) ∑(i=1 à k) 1/(k+i)</p>
+                    </div>
+                    <div className="bg-carnet-paper-2 p-3 rounded-lg border border-[rgba(78,55,30,0.14)]">
+                      <p className="font-semibold text-[13px] text-carnet-ink mb-1">(b) Somme 2 :</p>
+                      <p className="font-mono text-[13px] text-carnet-ink-soft">∑(k=1 à n) ∑(i=1 à p) k×i</p>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </PythonStatementCard>
+
+                <div className="mt-6">
+                  <PythonCorrectionPanel>
+                    <div className="px-6 md:px-8 py-5 space-y-5">
+                      <div>
+                        <h4 className="font-instrument font-semibold text-[14px] text-carnet-ink mb-2">(a) Première somme double</h4>
+                        <PythonCodeBlock code={`n = int(input("Entrer n : "))\nS = 0\nfor k in range(1, n + 1):\n    for j in range(1, k + 1):\n        S += 1 / (k + j)\nprint(S)`} />
+                      </div>
+                      <div>
+                        <h4 className="font-instrument font-semibold text-[14px] text-carnet-ink mb-2">(b) Deuxième somme double</h4>
+                        <PythonCodeBlock code={`n = int(input("Entrer n : "))\np = int(input("Entrer p : "))\nS = 0\nfor k in range(1, n + 1):\n    for j in range(1, p + 1):\n        S += k * j\nprint(S)`} />
+                      </div>
+                      <div className="p-4 bg-[rgba(193,68,58,0.04)] rounded-lg border border-[rgba(193,68,58,0.12)]">
+                        <p className="font-instrument text-[14px] text-carnet-ink-soft"><strong className="text-carnet-red">Explication :</strong></p>
+                        <ul className="font-instrument text-[14px] text-carnet-ink-soft mt-2 space-y-1">
+                          <li>• Les boucles imbriquées permettent de parcourir tous les couples (k, j)</li>
+                          <li>• Dans (a), j varie de 1 à k pour chaque k</li>
+                          <li>• Dans (b), j varie de 1 à p pour chaque k</li>
+                          <li>• On accumule chaque terme dans la variable S</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </PythonCorrectionPanel>
+                </div>
+              </>
             )}
 
             {selectedExercise === 16 && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-gray-700">
-                    <Calculator className="h-6 w-6" />
-                    Exercice 16
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3">Approximation de racine carrée</h3>
-                      <div className="p-4 bg-[rgba(78,55,30,0.04)] rounded-lg mb-4">
-                        <p className="text-sm mb-2">Implémenter la méthode de Babylone (ou méthode de Héron) pour approcher la racine carrée d'un nombre positif.</p>
-                        <div className="text-center text-lg font-mono bg-white p-3 rounded border mb-3">
-                          On considère la suite définie pour a {`>`} 0 par :
-                        </div>
-                        <div className="bg-white p-3 rounded border mb-3">
-                          <p className="text-sm font-mono">u₀ = 1</p>
-                          <p className="text-sm font-mono">uₙ₊₁ = (uₙ + a/uₙ)/2</p>
-                        </div>
-                        <p className="text-sm mb-2">1. Cette suite converge vers √a. En effet, si uₙ est proche de √a, alors a/uₙ l'est aussi, et leur moyenne l'est encore plus.</p>
-                        <p className="text-sm mb-2">2. Écrire une fonction Python qui, pour un réel a {`>`} 0 et un seuil ε {`>`} 0, renvoie une valeur approchée de √a, obtenue en arrêtant l'itération dès que |uₙ₊₁ - uₙ| ≤ ε.</p>
-                        <p className="text-sm mb-2">3. Tester cette fonction avec a = 2 et ε = 10⁻⁵. Comparer avec la valeur exacte de √2.</p>
-                      </div>
-
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="correction-16">
-                          <AccordionTrigger className="text-gray-700 font-semibold">
-                            <CheckCircle className="h-4 w-4 mr-2" />
-                            Voir la correction 16
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-4">
-                              <p className="text-sm">
-                                Voici la fonction complète :
-                              </p>
-                              <div className="bg-pr-black rounded-lg p-4">
-                                <pre className="text-gray-600 text-sm">
-                                  <code>{`import numpy as np
-
-def racine(a, eps):
-    assert a > 0, "a doit être strictement positif"
-    
-    u = 1.0
-    x = 0.5 * (u + a/u)
-    
-    while abs(x - u) > eps:
-        u = x
-        x = 0.5 * (u + a/u)
-    
-    return x
-
-# Test avec a = 2 et eps = 1e-5
-a, eps = 2, 1e-5
-approx = racine(a, eps)
-exact = np.sqrt(a)
-
-print(f"Approximation de √{a} : {approx}")
-print(f"Valeur exacte : {exact}")
-print(f"Erreur absolue : {abs(approx - exact)}")
-`}</code>
-                                </pre>
-                              </div>
-                              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <p className="text-sm text-gray-700">
-                                  <strong>Explication :</strong>
-                                </p>
-                                <ul className="text-sm text-gray-700 mt-2 space-y-1">
-                                  <li>• On initialise u à 1.0 (valeur initiale supposée)</li>
-                                  <li>• On calcule x = 0.5 * (u + a/u) pour obtenir le premier terme de la suite</li>
-                                  <li>• Tant que |x - u| {`>`} eps, on met à jour u et on recalcule x</li>
-                                  <li>• On retourne la valeur u qui est une approximation de √a</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                    </div>
+              <>
+                <PythonStatementCard label="Énoncé · Exercice 16" icon="book">
+                  <p className="font-semibold text-carnet-ink mb-3">Approximation de racine carrée</p>
+                  <p className="mb-2">Implémenter la méthode de Babylone (ou méthode de Héron) pour approcher la racine carrée d'un nombre positif.</p>
+                  <div className="text-center font-mono text-[15px] bg-carnet-paper-2 p-3 rounded-lg border border-[rgba(78,55,30,0.14)] mb-3">
+                    On considère la suite définie pour a {`>`} 0 par :
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="bg-carnet-paper-2 p-3 rounded-lg border border-[rgba(78,55,30,0.14)] mb-3 font-mono text-[14px] text-carnet-ink-soft">
+                    <p>u₀ = 1</p>
+                    <p>uₙ₊₁ = (uₙ + a/uₙ)/2</p>
+                  </div>
+                  <p className="mb-2">1. Cette suite converge vers √a. En effet, si uₙ est proche de √a, alors a/uₙ l'est aussi, et leur moyenne l'est encore plus.</p>
+                  <p className="mb-2">2. Écrire une fonction Python qui, pour un réel a {`>`} 0 et un seuil ε {`>`} 0, renvoie une valeur approchée de √a, obtenue en arrêtant l'itération dès que |uₙ₊₁ - uₙ| ≤ ε.</p>
+                  <p>3. Tester cette fonction avec a = 2 et ε = 10⁻⁵. Comparer avec la valeur exacte de √2.</p>
+                </PythonStatementCard>
+
+                <div className="mt-6">
+                  <PythonCorrectionPanel>
+                    <div className="px-6 md:px-8 py-5 space-y-4">
+                      <p className="font-instrument text-[14px] text-carnet-ink-soft">Voici la fonction complète :</p>
+                      <PythonCodeBlock code={`import numpy as np\n\ndef racine(a, eps):\n    assert a > 0, "a doit être strictement positif"\n\n    u = 1.0\n    x = 0.5 * (u + a/u)\n\n    while abs(x - u) > eps:\n        u = x\n        x = 0.5 * (u + a/u)\n\n    return x\n\n# Test avec a = 2 et eps = 1e-5\na, eps = 2, 1e-5\napprox = racine(a, eps)\nexact = np.sqrt(a)\n\nprint(f"Approximation de √{a} : {approx}")\nprint(f"Valeur exacte : {exact}")\nprint(f"Erreur absolue : {abs(approx - exact)}")`} />
+                      <div className="p-4 bg-[rgba(193,68,58,0.04)] rounded-lg border border-[rgba(193,68,58,0.12)]">
+                        <p className="font-instrument text-[14px] text-carnet-ink-soft"><strong className="text-carnet-red">Explication :</strong></p>
+                        <ul className="font-instrument text-[14px] text-carnet-ink-soft mt-2 space-y-1">
+                          <li>• On initialise u à 1.0 (valeur initiale supposée)</li>
+                          <li>• On calcule x = 0.5 * (u + a/u) pour obtenir le premier terme de la suite</li>
+                          <li>• Tant que |x - u| {`>`} eps, on met à jour u et on recalcule x</li>
+                          <li>• On retourne la valeur x qui est une approximation de √a</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </PythonCorrectionPanel>
+                </div>
+              </>
             )}
             {/* Fallback */}
             {!exercises[selectedExercise - 1].content && ![3, 10, 13, 14, 15, 16].includes(selectedExercise) && (
@@ -1256,23 +1014,22 @@ print(f"Erreur absolue : {abs(approx - exact)}")
             hasNext={selectedExercise < exercises.length}
           />
 
-          <div className="mt-20 mb-12 relative overflow-hidden rounded-3xl bg-[#0F172A] py-12 px-6 sm:px-12 md:py-20 shadow-2xl border border-carnet-red-dark/30">
+          <div className="mt-20 mb-12 relative overflow-hidden rounded-3xl bg-carnet-ink py-12 px-6 sm:px-12 md:py-20 shadow-2xl border border-carnet-red-dark/30">
             {/* Background Effects */}
             <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-carnet-red/20 rounded-full blur-[120px] animate-pulse"></div>
             <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-carnet-red/20 rounded-full blur-[100px] animate-pulse delay-1000"></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="text-left space-y-8">
                 <div>
                   <Badge variant="outline" className="mb-4 bg-carnet-red-dark/50 text-carnet-paper border-carnet-red-dark/50 px-3 py-1 text-sm font-medium">
-                    <Sparkles className="w-3.5 h-3.5 mr-2 text-carnet-red fill-blue-400" />
+                    <Sparkles className="w-3.5 h-3.5 mr-2 text-carnet-red fill-carnet-red" />
                     Offre spéciale Étudiants
                   </Badge>
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-                    Une <span className="italic text-carnet-red font-lora">bonne méthode</span> rend la <span className="text-white">progression inévitable</span>.
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-carnet-paper leading-tight mb-4">
+                    Une <span className="italic text-carnet-red font-lora">bonne méthode</span> rend la <span className="text-carnet-paper">progression inévitable</span>.
                   </h2>
-                  <p className="text-lg text-gray-300/90 max-w-xl leading-relaxed">
+                  <p className="text-lg text-carnet-paper/80 max-w-xl leading-relaxed">
                     Ne laissez pas les lacunes s'accumuler en Python. Remplissez ce formulaire pour obtenir votre programme personnalisé et un <span className="text-carnet-paper font-semibold border-b border-carnet-red/50">premier cours offert</span>.
                   </p>
                 </div>
@@ -1283,7 +1040,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
                     { text: 'Réponse rapide sous 24h', icon: CheckCircle },
                     { text: 'Cours 100% offert sans engagement', icon: Star }
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-4 text-gray-200 group">
+                    <div key={i} className="flex items-center gap-4 text-carnet-paper/90 group">
                       <div className="h-10 w-10 rounded-xl bg-carnet-red/10 border border-carnet-red/20 flex items-center justify-center text-carnet-red group-hover:bg-carnet-red/20 group-hover:text-carnet-red-soft transition-all duration-300">
                         <item.icon className="h-5 w-5" />
                       </div>
@@ -1295,7 +1052,7 @@ print(f"Erreur absolue : {abs(approx - exact)}")
 
               <div className="relative">
                 <div className="absolute inset-0 bg-carnet-red/10 blur-3xl rounded-full transform rotate-3"></div>
-                <HeroContactForm showContent={true} theme="blue" />
+                <HeroContactForm showContent={true} theme="orange" />
               </div>
             </div>
           </div>

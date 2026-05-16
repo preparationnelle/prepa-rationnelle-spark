@@ -83,11 +83,11 @@ export const CaseStudyGenerator = ({ language }: CaseStudyGeneratorProps) => {
 
   return (
     <div className="space-y-6">
-      <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+      <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
         <div className="h-[3px] w-full bg-pr-black" />
         <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl bg-white border border-pr-black-soft flex items-center justify-center">
+            <div className="w-11 h-11 rounded-xl bg-carnet-paper-2 border border-pr-black-soft flex items-center justify-center">
               <TrendingUp className="h-5 w-5 text-pr-black" />
             </div>
             <div>
@@ -121,7 +121,7 @@ export const CaseStudyGenerator = ({ language }: CaseStudyGeneratorProps) => {
               placeholder={language === 'fr' ? "Collez une URL d'article ou le texte complet…" : 'Paste an article URL or full text…'}
               value={article}
               onChange={(e) => setArticle(e.target.value)}
-              className="min-h-[120px] resize-y border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 transition-colors rounded-xl text-[15px] leading-relaxed p-4 bg-white text-pr-black placeholder:text-pr-gray-mid"
+              className="min-h-[120px] resize-y border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 transition-colors rounded-xl text-[15px] leading-relaxed p-4 bg-carnet-paper-2 text-pr-black placeholder:text-pr-gray-mid"
             />
           </div>
 
@@ -137,7 +137,7 @@ export const CaseStudyGenerator = ({ language }: CaseStudyGeneratorProps) => {
               placeholder={language === 'fr' ? 'Ex : Rivalités de puissances, frontières, ressources énergétiques…' : 'Ex: Power rivalries, borders, energy resources…'}
               value={notion}
               onChange={(e) => setNotion(e.target.value)}
-              className="h-12 border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 transition-colors rounded-xl text-[15px] bg-white text-pr-black placeholder:text-pr-gray-mid"
+              className="h-12 border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 transition-colors rounded-xl text-[15px] bg-carnet-paper-2 text-pr-black placeholder:text-pr-gray-mid"
             />
           </div>
 
@@ -162,7 +162,7 @@ export const CaseStudyGenerator = ({ language }: CaseStudyGeneratorProps) => {
 
             <Button
               onClick={loadExample}
-              className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-5 font-medium transition-colors"
+              className="bg-carnet-paper-2 border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-5 font-medium transition-colors"
             >
               {language === 'fr' ? 'Exemple' : 'Example'}
             </Button>

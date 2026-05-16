@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Calculator, Send, AlertCircle, Loader2 } from "lucide-react";
+import { Calculator, Send, AlertCircle, Loader2, Sparkles, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { LatexRenderer } from "@/components/LatexRenderer";
@@ -296,11 +296,153 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
     }
   };
 
+  if (isEmbedded) {
+    return (
+      <div className="w-full h-full flex">
+        <div className="m-auto w-full h-full flex flex-col carnet-paper-2 border border-carnet-rule rounded-[6px] shadow-[0_2px_0_rgba(78,55,30,0.05),0_18px_40px_-12px_rgba(78,55,30,0.18)] overflow-hidden">
+          {/* Header */}
+          <div className="px-5 py-4 border-b border-dashed border-carnet-rule flex items-center gap-3 shrink-0">
+            <div className="h-10 w-10 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center shrink-0">
+              <Calculator className="h-5 w-5 text-carnet-red" />
+            </div>
+            <div className="min-w-0">
+              <div className="carnet-eyebrow text-[10px] mb-0.5">Assistant IA</div>
+              <h3 className="font-lora text-[20px] text-carnet-ink leading-none">
+                Maths <em className="font-lora italic text-carnet-red">approfondies</em>
+              </h3>
+              <p className="font-instrument text-[11px] text-carnet-ink-mute flex items-center gap-1.5 mt-1.5">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-carnet-red opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-carnet-red"></span>
+                </span>
+                Théorèmes, démonstrations, LaTeX
+              </p>
+            </div>
+          </div>
+
+          {/* Chat Area — papier ligné visible */}
+          <div className="flex-1 overflow-y-auto px-5 py-5 space-y-4 carnet-paper">
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className={cn(
+                  "flex items-end gap-2.5",
+                  message.role === "user" ? "ml-auto flex-row-reverse max-w-[85%]" : "mr-auto max-w-[90%]"
+                )}
+              >
+                <div className={cn(
+                  "h-8 w-8 rounded-full flex items-center justify-center shrink-0 border",
+                  message.role === "user"
+                    ? "bg-carnet-red text-carnet-paper border-carnet-red"
+                    : "bg-[rgba(193,68,58,0.08)] text-carnet-red border-[rgba(193,68,58,0.2)]"
+                )}>
+                  {message.role === "user"
+                    ? <User className="h-3.5 w-3.5" />
+                    : <Calculator className="h-3.5 w-3.5" />}
+                </div>
+                <div className={cn(
+                  "px-4 py-3 rounded-2xl text-[14px] leading-relaxed font-instrument break-words",
+                  message.role === "user"
+                    ? "bg-carnet-red text-carnet-paper rounded-br-md shadow-[0_4px_14px_rgba(193,68,58,0.18)]"
+                    : "bg-carnet-paper-2 border border-dashed border-carnet-rule text-carnet-ink rounded-bl-md"
+                )}>
+                  <div>{renderContent(message.content)}</div>
+                  <div className={cn(
+                    "text-[10px] mt-2 tabular-nums font-instrument",
+                    message.role === "user" ? "text-carnet-paper/75" : "text-carnet-ink-mute"
+                  )}>
+                    {message.timestamp.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {loading && (
+              <div className="flex items-end gap-2.5 max-w-[85%] mr-auto">
+                <div className="h-8 w-8 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center shrink-0">
+                  <Calculator className="h-3.5 w-3.5 text-carnet-red" />
+                </div>
+                <div className="bg-carnet-paper-2 border border-dashed border-carnet-rule px-4 py-3 rounded-2xl rounded-bl-md flex items-center gap-2 font-instrument">
+                  <Loader2 className="h-3.5 w-3.5 animate-spin text-carnet-red" />
+                  <span className="text-[13px] text-carnet-ink-soft">Génération de la réponse mathématique…</span>
+                </div>
+              </div>
+            )}
+
+            {error && (
+              <div className="flex items-end gap-2.5 max-w-[85%] mr-auto">
+                <div className="h-8 w-8 rounded-full bg-carnet-red text-carnet-paper flex items-center justify-center shrink-0">
+                  <AlertCircle className="h-3.5 w-3.5" />
+                </div>
+                <div className="bg-carnet-paper-2 border border-dashed border-carnet-rule px-4 py-3 rounded-2xl rounded-bl-md font-instrument">
+                  <div className="text-[13px] text-carnet-ink mb-2">{error}</div>
+                  <Button
+                    onClick={retryLastMessage}
+                    size="sm"
+                    className="h-8 bg-transparent border border-dashed border-[rgba(193,68,58,0.4)] text-carnet-red hover:bg-[rgba(193,68,58,0.06)] hover:border-carnet-red rounded-md text-[12px] font-instrument"
+                  >
+                    Réessayer
+                  </Button>
+                </div>
+              </div>
+            )}
+
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Input Area */}
+          <div className="px-5 pt-3 pb-4 border-t border-dashed border-carnet-rule shrink-0">
+            {!loading && messages.length <= 1 && (
+              <div className="flex gap-2 overflow-x-auto pb-3 scrollbar-hide mask-fade-right">
+                {SUGGESTIONS.map((suggestion, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleSuggestion(suggestion)}
+                    disabled={loading}
+                    className="whitespace-nowrap px-3 py-1.5 bg-transparent border border-dashed border-[rgba(193,68,58,0.3)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-carnet-red rounded-full text-[12px] font-instrument transition-colors flex items-center gap-1.5"
+                  >
+                    <Sparkles className="h-3 w-3 text-carnet-red" />
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <form onSubmit={handleSend} className="relative flex items-center gap-2">
+              <Input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Pose ta question mathématique…"
+                disabled={loading}
+                className="pr-12 h-11 rounded-md border border-dashed border-carnet-rule bg-carnet-paper-2 focus:border-carnet-red focus-visible:ring-2 focus-visible:ring-[rgba(193,68,58,0.2)] focus-visible:ring-offset-0 transition-colors text-[14px] font-instrument text-carnet-ink placeholder:text-carnet-ink-mute"
+              />
+              <Button
+                type="submit"
+                disabled={!input.trim() || loading}
+                className={cn(
+                  "absolute right-1.5 h-8 w-8 rounded-md p-0 transition-all",
+                  input.trim() && !loading
+                    ? "bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper shadow-[0_4px_14px_rgba(193,68,58,0.25)]"
+                    : "bg-[rgba(193,68,58,0.08)] text-carnet-ink-mute hover:bg-[rgba(193,68,58,0.08)]"
+                )}
+              >
+                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+              </Button>
+            </form>
+            <p className="text-center text-[11px] text-carnet-ink-mute mt-2 font-instrument">
+              L'assistant maths peut faire des erreurs. Vérifie toujours tes calculs.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={cn("w-full", isEmbedded ? "h-full" : "flex justify-center py-8")}>
       <Card className={cn(
         "w-full flex flex-col overflow-hidden",
-        isEmbedded ? "h-full border-0 shadow-none rounded-none" : "max-w-4xl rounded-2xl shadow-[0_2px_12px_rgba(26,26,24,0.04)] border border-pr-gray-light bg-white"
+        isEmbedded ? "h-full border-0 shadow-none rounded-none" : "max-w-4xl rounded-2xl shadow-[0_2px_12px_rgba(26,26,24,0.04)] border border-pr-gray-light bg-carnet-paper-2"
       )}>
         {!isEmbedded && <div className="h-[3px] w-full bg-pr-black" />}
         <CardHeader className={cn(
@@ -309,7 +451,7 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
         )}>
           <div className="flex items-center gap-3">
             <div className={cn(
-              "bg-white border border-pr-black-soft rounded-xl flex items-center justify-center",
+              "bg-carnet-paper-2 border border-pr-black-soft rounded-xl flex items-center justify-center",
               isEmbedded ? "w-10 h-10" : "w-12 h-12"
             )}>
               <Calculator className={cn("text-pr-black", isEmbedded ? "h-5 w-5" : "h-6 w-6")} />
@@ -330,7 +472,7 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
           </div>
         </CardHeader>
 
-        <CardContent className={cn("bg-white flex flex-col flex-1 overflow-hidden", isEmbedded ? "p-4" : "p-6")}>
+        <CardContent className={cn("bg-carnet-paper-2 flex flex-col flex-1 overflow-hidden", isEmbedded ? "p-4" : "p-6")}>
           {/* Messages Area */}
           <div className="space-y-4 mb-6 flex-1 overflow-y-auto pr-2">
             {messages.map((message, index) => (
@@ -396,12 +538,12 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
                 <div className="flex-shrink-0 w-9 h-9 rounded-xl bg-pr-black flex items-center justify-center">
                   <AlertCircle className="h-4 w-4 text-white" />
                 </div>
-                <div className="bg-white border border-pr-gray-light rounded-2xl px-5 py-4">
+                <div className="bg-carnet-paper-2 border border-pr-gray-light rounded-2xl px-5 py-4">
                   <div className="text-[14px] text-pr-black mb-3 font-medium">{error}</div>
                   <Button
                     onClick={retryLastMessage}
                     size="sm"
-                    className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg"
+                    className="bg-carnet-paper-2 border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg"
                   >
                     Réessayer
                   </Button>
@@ -422,7 +564,7 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
                     key={index}
                     size="sm"
                     onClick={() => handleSuggestion(suggestion)}
-                    className="whitespace-nowrap text-[12px] bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg font-medium transition-colors"
+                    className="whitespace-nowrap text-[12px] bg-carnet-paper-2 border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg font-medium transition-colors"
                   >
                     {suggestion}
                   </Button>
@@ -438,7 +580,7 @@ Utilise les notations mathématiques standard et assure-toi que toutes les formu
               onChange={(e) => setInput(e.target.value)}
               placeholder="Posez votre question mathématique…"
               disabled={loading}
-              className="flex-1 bg-white border-pr-gray-light text-pr-black placeholder:text-pr-gray-mid focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 rounded-xl h-12"
+              className="flex-1 bg-carnet-paper-2 border-pr-gray-light text-pr-black placeholder:text-pr-gray-mid focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 rounded-xl h-12"
             />
             <Button
               type="submit"

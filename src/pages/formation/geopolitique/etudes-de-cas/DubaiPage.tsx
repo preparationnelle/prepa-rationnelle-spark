@@ -22,18 +22,18 @@ const DubaiPage = () => {
             Études de cas
           </Link>
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <span className="text-gray-600">Dubai / The Line</span>
+          <span className="text-carnet-ink-soft">Dubai / The Line</span>
         </nav>
 
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <Building className="h-8 w-8 text-yellow-600" />
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-4xl font-bold text-carnet-ink">
               Dubai / The Line
             </h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-4xl">
+          <p className="text-lg text-carnet-ink-soft max-w-4xl">
             Vision 2030 et NEOM. Diversification économique post-pétrole, hubs touristiques et logistiques.
           </p>
         </div>
@@ -51,10 +51,10 @@ const DubaiPage = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-carnet-ink leading-relaxed">
                   L'Arabie Saoudite, via sa Vision 2030, transforme Dubai (comme hub régional) et des projets comme The Line (ville linéaire de 170 km dans NEOM) en piliers d'une diversification économique post-pétrole, avec des enjeux géopolitiques incluant le tourisme (ciblant 150 millions de visiteurs d'ici 2030), un hub aérien/maritime (via ports comme Djeddah), l'énergie renouvelable (50 % du mix d'ici 2030), l'environnement (zéro carbone pour The Line), et le fonds souverain PIF (1 000 milliards USD d'actifs). Les acteurs clés sont Mohammed bin Salman (MBS) comme architecte de la Vision lancée en 2016, la Chine pour les investissements technologiques, et les Émirats arabes unis pour les partenariats régionaux. Des dates importantes incluent 2016 (lancement Vision 2030) et 2025 (avancées sur The Line malgré retards). Cette étude de cas est pertinente pour les sujets suivants : économie et diversification, tourisme, énergie et transition verte, environnement, fonds souverains, diplomatie (accords Abraham), et hubs logistiques.
                 </p>
-                <p className="text-sm text-gray-500 mt-3">
+                <p className="text-sm text-carnet-ink-soft mt-3">
                   <strong>Source :</strong> vision2030.gov.sa
                 </p>
               </CardContent>
@@ -71,20 +71,20 @@ const DubaiPage = () => {
               <CardContent>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-gray-900">Mohammed bin Salman (MBS)</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Mohammed bin Salman (MBS)</h4>
+                    <p className="text-carnet-ink">
                       Architecte de la Vision lancée en 2016.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Chine</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Chine</h4>
+                    <p className="text-carnet-ink">
                       Investissements technologiques massifs.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Émirats arabes unis</h4>
-                    <p className="text-gray-700">
+                    <h4 className="font-semibold text-carnet-ink">Émirats arabes unis</h4>
+                    <p className="text-carnet-ink">
                       Partenariats régionaux stratégiques.
                     </p>
                   </div>
@@ -106,14 +106,14 @@ const DubaiPage = () => {
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2016</div>
-                      <div className="text-gray-700">Lancement Vision 2030</div>
+                      <div className="text-carnet-ink">Lancement Vision 2030</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-pr-black-dark rounded-full mt-2"></div>
                     <div>
                       <div className="font-semibold">2025</div>
-                      <div className="text-gray-700">Avancées sur The Line malgré retards</div>
+                      <div className="text-carnet-ink">Avancées sur The Line malgré retards</div>
                     </div>
                   </div>
                 </div>
@@ -135,15 +135,15 @@ const DubaiPage = () => {
                 <div className="space-y-3">
                   <div className="text-center p-3 bg-yellow-50 rounded-lg">
                     <div className="text-2xl font-bold text-yellow-600">150M</div>
-                    <div className="text-sm text-gray-600">Visiteurs ciblés d'ici 2030</div>
+                    <div className="text-sm text-carnet-ink-soft">Visiteurs ciblés d'ici 2030</div>
                   </div>
                   <div className="text-center p-3 bg-yellow-50 rounded-lg">
                     <div className="text-2xl font-bold text-yellow-600">50%</div>
-                    <div className="text-sm text-gray-600">Mix énergétique renouvelable</div>
+                    <div className="text-sm text-carnet-ink-soft">Mix énergétique renouvelable</div>
                   </div>
                   <div className="text-center p-3 bg-yellow-50 rounded-lg">
                     <div className="text-2xl font-bold text-yellow-600">1000M$</div>
-                    <div className="text-sm text-gray-600">Actifs du fonds souverain PIF</div>
+                    <div className="text-sm text-carnet-ink-soft">Actifs du fonds souverain PIF</div>
                   </div>
                 </div>
               </CardContent>
@@ -195,12 +195,12 @@ const DubaiPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="h-5 w-5 text-gray-600" />
+                  <DollarSign className="h-5 w-5 text-carnet-ink-soft" />
                   Sources
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-carnet-ink-soft">
                   vision2030.gov.sa
                 </p>
               </CardContent>

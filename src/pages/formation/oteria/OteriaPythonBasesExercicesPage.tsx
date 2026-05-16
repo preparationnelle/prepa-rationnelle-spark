@@ -1,11 +1,6 @@
 import React from 'react';
-import { OteriaChapterTemplate } from '@/components/formation/OteriaChapterTemplate';
-import {
-  ExerciseBlock,
-  CodeBlock,
-  WarningBlock
-} from '@/components/formation/AcademicBlocks';
-import { Badge } from "@/components/ui/badge";
+import { OteriaPythonChapterTemplate } from '@/components/formation/OteriaPythonChapterTemplate';
+import { CarnetCallout, CarnetCodeBlock } from '@/components/carnet';
 
 const OteriaPythonBasesExercicesPage = () => {
   const exercises = [
@@ -277,7 +272,7 @@ else:
   ];
 
   return (
-    <OteriaChapterTemplate
+    <OteriaPythonChapterTemplate
       sessionNumber={2}
       sessionTitle="Bases de Python & Algorithmique"
       description="Mettez en pratique les concepts Python avec ces exercices progressifs"
@@ -286,12 +281,13 @@ else:
       duration="4h"
       level="Débutant"
     >
-      <div className="space-y-8 max-w-none text-slate-700">
+      <div className="space-y-10 max-w-none font-instrument text-[15px] leading-[1.7] text-carnet-ink-soft">
 
         {/* ─── OBJECTIFS ────────────────────────────────────────────── */}
-        <div className="bg-slate-50 border border-slate-100 rounded-lg p-6 mb-8">
-          <h2 className="text-lg font-bold text-slate-900 mb-4">Objectifs de la séance</h2>
-          <ul className="list-disc list-inside space-y-2 text-sm text-slate-700">
+        <div className="carnet-card p-6 sm:p-8 mb-8">
+          <div className="carnet-eyebrow mb-3">Objectifs de la séance</div>
+          <hr className="carnet-divider mb-4" />
+          <ul className="list-disc list-inside space-y-2 text-[14px] text-carnet-ink-soft">
             <li>Manipuler les variables et les types (int, float, bool, str)</li>
             <li>Utiliser les structures de contrôle (if/else, boucles for/while)</li>
             <li>Manipuler les listes et leurs méthodes principales</li>
@@ -302,65 +298,67 @@ else:
 
         {/* ─── LISTE DES EXERCICES ──────────────────────────────────── */}
         {exercises.map((exercise) => (
-          <ExerciseBlock
+          <article
             key={exercise.id}
-            number={exercise.id.toString()}
-            title={exercise.title}
-            solution={
-              <CodeBlock
-                code={exercise.solution}
-                title={`Solution : ${exercise.title}`}
-                language="python"
-              />
-            }
+            className="border border-dashed border-[rgba(78,55,30,0.18)] rounded-md bg-carnet-paper-2 p-6 sm:p-8"
           >
-            <div className="mb-4">
-              <Badge
-                className={`${exercise.difficulty === 'Facile' ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200' :
-                  exercise.difficulty === 'Moyen' ? 'bg-amber-100 text-amber-800 hover:bg-amber-200' :
-                    'bg-rose-100 text-rose-800 hover:bg-rose-200'
-                  } mb-2`}
-                variant="secondary"
-              >
-                {exercise.difficulty}
-              </Badge>
-              <p className="text-slate-700 leading-relaxed">{exercise.description}</p>
+            <div className="flex items-start gap-3 mb-4">
+              <span className="flex-shrink-0 w-8 h-8 bg-carnet-ink text-carnet-paper rounded-full flex items-center justify-center font-instrument text-[14px] font-semibold">
+                {exercise.id}
+              </span>
+              <div className="flex-1">
+                <h3 className="font-lora text-[22px] text-carnet-ink leading-snug">
+                  {exercise.title}
+                </h3>
+                <span className="inline-flex items-center mt-1 px-2 py-0.5 rounded font-instrument text-[11px] uppercase tracking-[0.12em] font-semibold text-carnet-red bg-[rgba(193,68,58,0.08)]">
+                  {exercise.difficulty}
+                </span>
+              </div>
             </div>
-          </ExerciseBlock>
+
+            <p className="mb-5 text-carnet-ink-soft leading-[1.7]">{exercise.description}</p>
+
+            <div className="pt-5 border-t border-dashed border-[rgba(78,55,30,0.18)]">
+              <div className="carnet-eyebrow mb-3">Corrigé</div>
+              <CarnetCodeBlock label={`Solution — Exercice ${exercise.id}`}>
+                {exercise.solution}
+              </CarnetCodeBlock>
+            </div>
+          </article>
         ))}
 
-        {/* ─── WARNINGS ─────────────────────────────────────────────── */}
-        <WarningBlock title="Erreurs fréquentes à éviter">
+        {/* ─── PIÈGES ───────────────────────────────────────────────── */}
+        <CarnetCallout variant="piege" label="Erreurs fréquentes à éviter">
           <ul className="list-none space-y-3">
             <li className="flex gap-2">
-              <span className="text-red-500 font-bold">×</span>
+              <span className="text-carnet-red font-bold">×</span>
               <span>
                 Oublier l'indentation (4 espaces) qui définit les blocs de code en Python.
               </span>
             </li>
             <li className="flex gap-2">
-              <span className="text-red-500 font-bold">×</span>
+              <span className="text-carnet-red font-bold">×</span>
               <span>
-                Confondre l'opérateur d'affectation <code>=</code> avec l'opérateur de comparaison <code>==</code>.
+                Confondre l'opérateur d'affectation <code className="bg-[rgba(78,55,30,0.06)] text-carnet-paper rounded px-1">=</code> avec l'opérateur de comparaison <code className="bg-[rgba(78,55,30,0.06)] text-carnet-paper rounded px-1">==</code>.
               </span>
             </li>
             <li className="flex gap-2">
-              <span className="text-red-500 font-bold">×</span>
+              <span className="text-carnet-red font-bold">×</span>
               <span>
-                Oublier que les indices de liste commencent à 0 (le premier élément est <code>L[0]</code>).
+                Oublier que les indices de liste commencent à 0 (le premier élément est <code className="bg-[rgba(78,55,30,0.06)] text-carnet-paper rounded px-1">L[0]</code>).
               </span>
             </li>
             <li className="flex gap-2">
-              <span className="text-red-500 font-bold">×</span>
+              <span className="text-carnet-red font-bold">×</span>
               <span>
-                Tenter d'additionner des types incompatibles (ex: <code>"Age: " + 18</code> donne une erreur, il faut convertir : <code>"Age: " + str(18)</code>).
+                Tenter d'additionner des types incompatibles (ex: <code className="bg-[rgba(78,55,30,0.06)] text-carnet-paper rounded px-1">"Age: " + 18</code> donne une erreur, il faut convertir : <code className="bg-[rgba(78,55,30,0.06)] text-carnet-paper rounded px-1">"Age: " + str(18)</code>).
               </span>
             </li>
           </ul>
-        </WarningBlock>
+        </CarnetCallout>
 
       </div>
-    </OteriaChapterTemplate>
+    </OteriaPythonChapterTemplate>
   );
 };
 

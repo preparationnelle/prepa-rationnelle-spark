@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -19,6 +20,8 @@ interface ThemeSentence {
   glossary?: Record<string, string>;
   difficulty_level?: string;
   specialized?: boolean;
+  lesson_slug?: string;
+  lesson_title?: string;
 }
 
 interface HistorySentence extends ThemeSentence {
@@ -36,8 +39,27 @@ interface PredefinedSentence extends ThemeSentence {
   used?: boolean;
 }
 
+type ScoreErrorType = 'false_meaning' | 'major_conjugation' | 'grammar' | 'minor';
+
+interface ScoreBreakdownEntry {
+  type: ScoreErrorType;
+  label: string;
+  penalty: number;
+  span: string;
+  explanation: string;
+  correction: string;
+  rule: string;
+}
+
+interface CoverageSegment {
+  segment: string;
+  status: 'present' | 'altered' | 'missing';
+}
+
 interface ThemeEvaluation {
   score: number;
+  breakdown?: ScoreBreakdownEntry[];
+  coverage?: CoverageSegment[];
   severity: {
     major_errors: (string | {
       error: string;
@@ -62,6 +84,66 @@ interface ThemeEvaluation {
   flashcard_rule: string;
 }
 
+// === Helpers de notation / surlignage ===
+
+const ERROR_STYLES: Record<ScoreErrorType, { bg: string; text: string; border: string; ring: string; label: string }> = {
+  false_meaning:     { bg: 'bg-[rgba(193,68,58,0.18)]', text: 'text-carnet-red',    border: 'border-[rgba(193,68,58,0.55)]', ring: 'decoration-[#C1443A]', label: 'Faux sens' },
+  major_conjugation: { bg: 'bg-[rgba(217,119,6,0.18)]', text: 'text-[#9A4D00]',     border: 'border-[rgba(217,119,6,0.55)]', ring: 'decoration-[#D97706]', label: 'Conjugaison' },
+  grammar:           { bg: 'bg-[rgba(202,138,4,0.18)]', text: 'text-[#7C5A0A]',     border: 'border-[rgba(202,138,4,0.50)]', ring: 'decoration-[#CA8A04]', label: 'Grammaire' },
+  minor:             { bg: 'bg-[rgba(120,113,108,0.18)]', text: 'text-carnet-ink-soft', border: 'border-[rgba(120,113,108,0.45)]', ring: 'decoration-[#78716C]', label: 'Petite erreur' },
+};
+
+const formatPenalty = (n: number): string => {
+  const abs = Math.abs(n);
+  const formatted = Number.isInteger(abs) ? `${abs}` : `${abs.toString().replace('.', ',')}`;
+  return `−${formatted}`;
+};
+
+// Découpe la réponse de l'élève en segments avec surlignage par span
+type Segment = { text: string; entry?: ScoreBreakdownEntry & { index: number } };
+
+function buildHighlightedSegments(answer: string, breakdown: ScoreBreakdownEntry[]): Segment[] {
+  if (!answer || !breakdown || breakdown.length === 0) {
+    return [{ text: answer }];
+  }
+  // Trouver toutes les positions de match (premier match insensible à la casse, pas de chevauchement)
+  type Match = { start: number; end: number; entry: ScoreBreakdownEntry & { index: number } };
+  const matches: Match[] = [];
+  const lower = answer.toLowerCase();
+  const claimedRanges: { start: number; end: number }[] = [];
+
+  breakdown.forEach((entry, idx) => {
+    const span = (entry.span || '').trim();
+    if (!span) return;
+    const needle = span.toLowerCase();
+    let from = 0;
+    while (from <= lower.length - needle.length) {
+      const found = lower.indexOf(needle, from);
+      if (found === -1) break;
+      const end = found + needle.length;
+      // Évite un chevauchement avec un span déjà attribué
+      const overlap = claimedRanges.some(r => !(end <= r.start || found >= r.end));
+      if (!overlap) {
+        matches.push({ start: found, end, entry: { ...entry, index: idx } });
+        claimedRanges.push({ start: found, end });
+        break;
+      }
+      from = found + 1;
+    }
+  });
+
+  matches.sort((a, b) => a.start - b.start);
+  const segments: Segment[] = [];
+  let cursor = 0;
+  for (const m of matches) {
+    if (m.start > cursor) segments.push({ text: answer.slice(cursor, m.start) });
+    segments.push({ text: answer.slice(m.start, m.end), entry: m.entry });
+    cursor = m.end;
+  }
+  if (cursor < answer.length) segments.push({ text: answer.slice(cursor) });
+  return segments;
+}
+
 export const ThemeGrammaticalGenerator: React.FC = () => {
   const [language, setLanguage] = useState<'en' | 'de' | 'es'>('en');
   const [currentSentence, setCurrentSentence] = useState<ThemeSentence | null>(null);
@@ -76,11 +158,60 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
   const [predefinedSentences, setPredefinedSentences] = useState<PredefinedSentence[]>([]);
   const [selectedPredefinedId, setSelectedPredefinedId] = useState<string>('');
   const [completedSentence, setCompletedSentence] = useState(false);
+  const [selectedGrammarTopic, setSelectedGrammarTopic] = useState<string | null>(null);
+
+  // Phrases visibles dans la navigation (filtrées par langue et, en anglais, par rubrique grammaticale active)
+  const visibleSentences = useMemo(() => {
+    const langFiltered = predefinedSentences.filter(s => s.language === language);
+    if (language === 'en' && selectedGrammarTopic) {
+      return langFiltered.filter(s => s.lesson_slug === selectedGrammarTopic);
+    }
+    return langFiltered;
+  }, [predefinedSentences, language, selectedGrammarTopic]);
+
+  // Liste des rubriques grammaticales (anglais uniquement) : un slug par leçon, avec son titre et son décompte
+  const grammarTopics = useMemo(() => {
+    const map = new Map<string, { slug: string; title: string; count: number }>();
+    for (const s of predefinedSentences) {
+      if (s.language !== 'en' || !s.lesson_slug) continue;
+      const existing = map.get(s.lesson_slug);
+      if (existing) {
+        existing.count += 1;
+      } else {
+        map.set(s.lesson_slug, {
+          slug: s.lesson_slug,
+          title: s.lesson_title || s.lesson_slug,
+          count: 1,
+        });
+      }
+    }
+    return Array.from(map.values());
+  }, [predefinedSentences]);
 
   // Nouvelles fonctionnalités
   const [examMode, setExamMode] = useState(false);
   const [timer, setTimer] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
+
+  // Mode examen : configuration multi-questions avec compte à rebours par question
+  type ExamPhase = 'idle' | 'setup' | 'active' | 'summary';
+  type ExamDifficulty = 'all' | 'intermediate' | 'advanced' | 'specialized';
+  const QUESTION_DURATION = 60; // secondes par question
+  const [examPhase, setExamPhase] = useState<ExamPhase>('idle');
+  const [examConfig, setExamConfig] = useState<{ questionCount: number; difficulty: ExamDifficulty }>({
+    questionCount: 10,
+    difficulty: 'all',
+  });
+  const [examQueue, setExamQueue] = useState<PredefinedSentence[]>([]);
+  const [examIndex, setExamIndex] = useState(0);
+  const [examQuestionTimer, setExamQuestionTimer] = useState(QUESTION_DURATION);
+  const [examResults, setExamResults] = useState<Array<{
+    sentenceId: string;
+    french: string;
+    userAnswer: string;
+    score: number;
+    timedOut: boolean;
+  }>>([]);
   const [autoSave, setAutoSave] = useState(true);
   const [sessionStats, setSessionStats] = useState({
     totalExercises: 0,
@@ -104,6 +235,72 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  // === Mode examen : helpers ===
+  const openExamSetup = () => {
+    setExamPhase('setup');
+  };
+
+  const exitExam = () => {
+    setExamPhase('idle');
+    setExamMode(false);
+    setExamQueue([]);
+    setExamIndex(0);
+    setExamResults([]);
+    setExamQuestionTimer(QUESTION_DURATION);
+  };
+
+  const startExam = () => {
+    const filtered = predefinedSentences.filter(s => s.language === language);
+    let candidates = filtered;
+    if (examConfig.difficulty === 'intermediate') {
+      candidates = filtered.filter(s => s.difficulty_level === 'intermediate');
+    } else if (examConfig.difficulty === 'advanced') {
+      candidates = filtered.filter(s => s.difficulty_level === 'advanced');
+    } else if (examConfig.difficulty === 'specialized') {
+      candidates = filtered.filter(s => s.specialized);
+    }
+
+    if (candidates.length === 0) {
+      toast({
+        title: "Aucune phrase disponible",
+        description: "Aucune phrase ne correspond à ces critères pour cette langue.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const shuffled = [...candidates].sort(() => Math.random() - 0.5);
+    const queue = shuffled.slice(0, Math.min(examConfig.questionCount, shuffled.length));
+
+    setExamQueue(queue);
+    setExamIndex(0);
+    setExamResults([]);
+    setExamQuestionTimer(QUESTION_DURATION);
+    setExamPhase('active');
+    setExamMode(true);
+    loadPredefinedSentence(queue[0].id);
+  };
+
+  const advanceExam = (score: number, timedOut: boolean) => {
+    if (currentSentence) {
+      setExamResults(r => [...r, {
+        sentenceId: selectedPredefinedId,
+        french: currentSentence.french,
+        userAnswer: studentAnswer,
+        score,
+        timedOut,
+      }]);
+    }
+    const nextIdx = examIndex + 1;
+    if (nextIdx >= examQueue.length) {
+      setExamPhase('summary');
+      return;
+    }
+    setExamIndex(nextIdx);
+    setExamQuestionTimer(QUESTION_DURATION);
+    loadPredefinedSentence(examQueue[nextIdx].id);
   };
 
   const getScoreColor = (score: number) => {
@@ -149,6 +346,42 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
       return () => clearInterval(interval);
     }
   }, [isTimerRunning, examMode]);
+
+  // === Mode examen : compte à rebours par question ===
+  // Tick toutes les secondes pendant la phase active, sauf si évaluation en cours/terminée
+  useEffect(() => {
+    if (examPhase !== 'active') return;
+    if (examQuestionTimer <= 0) return;
+    if (isEvaluating || feedbackLoaded) return;
+    const id = setTimeout(() => {
+      setExamQuestionTimer(t => Math.max(0, t - 1));
+    }, 1000);
+    return () => clearTimeout(id);
+  }, [examPhase, examQuestionTimer, isEvaluating, feedbackLoaded]);
+
+  // Quand le timer atteint 0 : auto-évaluation ou skip si vide
+  useEffect(() => {
+    if (examPhase !== 'active') return;
+    if (examQuestionTimer > 0) return;
+    if (isEvaluating || feedbackLoaded) return;
+    if (studentAnswer.trim()) {
+      evaluateAnswer();
+    } else {
+      // Pas de réponse : on enregistre 0 et on avance après 1.5s
+      const id = setTimeout(() => advanceExam(0, true), 1500);
+      return () => clearTimeout(id);
+    }
+  }, [examPhase, examQuestionTimer, studentAnswer, isEvaluating, feedbackLoaded]);
+
+  // Quand l'évaluation arrive en mode examen : avance après 3s
+  useEffect(() => {
+    if (examPhase !== 'active') return;
+    if (!feedbackLoaded || !evaluation) return;
+    const id = setTimeout(() => {
+      advanceExam(evaluation.score ?? 0, examQuestionTimer === 0);
+    }, 3000);
+    return () => clearTimeout(id);
+  }, [examPhase, feedbackLoaded, evaluation, examQuestionTimer]);
 
   // Initialize predefined sentences database
   useEffect(() => {
@@ -1114,6 +1347,2449 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
             reference: "University technology transfer facilitates the creation of innovative and competitive companies.",
             grammar_points: ["Present simple", "Of + adjective", "And + adjective"],
             difficulty_level: "advanced"
+          },
+          // POINTS DE GRAMMAIRE CIBLÉS — PIÈGES CONCOURS
+          {
+            id: 'en-gram-tenses-1',
+            category: "Temps verbaux",
+            theme: "Present perfect vs présent",
+            french: "Depuis l'invasion de l'Ukraine en 2022, l'Union européenne a sanctionné la Russie à quinze reprises et continue d'élargir la liste des entités visées.",
+            reference: "Since the invasion of Ukraine in 2022, the European Union has sanctioned Russia fifteen times and continues to expand the list of targeted entities.",
+            grammar_points: ["Present perfect (since + date)", "Present simple (généralité)", "Piège 'depuis' / 'since'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "temps-verbaux",
+            lesson_title: "Temps Verbaux"
+          },
+          {
+            id: 'en-gram-cond-1',
+            category: "Conditionnels",
+            theme: "Troisième conditionnel",
+            french: "Si la Fed avait baissé ses taux plus tôt, l'économie américaine n'aurait pas connu un tel ralentissement de l'investissement productif.",
+            reference: "If the Fed had cut its rates earlier, the American economy would not have experienced such a slowdown in productive investment.",
+            grammar_points: ["Third conditional", "If + past perfect", "Would have + past participle"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "conditionnels",
+            lesson_title: "Conditionnels"
+          },
+          {
+            id: 'en-gram-passive-1',
+            category: "Voix passive",
+            theme: "Passif prétérit",
+            french: "Le projet de loi sur l'intelligence artificielle a été voté par le Parlement européen après dix-huit mois de négociations entre les États membres.",
+            reference: "The artificial intelligence bill was passed by the European Parliament after eighteen months of negotiations between the member states.",
+            grammar_points: ["Passive voice (preterite)", "Agent introduit par 'by'", "Choix lexical 'pass' vs 'vote on'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "voix-passives",
+            lesson_title: "Voix Passives"
+          },
+          {
+            id: 'en-gram-reported-1',
+            category: "Discours indirect",
+            theme: "Reported speech",
+            french: "Le président américain a déclaré que les droits de douane sur les produits chinois seraient renforcés dès le mois suivant.",
+            reference: "The American president declared that tariffs on Chinese products would be reinforced from the following month.",
+            grammar_points: ["Reported speech", "Will → would", "Next month → the following month"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "discours-indirect",
+            lesson_title: "Discours Indirect"
+          },
+          {
+            id: 'en-gram-modal-1',
+            category: "Modaux et auxiliaires",
+            theme: "Might + passif",
+            french: "La Banque centrale européenne pourrait être contrainte de relever ses taux si l'inflation venait à dépasser durablement les trois pour cent.",
+            reference: "The European Central Bank might be forced to raise its rates if inflation were to durably exceed three percent.",
+            grammar_points: ["Modal 'might' (éventualité)", "Passive infinitive 'be forced to'", "Subjunctive 'were to'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "modaux",
+            lesson_title: "Modaux et Auxiliaires"
+          },
+          {
+            id: 'en-gram-prep-1',
+            category: "Prépositions et particules",
+            theme: "Phrasal verbs",
+            french: "Le gouvernement britannique est revenu sur sa décision de réduire les dépenses publiques après la pression exercée par les marchés obligataires.",
+            reference: "The British government backed down on its decision to cut public spending after pressure from bond markets.",
+            grammar_points: ["Phrasal verb 'back down on'", "Préposition 'from' après 'pressure'", "Piège calque 'exercée par'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "prepositions",
+            lesson_title: "Prépositions et Particules"
+          },
+          {
+            id: 'en-gram-art-1',
+            category: "Articles et déterminants",
+            theme: "Absence d'article",
+            french: "La pauvreté demeure un fléau majeur dans les pays en développement, où l'accès à l'éducation reste profondément inégal.",
+            reference: "Poverty remains a major scourge in developing countries, where access to education remains deeply unequal.",
+            grammar_points: ["Absence d'article devant noms abstraits", "Généralités sans 'the'", "Piège 'la pauvreté' / 'poverty'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "articles",
+            lesson_title: "Articles et Déterminants"
+          },
+          {
+            id: 'en-gram-rel-1',
+            category: "Subordonnées relatives",
+            theme: "Whose",
+            french: "Les entreprises dont les chaînes d'approvisionnement dépendent de Taïwan redoutent une escalade militaire dans le détroit.",
+            reference: "Companies whose supply chains depend on Taiwan dread a military escalation in the strait.",
+            grammar_points: ["Relative 'whose' (possession)", "Whose pour entités non humaines", "Piège 'of which'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "relatives",
+            lesson_title: "Subordonnées Relatives"
+          },
+          {
+            id: 'en-gram-ger-1',
+            category: "Gérondif et infinitif",
+            theme: "Refuse to / without -ing",
+            french: "Le Premier ministre a refusé de commenter les allégations de corruption sans avoir préalablement consulté ses avocats.",
+            reference: "The Prime Minister refused to comment on the corruption allegations without first consulting his lawyers.",
+            grammar_points: ["Refuse + to + infinitif", "Without + gérondif (-ing)", "Comment ON something"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "gerondif-infinitif",
+            lesson_title: "Gérondif et Infinitif"
+          },
+          {
+            id: 'en-gram-comp-1',
+            category: "Comparatifs et superlatifs",
+            theme: "Faster than / largest",
+            french: "L'économie indienne croît désormais plus rapidement que celle de la Chine, devenant la plus grande puissance émergente de la décennie.",
+            reference: "The Indian economy is now growing faster than that of China, becoming the largest emerging power of the decade.",
+            grammar_points: ["Comparatif 'faster than'", "Superlatif 'the largest'", "'That of' pour éviter la répétition"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "comparatifs",
+            lesson_title: "Comparatifs et Superlatifs"
+          },
+          {
+            id: 'en-gram-quest-1',
+            category: "Questions et interrogatifs",
+            theme: "Inversion question directe",
+            french: "Comment l'Europe peut-elle assurer son autonomie stratégique face à la dépendance énergétique qu'elle a longtemps acceptée.",
+            reference: "How can Europe ensure its strategic autonomy in the face of the energy dependence it has long accepted.",
+            grammar_points: ["Inversion sujet-auxiliaire (question)", "Pas d'inversion en relative", "How can + sujet + V"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "questions",
+            lesson_title: "Questions et Interrogatifs"
+          },
+          {
+            id: 'en-gram-time-1',
+            category: "Expressions de temps",
+            theme: "Since + present perfect",
+            french: "La Corée du Nord n'a pas effectué d'essai nucléaire depuis 2017, mais elle vient de tester un nouveau missile balistique intercontinental.",
+            reference: "North Korea has not carried out a nuclear test since 2017, but it has just tested a new intercontinental ballistic missile.",
+            grammar_points: ["Since + date + present perfect", "'Just' entre auxiliaire et participe", "Has not + past participle"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "expressions-temps",
+            lesson_title: "Expressions de Temps"
+          },
+          {
+            id: 'en-gram-concord-1',
+            category: "Concordance des temps",
+            theme: "Backshift",
+            french: "Les analystes pensaient que la récession serait évitée si la consommation des ménages se maintenait pendant l'hiver.",
+            reference: "Analysts thought that the recession would be avoided if household consumption held up during the winter.",
+            grammar_points: ["Concordance après prétérit", "Futur français → conditionnel anglais", "If + preterite (in past context)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "concordance",
+            lesson_title: "Concordance des Temps"
+          },
+          {
+            id: 'en-gram-quant-1',
+            category: "Quantifieurs",
+            theme: "Few vs a few / much of",
+            french: "Peu d'économistes contestent désormais le fait que l'intelligence artificielle bouleversera une grande partie du marché du travail.",
+            reference: "Few economists now dispute the fact that artificial intelligence will disrupt much of the labor market.",
+            grammar_points: ["'Few' (quantité négative)", "Distinction few / a few", "'Much of' + indénombrable"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "quantifieurs",
+            lesson_title: "Quantifieurs"
+          },
+          {
+            id: 'en-gram-subj-1',
+            category: "Subjonctif",
+            theme: "It is essential that",
+            french: "Il est essentiel que la communauté internationale agisse rapidement pour empêcher l'effondrement humanitaire au Soudan.",
+            reference: "It is essential that the international community act quickly to prevent the humanitarian collapse in Sudan.",
+            grammar_points: ["Subjonctif présent", "Base verbale après 'essential that'", "Pas de 's' à la 3e personne"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "subjunctif",
+            lesson_title: "Subjunctif et Structures Subjectives"
+          },
+          {
+            id: 'en-gram-inv-1',
+            category: "Inversions et emphase",
+            theme: "Never + inversion",
+            french: "Jamais depuis la chute du mur de Berlin la stabilité de l'ordre européen n'avait été aussi gravement remise en cause.",
+            reference: "Never since the fall of the Berlin Wall had the stability of the European order been so seriously challenged.",
+            grammar_points: ["Inversion après adverbe négatif", "Pluperfect inversé", "Construction emphatique 'never... had'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "inversions",
+            lesson_title: "Inversions et Emphase"
+          },
+          {
+            id: 'en-gram-connect-1',
+            category: "Connecteurs logiques",
+            theme: "Nevertheless",
+            french: "La transition énergétique impose des investissements colossaux. Néanmoins, les gouvernements européens hésitent encore à mobiliser les financements nécessaires.",
+            reference: "The energy transition demands colossal investments. Nevertheless, European governments still hesitate to mobilize the necessary funding.",
+            grammar_points: ["'Nevertheless' (opposition forte)", "Registre soutenu", "Distinction however / yet / nevertheless"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "connecteurs",
+            lesson_title: "Connecteurs Logiques"
+          },
+          {
+            id: 'en-gram-irreg-1',
+            category: "Verbes irréguliers",
+            theme: "Shook / led",
+            french: "La crise financière a profondément ébranlé la confiance des investisseurs et conduit plusieurs banques régionales à la faillite.",
+            reference: "The financial crisis deeply shook investors' confidence and led several regional banks to bankruptcy.",
+            grammar_points: ["Prétérit irrégulier 'shook' (shake)", "Prétérit irrégulier 'led' (lead)", "Piège 'shaked' / 'leaded'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "verbes-irreguliers",
+            lesson_title: "Verbes Irréguliers"
+          },
+          {
+            id: 'en-gram-caus-1',
+            category: "Structures causatives",
+            theme: "Have something done",
+            french: "Le gouvernement français a fait adopter sa réforme des retraites sans recourir au vote parlementaire, ce qui a déclenché des manifestations massives.",
+            reference: "The French government had its pension reform adopted without resorting to a parliamentary vote, which triggered massive protests.",
+            grammar_points: ["Causative 'have something done'", "Faire faire → have + past participle", "Piège calque 'made adopt'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "causatives",
+            lesson_title: "Structures Causatives"
+          },
+          {
+            id: 'en-gram-lex-1',
+            category: "Nuances lexicales",
+            theme: "Affect vs effect",
+            french: "La hausse des taux d'intérêt affecte directement le pouvoir d'achat des ménages, et ses effets se font sentir sur l'ensemble de la zone euro.",
+            reference: "The rise in interest rates directly affects household purchasing power, and its effects are felt throughout the eurozone.",
+            grammar_points: ["'Affect' (verbe) vs 'effect' (nom)", "Passive 'are felt'", "Confusion lexicale pénalisée"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "nuances-lexicales",
+            lesson_title: "Nuances Lexicales"
+          },
+          // === 4 PHRASES SUPPLÉMENTAIRES PAR RUBRIQUE ===
+          // 1. TEMPS VERBAUX
+          {
+            id: 'en-gram-tenses-2',
+            category: "Temps verbaux",
+            theme: "Present perfect continuous",
+            french: "Depuis le début de la guerre commerciale, les exportateurs allemands subissent une chute continue de leurs commandes asiatiques.",
+            reference: "Since the beginning of the trade war, German exporters have been suffering a continuous drop in their Asian orders.",
+            grammar_points: ["Present perfect continuous", "Since + point de départ", "Action continue dans le présent"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "temps-verbaux",
+            lesson_title: "Temps Verbaux"
+          },
+          {
+            id: 'en-gram-tenses-3',
+            category: "Temps verbaux",
+            theme: "Past simple avec marqueur temporel",
+            french: "L'OPEP a annoncé hier une nouvelle baisse de production, ce qui a immédiatement fait flamber les cours du brut.",
+            reference: "OPEC announced a new production cut yesterday, which immediately sent crude oil prices soaring.",
+            grammar_points: ["Past simple obligatoire avec 'yesterday'", "Pas de present perfect avec date précise", "Send + V-ing (faire faire)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "temps-verbaux",
+            lesson_title: "Temps Verbaux"
+          },
+          {
+            id: 'en-gram-tenses-4',
+            category: "Temps verbaux",
+            theme: "Present continuous (futur planifié)",
+            french: "Le gouvernement japonais lance la semaine prochaine un plan de relance massif pour soutenir une économie au bord de la déflation.",
+            reference: "The Japanese government is launching a massive stimulus plan next week to support an economy on the brink of deflation.",
+            grammar_points: ["Present continuous pour futur planifié", "Next week + be + V-ing", "Piège 'will launch'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "temps-verbaux",
+            lesson_title: "Temps Verbaux"
+          },
+          {
+            id: 'en-gram-tenses-5',
+            category: "Temps verbaux",
+            theme: "Present perfect + never",
+            french: "Les sanctions occidentales n'ont jamais réussi à isoler complètement la Russie sur la scène internationale.",
+            reference: "Western sanctions have never managed to completely isolate Russia on the international stage.",
+            grammar_points: ["Present perfect avec 'never'", "Manage to + infinitive", "Bilan jusqu'à aujourd'hui"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "temps-verbaux",
+            lesson_title: "Temps Verbaux"
+          },
+          // 2. CONDITIONNELS
+          {
+            id: 'en-gram-cond-2',
+            category: "Conditionnels",
+            theme: "Deuxième conditionnel",
+            french: "Si la Chine cessait d'acheter de la dette américaine, les marchés financiers connaîtraient une instabilité sans précédent.",
+            reference: "If China stopped buying American debt, financial markets would experience unprecedented instability.",
+            grammar_points: ["Second conditional (irréel présent)", "If + past simple, would + base", "Hypothèse improbable"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "conditionnels",
+            lesson_title: "Conditionnels"
+          },
+          {
+            id: 'en-gram-cond-3',
+            category: "Conditionnels",
+            theme: "Premier conditionnel",
+            french: "Si la Banque centrale européenne maintient ses taux directeurs élevés, la zone euro entrera probablement en récession l'an prochain.",
+            reference: "If the European Central Bank keeps its key rates high, the eurozone will probably enter recession next year.",
+            grammar_points: ["First conditional (réel)", "If + present, will + base", "Pas de 'would' dans le réel"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "conditionnels",
+            lesson_title: "Conditionnels"
+          },
+          {
+            id: 'en-gram-cond-4',
+            category: "Conditionnels",
+            theme: "Mixed conditional",
+            french: "Si l'Allemagne avait investi davantage dans son réseau ferroviaire, elle ne dépendrait plus aujourd'hui autant du diesel et du charbon.",
+            reference: "If Germany had invested more in its rail network, it would not depend so much on diesel and coal today.",
+            grammar_points: ["Mixed conditional (passé → présent)", "If + past perfect, would + base", "Conséquence présente d'un passé irréel"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "conditionnels",
+            lesson_title: "Conditionnels"
+          },
+          {
+            id: 'en-gram-cond-5',
+            category: "Conditionnels",
+            theme: "Unless + present",
+            french: "À moins que les États-Unis ne ratifient l'accord climatique de Paris, les négociations multilatérales resteront paralysées pour la décennie à venir.",
+            reference: "Unless the United States ratifies the Paris climate agreement, multilateral negotiations will remain deadlocked for the coming decade.",
+            grammar_points: ["Unless + present (= if not)", "Pas de 'don't' après 'unless'", "Will + base dans la principale"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "conditionnels",
+            lesson_title: "Conditionnels"
+          },
+          // 3. VOIX PASSIVE
+          {
+            id: 'en-gram-passive-2',
+            category: "Voix passive",
+            theme: "Present perfect passive",
+            french: "Plus de deux mille civils ont été déplacés depuis que le conflit a éclaté dans la région du Tigré.",
+            reference: "More than two thousand civilians have been displaced since the conflict broke out in the Tigray region.",
+            grammar_points: ["Present perfect passive (have been + V-en)", "Since + past simple", "Broke out (phrasal verb)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "voix-passives",
+            lesson_title: "Voix Passives"
+          },
+          {
+            id: 'en-gram-passive-3',
+            category: "Voix passive",
+            theme: "Modal + passive",
+            french: "Une réforme structurelle du marché du travail devra être adoptée si la France veut respecter ses engagements budgétaires européens.",
+            reference: "A structural reform of the labor market will have to be adopted if France wants to meet its European budgetary commitments.",
+            grammar_points: ["Will have to + be + V-en", "Modal au passif", "Meet commitments (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "voix-passives",
+            lesson_title: "Voix Passives"
+          },
+          {
+            id: 'en-gram-passive-4',
+            category: "Voix passive",
+            theme: "Passive continuous",
+            french: "De nouvelles routes commerciales sont actuellement explorées par les pays asiatiques pour contourner les sanctions occidentales.",
+            reference: "New trade routes are currently being explored by Asian countries to circumvent Western sanctions.",
+            grammar_points: ["Present continuous passive (are being + V-en)", "Currently + continuous", "Agent introduit par 'by'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "voix-passives",
+            lesson_title: "Voix Passives"
+          },
+          {
+            id: 'en-gram-passive-5',
+            category: "Voix passive",
+            theme: "Get passive",
+            french: "Trois ministres se sont vu retirer leur portefeuille après la publication du rapport sur les conflits d'intérêts.",
+            reference: "Three ministers had their portfolios removed after the publication of the report on conflicts of interest.",
+            grammar_points: ["Causative passive (have + obj + V-en)", "Alternative au passif simple", "Action subie"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "voix-passives",
+            lesson_title: "Voix Passives"
+          },
+          // 4. DISCOURS INDIRECT
+          {
+            id: 'en-gram-reported-2',
+            category: "Discours indirect",
+            theme: "Past → past perfect",
+            french: "La directrice générale du FMI a affirmé que la croissance mondiale avait ralenti plus vite que prévu durant le troisième trimestre.",
+            reference: "The IMF managing director stated that global growth had slowed down faster than expected during the third quarter.",
+            grammar_points: ["Past → past perfect (backshift)", "Stated that + clause", "Faster than expected (comparatif idiomatique)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "discours-indirect",
+            lesson_title: "Discours Indirect"
+          },
+          {
+            id: 'en-gram-reported-3',
+            category: "Discours indirect",
+            theme: "Ordre indirect",
+            french: "Le secrétaire général de l'ONU a appelé les belligérants à cesser immédiatement les hostilités et à entamer des négociations de paix.",
+            reference: "The UN Secretary-General urged the warring parties to immediately cease hostilities and to begin peace talks.",
+            grammar_points: ["Urge somebody to + infinitive", "Reported orders (verbe + COD + to V)", "Pas de 'that' avec verbes d'ordre"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "discours-indirect",
+            lesson_title: "Discours Indirect"
+          },
+          {
+            id: 'en-gram-reported-4',
+            category: "Discours indirect",
+            theme: "Question indirecte",
+            french: "Les journalistes se sont demandé pourquoi le président avait choisi d'annoncer cette mesure controversée la veille du sommet européen.",
+            reference: "Journalists wondered why the president had chosen to announce this controversial measure the day before the European summit.",
+            grammar_points: ["Indirect question (pas d'inversion)", "Wondered why + sujet + V", "The day before (≠ yesterday)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "discours-indirect",
+            lesson_title: "Discours Indirect"
+          },
+          {
+            id: 'en-gram-reported-5',
+            category: "Discours indirect",
+            theme: "Verbes de démenti",
+            french: "Le porte-parole du Kremlin a démenti que la Russie ait l'intention d'utiliser des armes tactiques sur le territoire ukrainien.",
+            reference: "The Kremlin spokesperson denied that Russia intended to use tactical weapons on Ukrainian territory.",
+            grammar_points: ["Deny that + clause + backshift", "Intend to + infinitive", "Verbes de discours nuancés"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "discours-indirect",
+            lesson_title: "Discours Indirect"
+          },
+          // 5. MODAUX
+          {
+            id: 'en-gram-modal-2',
+            category: "Modaux et auxiliaires",
+            theme: "Should have + past participle",
+            french: "Les régulateurs européens auraient dû anticiper la crise des liquidités qui a frappé plusieurs banques régionales l'an passé.",
+            reference: "European regulators should have anticipated the liquidity crisis that hit several regional banks last year.",
+            grammar_points: ["Should have + past participle (reproche)", "Hit (irrégulier invariant)", "Conséquence passée non réalisée"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "modaux",
+            lesson_title: "Modaux et Auxiliaires"
+          },
+          {
+            id: 'en-gram-modal-3',
+            category: "Modaux et auxiliaires",
+            theme: "Must have + past participle",
+            french: "Les négociateurs chinois ont dû recevoir des instructions claires de Pékin, car leur position s'est durcie en quelques heures.",
+            reference: "The Chinese negotiators must have received clear instructions from Beijing, as their position hardened within a few hours.",
+            grammar_points: ["Must have + past participle (déduction)", "As (causalité, registre soutenu)", "Within + durée"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "modaux",
+            lesson_title: "Modaux et Auxiliaires"
+          },
+          {
+            id: 'en-gram-modal-4',
+            category: "Modaux et auxiliaires",
+            theme: "Would (habitude passée)",
+            french: "Avant la chute du Rideau de fer, les diplomates occidentaux passaient des mois entiers à négocier des échanges commerciaux mineurs.",
+            reference: "Before the fall of the Iron Curtain, Western diplomats would spend entire months negotiating minor trade exchanges.",
+            grammar_points: ["Would + base verb (habitude passée)", "≠ conditionnel", "Spend + time + V-ing"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "modaux",
+            lesson_title: "Modaux et Auxiliaires"
+          },
+          {
+            id: 'en-gram-modal-5',
+            category: "Modaux et auxiliaires",
+            theme: "Be able to (réussite)",
+            french: "Aucun gouvernement n'a pu enrayer la spirale inflationniste sans provoquer un ralentissement significatif de la consommation.",
+            reference: "No government has been able to halt the inflationary spiral without causing a significant slowdown in consumption.",
+            grammar_points: ["Has been able to (≠ could)", "Réussite ponctuelle au present perfect", "Without + V-ing"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "modaux",
+            lesson_title: "Modaux et Auxiliaires"
+          },
+          // 6. PRÉPOSITIONS
+          {
+            id: 'en-gram-prep-2',
+            category: "Prépositions et particules",
+            theme: "Do away with",
+            french: "Le Parti travailliste s'est défait de son aile la plus radicale avant de remporter les élections législatives britanniques.",
+            reference: "The Labour Party did away with its most radical wing before winning the British general election.",
+            grammar_points: ["Phrasal verb 'do away with' (abolir/éliminer)", "Before + V-ing", "Compound phrasal (3 mots)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "prepositions",
+            lesson_title: "Prépositions et Particules"
+          },
+          {
+            id: 'en-gram-prep-3',
+            category: "Prépositions et particules",
+            theme: "Account for",
+            french: "Le secteur tertiaire représente désormais plus de soixante-dix pour cent du produit intérieur brut français.",
+            reference: "The service sector now accounts for more than seventy percent of French gross domestic product.",
+            grammar_points: ["Account for (représenter/expliquer)", "Faux ami 'represent'", "Percentage + of"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "prepositions",
+            lesson_title: "Prépositions et Particules"
+          },
+          {
+            id: 'en-gram-prep-4',
+            category: "Prépositions et particules",
+            theme: "Result in",
+            french: "La hausse des matières premières a entraîné une augmentation généralisée des prix dans l'ensemble de l'industrie manufacturière.",
+            reference: "The rise in raw materials has resulted in a widespread increase in prices throughout the manufacturing industry.",
+            grammar_points: ["Result in (avoir pour conséquence)", "≠ result from (provenir de)", "Throughout + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "prepositions",
+            lesson_title: "Prépositions et Particules"
+          },
+          {
+            id: 'en-gram-prep-5',
+            category: "Prépositions et particules",
+            theme: "Cope with",
+            french: "Les municipalités côtières peinent à faire face à la montée des eaux et à la multiplication des épisodes climatiques extrêmes.",
+            reference: "Coastal municipalities are struggling to cope with rising waters and the multiplication of extreme climate events.",
+            grammar_points: ["Cope with + nom (faire face à)", "Struggle to + infinitive", "Phrasal verb sans particule"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "prepositions",
+            lesson_title: "Prépositions et Particules"
+          },
+          // 7. ARTICLES
+          {
+            id: 'en-gram-art-2',
+            category: "Articles et déterminants",
+            theme: "Zero article (institutions)",
+            french: "Le Premier ministre indien s'est rendu à l'université de Cambridge pour prononcer un discours sur la coopération scientifique.",
+            reference: "The Indian Prime Minister visited Cambridge University to deliver a speech on scientific cooperation.",
+            grammar_points: ["Cambridge University (sans 'the')", "Universités + nom propre = zéro article", "The + titre + adjectif de nationalité"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "articles",
+            lesson_title: "Articles et Déterminants"
+          },
+          {
+            id: 'en-gram-art-3',
+            category: "Articles et déterminants",
+            theme: "The + superlatif",
+            french: "La Suède reste le pays le plus avancé en matière de transition énergétique parmi les démocraties européennes.",
+            reference: "Sweden remains the most advanced country in terms of energy transition among European democracies.",
+            grammar_points: ["'The' obligatoire devant superlatif", "Sweden sans article", "Among (parmi un groupe défini)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "articles",
+            lesson_title: "Articles et Déterminants"
+          },
+          {
+            id: 'en-gram-art-4',
+            category: "Articles et déterminants",
+            theme: "A + nom (générique)",
+            french: "Une démocratie ne saurait fonctionner durablement sans une presse libre et indépendante.",
+            reference: "A democracy cannot function sustainably without a free and independent press.",
+            grammar_points: ["'A' générique (= n'importe quelle)", "Cannot + base (impossibilité)", "Sans 'the' devant 'democracy'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "articles",
+            lesson_title: "Articles et Déterminants"
+          },
+          {
+            id: 'en-gram-art-5',
+            category: "Articles et déterminants",
+            theme: "The + adjective (groupe)",
+            french: "Les plus défavorisés sont les premiers à subir les conséquences sociales des politiques d'austérité budgétaire.",
+            reference: "The most disadvantaged are the first to bear the social consequences of budgetary austerity policies.",
+            grammar_points: ["The + adjective = groupe de personnes", "Verbe au pluriel après 'the + adj'", "Bear (irrég. : bear/bore/borne)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "articles",
+            lesson_title: "Articles et Déterminants"
+          },
+          // 8. RELATIVES
+          {
+            id: 'en-gram-rel-2',
+            category: "Subordonnées relatives",
+            theme: "Non-defining relative",
+            french: "Les pays membres du G20, qui représentent quatre-vingts pour cent de l'économie mondiale, doivent désormais coordonner leur réponse climatique.",
+            reference: "The G20 member countries, which represent eighty percent of the global economy, must now coordinate their climate response.",
+            grammar_points: ["Non-defining (entre virgules)", "'Which' obligatoire (pas 'that')", "Information additionnelle non essentielle"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "relatives",
+            lesson_title: "Subordonnées Relatives"
+          },
+          {
+            id: 'en-gram-rel-3',
+            category: "Subordonnées relatives",
+            theme: "Omission du pronom",
+            french: "Les réformes que la Banque mondiale recommande aux pays émergents suscitent souvent une vive résistance sociale.",
+            reference: "The reforms the World Bank recommends to emerging countries often spark strong social resistance.",
+            grammar_points: ["Pronom relatif COD omis (defining)", "≠ non-defining (jamais d'omission)", "Spark + nom (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "relatives",
+            lesson_title: "Subordonnées Relatives"
+          },
+          {
+            id: 'en-gram-rel-4',
+            category: "Subordonnées relatives",
+            theme: "Where (relatif de lieu)",
+            french: "Le sommet de Glasgow, où les engagements climatiques avaient été solennellement renouvelés, n'a finalement débouché sur aucune sanction contraignante.",
+            reference: "The Glasgow summit, where climate commitments had been solemnly renewed, ultimately led to no binding sanctions.",
+            grammar_points: ["'Where' relatif de lieu", "Non-defining avec virgules", "Past perfect passive"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "relatives",
+            lesson_title: "Subordonnées Relatives"
+          },
+          {
+            id: 'en-gram-rel-5',
+            category: "Subordonnées relatives",
+            theme: "Préposition + which",
+            french: "L'accord sur lequel reposait l'équilibre stratégique entre Washington et Moscou n'a pas survécu à la dernière administration américaine.",
+            reference: "The agreement on which the strategic balance between Washington and Moscow rested did not survive the last American administration.",
+            grammar_points: ["Preposition + which (registre soutenu)", "≠ 'which... on' (registre oral)", "Rested on (verbe + préposition)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "relatives",
+            lesson_title: "Subordonnées Relatives"
+          },
+          // 9. GÉRONDIF / INFINITIF
+          {
+            id: 'en-gram-ger-2',
+            category: "Gérondif et infinitif",
+            theme: "Stop + V-ing",
+            french: "L'Allemagne a cessé d'importer du gaz russe et a investi des sommes considérables pour diversifier ses sources d'énergie.",
+            reference: "Germany stopped importing Russian gas and invested considerable sums to diversify its energy sources.",
+            grammar_points: ["Stop + V-ing (cesser de)", "≠ stop + to V (s'arrêter pour)", "Invest + sums to + V (but)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "gerondif-infinitif",
+            lesson_title: "Gérondif et Infinitif"
+          },
+          {
+            id: 'en-gram-ger-3',
+            category: "Gérondif et infinitif",
+            theme: "Get used to + V-ing",
+            french: "Les économies émergentes commencent à s'habituer à fonctionner sans le soutien direct des institutions financières occidentales.",
+            reference: "Emerging economies are starting to get used to operating without the direct support of Western financial institutions.",
+            grammar_points: ["Get used to + V-ing (s'habituer à)", "'To' = préposition, pas marqueur d'infinitif", "Piège 'used to + base' (habitude révolue)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "gerondif-infinitif",
+            lesson_title: "Gérondif et Infinitif"
+          },
+          {
+            id: 'en-gram-ger-4',
+            category: "Gérondif et infinitif",
+            theme: "Succeed in + V-ing",
+            french: "Aucun chef d'État européen n'a véritablement réussi à convaincre Pékin de modifier sa politique commerciale agressive.",
+            reference: "No European head of state has truly succeeded in convincing Beijing to change its aggressive trade policy.",
+            grammar_points: ["Succeed in + V-ing", "≠ succeed to (faux ami)", "Convince + COD + to + V"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "gerondif-infinitif",
+            lesson_title: "Gérondif et Infinitif"
+          },
+          {
+            id: 'en-gram-ger-5',
+            category: "Gérondif et infinitif",
+            theme: "Prefer + V-ing",
+            french: "Les électeurs préfèrent désormais voter pour des candidats issus de la société civile plutôt que pour des politiques de carrière.",
+            reference: "Voters now prefer voting for candidates from civil society rather than for career politicians.",
+            grammar_points: ["Prefer + V-ing (préférence générale)", "Rather than + nom/V-ing", "From + nom (issu de)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "gerondif-infinitif",
+            lesson_title: "Gérondif et Infinitif"
+          },
+          // 10. COMPARATIFS / SUPERLATIFS
+          {
+            id: 'en-gram-comp-2',
+            category: "Comparatifs et superlatifs",
+            theme: "As + adjective + as",
+            french: "Les marchés financiers américains demeurent presque aussi profonds qu'ils l'étaient avant la crise des subprimes de 2008.",
+            reference: "American financial markets remain almost as deep as they were before the 2008 subprime crisis.",
+            grammar_points: ["As + adj + as (égalité)", "Almost + as...as (presque égal)", "Before + nom de période"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "comparatifs",
+            lesson_title: "Comparatifs et Superlatifs"
+          },
+          {
+            id: 'en-gram-comp-3',
+            category: "Comparatifs et superlatifs",
+            theme: "Less + indénombrable",
+            french: "L'Espagne consomme moins d'énergie par habitant que la plupart de ses voisins du nord-ouest européen.",
+            reference: "Spain consumes less energy per capita than most of its northwestern European neighbors.",
+            grammar_points: ["Less + indénombrable (≠ fewer)", "Per capita (locution latine)", "Most of + déterminant + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "comparatifs",
+            lesson_title: "Comparatifs et Superlatifs"
+          },
+          {
+            id: 'en-gram-comp-4',
+            category: "Comparatifs et superlatifs",
+            theme: "The + comparative... the + comparative",
+            french: "Plus une économie dépend des exportations de matières premières, plus elle est vulnérable aux retournements de cycle mondiaux.",
+            reference: "The more an economy depends on raw material exports, the more vulnerable it is to global cyclical reversals.",
+            grammar_points: ["The + comparative... the + comparative", "Corrélation entre deux variables", "Inversion souple en anglais"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "comparatifs",
+            lesson_title: "Comparatifs et Superlatifs"
+          },
+          {
+            id: 'en-gram-comp-5',
+            category: "Comparatifs et superlatifs",
+            theme: "By far + superlative",
+            french: "Singapour reste de loin le port le plus efficace d'Asie du Sud-Est en matière de logistique conteneurisée.",
+            reference: "Singapore remains by far the most efficient port in Southeast Asia in terms of container logistics.",
+            grammar_points: ["By far + the + superlative (emphase)", "Singapore sans article", "In terms of + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "comparatifs",
+            lesson_title: "Comparatifs et Superlatifs"
+          },
+          // 11. QUESTIONS
+          {
+            id: 'en-gram-quest-2',
+            category: "Questions et interrogatifs",
+            theme: "Question indirecte (when)",
+            french: "Personne ne sait encore quand les négociations sur le Brexit aboutiront à un accord commercial définitif avec l'Union européenne.",
+            reference: "No one yet knows when the Brexit negotiations will result in a final trade agreement with the European Union.",
+            grammar_points: ["Indirect question : pas d'inversion", "When + sujet + will + base", "Result in + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "questions",
+            lesson_title: "Questions et Interrogatifs"
+          },
+          {
+            id: 'en-gram-quest-3',
+            category: "Questions et interrogatifs",
+            theme: "Tag question",
+            french: "L'Union européenne ne peut pas continuer à dépendre du gaz américain, n'est-ce pas ?",
+            reference: "The European Union cannot keep depending on American gas, can it?",
+            grammar_points: ["Tag question (polarité inversée)", "Cannot → can it?", "Keep + V-ing (continuer à)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "questions",
+            lesson_title: "Questions et Interrogatifs"
+          },
+          {
+            id: 'en-gram-quest-4',
+            category: "Questions et interrogatifs",
+            theme: "What + nom + auxiliaire",
+            french: "Quelles mesures la communauté internationale devrait-elle prendre pour prévenir la prolifération nucléaire au Moyen-Orient ?",
+            reference: "What measures should the international community take to prevent nuclear proliferation in the Middle East?",
+            grammar_points: ["What + noun + auxiliaire + sujet + V", "Should (conseil/devoir moral)", "Prevent + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "questions",
+            lesson_title: "Questions et Interrogatifs"
+          },
+          {
+            id: 'en-gram-quest-5',
+            category: "Questions et interrogatifs",
+            theme: "How is it that",
+            french: "Comment expliquer que l'Inde, malgré sa croissance fulgurante, demeure incapable de réduire significativement la pauvreté rurale ?",
+            reference: "How is it that India, despite its rapid growth, remains unable to significantly reduce rural poverty?",
+            grammar_points: ["'How is it that' + sujet + V (sans inversion)", "Despite + nom (≠ although + clause)", "Unable to + V"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "questions",
+            lesson_title: "Questions et Interrogatifs"
+          },
+          // 12. EXPRESSIONS DE TEMPS
+          {
+            id: 'en-gram-time-2',
+            category: "Expressions de temps",
+            theme: "For + durée",
+            french: "La Chine maintient depuis plus de quatre décennies un contrôle strict sur les mouvements de capitaux entrant et sortant de son territoire.",
+            reference: "China has maintained strict control over capital movements in and out of its territory for more than four decades.",
+            grammar_points: ["For + durée + present perfect", "≠ since (point de départ)", "Control over (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "expressions-temps",
+            lesson_title: "Expressions de Temps"
+          },
+          {
+            id: 'en-gram-time-3',
+            category: "Expressions de temps",
+            theme: "By the time + futur antérieur",
+            french: "Lorsque la conférence climatique commencera, la plupart des pays auront déjà rendu publics leurs nouveaux engagements de réduction d'émissions.",
+            reference: "By the time the climate conference begins, most countries will have already made public their new emissions reduction commitments.",
+            grammar_points: ["By the time + present (pas de 'will')", "Will have + past participle (futur antérieur)", "Already entre auxiliaires"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "expressions-temps",
+            lesson_title: "Expressions de Temps"
+          },
+          {
+            id: 'en-gram-time-4',
+            category: "Expressions de temps",
+            theme: "Ago + past simple",
+            french: "La Bundesbank a abandonné sa politique monétaire indépendante il y a plus de vingt ans, lors de la création de la zone euro.",
+            reference: "The Bundesbank abandoned its independent monetary policy more than twenty years ago, when the eurozone was created.",
+            grammar_points: ["Ago + past simple (pas present perfect)", "≠ since/for", "When + past passive"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "expressions-temps",
+            lesson_title: "Expressions de Temps"
+          },
+          {
+            id: 'en-gram-time-5',
+            category: "Expressions de temps",
+            theme: "Not yet + present perfect",
+            french: "Le gouvernement français n'a pas encore présenté son plan détaillé pour la décarbonation du secteur industriel d'ici 2035.",
+            reference: "The French government has not yet presented its detailed plan for decarbonizing the industrial sector by 2035.",
+            grammar_points: ["Not yet + present perfect", "By + date (avant)", "For + V-ing (but)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "expressions-temps",
+            lesson_title: "Expressions de Temps"
+          },
+          // 13. CONCORDANCE DES TEMPS
+          {
+            id: 'en-gram-concord-2',
+            category: "Concordance des temps",
+            theme: "Future in the past",
+            french: "Les économistes avaient prédit que la pandémie provoquerait un effondrement durable de l'économie mondiale, ce qui ne s'est pas produit.",
+            reference: "Economists had predicted that the pandemic would cause a lasting collapse of the world economy, which did not happen.",
+            grammar_points: ["Past perfect + would (future in the past)", "Predict that + clause", "Which (non-defining)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "concordance",
+            lesson_title: "Concordance des Temps"
+          },
+          {
+            id: 'en-gram-concord-3',
+            category: "Concordance des temps",
+            theme: "Past + past perfect",
+            french: "Les analystes ont expliqué que les marchés avaient anticipé la hausse des taux bien avant l'annonce officielle de la Réserve fédérale.",
+            reference: "Analysts explained that the markets had anticipated the rate hike well before the Federal Reserve's official announcement.",
+            grammar_points: ["Past + past perfect (antériorité)", "Well before + nom", "Génitif saxon (Fed's announcement)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "concordance",
+            lesson_title: "Concordance des Temps"
+          },
+          {
+            id: 'en-gram-concord-4',
+            category: "Concordance des temps",
+            theme: "Will → would",
+            french: "Lors du sommet de Washington, les dirigeants alliés ont assuré qu'ils continueraient de soutenir Kiev aussi longtemps que nécessaire.",
+            reference: "At the Washington summit, allied leaders assured that they would continue supporting Kyiv for as long as necessary.",
+            grammar_points: ["Will → would (concordance)", "Continue + V-ing", "As long as necessary"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "concordance",
+            lesson_title: "Concordance des Temps"
+          },
+          {
+            id: 'en-gram-concord-5',
+            category: "Concordance des temps",
+            theme: "Reported conditional",
+            french: "Le ministre des finances a déclaré que si les marchés réagissaient mal, le gouvernement réviserait son projet de budget.",
+            reference: "The finance minister stated that if the markets reacted badly, the government would revise its budget proposal.",
+            grammar_points: ["Reported 1st conditional (past + would)", "If + past simple (in past context)", "Stated that + clause"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "concordance",
+            lesson_title: "Concordance des Temps"
+          },
+          // 14. QUANTIFIEURS
+          {
+            id: 'en-gram-quant-2',
+            category: "Quantifieurs",
+            theme: "Little + indénombrable",
+            french: "Peu de progrès a été réalisé depuis la signature des accords de Minsk sur la stabilisation politique de l'Ukraine orientale.",
+            reference: "Little progress has been made since the signing of the Minsk agreements on the political stabilization of eastern Ukraine.",
+            grammar_points: ["Little + indénombrable (sens négatif)", "≠ a little (quelque)", "Progress = indénombrable"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "quantifieurs",
+            lesson_title: "Quantifieurs"
+          },
+          {
+            id: 'en-gram-quant-3',
+            category: "Quantifieurs",
+            theme: "A great deal of",
+            french: "Une grande partie de la croissance allemande a longtemps reposé sur les exportations industrielles vers les économies asiatiques.",
+            reference: "A great deal of German growth has long relied on industrial exports to Asian economies.",
+            grammar_points: ["A great deal of + indénombrable", "Long (adverbe) + present perfect", "Rely on (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "quantifieurs",
+            lesson_title: "Quantifieurs"
+          },
+          {
+            id: 'en-gram-quant-4',
+            category: "Quantifieurs",
+            theme: "Most (sans the)",
+            french: "La plupart des pays du Golfe diversifient désormais leurs sources de revenus pour réduire leur dépendance au pétrole.",
+            reference: "Most Gulf countries are now diversifying their sources of income to reduce their dependence on oil.",
+            grammar_points: ["Most + nom général (sans 'the')", "≠ most of the + nom spécifique", "Dependence on (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "quantifieurs",
+            lesson_title: "Quantifieurs"
+          },
+          {
+            id: 'en-gram-quant-5',
+            category: "Quantifieurs",
+            theme: "Enough + nom",
+            french: "L'Europe n'a pas mobilisé suffisamment de capitaux pour rivaliser avec les géants technologiques américains et chinois.",
+            reference: "Europe has not mobilized enough capital to compete with American and Chinese tech giants.",
+            grammar_points: ["Enough + nom (avant le nom)", "≠ adjective + enough (après l'adjectif)", "Compete with + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "quantifieurs",
+            lesson_title: "Quantifieurs"
+          },
+          // 15. SUBJONCTIF
+          {
+            id: 'en-gram-subj-2',
+            category: "Subjonctif",
+            theme: "Recommend that + base",
+            french: "Le Conseil de sécurité a recommandé que chaque État membre renforce immédiatement la surveillance de ses frontières maritimes.",
+            reference: "The Security Council recommended that each member state immediately strengthen the surveillance of its maritime borders.",
+            grammar_points: ["Recommend that + base verb (subjonctif)", "Pas de 's' à la 3e personne", "Each + singulier"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "subjunctif",
+            lesson_title: "Subjunctif et Structures Subjectives"
+          },
+          {
+            id: 'en-gram-subj-3',
+            category: "Subjonctif",
+            theme: "If I were",
+            french: "Si j'étais à la tête de l'Union européenne, je donnerais la priorité absolue à l'investissement dans les technologies de défense.",
+            reference: "If I were at the head of the European Union, I would give absolute priority to investment in defense technologies.",
+            grammar_points: ["If I were (subjonctif, pas 'was')", "Second conditional", "Give priority to + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "subjunctif",
+            lesson_title: "Subjunctif et Structures Subjectives"
+          },
+          {
+            id: 'en-gram-subj-4',
+            category: "Subjonctif",
+            theme: "It is high time + past",
+            french: "Il est grand temps que les pays développés tiennent les promesses financières faites aux pays du Sud lors des conférences climatiques.",
+            reference: "It is high time that developed countries kept the financial promises made to Southern countries at climate conferences.",
+            grammar_points: ["It is high time + past simple (subjonctif)", "Kept (pas 'keep')", "Made to (participe passé adjectif)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "subjunctif",
+            lesson_title: "Subjunctif et Structures Subjectives"
+          },
+          {
+            id: 'en-gram-subj-5',
+            category: "Subjonctif",
+            theme: "Insist that + base",
+            french: "Le président argentin a insisté pour que les réformes structurelles soient menées sans aucun délai supplémentaire.",
+            reference: "The Argentine president insisted that structural reforms be carried out without any further delay.",
+            grammar_points: ["Insist that + base verb (subjonctif)", "Passive subjunctive (be + V-en)", "Carry out (phrasal verb)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "subjunctif",
+            lesson_title: "Subjunctif et Structures Subjectives"
+          },
+          // 16. INVERSIONS
+          {
+            id: 'en-gram-inv-2',
+            category: "Inversions et emphase",
+            theme: "Not only... but also",
+            french: "Non seulement la Corée du Sud a-t-elle développé une industrie de pointe, mais elle est aussi devenue un acteur diplomatique majeur en Asie.",
+            reference: "Not only has South Korea developed a cutting-edge industry, but it has also become a major diplomatic player in Asia.",
+            grammar_points: ["Not only + inversion auxiliaire-sujet", "But also (corrélation)", "Cutting-edge (adj. composé)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "inversions",
+            lesson_title: "Inversions et Emphase"
+          },
+          {
+            id: 'en-gram-inv-3',
+            category: "Inversions et emphase",
+            theme: "Hardly... when",
+            french: "À peine le nouveau dirigeant avait-il pris ses fonctions que les marchés ont commencé à manifester leur inquiétude.",
+            reference: "Hardly had the new leader taken office when the markets began to express their concern.",
+            grammar_points: ["Hardly + had + sujet + V-en... when", "Inversion emphatique au pluperfect", "Take office (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "inversions",
+            lesson_title: "Inversions et Emphase"
+          },
+          {
+            id: 'en-gram-inv-4',
+            category: "Inversions et emphase",
+            theme: "So + adj + that",
+            french: "L'épidémie était d'une telle gravité que de nombreux gouvernements ont décrété l'état d'urgence sanitaire.",
+            reference: "So serious was the epidemic that many governments declared a state of health emergency.",
+            grammar_points: ["So + adj + was + sujet + that (inversion)", "Construction emphatique soutenue", "Declare a state of (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "inversions",
+            lesson_title: "Inversions et Emphase"
+          },
+          {
+            id: 'en-gram-inv-5',
+            category: "Inversions et emphase",
+            theme: "Only after + inversion",
+            french: "Ce n'est qu'après la chute de Lehman Brothers que les régulateurs ont véritablement compris l'ampleur du risque systémique.",
+            reference: "Only after the fall of Lehman Brothers did regulators truly understand the scale of systemic risk.",
+            grammar_points: ["Only after + inversion (did + sujet + V)", "Construction restrictive", "The scale of (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "inversions",
+            lesson_title: "Inversions et Emphase"
+          },
+          // 17. CONNECTEURS
+          {
+            id: 'en-gram-connect-2',
+            category: "Connecteurs logiques",
+            theme: "Although + clause",
+            french: "Bien que l'inflation ait reculé, la Banque centrale européenne demeure prudente quant à un éventuel assouplissement monétaire.",
+            reference: "Although inflation has receded, the European Central Bank remains cautious about a possible monetary easing.",
+            grammar_points: ["Although + clause (≠ despite + nom)", "Cautious about + nom", "Has receded (present perfect)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "connecteurs",
+            lesson_title: "Connecteurs Logiques"
+          },
+          {
+            id: 'en-gram-connect-3',
+            category: "Connecteurs logiques",
+            theme: "Therefore",
+            french: "L'économie chinoise ralentit plus rapidement que prévu ; par conséquent, Pékin envisage de nouvelles mesures de relance.",
+            reference: "The Chinese economy is slowing down faster than expected; therefore, Beijing is considering new stimulus measures.",
+            grammar_points: ["Therefore + virgule (conséquence)", "Point-virgule + connecteur", "Faster than expected (idiomatique)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "connecteurs",
+            lesson_title: "Connecteurs Logiques"
+          },
+          {
+            id: 'en-gram-connect-4',
+            category: "Connecteurs logiques",
+            theme: "Whereas",
+            french: "Tandis que les États-Unis privilégient la confrontation directe avec la Chine, l'Europe tente de maintenir un dialogue stratégique.",
+            reference: "Whereas the United States favors direct confrontation with China, Europe tries to maintain a strategic dialogue.",
+            grammar_points: ["Whereas (contraste soutenu)", "≠ while (plus neutre)", "Favor + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "connecteurs",
+            lesson_title: "Connecteurs Logiques"
+          },
+          {
+            id: 'en-gram-connect-5',
+            category: "Connecteurs logiques",
+            theme: "Moreover",
+            french: "La crise migratoire fragilise l'unité européenne ; de plus, elle nourrit la montée des partis populistes dans plusieurs États membres.",
+            reference: "The migration crisis weakens European unity; moreover, it fuels the rise of populist parties in several member states.",
+            grammar_points: ["Moreover (addition, registre soutenu)", "≠ also (plus neutre)", "Fuel + nom (alimenter)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "connecteurs",
+            lesson_title: "Connecteurs Logiques"
+          },
+          // 18. VERBES IRRÉGULIERS
+          {
+            id: 'en-gram-irreg-2',
+            category: "Verbes irréguliers",
+            theme: "Arose / undergone",
+            french: "Les tensions diplomatiques nées au sujet de Taïwan ont profondément transformé l'équilibre stratégique du Pacifique.",
+            reference: "The diplomatic tensions that arose over Taiwan have profoundly transformed the strategic balance of the Pacific.",
+            grammar_points: ["Arose (past de arise)", "Undergone (V-en de undergo)", "Arise over + nom (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "verbes-irreguliers",
+            lesson_title: "Verbes Irréguliers"
+          },
+          {
+            id: 'en-gram-irreg-3',
+            category: "Verbes irréguliers",
+            theme: "Thought / sought",
+            french: "Les économistes pensaient depuis longtemps que la zone euro avait cherché à imiter le modèle allemand de rigueur budgétaire.",
+            reference: "Economists had long thought that the eurozone had sought to imitate the German model of budgetary rigor.",
+            grammar_points: ["Thought (V-en de think)", "Sought (V-en de seek)", "Past perfect (avait pensé / avait cherché)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "verbes-irreguliers",
+            lesson_title: "Verbes Irréguliers"
+          },
+          {
+            id: 'en-gram-irreg-4',
+            category: "Verbes irréguliers",
+            theme: "Spoke / spread",
+            french: "Le porte-parole a évoqué les défis sécuritaires qui se sont propagés à travers la région du Sahel depuis le retrait français.",
+            reference: "The spokesperson spoke about the security challenges that have spread throughout the Sahel region since the French withdrawal.",
+            grammar_points: ["Spoke (past de speak)", "Spread (invariant : spread/spread/spread)", "Speak about + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "verbes-irreguliers",
+            lesson_title: "Verbes Irréguliers"
+          },
+          {
+            id: 'en-gram-irreg-5',
+            category: "Verbes irréguliers",
+            theme: "Rose / fell / struck",
+            french: "Les cours du baril ont grimpé, le dollar a chuté, et les marchés émergents ont été frappés par une vague de défiance.",
+            reference: "Oil prices rose, the dollar fell, and emerging markets were struck by a wave of mistrust.",
+            grammar_points: ["Rose (past de rise)", "Fell (past de fall)", "Struck (past + V-en de strike)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "verbes-irreguliers",
+            lesson_title: "Verbes Irréguliers"
+          },
+          // 19. CAUSATIVES
+          {
+            id: 'en-gram-caus-2',
+            category: "Structures causatives",
+            theme: "Make + somebody + base verb",
+            french: "Les pressions internationales ont contraint le régime à libérer plusieurs opposants politiques détenus depuis des années.",
+            reference: "International pressure made the regime release several political opponents detained for years.",
+            grammar_points: ["Make + somebody + base verb (sans 'to')", "Piège 'made to release'", "Detained for years (participe passé adjectif)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "causatives",
+            lesson_title: "Structures Causatives"
+          },
+          {
+            id: 'en-gram-caus-3',
+            category: "Structures causatives",
+            theme: "Get + somebody + to + V",
+            french: "Le président américain est parvenu à convaincre les pays alliés d'augmenter significativement leur budget militaire.",
+            reference: "The American president got allied countries to significantly increase their military budget.",
+            grammar_points: ["Get + somebody + to + V (persuader)", "≠ make (contraindre)", "Significantly + V (place de l'adverbe)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "causatives",
+            lesson_title: "Structures Causatives"
+          },
+          {
+            id: 'en-gram-caus-4',
+            category: "Structures causatives",
+            theme: "Let + bare infinitive",
+            french: "Bruxelles n'a pas laissé Budapest bloquer indéfiniment la procédure d'élargissement de l'Union européenne.",
+            reference: "Brussels did not let Budapest block the European Union's enlargement procedure indefinitely.",
+            grammar_points: ["Let + somebody + base verb (sans 'to')", "Piège 'let to block'", "Indefinitely (place de l'adverbe)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "causatives",
+            lesson_title: "Structures Causatives"
+          },
+          {
+            id: 'en-gram-caus-5',
+            category: "Structures causatives",
+            theme: "Have + object + state",
+            french: "Le scandale a tenu le gouvernement britannique en alerte pendant plusieurs semaines.",
+            reference: "The scandal kept the British government on alert for several weeks.",
+            grammar_points: ["Keep + object + complement (état)", "On alert (collocation)", "For + durée (passé)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "causatives",
+            lesson_title: "Structures Causatives"
+          },
+          // 20. NUANCES LEXICALES
+          {
+            id: 'en-gram-lex-2',
+            category: "Nuances lexicales",
+            theme: "Rise vs raise",
+            french: "La Banque centrale a relevé ses taux directeurs alors que l'inflation continue de grimper plus vite que prévu.",
+            reference: "The central bank raised its key rates while inflation continues to rise faster than expected.",
+            grammar_points: ["Raise (transitif, régulier : raised)", "Rise (intransitif, irrégulier : rose/risen)", "Confusion lexicale fréquente"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "nuances-lexicales",
+            lesson_title: "Nuances Lexicales"
+          },
+          {
+            id: 'en-gram-lex-3',
+            category: "Nuances lexicales",
+            theme: "Economic vs economical",
+            french: "Les politiques économiques restrictives ne sont pas toujours les plus économiques sur le long terme.",
+            reference: "Restrictive economic policies are not always the most economical in the long run.",
+            grammar_points: ["Economic (relatif à l'économie)", "Economical (peu coûteux)", "In the long run (idiomatique)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "nuances-lexicales",
+            lesson_title: "Nuances Lexicales"
+          },
+          {
+            id: 'en-gram-lex-4',
+            category: "Nuances lexicales",
+            theme: "Sensitive vs sensible",
+            french: "Le dossier nucléaire iranien demeure un sujet particulièrement sensible dans les négociations diplomatiques avec les Européens.",
+            reference: "The Iranian nuclear file remains a particularly sensitive subject in diplomatic negotiations with Europeans.",
+            grammar_points: ["Sensitive (délicat, susceptible)", "≠ sensible (raisonnable) — faux ami", "Confusion classique"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "nuances-lexicales",
+            lesson_title: "Nuances Lexicales"
+          },
+          {
+            id: 'en-gram-lex-5',
+            category: "Nuances lexicales",
+            theme: "Currently vs actually",
+            french: "Le ministère des affaires étrangères examine actuellement les conditions d'une éventuelle reprise des relations avec Damas.",
+            reference: "The Foreign Ministry is currently examining the conditions for a possible resumption of relations with Damascus.",
+            grammar_points: ["Currently (en ce moment) — pas 'actually'", "Actually = 'en réalité' (faux ami)", "Is + currently + V-ing"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "nuances-lexicales",
+            lesson_title: "Nuances Lexicales"
+          },
+          // === 5 PHRASES SUPPLÉMENTAIRES PAR RUBRIQUE (porte chaque rubrique à 10 phrases) ===
+          // 1. TEMPS VERBAUX
+          {
+            id: 'en-gram-tenses-6',
+            category: "Temps verbaux",
+            theme: "Present perfect continuous + for",
+            french: "Le Royaume-Uni vit depuis plus d'une décennie une instabilité politique sans précédent dans son histoire récente.",
+            reference: "The United Kingdom has been living through unprecedented political instability for over a decade.",
+            grammar_points: ["Present perfect continuous + for", "Live through (collocation)", "Over a decade"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "temps-verbaux",
+            lesson_title: "Temps Verbaux"
+          },
+          {
+            id: 'en-gram-tenses-7',
+            category: "Temps verbaux",
+            theme: "Used to + base",
+            french: "Avant la guerre en Ukraine, l'Allemagne importait massivement son gaz de Russie sans envisager d'alternative crédible.",
+            reference: "Before the war in Ukraine, Germany used to import its gas massively from Russia without considering any credible alternative.",
+            grammar_points: ["Used to + base verb (habitude révolue)", "Without + V-ing", "Piège 'used to + V-ing'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "temps-verbaux",
+            lesson_title: "Temps Verbaux"
+          },
+          {
+            id: 'en-gram-tenses-8',
+            category: "Temps verbaux",
+            theme: "Will (prédiction)",
+            french: "Selon les démographes, la population mondiale franchira le seuil des dix milliards avant la fin du siècle.",
+            reference: "According to demographers, the world population will cross the ten-billion threshold before the end of the century.",
+            grammar_points: ["Will + base (prédiction)", "According to + nom", "Adjectif composé (ten-billion)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "temps-verbaux",
+            lesson_title: "Temps Verbaux"
+          },
+          {
+            id: 'en-gram-tenses-9',
+            category: "Temps verbaux",
+            theme: "Past perfect",
+            french: "Lorsque la Réserve fédérale a annoncé sa décision, les marchés avaient déjà intégré l'essentiel de la hausse attendue.",
+            reference: "By the time the Federal Reserve announced its decision, the markets had already priced in most of the expected hike.",
+            grammar_points: ["Past perfect (had + V-en)", "By the time + past simple", "Price in (phrasal verb financier)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "temps-verbaux",
+            lesson_title: "Temps Verbaux"
+          },
+          {
+            id: 'en-gram-tenses-10',
+            category: "Temps verbaux",
+            theme: "Going to (intention)",
+            french: "Le gouvernement japonais prévoit de doubler son budget de défense au cours des cinq prochaines années.",
+            reference: "The Japanese government is going to double its defense budget over the next five years.",
+            grammar_points: ["Be going to + base (intention/projet)", "Over + durée future", "Distinction avec 'will'"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "temps-verbaux",
+            lesson_title: "Temps Verbaux"
+          },
+          // 2. CONDITIONNELS
+          {
+            id: 'en-gram-cond-6',
+            category: "Conditionnels",
+            theme: "Were it not for",
+            french: "Sans le soutien financier de la Banque mondiale, plusieurs économies africaines seraient au bord de la faillite.",
+            reference: "Were it not for the financial support of the World Bank, several African economies would be on the brink of bankruptcy.",
+            grammar_points: ["Were it not for + nom (inversion conditionnelle)", "Registre soutenu", "On the brink of (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "conditionnels",
+            lesson_title: "Conditionnels"
+          },
+          {
+            id: 'en-gram-cond-7',
+            category: "Conditionnels",
+            theme: "Should + inversion",
+            french: "Si la situation venait à se détériorer, l'OTAN devrait renforcer immédiatement sa présence sur le flanc oriental.",
+            reference: "Should the situation deteriorate, NATO would have to immediately reinforce its presence on the eastern flank.",
+            grammar_points: ["Should + inversion (= if... were to)", "Registre formel", "Would have to + base"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "conditionnels",
+            lesson_title: "Conditionnels"
+          },
+          {
+            id: 'en-gram-cond-8',
+            category: "Conditionnels",
+            theme: "Had + inversion",
+            french: "Si Pékin avait anticipé l'ampleur de la crise immobilière, le gouvernement aurait pris des mesures préventives plus tôt.",
+            reference: "Had Beijing anticipated the scale of the real estate crisis, the government would have taken preventive measures earlier.",
+            grammar_points: ["Had + inversion (= if... had + V-en)", "3rd conditional inversé", "Construction soutenue"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "conditionnels",
+            lesson_title: "Conditionnels"
+          },
+          {
+            id: 'en-gram-cond-9',
+            category: "Conditionnels",
+            theme: "Provided that",
+            french: "À condition que les négociations aboutissent rapidement, un cessez-le-feu pourrait être signé avant la fin du mois.",
+            reference: "Provided that the negotiations conclude swiftly, a ceasefire could be signed before the end of the month.",
+            grammar_points: ["Provided that + present", "Synonyme formel de 'if'", "Could + be + V-en (passif modal)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "conditionnels",
+            lesson_title: "Conditionnels"
+          },
+          {
+            id: 'en-gram-cond-10',
+            category: "Conditionnels",
+            theme: "Otherwise",
+            french: "Les pays développés doivent honorer leurs engagements climatiques ; sinon, la confiance des pays du Sud sera définitivement rompue.",
+            reference: "Developed countries must honor their climate commitments; otherwise, the trust of Southern countries will be permanently broken.",
+            grammar_points: ["Otherwise (= or else)", "Point-virgule + connecteur", "Will + be + V-en (futur passif)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "conditionnels",
+            lesson_title: "Conditionnels"
+          },
+          // 3. VOIX PASSIVE
+          {
+            id: 'en-gram-passive-6',
+            category: "Voix passive",
+            theme: "Past simple passive",
+            french: "La constitution chilienne a été rejetée par référendum à deux reprises depuis 2022.",
+            reference: "The Chilean constitution was rejected by referendum twice since 2022.",
+            grammar_points: ["Past simple passive (was + V-en)", "Twice (adverbe de fréquence)", "By referendum (sans article)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "voix-passives",
+            lesson_title: "Voix Passives"
+          },
+          {
+            id: 'en-gram-passive-7',
+            category: "Voix passive",
+            theme: "It is believed that",
+            french: "On pense généralement que l'intelligence artificielle bouleversera plus de professions que toute révolution technologique précédente.",
+            reference: "It is generally believed that artificial intelligence will disrupt more professions than any previous technological revolution.",
+            grammar_points: ["It is + V-en + that (passif impersonnel)", "More + nom + than + any", "Traduit le 'on' français"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "voix-passives",
+            lesson_title: "Voix Passives"
+          },
+          {
+            id: 'en-gram-passive-8',
+            category: "Voix passive",
+            theme: "Be supposed to",
+            french: "Les pays de l'OPEP+ sont censés réduire leur production conformément à l'accord conclu en avril.",
+            reference: "OPEC+ countries are supposed to reduce their production in accordance with the April agreement.",
+            grammar_points: ["Be supposed to + base verb", "Obligation/attente externe", "In accordance with + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "voix-passives",
+            lesson_title: "Voix Passives"
+          },
+          {
+            id: 'en-gram-passive-9',
+            category: "Voix passive",
+            theme: "Past perfect passive",
+            french: "Avant la chute du régime, des milliers d'opposants avaient été emprisonnés sans procès équitable.",
+            reference: "Before the fall of the regime, thousands of opponents had been imprisoned without a fair trial.",
+            grammar_points: ["Past perfect passive (had been + V-en)", "Thousands of + nom pluriel", "Without + nom (sans 'the')"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "voix-passives",
+            lesson_title: "Voix Passives"
+          },
+          {
+            id: 'en-gram-passive-10',
+            category: "Voix passive",
+            theme: "Passive infinitive",
+            french: "De nouvelles sanctions sont susceptibles d'être adoptées si les négociations diplomatiques échouent.",
+            reference: "New sanctions are likely to be adopted if diplomatic negotiations fail.",
+            grammar_points: ["Be likely + to be + V-en", "Passive infinitive", "If + present + present (1st cond.)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "voix-passives",
+            lesson_title: "Voix Passives"
+          },
+          // 4. DISCOURS INDIRECT
+          {
+            id: 'en-gram-reported-6',
+            category: "Discours indirect",
+            theme: "Reported request (ask + to)",
+            french: "Les ONG ont demandé aux gouvernements occidentaux de doubler leur aide humanitaire à destination de Gaza.",
+            reference: "NGOs asked Western governments to double their humanitarian aid to Gaza.",
+            grammar_points: ["Ask + somebody + to + V", "Reported request", "Aid to + lieu (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "discours-indirect",
+            lesson_title: "Discours Indirect"
+          },
+          {
+            id: 'en-gram-reported-7',
+            category: "Discours indirect",
+            theme: "Wonder whether",
+            french: "Les analystes se demandent si la zone euro parviendra à éviter la récession malgré le ralentissement allemand.",
+            reference: "Analysts wonder whether the eurozone will manage to avoid recession despite the German slowdown.",
+            grammar_points: ["Wonder whether (question indirecte yes/no)", "Pas d'inversion après whether", "Manage to + infinitive"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "discours-indirect",
+            lesson_title: "Discours Indirect"
+          },
+          {
+            id: 'en-gram-reported-8',
+            category: "Discours indirect",
+            theme: "Praise + for",
+            french: "Le secrétaire général a salué les efforts diplomatiques déployés par Pretoria pour apaiser les tensions régionales.",
+            reference: "The Secretary-General praised the diplomatic efforts deployed by Pretoria to ease regional tensions.",
+            grammar_points: ["Praise + nom (saluer)", "Distinction praise/congratulate", "Deploy + nom (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "discours-indirect",
+            lesson_title: "Discours Indirect"
+          },
+          {
+            id: 'en-gram-reported-9',
+            category: "Discours indirect",
+            theme: "Warn that",
+            french: "Les économistes ont averti que le surendettement public pourrait fragiliser durablement la confiance des investisseurs étrangers.",
+            reference: "Economists warned that public over-indebtedness could lastingly weaken the confidence of foreign investors.",
+            grammar_points: ["Warn that + clause", "Could + base (possibilité au passé)", "Lastingly (place de l'adverbe)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "discours-indirect",
+            lesson_title: "Discours Indirect"
+          },
+          {
+            id: 'en-gram-reported-10',
+            category: "Discours indirect",
+            theme: "Promise that + would",
+            french: "Le candidat démocrate a promis qu'il rétablirait l'accord nucléaire iranien dès son arrivée à la Maison-Blanche.",
+            reference: "The Democratic candidate promised that he would restore the Iranian nuclear deal as soon as he arrived at the White House.",
+            grammar_points: ["Promise that + would + base", "As soon as + past (in past context)", "Restore + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "discours-indirect",
+            lesson_title: "Discours Indirect"
+          },
+          // 5. MODAUX
+          {
+            id: 'en-gram-modal-6',
+            category: "Modaux et auxiliaires",
+            theme: "Could have + V-en",
+            french: "Les régulateurs européens auraient pu intervenir plus tôt pour limiter la spéculation sur les marchés énergétiques.",
+            reference: "European regulators could have intervened earlier to limit speculation on energy markets.",
+            grammar_points: ["Could have + V-en (possibilité non réalisée)", "To + infinitive (but)", "Earlier (comparatif d'adverbe)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "modaux",
+            lesson_title: "Modaux et Auxiliaires"
+          },
+          {
+            id: 'en-gram-modal-7',
+            category: "Modaux et auxiliaires",
+            theme: "Need not",
+            french: "Les pays exportateurs de pétrole n'ont pas besoin de craindre une chute durable des cours, selon plusieurs analystes.",
+            reference: "Oil-exporting countries need not fear a lasting drop in prices, according to several analysts.",
+            grammar_points: ["Need not + base (registre soutenu)", "= don't have to", "Lasting + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "modaux",
+            lesson_title: "Modaux et Auxiliaires"
+          },
+          {
+            id: 'en-gram-modal-8',
+            category: "Modaux et auxiliaires",
+            theme: "Must (obligation interne)",
+            french: "Les États membres de l'Union européenne doivent désormais consacrer au moins deux pour cent de leur PIB à la défense.",
+            reference: "The Member States of the European Union must now devote at least two percent of their GDP to defense.",
+            grammar_points: ["Must + base (obligation morale/interne)", "Devote + obj + to + nom", "At least + nombre"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "modaux",
+            lesson_title: "Modaux et Auxiliaires"
+          },
+          {
+            id: 'en-gram-modal-9',
+            category: "Modaux et auxiliaires",
+            theme: "Had to (obligation externe passée)",
+            french: "Le Royaume-Uni a dû renégocier l'ensemble de ses accords commerciaux après son retrait de l'Union européenne.",
+            reference: "The United Kingdom had to renegotiate all its trade agreements after its withdrawal from the European Union.",
+            grammar_points: ["Had to + base (obligation externe passée)", "≠ must (pas de passé direct)", "Withdrawal from + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "modaux",
+            lesson_title: "Modaux et Auxiliaires"
+          },
+          {
+            id: 'en-gram-modal-10',
+            category: "Modaux et auxiliaires",
+            theme: "May (concession)",
+            french: "Les politiques d'austérité peuvent paraître nécessaires à court terme, mais elles finissent par étouffer la demande intérieure.",
+            reference: "Austerity policies may appear necessary in the short term, but they end up stifling domestic demand.",
+            grammar_points: ["May + base (concession)", "End up + V-ing (finir par)", "In the short term (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "modaux",
+            lesson_title: "Modaux et Auxiliaires"
+          },
+          // 6. PRÉPOSITIONS
+          {
+            id: 'en-gram-prep-6',
+            category: "Prépositions et particules",
+            theme: "Take over",
+            french: "Les fonds d'investissement chinois ont pris le contrôle de plusieurs ports stratégiques en Afrique de l'Est au cours de la dernière décennie.",
+            reference: "Chinese investment funds took over several strategic ports in East Africa over the last decade.",
+            grammar_points: ["Take over (prendre le contrôle de)", "Over + durée passée", "East Africa (sans 'the')"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "prepositions",
+            lesson_title: "Prépositions et Particules"
+          },
+          {
+            id: 'en-gram-prep-7',
+            category: "Prépositions et particules",
+            theme: "Stem from",
+            french: "La crise migratoire actuelle découle largement des conflits qui ravagent le Sahel depuis plus de quinze ans.",
+            reference: "The current migration crisis stems largely from the conflicts that have been ravaging the Sahel for over fifteen years.",
+            grammar_points: ["Stem from (provenir de)", "Present perfect continuous + for", "Largely (place de l'adverbe)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "prepositions",
+            lesson_title: "Prépositions et Particules"
+          },
+          {
+            id: 'en-gram-prep-8',
+            category: "Prépositions et particules",
+            theme: "Carry out + investigation",
+            french: "Les Nations unies ont mené une enquête approfondie sur les violations des droits humains commises au Soudan.",
+            reference: "The United Nations carried out an in-depth investigation into the human rights violations committed in Sudan.",
+            grammar_points: ["Carry out (mener à bien)", "Investigation into + nom", "In-depth (adjectif composé)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "prepositions",
+            lesson_title: "Prépositions et Particules"
+          },
+          {
+            id: 'en-gram-prep-9',
+            category: "Prépositions et particules",
+            theme: "Step up",
+            french: "L'Union européenne a intensifié ses efforts diplomatiques pour rallier les pays du Sud à sa position climatique.",
+            reference: "The European Union stepped up its diplomatic efforts to rally Southern countries to its climate position.",
+            grammar_points: ["Step up (intensifier)", "Rally + somebody + to + nom", "Adjective + Southern (capitalisé)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "prepositions",
+            lesson_title: "Prépositions et Particules"
+          },
+          {
+            id: 'en-gram-prep-10',
+            category: "Prépositions et particules",
+            theme: "Crack down on",
+            french: "Le gouvernement chinois a sévèrement réprimé les manifestations qui ont éclaté dans plusieurs grandes villes.",
+            reference: "The Chinese government cracked down hard on the demonstrations that erupted in several major cities.",
+            grammar_points: ["Crack down on (réprimer)", "Hard (adverbe sans -ly)", "Erupted (past de erupt, régulier)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "prepositions",
+            lesson_title: "Prépositions et Particules"
+          },
+          // 7. ARTICLES
+          {
+            id: 'en-gram-art-6',
+            category: "Articles et déterminants",
+            theme: "Zero article + the + événement",
+            french: "Les institutions américaines traversent une crise de légitimité sans précédent depuis la guerre civile.",
+            reference: "American institutions are going through an unprecedented crisis of legitimacy since the Civil War.",
+            grammar_points: ["Pas de 'the' devant 'American institutions' (général)", "'The' devant événement spécifique (Civil War)", "Go through + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "articles",
+            lesson_title: "Articles et Déterminants"
+          },
+          {
+            id: 'en-gram-art-7',
+            category: "Articles et déterminants",
+            theme: "Plural sans article",
+            french: "Les femmes représentent désormais plus de la moitié des effectifs dans les universités françaises de premier cycle.",
+            reference: "Women now represent more than half of the workforce in undergraduate French universities.",
+            grammar_points: ["Pluriel généralisant sans article ('women')", "Half of the + nom (article devant nom spécifique)", "Undergraduate (zero article)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "articles",
+            lesson_title: "Articles et Déterminants"
+          },
+          {
+            id: 'en-gram-art-8',
+            category: "Articles et déterminants",
+            theme: "The + pays pluriels",
+            french: "Les Pays-Bas et les Émirats arabes unis figurent parmi les pays les plus exposés à la montée des eaux.",
+            reference: "The Netherlands and the United Arab Emirates are among the countries most exposed to rising waters.",
+            grammar_points: ["'The' obligatoire devant pays pluriels/fédérations", "Among the + nom pluriel", "Most exposed (postposé)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "articles",
+            lesson_title: "Articles et Déterminants"
+          },
+          {
+            id: 'en-gram-art-9',
+            category: "Articles et déterminants",
+            theme: "A + fonction",
+            french: "Un président américain ne peut être réélu plus d'une fois après son premier mandat.",
+            reference: "An American president cannot be re-elected more than once after his first term.",
+            grammar_points: ["An + adjectif + fonction (général)", "Cannot + be + V-en (passif modal)", "More than once"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "articles",
+            lesson_title: "Articles et Déterminants"
+          },
+          {
+            id: 'en-gram-art-10',
+            category: "Articles et déterminants",
+            theme: "Zero article (langues)",
+            french: "Le mandarin est désormais enseigné dans la plupart des grandes universités occidentales aux côtés de l'anglais et de l'espagnol.",
+            reference: "Mandarin is now taught in most major Western universities alongside English and Spanish.",
+            grammar_points: ["Pas d'article devant les langues", "Most + nom (sans 'the')", "Alongside + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "articles",
+            lesson_title: "Articles et Déterminants"
+          },
+          // 8. RELATIVES
+          {
+            id: 'en-gram-rel-6',
+            category: "Subordonnées relatives",
+            theme: "Which (commentaire global)",
+            french: "L'Italie a élu une coalition d'extrême droite, ce qui a profondément inquiété les institutions européennes.",
+            reference: "Italy elected a far-right coalition, which deeply worried European institutions.",
+            grammar_points: ["Which (commente la phrase entière)", "Non-defining (virgule)", "Far-right (adjectif composé)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "relatives",
+            lesson_title: "Subordonnées Relatives"
+          },
+          {
+            id: 'en-gram-rel-7',
+            category: "Subordonnées relatives",
+            theme: "Who (defining)",
+            french: "Les diplomates qui ont participé aux négociations de Camp David sont aujourd'hui presque tous décédés.",
+            reference: "The diplomats who took part in the Camp David negotiations have almost all passed away today.",
+            grammar_points: ["Who (sujet defining, humain)", "Have all + V-en (tous + V)", "Pass away (euphémisme)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "relatives",
+            lesson_title: "Subordonnées Relatives"
+          },
+          {
+            id: 'en-gram-rel-8',
+            category: "Subordonnées relatives",
+            theme: "With whom",
+            french: "Les dirigeants avec qui Washington souhaite renouer le dialogue ont rejeté toute proposition de rencontre bilatérale.",
+            reference: "The leaders with whom Washington wishes to resume dialogue have rejected any bilateral meeting proposal.",
+            grammar_points: ["With whom (registre soutenu)", "Wish + to + V (souhaiter)", "Any + nom (négatif)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "relatives",
+            lesson_title: "Subordonnées Relatives"
+          },
+          {
+            id: 'en-gram-rel-9',
+            category: "Subordonnées relatives",
+            theme: "That (defining)",
+            french: "Les pays qui dépendent fortement des hydrocarbures peinent à amorcer leur transition énergétique.",
+            reference: "The countries that heavily depend on hydrocarbons struggle to initiate their energy transition.",
+            grammar_points: ["That (defining, sujet, non humain)", "Depend on (collocation)", "Struggle to + V"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "relatives",
+            lesson_title: "Subordonnées Relatives"
+          },
+          {
+            id: 'en-gram-rel-10',
+            category: "Subordonnées relatives",
+            theme: "What (= ce que)",
+            french: "Ce que les électeurs attendent désormais des dirigeants, c'est une réponse concrète à l'inflation persistante.",
+            reference: "What voters now expect from their leaders is a concrete response to persistent inflation.",
+            grammar_points: ["What (pronom relatif sans antécédent)", "= 'ce que / la chose que'", "Expect + nom + from + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "relatives",
+            lesson_title: "Subordonnées Relatives"
+          },
+          // 9. GÉRONDIF / INFINITIF
+          {
+            id: 'en-gram-ger-6',
+            category: "Gérondif et infinitif",
+            theme: "Avoid + V-ing",
+            french: "Le gouvernement britannique a tenté d'éviter de heurter ses partenaires européens en gardant sa position sur le Brexit ambiguë.",
+            reference: "The British government tried to avoid offending its European partners by keeping its position on Brexit ambiguous.",
+            grammar_points: ["Avoid + V-ing (≠ avoid to)", "By + V-ing (manière)", "Try to + V (essayer de)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "gerondif-infinitif",
+            lesson_title: "Gérondif et Infinitif"
+          },
+          {
+            id: 'en-gram-ger-7',
+            category: "Gérondif et infinitif",
+            theme: "Decide to + V",
+            french: "L'Union européenne a décidé d'imposer des droits de douane sur les véhicules électriques importés de Chine.",
+            reference: "The European Union decided to impose tariffs on electric vehicles imported from China.",
+            grammar_points: ["Decide to + V (infinitive)", "Imposed from (participe passé)", "Tariffs on + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "gerondif-infinitif",
+            lesson_title: "Gérondif et Infinitif"
+          },
+          {
+            id: 'en-gram-ger-8',
+            category: "Gérondif et infinitif",
+            theme: "Look forward to + V-ing",
+            french: "Les négociateurs attendent avec impatience de pouvoir relancer les discussions sur le climat lors de la prochaine COP.",
+            reference: "Negotiators look forward to being able to relaunch climate discussions at the next COP.",
+            grammar_points: ["Look forward to + V-ing", "'To' = préposition", "Being able to (gerundive of 'can')"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "gerondif-infinitif",
+            lesson_title: "Gérondif et Infinitif"
+          },
+          {
+            id: 'en-gram-ger-9',
+            category: "Gérondif et infinitif",
+            theme: "Manage to + V",
+            french: "Aucun gouvernement n'est véritablement parvenu à enrayer la montée du populisme dans les démocraties occidentales.",
+            reference: "No government has truly managed to halt the rise of populism in Western democracies.",
+            grammar_points: ["Manage to + V (réussite)", "Has + adverbe + V-en", "The rise of + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "gerondif-infinitif",
+            lesson_title: "Gérondif et Infinitif"
+          },
+          {
+            id: 'en-gram-ger-10',
+            category: "Gérondif et infinitif",
+            theme: "Worth + V-ing",
+            french: "Il vaut la peine de souligner que la Norvège a investi des milliards dans son fonds souverain depuis les années 1990.",
+            reference: "It is worth pointing out that Norway has invested billions in its sovereign wealth fund since the 1990s.",
+            grammar_points: ["Worth + V-ing (≠ to + V)", "It is + worth + V-ing", "Sovereign wealth fund (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "gerondif-infinitif",
+            lesson_title: "Gérondif et Infinitif"
+          },
+          // 10. COMPARATIFS
+          {
+            id: 'en-gram-comp-6',
+            category: "Comparatifs et superlatifs",
+            theme: "More and more + adj",
+            french: "Les jeunes générations sont de plus en plus préoccupées par les conséquences du réchauffement climatique sur leur avenir.",
+            reference: "Younger generations are more and more concerned about the consequences of global warming on their future.",
+            grammar_points: ["More and more + adj long (progression)", "Concerned about + nom", "Younger (comparatif adjectif court)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "comparatifs",
+            lesson_title: "Comparatifs et Superlatifs"
+          },
+          {
+            id: 'en-gram-comp-7',
+            category: "Comparatifs et superlatifs",
+            theme: "Twice as + adj + as",
+            french: "L'économie indienne croît désormais deux fois plus rapidement que celle de la Chine en termes réels.",
+            reference: "The Indian economy is now growing twice as fast as the Chinese one in real terms.",
+            grammar_points: ["Twice as + adj + as", "The Chinese one (pour éviter répétition)", "In real terms (idiomatique)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "comparatifs",
+            lesson_title: "Comparatifs et Superlatifs"
+          },
+          {
+            id: 'en-gram-comp-8',
+            category: "Comparatifs et superlatifs",
+            theme: "Less and less + adj",
+            french: "La confiance des citoyens envers leurs institutions ne cesse de diminuer dans la plupart des démocraties européennes.",
+            reference: "Citizens' trust in their institutions is becoming less and less significant in most European democracies.",
+            grammar_points: ["Less and less + adj", "Trust in + nom (collocation)", "Génitif saxon (citizens')"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "comparatifs",
+            lesson_title: "Comparatifs et Superlatifs"
+          },
+          {
+            id: 'en-gram-comp-9',
+            category: "Comparatifs et superlatifs",
+            theme: "Far + comparative",
+            french: "Le coût humain de la guerre en Ukraine s'est révélé bien plus lourd que ne le prévoyaient les analystes occidentaux.",
+            reference: "The human cost of the war in Ukraine has proven far heavier than Western analysts had predicted.",
+            grammar_points: ["Far + comparative (renforcement)", "Prove + adjectif (se révéler)", "Past perfect (had predicted)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "comparatifs",
+            lesson_title: "Comparatifs et Superlatifs"
+          },
+          {
+            id: 'en-gram-comp-10',
+            category: "Comparatifs et superlatifs",
+            theme: "Nothing like as + adj + as",
+            french: "L'économie russe n'est plus du tout aussi performante qu'elle l'était avant l'imposition des sanctions occidentales.",
+            reference: "The Russian economy is nothing like as efficient as it was before the imposition of Western sanctions.",
+            grammar_points: ["Nothing like as + adj + as (négation comparative)", "Construction soutenue", "It was (reprise du sujet)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "comparatifs",
+            lesson_title: "Comparatifs et Superlatifs"
+          },
+          // 11. QUESTIONS
+          {
+            id: 'en-gram-quest-6',
+            category: "Questions et interrogatifs",
+            theme: "Whom (registre soutenu)",
+            french: "À qui les démocraties occidentales s'adresseront-elles pour limiter la prolifération des armes hypersoniques ?",
+            reference: "Whom will Western democracies turn to in order to limit the proliferation of hypersonic weapons?",
+            grammar_points: ["Whom + auxiliaire + sujet + V", "Turn to + somebody (s'adresser à)", "In order to + V (but)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "questions",
+            lesson_title: "Questions et Interrogatifs"
+          },
+          {
+            id: 'en-gram-quest-7',
+            category: "Questions et interrogatifs",
+            theme: "Embedded question (when)",
+            french: "Aucun analyste ne peut prédire exactement quand la transition énergétique deviendra économiquement rentable pour les pays émergents.",
+            reference: "No analyst can predict exactly when the energy transition will become economically profitable for emerging countries.",
+            grammar_points: ["Embedded question (pas d'inversion)", "When + sujet + will + base", "Economically (adverbe)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "questions",
+            lesson_title: "Questions et Interrogatifs"
+          },
+          {
+            id: 'en-gram-quest-8',
+            category: "Questions et interrogatifs",
+            theme: "Negative question (why didn't)",
+            french: "Pourquoi l'Europe n'a-t-elle pas anticipé la dépendance énergétique qu'elle avait construite vis-à-vis de la Russie ?",
+            reference: "Why didn't Europe anticipate the energy dependence it had built on Russia?",
+            grammar_points: ["Why + didn't + sujet + base", "Past perfect (had built)", "Omission de 'that' relative"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "questions",
+            lesson_title: "Questions et Interrogatifs"
+          },
+          {
+            id: 'en-gram-quest-9',
+            category: "Questions et interrogatifs",
+            theme: "What if",
+            french: "Et si la Réserve fédérale décidait de baisser ses taux directeurs avant la fin de l'année ?",
+            reference: "What if the Federal Reserve decided to cut its key rates before the end of the year?",
+            grammar_points: ["What if + past simple (hypothèse)", "Decide to + V", "Key rates (collocation financière)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "questions",
+            lesson_title: "Questions et Interrogatifs"
+          },
+          {
+            id: 'en-gram-quest-10',
+            category: "Questions et interrogatifs",
+            theme: "Which (choix dans un ensemble)",
+            french: "Lequel des candidats à l'élection présidentielle américaine recueille actuellement le plus de soutiens financiers ?",
+            reference: "Which of the candidates in the American presidential election currently receives the most financial support?",
+            grammar_points: ["Which of + the + nom pluriel (choix)", "Currently + V-s (place de l'adverbe)", "The most + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "questions",
+            lesson_title: "Questions et Interrogatifs"
+          },
+          // 12. EXPRESSIONS DE TEMPS
+          {
+            id: 'en-gram-time-6',
+            category: "Expressions de temps",
+            theme: "During",
+            french: "Pendant la pandémie de COVID-19, les inégalités sociales se sont considérablement aggravées dans la plupart des pays développés.",
+            reference: "During the COVID-19 pandemic, social inequalities considerably worsened in most developed countries.",
+            grammar_points: ["During + nom (≠ for + durée)", "Considerably + V (place de l'adverbe)", "In most + nom pluriel"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "expressions-temps",
+            lesson_title: "Expressions de Temps"
+          },
+          {
+            id: 'en-gram-time-7',
+            category: "Expressions de temps",
+            theme: "While + V-ing",
+            french: "Tout en condamnant officiellement l'invasion russe, plusieurs pays ont continué d'importer du pétrole de Moscou.",
+            reference: "While officially condemning the Russian invasion, several countries continued to import oil from Moscow.",
+            grammar_points: ["While + V-ing (concession simultanée)", "Continued to + V (ou continued V-ing)", "Officially (place de l'adverbe)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "expressions-temps",
+            lesson_title: "Expressions de Temps"
+          },
+          {
+            id: 'en-gram-time-8',
+            category: "Expressions de temps",
+            theme: "Until + present (futur)",
+            french: "L'Iran n'autorisera pas les inspections de ses sites nucléaires tant que les sanctions américaines ne seront pas levées.",
+            reference: "Iran will not allow inspections of its nuclear sites until American sanctions are lifted.",
+            grammar_points: ["Until + present (pour parler du futur)", "Will not allow + nom", "Sanctions are lifted (passive)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "expressions-temps",
+            lesson_title: "Expressions de Temps"
+          },
+          {
+            id: 'en-gram-time-9',
+            category: "Expressions de temps",
+            theme: "As soon as",
+            french: "Dès que les marchés ont appris la nouvelle, la livre sterling a chuté de plus de trois pour cent face au dollar.",
+            reference: "As soon as the markets learned the news, the pound dropped by more than three percent against the dollar.",
+            grammar_points: ["As soon as + past simple (passé)", "Drop by + pourcentage", "Against + monnaie"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "expressions-temps",
+            lesson_title: "Expressions de Temps"
+          },
+          {
+            id: 'en-gram-time-10',
+            category: "Expressions de temps",
+            theme: "In + période future",
+            french: "Au cours du siècle prochain, l'Afrique deviendra le continent le plus peuplé devant l'Asie.",
+            reference: "In the next century, Africa will become the most populated continent ahead of Asia.",
+            grammar_points: ["In + the next + nom (futur)", "Become + the + superlative", "Ahead of + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "expressions-temps",
+            lesson_title: "Expressions de Temps"
+          },
+          // 13. CONCORDANCE
+          {
+            id: 'en-gram-concord-6',
+            category: "Concordance des temps",
+            theme: "Past continuous + when + past",
+            french: "Les habitants d'Hiroshima dormaient encore lorsque la bombe atomique a frappé leur ville le 6 août 1945.",
+            reference: "The inhabitants of Hiroshima were still sleeping when the atomic bomb hit their city on August 6, 1945.",
+            grammar_points: ["Past continuous + when + past simple", "Still entre auxiliaire et V-ing", "Hit (irrégulier invariant)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "concordance",
+            lesson_title: "Concordance des Temps"
+          },
+          {
+            id: 'en-gram-concord-7',
+            category: "Concordance des temps",
+            theme: "By the time + past + past perfect",
+            french: "Lorsque les premiers vaccins ont été distribués, la pandémie avait déjà fait plus de deux millions de morts.",
+            reference: "By the time the first vaccines were distributed, the pandemic had already killed more than two million people.",
+            grammar_points: ["By the time + past simple", "Past perfect + already", "Two million people (millions sans 's')"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "concordance",
+            lesson_title: "Concordance des Temps"
+          },
+          {
+            id: 'en-gram-concord-8',
+            category: "Concordance des temps",
+            theme: "Now → then (reported)",
+            french: "Le directeur du FMI a affirmé que l'inflation mondiale était alors à son point culminant depuis quarante ans.",
+            reference: "The IMF director stated that global inflation was then at its highest point in forty years.",
+            grammar_points: ["Now → then (discours indirect)", "Was + at its highest", "In + durée (record)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "concordance",
+            lesson_title: "Concordance des Temps"
+          },
+          {
+            id: 'en-gram-concord-9',
+            category: "Concordance des temps",
+            theme: "Past + past perfect",
+            french: "Le chancelier allemand a expliqué que son gouvernement avait pris toutes les mesures nécessaires pour sécuriser l'approvisionnement énergétique.",
+            reference: "The German chancellor explained that his government had taken all the necessary measures to secure the energy supply.",
+            grammar_points: ["Past simple + past perfect (antériorité)", "Take measures (collocation)", "To + V (but)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "concordance",
+            lesson_title: "Concordance des Temps"
+          },
+          {
+            id: 'en-gram-concord-10',
+            category: "Concordance des temps",
+            theme: "Will → would",
+            french: "Les diplomates européens pensaient que la guerre se terminerait en quelques semaines, mais le conflit s'est enlisé durablement.",
+            reference: "European diplomats thought that the war would end within a few weeks, but the conflict has dragged on for a long time.",
+            grammar_points: ["Will → would (concordance)", "Within + durée future", "Drag on (phrasal verb : s'éterniser)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "concordance",
+            lesson_title: "Concordance des Temps"
+          },
+          // 14. QUANTIFIEURS
+          {
+            id: 'en-gram-quant-6',
+            category: "Quantifieurs",
+            theme: "Neither... nor",
+            french: "Ni Pékin ni Washington n'ont jusqu'à présent accepté de revenir à la table des négociations sur le climat.",
+            reference: "Neither Beijing nor Washington has so far agreed to return to the negotiating table on climate.",
+            grammar_points: ["Neither... nor + verbe au singulier (sujet rapproché)", "So far + present perfect", "Agree to + V"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "quantifieurs",
+            lesson_title: "Quantifieurs"
+          },
+          {
+            id: 'en-gram-quant-7',
+            category: "Quantifieurs",
+            theme: "Several",
+            french: "Plusieurs banques centrales ont décidé de coordonner leur politique monétaire face à la résurgence de l'inflation.",
+            reference: "Several central banks have decided to coordinate their monetary policy in response to the resurgence of inflation.",
+            grammar_points: ["Several + nom pluriel dénombrable", "In response to + nom", "Decide to + V"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "quantifieurs",
+            lesson_title: "Quantifieurs"
+          },
+          {
+            id: 'en-gram-quant-8',
+            category: "Quantifieurs",
+            theme: "Plenty of",
+            french: "Les pays émergents disposent d'une abondance de ressources naturelles, mais peinent à les transformer en avantage économique durable.",
+            reference: "Emerging countries have plenty of natural resources but struggle to turn them into a lasting economic advantage.",
+            grammar_points: ["Plenty of + nom pluriel/indénombrable", "Turn into + nom (transformer en)", "Struggle to + V"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "quantifieurs",
+            lesson_title: "Quantifieurs"
+          },
+          {
+            id: 'en-gram-quant-9',
+            category: "Quantifieurs",
+            theme: "All + nom pluriel",
+            french: "Tous les États membres de l'OTAN sont désormais tenus de consacrer un pourcentage minimal de leur PIB à la défense.",
+            reference: "All NATO member states are now required to allocate a minimum percentage of their GDP to defense.",
+            grammar_points: ["All + nom pluriel (sans 'of the')", "Are required to + V (obligation)", "Allocate + obj + to + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "quantifieurs",
+            lesson_title: "Quantifieurs"
+          },
+          {
+            id: 'en-gram-quant-10',
+            category: "Quantifieurs",
+            theme: "Each + singulier",
+            french: "Chaque pays signataire de l'accord de Paris doit soumettre tous les cinq ans une nouvelle contribution nationale.",
+            reference: "Each country that has signed the Paris agreement must submit a new national contribution every five years.",
+            grammar_points: ["Each + singulier + V au singulier", "Every + nombre + nom pluriel", "Has signed (present perfect)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "quantifieurs",
+            lesson_title: "Quantifieurs"
+          },
+          // 15. SUBJONCTIF
+          {
+            id: 'en-gram-subj-6',
+            category: "Subjonctif",
+            theme: "Suggest that + base",
+            french: "Les économistes ont suggéré que la Banque centrale européenne adopte une stratégie de communication plus transparente.",
+            reference: "Economists have suggested that the European Central Bank adopt a more transparent communication strategy.",
+            grammar_points: ["Suggest that + base verb (subjonctif)", "Pas de 's' à la 3e personne", "More + adj + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "subjunctif",
+            lesson_title: "Subjunctif et Structures Subjectives"
+          },
+          {
+            id: 'en-gram-subj-7',
+            category: "Subjonctif",
+            theme: "Demand that + base",
+            french: "Les manifestants ont exigé que le gouvernement organise immédiatement un référendum sur la réforme constitutionnelle.",
+            reference: "Demonstrators demanded that the government immediately organize a referendum on the constitutional reform.",
+            grammar_points: ["Demand that + base verb (subjonctif)", "Immediately + V (place adverbe)", "On + nom (sujet du référendum)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "subjunctif",
+            lesson_title: "Subjunctif et Structures Subjectives"
+          },
+          {
+            id: 'en-gram-subj-8',
+            category: "Subjonctif",
+            theme: "It is important that + base",
+            french: "Il importe que les institutions multilatérales tiennent leurs engagements financiers envers les pays en développement.",
+            reference: "It is important that multilateral institutions keep their financial commitments to developing countries.",
+            grammar_points: ["It is important that + base verb", "Keep commitments (collocation)", "Commitments to + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "subjunctif",
+            lesson_title: "Subjunctif et Structures Subjectives"
+          },
+          {
+            id: 'en-gram-subj-9',
+            category: "Subjonctif",
+            theme: "Wish + would",
+            french: "Le secrétaire général de l'ONU souhaiterait que les puissances nucléaires renoncent à leur posture de dissuasion offensive.",
+            reference: "The UN Secretary-General wishes that nuclear powers would give up their offensive deterrence posture.",
+            grammar_points: ["Wish + would + base (regret/souhait)", "Give up + nom (renoncer à)", "Posture (faux ami)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "subjunctif",
+            lesson_title: "Subjunctif et Structures Subjectives"
+          },
+          {
+            id: 'en-gram-subj-10',
+            category: "Subjonctif",
+            theme: "As if + past",
+            french: "Le gouvernement chinois agit comme si les sanctions occidentales n'avaient aucune incidence sur sa stratégie économique.",
+            reference: "The Chinese government acts as if Western sanctions had no impact on its economic strategy.",
+            grammar_points: ["As if + past (subjonctif)", "Construction hypothétique", "Have an impact on (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "subjunctif",
+            lesson_title: "Subjunctif et Structures Subjectives"
+          },
+          // 16. INVERSIONS
+          {
+            id: 'en-gram-inv-6',
+            category: "Inversions et emphase",
+            theme: "Little did + sujet",
+            french: "Les analystes financiers étaient loin d'imaginer que la faillite d'une banque régionale pourrait déclencher une telle panique.",
+            reference: "Little did financial analysts imagine that the failure of a regional bank could trigger such a panic.",
+            grammar_points: ["Little did + sujet + base (inversion)", "Construction emphatique", "Such + a + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "inversions",
+            lesson_title: "Inversions et Emphase"
+          },
+          {
+            id: 'en-gram-inv-7',
+            category: "Inversions et emphase",
+            theme: "No sooner... than",
+            french: "À peine la pandémie avait-elle pris fin que de nouvelles tensions sanitaires apparaissaient en Asie centrale.",
+            reference: "No sooner had the pandemic ended than new health tensions emerged in Central Asia.",
+            grammar_points: ["No sooner + had + V-en + than", "Inversion au pluperfect", "Central Asia (sans 'the')"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "inversions",
+            lesson_title: "Inversions et Emphase"
+          },
+          {
+            id: 'en-gram-inv-8',
+            category: "Inversions et emphase",
+            theme: "Such + was + nom",
+            french: "L'ampleur de la crise migratoire était telle que les frontières européennes ont été temporairement rétablies dans plusieurs États membres.",
+            reference: "Such was the scale of the migration crisis that European borders were temporarily reinstated in several member states.",
+            grammar_points: ["Such + was + nom + that (inversion)", "Construction soutenue", "Were reinstated (passif)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "inversions",
+            lesson_title: "Inversions et Emphase"
+          },
+          {
+            id: 'en-gram-inv-9',
+            category: "Inversions et emphase",
+            theme: "Under no circumstances",
+            french: "En aucun cas la Russie ne renoncera unilatéralement à son arsenal nucléaire stratégique.",
+            reference: "Under no circumstances will Russia unilaterally give up its strategic nuclear arsenal.",
+            grammar_points: ["Under no circumstances + auxiliaire + sujet", "Inversion après expression négative", "Give up (phrasal verb)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "inversions",
+            lesson_title: "Inversions et Emphase"
+          },
+          {
+            id: 'en-gram-inv-10',
+            category: "Inversions et emphase",
+            theme: "Nowhere",
+            french: "Nulle part ailleurs en Europe la dette publique n'a augmenté aussi rapidement qu'en Italie au cours de la dernière décennie.",
+            reference: "Nowhere else in Europe has public debt risen as quickly as in Italy over the past decade.",
+            grammar_points: ["Nowhere + auxiliaire + sujet (inversion)", "As + adverbe + as (égalité)", "Over the past + durée"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "inversions",
+            lesson_title: "Inversions et Emphase"
+          },
+          // 17. CONNECTEURS
+          {
+            id: 'en-gram-connect-6',
+            category: "Connecteurs logiques",
+            theme: "In contrast",
+            french: "Le modèle scandinave repose sur une forte redistribution sociale. En revanche, les économies anglo-saxonnes privilégient la flexibilité du marché.",
+            reference: "The Scandinavian model relies on strong social redistribution. In contrast, Anglo-Saxon economies prioritize market flexibility.",
+            grammar_points: ["In contrast + virgule (opposition)", "Rely on + nom", "Prioritize (V transitif)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "connecteurs",
+            lesson_title: "Connecteurs Logiques"
+          },
+          {
+            id: 'en-gram-connect-7',
+            category: "Connecteurs logiques",
+            theme: "Owing to",
+            french: "En raison des tensions diplomatiques persistantes, plusieurs sommets internationaux ont été reportés sine die.",
+            reference: "Owing to persistent diplomatic tensions, several international summits have been postponed indefinitely.",
+            grammar_points: ["Owing to + nom (cause, registre soutenu)", "Have been + V-en (present perfect passive)", "Indefinitely (= sine die)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "connecteurs",
+            lesson_title: "Connecteurs Logiques"
+          },
+          {
+            id: 'en-gram-connect-8',
+            category: "Connecteurs logiques",
+            theme: "Hence",
+            french: "Les capitaux étrangers fuient progressivement les économies émergentes ; d'où la dépréciation observée sur la plupart des monnaies du Sud.",
+            reference: "Foreign capital is gradually fleeing emerging economies; hence the depreciation observed in most Southern currencies.",
+            grammar_points: ["Hence + nom (conséquence directe)", "Capital = indénombrable", "Observed (participe passé épithète)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "connecteurs",
+            lesson_title: "Connecteurs Logiques"
+          },
+          {
+            id: 'en-gram-connect-9',
+            category: "Connecteurs logiques",
+            theme: "Whilst",
+            french: "Tandis que certains pays misent sur la transition énergétique, d'autres continuent d'exploiter intensivement leurs réserves de charbon.",
+            reference: "Whilst some countries bet on the energy transition, others continue to intensively exploit their coal reserves.",
+            grammar_points: ["Whilst (variante soutenue de 'while')", "Bet on + nom (parier sur)", "Intensively (place de l'adverbe)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "connecteurs",
+            lesson_title: "Connecteurs Logiques"
+          },
+          {
+            id: 'en-gram-connect-10',
+            category: "Connecteurs logiques",
+            theme: "All in all",
+            french: "Dans l'ensemble, les négociations de Paris ont marqué une étape décisive dans la lutte contre le réchauffement climatique.",
+            reference: "All in all, the Paris negotiations marked a decisive step in the fight against global warming.",
+            grammar_points: ["All in all + virgule (conclusion globale)", "A step in + nom", "The fight against + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "connecteurs",
+            lesson_title: "Connecteurs Logiques"
+          },
+          // 18. VERBES IRRÉGULIERS
+          {
+            id: 'en-gram-irreg-6',
+            category: "Verbes irréguliers",
+            theme: "Drove (drive)",
+            french: "La crise sanitaire a poussé des millions de salariés vers le télétravail, transformant durablement les modes d'organisation.",
+            reference: "The health crisis drove millions of employees toward remote work, lastingly transforming organizational models.",
+            grammar_points: ["Drove (past de drive, sens figuré : pousser)", "Toward + nom", "V-ing épithète (transforming)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "verbes-irreguliers",
+            lesson_title: "Verbes Irréguliers"
+          },
+          {
+            id: 'en-gram-irreg-7',
+            category: "Verbes irréguliers",
+            theme: "Took (take)",
+            french: "L'Union européenne a pris des mesures sans précédent pour soutenir son industrie face à la concurrence chinoise.",
+            reference: "The European Union took unprecedented measures to support its industry in the face of Chinese competition.",
+            grammar_points: ["Took (past de take)", "In the face of + nom", "Take measures (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "verbes-irreguliers",
+            lesson_title: "Verbes Irréguliers"
+          },
+          {
+            id: 'en-gram-irreg-8',
+            category: "Verbes irréguliers",
+            theme: "Held (hold)",
+            french: "La Banque centrale européenne a maintenu ses taux directeurs inchangés malgré la pression des marchés financiers.",
+            reference: "The European Central Bank held its key rates unchanged despite the pressure of financial markets.",
+            grammar_points: ["Held (past + V-en de hold)", "Despite + nom (≠ although)", "Unchanged (adjectif composé)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "verbes-irreguliers",
+            lesson_title: "Verbes Irréguliers"
+          },
+          {
+            id: 'en-gram-irreg-9',
+            category: "Verbes irréguliers",
+            theme: "Broke / chose",
+            french: "Le gouvernement britannique a rompu avec la tradition diplomatique en choisissant de reconnaître unilatéralement le nouvel État.",
+            reference: "The British government broke with diplomatic tradition by choosing to unilaterally recognize the new state.",
+            grammar_points: ["Broke (past de break)", "Chose (past de choose)", "By + V-ing (manière)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "verbes-irreguliers",
+            lesson_title: "Verbes Irréguliers"
+          },
+          {
+            id: 'en-gram-irreg-10',
+            category: "Verbes irréguliers",
+            theme: "Sought / brought",
+            french: "Les négociateurs ont cherché à apaiser les tensions et ont apporté de nouvelles propositions à la table des discussions.",
+            reference: "The negotiators sought to ease tensions and brought new proposals to the discussion table.",
+            grammar_points: ["Sought (past de seek)", "Brought (past de bring)", "Ease tensions (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "verbes-irreguliers",
+            lesson_title: "Verbes Irréguliers"
+          },
+          // 19. CAUSATIVES
+          {
+            id: 'en-gram-caus-6',
+            category: "Structures causatives",
+            theme: "Have something repaired",
+            french: "Le gouvernement français a fait réparer en urgence plusieurs centrales nucléaires affectées par des problèmes de corrosion.",
+            reference: "The French government had several nuclear power plants repaired urgently after they were affected by corrosion issues.",
+            grammar_points: ["Have + obj + V-en (faire faire)", "Repaired (past participle)", "Affected by + nom (passif)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "causatives",
+            lesson_title: "Structures Causatives"
+          },
+          {
+            id: 'en-gram-caus-7',
+            category: "Structures causatives",
+            theme: "Force somebody to V",
+            french: "Les pressions économiques ont contraint plusieurs entreprises occidentales à quitter le marché russe en moins de six mois.",
+            reference: "Economic pressures forced several Western companies to leave the Russian market in less than six months.",
+            grammar_points: ["Force + somebody + to + V", "In less than + durée", "Pluriel 'pressures' (sens : multiples pressions)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "causatives",
+            lesson_title: "Structures Causatives"
+          },
+          {
+            id: 'en-gram-caus-8',
+            category: "Structures causatives",
+            theme: "Allow somebody to V",
+            french: "L'accord-cadre signé à Doha permet aux deux parties de poursuivre les négociations sans interruption diplomatique.",
+            reference: "The framework agreement signed in Doha allows both parties to continue negotiations without diplomatic interruption.",
+            grammar_points: ["Allow + somebody + to + V", "Signed in + lieu (participe passé)", "Both parties (sans 'of the')"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "causatives",
+            lesson_title: "Structures Causatives"
+          },
+          {
+            id: 'en-gram-caus-9',
+            category: "Structures causatives",
+            theme: "Have somebody do (US)",
+            french: "Le président américain a chargé son secrétaire d'État de rétablir les canaux diplomatiques avec Téhéran.",
+            reference: "The American president had his Secretary of State restore diplomatic channels with Tehran.",
+            grammar_points: ["Have + somebody + base verb (causatif US)", "Restore + nom", "Diplomatic channels (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "causatives",
+            lesson_title: "Structures Causatives"
+          },
+          {
+            id: 'en-gram-caus-10',
+            category: "Structures causatives",
+            theme: "Help (to) V",
+            french: "L'aide internationale a permis à plusieurs pays africains de stabiliser leur balance commerciale après la crise sanitaire.",
+            reference: "International aid helped several African countries to stabilize their trade balance after the health crisis.",
+            grammar_points: ["Help + somebody + (to) + V", "'To' facultatif après help", "Trade balance (collocation)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "causatives",
+            lesson_title: "Structures Causatives"
+          },
+          // 20. NUANCES LEXICALES
+          {
+            id: 'en-gram-lex-6',
+            category: "Nuances lexicales",
+            theme: "Remain vs stay",
+            french: "Malgré les sanctions, l'économie russe demeure résiliente grâce à sa redirection vers les marchés asiatiques.",
+            reference: "Despite sanctions, the Russian economy remains resilient thanks to its redirection toward Asian markets.",
+            grammar_points: ["Remain (registre soutenu) vs stay (oral)", "Thanks to + nom", "Toward + nom (US) / towards (UK)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "nuances-lexicales",
+            lesson_title: "Nuances Lexicales"
+          },
+          {
+            id: 'en-gram-lex-7',
+            category: "Nuances lexicales",
+            theme: "A few vs few",
+            french: "Quelques diplomates ont réussi à maintenir un canal de communication ouvert malgré la dégradation des relations bilatérales.",
+            reference: "A few diplomats managed to keep a communication channel open despite the deterioration of bilateral relations.",
+            grammar_points: ["A few (= quelques, positif)", "≠ few (peu, négatif)", "Keep + obj + adj (état)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "nuances-lexicales",
+            lesson_title: "Nuances Lexicales"
+          },
+          {
+            id: 'en-gram-lex-8',
+            category: "Nuances lexicales",
+            theme: "Prevent vs avoid",
+            french: "Pour éviter une nouvelle crise des liquidités, les régulateurs ont imposé des exigences de fonds propres plus strictes aux banques.",
+            reference: "To prevent another liquidity crisis, regulators imposed stricter capital requirements on banks.",
+            grammar_points: ["Prevent (empêcher qu'un événement arrive)", "≠ avoid (éviter de subir)", "Impose + nom + on + nom"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "nuances-lexicales",
+            lesson_title: "Nuances Lexicales"
+          },
+          {
+            id: 'en-gram-lex-9',
+            category: "Nuances lexicales",
+            theme: "Recall vs remember",
+            french: "Il convient de rappeler que la dette publique française a doublé en moins de quinze ans pour atteindre près de cent dix pour cent du PIB.",
+            reference: "It is worth recalling that French public debt has doubled in less than fifteen years to reach nearly one hundred and ten percent of GDP.",
+            grammar_points: ["Recall (rappeler à autrui, formel)", "≠ remember (se souvenir, soi-même)", "Has doubled (present perfect)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "nuances-lexicales",
+            lesson_title: "Nuances Lexicales"
+          },
+          {
+            id: 'en-gram-lex-10',
+            category: "Nuances lexicales",
+            theme: "Concern vs bother",
+            french: "La crise migratoire continue de préoccuper les pays méditerranéens, qui voient leurs frontières maritimes constamment franchies.",
+            reference: "The migration crisis continues to concern Mediterranean countries, which see their maritime borders constantly crossed.",
+            grammar_points: ["Concern (préoccuper, soutenu)", "≠ bother (gêner, plus familier)", "See + obj + V-en (causatif perceptif)"],
+            difficulty_level: "advanced",
+            specialized: true,
+            lesson_slug: "nuances-lexicales",
+            lesson_title: "Nuances Lexicales"
           }
         ],
         de: [
@@ -2423,30 +5099,28 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
     }
   }, [examMode]);
 
-  // Navigation functions
+  // Navigation functions (restreinte à la sous-liste filtrée par rubrique active)
   const goToPreviousSentence = useCallback(() => {
     if (!selectedPredefinedId || !currentSentence) return;
 
-    const currentSentences = predefinedSentences.filter(s => s.language === language);
-    const currentIndex = currentSentences.findIndex(s => s.id === selectedPredefinedId);
+    const currentIndex = visibleSentences.findIndex(s => s.id === selectedPredefinedId);
 
     if (currentIndex > 0) {
-      const previousSentence = currentSentences[currentIndex - 1];
+      const previousSentence = visibleSentences[currentIndex - 1];
       loadPredefinedSentence(previousSentence.id);
     }
-  }, [selectedPredefinedId, currentSentence, predefinedSentences, language, loadPredefinedSentence]);
+  }, [selectedPredefinedId, currentSentence, visibleSentences, loadPredefinedSentence]);
 
   const goToNextSentence = useCallback(() => {
     if (!selectedPredefinedId || !currentSentence) return;
 
-    const currentSentences = predefinedSentences.filter(s => s.language === language);
-    const currentIndex = currentSentences.findIndex(s => s.id === selectedPredefinedId);
+    const currentIndex = visibleSentences.findIndex(s => s.id === selectedPredefinedId);
 
-    if (currentIndex < currentSentences.length - 1) {
-      const nextSentence = currentSentences[currentIndex + 1];
+    if (currentIndex < visibleSentences.length - 1) {
+      const nextSentence = visibleSentences[currentIndex + 1];
       loadPredefinedSentence(nextSentence.id);
     }
-  }, [selectedPredefinedId, currentSentence, predefinedSentences, language, loadPredefinedSentence]);
+  }, [selectedPredefinedId, currentSentence, visibleSentences, loadPredefinedSentence]);
 
 
   const generateNewSentence = useCallback(async () => {
@@ -2625,8 +5299,9 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
         return;
       }
 
-      // Navigation avec les flèches (seulement si pas dans textarea)
+      // Navigation avec les flèches (seulement si pas dans textarea, et pas en mode examen actif)
       if (!currentSentence || event.target instanceof HTMLTextAreaElement) return;
+      if (examPhase === 'active') return;
 
       if (event.key === 'ArrowLeft' && !event.ctrlKey && !event.altKey) {
         event.preventDefault();
@@ -2639,301 +5314,510 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
 
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [currentSentence, goToPreviousSentence, goToNextSentence, studentAnswer, isEvaluating, evaluateAnswer]);
+  }, [currentSentence, goToPreviousSentence, goToNextSentence, studentAnswer, isEvaluating, evaluateAnswer, examPhase]);
+
+  const handleSelectGrammarTopic = useCallback((slug: string | null) => {
+    setSelectedGrammarTopic(slug);
+    // Charge la première phrase de la rubrique (ou la première phrase de la langue si "Toutes")
+    const pool = slug
+      ? predefinedSentences.filter(s => s.language === 'en' && s.lesson_slug === slug)
+      : predefinedSentences.filter(s => s.language === 'en');
+    if (pool.length > 0) {
+      loadPredefinedSentence(pool[0].id);
+    }
+  }, [predefinedSentences, loadPredefinedSentence]);
+
+  const showSidebar = language === 'en' && grammarTopics.length > 0 && examPhase !== 'active';
 
   return (
     <div className="min-h-screen bg-pr-gray-bg">
-      {/* Header fixe et épuré */}
-      <div className="bg-white border-b border-pr-gray-light sticky top-0 z-10">
-        <div className="max-w-5xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between gap-4 flex-wrap">
-            {/* Navigation des langues */}
-            <div className="flex items-center gap-6 flex-wrap">
-              <h1 className="font-dm-serif text-2xl text-pr-black leading-none">Thème grammatical</h1>
-              <ToggleGroup
-                type="single"
-                value={language}
-                onValueChange={(value) => {
-                  if (value) {
-                    const newLang = value as 'en' | 'de' | 'es';
-                    setLanguage(newLang);
+      {/* Layout principal : sidebar rubriques (anglais) + carte centrale */}
+      <div className={`${showSidebar ? 'max-w-6xl' : 'max-w-3xl'} mx-auto px-6 py-4`}>
+        <div className={showSidebar ? "lg:grid lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-6" : ""}>
 
-                    // Automatically load the first sentence of the new language
-                    const firstSentence = predefinedSentences.find(s => s.language === newLang);
-                    if (firstSentence) {
-                      loadPredefinedSentence(firstSentence.id);
+          {/* SIDEBAR — rubriques grammaticales (anglais uniquement, hors mode examen) */}
+          {showSidebar && (
+            <aside className="hidden lg:block">
+              <div className="sticky top-4 bg-[#FFFEF8] rounded-2xl border border-dashed border-[rgba(78,55,30,0.22)] overflow-hidden shadow-[0_1px_0_rgba(78,55,30,0.08),0_8px_24px_rgba(78,55,30,0.06)]">
+                <div className="px-4 py-3 border-b border-dashed border-[rgba(78,55,30,0.18)]">
+                  <div className="carnet-eyebrow text-[10px] mb-0.5">Travailler un point</div>
+                  <h2 className="font-lora text-[15px] text-carnet-ink leading-tight">Rubriques de grammaire</h2>
+                </div>
+                <nav className="max-h-[70vh] overflow-y-auto py-2">
+                  <button
+                    onClick={() => handleSelectGrammarTopic(null)}
+                    className={`w-full text-left px-4 py-2 flex items-center justify-between gap-2 text-[12px] font-instrument transition-colors ${
+                      selectedGrammarTopic === null
+                        ? 'bg-[rgba(193,68,58,0.08)] text-carnet-red font-semibold'
+                        : 'text-carnet-ink-soft hover:bg-[rgba(78,55,30,0.04)] hover:text-carnet-ink'
+                    }`}
+                  >
+                    <span className="flex items-center gap-2 min-w-0">
+                      <BookMarked className={`h-3.5 w-3.5 flex-shrink-0 ${selectedGrammarTopic === null ? 'text-carnet-red' : 'text-carnet-ink-mute'}`} />
+                      <span className="truncate">Toutes les phrases</span>
+                    </span>
+                    <span className="text-[10px] tabular-nums text-carnet-ink-mute bg-[rgba(78,55,30,0.05)] border border-[rgba(78,55,30,0.12)] rounded-full px-1.5 py-0.5 flex-shrink-0">
+                      {predefinedSentences.filter(s => s.language === 'en').length}
+                    </span>
+                  </button>
+                  <div className="my-1 mx-3 border-t border-dashed border-[rgba(78,55,30,0.15)]" />
+                  {grammarTopics.map(topic => {
+                    const active = selectedGrammarTopic === topic.slug;
+                    return (
+                      <button
+                        key={topic.slug}
+                        onClick={() => handleSelectGrammarTopic(topic.slug)}
+                        className={`w-full text-left px-4 py-2 flex items-center justify-between gap-2 text-[12px] font-instrument transition-colors ${
+                          active
+                            ? 'bg-[rgba(193,68,58,0.08)] text-carnet-red font-semibold'
+                            : 'text-carnet-ink-soft hover:bg-[rgba(78,55,30,0.04)] hover:text-carnet-ink'
+                        }`}
+                      >
+                        <span className="flex items-center gap-2 min-w-0">
+                          <BookOpen className={`h-3.5 w-3.5 flex-shrink-0 ${active ? 'text-carnet-red' : 'text-carnet-ink-mute'}`} />
+                          <span className="truncate">{topic.title}</span>
+                        </span>
+                        <span className={`text-[10px] tabular-nums rounded-full px-1.5 py-0.5 flex-shrink-0 border ${
+                          active
+                            ? 'bg-carnet-red text-[#FBF6EA] border-carnet-red'
+                            : 'bg-[rgba(78,55,30,0.05)] text-carnet-ink-mute border-[rgba(78,55,30,0.12)]'
+                        }`}>
+                          {topic.count}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </nav>
+                {selectedGrammarTopic && (
+                  <div className="px-4 py-3 border-t border-dashed border-[rgba(78,55,30,0.18)] bg-[rgba(251,246,234,0.6)]">
+                    <button
+                      onClick={() => handleSelectGrammarTopic(null)}
+                      className="w-full text-[11px] font-instrument font-semibold uppercase tracking-[0.08em] text-carnet-red hover:underline"
+                    >
+                      ← Voir toutes les phrases
+                    </button>
+                  </div>
+                )}
+              </div>
+            </aside>
+          )}
+
+          {/* CARTE PRINCIPALE */}
+          <div className="space-y-3">
+
+        {/* CARTE UNIFIÉE : titre + langues + mode examen + phrase + nav + traduction */}
+        <>
+          <Card className="relative bg-[#FFFEF8] rounded-2xl border border-dashed border-[rgba(78,55,30,0.22)] overflow-hidden shadow-[0_1px_0_rgba(78,55,30,0.08),0_8px_24px_rgba(78,55,30,0.06)]">
+            {/* Barre rouge supérieure : statique en idle/setup/summary, compte à rebours en active */}
+            {examPhase === 'active' ? (
+              <>
+                <div className="absolute top-0 left-0 w-full h-[3px] bg-carnet-red/15"></div>
+                <div
+                  className="absolute top-0 left-0 h-[3px] bg-carnet-red transition-[width] duration-1000 ease-linear z-10"
+                  style={{ width: `${(examQuestionTimer / QUESTION_DURATION) * 100}%` }}
+                />
+              </>
+            ) : (
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-carnet-red"></div>
+            )}
+
+            {/* SECTION 1 (toujours visible) : Titre + sélecteur de langue + Mode examen */}
+              <div className="flex items-center justify-between gap-3 px-5 sm:px-6 pt-4 pb-3 border-b border-dashed border-[rgba(78,55,30,0.18)] flex-wrap">
+                <div className="flex items-center gap-4 flex-wrap">
+                  <h1 className="font-lora text-xl text-carnet-ink leading-none">Thème grammatical</h1>
+                  <ToggleGroup
+                    type="single"
+                    value={language}
+                    onValueChange={(value) => {
+                      if (value) {
+                        const newLang = value as 'en' | 'de' | 'es';
+                        setLanguage(newLang);
+                        const firstSentence = predefinedSentences.find(s => s.language === newLang);
+                        if (firstSentence) {
+                          loadPredefinedSentence(firstSentence.id);
+                        } else {
+                          resetExercise();
+                        }
+                      }
+                    }}
+                    className="bg-[rgba(78,55,30,0.05)] rounded-lg p-0.5 border border-dashed border-[rgba(78,55,30,0.2)]"
+                  >
+                    <ToggleGroupItem value="de" className="rounded px-3 h-7 text-[12px] font-instrument font-medium text-carnet-ink-soft data-[state=on]:bg-[#FFFEF8] data-[state=on]:text-carnet-ink data-[state=on]:shadow-sm">
+                      Allemand
+                    </ToggleGroupItem>
+                    <ToggleGroupItem value="en" className="rounded px-3 h-7 text-[12px] font-instrument font-medium text-carnet-ink-soft data-[state=on]:bg-[#FFFEF8] data-[state=on]:text-carnet-ink data-[state=on]:shadow-sm">
+                      Anglais
+                    </ToggleGroupItem>
+                    <ToggleGroupItem value="es" className="rounded px-3 h-7 text-[12px] font-instrument font-medium text-carnet-ink-soft data-[state=on]:bg-[#FFFEF8] data-[state=on]:text-carnet-ink data-[state=on]:shadow-sm">
+                      Espagnol
+                    </ToggleGroupItem>
+                  </ToggleGroup>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  {/* Compte à rebours par question (mode examen actif) */}
+                  {examPhase === 'active' && (
+                    <div className={`flex items-center gap-1 px-2 py-0.5 rounded-md text-[12px] font-mono border tabular-nums ${
+                      examQuestionTimer <= 10
+                        ? 'bg-carnet-red text-white border-carnet-red animate-pulse'
+                        : 'bg-carnet-red-pale text-carnet-red border-carnet-red-soft'
+                    }`}>
+                      <Clock className="h-3 w-3" />
+                      {examQuestionTimer}s
+                    </div>
+                  )}
+                  {/* Indicateur progression série (mode examen actif) */}
+                  {examPhase === 'active' && (
+                    <div className="text-[11px] text-carnet-ink-mute tabular-nums hidden sm:flex items-center gap-1 font-instrument">
+                      <span className="font-semibold text-carnet-ink">{examIndex + 1}</span>
+                      <span className="opacity-50">/{examQueue.length}</span>
+                    </div>
+                  )}
+                  <Button
+                    size="sm"
+                    onClick={() => examPhase === 'idle' ? openExamSetup() : exitExam()}
+                    className={
+                      examPhase !== 'idle'
+                        ? "h-8 px-3 text-[12px] font-instrument bg-carnet-ink hover:bg-carnet-ink/90 text-[#FBF6EA] rounded-md flex items-center gap-1.5"
+                        : "h-8 px-3 text-[12px] font-instrument bg-[#FFFEF8] border border-dashed border-[rgba(78,55,30,0.25)] text-carnet-ink-soft hover:bg-[rgba(193,68,58,0.08)] hover:text-carnet-red hover:border-[rgba(193,68,58,0.35)] rounded-md flex items-center gap-1.5"
+                    }
+                  >
+                    {examPhase !== 'idle' ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+                    {examPhase !== 'idle' ? "Quitter" : "Mode examen"}
+                  </Button>
+                </div>
+              </div>
+
+            {/* SECTION 2+ (conditionnelle) : setup examen / récap examen / phrase + nav + traduction / empty state */}
+            {examPhase === 'setup' ? (
+              <div className="px-5 sm:px-6 py-7">
+                <div className="text-center mb-6">
+                  <div className="w-12 h-12 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.25)] flex items-center justify-center mx-auto mb-3">
+                    <Play className="h-5 w-5 text-carnet-red" />
+                  </div>
+                  <div className="carnet-eyebrow text-[10px] mb-1">Mode examen</div>
+                  <h3 className="font-lora text-2xl text-carnet-ink mb-1">
+                    Une minute, <em className="font-lora italic text-carnet-red">une phrase</em>.
+                  </h3>
+                  <p className="text-[13px] text-carnet-ink-soft font-instrument">Choisis ta configuration avant de démarrer.</p>
+                </div>
+
+                <div className="space-y-5 max-w-md mx-auto">
+                  <div>
+                    <label className="carnet-eyebrow text-[10px] mb-2 block">
+                      Niveau de difficulté
+                    </label>
+                    <div className="grid grid-cols-2 gap-2">
+                      {([
+                        { value: 'all', label: 'Toutes' },
+                        { value: 'intermediate', label: 'Intermédiaire' },
+                        { value: 'advanced', label: 'Avancé' },
+                        { value: 'specialized', label: 'Spécialisé' },
+                      ] as { value: ExamDifficulty; label: string }[]).map(opt => (
+                        <button
+                          key={opt.value}
+                          onClick={() => setExamConfig(c => ({ ...c, difficulty: opt.value }))}
+                          className={`h-10 rounded-md border text-[13px] font-instrument font-medium transition-all ${
+                            examConfig.difficulty === opt.value
+                              ? 'bg-carnet-red text-[#FBF6EA] border-carnet-red shadow-[0_2px_8px_rgba(196,90,53,0.25)]'
+                              : 'bg-[#FFFEF8] text-carnet-ink-soft border-dashed border-[rgba(78,55,30,0.25)] hover:border-[rgba(193,68,58,0.4)] hover:text-carnet-red'
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="carnet-eyebrow text-[10px] mb-2 block">
+                      Nombre de questions
+                    </label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {[5, 10, 20].map(n => (
+                        <button
+                          key={n}
+                          onClick={() => setExamConfig(c => ({ ...c, questionCount: n }))}
+                          className={`h-12 rounded-md border font-lora text-xl transition-all ${
+                            examConfig.questionCount === n
+                              ? 'bg-carnet-red text-[#FBF6EA] border-carnet-red shadow-[0_2px_8px_rgba(196,90,53,0.25)]'
+                              : 'bg-[#FFFEF8] text-carnet-ink border-dashed border-[rgba(78,55,30,0.25)] hover:border-[rgba(193,68,58,0.4)] hover:text-carnet-red'
+                          }`}
+                        >
+                          {n}
+                        </button>
+                      ))}
+                    </div>
+                    <p className="text-[11px] text-carnet-ink-mute font-instrument text-center mt-2">
+                      Soit ~{examConfig.questionCount} minute{examConfig.questionCount > 1 ? 's' : ''} d'épreuve
+                    </p>
+                  </div>
+
+                  <Button
+                    onClick={startExam}
+                    className="w-full h-12 bg-carnet-red hover:bg-carnet-red text-[#FBF6EA] rounded-lg font-instrument font-semibold shadow-[0_3px_10px_rgba(196,90,53,0.30)] hover:shadow-[0_5px_16px_rgba(196,90,53,0.40)] transition-all"
+                  >
+                    <Play className="h-4 w-4 mr-2" />
+                    Démarrer
+                  </Button>
+                </div>
+              </div>
+            ) : examPhase === 'summary' ? (
+              (() => {
+                const total = examResults.length;
+                const avg = total > 0 ? examResults.reduce((s, r) => s + r.score, 0) / total : 0;
+                const max = total > 0 ? Math.max(...examResults.map(r => r.score)) : 0;
+                const timeoutCount = examResults.filter(r => r.timedOut).length;
+                return (
+                  <div className="px-5 sm:px-6 py-7">
+                    <div className="text-center mb-5">
+                      <div className="w-12 h-12 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.25)] flex items-center justify-center mx-auto mb-3">
+                        <CheckCircle className="h-6 w-6 text-carnet-red" />
+                      </div>
+                      <div className="carnet-eyebrow text-[10px] mb-1">Récapitulatif</div>
+                      <h3 className="font-lora text-2xl text-carnet-ink mb-1">
+                        Série <em className="font-lora italic text-carnet-red">terminée</em>.
+                      </h3>
+                      <p className="text-[13px] text-carnet-ink-soft font-instrument">
+                        {total} question{total > 1 ? 's' : ''} · {timeoutCount} dépassement{timeoutCount > 1 ? 's' : ''} de temps
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2 mb-5 max-w-md mx-auto">
+                      <div className="bg-[rgba(78,55,30,0.04)] rounded-lg p-3 text-center border border-dashed border-[rgba(78,55,30,0.22)]">
+                        <div className="carnet-eyebrow text-[10px] mb-1">Moyenne</div>
+                        <div className="font-lora text-2xl text-carnet-ink">{avg.toFixed(1)}<span className="text-base text-carnet-ink-mute">/10</span></div>
+                      </div>
+                      <div className="bg-[rgba(78,55,30,0.04)] rounded-lg p-3 text-center border border-dashed border-[rgba(78,55,30,0.22)]">
+                        <div className="carnet-eyebrow text-[10px] mb-1">Meilleure</div>
+                        <div className="font-lora text-2xl text-carnet-ink">{max}<span className="text-base text-carnet-ink-mute">/10</span></div>
+                      </div>
+                      <div className="bg-[rgba(78,55,30,0.04)] rounded-lg p-3 text-center border border-dashed border-[rgba(78,55,30,0.22)]">
+                        <div className="carnet-eyebrow text-[10px] mb-1">Time-out</div>
+                        <div className="font-lora text-2xl text-carnet-ink">{timeoutCount}</div>
+                      </div>
+                    </div>
+
+                    {examResults.length > 0 && (
+                      <div className="max-w-md mx-auto mb-5">
+                        <div className="carnet-eyebrow text-[10px] mb-2">Détail par question</div>
+                        <div className="space-y-1.5 max-h-[180px] overflow-y-auto pr-1">
+                          {examResults.map((r, i) => (
+                            <div key={i} className="flex items-center justify-between gap-2 px-3 py-2 bg-[rgba(78,55,30,0.03)] border border-dashed border-[rgba(78,55,30,0.18)] rounded-md text-[12px]">
+                              <span className="truncate text-carnet-ink-soft flex-1 font-instrument">
+                                <span className="carnet-hand italic text-carnet-red text-[15px] mr-1.5">{i + 1}.</span>
+                                {r.french.length > 50 ? `${r.french.substring(0, 50)}…` : r.french}
+                              </span>
+                              <div className="flex items-center gap-1.5 flex-shrink-0">
+                                {r.timedOut && (
+                                  <span className="text-[9px] font-instrument uppercase tracking-wider text-carnet-red bg-[rgba(193,68,58,0.08)] border border-dashed border-[rgba(193,68,58,0.3)] px-1.5 py-0.5 rounded font-semibold">
+                                    Time-out
+                                  </span>
+                                )}
+                                <span className={`font-mono font-semibold tabular-nums ${
+                                  r.score >= 7 ? 'text-carnet-ink' : r.score >= 4 ? 'text-carnet-ink-soft' : 'text-carnet-red'
+                                }`}>
+                                  {r.score}/10
+                                </span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex gap-2 max-w-md mx-auto">
+                      <Button
+                        onClick={() => { setExamPhase('setup'); }}
+                        className="flex-1 h-10 bg-carnet-red hover:bg-carnet-red text-[#FBF6EA] rounded-lg font-instrument font-semibold"
+                      >
+                        <Play className="h-4 w-4 mr-1.5" />
+                        Refaire
+                      </Button>
+                      <Button
+                        onClick={exitExam}
+                        className="flex-1 h-10 bg-[#FFFEF8] border border-dashed border-[rgba(78,55,30,0.25)] text-carnet-ink-soft hover:bg-[rgba(78,55,30,0.05)] rounded-lg font-instrument font-semibold"
+                      >
+                        Quitter
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })()
+            ) : currentSentence ? (
+              <>
+              {/* SECTION 2 : Bandeau PHRASE À TRADUIRE + badges + nav inline */}
+              <div className="flex items-center justify-between gap-3 px-5 sm:px-6 pt-3 pb-2 flex-wrap">
+                <div className="flex items-center gap-2.5">
+                  <Languages className="h-4 w-4 text-carnet-red flex-shrink-0" />
+                  <div className="carnet-eyebrow text-[10px]">
+                    {showPerfectAnswer ? "Traduction correcte" : "Phrase à traduire"}
+                  </div>
+                  {currentSentence.specialized && (
+                    <Badge className="bg-[rgba(193,68,58,0.08)] text-carnet-red border border-dashed border-[rgba(193,68,58,0.35)] hover:bg-[rgba(193,68,58,0.08)] rounded-full px-2 py-0 h-5 font-instrument font-semibold text-[9px] uppercase tracking-wider">Spécialisé</Badge>
+                  )}
+                  {currentSentence.difficulty_level && (
+                    <Badge className={`${currentSentence.difficulty_level === 'advanced' ? 'bg-carnet-ink text-[#FBF6EA] border-carnet-ink' : 'bg-[rgba(78,55,30,0.05)] text-carnet-ink-soft border-dashed border-[rgba(78,55,30,0.22)]'} border rounded-full px-2 py-0 h-5 font-instrument font-semibold text-[9px] uppercase tracking-wider`}>
+                      {currentSentence.difficulty_level === 'advanced' ? 'Avancé' : 'Intermédiaire'}
+                    </Badge>
+                  )}
+                </div>
+
+                {/* Bouton "Autre phrase" + nav arrows inline (caché en examen actif) */}
+                {examPhase !== 'active' && (
+                <div className="flex items-center gap-1.5">
+                  <Select value={selectedPredefinedId} onValueChange={loadPredefinedSentence}>
+                    <SelectTrigger
+                      className="h-7 px-2 gap-1.5 text-[11px] font-instrument font-semibold uppercase tracking-[0.08em] text-carnet-ink-soft bg-[#FFFEF8] border border-dashed border-[rgba(78,55,30,0.25)] hover:border-[rgba(193,68,58,0.35)] hover:text-carnet-red rounded-md transition-colors w-auto [&>span]:line-clamp-1 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:opacity-60"
+                      aria-label="Choisir une autre phrase"
+                    >
+                      <BookMarked className="h-3 w-3 text-carnet-red flex-shrink-0" />
+                      <span>Autre phrase</span>
+                    </SelectTrigger>
+                    <SelectContent className="max-h-[500px] min-w-[600px] bg-white border border-pr-gray-light shadow-xl rounded-xl">
+                      {Object.entries(
+                        predefinedSentences
+                          .filter(s => s.language === language)
+                          .reduce((acc, sentence) => {
+                            const category = sentence.category;
+                            if (!acc[category]) {
+                              acc[category] = [];
+                            }
+                            acc[category].push(sentence);
+                            return acc;
+                          }, {} as Record<string, PredefinedSentence[]>)
+                      ).map(([category, sentences]) => (
+                        <div key={category} className="mb-2">
+                          <div className={`px-4 py-2.5 font-semibold text-[11px] uppercase tracking-[0.12em] border-b ${getCategoryColor(category)} flex items-center gap-2`}>
+                            {getCategoryIcon(category)}
+                            <span>{category}</span>
+                            <span className="ml-auto text-[10px] font-semibold text-pr-gray-mid bg-white px-2 py-0.5 rounded-full border border-pr-gray-light">
+                              {sentences.length}
+                            </span>
+                          </div>
+                          <div className="space-y-1">
+                            {sentences.map((sentence) => (
+                              <SelectItem
+                                key={sentence.id}
+                                value={sentence.id}
+                                className="mx-2 px-4 py-3 cursor-pointer hover:bg-carnet-red-pale focus:bg-carnet-red-pale transition-colors rounded-lg"
+                              >
+                                <div className="flex items-start gap-3 w-full">
+                                  <div className="flex-shrink-0 mt-0.5">
+                                    {sentence.specialized ? (
+                                      <Star className="h-4 w-4 text-carnet-red" />
+                                    ) : (
+                                      <BookOpen className="h-4 w-4 text-pr-gray-mid" />
+                                    )}
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-medium text-pr-black leading-tight">
+                                      {sentence.french.length > 80
+                                        ? `${sentence.french.substring(0, 80)}...`
+                                        : sentence.french
+                                      }
+                                    </p>
+                                  </div>
+                                </div>
+                              </SelectItem>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </SelectContent>
+                  </Select>
+
+                  {selectedPredefinedId && (
+                    <>
+                      <div className="w-px h-4 bg-[rgba(78,55,30,0.2)] mx-0.5" />
+                      <button
+                        onClick={goToPreviousSentence}
+                        disabled={visibleSentences.findIndex(s => s.id === selectedPredefinedId) <= 0}
+                        className="p-1.5 rounded-md text-carnet-ink-mute hover:text-carnet-red hover:bg-[rgba(193,68,58,0.08)] disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-carnet-ink-mute transition-colors"
+                        title="Phrase précédente (←)"
+                        aria-label="Phrase précédente"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </button>
+                      <span className="text-[11px] text-carnet-ink-mute tabular-nums font-instrument px-1 min-w-[40px] text-center">
+                        <span className="font-semibold text-carnet-ink">{Math.max(0, visibleSentences.findIndex(s => s.id === selectedPredefinedId)) + 1}</span>
+                        <span className="opacity-50"> / {visibleSentences.length}</span>
+                      </span>
+                      <button
+                        onClick={goToNextSentence}
+                        disabled={visibleSentences.findIndex(s => s.id === selectedPredefinedId) === visibleSentences.length - 1}
+                        className="p-1.5 rounded-md text-carnet-ink-mute hover:text-carnet-red hover:bg-[rgba(193,68,58,0.08)] disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-carnet-ink-mute transition-colors"
+                        title="Phrase suivante (→)"
+                        aria-label="Phrase suivante"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </button>
+                    </>
+                  )}
+                </div>
+                )}
+              </div>
+
+              {/* Phrase à traduire (cliquable pour corriger / révéler la réponse) */}
+              <div
+                className="px-5 sm:px-6 pb-4 pt-1 cursor-pointer hover:bg-[rgba(78,55,30,0.04)] transition-colors"
+                onClick={() => {
+                  if (!isEvaluating) {
+                    if (studentAnswer.trim()) {
+                      evaluateAnswer();
                     } else {
-                      resetExercise();
+                      setShowPerfectAnswer(true);
+                      setCompletedSentence(true);
+                      toast({
+                        title: "Réponse affichée",
+                        description: "La traduction correcte a été révélée.",
+                        variant: "default"
+                      });
                     }
                   }
                 }}
-                className="bg-pr-gray-bg rounded-xl p-1 border border-pr-gray-light"
+                title={studentAnswer.trim() ? "Cliquez pour corriger" : "Cliquez pour voir la réponse"}
               >
-                <ToggleGroupItem value="de" className="rounded-lg px-4 text-sm font-medium text-pr-gray-dark data-[state=on]:bg-white data-[state=on]:text-pr-black data-[state=on]:shadow-sm">
-                  Allemand
-                </ToggleGroupItem>
-                <ToggleGroupItem value="en" className="rounded-lg px-4 text-sm font-medium text-pr-gray-dark data-[state=on]:bg-white data-[state=on]:text-pr-black data-[state=on]:shadow-sm">
-                  Anglais
-                </ToggleGroupItem>
-                <ToggleGroupItem value="es" className="rounded-lg px-4 text-sm font-medium text-pr-gray-dark data-[state=on]:bg-white data-[state=on]:text-pr-black data-[state=on]:shadow-sm">
-                  Espagnol
-                </ToggleGroupItem>
-              </ToggleGroup>
-            </div>
-
-            {/* Contrôles à droite */}
-            <div className="flex items-center gap-3">
-              {examMode && (
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-carnet-red-pale text-carnet-red rounded-lg text-sm font-mono border border-carnet-red-soft">
-                  <Clock className="h-4 w-4" />
-                  {formatTime(timer)}
-                </div>
-              )}
-              <Button
-                size="sm"
-                onClick={() => setExamMode(!examMode)}
-                className={
-                  examMode
-                    ? "bg-pr-black hover:bg-pr-gray-dark text-white rounded-lg flex items-center gap-2"
-                    : "bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-carnet-red-pale hover:text-carnet-red hover:border-carnet-red-soft rounded-lg flex items-center gap-2"
-                }
-              >
-                {examMode ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-                {examMode ? "Arrêter" : "Mode examen"}
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Layout principal vertical */}
-      <div className="max-w-5xl mx-auto p-6 space-y-6">
-
-        {/* Section de sélection de phrase */}
-        <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-          <div className="h-[3px] w-full bg-carnet-red" />
-          <CardContent className="p-6">
-            <div className="flex items-center gap-4 flex-wrap">
-              {/* Catalogue complet des phrases */}
-              <Select value={selectedPredefinedId} onValueChange={loadPredefinedSentence}>
-                <SelectTrigger className="flex-1 h-14 bg-white border border-pr-gray-light hover:border-carnet-red-soft transition-colors rounded-xl px-4 text-base">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 bg-carnet-red-pale rounded-lg flex items-center justify-center">
-                      <BookMarked className="h-4 w-4 text-carnet-red" />
-                    </div>
-                    <SelectValue placeholder="Choisir une phrase du catalogue…" />
-                  </div>
-                </SelectTrigger>
-                <SelectContent className="max-h-[500px] min-w-[600px] bg-white border border-pr-gray-light shadow-xl rounded-xl">
-                  {Object.entries(
-                    predefinedSentences
-                      .filter(s => s.language === language)
-                      .reduce((acc, sentence) => {
-                        const category = sentence.category;
-                        if (!acc[category]) {
-                          acc[category] = [];
-                        }
-                        acc[category].push(sentence);
-                        return acc;
-                      }, {} as Record<string, PredefinedSentence[]>)
-                  ).map(([category, sentences]) => (
-                    <div key={category} className="mb-2">
-                      <div className={`px-4 py-2.5 font-semibold text-[11px] uppercase tracking-[0.12em] border-b ${getCategoryColor(category)} flex items-center gap-2`}>
-                        {getCategoryIcon(category)}
-                        <span>{category}</span>
-                        <span className="ml-auto text-[10px] font-semibold text-pr-gray-mid bg-white px-2 py-0.5 rounded-full border border-pr-gray-light">
-                          {sentences.length}
-                        </span>
-                      </div>
-                      <div className="space-y-1">
-                        {sentences.map((sentence) => (
-                          <SelectItem
-                            key={sentence.id}
-                            value={sentence.id}
-                            className="mx-2 px-4 py-3 cursor-pointer hover:bg-carnet-red-pale focus:bg-carnet-red-pale transition-colors rounded-lg"
-                          >
-                            <div className="flex items-start gap-3 w-full">
-                              <div className="flex-shrink-0 mt-0.5">
-                                {sentence.specialized ? (
-                                  <Star className="h-4 w-4 text-carnet-red" />
-                                ) : (
-                                  <BookOpen className="h-4 w-4 text-pr-gray-mid" />
-                                )}
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <p className="text-sm font-medium text-pr-black leading-tight">
-                                  {sentence.french.length > 80
-                                    ? `${sentence.french.substring(0, 80)}...`
-                                    : sentence.french
-                                  }
-                                </p>
-                              </div>
-                            </div>
-                          </SelectItem>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              {/* Bouton historique */}
-              {sentenceHistory.length > 0 && (
-                <Select value={selectedHistoryId} onValueChange={loadSentenceFromHistory}>
-                  <SelectTrigger className="w-[180px] h-14 bg-white border border-pr-gray-light rounded-xl text-pr-gray-dark">
-                    <SelectValue placeholder="Historique" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-white border border-pr-gray-light shadow-xl rounded-xl">
-                    {sentenceHistory
-                      .filter(s => s.language === language)
-                      .sort((a, b) => b.createdAt - a.createdAt)
-                      .slice(0, 10)
-                      .map((sentence) => (
-                        <SelectItem key={sentence.id} value={sentence.id} className="hover:bg-carnet-red-pale focus:bg-carnet-red-pale rounded-md">
-                          <span className="text-sm text-pr-black truncate">{sentence.french.substring(0, 40)}...</span>
-                        </SelectItem>
-                      ))}
-                  </SelectContent>
-                </Select>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Section principale : Phrase française en GRAND */}
-        {currentSentence ? (
-          <>
-            <Card
-              className="relative bg-white rounded-2xl border border-pr-gray-light hover:border-carnet-red-soft transition-colors overflow-hidden group cursor-pointer shadow-[0_2px_12px_rgba(26,26,24,0.04)]"
-              onClick={() => {
-                if (!isEvaluating) {
-                  if (studentAnswer.trim()) {
-                    evaluateAnswer();
-                  } else {
-                    // Mode "voir la réponse" sans évaluation IA
-                    setShowPerfectAnswer(true);
-                    setCompletedSentence(true);
-                    toast({
-                      title: "Réponse affichée",
-                      description: "La traduction correcte a été révélée.",
-                      variant: "default"
-                    });
-                  }
-                }
-              }}
-              title={studentAnswer.trim() ? "Cliquez pour corriger" : "Cliquez pour voir la réponse"}
-            >
-              <div className="absolute top-0 left-0 w-full h-[3px] bg-carnet-red"></div>
-              <CardContent className="p-8 sm:p-10">
-                <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-carnet-red-pale rounded-xl flex items-center justify-center">
-                      <Languages className="h-5 w-5 text-carnet-red" />
-                    </div>
-                    <div>
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-carnet-red">
-                        {showPerfectAnswer ? "Traduction correcte" : "Phrase à traduire"}
-                      </div>
-                      <div className="text-[12px] text-pr-gray-mid mt-0.5">
-                        {showPerfectAnswer ? "Référence du modèle" : "Cliquez pour corriger"}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    {currentSentence.specialized && (
-                      <Badge className="bg-carnet-red-pale text-carnet-red border border-carnet-red-soft hover:bg-carnet-red-pale rounded-full px-3 py-1 font-semibold text-[11px] uppercase tracking-wider">Spécialisé</Badge>
-                    )}
-                    {currentSentence.difficulty_level && (
-                      <Badge className={`${currentSentence.difficulty_level === 'advanced' ? 'bg-pr-black text-white border-pr-black' : 'bg-pr-gray-bg text-pr-gray-dark border-pr-gray-light'} border rounded-full px-3 py-1 font-semibold text-[11px] uppercase tracking-wider`}>
-                        {currentSentence.difficulty_level === 'advanced' ? 'Avancé' : 'Intermédiaire'}
-                      </Badge>
-                    )}
-                  </div>
-                </div>
-                <p className="font-dm-serif text-3xl md:text-4xl text-pr-black leading-[1.25] text-center py-8 transition-all duration-500">
+                <p className="font-lora text-2xl md:text-[28px] text-carnet-ink leading-[1.3] text-center py-2 transition-all duration-300">
                   {showPerfectAnswer ? currentSentence.reference : currentSentence.french}
                 </p>
-              </CardContent>
-            </Card>
-
-            {/* Navigation buttons */}
-            {selectedPredefinedId && (
-              <div className="flex items-center justify-between gap-4 py-4 px-2 flex-wrap">
-                <div className="flex items-center gap-3 flex-wrap">
-                  <Button
-                    onClick={goToPreviousSentence}
-                    size="sm"
-                    disabled={!selectedPredefinedId || predefinedSentences.filter(s => s.language === language).findIndex(s => s.id === selectedPredefinedId) === 0}
-                    className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-carnet-red-pale hover:text-carnet-red hover:border-carnet-red-soft rounded-lg flex items-center gap-2 disabled:opacity-40"
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                    Précédent
-                  </Button>
-
-                  <div className="text-[13px] text-pr-gray-mid flex items-center gap-1.5">
-                    <span className="font-semibold text-pr-black">
-                      {predefinedSentences.filter(s => s.language === language).findIndex(s => s.id === selectedPredefinedId) + 1}
-                    </span>
-                    <span>sur</span>
-                    <span className="font-semibold text-pr-black">
-                      {predefinedSentences.filter(s => s.language === language).length}
-                    </span>
-                  </div>
-
-                  <Button
-                    onClick={goToNextSentence}
-                    size="sm"
-                    disabled={!selectedPredefinedId || predefinedSentences.filter(s => s.language === language).findIndex(s => s.id === selectedPredefinedId) === predefinedSentences.filter(s => s.language === language).length - 1}
-                    className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-carnet-red-pale hover:text-carnet-red hover:border-carnet-red-soft rounded-lg flex items-center gap-2 disabled:opacity-40"
-                  >
-                    Suivant
-                    <ChevronRight className="h-4 w-4" />
-                  </Button>
-                </div>
-
-                <div className="text-[11px] uppercase tracking-[0.10em] text-pr-gray-mid">
-                  Utilisez les flèches ← → du clavier
-                </div>
               </div>
-            )}
 
-            {/* Section traduction */}
-            <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-              <CardContent className="p-6 sm:p-8">
-                <div className="flex items-center justify-between mb-6 gap-3 flex-wrap">
-                  <label className="text-[15px] font-semibold text-pr-black flex items-center gap-3">
-                    <div className="w-9 h-9 bg-carnet-red-pale rounded-lg flex items-center justify-center">
-                      <Code className="h-4 w-4 text-carnet-red" />
-                    </div>
+              {/* Séparateur pointillé entre phrase et zone de réponse */}
+              <div className="border-t border-dashed border-[rgba(78,55,30,0.18)]" />
+
+              {/* Section traduction — collée à la phrase */}
+              <div className="px-5 sm:px-6 pt-3 pb-4">
+                <div className="flex items-center justify-between mb-2 gap-3 flex-wrap">
+                  <label className="carnet-eyebrow text-[10px] flex items-center gap-2">
+                    <Code className="h-3.5 w-3.5 text-carnet-red" />
                     Votre traduction en {language === 'de' ? 'allemand' : language === 'en' ? 'anglais' : 'espagnol'}
                   </label>
 
-                  {/* Toggle écrit / oral */}
-                  <div className="flex items-center gap-1 bg-pr-gray-bg p-1 rounded-lg border border-pr-gray-light">
-                    <Button
-                      size="sm"
+                  {/* Toggle écrit / oral — compact */}
+                  <div className="flex items-center gap-0.5 bg-[rgba(78,55,30,0.05)] p-0.5 rounded-md border border-dashed border-[rgba(78,55,30,0.2)]">
+                    <button
                       onClick={() => setInputMode('text')}
-                      className={`flex items-center gap-2 rounded-md transition-all ${inputMode === 'text'
-                        ? 'bg-white text-pr-black shadow-sm'
-                        : 'bg-transparent text-pr-gray-mid hover:bg-white/60'
+                      className={`flex items-center gap-1.5 rounded px-2 py-1 text-[12px] font-instrument font-medium transition-all ${inputMode === 'text'
+                        ? 'bg-[#FFFEF8] text-carnet-ink shadow-sm'
+                        : 'bg-transparent text-carnet-ink-mute hover:bg-[#FFFEF8]/60'
                         }`}
                     >
-                      <Keyboard className="h-4 w-4" />
+                      <Keyboard className="h-3.5 w-3.5" />
                       <span className="hidden sm:inline">Écrit</span>
-                    </Button>
-                    <Button
-                      size="sm"
+                    </button>
+                    <button
                       onClick={() => setInputMode('voice')}
-                      className={`flex items-center gap-2 rounded-md transition-all ${inputMode === 'voice'
-                        ? 'bg-white text-pr-black shadow-sm'
-                        : 'bg-transparent text-pr-gray-mid hover:bg-white/60'
+                      className={`flex items-center gap-1.5 rounded px-2 py-1 text-[12px] font-instrument font-medium transition-all ${inputMode === 'voice'
+                        ? 'bg-[#FFFEF8] text-carnet-ink shadow-sm'
+                        : 'bg-transparent text-carnet-ink-mute hover:bg-[#FFFEF8]/60'
                         }`}
                     >
-                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                       </svg>
                       <span className="hidden sm:inline">Oral</span>
-                    </Button>
+                    </button>
                   </div>
                 </div>
 
@@ -2943,25 +5827,24 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                       value={studentAnswer}
                       onChange={(e) => setStudentAnswer(e.target.value)}
                       placeholder={`Écrivez votre traduction en ${language === 'de' ? 'allemand' : language === 'en' ? 'anglais' : 'espagnol'}…`}
-                      className="min-h-[150px] text-xl resize-none p-5 rounded-xl border border-pr-gray-light focus:border-carnet-red focus:ring-2 focus:ring-carnet-red/20 transition-colors bg-pr-gray-bg/50 text-pr-black placeholder:text-pr-gray-mid"
+                      className="min-h-[110px] text-lg resize-none p-3.5 rounded-lg border border-dashed border-[rgba(78,55,30,0.25)] focus:border-carnet-red focus:ring-2 focus:ring-carnet-red/20 transition-colors bg-[rgba(78,55,30,0.04)] text-carnet-ink placeholder:text-carnet-ink-mute font-instrument"
                       disabled={isEvaluating}
                     />
                   ) : (
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                       <VoiceRecorder
                         language={language}
                         onTranscriptionComplete={(text) => setStudentAnswer(text)}
                         disabled={isEvaluating}
                       />
 
-                      {/* Afficher le texte transcrit - ÉDITABLE */}
                       {studentAnswer && (
-                        <div className="mt-6">
-                          <div className="flex items-center justify-between mb-2 gap-3">
-                            <label className="text-sm font-medium text-pr-gray-dark">
+                        <div>
+                          <div className="flex items-center justify-between mb-1.5 gap-3">
+                            <label className="text-[12px] font-instrument font-medium text-carnet-ink-soft">
                               Texte transcrit
                             </label>
-                            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-carnet-red bg-carnet-red-pale px-2.5 py-1 rounded-full">
+                            <span className="text-[9px] font-instrument font-semibold uppercase tracking-[0.12em] text-carnet-red bg-[rgba(193,68,58,0.08)] border border-dashed border-[rgba(193,68,58,0.3)] px-2 py-0.5 rounded-full">
                               Éditable
                             </span>
                           </div>
@@ -2969,318 +5852,479 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                             value={studentAnswer}
                             onChange={(e) => setStudentAnswer(e.target.value)}
                             placeholder="Le texte transcrit apparaîtra ici et sera modifiable…"
-                            className="min-h-[80px] text-base resize-none p-3 rounded-xl border border-pr-gray-light focus:border-carnet-red focus:ring-2 focus:ring-carnet-red/20 transition-colors bg-white text-pr-black placeholder:text-pr-gray-mid"
+                            className="min-h-[80px] text-base resize-none p-3 rounded-lg border border-dashed border-[rgba(78,55,30,0.25)] focus:border-carnet-red focus:ring-2 focus:ring-carnet-red/20 transition-colors bg-[#FFFEF8] text-carnet-ink placeholder:text-carnet-ink-mute font-instrument"
                             disabled={isEvaluating}
                           />
-                          <p className="text-[12px] text-pr-gray-mid mt-2">
-                            Vous pouvez modifier le texte avant de corriger.
-                          </p>
                         </div>
                       )}
                     </div>
                   )}
                 </div>
 
-                {/* Bouton corriger */}
+                {/* Bouton corriger compact */}
                 <Button
                   onClick={evaluateAnswer}
                   disabled={!studentAnswer.trim() || isEvaluating}
-                  className="w-full mt-6 h-14 text-[16px] font-semibold text-white rounded-xl bg-carnet-red hover:bg-carnet-red shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
+                  className="w-full mt-3 h-11 text-[14px] font-semibold text-white rounded-lg bg-carnet-red hover:bg-carnet-red shadow-[0_3px_10px_rgba(196,90,53,0.30)] hover:shadow-[0_5px_16px_rgba(196,90,53,0.40)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none"
                 >
                   {isEvaluating ? (
                     <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                       Correction en cours…
                     </>
                   ) : (
                     <>
-                      <CheckCircle className="mr-2 h-5 w-5" />
+                      <CheckCircle className="mr-2 h-4 w-4" />
                       Corriger ma traduction
                     </>
                   )}
                 </Button>
-              </CardContent>
-            </Card>
-          </>
-        ) : (
-          <Card className="border border-dashed border-pr-gray-light bg-white rounded-2xl">
-            <CardContent className="p-12">
-              <div className="flex flex-col items-center justify-center text-pr-gray-mid">
-                <div className="w-16 h-16 rounded-2xl bg-carnet-red-pale flex items-center justify-center mb-4">
-                  <Languages className="h-8 w-8 text-carnet-red" />
-                </div>
-                <p className="font-dm-serif text-2xl text-pr-black mb-2">Aucune phrase sélectionnée</p>
-                <p className="text-pr-gray-mid text-[14px]">Cliquez sur « Nouvelle phrase » ou choisissez dans le catalogue ci-dessus.</p>
+
+                {/* Hint clavier minuscule en bas (caché en mode examen actif) */}
+                {selectedPredefinedId && examPhase !== 'active' && (
+                  <div className="text-[10px] font-instrument uppercase tracking-[0.10em] text-carnet-ink-mute text-center mt-2.5 opacity-80">
+                    ← → flèches du clavier pour naviguer
+                  </div>
+                )}
+                {/* Hint mode examen actif */}
+                {examPhase === 'active' && (
+                  <div className="text-[10px] font-instrument uppercase tracking-[0.10em] text-carnet-ink-mute text-center mt-2.5 opacity-80">
+                    {feedbackLoaded ? "Passage à la question suivante…" : examQuestionTimer <= 10 ? "Temps presque écoulé !" : "Tape ta traduction et clique sur Corriger"}
+                  </div>
+                )}
               </div>
-            </CardContent>
+              </>
+            ) : (
+              <div className="flex flex-col items-center justify-center px-5 sm:px-6 py-10 text-carnet-ink-mute">
+                <div className="w-12 h-12 rounded-xl bg-[rgba(193,68,58,0.08)] border border-dashed border-[rgba(193,68,58,0.3)] flex items-center justify-center mb-3">
+                  <Languages className="h-5 w-5 text-carnet-red" />
+                </div>
+                <p className="font-lora text-lg text-carnet-ink mb-1">Aucune phrase sélectionnée</p>
+                <p className="text-carnet-ink-mute text-[13px] font-instrument text-center">Choisissez une phrase dans le catalogue ci-dessous.</p>
+              </div>
+            )}
           </Card>
-        )}
+
+        </>
 
         {/* Section correction - Affichage immédiat de la réponse */}
         {showPerfectAnswer && currentSentence && (
-          <Card className="border border-pr-gray-light bg-white shadow-[0_2px_12px_rgba(26,26,24,0.04)] mt-8 overflow-hidden rounded-2xl">
-            <div className="h-[3px] w-full bg-carnet-red" />
-            <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
+          <div className="relative bg-[#FFFEF8] border border-dashed border-[rgba(78,55,30,0.22)] shadow-[0_1px_0_rgba(78,55,30,0.08),0_8px_24px_rgba(78,55,30,0.06)] mt-6 overflow-hidden rounded-2xl">
+            <div className="absolute top-0 left-0 w-full h-[3px] bg-carnet-red"></div>
+            <div className="bg-[rgba(251,246,234,0.7)] border-b border-dashed border-[rgba(78,55,30,0.18)] px-5 sm:px-7 pt-5 pb-4">
               <div className="flex items-center justify-between gap-3 flex-wrap">
-                <CardTitle className="font-dm-serif text-xl flex items-center gap-3 text-pr-black">
-                  <div className="w-9 h-9 bg-white rounded-lg border border-carnet-red-soft flex items-center justify-center">
-                    <BookOpen className="h-4 w-4 text-carnet-red" />
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.25)] flex items-center justify-center flex-shrink-0">
+                    <BookOpen className="h-5 w-5 text-carnet-red" />
                   </div>
-                  Correction et analyse
-                </CardTitle>
-                <span className="text-[10px] font-semibold text-carnet-red bg-carnet-red-pale border border-carnet-red-soft px-2.5 py-1 rounded-full uppercase tracking-[0.12em]">
+                  <div>
+                    <div className="carnet-eyebrow text-[10px]">Correction & analyse</div>
+                    <h3 className="font-lora text-[20px] sm:text-[22px] text-carnet-ink leading-tight mt-0.5">
+                      La <em className="font-lora italic text-carnet-red">référence</em>, point par point.
+                    </h3>
+                  </div>
+                </div>
+                <span className="text-[10px] font-instrument font-semibold text-carnet-red bg-[rgba(193,68,58,0.08)] border border-dashed border-[rgba(193,68,58,0.35)] px-2.5 py-1 rounded-full uppercase tracking-[0.12em]">
                   Référence
                 </span>
               </div>
-            </CardHeader>
-            <CardContent className="p-0">
-              <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-pr-gray-light">
-                {/* Colonne Gauche : La Phrase Correcte */}
-                <div className="p-6 md:p-8 bg-pr-gray-bg/40">
-                  <h3 className="text-[11px] font-semibold text-pr-gray-mid mb-4 uppercase tracking-[0.14em]">Traduction correcte</h3>
-                  <div className="relative pl-4 border-l-[3px] border-carnet-red">
-                    <p className="font-lora text-2xl text-pr-black leading-[1.5]">
-                      {currentSentence.reference}
-                    </p>
+            </div>
+            <div className="grid md:grid-cols-2">
+              {/* Colonne Gauche : La Phrase Correcte */}
+              <div className="p-5 sm:p-7 border-b md:border-b-0 md:border-r border-dashed border-[rgba(78,55,30,0.18)]">
+                <div className="carnet-eyebrow text-[10px] mb-3">Traduction correcte</div>
+                <div className="relative pl-4 border-l-[3px] border-carnet-red">
+                  <p className="font-lora italic text-[19px] md:text-[21px] text-carnet-ink leading-[1.45]">
+                    {currentSentence.reference}
+                  </p>
+                </div>
+
+                {currentSentence.glossary && Object.keys(currentSentence.glossary).length > 0 && (
+                  <div className="mt-6 pt-5 border-t border-dashed border-[rgba(78,55,30,0.18)]">
+                    <h4 className="carnet-eyebrow text-[10px] mb-3 flex items-center gap-2">
+                      <BookMarked className="h-3 w-3 text-carnet-red" />
+                      Vocabulaire clé
+                    </h4>
+                    <div className="grid gap-0.5">
+                      {Object.entries(currentSentence.glossary).map(([fr, de], index) => (
+                        <div key={index} className="flex items-center justify-between text-[13px] font-instrument group hover:bg-[rgba(78,55,30,0.04)] px-2 py-1.5 rounded-md transition-colors">
+                          <span className="text-carnet-ink-soft">{fr}</span>
+                          <span className="flex-1 mx-3 border-t border-dashed border-[rgba(78,55,30,0.2)]"></span>
+                          <span className="font-lora italic text-carnet-ink">{de}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-
-                  {currentSentence.glossary && Object.keys(currentSentence.glossary).length > 0 && (
-                    <div className="mt-8 pt-6 border-t border-pr-gray-light">
-                      <h4 className="flex items-center gap-2 text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] mb-3">
-                        <BookMarked className="h-3.5 w-3.5 text-carnet-red" />
-                        Vocabulaire clé
-                      </h4>
-                      <div className="grid gap-1">
-                        {Object.entries(currentSentence.glossary).map(([fr, de], index) => (
-                          <div key={index} className="flex items-center justify-between text-sm group hover:bg-white p-2 rounded-lg transition-colors">
-                            <span className="text-pr-gray-dark">{fr}</span>
-                            <span className="w-px h-3 bg-pr-gray-light mx-2"></span>
-                            <span className="font-semibold text-pr-black">{de}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Colonne Droite : Points techniques */}
-                <div className="p-6 md:p-8 bg-white">
-                  {currentSentence.grammar_points && currentSentence.grammar_points.length > 0 && (
-                    <div className="mb-8">
-                      <h3 className="text-[11px] font-semibold text-pr-gray-mid mb-4 uppercase tracking-[0.14em] flex items-center gap-2">
-                        <Target className="h-3.5 w-3.5 text-carnet-red" />
-                        Points de grammaire
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {currentSentence.grammar_points.map((point, index) => (
-                          <span key={index} className="inline-flex items-center px-3 py-1 rounded-full text-[12px] font-medium bg-pr-gray-bg text-pr-gray-dark border border-pr-gray-light">
-                            {point}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {currentSentence.notes && currentSentence.notes.length > 0 && (
-                    <div>
-                      <h3 className="text-[11px] font-semibold text-pr-gray-mid mb-4 uppercase tracking-[0.14em] flex items-center gap-2">
-                        <AlertCircle className="h-3.5 w-3.5 text-carnet-red" />
-                        Points de vigilance
-                      </h3>
-                      <ul className="space-y-2.5">
-                        {currentSentence.notes.map((note, index) => (
-                          <li key={index} className="flex items-start gap-3 text-sm text-pr-gray-dark bg-carnet-red-pale/60 p-3 rounded-lg border border-carnet-red-pale">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-carnet-red flex-shrink-0"></span>
-                            <span className="leading-relaxed">{note}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
+                )}
               </div>
 
-              {/* Loader feedback élégant */}
-              {isLoadingFeedback && (
-                <div className="p-4 border-t border-pr-gray-light bg-pr-gray-bg flex items-center justify-center gap-3">
-                  <div className="relative">
-                    <div className="h-3 w-3 rounded-full bg-carnet-red animate-ping absolute"></div>
-                    <div className="h-3 w-3 rounded-full bg-carnet-red relative"></div>
+              {/* Colonne Droite : Points techniques */}
+              <div className="p-5 sm:p-7">
+                {currentSentence.grammar_points && currentSentence.grammar_points.length > 0 && (
+                  <div className="mb-6">
+                    <h3 className="carnet-eyebrow text-[10px] mb-3 flex items-center gap-2">
+                      <Target className="h-3 w-3 text-carnet-red" />
+                      Points de grammaire
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {currentSentence.grammar_points.map((point, index) => (
+                        <span key={index} className="inline-flex items-center px-3 py-1 rounded-full text-[12px] font-instrument font-medium bg-[rgba(78,55,30,0.04)] text-carnet-ink-soft border border-dashed border-[rgba(78,55,30,0.22)]">
+                          {point}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <span className="text-sm font-medium text-pr-gray-dark animate-pulse">
-                    L'IA analyse votre réponse en détail…
-                  </span>
+                )}
+
+                {currentSentence.notes && currentSentence.notes.length > 0 && (
+                  <div>
+                    <h3 className="carnet-eyebrow text-[10px] mb-3 flex items-center gap-2">
+                      <AlertCircle className="h-3 w-3 text-carnet-red" />
+                      Points de vigilance
+                    </h3>
+                    <ul className="space-y-2">
+                      {currentSentence.notes.map((note, index) => (
+                        <li key={index} className="flex items-start gap-2.5 text-[13px] font-instrument text-carnet-ink-soft bg-[rgba(193,68,58,0.06)] p-3 rounded-lg border border-dashed border-[rgba(193,68,58,0.3)]">
+                          <span className="carnet-hand italic text-carnet-red text-[16px] leading-none mt-0.5 flex-shrink-0" style={{ transform: 'rotate(-4deg)', display: 'inline-block' }}>!</span>
+                          <span className="leading-relaxed">{note}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Loader feedback élégant */}
+            {isLoadingFeedback && (
+              <div className="p-4 border-t border-dashed border-[rgba(78,55,30,0.18)] bg-[rgba(251,246,234,0.7)] flex items-center justify-center gap-3">
+                <div className="relative">
+                  <div className="h-3 w-3 rounded-full bg-carnet-red animate-ping absolute"></div>
+                  <div className="h-3 w-3 rounded-full bg-carnet-red relative"></div>
                 </div>
-              )}
-            </CardContent>
-          </Card>
+                <span className="text-sm font-instrument text-carnet-ink-soft animate-pulse">
+                  L'IA analyse votre réponse en détail…
+                </span>
+              </div>
+            )}
+          </div>
         )}
 
         {/* Section correction OpenAI - Affichage après chargement */}
         {evaluation && feedbackLoaded && (
-          <div className="mt-8 space-y-6 animate-in slide-in-from-bottom-4 duration-700">
-            {/* Résumé du score */}
-            <Card className="border border-pr-gray-light bg-white overflow-hidden rounded-2xl shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-              <div className={`h-[3px] w-full ${evaluation.score >= 8 ? 'bg-carnet-red' : evaluation.score >= 5 ? 'bg-carnet-red-soft' : 'bg-pr-black'}`} />
-              <div className="flex flex-col md:flex-row">
-                {/* Score Panel */}
-                <div className={`p-8 flex flex-col items-center justify-center min-w-[220px] border-b md:border-b-0 md:border-r border-pr-gray-light ${evaluation.score >= 8 ? 'bg-carnet-red-pale/60' : evaluation.score >= 5 ? 'bg-carnet-red-pale/30' : 'bg-pr-gray-bg'
-                  }`}>
-                  <div className="relative mb-3">
-                    <svg className="w-24 h-24 transform -rotate-90">
-                      <circle
-                        cx="48"
-                        cy="48"
-                        r="40"
-                        stroke="currentColor"
-                        strokeWidth="8"
-                        fill="transparent"
-                        className="text-pr-gray-light"
-                      />
-                      <circle
-                        cx="48"
-                        cy="48"
-                        r="40"
-                        stroke="currentColor"
-                        strokeWidth="8"
-                        fill="transparent"
-                        strokeDasharray={251.2}
-                        strokeDashoffset={251.2 - (251.2 * evaluation.score) / 10}
-                        strokeLinecap="round"
-                        className={`${evaluation.score >= 8 ? 'text-carnet-red' : evaluation.score >= 5 ? 'text-carnet-red-soft' : 'text-pr-gray-mid'
-                          } transition-all duration-1000 ease-out`}
-                      />
-                    </svg>
-                    <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
-                      <span className="font-dm-serif text-3xl text-pr-black leading-none">
-                        {evaluation.score}
-                      </span>
-                      <span className="text-[11px] font-medium text-pr-gray-mid mt-0.5">/ 10</span>
-                    </div>
+          <div className="mt-6 animate-in slide-in-from-bottom-4 duration-700">
+            {/* Copie corrigée — style carnet stylo rouge */}
+            <div className="relative bg-[#FFFEF8] rounded-2xl border border-dashed border-[rgba(78,55,30,0.22)] overflow-hidden shadow-[0_1px_0_rgba(78,55,30,0.08),0_8px_24px_rgba(78,55,30,0.06)]">
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-carnet-red"></div>
+
+              {/* En-tête : eyebrow + titre + score */}
+              <div className="px-5 sm:px-7 pt-5 pb-4 border-b border-dashed border-[rgba(78,55,30,0.18)] flex items-center justify-between gap-4 flex-wrap">
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.25)] flex items-center justify-center flex-shrink-0">
+                    <PenTool className="h-5 w-5 text-carnet-red" />
                   </div>
-                  <div className={`px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.12em] ${evaluation.score >= 8
-                    ? 'bg-carnet-red-pale text-carnet-red border border-carnet-red-soft'
-                    : evaluation.score >= 5
-                      ? 'bg-white text-carnet-red border border-carnet-red-pale'
-                      : 'bg-pr-black text-white border border-pr-black'
-                    }`}>
-                    {evaluation.score >= 9 ? 'Excellent' : evaluation.score >= 7 ? 'Très bien' : evaluation.score >= 5 ? 'Correct' : 'À travailler'}
+                  <div>
+                    <div className="carnet-eyebrow text-[10px]">Copie corrigée</div>
+                    <h3 className="font-lora text-[20px] sm:text-[22px] text-carnet-ink leading-tight mt-0.5">
+                      Ton thème, <em className="font-lora italic text-carnet-red">au stylo rouge</em>.
+                    </h3>
                   </div>
                 </div>
 
-                {/* Feedback Content */}
-                <div className="flex-1 p-6 sm:p-8">
-                  <div className="grid md:grid-cols-2 gap-8">
-                    {/* Correction */}
-                    <div>
-                      <h3 className="text-[11px] font-semibold text-pr-gray-mid mb-3 uppercase tracking-[0.14em] flex items-center gap-2">
-                        <PenTool className="h-3.5 w-3.5 text-carnet-red" />
-                        Votre correction
-                      </h3>
-                      <div className="bg-pr-gray-bg rounded-xl p-4 border border-pr-gray-light text-pr-black italic leading-relaxed font-lora text-[15px]">
-                        « {evaluation.corrected} »
-                      </div>
-                    </div>
-
-                    {/* Analyse */}
-                    <div>
-                      <h3 className="text-[11px] font-semibold text-pr-gray-mid mb-3 uppercase tracking-[0.14em] flex items-center gap-2">
-                        <Star className="h-3.5 w-3.5 text-carnet-red" />
-                        Analyse rapide
-                      </h3>
-                      <div className="space-y-2">
-                        {evaluation.severity.major_errors.length === 0 && evaluation.severity.minor_errors.length === 0 ? (
-                          <div className="flex items-start gap-3 text-carnet-red bg-carnet-red-pale border border-carnet-red-soft p-3 rounded-lg text-sm">
-                            <CheckCircle className="h-5 w-5 flex-shrink-0" />
-                            <p>Aucune erreur détectée. Bravo pour cette performance !</p>
-                          </div>
-                        ) : (
-                          <>
-                            {evaluation.severity.major_errors.length > 0 && (
-                              <div className="flex items-center gap-2 text-white bg-pr-black px-3 py-2 rounded-lg text-sm font-medium">
-                                <AlertCircle className="h-4 w-4" />
-                                {evaluation.severity.major_errors.length} erreur(s) majeure(s)
-                              </div>
-                            )}
-                            {evaluation.severity.minor_errors.length > 0 && (
-                              <div className="flex items-center gap-2 text-carnet-red bg-carnet-red-pale border border-carnet-red-soft px-3 py-2 rounded-lg text-sm font-medium">
-                                <AlertCircle className="h-4 w-4" />
-                                {evaluation.severity.minor_errors.length} erreur(s) mineure(s)
-                              </div>
-                            )}
-                          </>
-                        )}
-                      </div>
+                <div className="flex items-center gap-3">
+                  <div className="text-right">
+                    <div className="carnet-eyebrow text-[10px]">Note</div>
+                    <div className="font-lora italic text-[15px] text-carnet-ink-soft mt-0.5">
+                      {evaluation.score >= 9 ? 'Excellent' : evaluation.score >= 7 ? 'Très bien' : evaluation.score >= 5 ? 'Correct' : 'À retravailler'}
                     </div>
                   </div>
-
-                  {/* Detailed Errors */}
-                  {(evaluation.severity.major_errors.length > 0 || evaluation.severity.minor_errors.length > 0) && (
-                    <div className="mt-8 pt-6 border-t border-pr-gray-light">
-                      <h3 className="text-[11px] font-semibold text-pr-gray-mid mb-4 uppercase tracking-[0.14em]">Détail des erreurs</h3>
-                      <div className="space-y-4">
-                        {[
-                          ...evaluation.severity.major_errors.map(e => typeof e === 'string' ? { error: e, type: 'major' } : { ...e, type: 'major' }),
-                          ...evaluation.severity.minor_errors.map(e => typeof e === 'string' ? { error: e, type: 'minor' } : { ...e, type: 'minor' })
-                        ].map((error: any, index) => (
-                          <div key={index} className="flex gap-4 group">
-                            <div className={`mt-1.5 h-2 w-2 rounded-full flex-shrink-0 ${error.type === 'major' ? 'bg-pr-black' : 'bg-carnet-red'}`}></div>
-                            <div className="flex-1">
-                              {typeof error === 'string' ? (
-                                <p className="text-pr-gray-dark text-sm">{error}</p>
-                              ) : (
-                                <div className="text-sm space-y-1.5">
-                                  <div className="flex items-baseline justify-between flex-wrap gap-2">
-                                    <p className="font-medium text-pr-black inline-block">
-                                      <span className="border-b-2 border-carnet-red-soft pb-0.5">{error.error}</span>
-                                    </p>
-                                    {error.rule && (
-                                      <span className="text-[11px] text-pr-gray-mid font-mono bg-pr-gray-bg px-2 py-0.5 rounded border border-pr-gray-light">{error.rule}</span>
-                                    )}
-                                  </div>
-                                  <p className="text-pr-gray-dark">
-                                    <span className="text-pr-gray-mid mr-2">Why?</span>
-                                    {error.explanation}
-                                  </p>
-                                  <p className="text-carnet-red font-semibold bg-carnet-red-pale inline-block px-2.5 py-1 rounded text-xs mt-1 border border-carnet-red-soft">
-                                    Correct : {error.correction}
-                                  </p>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
+                  <div className="relative">
+                    <svg className="w-[58px] h-[58px] transform -rotate-90">
+                      <circle cx="29" cy="29" r="25" stroke="rgba(78,55,30,0.15)" strokeWidth="4" fill="transparent" />
+                      <circle
+                        cx="29" cy="29" r="25"
+                        stroke={evaluation.score >= 7 ? '#C1443A' : evaluation.score >= 5 ? '#C1443A' : '#8A7864'}
+                        strokeOpacity={evaluation.score >= 5 ? 1 : 0.7}
+                        strokeWidth="4" fill="transparent"
+                        strokeDasharray={157}
+                        strokeDashoffset={157 - (157 * evaluation.score) / 10}
+                        strokeLinecap="round"
+                        className="transition-all duration-1000 ease-out"
+                      />
+                    </svg>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <span className="font-lora text-[20px] text-carnet-ink leading-none">{evaluation.score}</span>
+                      <span className="text-[9px] text-carnet-ink-mute font-instrument leading-none mt-0.5">/ 10</span>
                     </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* HERO : Réponse de l'élève avec surlignage inline + version correcte */}
+              <div className="px-5 sm:px-7 py-6">
+                <div className="grid md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-5 items-center">
+                  {/* Ta réponse — surlignage inline par catégorie d'erreur */}
+                  <div>
+                    <div className="carnet-eyebrow text-[10px] mb-2">Ta réponse</div>
+                    <p className="font-lora text-[17px] md:text-[19px] leading-snug text-carnet-ink">
+                      {studentAnswer ? (
+                        <>
+                          «{' '}
+                          {(() => {
+                            const segments = buildHighlightedSegments(studentAnswer, evaluation.breakdown || []);
+                            return segments.map((seg, i) => {
+                              if (!seg.entry) return <span key={i}>{seg.text}</span>;
+                              const style = ERROR_STYLES[seg.entry.type];
+                              const tip = [seg.entry.label, seg.entry.explanation, seg.entry.correction ? `→ ${seg.entry.correction}` : ''].filter(Boolean).join(' · ');
+                              return (
+                                <mark
+                                  key={i}
+                                  title={tip}
+                                  className={`${style.bg} ${style.text} border ${style.border} rounded px-0.5 cursor-help`}
+                                >
+                                  {seg.text}
+                                </mark>
+                              );
+                            });
+                          })()}
+                          {' »'}
+                        </>
+                      ) : (
+                        <span className="italic text-carnet-ink-mute">(pas de réponse)</span>
+                      )}
+                    </p>
+                  </div>
+
+                  {/* Flèche carnet-hand au milieu */}
+                  <div className="hidden md:flex items-center justify-center text-carnet-red">
+                    <span className="carnet-hand text-[42px] leading-none" style={{ transform: 'rotate(-8deg)', display: 'inline-block' }}>→</span>
+                  </div>
+
+                  {/* Version corrigée — stylo rouge */}
+                  <div>
+                    <div className="carnet-eyebrow text-[10px] text-carnet-red mb-2">Version corrigée</div>
+                    <div className="border-l-[3px] border-carnet-red pl-3">
+                      <p className="font-lora italic text-[17px] md:text-[19px] leading-snug text-carnet-ink">
+                        {evaluation.corrected}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Couverture du sens — chaque segment du français : rendu / approximatif / oublié */}
+                {evaluation.coverage && evaluation.coverage.length > 0 && (
+                  <div className="mt-5 bg-[rgba(251,246,234,0.7)] border border-dashed border-[rgba(78,55,30,0.18)] rounded-xl px-4 py-3">
+                    <div className="carnet-eyebrow text-[10px] mb-2.5 flex items-center gap-2">
+                      <Languages className="h-3 w-3" />
+                      Couverture du sens
+                      {(() => {
+                        const tot = evaluation.coverage.length;
+                        const w = evaluation.coverage.reduce((a, s) => a + (s.status === 'present' ? 1 : s.status === 'altered' ? 0.5 : 0), 0);
+                        return (
+                          <span className="ml-auto normal-case tracking-normal font-instrument text-[11px] text-carnet-ink-soft">
+                            {Math.round((w / tot) * 100)}% du sens rendu
+                          </span>
+                        );
+                      })()}
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {evaluation.coverage.map((seg, idx) => {
+                        const cfg = seg.status === 'present'
+                          ? { cls: 'bg-[rgba(34,139,87,0.12)] text-[#1f6f4a] border-[rgba(34,139,87,0.4)]', icon: '✓' }
+                          : seg.status === 'altered'
+                          ? { cls: 'bg-[rgba(202,138,4,0.15)] text-[#7C5A0A] border-[rgba(202,138,4,0.45)]', icon: '≈' }
+                          : { cls: 'bg-[rgba(193,68,58,0.12)] text-carnet-red border-[rgba(193,68,58,0.45)]', icon: '✕' };
+                        return (
+                          <span
+                            key={idx}
+                            className={`inline-flex items-center gap-1.5 ${cfg.cls} border rounded-md px-2 py-1 text-[12px] font-instrument`}
+                            title={seg.status === 'present' ? 'Sens rendu' : seg.status === 'altered' ? 'Tenté mais fautif' : 'Omis ou hors-sujet'}
+                          >
+                            <span className="font-bold leading-none">{cfg.icon}</span>
+                            <span className={seg.status === 'missing' ? 'line-through opacity-80' : ''}>{seg.segment}</span>
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* Détail du score — décomposition chiffrée */}
+                {evaluation.breakdown && evaluation.breakdown.length > 0 && (
+                  <div className="mt-5 bg-[rgba(251,246,234,0.7)] border border-dashed border-[rgba(78,55,30,0.18)] rounded-xl px-4 py-3">
+                    <div className="carnet-eyebrow text-[10px] mb-2 flex items-center gap-2">
+                      <Target className="h-3 w-3" />
+                      Détail du score
+                    </div>
+                    <div className="flex items-center gap-1.5 flex-wrap font-instrument text-[13px] text-carnet-ink-soft">
+                      <span className="font-semibold text-carnet-ink tabular-nums">10</span>
+                      {evaluation.breakdown.map((entry, idx) => {
+                        const style = ERROR_STYLES[entry.type];
+                        return (
+                          <React.Fragment key={idx}>
+                            <span className="text-carnet-ink-mute">−</span>
+                            <span
+                              className={`inline-flex items-center gap-1 ${style.bg} ${style.text} border ${style.border} rounded-full px-2 py-0.5 text-[11px] font-semibold`}
+                              title={entry.explanation}
+                            >
+                              <span className="tabular-nums">{formatPenalty(entry.penalty)}</span>
+                              <span className="opacity-80">· {style.label}</span>
+                            </span>
+                          </React.Fragment>
+                        );
+                      })}
+                      <span className="text-carnet-ink-mute">=</span>
+                      <span className="font-semibold text-carnet-red tabular-nums text-[15px]">{evaluation.score}/10</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Badges erreurs */}
+                <div className="mt-5 flex items-center gap-2 flex-wrap">
+                  {evaluation.severity.major_errors.length === 0 && evaluation.severity.minor_errors.length === 0 ? (
+                    <div className="flex items-center gap-2 text-carnet-red bg-[rgba(193,68,58,0.08)] border border-dashed border-[rgba(193,68,58,0.35)] px-3 py-1 rounded-full text-[11px] font-instrument font-semibold uppercase tracking-[0.08em]">
+                      <CheckCircle className="h-3.5 w-3.5" />
+                      <span>Sans faute</span>
+                      <span className="carnet-hand text-base normal-case text-carnet-red ml-1" style={{ transform: 'rotate(-3deg)', display: 'inline-block' }}>bravo !</span>
+                    </div>
+                  ) : (
+                    <>
+                      {evaluation.severity.major_errors.length > 0 && (
+                        <div className="flex items-center gap-1.5 bg-carnet-ink text-[#FBF6EA] px-3 py-1 rounded-full text-[11px] font-instrument font-semibold uppercase tracking-[0.08em]">
+                          <AlertCircle className="h-3 w-3" />
+                          {evaluation.severity.major_errors.length} majeure{evaluation.severity.major_errors.length > 1 ? 's' : ''}
+                        </div>
+                      )}
+                      {evaluation.severity.minor_errors.length > 0 && (
+                        <div className="flex items-center gap-1.5 bg-[rgba(193,68,58,0.1)] text-carnet-red border border-[rgba(193,68,58,0.3)] px-3 py-1 rounded-full text-[11px] font-instrument font-semibold uppercase tracking-[0.08em]">
+                          <AlertCircle className="h-3 w-3" />
+                          {evaluation.severity.minor_errors.length} mineure{evaluation.severity.minor_errors.length > 1 ? 's' : ''}
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
 
-              {/* Conseils & Next Steps Footer */}
+              {/* Annotations : chaque erreur en style "stylo rouge dans la marge" */}
+              {(evaluation.severity.major_errors.length > 0 || evaluation.severity.minor_errors.length > 0) && (
+                <div className="px-5 sm:px-7 py-6 border-t border-dashed border-[rgba(78,55,30,0.18)] bg-[rgba(251,246,234,0.5)]">
+                  <div className="carnet-eyebrow text-[10px] mb-4 flex items-center gap-2">
+                    <span>Annotations dans la marge</span>
+                    <span className="flex-1 border-t border-dashed border-[rgba(78,55,30,0.18)]"></span>
+                  </div>
+                  <ol className="space-y-5">
+                    {[
+                      ...evaluation.severity.major_errors.map(e => typeof e === 'string' ? { error: e, type: 'major' as const } : { ...e, type: 'major' as const }),
+                      ...evaluation.severity.minor_errors.map(e => typeof e === 'string' ? { error: e, type: 'minor' as const } : { ...e, type: 'minor' as const })
+                    ].map((err: any, index) => (
+                      <li key={index} className="flex gap-3">
+                        {/* Numéro carnet-hand dans la marge */}
+                        <div className="flex-shrink-0 w-7 pt-0.5 text-center">
+                          <span className="carnet-hand italic text-[22px] text-carnet-red leading-none" style={{ transform: 'rotate(-4deg)', display: 'inline-block' }}>
+                            {index + 1}.
+                          </span>
+                        </div>
+                        <div className="flex-1 pb-4 border-b border-dashed border-[rgba(78,55,30,0.12)] last:border-b-0 last:pb-0">
+                          {typeof err === 'string' ? (
+                            <p className="text-carnet-ink-soft text-[14px] font-instrument leading-relaxed">{err}</p>
+                          ) : (
+                            <div className="space-y-2">
+                              {err.error && err.correction && (
+                                <div className="flex items-baseline gap-3 flex-wrap">
+                                  <span
+                                    className="font-lora text-[15px] text-carnet-ink-mute"
+                                    style={{ textDecoration: 'line-through', textDecorationColor: '#C1443A', textDecorationThickness: '2px' }}
+                                  >
+                                    {err.error}
+                                  </span>
+                                  <span className="carnet-hand italic text-[20px] text-carnet-red leading-snug">
+                                    {err.correction}
+                                  </span>
+                                  {err.rule && (
+                                    <span className="text-[10px] text-carnet-ink-mute font-instrument bg-[#FBF6EA] px-2 py-0.5 rounded-full border border-dashed border-[rgba(78,55,30,0.25)]">
+                                      {err.rule}
+                                    </span>
+                                  )}
+                                </div>
+                              )}
+                              {err.explanation && (
+                                <p className="text-[13px] text-carnet-ink-soft font-instrument leading-relaxed">
+                                  <span className="font-semibold text-carnet-ink mr-1">Pourquoi —</span>
+                                  {err.explanation}
+                                </p>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+
+              {/* Renvoi vers la leçon correspondante (uniquement si la phrase cible un point de grammaire mappé) */}
+              {language === 'en' && currentSentence?.lesson_slug && (
+                <div className="bg-[rgba(193,68,58,0.05)] px-5 sm:px-7 py-5 border-t border-dashed border-[rgba(78,55,30,0.18)]">
+                  <div className="flex items-start sm:items-center gap-4 flex-col sm:flex-row sm:justify-between">
+                    <div className="flex items-start gap-3">
+                      <BookOpen className="h-5 w-5 text-carnet-red flex-shrink-0 mt-0.5" />
+                      <div>
+                        <div className="carnet-eyebrow text-[10px] mb-1">Point de grammaire ciblé</div>
+                        <div className="font-lora text-[16px] text-carnet-ink leading-tight">
+                          {currentSentence.lesson_title || currentSentence.lesson_slug}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <Link
+                        to={`/formation/anglais/grammaire/${currentSentence.lesson_slug}`}
+                        className="inline-flex items-center gap-1.5 bg-carnet-ink hover:bg-carnet-red text-carnet-paper font-instrument text-[12px] font-semibold uppercase tracking-[0.08em] px-4 py-2 rounded-full transition-colors"
+                      >
+                        Réviser la leçon
+                        <ChevronRight className="h-3 w-3" />
+                      </Link>
+                      <Link
+                        to={`/formation/anglais/grammaire/${currentSentence.lesson_slug}/exercices`}
+                        className="inline-flex items-center gap-1.5 bg-[rgba(193,68,58,0.06)] hover:bg-[rgba(193,68,58,0.12)] text-carnet-red border border-[rgba(193,68,58,0.25)] font-instrument text-[12px] font-semibold uppercase tracking-[0.08em] px-4 py-2 rounded-full transition-colors"
+                      >
+                        Exercices
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Bas de page : règles + conseil, style notes manuscrites */}
               {(evaluation.tips?.length > 0 || evaluation.grammar_rules?.length > 0) && (
-                <div className="bg-pr-gray-bg p-6 border-t border-pr-gray-light flex flex-col md:flex-row gap-8">
+                <div className="bg-[rgba(251,246,234,0.7)] px-5 sm:px-7 py-6 border-t border-dashed border-[rgba(78,55,30,0.18)] grid md:grid-cols-2 gap-6">
                   {evaluation.grammar_rules?.length > 0 && (
-                    <div className="flex-1">
-                      <h4 className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] mb-3">Règles à retenir</h4>
+                    <div>
+                      <div className="carnet-eyebrow text-[10px] mb-3 flex items-center gap-2">
+                        <BookOpen className="h-3 w-3" />
+                        Règles à retenir
+                      </div>
                       <ul className="space-y-2">
                         {evaluation.grammar_rules.map((rule, idx) => (
-                          <li key={idx} className="text-sm text-pr-gray-dark flex items-start gap-2">
-                            <div className="h-1.5 w-1.5 rounded-full bg-carnet-red mt-1.5 flex-shrink-0"></div>
-                            {rule}
+                          <li key={idx} className="text-[13px] text-carnet-ink-soft font-instrument flex items-start gap-2 leading-relaxed">
+                            <span className="carnet-hand text-[18px] text-carnet-red leading-none flex-shrink-0 mt-0.5" style={{ transform: 'rotate(-6deg)', display: 'inline-block' }}>✓</span>
+                            <span>{rule}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
                   )}
-
                   {evaluation.tips?.length > 0 && (
-                    <div className="flex-1">
-                      <h4 className="text-[11px] font-semibold text-pr-gray-mid uppercase tracking-[0.14em] mb-3">Conseil du coach</h4>
+                    <div>
+                      <div className="carnet-eyebrow text-[10px] mb-3 flex items-center gap-2">
+                        <Star className="h-3 w-3" />
+                        Conseil du coach
+                      </div>
                       <ul className="space-y-2">
                         {evaluation.tips.map((tip, idx) => (
-                          <li key={idx} className="text-sm text-pr-gray-dark flex items-start gap-2">
-                            <div className="h-1.5 w-1.5 rounded-full bg-carnet-red-soft mt-1.5 flex-shrink-0"></div>
-                            {tip}
+                          <li key={idx} className="text-[13px] text-carnet-ink-soft font-instrument flex items-start gap-2 leading-relaxed">
+                            <span className="carnet-hand text-[18px] text-carnet-red leading-none flex-shrink-0 mt-0.5" style={{ transform: 'rotate(4deg)', display: 'inline-block' }}>→</span>
+                            <span>{tip}</span>
                           </li>
                         ))}
                       </ul>
@@ -3288,9 +6332,29 @@ export const ThemeGrammaticalGenerator: React.FC = () => {
                   )}
                 </div>
               )}
-            </Card>
+
+              {/* Autres formulations valides — montrer que plusieurs traductions marchent */}
+              {evaluation.severity?.accepted_variations?.length > 0 && (
+                <div className="bg-[rgba(251,246,234,0.5)] px-5 sm:px-7 py-5 border-t border-dashed border-[rgba(78,55,30,0.18)]">
+                  <div className="carnet-eyebrow text-[10px] mb-3 flex items-center gap-2">
+                    <CheckCircle className="h-3 w-3 text-carnet-red" />
+                    Autres formulations qui auraient marché
+                  </div>
+                  <ul className="space-y-2">
+                    {evaluation.severity.accepted_variations.map((variation, idx) => (
+                      <li key={idx} className="text-[13px] text-carnet-ink-soft font-instrument flex items-start gap-2 leading-relaxed">
+                        <span className="text-carnet-red mt-0.5 flex-shrink-0">✓</span>
+                        <span className="italic">«&nbsp;{variation}&nbsp;»</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
         )}
+          </div>
+        </div>
       </div>
     </div>
   );

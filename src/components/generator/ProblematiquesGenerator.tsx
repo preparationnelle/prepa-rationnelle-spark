@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
 import { Brain, Loader2, Copy, Check, Sparkles, Info, AlertCircle, Lightbulb } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import { supabase } from '@/integrations/supabase/client';
 
 interface ProblematiquesGeneratorProps {
@@ -21,10 +18,9 @@ export const ProblematiquesGenerator = ({ mode = 'culture-generale', subjectFrom
   const { toast } = useToast();
 
   const isGeopolitics = mode === 'geopolitics';
-  const title = isGeopolitics ? "Générateur de Problématiques (Géopolitique)" : "Générateur de Problématiques (Culture G.)";
   const placeholder = isGeopolitics
-    ? "Ex: La Chine, une puissance révisionniste ?"
-    : "Ex: Pensez-vous, comme l'a écrit Montaigne, qu'« il se trouve plus de différence de tel homme à tel homme que de tel animal à tel homme » ?";
+    ? "Ex : La Chine, une puissance révisionniste ?"
+    : "Ex : L'homme est-il un animal comme les autres ?";
 
   const handleGenerate = async () => {
     if (!subject.trim()) {
@@ -40,8 +36,6 @@ export const ProblematiquesGenerator = ({ mode = 'culture-generale', subjectFrom
     setProblematique(null);
 
     try {
-      console.log('Generating problematique for subject:', subject.trim());
-
       const { data, error } = await supabase.functions.invoke('generate-problematique', {
         body: { subject: subject.trim(), mode: isGeopolitics ? 'geopolitics' : 'culture_generale' },
       });
@@ -59,8 +53,6 @@ export const ProblematiquesGenerator = ({ mode = 'culture-generale', subjectFrom
       if (!generatedProblematique) {
         throw new Error("La problématique générée est vide");
       }
-
-      console.log('Problematique generated successfully');
 
       setProblematique(generatedProblematique);
 
@@ -97,86 +89,71 @@ export const ProblematiquesGenerator = ({ mode = 'culture-generale', subjectFrom
     if (isGeopolitics) {
       setSubject("L'Union Européenne, une puissance sans puissance ?");
     } else {
-      setSubject('Pensez-vous, comme l\'a écrit Montaigne, qu\'« il se trouve plus de différence de tel homme à tel homme que de tel animal à tel homme » ?');
+      setSubject("L'homme est-il un animal comme les autres ?");
     }
   };
 
   return (
     <div className="space-y-6">
-      {/* Header avec explication */}
-      <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-        <div className="h-[3px] w-full bg-pr-black" />
-        <CardHeader className="px-6 pt-5 pb-4">
-          <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl bg-pr-gray-bg border border-pr-black-soft flex items-center justify-center">
-              <Brain className="h-5 w-5 text-pr-black" />
-            </div>
-            <div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
-                {isGeopolitics ? 'Géopolitique' : 'Culture générale'}
-              </div>
-              <CardTitle className="font-dm-serif text-2xl text-pr-black leading-none">
-                Générateur de problématique
-              </CardTitle>
-            </div>
+      {/* Header + form */}
+      <div className="carnet-card overflow-hidden">
+        <div className="px-7 pt-7 pb-5 flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full bg-[rgba(193,68,58,0.08)] border border-[rgba(193,68,58,0.2)] flex items-center justify-center flex-shrink-0">
+            <Brain className="h-5 w-5 text-carnet-red" />
           </div>
-        </CardHeader>
-        <CardContent className="px-6 pb-6">
-          <Alert className="bg-pr-gray-bg/60 border-pr-black-pale rounded-xl">
-            <Info className="h-4 w-4 text-pr-black" />
-            <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
-              <strong className="text-pr-black">La problématique :</strong> question centrale qui structure votre dissertation.
-              Elle doit être dialectique (tension), féconde (3 parties équilibrées) et pertinente (ancrée dans les enjeux du sujet).
-            </AlertDescription>
-          </Alert>
-        </CardContent>
-      </Card>
-
-      {/* Formulaire */}
-      <Card className="bg-white rounded-2xl border border-pr-gray-light shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
-        <CardHeader className="px-6 pt-5 pb-4">
-          <CardTitle className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-pr-black" />
-            Analyser un sujet
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6 px-6 pb-6">
-          {/* Sujet */}
-          <div className="space-y-3">
-            <div className="flex items-center justify-between gap-3">
-              <Label htmlFor="subject" className="text-[15px] font-semibold text-pr-black flex items-center gap-2">
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-pr-gray-bg text-pr-black text-[11px] font-bold">
-                  1
-                </span>
-                Sujet de dissertation
-              </Label>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-pr-black bg-pr-gray-bg px-2.5 py-1 rounded-full">
-                Requis
-              </span>
+          <div>
+            <div className="carnet-eyebrow text-[11px] mb-1">
+              {isGeopolitics ? 'Géopolitique' : 'Culture générale'}
             </div>
-            <Textarea
-              id="subject"
-              placeholder={placeholder}
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
-              className="min-h-[120px] border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 transition-colors rounded-xl resize-y text-[15px] leading-relaxed p-4 bg-white text-pr-black placeholder:text-pr-gray-mid"
-            />
-            <p className="text-[13px] text-pr-gray-mid">
-              Collez ici le sujet de dissertation dont vous voulez analyser la problématique.
+            <h2 className="font-lora text-[26px] text-carnet-ink leading-none">
+              Générateur de <em className="font-lora italic text-carnet-red">problématique</em>
+            </h2>
+            <p className="text-carnet-ink-mute font-instrument text-sm mt-1.5">
+              Une question <span className="carnet-hl font-lora italic">dialectique, féconde et pertinente</span> pour structurer ta dissertation.
+            </p>
+          </div>
+        </div>
+
+        <hr className="carnet-divider mx-7" />
+
+        <div className="px-7 pt-6 pb-7 space-y-6">
+          {/* Subject */}
+          <div className="space-y-3">
+            <div className="flex items-baseline justify-between gap-3 flex-wrap">
+              <div className="flex items-baseline gap-3">
+                <span className="carnet-hand text-[28px] text-carnet-red leading-none font-semibold">1</span>
+                <label htmlFor="problematique-subject" className="font-lora text-[18px] text-carnet-ink">
+                  Sujet <em className="font-lora italic text-carnet-red">de dissertation</em>
+                </label>
+              </div>
+              {subjectFromParent && (
+                <span className="carnet-eyebrow text-[10px] inline-flex items-center px-2.5 py-1 bg-[rgba(193,68,58,0.06)] border border-[rgba(193,68,58,0.25)] rounded-full">
+                  Sujet imposé
+                </span>
+              )}
+            </div>
+            <div className={`bg-carnet-paper-2 rounded-md border border-dashed transition-colors ${subjectFromParent ? 'border-[rgba(78,55,30,0.14)] opacity-90' : 'border-[rgba(78,55,30,0.18)] focus-within:border-carnet-red'}`}>
+              <Textarea
+                id="problematique-subject"
+                placeholder={placeholder}
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                readOnly={!!subjectFromParent}
+                className="min-h-[120px] resize-y border-0 bg-transparent rounded-md text-[15px] leading-relaxed p-4 focus-visible:ring-0 font-instrument text-carnet-ink placeholder:text-carnet-ink-mute"
+              />
+            </div>
+            <p className="text-[13px] text-carnet-ink-mute font-instrument">
+              {subjectFromParent ? 'Sujet imposé depuis la page principale.' : 'Colle ici le sujet dont tu veux analyser la problématique.'}
             </p>
           </div>
 
-          {/* Boutons */}
+          {/* Actions */}
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Button
               type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                handleGenerate();
-              }}
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleGenerate(); }}
               disabled={!subject.trim() || loading}
-              className="flex items-center justify-center gap-2 flex-1 bg-pr-black hover:bg-pr-black-dark text-white font-semibold rounded-xl shadow-[0_4px_14px_rgba(244,132,95,0.35)] hover:shadow-[0_6px_20px_rgba(196,90,53,0.4)] transition-all duration-200 disabled:opacity-50 disabled:shadow-none h-12 text-[15px]"
+              className="flex-1 bg-carnet-red hover:bg-carnet-red-deep text-carnet-paper rounded-md h-12 text-[15px] font-instrument font-semibold transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -193,79 +170,67 @@ export const ProblematiquesGenerator = ({ mode = 'culture-generale', subjectFrom
 
             <Button
               type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                loadExample();
-              }}
-              className="flex items-center gap-2 bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-4 font-medium transition-colors"
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); loadExample(); }}
               disabled={loading}
+              className="bg-carnet-paper-2 text-carnet-ink-soft border border-dashed border-[rgba(78,55,30,0.18)] hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-[rgba(193,68,58,0.25)] rounded-md h-12 px-5 font-instrument font-medium transition-colors flex items-center gap-2"
             >
               <Info className="h-4 w-4" />
               Exemple
             </Button>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
-      {/* Résultat */}
+      {/* Result */}
       {problematique && (
-        <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)] animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="h-[3px] w-full bg-pr-black" />
-          <CardHeader className="bg-pr-gray-bg border-b border-pr-gray-light px-6 py-5">
-            <div className="flex items-center justify-between gap-3 flex-wrap">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-white border border-pr-black-soft flex items-center justify-center">
-                  <Lightbulb className="h-5 w-5 text-pr-black" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-pr-black mb-0.5">
-                    Problématique
-                  </div>
-                  <CardTitle className="font-dm-serif text-xl text-pr-black leading-none">
-                    Question proposée
-                  </CardTitle>
-                </div>
+        <div className="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="carnet-card overflow-hidden">
+            <div className="px-6 pt-5 pb-3 flex items-center justify-between gap-3 flex-wrap">
+              <div className="carnet-eyebrow text-[10px] flex items-center gap-2">
+                <Lightbulb className="h-3.5 w-3.5 text-carnet-red" />
+                Problématique proposée
               </div>
               <Button
                 onClick={handleCopy}
                 size="sm"
-                className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-lg flex items-center gap-2"
+                className="bg-carnet-paper-2 text-carnet-ink-soft border border-dashed border-[rgba(78,55,30,0.18)] hover:bg-[rgba(193,68,58,0.06)] hover:text-carnet-red hover:border-[rgba(193,68,58,0.25)] rounded-md h-8 px-3 font-instrument text-sm flex items-center gap-2"
               >
                 {copied ? (
                   <>
-                    <Check className="h-4 w-4" />
+                    <Check className="h-3.5 w-3.5" />
                     Copié
                   </>
                 ) : (
                   <>
-                    <Copy className="h-4 w-4" />
+                    <Copy className="h-3.5 w-3.5" />
                     Copier
                   </>
                 )}
               </Button>
             </div>
-          </CardHeader>
-          <CardContent className="p-6 sm:p-7 space-y-5">
-            <div className="bg-pr-gray-bg/60 rounded-xl p-6 border border-pr-black-pale">
-              <p className="font-lora text-[18px] text-pr-black leading-[1.5]">
-                {problematique}
-              </p>
+            <div className="px-6 pb-6">
+              <div className="bg-carnet-paper-2 p-6 rounded-md border border-dashed border-[rgba(193,68,58,0.3)]">
+                <p className="font-lora italic text-[18px] text-carnet-ink leading-[1.6]">
+                  « {problematique} »
+                </p>
+              </div>
             </div>
+          </div>
 
-            {/* Conseils */}
-            <Alert className="bg-pr-gray-bg border-pr-gray-light rounded-xl">
-              <AlertCircle className="h-4 w-4 text-pr-black" />
-              <AlertDescription className="text-[14px] text-pr-gray-dark leading-relaxed">
-                <strong className="text-pr-black">Évaluation :</strong> cette problématique est-elle dialectique ? Féconde ? Pertinente ?
-                Elle devrait permettre un développement en trois parties équilibrées avec des arguments opposés.
-              </AlertDescription>
-            </Alert>
-          </CardContent>
-        </Card>
+          {/* Advice */}
+          <div className="carnet-card overflow-hidden">
+            <div className="px-6 py-5 flex items-start gap-3">
+              <AlertCircle className="h-4 w-4 text-carnet-red flex-shrink-0 mt-1" />
+              <div className="flex-1">
+                <div className="carnet-eyebrow text-[10px] mb-2">Évaluation</div>
+                <p className="font-instrument text-carnet-ink-soft text-[14px] leading-relaxed">
+                  Cette problématique est-elle <span className="carnet-hl font-lora italic">dialectique, féconde et pertinente</span> ? Elle devrait permettre un développement en trois parties équilibrées avec des arguments opposés.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
 };
-
-

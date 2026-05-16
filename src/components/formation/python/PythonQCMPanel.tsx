@@ -94,7 +94,7 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
             {questions.map((question) => (
               <div
                 key={question.id}
-                className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl overflow-hidden relative"
+                className="carnet-card overflow-hidden relative"
               >
                 <div
                   className={cn(
@@ -124,7 +124,7 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
                             'flex items-center gap-3 px-3 py-2.5 rounded-lg border cursor-pointer transition-all',
                             isSelected
                               ? 'bg-[rgba(193,68,58,0.06)] border-[rgba(193,68,58,0.3)]'
-                              : 'bg-white border-[rgba(78,55,30,0.12)] hover:border-[rgba(193,68,58,0.2)] hover:bg-[rgba(78,55,30,0.03)]'
+                              : 'bg-carnet-paper-2 border-[rgba(78,55,30,0.12)] hover:border-[rgba(193,68,58,0.2)] hover:bg-[rgba(78,55,30,0.03)]'
                           )}
                         >
                           <span
@@ -175,7 +175,7 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
       ) : (
         <>
           {/* Score */}
-          <div className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl overflow-hidden relative mb-10">
+          <div className="carnet-card overflow-hidden relative mb-10">
             <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-carnet-red" />
             {score !== null && (() => {
               const a = scoreAnnotation(score);
@@ -211,7 +211,7 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
                 return (
                   <div
                     key={question.id}
-                    className="bg-white border border-[rgba(78,55,30,0.14)] rounded-2xl overflow-hidden relative"
+                    className="carnet-card overflow-hidden relative"
                   >
                     <div
                       className={cn(
@@ -251,7 +251,7 @@ const PythonQCMPanel: React.FC<PythonQCMPanelProps> = ({
                           } else if (isUserAnswer && !isCorrect) {
                             style += ' bg-[rgba(78,55,30,0.04)] border-[rgba(78,55,30,0.12)] text-carnet-ink-soft line-through decoration-carnet-ink-mute';
                           } else {
-                            style += ' bg-white border-[rgba(78,55,30,0.08)] text-carnet-ink-soft/60';
+                            style += ' bg-carnet-paper-2 border-[rgba(78,55,30,0.08)] text-carnet-ink-soft/60';
                           }
 
                           return (

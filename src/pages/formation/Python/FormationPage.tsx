@@ -142,8 +142,7 @@ const FormationPage = () => {
                   <motion.div
                     key={module.id}
                     initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-30px' }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.3) }}
                   >
                     <div

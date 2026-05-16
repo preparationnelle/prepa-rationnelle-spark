@@ -120,11 +120,11 @@ export const GeopoliticsGenerator = ({ language }: GeopoliticsGeneratorProps) =>
 
   return (
     <div className="space-y-8">
-      <Card className="bg-white rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
+      <Card className="bg-carnet-paper-2 rounded-2xl border border-pr-gray-light overflow-hidden shadow-[0_2px_12px_rgba(26,26,24,0.04)]">
         <div className="h-[3px] w-full bg-pr-black" />
         <CardHeader className="px-6 pt-5 pb-4 bg-pr-gray-bg border-b border-pr-gray-light">
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl bg-white border border-pr-black-soft flex items-center justify-center">
+            <div className="w-11 h-11 rounded-xl bg-carnet-paper-2 border border-pr-black-soft flex items-center justify-center">
               <Globe className="h-5 w-5 text-pr-black" />
             </div>
             <div>
@@ -157,7 +157,7 @@ export const GeopoliticsGenerator = ({ language }: GeopoliticsGeneratorProps) =>
               placeholder={language === 'fr' ? 'URL du PDF (Google Drive, etc.) ou collez directement le texte du cours…' : 'PDF URL (Google Drive, etc.) or paste course text directly…'}
               value={pdfUrl}
               onChange={(e) => setPdfUrl(e.target.value)}
-              className="min-h-[120px] resize-y border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 transition-colors rounded-xl text-[15px] leading-relaxed p-4 bg-white text-pr-black placeholder:text-pr-gray-mid"
+              className="min-h-[120px] resize-y border-pr-gray-light focus:border-pr-black focus:ring-2 focus:ring-pr-black/20 transition-colors rounded-xl text-[15px] leading-relaxed p-4 bg-carnet-paper-2 text-pr-black placeholder:text-pr-gray-mid"
             />
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
@@ -182,7 +182,7 @@ export const GeopoliticsGenerator = ({ language }: GeopoliticsGeneratorProps) =>
               {generatedContent && (
                 <Button
                   onClick={handleDownloadAll}
-                  className="bg-white border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-5 font-medium transition-colors"
+                  className="bg-carnet-paper-2 border border-pr-gray-light text-pr-gray-dark hover:bg-pr-gray-bg hover:text-pr-black hover:border-pr-black-soft rounded-xl h-12 px-5 font-medium transition-colors"
                 >
                   <Download className="h-4 w-4 mr-2" />
                   {language === 'fr' ? 'Tout télécharger' : 'Download all'}

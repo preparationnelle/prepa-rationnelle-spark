@@ -54,7 +54,7 @@ export const GeneratorCategorySection: React.FC<GeneratorCategorySectionProps> =
           {/* Automations Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {category.automations.map((automation, automationIndex) => (
-              <Card key={automationIndex} className="h-full hover:shadow-lg transition-all duration-300 border-border/50 hover:border-primary/20 bg-white/80 backdrop-blur-sm group">
+              <Card key={automationIndex} className="h-full hover:shadow-sm transition-all duration-300 border-border/50 hover:border-primary/20 bg-carnet-paper-2/80 backdrop-blur-sm group">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between mb-3">
                     <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -72,7 +72,7 @@ export const GeneratorCategorySection: React.FC<GeneratorCategorySectionProps> =
                 <CardContent className="pt-0">
                   <Link to={getAutomationUrl(automation.key)}>
                     <Button 
-                      className="w-full group-hover:shadow-md transition-all"
+                      className="w-full group-hover:shadow-sm transition-all"
                     >
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Accéder à l'outil

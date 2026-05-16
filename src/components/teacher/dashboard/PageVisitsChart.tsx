@@ -78,7 +78,7 @@ const PageVisitsChart: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-6">
+      <div className="bg-carnet-paper/10 border border-carnet-rule/20 backdrop-blur-sm rounded-xl p-6">
         <div className="flex items-center gap-2 mb-4">
           <Eye className="h-5 w-5 text-orange-400" />
           <h3 className="text-lg font-semibold text-white">Pages les plus visitees</h3>
@@ -91,7 +91,7 @@ const PageVisitsChart: React.FC = () => {
   }
 
   return (
-    <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-6">
+    <div className="bg-carnet-paper/10 border border-carnet-rule/20 backdrop-blur-sm rounded-xl p-6">
       <div className="flex items-center gap-2 mb-4">
         <Eye className="h-5 w-5 text-orange-400" />
         <h3 className="text-lg font-semibold text-white">Pages les plus visitees</h3>

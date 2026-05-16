@@ -46,10 +46,10 @@ const DeveloppementDurablePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-carnet-paper">
       <div className="container mx-auto px-4 py-8">
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -88,19 +88,19 @@ const DeveloppementDurablePage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">8,2Md</div>
                 <div className="text-sm text-green-100">Population 2025</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">2,2</div>
                 <div className="text-sm text-green-100">Fécondité mondiale</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">2084</div>
                 <div className="text-sm text-green-100">Pic démographique</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">42%</div>
                 <div className="text-sm text-green-100">Jeunes Afrique 2030</div>
               </div>
@@ -190,8 +190,8 @@ const DeveloppementDurablePage = () => {
                       ))}
                     </div>
                     
-                    <div className="mt-4 p-3 bg-gray-100 rounded-lg">
-                      <p className="text-sm text-gray-700">
+                    <div className="mt-4 p-3 bg-carnet-paper rounded-lg">
+                      <p className="text-sm text-carnet-ink">
                         <strong>Constat :</strong> Le schéma "2 enfants par famille" s'impose partout sauf en Afrique subsaharienne, 
                         créant une forte différenciation démographique mondiale.
                       </p>
@@ -210,16 +210,16 @@ const DeveloppementDurablePage = () => {
             <AccordionContent>
               <div className="space-y-6">
 
-                <Card className="bg-gray-50 border-gray-200">
+                <Card className="bg-carnet-paper border-carnet-rule">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-gray-800">
+                    <CardTitle className="flex items-center gap-2 text-carnet-ink">
                       <Baby className="h-5 w-5" />
                       Jeunesse africaine : dividende démographique
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="bg-gray-100 p-4 rounded-lg mb-6">
-                      <h4 className="font-semibold text-gray-800 mb-2">Ampleur du phénomène</h4>
+                    <div className="bg-carnet-paper p-4 rounded-lg mb-6">
+                      <h4 className="font-semibold text-carnet-ink mb-2">Ampleur du phénomène</h4>
                       <ul className="text-sm text-pr-black space-y-2">
                         <li><strong>Afrique subsaharienne :</strong> Plus de 60% population sous 25 ans</li>
                         <li><strong>Projection 2030 :</strong> 42% des jeunes mondiaux seront africains</li>
@@ -230,11 +230,11 @@ const DeveloppementDurablePage = () => {
 
                     <div className="space-y-4">
                       {youthBulgeFactors.map((factor, index) => (
-                        <div key={index} className="p-3 bg-gray-100 rounded-lg border border-orange-300">
+                        <div key={index} className="p-3 bg-carnet-paper rounded-lg border border-orange-300">
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <div className="flex items-center gap-3 mb-1">
-                                <span className="font-semibold text-gray-800">{factor.factor}</span>
+                                <span className="font-semibold text-carnet-ink">{factor.factor}</span>
                                 <Badge className="bg-pr-black-dark text-white text-xs">
                                   {factor.stat}
                                 </Badge>
@@ -268,15 +268,15 @@ const DeveloppementDurablePage = () => {
           </AccordionItem>
 
           <AccordionItem value="europe-aging">
-            <AccordionTrigger className="text-xl text-gray-700">
+            <AccordionTrigger className="text-xl text-carnet-ink">
               III. Vieillissement européen : Adaptations et politiques
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-6">
 
-                <Card className="bg-gray-50 border-gray-200">
+                <Card className="bg-carnet-paper border-carnet-rule">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2 text-gray-800">
+                    <CardTitle className="flex items-center gap-2 text-carnet-ink">
                       <UserMinus className="h-5 w-5" />
                       Déclin démographique européen
                     </CardTitle>
@@ -284,12 +284,12 @@ const DeveloppementDurablePage = () => {
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-semibold text-gray-800 mb-3">Indicateurs du vieillissement</h4>
+                        <h4 className="font-semibold text-carnet-ink mb-3">Indicateurs du vieillissement</h4>
                         <div className="space-y-3">
                           {agingEurope.map((metric, index) => (
-                            <div key={index} className="p-3 bg-gray-100 rounded-lg">
-                              <div className="font-semibold text-gray-800">{metric.metric}</div>
-                              <div className="text-sm text-gray-700 mt-1">
+                            <div key={index} className="p-3 bg-carnet-paper rounded-lg">
+                              <div className="font-semibold text-carnet-ink">{metric.metric}</div>
+                              <div className="text-sm text-carnet-ink mt-1">
                                 {metric.value && <div><strong>{metric.value}</strong></div>}
                                 {metric.comparison && <div>{metric.comparison}</div>}
                                 {metric.impact && <div>{metric.impact}</div>}
@@ -305,9 +305,9 @@ const DeveloppementDurablePage = () => {
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-gray-800 mb-3">Fécondité européenne</h4>
-                        <div className="bg-gray-100 p-4 rounded-lg mb-4">
-                          <ul className="text-sm text-gray-700 space-y-2">
+                        <h4 className="font-semibold text-carnet-ink mb-3">Fécondité européenne</h4>
+                        <div className="bg-carnet-paper p-4 rounded-lg mb-4">
+                          <ul className="text-sm text-carnet-ink space-y-2">
                             <li><strong>Moyenne UE :</strong> 1,6 enfants/femme</li>
                             <li><strong>Italie :</strong> 1,2 (plus bas mondial)</li>
                             <li><strong>Espagne :</strong> 1,3</li>
@@ -315,12 +315,12 @@ const DeveloppementDurablePage = () => {
                           </ul>
                         </div>
                         
-                        <h4 className="font-semibold text-gray-800 mb-3">Contraste Afrique-Europe</h4>
+                        <h4 className="font-semibold text-carnet-ink mb-3">Contraste Afrique-Europe</h4>
                         <div className="space-y-2">
                           <div className="p-2 bg-carnet-red/10 rounded text-sm">
                             <strong>Europe :</strong> Âge médian 44 ans, population active vieillissante
                           </div>
-                          <div className="p-2 bg-gray-100 rounded text-sm">
+                          <div className="p-2 bg-carnet-paper rounded text-sm">
                             <strong>Afrique :</strong> Âge médian 19 ans, force de travail jeune
                           </div>
                         </div>
@@ -468,7 +468,7 @@ const DeveloppementDurablePage = () => {
                       </div>
                     </div>
 
-                    <div className="mt-6 p-4 bg-indigo-100 rounded-lg border border-indigo-200">
+                    <div className="mt-6 p-4 bg-indigo-100 rounded-lg border border-carnet-red/30">
                       <h4 className="font-semibold text-indigo-800 mb-2">
                         <Calendar className="inline h-4 w-4 mr-2" />
                         Vision prospective
@@ -494,7 +494,7 @@ const DeveloppementDurablePage = () => {
             <CardTitle className="text-lg">Références et sources</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-sm text-gray-600 space-y-2">
+            <div className="text-sm text-carnet-ink-soft space-y-2">
               <p><strong>Nations Unies</strong> : World Population Prospects 2024</p>
               <p><strong>INED</strong> : Institut National d'Études Démographiques</p>
               <p><strong>Population Reference Bureau</strong> : Datasheet démographique mondiale</p>

@@ -110,8 +110,7 @@ const FormationEspagnolSommairePage = () => {
                 <motion.div
                   key={step.number}
                   initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-30px' }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: Math.min(idx * 0.05, 0.25) }}
                   className={tilt}
                 >
@@ -146,8 +145,7 @@ const FormationEspagnolSommairePage = () => {
 
           <motion.section
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-30px' }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="mt-16 carnet-card p-8 sm:p-10"
           >

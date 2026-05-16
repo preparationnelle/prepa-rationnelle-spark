@@ -29,10 +29,10 @@ const TourismePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-carnet-paper">
 
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -60,7 +60,7 @@ const TourismePage = () => {
       <div className="container mx-auto px-4 py-8">
 
         {/* Header */}
-        <Card className="mb-8 bg-white border border-gray-400">
+        <Card className="mb-8 bg-carnet-paper-2 border border-gray-400">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Plane className="h-8 w-8 text-black" />
@@ -74,19 +74,19 @@ const TourismePage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white border border-gray-400 rounded-lg p-3">
+              <div className="bg-carnet-paper-2 border border-gray-400 rounded-lg p-3">
                 <div className="text-2xl font-bold text-black">1,8T$</div>
                 <div className="text-sm text-black">Recettes 2024</div>
               </div>
-              <div className="bg-white border border-gray-400 rounded-lg p-3">
+              <div className="bg-carnet-paper-2 border border-gray-400 rounded-lg p-3">
                 <div className="text-2xl font-bold text-black">75%</div>
                 <div className="text-sm text-black">Pop. concernée</div>
               </div>
-              <div className="bg-white border border-gray-400 rounded-lg p-3">
+              <div className="bg-carnet-paper-2 border border-gray-400 rounded-lg p-3">
                 <div className="text-2xl font-bold text-black">250M</div>
                 <div className="text-sm text-black">Retraités voyageurs</div>
               </div>
-              <div className="bg-white border border-gray-400 rounded-lg p-3">
+              <div className="bg-carnet-paper-2 border border-gray-400 rounded-lg p-3">
                 <div className="text-2xl font-bold text-black">10%</div>
                 <div className="text-sm text-black">Emplois directs</div>
               </div>
@@ -95,7 +95,7 @@ const TourismePage = () => {
         </Card>
 
         {/* Définition académique */}
-        <Card className="mb-8 bg-white border border-gray-400">
+        <Card className="mb-8 bg-carnet-paper-2 border border-gray-400">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Globe className="h-5 w-5 text-black" />
@@ -103,7 +103,7 @@ const TourismePage = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="bg-white p-4 rounded-lg border border-gray-400 mb-4">
+            <div className="bg-carnet-paper-2 p-4 rounded-lg border border-gray-400 mb-4">
               <p className="text-black italic">
                 <strong>Mathis Stock et Rémy Knafou</strong> (2003) : <em>"Un système d'acteurs, de pratiques et d'espaces 
                 qui participent de la recréation des individus par le déplacement et l'habitat temporaire hors des lieux du quotidien"</em>
@@ -114,7 +114,7 @@ const TourismePage = () => {
               illustrant que le tourisme concerne désormais <strong>75% de la population mondiale</strong>. 
               Cette massification transforme les rapports géopolitiques.
             </p>
-            <div className="bg-white border border-gray-400 p-3 rounded-lg">
+            <div className="bg-carnet-paper-2 border border-gray-400 p-3 rounded-lg">
               <p className="text-sm text-black">
                 <strong>Philippe Duhamel :</strong> <em>"Une transition touristique mondiale se met en place"</em>, 
                 accélérée par la reprise post-COVID avec l'émergence de nouvelles catégories de voyageurs.
@@ -124,7 +124,7 @@ const TourismePage = () => {
         </Card>
 
         {/* Chiffres clés */}
-        <Card className="mb-8 bg-white border border-gray-400">
+        <Card className="mb-8 bg-carnet-paper-2 border border-gray-400">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-black" />
@@ -134,10 +134,10 @@ const TourismePage = () => {
           <CardContent>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {tourismStats.map((stat, index) => (
-                <div key={index} className="bg-white p-4 rounded-lg border border-gray-400">
+                <div key={index} className="bg-carnet-paper-2 p-4 rounded-lg border border-gray-400">
                   <div className="text-2xl font-bold text-black">{stat.value}</div>
                   <div className="text-sm font-medium text-black mb-1">{stat.label}</div>
-                  <div className="text-xs text-gray-600">{stat.share || stat.note}</div>
+                  <div className="text-xs text-carnet-ink-soft">{stat.share || stat.note}</div>
                 </div>
               ))}
             </div>
@@ -146,7 +146,7 @@ const TourismePage = () => {
 
         <div className="grid lg:grid-cols-2 gap-8 mb-8">
           {/* Principales destinations */}
-          <Card className="bg-white border border-gray-400">
+          <Card className="bg-carnet-paper-2 border border-gray-400">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <MapPin className="h-5 w-5 text-black" />
@@ -156,16 +156,16 @@ const TourismePage = () => {
             <CardContent>
               <div className="space-y-3">
                 {majorDestinations.map((dest, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-400">
+                  <div key={index} className="flex items-center justify-between p-3 bg-carnet-paper-2 rounded-lg border border-gray-400">
                     <div>
                       <div className="font-semibold text-black">{dest.region}</div>
-                      <div className="text-sm text-gray-600">{dest.growth || dest.note || dest.trend || dest.potential}</div>
+                      <div className="text-sm text-carnet-ink-soft">{dest.growth || dest.note || dest.trend || dest.potential}</div>
                     </div>
                     <div className="font-bold text-black">{dest.visitors}</div>
                   </div>
                 ))}
               </div>
-              <div className="mt-4 p-3 bg-white border border-gray-400 rounded-lg">
+              <div className="mt-4 p-3 bg-carnet-paper-2 border border-gray-400 rounded-lg">
                 <p className="text-sm text-black">
                   <strong>Concentration :</strong> L'Europe maintient sa dominance avec 45% des arrivées mondiales, 
                   mais l'Asie progresse rapidement (+15% post-COVID).
@@ -175,7 +175,7 @@ const TourismePage = () => {
           </Card>
 
           {/* Catégories émergentes */}
-          <Card className="bg-white border border-gray-400">
+          <Card className="bg-carnet-paper-2 border border-gray-400">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Users className="h-5 w-5 text-black" />
@@ -185,7 +185,7 @@ const TourismePage = () => {
             <CardContent>
               <div className="space-y-4">
                 {emergingCategories.map((cat, index) => (
-                  <div key={index} className="p-3 bg-white rounded-lg border border-gray-400">
+                  <div key={index} className="p-3 bg-carnet-paper-2 rounded-lg border border-gray-400">
                     <div className="font-semibold text-black mb-1">{cat.category}</div>
                     <div className="text-sm text-black">
                       {cat.volume && <span>{cat.volume} • </span>}
@@ -195,9 +195,9 @@ const TourismePage = () => {
                       {cat.example && <span>{cat.example}</span>}
                       {cat.cases && <span>{cat.cases}</span>}
                     </div>
-                    {cat.impact && <div className="text-xs text-gray-600 mt-1">{cat.impact}</div>}
-                    {cat.challenge && <div className="text-xs text-gray-600 mt-1">{cat.challenge}</div>}
-                    {cat.solution && <div className="text-xs text-gray-600 mt-1">{cat.solution}</div>}
+                    {cat.impact && <div className="text-xs text-carnet-ink-soft mt-1">{cat.impact}</div>}
+                    {cat.challenge && <div className="text-xs text-carnet-ink-soft mt-1">{cat.challenge}</div>}
+                    {cat.solution && <div className="text-xs text-carnet-ink-soft mt-1">{cat.solution}</div>}
                   </div>
                 ))}
               </div>
@@ -206,7 +206,7 @@ const TourismePage = () => {
         </div>
 
         {/* Analyse géopolitique structurée */}
-        <Card className="bg-white border border-gray-400 mb-8">
+        <Card className="bg-carnet-paper-2 border border-gray-400 mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Globe className="h-5 w-5 text-black" />
@@ -218,7 +218,7 @@ const TourismePage = () => {
             <div className="mb-8">
               <h3 className="text-lg font-semibold text-black mb-4">I. Concentration et contrôle de l'industrie</h3>
               <div className="space-y-4">
-                <div className="bg-white p-4 rounded-lg border border-gray-400">
+                <div className="bg-carnet-paper-2 p-4 rounded-lg border border-gray-400">
                   <h4 className="font-semibold text-black mb-2">Oligopoles touristiques</h4>
                   <ul className="list-disc list-inside text-sm text-black space-y-1">
                     <li><strong>Hôtellerie :</strong> 7 firmes contrôlent 50% des hôtels mondiaux</li>
@@ -228,7 +228,7 @@ const TourismePage = () => {
                   </ul>
                 </div>
                 
-                <div className="bg-white p-4 rounded-lg border border-gray-400">
+                <div className="bg-carnet-paper-2 p-4 rounded-lg border border-gray-400">
                   <h4 className="font-semibold text-black mb-2">Dépendance économique</h4>
                   <ul className="list-disc list-inside text-sm text-black space-y-1">
                     <li><strong>Petits États :</strong> Tourisme = 40-60% PIB (Maldives, Caraïbes)</li>
@@ -244,7 +244,7 @@ const TourismePage = () => {
             <div className="mb-8">
               <h3 className="text-lg font-semibold text-black mb-4">II. Émergence de nouveaux acteurs</h3>
               <div className="space-y-4">
-                <div className="bg-white p-4 rounded-lg border border-gray-400">
+                <div className="bg-carnet-paper-2 p-4 rounded-lg border border-gray-400">
                   <h4 className="font-semibold text-black mb-2">Transition touristique mondiale</h4>
                   <ul className="list-disc list-inside text-sm text-black space-y-1">
                     <li><strong>Retraités :</strong> 250 millions voyages/an, pouvoir d'achat élevé</li>
@@ -254,7 +254,7 @@ const TourismePage = () => {
                   </ul>
                 </div>
                 
-                <div className="bg-white p-4 rounded-lg border border-gray-400">
+                <div className="bg-carnet-paper-2 p-4 rounded-lg border border-gray-400">
                   <h4 className="font-semibold text-black mb-2">Soft power touristique</h4>
                   <ul className="list-disc list-inside text-sm text-black space-y-1">
                     <li><strong>Attractivité culturelle :</strong> Patrimoine UNESCO, événements</li>
@@ -270,7 +270,7 @@ const TourismePage = () => {
             <div>
               <h3 className="text-lg font-semibold text-black mb-4">III. Défis contemporains et durabilité</h3>
               <div className="space-y-6">
-                <div className="border-l-4 border-black bg-white p-4 rounded-r-lg border border-gray-400">
+                <div className="border-l-4 border-black bg-carnet-paper-2 p-4 rounded-r-lg border border-gray-400">
                   <h4 className="font-semibold text-black mb-3">
                     <Users className="inline h-4 w-4 mr-2" />
                     Overtourism - Venise et Bali
@@ -284,7 +284,7 @@ const TourismePage = () => {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-black bg-white p-4 rounded-r-lg border border-gray-400">
+                <div className="border-l-4 border-black bg-carnet-paper-2 p-4 rounded-r-lg border border-gray-400">
                   <h4 className="font-semibold text-black mb-3">
                     <Leaf className="inline h-4 w-4 mr-2" />
                     Tourisme durable - Costa Rica
@@ -298,7 +298,7 @@ const TourismePage = () => {
                   </div>
                 </div>
 
-                <div className="border-l-4 border-black bg-white p-4 rounded-r-lg border border-gray-400">
+                <div className="border-l-4 border-black bg-carnet-paper-2 p-4 rounded-r-lg border border-gray-400">
                   <h4 className="font-semibold text-black mb-3">
                     <DollarSign className="inline h-4 w-4 mr-2" />
                     Impact climatique et adaptation
@@ -317,7 +317,7 @@ const TourismePage = () => {
         </Card>
 
         {/* Références */}
-        <Card className="mt-8 bg-white border border-gray-400">
+        <Card className="mt-8 bg-carnet-paper-2 border border-gray-400">
           <CardHeader>
             <CardTitle className="text-lg text-black">Références et sources</CardTitle>
           </CardHeader>

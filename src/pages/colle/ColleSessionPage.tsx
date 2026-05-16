@@ -148,7 +148,7 @@ const ColleSessionPage: React.FC = () => {
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-orange-50 flex items-center justify-center px-4">
         <div className="text-center space-y-4">
           <Loader2 className="h-12 w-12 animate-spin text-[#F4845F] mx-auto" />
-          <p className="text-lg text-gray-600 font-medium">
+          <p className="text-lg text-carnet-ink-soft font-medium">
             Chargement de la colle...
           </p>
         </div>
@@ -201,7 +201,7 @@ const ColleSessionPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-orange-50">
       {/* ====== Header Sticky ====== */}
-      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b shadow-sm">
+      <div className="sticky top-0 z-40 bg-carnet-paper/95 backdrop-blur border-b shadow-sm">
         <div className="container mx-auto max-w-6xl px-4 py-3">
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
             {/* Timer */}
@@ -299,7 +299,7 @@ const ColleSessionPage: React.FC = () => {
                     )}
                   </div>
                   <p
-                    className={`text-sm text-gray-700 leading-relaxed whitespace-pre-wrap ${
+                    className={`text-sm text-carnet-ink leading-relaxed whitespace-pre-wrap ${
                       !articleExpanded && isLongText
                         ? 'max-h-24 overflow-hidden relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-8 after:bg-gradient-to-t after:from-white after:to-transparent'
                         : ''

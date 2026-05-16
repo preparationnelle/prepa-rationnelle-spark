@@ -30,10 +30,10 @@ const TransportsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-carnet-paper">
 
       {/* Sticky Breadcrumb */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-border/40 relative z-10">
+      <nav className="sticky top-0 z-50 bg-carnet-paper-2 border-b border-border/40 relative z-10">
         <div className="container mx-auto px-4 py-2">
           <div className="flex items-center text-xs text-muted-foreground">
             <Link to="/" className="flex items-center gap-1 hover:text-foreground transition-colors">
@@ -75,19 +75,19 @@ const TransportsPage = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">11Md t</div>
                 <div className="text-sm text-purple-100">Capacité maritime</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">90%</div>
                 <div className="text-sm text-purple-100">Commerce mondial</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">130K</div>
                 <div className="text-sm text-purple-100">Navires actifs</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-carnet-paper-2/10 rounded-lg p-3">
                 <div className="text-2xl font-bold">8/10</div>
                 <div className="text-sm text-purple-100">Ports asiatiques</div>
               </div>
@@ -106,8 +106,8 @@ const TransportsPage = () => {
           <CardContent>
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
-                <h4 className="font-semibold text-gray-800 mb-3">Évolution de la flotte mondiale</h4>
-                <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                <h4 className="font-semibold text-carnet-ink mb-3">Évolution de la flotte mondiale</h4>
+                <p className="text-carnet-ink text-sm leading-relaxed mb-4">
                   De 1955 à 2024, la capacité de la flotte mondiale a été <strong>multipliée par 30</strong>, 
                   atteignant 11 milliards de tonnes transportées en 2024. L'innovation du conteneur depuis 1956 
                   a révolutionné le transport, avec des navires atteignant 24 000 TEU et une vitesse de 25 nœuds.
@@ -133,9 +133,9 @@ const TransportsPage = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h5 className="font-semibold text-gray-800 mb-2">Répartition par type</h5>
-                <ul className="text-sm text-gray-700 space-y-1">
+              <div className="bg-carnet-paper p-4 rounded-lg">
+                <h5 className="font-semibold text-carnet-ink mb-2">Répartition par type</h5>
+                <ul className="text-sm text-carnet-ink space-y-1">
                   <li>• 30% marchandises diverses</li>
                   <li>• 25% tankers (hydrocarbures)</li>
                   <li>• 20% vraciers</li>
@@ -143,9 +143,9 @@ const TransportsPage = () => {
                 </ul>
               </div>
               
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h5 className="font-semibold text-gray-800 mb-2">New Panamax</h5>
-                <ul className="text-sm text-gray-700 space-y-1">
+              <div className="bg-carnet-paper p-4 rounded-lg">
+                <h5 className="font-semibold text-carnet-ink mb-2">New Panamax</h5>
+                <ul className="text-sm text-carnet-ink space-y-1">
                   <li>• 15 000-18 000 TEU</li>
                   <li>• 366 m de longueur</li>
                   <li>• 15 m tirant d'eau</li>
@@ -153,9 +153,9 @@ const TransportsPage = () => {
                 </ul>
               </div>
               
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h5 className="font-semibold text-gray-800 mb-2">Hydrocarbures</h5>
-                <ul className="text-sm text-gray-700 space-y-1">
+              <div className="bg-carnet-paper p-4 rounded-lg">
+                <h5 className="font-semibold text-carnet-ink mb-2">Hydrocarbures</h5>
+                <ul className="text-sm text-carnet-ink space-y-1">
                   <li>• 3 milliards tonnes (2024)</li>
                   <li>• Routes stratégiques</li>
                   <li>• Détroits sensibles</li>
@@ -200,8 +200,8 @@ const TransportsPage = () => {
                   </p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-gray-100 rounded-lg">
-                <p className="text-sm text-gray-700">
+              <div className="mt-4 p-3 bg-carnet-paper rounded-lg">
+                <p className="text-sm text-carnet-ink">
                   <strong>Dominance asiatique :</strong> 8 ports asiatiques sur 10, avec une forte concentration chinoise. 
                   Rotterdam reste stratégique pour l'Europe (8% PIB néerlandais, 350 000 emplois).
                 </p>
@@ -239,8 +239,8 @@ const TransportsPage = () => {
                   </p>
                 </div>
               </div>
-              <div className="mt-4 p-3 bg-gray-100 rounded-lg">
-                <p className="text-sm text-gray-700">
+              <div className="mt-4 p-3 bg-carnet-paper rounded-lg">
+                <p className="text-sm text-carnet-ink">
                   <strong>Répartition :</strong> 5 aéroports américains et 3 asiatiques dans le top 10. 
                   Les 25 premiers aéroports concentrent 70% du trafic passagers mondial.
                 </p>
@@ -305,8 +305,8 @@ const TransportsPage = () => {
                       </ul>
                     </div>
                     
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-gray-800 mb-2">Évolutions récentes</h4>
+                    <div className="bg-carnet-paper p-4 rounded-lg">
+                      <h4 className="font-semibold text-carnet-ink mb-2">Évolutions récentes</h4>
                       <ul className="list-disc list-inside text-sm text-pr-black space-y-1">
                         <li><strong>Low-cost asiatique :</strong> Expansion rapide (AirAsia, Cebu Pacific)</li>
                         <li><strong>Hubs du Golfe :</strong> Dubaï, Doha, Abu Dhabi comme plateformes intercontinentales</li>
@@ -337,8 +337,8 @@ const TransportsPage = () => {
                       </div>
                     </div>
 
-                    <div className="border-l-4 border-orange-400 bg-gray-50 p-4 rounded-r-lg">
-                      <h4 className="font-semibold text-gray-800 mb-3">
+                    <div className="border-l-4 border-orange-400 bg-carnet-paper p-4 rounded-r-lg">
+                      <h4 className="font-semibold text-carnet-ink mb-3">
                         <Globe className="inline h-4 w-4 mr-2" />
                         Conflits en Mer Rouge (2024)
                       </h4>
@@ -376,7 +376,7 @@ const TransportsPage = () => {
             <CardTitle className="text-lg">Références et sources</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-sm text-gray-600 space-y-2">
+            <div className="text-sm text-carnet-ink-soft space-y-2">
               <p><strong>Laurent Carroué</strong> : <em>Géographie de la mondialisation</em> - "Le transport du conteneur assure sécurité, fiabilité, vitesse et intermodalité"</p>
               <p><strong>UNCTAD</strong> (2024) : Review of Maritime Transport</p>
               <p><strong>Ports & Harbors</strong> (2024) : Statistiques portuaires mondiales</p>

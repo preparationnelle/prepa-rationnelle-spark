@@ -88,32 +88,32 @@ const MigrationsChronologiePage = () => {
     <div className="relative">
       <div className="container mx-auto px-4 py-8">
         {/* Navigation breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-          <Link to="/" className="hover:text-gray-900 flex items-center gap-1">
+        <div className="flex items-center gap-2 text-sm text-carnet-ink-soft mb-6">
+          <Link to="/" className="hover:text-carnet-ink flex items-center gap-1">
             <Home className="h-4 w-4" />
             Accueil
           </Link>
           <ChevronRight className="h-4 w-4" />
-          <Link to="/formation/geopolitique" className="hover:text-gray-900">
+          <Link to="/formation/geopolitique" className="hover:text-carnet-ink">
             Géopolitique
           </Link>
           <ChevronRight className="h-4 w-4" />
-          <Link to="/formation/geopolitique/premiere-annee" className="hover:text-gray-900">
+          <Link to="/formation/geopolitique/premiere-annee" className="hover:text-carnet-ink">
             Première année
           </Link>
           <ChevronRight className="h-4 w-4" />
-          <span className="text-gray-900 font-medium">Chronologie - Les migrations</span>
+          <span className="text-carnet-ink font-medium">Chronologie - Les migrations</span>
         </div>
 
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <Calendar className="h-8 w-8 text-carnet-red" />
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className="text-4xl font-bold text-carnet-ink">
               Chronologie des migrations
             </h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-4xl">
+          <p className="text-lg text-carnet-ink-soft max-w-4xl">
             De l'Antiquité aux migrations climatiques contemporaines, l'évolution des mouvements
             de populations, des invasions aux politiques migratoires modernes.
           </p>
@@ -133,7 +133,7 @@ const MigrationsChronologiePage = () => {
                       <span className="flex-shrink-0 w-24 text-lg font-semibold text-pr-black mr-4">
                         {item.year}
                       </span>
-                      <p className="flex-grow text-gray-700 leading-relaxed">
+                      <p className="flex-grow text-carnet-ink leading-relaxed">
                         {item.event}
                       </p>
                     </div>

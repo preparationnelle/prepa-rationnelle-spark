@@ -97,7 +97,7 @@ export const ResponseTabs = ({ answer, activeTab, language, onTabChange }: Respo
             {language === 'fr' ? 'INTRODUCTION' : 'INTRODUCTION'}
           </h3>
           <div 
-            className="text-gray-700"
+            className="text-carnet-ink"
             dangerouslySetInnerHTML={{ __html: answer.response.introduction.replace(/\*(.*?)\*/g, '<em>$1</em>') }}
           />
         </div>
@@ -107,7 +107,7 @@ export const ResponseTabs = ({ answer, activeTab, language, onTabChange }: Respo
             {language === 'fr' ? 'IDÉE PRINCIPALE' : 'MAIN IDEA'}
           </h3>
           <div 
-            className="text-gray-700"
+            className="text-carnet-ink"
             dangerouslySetInnerHTML={{ __html: answer.response.mainIdea.replace(/\*(.*?)\*/g, '<em>$1</em>') }}
           />
         </div>
@@ -117,7 +117,7 @@ export const ResponseTabs = ({ answer, activeTab, language, onTabChange }: Respo
             {language === 'fr' ? 'EXEMPLE' : 'EXAMPLE'}
           </h3>
           <div 
-            className="text-gray-700"
+            className="text-carnet-ink"
             dangerouslySetInnerHTML={{ __html: answer.response.example.replace(/\*(.*?)\*/g, '<em>$1</em>') }}
           />
         </div>
@@ -127,7 +127,7 @@ export const ResponseTabs = ({ answer, activeTab, language, onTabChange }: Respo
             {language === 'fr' ? 'BÉNÉFICE' : 'BENEFIT'}
           </h3>
           <div 
-            className="text-gray-700"
+            className="text-carnet-ink"
             dangerouslySetInnerHTML={{ __html: answer.response.benefit.replace(/\*(.*?)\*/g, '<em>$1</em>') }}
           />
         </div>
@@ -137,7 +137,7 @@ export const ResponseTabs = ({ answer, activeTab, language, onTabChange }: Respo
             {language === 'fr' ? 'CONCLUSION' : 'CONCLUSION'}
           </h3>
           <div 
-            className="text-gray-700"
+            className="text-carnet-ink"
             dangerouslySetInnerHTML={{ __html: answer.response.conclusion.replace(/\*(.*?)\*/g, '<em>$1</em>') }}
           />
         </div>
@@ -146,34 +146,34 @@ export const ResponseTabs = ({ answer, activeTab, language, onTabChange }: Respo
       <TabsContent value="analysis" className="space-y-6">
         <div className="space-y-4 pl-4 border-l-2 border-primary/30">
           <div>
-            <h4 className="font-medium text-gray-800">
+            <h4 className="font-medium text-carnet-ink">
               {language === 'fr' ? 'Force principale' : 'Main strength'}
             </h4>
-            <p className="text-gray-700">{answer.analysis.strength}</p>
+            <p className="text-carnet-ink">{answer.analysis.strength}</p>
           </div>
           <div>
-            <h4 className="font-medium text-gray-800">
+            <h4 className="font-medium text-carnet-ink">
               {language === 'fr' ? 'Point à améliorer' : 'Point to improve'}
             </h4>
-            <p className="text-gray-700">{answer.analysis.improvement}</p>
+            <p className="text-carnet-ink">{answer.analysis.improvement}</p>
           </div>
           <div>
-            <h4 className="font-medium text-gray-800">
+            <h4 className="font-medium text-carnet-ink">
               {language === 'fr' ? 'Alignement avec les valeurs de l\'école' : 'Alignment with school values'}
             </h4>
-            <p className="text-gray-700">{answer.analysis.alignment}</p>
+            <p className="text-carnet-ink">{answer.analysis.alignment}</p>
           </div>
           <div>
-            <h4 className="font-medium text-gray-800">
+            <h4 className="font-medium text-carnet-ink">
               {language === 'fr' ? 'Pertinence de l\'exemple' : 'Relevance of the example'}
             </h4>
-            <p className="text-gray-700">{answer.analysis.relevance}</p>
+            <p className="text-carnet-ink">{answer.analysis.relevance}</p>
           </div>
           <div>
-            <h4 className="font-medium text-gray-800">
+            <h4 className="font-medium text-carnet-ink">
               {language === 'fr' ? 'Clarté et impact à l\'oral' : 'Clarity and oral impact'}
             </h4>
-            <p className="text-gray-700">{answer.analysis.clarity}</p>
+            <p className="text-carnet-ink">{answer.analysis.clarity}</p>
           </div>
         </div>
       </TabsContent>

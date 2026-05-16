@@ -85,7 +85,7 @@ export const DefinitionBlock: React.FC<AcademicBlockProps> = ({
     <p className="text-xs font-bold uppercase tracking-wide text-emerald-700 mb-2">
       {blockLabel('Définition', number, title)}
     </p>
-    <div className="text-slate-700 leading-relaxed text-[0.95rem]">{children}</div>
+    <div className="text-carnet-ink leading-relaxed text-[0.95rem]">{children}</div>
   </div>
 );
 
@@ -106,14 +106,14 @@ export const TheoremBlock: React.FC<TheoremBlockProps> = ({
 }) => (
   <div
     className={cn(
-      'border-l-4 border-indigo-500 bg-indigo-50/30 pl-5 pr-4 py-4 my-6',
+      'border-l-4 border-carnet-red bg-carnet-paper pl-5 pr-4 py-4 my-6',
       className
     )}
   >
     <p className="text-xs font-bold uppercase tracking-wide text-indigo-700 mb-2">
       {blockLabel(variantLabels[variant] || 'Théorème', number, title)}
     </p>
-    <div className="text-slate-800 leading-relaxed italic text-[0.95rem]">{children}</div>
+    <div className="text-carnet-ink leading-relaxed italic text-[0.95rem]">{children}</div>
   </div>
 );
 
@@ -127,14 +127,14 @@ export const ExampleBlock: React.FC<AcademicBlockProps> = ({
 }) => (
   <div
     className={cn(
-      'border-l-2 border-slate-300 pl-5 py-2 my-6',
+      'border-l-2 border-carnet-rule pl-5 py-2 my-6',
       className
     )}
   >
-    <p className="text-xs font-bold uppercase tracking-wide text-slate-500 mb-1">
+    <p className="text-xs font-bold uppercase tracking-wide text-carnet-ink-soft mb-1">
       {blockLabel('Exemple', number, title)}
     </p>
-    <div className="text-slate-600 leading-relaxed text-sm">{children}</div>
+    <div className="text-carnet-ink-soft leading-relaxed text-sm">{children}</div>
   </div>
 );
 
@@ -151,11 +151,11 @@ export const ProofBlock: React.FC<AcademicBlockProps> = ({
       className
     )}
   >
-    <p className="font-semibold italic text-slate-500 mb-1">
+    <p className="font-semibold italic text-carnet-ink-soft mb-1">
       {title || 'Démonstration.'}
     </p>
-    <div className="text-slate-600 leading-relaxed">{children}</div>
-    <div className="text-right mt-1 text-slate-300 text-xs select-none">∎</div>
+    <div className="text-carnet-ink-soft leading-relaxed">{children}</div>
+    <div className="text-right mt-1 text-carnet-rule text-xs select-none">∎</div>
   </div>
 );
 
@@ -169,14 +169,14 @@ export const RemarkBlock: React.FC<AcademicBlockProps> = ({
 }) => (
   <div
     className={cn(
-      'bg-slate-50 rounded px-5 py-4 my-6 border border-slate-100',
+      'bg-carnet-paper rounded px-5 py-4 my-6 border border-carnet-rule/50',
       className
     )}
   >
-    <p className="text-xs font-bold uppercase tracking-wide text-slate-500 mb-2">
+    <p className="text-xs font-bold uppercase tracking-wide text-carnet-ink-soft mb-2">
       {blockLabel('Remarque', number, title)}
     </p>
-    <div className="text-slate-600 leading-relaxed text-sm">{children}</div>
+    <div className="text-carnet-ink-soft leading-relaxed text-sm">{children}</div>
   </div>
 );
 
@@ -199,7 +199,7 @@ export const WarningBlock: React.FC<AcademicBlockProps> = ({
         {title || 'Attention'}
       </p>
     </div>
-    <div className="text-slate-700 leading-relaxed text-sm">{children}</div>
+    <div className="text-carnet-ink leading-relaxed text-sm">{children}</div>
   </div>
 );
 
@@ -216,24 +216,24 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className={cn('rounded border border-slate-200 overflow-hidden my-6', className)}>
+    <div className={cn('rounded border border-carnet-rule overflow-hidden my-6', className)}>
       <div
         className={cn(
-          'bg-slate-50 px-4 py-2 flex items-center justify-between border-b border-slate-100',
-          collapsible && 'cursor-pointer hover:bg-slate-100 transition-colors'
+          'bg-carnet-paper px-4 py-2 flex items-center justify-between border-b border-carnet-rule/50',
+          collapsible && 'cursor-pointer hover:bg-carnet-paper transition-colors'
         )}
         onClick={collapsible ? () => setIsOpen(!isOpen) : undefined}
       >
         <div className="flex items-center gap-2">
-          <Code className="h-3.5 w-3.5 text-slate-500" />
-          <span className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
+          <Code className="h-3.5 w-3.5 text-carnet-ink-soft" />
+          <span className="text-xs font-semibold text-carnet-ink-soft uppercase tracking-wider">
             {title || language}
           </span>
         </div>
         {collapsible && (
           <ChevronDown
             className={cn(
-              'h-4 w-4 text-slate-400 transition-transform duration-200',
+              'h-4 w-4 text-carnet-ink-soft transition-transform duration-200',
               isOpen && 'rotate-180'
             )}
           />
@@ -257,14 +257,14 @@ export const TruthTable: React.FC<TruthTableProps> = ({
   className,
 }) => (
   <div className={cn('my-8 mx-auto max-w-lg', className)}>
-    <div className="rounded border border-slate-200 overflow-hidden shadow-sm">
+    <div className="rounded border border-carnet-rule overflow-hidden shadow-sm">
       <Table>
         <TableHeader>
-          <TableRow className="bg-slate-50 border-b border-slate-200">
+          <TableRow className="bg-carnet-paper border-b border-carnet-rule">
             {headers.map((header, i) => (
               <TableHead
                 key={i}
-                className="text-center h-10 font-bold text-slate-700 border-r border-slate-200 last:border-r-0"
+                className="text-center h-10 font-bold text-carnet-ink border-r border-carnet-rule last:border-r-0"
               >
                 {header}
               </TableHead>
@@ -273,7 +273,7 @@ export const TruthTable: React.FC<TruthTableProps> = ({
         </TableHeader>
         <TableBody>
           {rows.map((row, i) => (
-            <TableRow key={i} className="hover:bg-slate-50/30">
+            <TableRow key={i} className="hover:bg-carnet-paper">
               {row.map((cell, j) => {
                 const cellStr = typeof cell === 'string' ? cell : '';
                 const isTrue = cellStr === 'V';
@@ -282,7 +282,7 @@ export const TruthTable: React.FC<TruthTableProps> = ({
                   <TableCell
                     key={j}
                     className={cn(
-                      'text-center py-2 border-r border-slate-100 last:border-r-0 font-medium',
+                      'text-center py-2 border-r border-carnet-rule/50 last:border-r-0 font-medium',
                       isTrue && 'text-emerald-700 bg-emerald-50/30',
                       isFalse && 'text-red-700 bg-red-50/30'
                     )}
@@ -297,7 +297,7 @@ export const TruthTable: React.FC<TruthTableProps> = ({
       </Table>
     </div>
     {caption && (
-      <p className="text-center text-xs text-slate-500 mt-2 font-medium">
+      <p className="text-center text-xs text-carnet-ink-soft mt-2 font-medium">
         {caption}
       </p>
     )}
@@ -316,22 +316,22 @@ export const ExerciseBlock: React.FC<ExerciseBlockProps> = ({
   const [showSolution, setShowSolution] = useState(false);
 
   return (
-    <div className={cn('border border-slate-200 rounded-lg p-6 my-8 shadow-sm bg-white', className)}>
+    <div className={cn('border border-carnet-rule rounded-lg p-6 my-8 shadow-sm bg-carnet-paper-2', className)}>
       <div className="flex items-baseline gap-3 mb-4">
         {number && (
-          <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wide">
+          <h3 className="text-sm font-bold text-carnet-ink uppercase tracking-wide">
             Exercice {number}
           </h3>
         )}
-        {title && <span className="text-slate-500 font-medium text-sm">— {title}</span>}
+        {title && <span className="text-carnet-ink-soft font-medium text-sm">— {title}</span>}
       </div>
 
-      <div className="text-slate-700 leading-relaxed mb-6 text-[0.95rem]">
+      <div className="text-carnet-ink leading-relaxed mb-6 text-[0.95rem]">
         {children}
       </div>
 
       {solution && (
-        <div className="border-t border-slate-100 pt-4">
+        <div className="border-t border-carnet-rule/50 pt-4">
           <button
             onClick={() => setShowSolution(!showSolution)}
             className="flex items-center gap-2 text-sm font-semibold text-emerald-600 hover:text-emerald-700 transition-colors focus:outline-none"
@@ -346,7 +346,7 @@ export const ExerciseBlock: React.FC<ExerciseBlockProps> = ({
           </button>
 
           {showSolution && (
-            <div className="mt-4 bg-slate-50 border border-slate-100 rounded-md p-4 text-slate-700 text-sm leading-relaxed">
+            <div className="mt-4 bg-carnet-paper border border-carnet-rule/50 rounded-md p-4 text-carnet-ink text-sm leading-relaxed">
               {solution}
             </div>
           )}
@@ -384,20 +384,20 @@ export const FlashcardBlock: React.FC<FlashcardBlockProps> = ({
     <div className={cn('mx-auto max-w-4xl px-4 select-none mb-12', className)}>
 
       {/* Meta Header */}
-      <div className="flex items-center justify-between mb-8 text-xs font-medium tracking-widest text-slate-400 uppercase">
+      <div className="flex items-center justify-between mb-8 text-xs font-medium tracking-widest text-carnet-ink-soft uppercase">
         <div className="flex items-center gap-4">
           {category && (
             <span>{category}</span>
           )}
           {difficulty && (
             <>
-              <span className="w-1 h-1 rounded-full bg-slate-300" />
+              <span className="w-1 h-1 rounded-full bg-carnet-rule" />
               <span>{difficulty}</span>
             </>
           )}
         </div>
         {(currentCardIndex !== undefined && totalCards) && (
-          <span className="font-mono text-slate-300">
+          <span className="font-mono text-carnet-rule">
             {currentCardIndex + 1} / {totalCards}
           </span>
         )}
@@ -416,7 +416,7 @@ export const FlashcardBlock: React.FC<FlashcardBlockProps> = ({
           {/* Common Card Styles */}
           <div className={cn(
             "absolute inset-0 backface-hidden w-full h-full",
-            "bg-white rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100",
+            "bg-carnet-paper-2 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-carnet-rule/50",
             "flex flex-col items-center justify-center p-8 md:p-16",
             "transition-shadow duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
           )}>
@@ -424,11 +424,11 @@ export const FlashcardBlock: React.FC<FlashcardBlockProps> = ({
             {!isFlipped && (
               <>
                 <div className="flex-1 flex flex-col items-center justify-center w-full">
-                  <div className="text-xl md:text-3xl font-serif text-slate-800 text-center leading-relaxed max-w-3xl">
+                  <div className="text-xl md:text-3xl font-serif text-carnet-ink text-center leading-relaxed max-w-3xl">
                     {question}
                   </div>
                 </div>
-                <div className="mt-8 text-[10px] font-medium tracking-widest text-slate-300 uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="mt-8 text-[10px] font-medium tracking-widest text-carnet-rule uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   Cliquer pour révéler
                 </div>
               </>
@@ -437,7 +437,7 @@ export const FlashcardBlock: React.FC<FlashcardBlockProps> = ({
 
           <div className={cn(
             "absolute inset-0 backface-hidden w-full h-full rotate-y-180",
-            "bg-slate-50 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100",
+            "bg-carnet-paper rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-carnet-rule/50",
             "flex flex-col items-center justify-center p-8 md:p-16",
             "transition-shadow duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
           )}>
@@ -445,11 +445,11 @@ export const FlashcardBlock: React.FC<FlashcardBlockProps> = ({
             {isFlipped && (
               <>
                 <div className="flex-1 flex flex-col items-center justify-center w-full">
-                  <div className="text-lg md:text-2xl text-slate-700 text-center leading-relaxed font-medium max-w-3xl">
+                  <div className="text-lg md:text-2xl text-carnet-ink text-center leading-relaxed font-medium max-w-3xl">
                     {answer}
                   </div>
                 </div>
-                <div className="mt-8 text-[10px] font-medium tracking-widest text-slate-300 uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="mt-8 text-[10px] font-medium tracking-widest text-carnet-rule uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   Cliquer pour retourner
                 </div>
               </>
@@ -464,7 +464,7 @@ export const FlashcardBlock: React.FC<FlashcardBlockProps> = ({
         <button
           onClick={(e) => { e.stopPropagation(); onPrev?.(); }}
           disabled={!onPrev}
-          className="group p-2 text-slate-300 hover:text-slate-800 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+          className="group p-2 text-carnet-rule hover:text-carnet-ink transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
           title="Précédent"
         >
           <ChevronDown className="h-6 w-6 rotate-90 stroke-[1.5]" />
@@ -472,7 +472,7 @@ export const FlashcardBlock: React.FC<FlashcardBlockProps> = ({
 
         <button
           onClick={(e) => { e.stopPropagation(); handleFlip(); }}
-          className="text-xs font-medium tracking-widest uppercase text-slate-400 hover:text-slate-800 transition-colors py-2 px-4"
+          className="text-xs font-medium tracking-widest uppercase text-carnet-ink-soft hover:text-carnet-ink transition-colors py-2 px-4"
         >
           {isFlipped ? 'Question' : 'Réponse'}
         </button>
@@ -480,14 +480,14 @@ export const FlashcardBlock: React.FC<FlashcardBlockProps> = ({
         <button
           onClick={(e) => { e.stopPropagation(); onNext?.(); }}
           disabled={!onNext}
-          className="group p-2 text-slate-300 hover:text-slate-800 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+          className="group p-2 text-carnet-rule hover:text-carnet-ink transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
           title="Suivant"
         >
           <ChevronDown className="h-6 w-6 -rotate-90 stroke-[1.5]" />
         </button>
       </div>
 
-      <div className="text-center mt-8 text-[10px] text-slate-200 font-medium uppercase tracking-widest">
+      <div className="text-center mt-8 text-[10px] text-carnet-rule font-medium uppercase tracking-widest">
         Navigation Clavier
       </div>
 

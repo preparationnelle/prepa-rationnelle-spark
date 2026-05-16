@@ -5,7 +5,7 @@ import { LatexRenderer } from '@/components/LatexRenderer';
 import { Separator } from '@/components/ui/separator';
 
 const FormulaBox = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-  <div className="bg-slate-50 border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
+  <div className="bg-carnet-paper border border-slate-200 rounded-lg p-5 my-4 shadow-sm overflow-x-auto">
     {title && <p className="font-semibold text-slate-800 mb-2">{title}</p>}
     <div className="text-center">
       {children}
@@ -35,10 +35,10 @@ const MathsDerivationPage = () => {
       <div className="space-y-8">
 
         {/* Section 1 - Dérivabilité */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">1</span>
               <span className="font-semibold">Définition & Tangente</span>
             </CardTitle>
           </CardHeader>
@@ -51,7 +51,7 @@ const MathsDerivationPage = () => {
                 <LatexRenderer latex={"f'(x_0) = \\lim_{x \\to x_0} \\frac{f(x) - f(x_0)}{x - x_0}"} />
               </FormulaBox>
               <div className="grid md:grid-cols-2 gap-4 mt-4">
-                <div className="bg-slate-50 p-4 rounded border border-slate-100">
+                <div className="bg-carnet-paper p-4 rounded border border-slate-100">
                   <span className="font-semibold text-slate-800 mb-1 block">Dérivabilité à gauche/droite</span>
                   <p className="text-sm text-slate-600">
                     <LatexRenderer latex={"f"} /> dérivable en <LatexRenderer latex={"x_0"} /> ssi elle est dérivable à gauche et à droite, et :
@@ -59,7 +59,7 @@ const MathsDerivationPage = () => {
                     <LatexRenderer latex={"f'_g(x_0) = f'_d(x_0)"} />
                   </p>
                 </div>
-                <div className="bg-slate-50 p-4 rounded border border-slate-100">
+                <div className="bg-carnet-paper p-4 rounded border border-slate-100">
                   <span className="font-semibold text-slate-800 mb-1 block">Tangente</span>
                   <p className="text-sm text-slate-600">
                     Équation de la tangente en <LatexRenderer latex={"x_0"} /> :
@@ -83,10 +83,10 @@ const MathsDerivationPage = () => {
         </Card>
 
         {/* Section 2 - Formules */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">2</span>
               <span className="font-semibold">Calcul Différentiel</span>
             </CardTitle>
           </CardHeader>
@@ -96,19 +96,19 @@ const MathsDerivationPage = () => {
             <div>
               <h3 className="text-xl font-bold mb-4 text-slate-900">Opérations Algébriques</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-slate-50 p-3 rounded border border-slate-100 flex justify-between items-center">
+                <div className="bg-carnet-paper p-3 rounded border border-slate-100 flex justify-between items-center">
                   <span className="font-semibold text-slate-700">Produit</span>
                   <LatexRenderer latex={"(uv)' = u'v + uv'"} />
                 </div>
-                <div className="bg-slate-50 p-3 rounded border border-slate-100 flex justify-between items-center">
+                <div className="bg-carnet-paper p-3 rounded border border-slate-100 flex justify-between items-center">
                   <span className="font-semibold text-slate-700">Quotient</span>
                   <LatexRenderer latex={"(\\frac{u}{v})' = \\frac{u'v - uv'}{v^2}"} />
                 </div>
-                <div className="bg-slate-50 p-3 rounded border border-slate-100 flex justify-between items-center">
+                <div className="bg-carnet-paper p-3 rounded border border-slate-100 flex justify-between items-center">
                   <span className="font-semibold text-slate-700">Composition</span>
                   <LatexRenderer latex={"(v \\circ u)' = u' \\cdot (v' \\circ u)"} />
                 </div>
-                <div className="bg-slate-50 p-3 rounded border border-slate-100 flex justify-between items-center">
+                <div className="bg-carnet-paper p-3 rounded border border-slate-100 flex justify-between items-center">
                   <span className="font-semibold text-slate-700">Réciproque</span>
                   <LatexRenderer latex={"(f^{-1})'(y) = \\frac{1}{f'(f^{-1}(y))}"} />
                 </div>
@@ -128,7 +128,7 @@ const MathsDerivationPage = () => {
               <h3 className="text-xl font-bold mb-4 text-slate-900">Dérivées usuelles</h3>
               <div className="overflow-x-auto border border-slate-200 rounded-lg">
                 <table className="w-full text-sm">
-                  <thead className="bg-slate-50 text-slate-700 border-b border-slate-200">
+                  <thead className="bg-carnet-paper text-slate-700 border-b border-slate-200">
                     <tr>
                       <th className="py-2 px-4 text-left">Fonction</th>
                       <th className="py-2 px-4 text-left">Dérivée</th>
@@ -180,10 +180,10 @@ const MathsDerivationPage = () => {
         </Card>
 
         {/* Section 3 - Théorèmes Fondamentaux */}
-        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-white">
-          <CardHeader className="bg-slate-50 border-b border-slate-100">
+        <Card className="border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 bg-carnet-paper-2">
+          <CardHeader className="bg-carnet-paper border-b border-slate-100">
             <CardTitle className="text-xl flex items-center gap-3 text-slate-800">
-              <span className="bg-white border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
+              <span className="bg-carnet-paper-2 border border-slate-200 text-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">3</span>
               <span className="font-semibold">Théorèmes Fondamentaux</span>
             </CardTitle>
           </CardHeader>
@@ -193,7 +193,7 @@ const MathsDerivationPage = () => {
             <div>
               <h3 className="text-xl font-bold mb-4 text-slate-900">Rolle et Accroissements Finis</h3>
               <div className="space-y-4">
-                <div className="bg-slate-50 p-4 rounded border border-slate-100">
+                <div className="bg-carnet-paper p-4 rounded border border-slate-100">
                   <p className="font-semibold text-slate-800 mb-2">Théorème de Rolle</p>
                   <p className="text-slate-700 mb-2">
                     Si <LatexRenderer latex={"f"} /> est continue sur <LatexRenderer latex={"[a,b]"} />, dérivable sur <LatexRenderer latex={"]a,b["} /> et <LatexRenderer latex={"f(a)=f(b)"} />, alors :
@@ -201,7 +201,7 @@ const MathsDerivationPage = () => {
                   <div className="text-center"><LatexRenderer latex={"\\exists c \\in ]a,b[, \\quad f'(c) = 0"} /></div>
                 </div>
 
-                <div className="bg-slate-50 p-4 rounded border border-slate-100">
+                <div className="bg-carnet-paper p-4 rounded border border-slate-100">
                   <p className="font-semibold text-slate-800 mb-2">Égalité des Accroissements Finis (EAF)</p>
                   <p className="text-slate-700 mb-2">
                     Sous les mêmes hypothèses de régularité (sans <LatexRenderer latex={"f(a)=f(b)"} />) :

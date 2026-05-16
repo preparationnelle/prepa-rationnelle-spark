@@ -67,7 +67,7 @@ const Chapitre8CoupleVariablesAleatoiresExercicesPage = () => {
     const badge = difficultyLabel[difficulty] ?? difficulty.replace('Niveau: ', '').toUpperCase();
     const isOpen = visibleCorrections[id];
     return (
-      <div className="mb-6 border border-stone-200 rounded-xl bg-white shadow-sm p-6">
+      <div className="mb-6 border border-stone-200 rounded-xl bg-carnet-paper-2 shadow-sm p-6">
         <div className="flex items-start justify-between gap-4 mb-5">
           <div className="flex items-baseline gap-3">
             <span className="text-2xl font-bold italic text-red-800 leading-none">{num}</span>

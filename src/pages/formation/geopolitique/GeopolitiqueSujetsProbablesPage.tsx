@@ -162,7 +162,7 @@ const GeopolitiqueSujetsProbablesPage = () => {
 
   const getUrgenceColor = (urgence: number) => {
     if (urgence >= 9) return "text-red-700 bg-red-100";
-    if (urgence >= 7) return "text-pr-black bg-gray-100";
+    if (urgence >= 7) return "text-pr-black bg-carnet-paper";
     return "text-green-700 bg-green-100";
   };
 
@@ -182,7 +182,7 @@ const GeopolitiqueSujetsProbablesPage = () => {
 
   const SubjectModal = ({ sujet, onClose }: { sujet: string; onClose: () => void }) => (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+      <div className="bg-carnet-paper-2 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
         <div className="p-6 border-b">
           <div className="flex items-center justify-between">
             <h3 className="text-xl font-bold">{sujet}</h3>
@@ -250,23 +250,23 @@ const GeopolitiqueSujetsProbablesPage = () => {
   return (
     <div className="relative">
       {/* Fil d'Ariane */}
-      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border/40">
+      <nav className="sticky top-0 z-40 bg-carnet-paper/90 backdrop-blur supports-[backdrop-filter]:bg-carnet-paper-2/60 border-b border-border/40">
         <div className="container mx-auto px-4 py-2">
-          <div className="flex items-center text-xs font-medium text-gray-600">
-            <Link to="/" className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+          <div className="flex items-center text-xs font-medium text-carnet-ink-soft">
+            <Link to="/" className="flex items-center gap-1 hover:text-carnet-ink transition-colors">
               <Home className="h-3 w-3" />
               <span>Accueil</span>
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formations" className="hover:text-gray-900 transition-colors">
+            <Link to="/formations" className="hover:text-carnet-ink transition-colors">
               Toutes les formations
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <Link to="/formation/geopolitique" className="hover:text-gray-900 transition-colors">
+            <Link to="/formation/geopolitique" className="hover:text-carnet-ink transition-colors">
               Formation Géopolitique
             </Link>
             <ChevronRight className="h-3 w-3 text-gray-400 mx-1" />
-            <span className="text-gray-900 font-bold">Pronostics 2025</span>
+            <span className="text-carnet-ink font-bold">Pronostics 2025</span>
           </div>
         </div>
       </nav>
@@ -279,17 +279,17 @@ const GeopolitiqueSujetsProbablesPage = () => {
           <Card className="border-2 border-carnet-red/30 bg-pr-gray-bg/50">
             <CardContent className="p-6">
               <div className="prose prose-blue max-w-none">
-                <p className="text-gray-700 mb-4">
+                <p className="text-carnet-ink mb-4">
                   Cette liste recense les <strong>sujets géopolitiques les plus probables pour les concours 2025</strong>. 
                   L'objectif est de vous entraîner à construire rapidement un plan, à mobiliser les bons exemples, 
                   et à vérifier que vous êtes prêts sur les thématiques les plus centrales et actuelles.
                 </p>
-                <p className="text-gray-700 mb-4">
+                <p className="text-carnet-ink mb-4">
                   Je ne prétends évidemment pas savoir quel sujet tombera le jour J. En revanche, j'ai eu la chance 
                   d'échanger avec plusieurs <strong>professeurs correcteurs et concepteurs de sujets</strong>, qui ont une 
                   connaissance fine des logiques de sélection et des tendances du moment.
                 </p>
-                <p className="text-gray-700 mb-4">
+                <p className="text-carnet-ink mb-4">
                   Cette liste est le fruit de nos discussions, croisée avec l'actualité stratégique, 
                   les sujets tombés les années précédentes, et les grandes dynamiques du monde contemporain.
                 </p>
@@ -329,7 +329,7 @@ const GeopolitiqueSujetsProbablesPage = () => {
 
         {/* Pronostics par thématique */}
         <div className="max-w-6xl mx-auto mb-12">
-          <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">Pronostics détaillés par thématique</h2>
+          <h2 className="text-2xl font-bold text-center mb-8 text-carnet-ink">Pronostics détaillés par thématique</h2>
           <div className="grid gap-6">
             {pronostics2025.map((theme, index) => (
               <Card key={index} className={`border-l-4 ${getBorderColor(theme.color)} hover:shadow-lg transition-all duration-200`}>
@@ -341,11 +341,11 @@ const GeopolitiqueSujetsProbablesPage = () => {
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${getUrgenceColor(theme.urgence)}`}>
                           Urgence: {theme.urgence}/10
                         </span>
-                        <div className="flex items-center gap-1 text-gray-500 text-xs">
+                        <div className="flex items-center gap-1 text-carnet-ink-soft text-xs">
                           <Calendar className="h-3 w-3" />
                           {theme.dernierSujet}
                         </div>
-                        <span className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
+                        <span className="text-xs text-carnet-ink-soft bg-carnet-paper px-2 py-1 rounded">
                           {theme.frequence}
                         </span>
                       </div>
@@ -354,15 +354,15 @@ const GeopolitiqueSujetsProbablesPage = () => {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-gray-600 bg-gray-50 p-3 rounded-lg mb-4">
+                  <p className="text-sm text-carnet-ink-soft bg-carnet-paper p-3 rounded-lg mb-4">
                     <strong>Commentaire stratégique :</strong> {theme.commentaire}
                   </p>
                   
                   <div>
-                    <h4 className="font-semibold text-gray-800 mb-3">Sujets probables :</h4>
+                    <h4 className="font-semibold text-carnet-ink mb-3">Sujets probables :</h4>
                     <div className="space-y-2">
                       {theme.sujets.map((sujet, i) => (
-                        <div key={i} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg bg-white hover:bg-gray-50 transition-colors">
+                        <div key={i} className="flex items-center justify-between p-3 border border-carnet-rule rounded-lg bg-carnet-paper-2 hover:bg-carnet-paper transition-colors">
                           <div className="flex items-center gap-2 flex-1">
                             <Eye className="h-4 w-4 text-carnet-red" />
                             <span className="text-sm font-medium">"{sujet}"</span>

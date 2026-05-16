@@ -85,90 +85,92 @@ export const cultureGeneraleSubjectsYear1 = [
 ];
 
 export const cultureGeneraleSubjectsYear2 = [
-    // SE JUGER SOI-MÊME
-    "Peut-on se juger soi-même ?",
-    "Suis-je le meilleur juge de moi-même ?",
-    "Faut-il se juger avec indulgence ou sévérité ?",
-    "Le jugement sur soi-même est-il toujours partial ?",
-    "Se connaître, est-ce se juger ?",
-    "Peut-on être objectif sur soi-même ?",
+    // L'HUMAIN ET L'ANIMAL
+    "Qu'est-ce qui distingue l'homme de l'animal ?",
+    "L'homme est-il un animal comme les autres ?",
+    "Peut-on parler d'une dignité animale ?",
+    "Faut-il étendre les droits humains aux animaux ?",
+    "L'humanité commence-t-elle là où l'animalité s'arrête ?",
+    "Le propre de l'homme existe-t-il ?",
 
-    // JUGER AUTRUI
-    "A-t-on le droit de juger autrui ?",
-    "Juger autrui, est-ce le condamner ?",
-    "Peut-on juger sans préjuger ?",
-    "Le jugement sur autrui est-il toujours subjectif ?",
-    "Faut-il juger les actes ou les intentions ?",
-    "Juger, est-ce nécessairement stigmatiser ?",
+    // L'HUMAIN ET LA MACHINE / TRANSHUMANISME
+    "Peut-on augmenter l'humain sans le dénaturer ?",
+    "Le transhumanisme est-il un humanisme ?",
+    "La machine peut-elle remplacer l'humain ?",
+    "L'intelligence artificielle menace-t-elle l'humanité ?",
+    "Faut-il avoir peur de devenir des cyborgs ?",
+    "L'humain est-il soluble dans la technique ?",
 
-    // JUGER ET COMPRENDRE
-    "Faut-il juger ou comprendre ?",
-    "Comprendre, est-ce renoncer à juger ?",
-    "Peut-on tout comprendre et tout pardonner ?",
-    "Le jugement exclut-il la compréhension ?",
-    "Comprendre autrui dispense-t-il de le juger ?",
+    // INHUMANITÉ ET BARBARIE
+    "L'inhumanité est-elle propre à l'humain ?",
+    "La barbarie est-elle l'envers de la civilisation ?",
+    "Peut-on perdre son humanité ?",
+    "L'inhumanité est-elle pensable ?",
+    "Y a-t-il des actes inhumains ?",
+    "Pourquoi l'homme est-il un loup pour l'homme ?",
 
-    // JUGEMENT MORAL
-    "Juger moralement, est-ce juger absolument ?",
-    "La morale nous dicte-t-elle nos jugements ?",
-    "Peut-on juger sans référence morale ?",
-    "Les jugements moraux sont-ils universels ?",
-    "Faut-il juger selon la loi ou selon sa conscience ?",
+    // DIGNITÉ ET DROITS HUMAINS
+    "La dignité humaine est-elle inconditionnelle ?",
+    "Les droits de l'homme sont-ils universels ?",
+    "Peut-on renoncer à sa dignité ?",
+    "Faut-il défendre les droits humains partout ?",
+    "La dignité se mérite-t-elle ?",
 
-    // JUGEMENT ESTHÉTIQUE
-    "Le beau se juge-t-il ou se ressent-il ?",
-    "Peut-on juger objectivement une œuvre d'art ?",
-    "Le jugement esthétique est-il affaire de goût personnel ?",
-    "Faut-il être cultivé pour juger une œuvre d'art ?",
-    "Le jugement esthétique peut-il être désintéressé ?",
+    // ALTÉRITÉ ET AUTRUI
+    "L'humanité se découvre-t-elle dans l'autre ?",
+    "Reconnaît-on toujours l'humain en l'autre ?",
+    "L'altérité menace-t-elle ou enrichit-elle l'humanité ?",
+    "Peut-on aimer l'humanité sans aimer les hommes ?",
+    "L'étranger est-il pleinement humain ?",
 
-    // JUGEMENT ET VÉRITÉ
-    "Juger, est-ce chercher la vérité ?",
-    "Peut-on juger vrai ou faux avec certitude ?",
-    "Le jugement de vérité est-il le même que le jugement de valeur ?",
-    "Faut-il suspendre son jugement en l'absence de certitude ?",
+    // CORPS ET INCARNATION
+    "L'humanité tient-elle au corps ou à l'esprit ?",
+    "Le corps humain est-il sacré ?",
+    "Peut-on disposer librement de son corps ?",
+    "Le corps fait-il l'humain ?",
 
-    // JUGEMENT ET RAISON
-    "Tout jugement est-il rationnel ?",
-    "La raison suffit-elle à bien juger ?",
-    "Peut-on juger sans raisonner ?",
-    "Le jugement rationnel est-il le seul valable ?",
+    // NATURE HUMAINE ET PERFECTIBILITÉ
+    "Y a-t-il une nature humaine ?",
+    "L'homme est-il perfectible à l'infini ?",
+    "L'humanité est-elle un fait ou une tâche ?",
+    "Naît-on humain ou le devient-on ?",
+    "L'humain est-il toujours à construire ?",
 
-    // JUGEMENT ET PASSION
-    "Les passions nous empêchent-elles de bien juger ?",
-    "Peut-on juger sans émotion ?",
-    "Faut-il se méfier de ses sentiments pour bien juger ?",
-    "Le jugement émotionnel a-t-il une valeur ?",
+    // CULTURE ET CIVILISATION
+    "La culture fait-elle l'humanité ?",
+    "Toutes les cultures sont-elles également humaines ?",
+    "Civilisation et humanité sont-elles synonymes ?",
+    "L'humanité se réduit-elle à un héritage culturel ?",
 
-    // JUGEMENT ET JUSTICE
-    "Juger, est-ce rendre justice ?",
-    "Le jugement juridique est-il toujours juste ?",
-    "Peut-on se passer de juges pour rendre la justice ?",
-    "Faut-il juger selon la loi ou selon l'équité ?",
-    "Le jugement dernier peut-il être humain ?",
+    // CONDITION HUMAINE
+    "L'humain se définit-il par sa finitude ?",
+    "La mort fait-elle l'humanité ?",
+    "Donner un sens à sa vie, est-ce le propre de l'humain ?",
+    "Peut-on échapper à sa condition humaine ?",
+    "La souffrance est-elle constitutive de l'humanité ?",
 
-    // JUGEMENT ET PRÉJUGÉ
-    "Tout jugement est-il un préjugé ?",
-    "Peut-on juger sans a priori ?",
-    "Les préjugés sont-ils toujours négatifs ?",
-    "Faut-il se débarrasser de tous ses préjugés pour bien juger ?",
+    // UNIVERSEL ET PARTICULIER
+    "L'humanité est-elle une fiction ?",
+    "Y a-t-il une humanité universelle ?",
+    "Faut-il préférer son humanité à sa nation ?",
+    "Peut-on parler de l'humanité au singulier ?",
 
-    // JUGEMENT ET LIBERTÉ
-    "Sommes-nous libres de juger ?",
-    "Le jugement nous libère-t-il ou nous enferme-t-il ?",
-    "Faut-il suspendre son jugement pour rester libre ?",
-    "Juger, est-ce exercer sa liberté ?",
+    // IDENTITÉ HUMAINE
+    "Suis-je humain parce que je le décide ?",
+    "L'identité humaine se construit-elle ou se reçoit-elle ?",
+    "L'humain est-il défini par sa conscience ?",
+    "Peut-on cesser d'être humain ?",
 
-    // JUGEMENT HISTORIQUE
-    "Peut-on juger l'histoire ?",
-    "A-t-on le droit de juger les hommes du passé ?",
-    "L'historien doit-il juger ou seulement comprendre ?",
-    "Faut-il juger le passé à l'aune du présent ?",
+    // PROGRÈS ET AVENIR DE L'HUMANITÉ
+    "L'humanité a-t-elle un avenir ?",
+    "Le progrès rend-il l'homme plus humain ?",
+    "L'humanité peut-elle se survivre à elle-même ?",
+    "Faut-il croire au progrès de l'humanité ?",
 
-    // AUTRES (Citations célèbres avec "juger")
-    "Pensez-vous, comme l'a écrit Montaigne, qu'« il se trouve plus de différence de tel homme à tel homme que de tel animal à tel homme » ?",
-    "« Ne jugez pas afin de ne pas être jugés » : ce précepte est-il tenable ?",
-    "« Tout comprendre, c'est tout pardonner » : faut-il renoncer à juger ?",
+    // CITATIONS CÉLÈBRES SUR L'HUMANITÉ
+    "« Rien de ce qui est humain ne m'est étranger » (Térence) : ce précepte est-il tenable ?",
+    "Pensez-vous, avec Sartre, que « l'homme est ce qu'il se fait » ?",
+    "« L'homme est un loup pour l'homme » (Hobbes) : que pensez-vous de cette formule ?",
 ];
 
 export const subjectsByCategoryYear1 = {
@@ -187,19 +189,19 @@ export const subjectsByCategoryYear1 = {
 };
 
 export const subjectsByCategoryYear2 = {
-    seJuger: cultureGeneraleSubjectsYear2.slice(0, 6),
-    jugerAutrui: cultureGeneraleSubjectsYear2.slice(6, 12),
-    jugerComprendre: cultureGeneraleSubjectsYear2.slice(12, 17),
-    jugementMoral: cultureGeneraleSubjectsYear2.slice(17, 22),
-    jugementEsthetique: cultureGeneraleSubjectsYear2.slice(22, 27),
-    jugementVerite: cultureGeneraleSubjectsYear2.slice(27, 31),
-    jugementRaison: cultureGeneraleSubjectsYear2.slice(31, 35),
-    jugementPassion: cultureGeneraleSubjectsYear2.slice(35, 39),
-    jugementJustice: cultureGeneraleSubjectsYear2.slice(39, 44),
-    jugementPrejuge: cultureGeneraleSubjectsYear2.slice(44, 48),
-    jugementLiberte: cultureGeneraleSubjectsYear2.slice(48, 52),
-    jugementHistoire: cultureGeneraleSubjectsYear2.slice(52, 56),
-    citations: cultureGeneraleSubjectsYear2.slice(56, 59),
+    humainAnimal: cultureGeneraleSubjectsYear2.slice(0, 6),
+    humainMachine: cultureGeneraleSubjectsYear2.slice(6, 12),
+    inhumanite: cultureGeneraleSubjectsYear2.slice(12, 18),
+    dignite: cultureGeneraleSubjectsYear2.slice(18, 23),
+    alterite: cultureGeneraleSubjectsYear2.slice(23, 28),
+    corps: cultureGeneraleSubjectsYear2.slice(28, 32),
+    nature: cultureGeneraleSubjectsYear2.slice(32, 37),
+    culture: cultureGeneraleSubjectsYear2.slice(37, 41),
+    condition: cultureGeneraleSubjectsYear2.slice(41, 46),
+    universel: cultureGeneraleSubjectsYear2.slice(46, 50),
+    identite: cultureGeneraleSubjectsYear2.slice(50, 54),
+    progres: cultureGeneraleSubjectsYear2.slice(54, 58),
+    citations: cultureGeneraleSubjectsYear2.slice(58, 61),
 };
 
 export const getCategoryNameYear1 = (category: keyof typeof subjectsByCategoryYear1): string => {
@@ -222,18 +224,18 @@ export const getCategoryNameYear1 = (category: keyof typeof subjectsByCategoryYe
 
 export const getCategoryNameYear2 = (category: keyof typeof subjectsByCategoryYear2): string => {
     const names: Record<keyof typeof subjectsByCategoryYear2, string> = {
-        seJuger: "🪞 Se juger soi-même",
-        jugerAutrui: "👤 Juger autrui",
-        jugerComprendre: "🤝 Juger et comprendre",
-        jugementMoral: "⚖️ Jugement moral",
-        jugementEsthetique: "🎨 Jugement esthétique",
-        jugementVerite: "💡 Jugement et vérité",
-        jugementRaison: "🧠 Jugement et raison",
-        jugementPassion: "❤️ Jugement et passion",
-        jugementJustice: "⚖️ Jugement et justice",
-        jugementPrejuge: "🚫 Jugement et préjugé",
-        jugementLiberte: "🕊️ Jugement et liberté",
-        jugementHistoire: "📜 Jugement historique",
+        humainAnimal: "🐾 L'humain et l'animal",
+        humainMachine: "🤖 Transhumanisme & machine",
+        inhumanite: "🔪 Inhumanité & barbarie",
+        dignite: "✨ Dignité & droits humains",
+        alterite: "👥 Altérité & autrui",
+        corps: "🫀 Corps & incarnation",
+        nature: "🌱 Nature humaine & perfectibilité",
+        culture: "🎭 Culture & civilisation",
+        condition: "⏳ Condition humaine",
+        universel: "🌍 Universel & particulier",
+        identite: "🪞 Identité humaine",
+        progres: "📈 Progrès & avenir de l'humanité",
         citations: "📖 Citations célèbres",
     };
     return names[category];

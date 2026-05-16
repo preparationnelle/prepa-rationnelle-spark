@@ -205,7 +205,7 @@ const MethodologieDissertationPage = () => {
               </AccordionTrigger>
               <AccordionContent className="px-6 pb-6">
                 <div className="space-y-4">
-                  <div className="bg-gray-50 p-4 rounded-lg">
+                  <div className="bg-carnet-paper p-4 rounded-lg">
                     <p className="text-sm font-medium mb-2">
                       ⏱️ Le jury lit vite (7‑10 min par copie) ; il recherche donc immédiatement certains marqueurs :
                     </p>
@@ -419,7 +419,7 @@ const MethodologieDissertationPage = () => {
                   <div className="space-y-6">
                     <div>
                       <h4 className="font-semibold mb-3">5.1 Accroche</h4>
-                      <div className="bg-gray-50 p-4 rounded-lg space-y-3">
+                      <div className="bg-carnet-paper p-4 rounded-lg space-y-3">
                         <p className="text-sm"><strong>Rôle :</strong> capter l'attention et cadrer le sujet</p>
                         <p className="text-sm">Formes possibles :</p>
                         <ul className="text-sm space-y-1 ml-4">
@@ -439,7 +439,7 @@ const MethodologieDissertationPage = () => {
 
                     <div>
                       <h4 className="font-semibold mb-3">5.2 Définitions & délimitation</h4>
-                      <div className="bg-gray-50 p-4 rounded-lg space-y-3">
+                      <div className="bg-carnet-paper p-4 rounded-lg space-y-3">
                         <p className="text-sm"><strong>Pourquoi ?</strong> Verrouiller le vocabulaire et le cadre spatio‑temporel rassure le correcteur.</p>
                         <div className="space-y-2">
                           <div className="bg-carnet-paper-2 p-3 rounded">
@@ -454,7 +454,7 @@ const MethodologieDissertationPage = () => {
 
                     <div>
                       <h4 className="font-semibold mb-3">5.3 Problématisation</h4>
-                      <div className="bg-gray-50 p-4 rounded-lg">
+                      <div className="bg-carnet-paper p-4 rounded-lg">
                         <p className="text-sm mb-3"><strong>Objet :</strong> dégager la tension géopolitique, le paradoxe qui justifie l'analyse.</p>
                         <div className="bg-carnet-paper-2 p-3 rounded border-l-4 border-l-carnet-red">
                           <p className="text-sm italic">
@@ -469,7 +469,7 @@ const MethodologieDissertationPage = () => {
 
                     <div>
                       <h4 className="font-semibold mb-3">5.4 Problématique</h4>
-                      <div className="bg-gray-50 p-4 rounded-lg">
+                      <div className="bg-carnet-paper p-4 rounded-lg">
                         <div className="bg-carnet-paper-2 p-3 rounded border-l-4 border-l-carnet-red">
                           <p className="text-sm italic font-medium">
                             Dans quelle mesure les États‑Unis conservent‑ils une suprématie globale 
@@ -481,7 +481,7 @@ const MethodologieDissertationPage = () => {
 
                     <div>
                       <h4 className="font-semibold mb-3">5.5 Annonce du plan</h4>
-                      <div className="bg-gray-50 p-4 rounded-lg">
+                      <div className="bg-carnet-paper p-4 rounded-lg">
                         <div className="bg-carnet-paper-2 p-3 rounded border-l-4 border-l-carnet-red">
                           <p className="text-sm italic">
                             (I) Dans un premier temps, nous rappellerons les fondements multidimensionnels de la puissance américaine ; 
@@ -679,7 +679,7 @@ const MethodologieDissertationPage = () => {
                         <span><strong>Pont logique :</strong> annoncez la limite qui justifie la partie suivante</span>
                       </li>
                     </ul>
-                    <div className="mt-3 p-3 bg-white rounded border-l-4 border-l-carnet-red/60">
+                    <div className="mt-3 p-3 bg-carnet-paper-2 rounded border-l-4 border-l-carnet-red/60">
                       <p className="text-sm italic">
                         <strong>Formule générique :</strong> « Cependant, si cet argument souligne X, 
                         il ne saurait occulter Y, qui exige désormais d'être analysé. »
@@ -687,7 +687,7 @@ const MethodologieDissertationPage = () => {
                     </div>
                   </div>
 
-                  <div className="bg-gray-50 p-4 rounded-lg">
+                  <div className="bg-carnet-paper p-4 rounded-lg">
                     <h4 className="font-semibold mb-3">8.2 Exemple appliqué</h4>
                     <p className="text-sm mb-2">Fin partie I → ouverture partie II :</p>
                     <div className="bg-carnet-paper-2 p-3 rounded border-l-4 border-l-carnet-red/60">
@@ -739,7 +739,7 @@ const MethodologieDissertationPage = () => {
                       </ul>
                     </div>
 
-                    <div className="bg-gray-50 p-4 rounded-lg">
+                    <div className="bg-carnet-paper p-4 rounded-lg">
                       <h4 className="font-semibold mb-3">Exemple appliqué au sujet fil rouge</h4>
                       <div className="space-y-3">
                         <div className="bg-carnet-paper-2 p-3 rounded">
